@@ -318,6 +318,13 @@ whitelist:
   - jekyll-redirect-from
   - jemoji
 
+# Exclude vendor/bundle (gems) from the site build so Jekyll does not
+# try to process gem templates like the default welcome post which can
+# contain ERB tags and invalid front-matter dates.
+exclude:
+  - vendor
+  - vendor/bundle
+
 exclude:
   - sitemap.xml
 
