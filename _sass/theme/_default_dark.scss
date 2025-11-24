@@ -48,8 +48,8 @@ html[data-theme="dark"] {
     --global-link-color-hover           : #{$link-dark};
     --global-link-color-visited         : #{$link-light};
     /* Masthead (header/nav) colors - mirror light theme pattern but inverted */
-    --global-masthead-link-color        : #ffffff; /* links in masthead are white */
-    --global-masthead-link-color-hover  : #5E2A7E; /* use same purple hover for consistency */
+    --global-masthead-link-color        : #5E2A7E; /* masthead links purple in dark theme */
+    --global-masthead-link-color-hover  : #5E2A7E; /* purple hover for masthead links */
     --global-masthead-accent            : transparent; /* masthead/nav background transparent */
     --global-text-color                 : #ffffff; /* enforce white text in dark theme */
     --footer-blur                       : 4px;

@@ -9,9 +9,9 @@ html[data-theme="dark"] .masthead, html[data-theme="dark"] .masthead * {
 
 .masthead {
   position: fixed;
-  background: transparent !important;
-  backdrop-filter: blur(var(--masthead-blur, 6px));
-  -webkit-backdrop-filter: blur(var(--masthead-blur, 6px));
+  background: var(--global-masthead-accent, transparent) !important;
+  backdrop-filter: blur(var(--masthead-blur, 8px));
+  -webkit-backdrop-filter: blur(var(--masthead-blur, 8px));
   height: fit-content;
   top: 0;
   width: 100%;
@@ -47,6 +47,11 @@ html[data-theme="dark"] .masthead, html[data-theme="dark"] .masthead * {
 
     a {
       text-decoration: none;
+      color: var(--global-masthead-link-color, inherit);
+      transition: color 0.2s;
+      &:hover, &:focus {
+        color: var(--global-masthead-link-color-hover, #5E2A7E);
+      }
     }
   }
 }

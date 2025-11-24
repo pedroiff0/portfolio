@@ -28,6 +28,8 @@ $sidebar-screen-min-width   : 1024px;
 
 /* Default light theme for the site aaa*/
 :root {
+        --global-masthead-link-color        : #5E2A7E; /* masthead links purple in light theme */
+        --global-masthead-link-color-hover  : #5E2A7E; /* purple hover for masthead links */
     --global-base-color                 : #{$gray};
     --global-bg-color                   : transparent;
     --global-footer-bg-color : rgba(219,202,255,0.02); /* subtle translucent for light theme, matches original */
