@@ -9,7 +9,9 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # Currently available options are "default", "air"
-title                    : "Welcome! - @pedroiff0"
+title: 
+  en: "Welcome! - @pedroiff0"
+  pt: "Bem vindo! - @pedroiff0"
 title_separator          : "-"
 name                     : &name "@pedroiff0"
 description              : &description "Pedro "   # Update this with a general description of your site, this is the default if not overridden by a page
@@ -25,10 +27,18 @@ author:
   # Biographic information
   avatar           : "profilepic.jpeg"
   name             : "Pedro H. R. de Andrade"
-  pronouns         : "He/Him" # 🏳️‍🌈  
-  bio              : "I am an undergraduate student in Computer Engineering at the Fluminense Federal Institute, in Rio de Janeiro, Brazil. I have been working with astronomy since 2022."
-  location         : "Rio de Janeiro, Brazil."
-  employer         : "Fluminense Federal Institute"
+  pronouns:
+    en: "He/Him"
+    pt: "Ele/Dele"
+  bio:
+    en: "I am an undergraduate student in Computer Engineering at the Fluminense Federal Institute, in Rio de Janeiro, Brazil. I have been working with astronomy since 2022."
+    pt: "Sou estudante de Engenharia de Computação no Instituto Federal Fluminense, no Rio de Janeiro, Brasil. Trabalho com astronomia desde 2022."
+  location:
+    en: "Rio de Janeiro, Brazil."
+    pt: "Rio de Janeiro, Brasil."
+  employer:
+    en: "Fluminense Federal Institute"
+    pt: "Instituto Federal Fluminense"
   uri              : # URL
   email            : "pedroiff0@gmail.com" 
 
@@ -86,7 +96,7 @@ publication_category:
   manuscripts:
     title: 'Journal Articles'    
   conferences:
-    title: # 
+    title: 'Conferences'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews
@@ -239,7 +249,7 @@ defaults:
       author_profile: true
       read_time: true
       comments: true
-      share: true
+      share: false
       related: true
   # _pages
   - scope:
@@ -264,8 +274,8 @@ defaults:
     values:
       layout: single
       author_profile: true
-      share: true
-      comments: true
+      share: false
+      comments: false
   # _portfolio
   - scope:
       path: ""
@@ -273,8 +283,8 @@ defaults:
     values:
       layout: single
       author_profile: true
-      share: true
-      comment: true
+      share: false
+      comment: false
   # _talks
   - scope:
       path: ""
@@ -282,7 +292,7 @@ defaults:
     values:
       layout: talk
       author_profile: true
-      share: true
+      share: false
 
 
 # Sass/SCSS

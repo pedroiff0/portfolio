@@ -1,0 +1,9 @@
+/* Language toggle visibility fix */
+.lang-en, .lang-pt { display: none !important; }
+html[lang="en"] .lang-en { display: inline !important; }
+html[lang="pt"] .lang-pt { display: inline !important; }
+
+html.pre-lang .lang-en,
+html.pre-lang .lang-pt {
+	display: none !important;
+}

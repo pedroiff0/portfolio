@@ -6,17 +6,42 @@
       <nav id="site-nav" class="greedy-nav">
         <button><span class="navicon"></span></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/">{{ site.title }}</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg persist">
+            <a href="{{ base_path }}/">
+              <span class="lang-en">{{ site.title.en }}</span>
+              <span class="lang-pt">{{ site.title.pt }}</span>
+            </a>
+          </li>
+          
           {% for link in site.data.navigation.main %}
-            {% if link.url contains 'http' %}
-              {% assign domain = '' %}
-            {% else %}
-              {% assign domain = base_path %}
-            {% endif %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+          {% if link.url contains 'http' %}
+          {% assign domain = '' %}
+          {% else %}
+          {% assign domain = base_path %}
+          {% endif %}
+
+          {% if link.control != 'lang-switcher' %}
+          <li class="masthead__menu-item{% if link.persist %} persist{% endif %}">
+              <a href="{{ domain }}{{ link.url }}">
+                {% if link.title.en or link.title.pt %}
+                  <span class="lang-en">{{ link.title.en }}</span>
+                  <span class="lang-pt">{{ link.title.pt }}</span>
+                {% else %}
+                  {{ link.title }}
+                {% endif %}
+              </a>
+          </li>
+          {% endif %}
           {% endfor %}
           <li id="theme-toggle" class="masthead__menu-item persist tail">
-            <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
+            <a role="button" aria-labelledby="theme-icon">
+              <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i>
+            </a>
+          </li>
+          <li id="lang-toggle" class="masthead__menu-item persist tail">
+            <a role="button" aria-labelledby="lang-icon" onclick="window.toggleSiteLang && window.toggleSiteLang(); return false;">
+              <i id="lang-icon" class="fa-solid fa-language" aria-hidden="true" title="toggle language"></i>
+            </a>
           </li>
         </ul>
         <ul class="hidden-links hidden"></ul>

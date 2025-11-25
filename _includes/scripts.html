@@ -14,3 +14,28 @@
 </script>
 
 {% include analytics.html %}
+
+<script>
+	(function(){
+		var storageKey = 'siteLang';
+		var defaultLang = 'en';
+		function setLang(lang){
+			try{ localStorage.setItem(storageKey, lang); }catch(e){}
+			document.documentElement.setAttribute('lang', lang);
+			document.documentElement.classList.remove('pre-lang');
+		}
+		function init(){
+			var saved = defaultLang;
+			try{ saved = localStorage.getItem(storageKey) || defaultLang; }catch(e){}
+			setLang(saved);
+			window.toggleSiteLang = function(){
+				var now = document.documentElement.getAttribute('lang') || defaultLang;
+				var next = (now === 'en') ? 'pt' : 'en';
+				setLang(next);
+			};
+		}
+		if(document.readyState === 'loading'){
+			document.addEventListener('DOMContentLoaded', init);
+		} else { init(); }
+	})();
+</script>
