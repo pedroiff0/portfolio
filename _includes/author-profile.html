@@ -53,6 +53,16 @@
         <li><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</a></li>
       {% endif %}
 
+      <!-- Resume download (language-specific links) -->
+      <li>
+        <a class="lang-en" href="{{ base_path }}/files/cv.pdf" target="_blank" rel="noopener">
+          <i class="fas fa-fw fa-file-pdf icon-pad-right" aria-hidden="true"></i>{{ site.data.ui-text.en.resume_label }}
+        </a>
+        <a class="lang-pt" href="{{ base_path }}/files/cv.pdf" target="_blank" rel="noopener">
+          <i class="fas fa-fw fa-file-pdf icon-pad-right" aria-hidden="true"></i>{{ site.data.ui-text.pt.resume_label }}
+        </a>
+      </li>
+
       <!-- Font Awesome and Academicons icons / Academic websites -->
       {% if author.academia %}
         <li><a href="{{ author.academia }}"><i class="ai ai-academia ai-fw icon-pad-right" aria-hidden="true"></i>Academia</a></li>

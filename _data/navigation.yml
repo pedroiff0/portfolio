@@ -9,31 +9,31 @@
 
 main:
   - title:
-      en: "Publications"
-      pt: "Publicações"
-    url: /publications/
+      en: "Research"
+      pt: "Pesquisa"
+    url: /research/
 
   - title:
       en: "Resources"
       pt: "Recursos"
     url: /portfolio/
-
+  
   - title:
       en: "Media"
       pt: "Mídia"
     url: /media/
 
   - title:
-      en: "Research"
-      pt: "Pesquisa"
-    url: /research/
+      en: "Publications"
+      pt: "Publicações"
+    url: /publications/
 
-  - title:
-      en: "Blog"
-      pt: "Blog"
-    url: /blog/
+  # - title:
+  #     en: "Blog"
+  #     pt: "Blog"
+  #   url: /blog/
 
-  - title:
-      en: "CV"
-      pt: "CV"
-    url: /cv/
+  # - title:
+  #     en: "CV"
+  #     pt: "CV"
+  #   url: /cv/
