@@ -6,8 +6,30 @@
 {% endif %}
 {% assign seo_url = seo_url | default: site.github.url %}
 
+{% comment %} Build localized and combined page titles. `page_title_local` prefers the current `site.locale` (first 2 chars). `page_title_both` shows "EN / PT" when both exist. {% endcomment %}
+{% assign locale_short = site.locale | default: "en" | slice: 0, 2 %}
+{% assign page_title_local = nil %}
+{% assign page_title_both = nil %}
 {% if page.title %}
-  {% assign seo_title = page.title | append: " " | append: site.title_separator | append: " " | append: site.title.en %}
+  {% if page.title[locale_short] %}
+    {% assign page_title_local = page.title[locale_short] %}
+  {% elsif page.title.en %}
+    {% assign page_title_local = page.title.en %}
+  {% else %}
+    {% assign page_title_local = page.title %}
+  {% endif %}
+
+  {% if page.title.en and page.title.pt %}
+    {% assign page_title_both = page.title.en | append: " / " | append: page.title.pt %}
+  {% elsif page.title.en %}
+    {% assign page_title_both = page.title.en %}
+  {% elsif page.title.pt %}
+    {% assign page_title_both = page.title.pt %}
+  {% else %}
+    {% assign page_title_both = page.title %}
+  {% endif %}
+
+  {% assign seo_title = page_title_both | append: " " | append: site.title_separator | append: " " | append: site.name %}
 {% endif %}
 
 {% if seo_title %}
@@ -18,7 +40,7 @@
   {% assign canonical_url = page.url | replace: "index.html", "" | prepend: site.url %}
 {% endif %}
 
-<title>{{ seo_title | default: site.title.en }}{% if paginator %}{% unless paginator.page == 1 %} {{ site.title_separator }} {{ site.data.ui-text[site.locale].page | default: "Page" }} {{ paginator.page }}{% endunless %}{% endif %}</title>
+<title>{{ seo_title | default: site.name }}{% if paginator %}{% unless paginator.page == 1 %} {{ site.title_separator }} {{ site.data.ui-text[site.locale].page | default: "Page" }} {{ paginator.page }}{% endunless %}{% endif %}</title>
 
 {% assign seo_description = page.description | default: page.excerpt | default: site.description %}
 {% if seo_description %}
@@ -50,7 +72,7 @@
 
 {% if site.twitter.username %}
   <meta name="twitter:site" content="@{{ site.twitter.username | replace: "@", "" }}">
-  <meta name="twitter:title" content="{{ page.title | default: site.title.en | markdownify | strip_html | strip_newlines | escape_once }}">
+  <meta name="twitter:title" content="{{ page_title_both | default: page_title_local | default: site.name | markdownify | strip_html | strip_newlines | escape_once }}">
   <meta name="twitter:description" content="{{ seo_description }}">
   <meta name="twitter:url" content="{{ canonical_url }}">
 
@@ -114,8 +136,8 @@
 
 <!-- Open Graph protocol data (https://ogp.me/), used by social media -->
 <meta property="og:locale" content="{{ site.locale | default: "en" }}">
-<meta property="og:site_name" content="{{ site.title.en }}"> 
-<meta property="og:title" content="{{ page.title | default: site.title.en | markdownify | strip_html | strip_newlines | escape_once }}">
+<meta property="og:site_name" content="{{ site.name }}"> 
+<meta property="og:title" content="{{ page_title_both | default: page_title_local | default: site.name | markdownify | strip_html | strip_newlines | escape_once }}">
 {% if page.date %}
   <meta property="og:type" content="article">
 {% endif %}

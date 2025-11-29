@@ -23,6 +23,7 @@
 			try{ localStorage.setItem(storageKey, lang); }catch(e){}
 			document.documentElement.setAttribute('lang', lang);
 			document.documentElement.classList.remove('pre-lang');
+			try { window.dispatchEvent(new Event('langchange')); } catch(e){}
 		}
 		function init(){
 			var saved = defaultLang;

@@ -1,7 +1,68 @@
 <aside class="sidebar__right">
 <nav class="toc" markdown="1">
-<header><h4 class="nav__title"><i class="fa fa-{{ include.icon | default: 'file-text' }}"></i> {{ include.title | default: site.data.ui-text[site.locale].toc_label }}</h4></header>
+<header>
+	<h4 class="nav__title">
+		<i class="fa fa-{{ include.icon | default: 'file-text' }}"></i>
+		{% if include.title_en %}
+			<span class="lang-en">{{ include.title_en }}</span>
+			<span class="lang-pt">{{ include.title_pt }}</span>
+		{% else %}
+			<span class="lang-en">{{ site.data['ui-text'].en.toc_label }}</span>
+			<span class="lang-pt">{{ site.data['ui-text'].pt.toc_label }}</span>
+		{% endif %}
+	</h4>
+</header>
 *  Auto generated table of contents
 {:toc .toc__menu}
 </nav>
 </aside>
+<script>
+;(function () {
+	function getActiveLang() {
+		var lang = document.documentElement.getAttribute('lang') || 'en';
+		return (lang + '').slice(0,2).toLowerCase();
+	}
+
+	function isInActiveLangDiv(el, active) {
+		if (!el) return false;
+		var p = el.parentElement;
+		while (p) {
+			if (p.classList && p.classList.contains('lang-' + active)) return true;
+			p = p.parentElement;
+		}
+		return false;
+	}
+
+	function filterTOC() {
+		var tocMenu = document.querySelector('.toc .toc__menu');
+		if (!tocMenu) return;
+		if (!tocMenu.dataset.origHtml) tocMenu.dataset.origHtml = tocMenu.innerHTML;
+		tocMenu.innerHTML = tocMenu.dataset.origHtml;
+		var active = getActiveLang();
+		var any = false;
+		var links = Array.prototype.slice.call(tocMenu.querySelectorAll('a'));
+		links.forEach(function (a) {
+			var href = a.getAttribute('href');
+			if (!href || href.charAt(0) !== '#') return;
+			var id = decodeURIComponent(href.slice(1));
+			var target = document.getElementById(id);
+			if (!target) { any = true; return; }
+			if (!isInActiveLangDiv(target, active)) {
+				var li = a.closest && a.closest('li');
+				if (li && li.parentNode) li.parentNode.removeChild(li);
+				return;
+			}
+			any = true;
+		});
+		var nav = document.querySelector('.toc');
+		if (nav) nav.style.display = any ? '' : 'none';
+	}
+
+	function runFilter() {
+		setTimeout(filterTOC, 20);
+	}
+	if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', runFilter);
+	else runFilter();
+	window.addEventListener('langchange', function () { setTimeout(runFilter, 20); });
+})();
+</script>
