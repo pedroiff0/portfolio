@@ -10,11 +10,11 @@
 locale                   : "en-US"
 site_theme               : "default" # Currently available options are "default", "air"
 title: 
-  en: "Welcome! - @pedroiff0"
-  pt: "Bem vindo! - @pedroiff0"
+  en: "@pedroiff0"
+  pt: "@pedroiff0"
 title_separator          : "-"
 name                     : &name "@pedroiff0"
-description              : &description "Pedro "   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "Pedro"   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : https://pedroiff0.github.io # The base hostname & protocol for your site (no repo path)
                                                            # For a project site, set `baseurl` to the repo name (e.g. "/webpage").
 baseurl                  : "" # the subpath of your site, e.g. "/blog"

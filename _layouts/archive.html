@@ -20,8 +20,14 @@ layout: default
   </aside>
   <section class="archive content-area" style="flex-basis: 75%; flex-grow: 1; max-width: 75%; padding: 2rem 2rem 2rem 0; margin-left: 2rem;">
     {% unless page.header.overlay_color or page.header.overlay_image %}
+      {% if page.title.en %}
+      <h1 class="page__title"><span class="lang-en">{{ page.title.en }}</span><span class="lang-pt">{{ page.title.pt }}</span></h1>
+      {% else %}
       <h1 class="page__title">{{ page.title }}</h1>
+      {% endif %}
     {% endunless %}
-    {{ content }}
+    <section class="page__content" itemprop="text">
+      {{ content }}
+    </section>
   </section>
 </div>
