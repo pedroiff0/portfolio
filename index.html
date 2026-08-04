@@ -35,14 +35,32 @@
       <span>Pedro<strong>Rocha</strong></span>
     </a>
     <nav class="nav__links" aria-label="Navegação principal">
-      <a href="#sobre">Sobre</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#trabalhos">Trabalhos</a>
-      <a href="#pesquisa">Pesquisa</a>
-      <a href="#curriculo">Currículo</a>
-      <a href="#lattes">Lattes</a>
-      <a href="#contato" class="nav__cta">Contato</a>
+      <a href="#sobre" data-i18n-nav="0">Sobre</a>
+      <a href="#projetos" data-i18n-nav="1">Projetos</a>
+      <a href="#trabalhos" data-i18n-nav="2">Trabalhos</a>
+      <a href="#pesquisa" data-i18n-nav="3">Pesquisa</a>
+      <a href="#curriculo" data-i18n-nav="4">Currículo</a>
+      <a href="#lattes" data-i18n-nav="5">Lattes</a>
+      <a href="#contato" class="nav__cta" data-i18n-nav="6">Contato</a>
     </nav>
+    <div class="lang-switch" role="group" aria-label="Selecionar idioma / Select language / Seleccionar idioma / Choisir la langue">
+      <button class="lang-btn" data-lang="pt" aria-label="Português (Brasil)">
+        <svg class="flag" viewBox="0 0 20 14"><rect width="20" height="14" fill="#009b3a"/><path d="M10 2.2 17.6 7 10 11.8 2.4 7z" fill="#ffdf00"/><circle cx="10" cy="7" r="2.4" fill="#002776"/><path d="M8.4 6.4a2.4 2.4 0 0 1 3.2 0" fill="none" stroke="#fff" stroke-width=".4"/></svg>
+        <span>PT-BR</span>
+      </button>
+      <button class="lang-btn" data-lang="en" aria-label="English">
+        <svg class="flag" viewBox="0 0 20 14"><rect width="20" height="14" fill="#fff"/><g fill="#b22234"><rect width="20" height="1.4"/><rect y="2.8" width="20" height="1.4"/><rect y="5.6" width="20" height="1.4"/><rect y="8.4" width="20" height="1.4"/><rect y="11.2" width="20" height="1.4"/></g><rect width="8" height="7.6" fill="#3c3b6e"/></svg>
+        <span>EN</span>
+      </button>
+      <button class="lang-btn" data-lang="es" aria-label="Español">
+        <svg class="flag" viewBox="0 0 20 14"><rect width="20" height="14" fill="#aa151b"/><rect y="3.5" width="20" height="7" fill="#f1bf00"/><rect y="0" width="20" height="3.5" fill="#aa151b"/><rect y="10.5" width="20" height="3.5" fill="#aa151b"/></svg>
+        <span>ES</span>
+      </button>
+      <button class="lang-btn" data-lang="fr" aria-label="Français">
+        <svg class="flag" viewBox="0 0 20 14"><rect width="6.6" height="14" fill="#0055A4"/><rect x="6.6" width="6.8" height="14" fill="#fff"/><rect x="13.4" width="6.6" height="14" fill="#EF4135"/></svg>
+        <span>FR</span>
+      </button>
+    </div>
     <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -52,31 +70,22 @@
     <!-- HERO -->
     <section class="hero" id="inicio">
       <div class="hero__inner">
-        <p class="hero__eyebrow">Engenharia de Computação · Instituto Federal Fluminense</p>
+        <p class="hero__eyebrow" data-i18n="hero.eyebrow">Engenharia de Computação · Instituto Federal Fluminense</p>
         <h1 class="hero__title">
           Pedro <span class="grad">Rocha</span>
         </h1>
         <p class="hero__fullname">Pedro Henrique Rocha de Andrade</p>
-        <p class="hero__sub">
+        <p class="hero__sub" data-i18n="hero.sub">
           Construo software para a academia e uso computação para entender o cosmos.
           Estudante de Engenharia de Computação, bolsista de Iniciação Científica
           (PIBIC/CNPq), na interseção entre <em>métodos computacionais</em> e
           <em>astrofísica</em>.
         </p>
         <div class="hero__actions">
-          <a href="#projetos" class="btn btn--primary">Ver projetos</a>
-          <a href="#contato" class="btn btn--ghost">Falar comigo</a>
+          <a href="#projetos" class="btn btn--primary" data-i18n="hero.ver">Ver projetos</a>
+          <a href="#contato" class="btn btn--ghost" data-i18n="hero.falar">Falar comigo</a>
         </div>
-        <div class="hero__badges">
-          <span class="chip">🛰️ PIBIC / CNPq</span>
-          <span class="chip">🏆 IAAC 2024 &amp; 2025</span>
-          <span class="chip">📡 CCNA · CyberOps · IoT</span>
-          <span class="chip">🐧 Linux &amp; Servidores</span>
-          <span class="chip">🔭 Astrofísica Computacional</span>
-          <span class="chip">🤖 Machine Learning</span>
-          <span class="chip">🪐 Gaia · GALAH</span>
-          <span class="chip">📄 ORCID · Scholar</span>
-        </div>
+        <div class="hero__badges" id="heroBadges"><!-- preenchido por JS --></div>
         <p class="hero__note" id="heroNote"></p>
       </div>
       <div class="hero__orbit" aria-hidden="true">
@@ -94,33 +103,10 @@
     <section class="section" id="sobre">
       <div class="section__head reveal">
         <span class="section__kicker">01 — Sobre mim</span>
-        <h2 class="section__title">Trajetória entre código e estrelas</h2>
+        <h2 class="section__title" data-i18n="sections.sobre.title">Trajetória entre código e estrelas</h2>
       </div>
       <div class="about">
-        <div class="about__text reveal">
-          <p>
-            Sou estudante de <strong>Engenharia de Computação</strong> no
-            <strong>Instituto Federal Fluminense (IFF)</strong>, campus Bom Jesus do
-            Itabapoana — RJ, e bolsista de Iniciação Científica
-            (<strong>PIBIC/CNPq</strong>). Minha pesquisa fica na fronteira entre
-            computação e astronomia: arqueologia galáctica, populações estelares e
-            estrutura da Via Láctea, com aprendizado de máquina aplicado a dados do
-            <em>Gaia</em> e de surveys complementares.
-          </p>
-          <p>
-            Do lado de engenharia, domino <strong>Python</strong> e <strong>C</strong>,
-            redes de computadores (certificações <strong>Cisco CCNA, CyberOps e IoT</strong>),
-            administração de servidores Linux e desenvolvimento de software full-stack.
-            Participo da <strong>International Astronomy and Astrophysics Competition</strong>
-            (IAAC 2024 e 2025) e apresentei trabalhos em eventos como FEBRACE, Mostratec,
-            CONFICT e na Feira Brasileira de Iniciação Científica.
-          </p>
-          <p>
-            Sou Técnico em Informática pelo IFF (2020–2022), membro do Centro de
-            Representação Estudantil e um dos organizadores da Semana de Computação,
-            Engenharia e Gestão do IFF.
-          </p>
-        </div>
+        <div class="about__text reveal" data-i18n="about" data-html="1"><!-- preenchido por JS --></div>
         <div class="about__stats reveal">
           <div class="stat">
             <span class="stat__num" data-count="90">0</span>
@@ -146,8 +132,8 @@
     <section class="section" id="projetos">
       <div class="section__head reveal">
         <span class="section__kicker">02 — Projetos de software</span>
-        <h2 class="section__title">O que eu construo</h2>
-        <p class="section__lead">Clique em qualquer cartão para revelar os detalhes técnicos.</p>
+        <h2 class="section__title" data-i18n="sections.projetos.title">O que eu construo</h2>
+        <p class="section__lead" data-i18n="sections.projetos.lead">Clique em qualquer cartão para revelar os detalhes técnicos.</p>
       </div>
       <div class="cards" id="projectGrid"><!-- preenchido por JS --></div>
     </section>
@@ -156,8 +142,8 @@
     <section class="section" id="trabalhos">
       <div class="section__head reveal">
         <span class="section__kicker">02b — Todos os trabalhos</span>
-        <h2 class="section__title">Tudo o que eu faço no GitHub</h2>
-        <p class="section__lead">
+        <h2 class="section__title" data-i18n="sections.trabalhos.title">Tudo o que eu faço no GitHub</h2>
+        <p class="section__lead" data-i18n="sections.trabalhos.lead">
           Lista completa dos meus repositórios — públicos e privados — com um short brief de cada um.
           Clique em qualquer cartão para ver os detalhes.
         </p>
@@ -169,8 +155,8 @@
     <section class="section" id="pesquisa">
       <div class="section__head reveal">
         <span class="section__kicker">03 — Pesquisa</span>
-        <h2 class="section__title">Astronomia computacional</h2>
-        <p class="section__lead">Linhas de pesquisa e projetos científicos — expanda para ler.</p>
+        <h2 class="section__title" data-i18n="sections.pesquisa.title">Astronomia computacional</h2>
+        <p class="section__lead" data-i18n="sections.pesquisa.lead">Linhas de pesquisa e projetos científicos — expanda para ler.</p>
       </div>
       <div class="accordion" id="researchList"><!-- preenchido por JS --></div>
     </section>
@@ -179,8 +165,8 @@
     <section class="section" id="bolsas">
       <div class="section__head reveal">
         <span class="section__kicker">03b — Projetos de bolsa</span>
-        <h2 class="section__title">Iniciação Científica &amp; Pesquisa</h2>
-        <p class="section__lead">Projetos de bolsa e voluntariado em astrofísica computacional (extraídos do meu CV).</p>
+        <h2 class="section__title" data-i18n="sections.bolsas.title">Iniciação Científica &amp; Pesquisa</h2>
+        <p class="section__lead" data-i18n="sections.bolsas.lead">Projetos de bolsa e voluntariado em astrofísica computacional (extraídos do meu CV).</p>
       </div>
       <div class="bolsas" id="bolsaList"><!-- preenchido por JS --></div>
     </section>
@@ -189,7 +175,7 @@
     <section class="section" id="curriculo">
       <div class="section__head reveal">
         <span class="section__kicker">04 — Currículo</span>
-        <h2 class="section__title">Curriculum Vitae</h2>
+        <h2 class="section__title" data-i18n="sections.curriculo.title">Curriculum Vitae</h2>
       </div>
       <div class="cv reveal">
         <p class="cv__text">
@@ -220,7 +206,7 @@
     <section class="section" id="lattes">
       <div class="section__head reveal">
         <span class="section__kicker">05 — Lattes</span>
-        <h2 class="section__title">Plataforma Lattes (CNPq)</h2>
+        <h2 class="section__title" data-i18n="sections.lattes.title">Plataforma Lattes (CNPq)</h2>
       </div>
       <div class="lattes reveal">
         <div class="lattes__card">
@@ -249,7 +235,7 @@
     <section class="section" id="contato">
       <div class="section__head reveal">
         <span class="section__kicker">06 — Contato</span>
-        <h2 class="section__title">Vamos nos conectar</h2>
+        <h2 class="section__title" data-i18n="sections.contato.title">Vamos nos conectar</h2>
       </div>
       <div class="contact reveal" id="contactList"><!-- preenchido por JS --></div>
     </section>
@@ -257,7 +243,7 @@
 
   <footer class="footer">
     <div class="footer__inner">
-      <span>© <span id="year"></span> <a href="https://www.phrandrade.com/pt-br/" target="_blank" rel="noopener">Pedro Rocha</a> — feito com café, código e um céu estrelado.</span>
+      <span>© <span id="year"></span> <a href="https://www.phrandrade.com/pt-br/" target="_blank" rel="noopener">Pedro Rocha</a> — <span data-i18n="footer">feito com café, código e um céu estrelado.</span></span>
       <a href="#inicio" class="footer__top">Voltar ao topo ↑</a>
     </div>
   </footer>
