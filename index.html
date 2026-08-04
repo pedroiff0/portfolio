@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedro Rocha — Engenharia de Computação &amp; Astrofísica</title>
+  <meta name="description" content="Portfólio de Pedro Rocha: Engenharia de Computação (IFF), bolsista PIBIC/CNPq, pesquisa em astrofísica computacional. Projetos: ReLaTeX, Sistema Acadêmico, Sistema de Avaliações, Currículo, Lattes." />
+  <meta name="author" content="Pedro Rocha" />
+  <meta property="og:title" content="Pedro Rocha — Engenharia de Computação & Astrofísica" />
+  <meta property="og:description" content="Portfólio profissional: software, pesquisa astronômica e produtividade acadêmica." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <!-- Fundo estelar (canvas) -->
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="nebula nebula--1" aria-hidden="true"></div>
+  <div class="nebula nebula--2" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <!-- Barra de navegação -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#inicio">
+      <span class="nav__logo" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="28" height="28"><circle cx="16" cy="16" r="6" fill="url(#g1)"/><ellipse cx="16" cy="16" rx="14" ry="5.5" fill="none" stroke="url(#g1)" stroke-width="1.4" transform="rotate(-25 16 16)"/><defs><linearGradient id="g1" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#6ea8fe"/><stop offset="1" stop-color="#b692ff"/></linearGradient></defs></svg>
+      </span>
+      <span>Pedro<strong>Rocha</strong></span>
+    </a>
+    <nav class="nav__links" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#pesquisa">Pesquisa</a>
+      <a href="#curriculo">Currículo</a>
+      <a href="#lattes">Lattes</a>
+      <a href="#contato" class="nav__cta">Contato</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero__inner">
+        <p class="hero__eyebrow">Engenharia de Computação · Instituto Federal Fluminense</p>
+        <h1 class="hero__title">
+          Pedro <span class="grad">Rocha</span>
+        </h1>
+        <p class="hero__sub">
+          Construo software para a academia e uso computação para entender o cosmos.
+          Estudante de Engenharia de Computação, bolsista de Iniciação Científica
+          (PIBIC/CNPq), na interseção entre <em>métodos computacionais</em> e
+          <em>astrofísica</em>.
+        </p>
+        <div class="hero__actions">
+          <a href="#projetos" class="btn btn--primary">Ver projetos</a>
+          <a href="#contato" class="btn btn--ghost">Falar comigo</a>
+        </div>
+        <div class="hero__badges">
+          <span class="chip">🛰️ PIBIC / CNPq</span>
+          <span class="chip">🏆 IAAC 2024 &amp; 2025</span>
+          <span class="chip">📡 CCNA · CyberOps · IoT</span>
+          <span class="chip">🐧 Linux &amp; Servidores</span>
+        </div>
+      </div>
+      <div class="hero__orbit" aria-hidden="true">
+        <div class="planet"></div>
+        <div class="ring ring--1"><span class="moon moon--1"></span></div>
+        <div class="ring ring--2"><span class="moon moon--2"></span></div>
+        <div class="ring ring--3"><span class="moon moon--3"></span></div>
+      </div>
+      <a class="scroll-cue" href="#sobre" aria-label="Rolar para baixo">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="section" id="sobre">
+      <div class="section__head reveal">
+        <span class="section__kicker">01 — Sobre mim</span>
+        <h2 class="section__title">Trajetória entre código e estrelas</h2>
+      </div>
+      <div class="about">
+        <div class="about__text reveal">
+          <p>
+            Sou estudante de <strong>Engenharia de Computação</strong> no
+            <strong>Instituto Federal Fluminense (IFF)</strong>, campus Bom Jesus do
+            Itabapoana — RJ, e bolsista de Iniciação Científica
+            (<strong>PIBIC/CNPq</strong>). Minha pesquisa fica na fronteira entre
+            computação e astronomia: arqueologia galáctica, populações estelares e
+            estrutura da Via Láctea, com aprendizado de máquina aplicado a dados do
+            <em>Gaia</em> e de surveys complementares.
+          </p>
+          <p>
+            Do lado de engenharia, domino <strong>Python</strong> e <strong>C</strong>,
+            redes de computadores (certificações <strong>Cisco CCNA, CyberOps e IoT</strong>),
+            administração de servidores Linux e desenvolvimento de software full-stack.
+            Participo da <strong>International Astronomy and Astrophysics Competition</strong>
+            (IAAC 2024 e 2025) e apresentei trabalhos em eventos como FEBRACE, Mostratec,
+            CONFICT e na Feira Brasileira de Iniciação Científica.
+          </p>
+          <p>
+            Sou Técnico em Informática pelo IFF (2020–2022), membro do Centro de
+            Representação Estudantil e um dos organizadores da Semana de Computação,
+            Engenharia e Gestão do IFF.
+          </p>
+        </div>
+        <div class="about__stats reveal">
+          <div class="stat">
+            <span class="stat__num" data-count="90">0</span>
+            <span class="stat__label">disciplinas mapeadas no Sistema Acadêmico</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="2">0</span>
+            <span class="stat__label">edições IAAC (2024 &amp; 2025)</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="3">0</span>
+            <span class="stat__label">certificações Cisco (CCNA/CyberOps/IoT)</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="6">0</span>
+            <span class="stat__label">repositórios open-source públicos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section class="section" id="projetos">
+      <div class="section__head reveal">
+        <span class="section__kicker">02 — Projetos de software</span>
+        <h2 class="section__title">O que eu construo</h2>
+        <p class="section__lead">Clique em qualquer cartão para revelar os detalhes técnicos.</p>
+      </div>
+      <div class="cards" id="projectGrid"><!-- preenchido por JS --></div>
+    </section>
+
+    <!-- PESQUISA -->
+    <section class="section" id="pesquisa">
+      <div class="section__head reveal">
+        <span class="section__kicker">03 — Pesquisa</span>
+        <h2 class="section__title">Astronomia computacional</h2>
+        <p class="section__lead">Linhas de pesquisa e projetos científicos — expanda para ler.</p>
+      </div>
+      <div class="accordion" id="researchList"><!-- preenchido por JS --></div>
+    </section>
+
+    <!-- CURRICULO -->
+    <section class="section" id="curriculo">
+      <div class="section__head reveal">
+        <span class="section__kicker">04 — Currículo</span>
+        <h2 class="section__title">Curriculum Vitae</h2>
+      </div>
+      <div class="cv reveal">
+        <p class="cv__text">
+          Meu CV é mantido em LaTeX (classe <code>altacv</code>) com versões em
+          português, inglês, espanhol e francês. É compilado automaticamente via
+          <code>Makefile</code> (<code>make portugueseCV</code>, <code>make englishCV</code>…).
+        </p>
+        <div class="cv__preview" aria-hidden="true">
+          <div class="cv__page">
+            <div class="cv__bar"></div>
+            <div class="cv__lines">
+              <span style="width:60%"></span><span style="width:90%"></span>
+              <span style="width:75%"></span><span style="width:85%"></span>
+              <span style="width:50%"></span><span style="width:95%"></span>
+              <span style="width:70%"></span><span style="width:80%"></span>
+            </div>
+          </div>
+        </div>
+        <div class="cv__actions">
+          <a class="btn btn--primary" href="https://github.com/pedroiff0/cv" target="_blank" rel="noopener">Repositório do CV</a>
+          <a class="btn btn--ghost" href="https://raw.githubusercontent.com/pedroiff0/cv/main/portugueseCV.pdf" target="_blank" rel="noopener">CV (PT) PDF</a>
+          <a class="btn btn--ghost" href="https://raw.githubusercontent.com/pedroiff0/cv/main/englishCV.pdf" target="_blank" rel="noopener">CV (EN) PDF</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LATTES -->
+    <section class="section" id="lattes">
+      <div class="section__head reveal">
+        <span class="section__kicker">05 — Lattes</span>
+        <h2 class="section__title">Plataforma Lattes (CNPq)</h2>
+      </div>
+      <div class="lattes reveal">
+        <div class="lattes__card">
+          <div class="lattes__avatar" aria-hidden="true">PR</div>
+          <div class="lattes__body">
+            <h3>Pedro Henrique Rocha de Andrade</h3>
+            <p class="lattes__id">ID Lattes: <code>6818168089966785</code></p>
+            <a class="btn btn--primary" href="http://lattes.cnpq.br/6818168089966785" target="_blank" rel="noopener">Abrir currículo Lattes</a>
+          </div>
+        </div>
+        <div class="lattes__resume">
+          <p>
+            Estudante de Engenharia de Computação no IFF (Bom Jesus do Itabapoana - RJ),
+            bolsista de Iniciação Científica (PIBIC/CNPq), com pesquisa na interseção
+            entre métodos computacionais e problemas astrofísicos — arqueologia galáctica,
+            populações estelares e estrutura da Via Láctea. Experiência em aprendizado de
+            máquina aplicado a dados astronômicos (Gaia, surveys complementares),
+            simulações dinâmicas de aglomerados de galáxias e remoção de rastros de
+            satélites em imagens astronômicas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="section" id="contato">
+      <div class="section__head reveal">
+        <span class="section__kicker">06 — Contato</span>
+        <h2 class="section__title">Vamos nos conectar</h2>
+      </div>
+      <div class="contact reveal">
+        <a class="contact__item" href="mailto:pedroiff0@gmail.com">
+          <span class="contact__icon">✉️</span>
+          <span class="contact__label">Email</span>
+          <span class="contact__value">pedroiff0@gmail.com</span>
+        </a>
+        <a class="contact__item" href="https://github.com/pedroiff0" target="_blank" rel="noopener">
+          <span class="contact__icon">💻</span>
+          <span class="contact__label">GitHub</span>
+          <span class="contact__value">@pedroiff0</span>
+        </a>
+        <a class="contact__item" href="http://lattes.cnpq.br/6818168089966785" target="_blank" rel="noopener">
+          <span class="contact__icon">📚</span>
+          <span class="contact__label">Lattes</span>
+          <span class="contact__value">6818168089966785</span>
+        </a>
+        <div class="contact__item">
+          <span class="contact__icon">📍</span>
+          <span class="contact__label">Localização</span>
+          <span class="contact__value">Brasil · RJ</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>© <span id="year"></span> Pedro Rocha — feito com café, código e um céu estrelado.</span>
+      <a href="#inicio" class="footer__top">Voltar ao topo ↑</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/projects.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
