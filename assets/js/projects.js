@@ -239,7 +239,7 @@ const I18N = {
     cat: { software: "Software", pesquisa: "Pesquisa", academico: "Acadêmico", pessoal: "Pessoal" },
     contactLabels: { email: "Email", github: "GitHub", linkedin: "LinkedIn", scholar: "Google Scholar", orcid: "ORCID", lattes: "Lattes", instagram: "Instagram", site: "Site oficial", location: "Localização" },
     bolsas: { orientLabel: "Orientação", periodLabel: "Período" },
-    footer: "Pedro Rocha — feito com café, código e um céu estrelado."
+    footer: "feito com café, código e um céu estrelado."
   },
   en: {
     nav: ["About","Projects","Work","Research","Resume","Lattes","Contact"],
@@ -266,7 +266,7 @@ const I18N = {
     cat: { software: "Software", pesquisa: "Research", academico: "Academic", pessoal: "Personal" },
     contactLabels: { email: "Email", github: "GitHub", linkedin: "LinkedIn", scholar: "Google Scholar", orcid: "ORCID", lattes: "Lattes", instagram: "Instagram", site: "Official site", location: "Location" },
     bolsas: { orientLabel: "Supervisor", periodLabel: "Period" },
-    footer: "Pedro Rocha — made with coffee, code and a starry sky."
+    footer: "made with coffee, code and a starry sky."
   },
   es: {
     nav: ["Sobre mí","Proyectos","Trabajos","Investigación","Currículum","Lattes","Contacto"],
@@ -293,7 +293,7 @@ const I18N = {
     cat: { software: "Software", pesquisa: "Investigación", academico: "Académico", pessoal: "Personal" },
     contactLabels: { email: "Correo", github: "GitHub", linkedin: "LinkedIn", scholar: "Google Scholar", orcid: "ORCID", lattes: "Lattes", instagram: "Instagram", site: "Sitio oficial", location: "Ubicación" },
     bolsas: { orientLabel: "Supervisor", periodLabel: "Período" },
-    footer: "Pedro Rocha — hecho con café, código y un cielo estrellado."
+    footer: "hecho con café, código y un cielo estrellado."
   },
   fr: {
     nav: ["À propos","Projets","Travaux","Recherche","CV","Lattes","Contact"],
@@ -320,7 +320,7 @@ const I18N = {
     cat: { software: "Logiciel", pesquisa: "Recherche", academico: "Académique", pessoal: "Personnel" },
     contactLabels: { email: "Courriel", github: "GitHub", linkedin: "LinkedIn", scholar: "Google Scholar", orcid: "ORCID", lattes: "Lattes", instagram: "Instagram", site: "Site officiel", location: "Localisation" },
     bolsas: { orientLabel: "Encadrant", periodLabel: "Période" },
-    footer: "Pedro Rocha — fait avec du café, du code et un ciel étoilé."
+    footer: "fait avec du café, du code et un ciel étoilé."
   }
 };
 
