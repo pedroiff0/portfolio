@@ -2,9 +2,9 @@
    Pedro Rocha — Portfolio · main.js
    - Starfield canvas animado
    - Revelar ao rolar (scroll reveal)
-   - Accordions (projetos + pesquisa) — conteúdo "invisível" até clicar
-   - Navegação responsiva
-   - Contadores de estatísticas
+   - Cartões de projeto (featured) + grade completa por categoria
+   - Accordion de pesquisa — conteúdo "invisível" até clicar
+   - Navegação responsiva + contadores
    ============================================================ */
 (function () {
   "use strict";
@@ -51,7 +51,7 @@
   resize();
   window.addEventListener("resize", resize);
   if (!reduceMotion) requestAnimationFrame(draw);
-  else { // desenho estático
+  else {
     for (const s of stars) {
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r * s.z, 0, Math.PI * 2);
@@ -60,37 +60,65 @@
     }
   }
 
-  /* ---------- 2. Monte os cards de projeto ---------- */
-  const D = window.PORTFOLIO_DATA || { PROJECTS: [], RESEARCH: [] };
-  const grid = document.getElementById("projectGrid");
-  if (grid) {
-    grid.innerHTML = D.PROJECTS.map((p) => `
-      <article class="card reveal" data-card>
-        <div class="card__top">
-          <div class="card__icon">${p.icon}</div>
-          <div>
-            <div class="card__title">${p.title}</div>
-            <div class="card__tag">${p.tag}</div>
-          </div>
-        </div>
-        <p class="card__summary">${p.summary}</p>
-        <div class="card__stack">${p.stack.map((s) => `<span class="tagp">${s}</span>`).join("")}</div>
-        <div class="card__more">Detalhes <span class="chev">▾</span></div>
-        <div class="card__detail">
-          <p>${p.details}</p>
-          <a class="card__repo" href="${p.repo}" target="_blank" rel="noopener">↗ Ver repositório no GitHub</a>
-        </div>
-      </article>`).join("");
+  /* ---------- Dados ---------- */
+  const D = window.PORTFOLIO_DATA || { REPOS: [], FEATURED: [], RESEARCH: [] };
 
-    grid.querySelectorAll("[data-card]").forEach((card) => {
+  const cardHTML = (p) => `
+    <article class="card reveal" data-card>
+      <div class="card__top">
+        <div class="card__icon">${p.icon}</div>
+        <div>
+          <div class="card__title">${p.name}</div>
+          <div class="card__tag">${p.visibility === "público" ? "Público" : "Privado"} · ${p.cat}</div>
+        </div>
+      </div>
+      <p class="card__summary">${p.brief}</p>
+      <div class="card__stack">${(p.stack || []).map((s) => `<span class="tagp">${s}</span>`).join("")}</div>
+      <div class="card__more">Detalhes <span class="chev">▾</span></div>
+      <div class="card__detail">
+        <p>${p.brief}</p>
+        <a class="card__repo" href="${p.repo}" target="_blank" rel="noopener">↗ Ver repositório no GitHub</a>
+      </div>
+    </article>`;
+
+  function wireCards(scope) {
+    scope.querySelectorAll("[data-card]").forEach((card) => {
       card.addEventListener("click", (e) => {
-        if (e.target.closest("a")) return; // não fecha ao clicar no link
+        if (e.target.closest("a")) return;
         card.classList.toggle("open");
       });
     });
   }
 
-  /* ---------- 3. Accordion de pesquisa ---------- */
+  /* ---------- 2. Cartões em destaque ---------- */
+  const grid = document.getElementById("projectGrid");
+  if (grid) {
+    grid.innerHTML = (D.FEATURED.length ? D.FEATURED : D.REPOS.slice(0, 4)).map(cardHTML).join("");
+    wireCards(grid);
+  }
+
+  /* ---------- 3. Grade completa por categoria ---------- */
+  const full = document.getElementById("allRepos");
+  if (full) {
+    const order = [
+      { key: "software", label: "Software & Sistemas" },
+      { key: "pesquisa", label: "Pesquisa & Astrofísica" },
+      { key: "academico", label: "Acadêmico & Estudo" },
+      { key: "pessoal", label: "Pessoal & Vida" },
+    ];
+    full.innerHTML = order.map((g) => {
+      const items = D.REPOS.filter((r) => r.cat === g.key);
+      if (!items.length) return "";
+      return `
+        <div class="cat">
+          <h3 class="cat__title">${g.label} <span class="cat__count">${items.length}</span></h3>
+          <div class="cards">${items.map(cardHTML).join("")}</div>
+        </div>`;
+    }).join("");
+    wireCards(full);
+  }
+
+  /* ---------- 4. Accordion de pesquisa ---------- */
   const rlist = document.getElementById("researchList");
   if (rlist) {
     rlist.innerHTML = D.RESEARCH.map((r) => `
@@ -118,31 +146,26 @@
     });
   }
 
-  /* ---------- 4. Reveal on scroll ---------- */
+  /* ---------- 5. Reveal on scroll ---------- */
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => {
-      if (en.isIntersecting) {
-        en.target.classList.add("visible");
-        io.unobserve(en.target);
-      }
+      if (en.isIntersecting) { en.target.classList.add("visible"); io.unobserve(en.target); }
     });
   }, { threshold: 0.12 });
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-  /* ---------- 5. Contadores de stats ---------- */
+  /* ---------- 6. Contadores ---------- */
   const stats = document.querySelectorAll(".stat__num");
   const sio = new IntersectionObserver((entries) => {
     entries.forEach((en) => {
       if (!en.isIntersecting) return;
       const el = en.target;
       const target = parseInt(el.dataset.count, 10) || 0;
-      const dur = 1100;
-      const start = performance.now();
+      const dur = 1100; const start = performance.now();
       const step = (now) => {
         const p = Math.min((now - start) / dur, 1);
         el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target);
-        if (p < 1) requestAnimationFrame(step);
-        else el.textContent = target;
+        if (p < 1) requestAnimationFrame(step); else el.textContent = target;
       };
       requestAnimationFrame(step);
       sio.unobserve(el);
@@ -150,7 +173,7 @@
   }, { threshold: 0.6 });
   stats.forEach((s) => sio.observe(s));
 
-  /* ---------- 6. Nav: scrolled + menu mobile ---------- */
+  /* ---------- 7. Nav ---------- */
   const nav = document.getElementById("nav");
   const toggle = document.getElementById("navToggle");
   const links = document.querySelector(".nav__links");
@@ -172,7 +195,6 @@
     );
   }
 
-  /* ---------- 7. Ano no footer ---------- */
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 })();

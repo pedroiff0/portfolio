@@ -368,6 +368,20 @@ main, .nav, .footer { position: relative; z-index: 2; }
 }
 .card__repo:hover { text-decoration: underline; }
 
+.cat { margin-bottom: 44px; }
+.cat__title {
+  font-family: var(--display);
+  font-size: 1.25rem; font-weight: 600;
+  margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+  color: var(--text);
+}
+.cat__count {
+  font-size: .8rem; font-weight: 600;
+  background: var(--grad-soft); border: 1px solid var(--border);
+  padding: 2px 10px; border-radius: 999px; color: var(--accent);
+}
+
 /* ---------- Accordion pesquisa ---------- */
 .accordion { display: flex; flex-direction: column; gap: 14px; }
 .acc {
