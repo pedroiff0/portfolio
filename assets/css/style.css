@@ -247,6 +247,21 @@ main, .nav, .footer { position: relative; z-index: 2; }
   margin: 0 auto;
   padding: 130px clamp(16px, 5vw, 56px) 80px;
 }
+.disclaimer {
+  max-width: var(--maxw); margin: 0 auto;
+  padding: 14px clamp(16px, 5vw, 56px);
+}
+.disclaimer .l {
+  display: none; margin: 0; padding: 12px 16px;
+  background: rgba(255,196,84,.08); border: 1px solid rgba(255,196,84,.35);
+  border-left: 3px solid #ffc454; border-radius: 10px;
+  color: var(--text); font-size: .92rem;
+}
+.disclaimer .l a { color: var(--accent); }
+html[lang="pt"] .disclaimer .lang-pt { display: block; }
+html[lang="en"] .disclaimer .lang-en { display: block; }
+html[lang="es"] .disclaimer .lang-es { display: block; }
+html[lang="fr"] .disclaimer .lang-fr { display: block; }
 .hero__eyebrow {
   display: inline-block;
   font-size: .82rem; letter-spacing: 2px; text-transform: uppercase;
