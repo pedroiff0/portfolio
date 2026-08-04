@@ -6,7 +6,7 @@
 :root {
   --bg: #05060f;
   --bg-2: #0a0c1d;
-  --panel: rgba(20, 24, 48, 0.45);
+  --panel: rgba(17, 21, 46, 0.82);
   --panel-solid: #11142b;
   --border: rgba(140, 160, 255, 0.16);
   --text: #e7ecff;
@@ -53,10 +53,33 @@ a { color: inherit; text-decoration: none; }
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: 1.4;
   pointer-events: none;
   opacity: 1;
   mix-blend-mode: screen;
+}
+
+#constel {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1.7;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+/* pequeno blur no fundo + leve escurecimento (não esconde as constelações) */
+.bg-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  background:
+    radial-gradient(1200px 700px at 50% 0%, rgba(13,18,40,0.20), transparent 70%),
+    linear-gradient(180deg, rgba(8,11,26,0.30) 0%, rgba(8,11,26,0.45) 100%);
 }
 
 .nebula {
@@ -223,6 +246,13 @@ main, .nav, .footer { position: relative; z-index: 2; }
   letter-spacing: 2px; text-transform: uppercase;
   color: var(--accent-3);
   margin-bottom: 18px;
+}
+.ico { width: 1.5em; height: 1.5em; flex: none; display: block; }
+.card__icon .ico, .bolsa__icon .ico { width: 26px; height: 26px; }
+.contact__ico { width: 22px; height: 22px; color: var(--accent); flex: none; }
+.hero__note {
+  margin-top: 18px; font-size: .92rem; color: var(--muted);
+  border-left: 2px solid var(--accent-3); padding-left: 12px;
 }
 .hero__sub {
   color: var(--muted);
@@ -508,16 +538,17 @@ main, .nav, .footer { position: relative; z-index: 2; }
   display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px;
 }
 .contact__item {
-  display: flex; flex-direction: column; gap: 6px;
+  display: flex; flex-direction: row; align-items: center; gap: 14px;
   background: var(--panel); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 22px;
+  border-radius: var(--radius); padding: 16px 20px;
   backdrop-filter: blur(8px);
   transition: transform .3s, border-color .3s;
 }
 .contact__item:hover { transform: translateY(-5px); border-color: var(--accent); }
 .contact__icon { font-size: 1.5rem; }
-.contact__label { font-size: .78rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); }
+.contact__label { font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); display: block; }
 .contact__value { font-family: var(--display); font-weight: 600; }
+.contact__item > span:not(.contact__ico) { display: flex; flex-direction: column; gap: 2px; }
 
 /* ---------- Footer ---------- */
 .footer { border-top: 1px solid var(--border); margin-top: 40px; }

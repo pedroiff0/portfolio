@@ -17,12 +17,14 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <!-- Fundo: galáxias rotacionando (mouse) + estrelas -->
+  <!-- Fundo: galáxias rotacionando (mouse) + constelações + estrelas -->
   <canvas id="galaxies" aria-hidden="true"></canvas>
+  <canvas id="constel" aria-hidden="true"></canvas>
   <canvas id="starfield" aria-hidden="true"></canvas>
   <div class="nebula nebula--1" aria-hidden="true"></div>
   <div class="nebula nebula--2" aria-hidden="true"></div>
   <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="bg-veil" aria-hidden="true"></div>
 
   <!-- Barra de navegação -->
   <header class="nav" id="nav">
@@ -75,6 +77,7 @@
           <span class="chip">🪐 Gaia · GALAH</span>
           <span class="chip">📄 ORCID · Scholar</span>
         </div>
+        <p class="hero__note" id="heroNote"></p>
       </div>
       <div class="hero__orbit" aria-hidden="true">
         <div class="planet"></div>
