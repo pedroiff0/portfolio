@@ -88,9 +88,11 @@
     requestAnimationFrame(drawStars);
   }
 
-  /* ============ 2. GALÁXIAS (mouse) ============ */
+  /* ============ 2. GALÁXIAS (realistas) + PARTÍCULAS QUE QUICAM ============ */
   const galCanvas = document.getElementById("galaxies");
-  let gctx, gw, gh, gdpr, galaxies = [], mx = 0, my = 0, tmx = 0, tmy = 0;
+  let gctx, gw, gh, gdpr, galaxies = [];
+  // partículas "bolinhas" que se movem devagar e quicam nas bordas
+  let orbs = [];
   function buildGalaxies() {
     const palette = [["#6ea8fe","#b692ff"],["#5eead4","#6ea8fe"],["#ffd479","#b692ff"],["#ff8fb1","#6ea8fe"]];
     const n = window.innerWidth < 700 ? 2 : 3;
@@ -98,11 +100,30 @@
       const base = palette[i % palette.length];
       return {
         cx: (i + 1) / (n + 1), cy: 0.3 + (i % 2) * 0.4,
-        R: Math.min(window.innerWidth, window.innerHeight) * (0.16 + Math.random() * 0.06),
+        R: Math.min(window.innerWidth, window.innerHeight) * (0.18 + Math.random() * 0.05),
         arms: 2 + (i % 2), rot: Math.random() * Math.PI * 2,
-        spin: (Math.random() < 0.5 ? 1 : -1) * (0.0006 + Math.random() * 0.0006),
+        spin: (Math.random() < 0.5 ? 1 : -1) * (0.0011 + Math.random() * 0.0008),
         hueA: base[0], hueB: base[1],
-        stars: Array.from({ length: 260 }, () => ({ a: Math.random() * Math.PI * 2, rad: Math.pow(Math.random(), 0.5), sz: Math.random() * 1.6 + 0.4, tw: Math.random() * Math.PI * 2 }))
+        stars: Array.from({ length: 320 }, () => ({
+          a: Math.random() * Math.PI * 2,
+          rad: Math.pow(Math.random(), 0.55),
+          sz: Math.random() * 1.5 + 0.35,
+          tw: Math.random() * Math.PI * 2,
+          dust: Math.random() < 0.35 // algumas são "poeira" (mais opacas/avermelhadas)
+        }))
+      };
+    });
+  }
+  function buildOrbs() {
+    const count = Math.min(26, Math.floor((window.innerWidth * window.innerHeight) / 52000));
+    orbs = Array.from({ length: count }, () => {
+      const r = (2 + Math.random() * 3.5) * gdpr;
+      return {
+        x: Math.random() * gw, y: Math.random() * gh,
+        vx: (Math.random() * 2 - 1) * 0.55 * gdpr,
+        vy: (Math.random() * 2 - 1) * 0.55 * gdpr,
+        r, tw: Math.random() * Math.PI * 2,
+        hue: Math.random() < 0.3 ? 275 : (Math.random() < 0.5 ? 210 : 175)
       };
     });
   }
@@ -110,53 +131,59 @@
     gdpr = Math.min(window.devicePixelRatio || 1, 2);
     gw = galCanvas.width = window.innerWidth * gdpr; gh = galCanvas.height = window.innerHeight * gdpr;
     galCanvas.style.width = window.innerWidth + "px"; galCanvas.style.height = window.innerHeight + "px";
-    buildGalaxies();
+    buildGalaxies(); buildOrbs();
   }
   function drawGalaxies(t) {
     gctx.clearRect(0, 0, gw, gh);
-    mx += (tmx - mx) * 0.06; my += (tmy - my) * 0.06;
-    // posição do mouse em pixels (suavizada)
-    const mpx = (mx * 0.5 + 0.5) * gw, mpy = (my * 0.5 + 0.5) * gh;
-    const radius = Math.min(gw, gh) * 0.7; // alcance da repulsão
-    const maxPush = 160 * gdpr;
+    // --- galáxias-espirais fiéis ---
     for (const g of galaxies) {
-      const bx = g.cx * gw, by = g.cy * gh;
-      // repulsão: empurra a galáxia para LONGE do mouse, proporcional à proximidade
-      let tx = 0, ty = 0;
-      const dx = bx - mpx, dy = by - mpy, dist = Math.hypot(dx, dy) || 1;
-      if (dist < radius) {
-        const f = (1 - dist / radius);
-        const push = f * f * maxPush;
-        tx = (dx / dist) * push; ty = (dy / dist) * push;
-      }
-      g.ox = (g.ox || 0) + (tx - (g.ox || 0)) * 0.08;
-      g.oy = (g.oy || 0) + (ty - (g.oy || 0)) * 0.08;
-      const cx = bx + g.ox, cy = by + g.oy;
       g.rot += g.spin;
-      const grad = gctx.createRadialGradient(cx, cy, 0, cx, cy, g.R * 0.55);
-      grad.addColorStop(0, "rgba(255,255,255,1)"); grad.addColorStop(0.18, g.hueA);
-      grad.addColorStop(0.6, g.hueB); grad.addColorStop(1, "rgba(0,0,0,0)");
-      gctx.fillStyle = grad; gctx.beginPath(); gctx.arc(cx, cy, g.R * 0.55, 0, Math.PI * 2); gctx.fill();
-      const core = gctx.createRadialGradient(cx, cy, 0, cx, cy, g.R * 0.18);
-      core.addColorStop(0, "rgba(255,255,255,0.95)"); core.addColorStop(1, "rgba(255,255,255,0)");
-      gctx.fillStyle = core; gctx.beginPath(); gctx.arc(cx, cy, g.R * 0.18, 0, Math.PI * 2); gctx.fill();
+      const cx = g.cx * gw, cy = g.cy * gh, R = g.R;
+      // halo difuso
+      const halo2 = gctx.createRadialGradient(cx, cy, R * 0.1, cx, cy, R * 1.05);
+      halo2.addColorStop(0, "rgba(180,200,255,0.12)");
+      halo2.addColorStop(0.5, "rgba(120,140,255,0.06)");
+      halo2.addColorStop(1, "rgba(0,0,0,0)");
+      gctx.fillStyle = halo2; gctx.beginPath(); gctx.arc(cx, cy, R * 1.05, 0, Math.PI * 2); gctx.fill();
+      // braços de estrelas
       for (const s of g.stars) {
         const arm = Math.floor(s.a / (Math.PI * 2 / g.arms)) * (Math.PI * 2 / g.arms);
-        const ang = arm + s.rad * 3.4 + g.rot;
-        const rad = s.rad * g.R;
-        const x = cx + Math.cos(ang) * rad, y = cy + Math.sin(ang) * rad * 0.42;
-        const tw = 0.5 + 0.5 * Math.sin(s.tw + t * 0.002);
-        gctx.beginPath(); gctx.arc(x, y, (s.sz + 0.4) * gdpr, 0, Math.PI * 2);
-        gctx.fillStyle = `rgba(230,238,255,${0.45 + tw * 0.55})`; gctx.fill();
+        const ang = arm + s.rad * 4.2 + g.rot;
+        const rad = s.rad * R;
+        const x = cx + Math.cos(ang) * rad, y = cy + Math.sin(ang) * rad * 0.45;
+        const tw = 0.55 + 0.45 * Math.sin(s.tw + t * 0.0018);
+        const col = s.dust ? `rgba(255,190,150,${0.18 + tw * 0.22})` : `rgba(225,235,255,${0.4 + tw * 0.55})`;
+        gctx.beginPath(); gctx.arc(x, y, (s.sz + 0.3) * gdpr, 0, Math.PI * 2);
+        gctx.fillStyle = col; gctx.fill();
       }
+      // bojo central brilhante
+      const core = gctx.createRadialGradient(cx, cy, 0, cx, cy, R * 0.28);
+      core.addColorStop(0, "rgba(255,255,255,0.98)");
+      core.addColorStop(0.25, g.hueA);
+      core.addColorStop(0.7, g.hueB);
+      core.addColorStop(1, "rgba(0,0,0,0)");
+      gctx.fillStyle = core; gctx.beginPath(); gctx.arc(cx, cy, R * 0.28, 0, Math.PI * 2); gctx.fill();
+    }
+    // --- bolinhas que quicam nas bordas (devagar) ---
+    for (const o of orbs) {
+      o.x += o.vx; o.y += o.vy;
+      if (o.x - o.r < 0) { o.x = o.r; o.vx = Math.abs(o.vx); }
+      else if (o.x + o.r > gw) { o.x = gw - o.r; o.vx = -Math.abs(o.vx); }
+      if (o.y - o.r < 0) { o.y = o.r; o.vy = Math.abs(o.vy); }
+      else if (o.y + o.r > gh) { o.y = gh - o.r; o.vy = -Math.abs(o.vy); }
+      o.tw += 0.05;
+      const tw = 0.5 + 0.5 * Math.sin(o.tw);
+      const g = gctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r * 3.2);
+      g.addColorStop(0, `hsla(${o.hue},90%,85%,${0.8 * tw + 0.2})`);
+      g.addColorStop(0.4, `hsla(${o.hue},90%,75%,${0.35 * tw})`);
+      g.addColorStop(1, `hsla(${o.hue},90%,75%,0)`);
+      gctx.fillStyle = g; gctx.beginPath(); gctx.arc(o.x, o.y, o.r * 3.2, 0, Math.PI * 2); gctx.fill();
     }
     requestAnimationFrame(drawGalaxies);
   }
   if (galCanvas) {
     gctx = galCanvas.getContext("2d"); sizeGalaxies();
     window.addEventListener("resize", sizeGalaxies);
-    window.addEventListener("mousemove", (e) => { tmx = (e.clientX / window.innerWidth - 0.5) * 2; tmy = (e.clientY / window.innerHeight - 0.5) * 2; });
-    window.addEventListener("mouseleave", () => { tmx = 0; tmy = 0; });
     if (!reduceMotion) requestAnimationFrame(drawGalaxies); else drawGalaxies(0);
   }
 
