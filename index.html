@@ -17,7 +17,8 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <!-- Fundo estelar (canvas) -->
+  <!-- Fundo: galáxias rotacionando (mouse) + estrelas -->
+  <canvas id="galaxies" aria-hidden="true"></canvas>
   <canvas id="starfield" aria-hidden="true"></canvas>
   <div class="nebula nebula--1" aria-hidden="true"></div>
   <div class="nebula nebula--2" aria-hidden="true"></div>
@@ -53,6 +54,7 @@
         <h1 class="hero__title">
           Pedro <span class="grad">Rocha</span>
         </h1>
+        <p class="hero__fullname">Pedro Henrique Rocha de Andrade</p>
         <p class="hero__sub">
           Construo software para a academia e uso computação para entender o cosmos.
           Estudante de Engenharia de Computação, bolsista de Iniciação Científica
@@ -68,6 +70,10 @@
           <span class="chip">🏆 IAAC 2024 &amp; 2025</span>
           <span class="chip">📡 CCNA · CyberOps · IoT</span>
           <span class="chip">🐧 Linux &amp; Servidores</span>
+          <span class="chip">🔭 Astrofísica Computacional</span>
+          <span class="chip">🤖 Machine Learning</span>
+          <span class="chip">🪐 Gaia · GALAH</span>
+          <span class="chip">📄 ORCID · Scholar</span>
         </div>
       </div>
       <div class="hero__orbit" aria-hidden="true">
@@ -166,6 +172,16 @@
       <div class="accordion" id="researchList"><!-- preenchido por JS --></div>
     </section>
 
+    <!-- BOLSAS / PESQUISA -->
+    <section class="section" id="bolsas">
+      <div class="section__head reveal">
+        <span class="section__kicker">03b — Projetos de bolsa</span>
+        <h2 class="section__title">Iniciação Científica &amp; Pesquisa</h2>
+        <p class="section__lead">Projetos de bolsa e voluntariado em astrofísica computacional (extraídos do meu CV).</p>
+      </div>
+      <div class="bolsas" id="bolsaList"><!-- preenchido por JS --></div>
+    </section>
+
     <!-- CURRICULO -->
     <section class="section" id="curriculo">
       <div class="section__head reveal">
@@ -232,34 +248,13 @@
         <span class="section__kicker">06 — Contato</span>
         <h2 class="section__title">Vamos nos conectar</h2>
       </div>
-      <div class="contact reveal">
-        <a class="contact__item" href="mailto:pedroiff0@gmail.com">
-          <span class="contact__icon">✉️</span>
-          <span class="contact__label">Email</span>
-          <span class="contact__value">pedroiff0@gmail.com</span>
-        </a>
-        <a class="contact__item" href="https://github.com/pedroiff0" target="_blank" rel="noopener">
-          <span class="contact__icon">💻</span>
-          <span class="contact__label">GitHub</span>
-          <span class="contact__value">@pedroiff0</span>
-        </a>
-        <a class="contact__item" href="http://lattes.cnpq.br/6818168089966785" target="_blank" rel="noopener">
-          <span class="contact__icon">📚</span>
-          <span class="contact__label">Lattes</span>
-          <span class="contact__value">6818168089966785</span>
-        </a>
-        <div class="contact__item">
-          <span class="contact__icon">📍</span>
-          <span class="contact__label">Localização</span>
-          <span class="contact__value">Brasil · RJ</span>
-        </div>
-      </div>
+      <div class="contact reveal" id="contactList"><!-- preenchido por JS --></div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="footer__inner">
-      <span>© <span id="year"></span> Pedro Rocha — feito com café, código e um céu estrelado.</span>
+      <span>© <span id="year"></span> <a href="https://www.phrandrade.com/pt-br/" target="_blank" rel="noopener">Pedro Rocha</a> — feito com café, código e um céu estrelado.</span>
       <a href="#inicio" class="footer__top">Voltar ao topo ↑</a>
     </div>
   </footer>

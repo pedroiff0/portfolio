@@ -48,6 +48,17 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 
+#galaxies {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+  mix-blend-mode: screen;
+}
+
 .nebula {
   position: fixed;
   z-index: 0;
@@ -206,6 +217,13 @@ main, .nav, .footer { position: relative; z-index: 2; }
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.hero__fullname {
+  font-family: var(--display);
+  font-size: clamp(.95rem, 2.4vw, 1.25rem);
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent-3);
+  margin-bottom: 18px;
+}
 .hero__sub {
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.18rem);
@@ -349,6 +367,10 @@ main, .nav, .footer { position: relative; z-index: 2; }
   font-size: .72rem; padding: 4px 10px; border-radius: 999px;
   background: rgba(255,255,255,.05); border: 1px solid var(--border); color: var(--muted);
 }
+.tagp--tech {
+  background: var(--grad-soft); border-color: rgba(110,168,254,.3);
+  color: var(--accent); font-weight: 600;
+}
 .card__more {
   display: flex; align-items: center; gap: 6px;
   font-size: .85rem; font-weight: 600; color: var(--accent);
@@ -417,6 +439,30 @@ main, .nav, .footer { position: relative; z-index: 2; }
 }
 .acc.open .acc__body { max-height: 400px; opacity: 1; }
 .acc__detail { padding: 0 24px 22px; color: var(--muted); font-size: .92rem; }
+
+/* ---------- Bolsas / Pesquisa ---------- */
+.bolsas { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+.bolsa {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px; backdrop-filter: blur(10px);
+  transition: transform .3s, border-color .3s, box-shadow .3s;
+}
+.bolsa:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: var(--shadow); }
+.bolsa__icon {
+  font-size: 1.8rem; flex: none;
+  width: 54px; height: 54px; display: grid; place-items: center;
+  border-radius: 14px; background: rgba(110,168,254,.12); border: 1px solid var(--border);
+}
+.bolsa__body { flex: 1; }
+.bolsa__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.bolsa__head h3 { font-family: var(--display); font-size: 1.02rem; font-weight: 600; line-height: 1.25; }
+.bolsa__kind {
+  font-size: .68rem; white-space: nowrap; padding: 4px 10px; border-radius: 999px;
+  background: rgba(94,234,212,.12); border: 1px solid var(--border); color: var(--accent-3);
+}
+.bolsa__meta { font-size: .8rem; color: var(--muted); margin: 8px 0; }
+.bolsa__desc { color: var(--muted); font-size: .9rem; }
 
 /* ---------- Currículo ---------- */
 .cv { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
