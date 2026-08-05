@@ -12,3 +12,6 @@ node_modules/
 
 # Obsidian vault metadata (se abrir /home/pedro/portfolio como vault)
 .obsidian/
+
+# macOS metadata
+._*
