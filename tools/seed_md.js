@@ -150,10 +150,13 @@ if (D.EXTRA) {
     if (D.EXTRA[key] !== undefined) md += key + ': ' + D.EXTRA[key] + '\n';
   }
 }
-md += '\n';
-md += '## Interface (i18n)\n';
-md += '<!-- bloco YAML: nav / hero / sections / about / contactLabels / vis / cat / bolsas / footer -->\n';
-md += emit(transposeI18n(), 0).replace(/\n$/, '') + '\n';
+
+// Interface (menu/navegação) vai para arquivo SEPARADO src/interface.yaml
+// (quase não se mexe; fica fora do MD editável).
+const i18nYaml = '# Textos de interface (menu, hero, seções, sobre, labels, rodapé).\n' +
+  '# Quase não se edita. Em caso de dúvida, não mexer.\n' +
+  emit(transposeI18n(), 0).replace(/\n$/, '') + '\n';
+fs.writeFileSync(path.join(ROOT, 'src', 'interface.yaml'), i18nYaml, 'utf8');
 
 const outPath = path.join(ROOT, 'src', 'portfolio.md');
 fs.writeFileSync(outPath, md, 'utf8');

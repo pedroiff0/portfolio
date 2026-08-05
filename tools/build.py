@@ -54,11 +54,12 @@ Uso:
   python3 tools/build.py            # gera a partir de src/portfolio.md
   python3 tools/build.py --check    # gera + valida deep-equal (pre-commit)
 """
-import sys, os, re
+import sys, os, re, ast
 import yaml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MD = os.path.join(ROOT, "src", "portfolio.md")
+I18N = os.path.join(ROOT, "src", "interface.yaml")
 OUT = os.path.join(ROOT, "assets", "js", "projects.js")
 ORIG = os.path.join(ROOT, "assets", "js", "projects.js.orig")
 
@@ -67,8 +68,23 @@ FLAG = {"🇧🇷": "pt", "🇺🇸": "en", "🇪🇸": "es", "🇫🇷": "fr"}
 
 
 def load():
+    """Lê o MD editável E o interface.yaml (texto de menu/navegação, que quase não se mexe)."""
     with open(MD, encoding="utf-8") as f:
-        return f.read()
+        md = f.read()
+    i18n = {}
+    if os.path.exists(I18N):
+        with open(I18N, encoding="utf-8") as f:
+            i18n = yaml.safe_load(f) or {}
+    elif os.path.exists(ORIG):
+        # fallback: extrai I18N do .orig para não quebrar
+        src = open(ORIG, encoding="utf-8").read()
+        m = re.search(r"const I18N = (\{.*?\});", src, re.S)
+        if m:
+            try:
+                i18n = ast.literal_eval(m.group(1))
+            except Exception:
+                i18n = {}
+    return md, i18n
 
 
 # ---------- serializador JS (válido e legível) ----------
@@ -282,14 +298,16 @@ def parse_extra(block):
     return extra
 
 
-def parse_source(text):
+def parse_source(text, i18n=None):
     secs = split_sections(text)
     meta = parse_kv(secs.get("Metadados", ""))
     repos = parse_projetos(secs.get("Projetos", ""))
     bolsas = parse_bolsas(secs.get("Bolsas", ""))
     contatos = parse_contatos(secs.get("Contatos", ""))
     extra = parse_extra(secs.get("Extra", ""))
-    i18n = parse_i18n(secs.get("Interface (i18n)", ""))
+    # i18n vem do interface.yaml; se não houver, tenta ler do MD (compatibilidade)
+    if i18n is None:
+        i18n = parse_i18n(secs.get("Interface (i18n)", ""))
     featured = [s.strip() for s in meta.get("featured", "").split(",") if s.strip()]
     return {
         "full_name": meta.get("full_name", ""),
@@ -416,7 +434,8 @@ def build(data):
 
 def main():
     check = "--check" in sys.argv
-    data = parse_source(load())
+    md, i18n = load()
+    data = parse_source(md, i18n)
     generated = build(data)
     if check:
         with open(OUT, "w", encoding="utf-8") as f:

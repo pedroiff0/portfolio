@@ -1,0 +1,247 @@
+# Textos de interface (menu, hero, seções, sobre, labels, rodapé).
+# Quase não se edita. Em caso de dúvida, não mexer.
+nav:
+  pt:
+    [ "Sobre", "Projetos", "Trabalhos", "Pesquisa", "Currículo", "Lattes", "Contato" ]
+  en:
+    [ "About", "Projects", "Work", "Research", "Resume", "Lattes", "Contact" ]
+  es:
+    [ "Sobre mí", "Proyectos", "Trabajos", "Investigación", "Currículum", "Lattes", "Contacto" ]
+  fr:
+    [ "À propos", "Projets", "Travaux", "Recherche", "CV", "Lattes", "Contact" ]
+hero:
+  pt:
+    eyebrow: "Engenharia de Computação · Instituto Federal Fluminense"
+    sub: "Construo software para a academia e uso computação para entender o cosmos. Estudante de Engenharia de Computação, bolsista de Iniciação Científica (PIBIC/CNPq), na interseção entre métodos computacionais e astrofísica."
+    badges:
+      [ "🛰️ PIBIC / CNPq", "🏆 IAAC 2024 & 2025", "📡 CCNA · CyberOps · IoT", "🐧 Linux & Servidores", "🔭 Astrofísica Computacional", "🤖 Machine Learning", "🪐 Gaia · GALAH", "📄 ORCID · Scholar" ]
+    hobbyLabel: "Hobby: "
+  en:
+    eyebrow: "Computer Engineering · Fluminense Federal Institute"
+    sub: "I build software for academia and use computation to understand the cosmos. Computer Engineering student, Scientific Initiation Scholar (PIBIC/CNPq), at the intersection of computational methods and astrophysics."
+    badges:
+      [ "🛰️ PIBIC / CNPq", "🏆 IAAC 2024 & 2025", "📡 CCNA · CyberOps · IoT", "🐧 Linux & Servers", "🔭 Computational Astrophysics", "🤖 Machine Learning", "🪐 Gaia · GALAH", "📄 ORCID · Scholar" ]
+    hobbyLabel: "Hobby: "
+  es:
+    eyebrow: "Ingeniería Informática · Instituto Federal Fluminense"
+    sub: "Construyo software para la academia y uso la computación para entender el cosmos. Estudiante de Ingeniería Informática, becario de Iniciación Científica (PIBIC/CNPq), en la intersección entre métodos computacionales y astrofísica."
+    badges:
+      [ "🛰️ PIBIC / CNPq", "🏆 IAAC 2024 y 2025", "📡 CCNA · CyberOps · IoT", "🐧 Linux y Servidores", "🔭 Astrofísica Computacional", "🤖 Aprendizaje Automático", "🪐 Gaia · GALAH", "📄 ORCID · Scholar" ]
+    hobbyLabel: "Pasatiempo: "
+  fr:
+    eyebrow: "Génie Informatique · Institut Fédéral Fluminense"
+    sub: "Je développe des logiciels pour l'académie et utilise l'informatique pour comprendre le cosmos. Étudiant en génie informatique, boursier d'Initiation Scientifique (PIBIC/CNPq), à l'intersection des méthodes computationnelles et de l'astrophysique."
+    badges:
+      [ "🛰️ PIBIC / CNPq", "🏆 IAAC 2024 et 2025", "📡 CCNA · CyberOps · IoT", "🐧 Linux et Serveurs", "🔭 Astrophysique Computationnelle", "🤖 Apprentissage Automatique", "🪐 Gaia · GALAH", "📄 ORCID · Scholar" ]
+    hobbyLabel: "Loisir : "
+sections:
+  pt:
+    sobre:
+      title: "Trajetória entre código e estrelas"
+      lead: ""
+    projetos:
+      title: "O que eu construo"
+      lead: "Clique em qualquer cartão para revelar os detalhes técnicos."
+    trabalhos:
+      title: "Tudo o que eu faço no GitHub"
+      lead: "Lista completa dos meus repositórios — públicos e privados — com um short brief de cada um. Clique em qualquer cartão para ver os detalhes."
+    pesquisa:
+      title: "Astronomia computacional"
+      lead: "Projetos de pesquisa em astrofísica computacional. Clique para expandir."
+    bolsas:
+      title: "Iniciação Científica & Pesquisa"
+      lead: "Projetos de bolsa e voluntariado em astrofísica computacional (extraídos do meu CV)."
+    curriculo:
+      title: "Currículo & Material"
+      lead: ""
+    lattes:
+      title: "Plataforma Lattes (CNPq)"
+      lead: ""
+    contato:
+      title: "Vamos nos conectar"
+      lead: "Fale comigo pelo canal que preferir."
+  en:
+    sobre:
+      title: "Journey between code and stars"
+      lead: ""
+    projetos:
+      title: "What I build"
+      lead: "Click any card to reveal the technical details."
+    trabalhos:
+      title: "Everything I do on GitHub"
+      lead: "Full list of my repositories — public and private — with a short brief of each. Click any card for details."
+    pesquisa:
+      title: "Computational astronomy"
+      lead: "Computational astrophysics research projects. Click to expand."
+    bolsas:
+      title: "Scientific Initiation & Research"
+      lead: "Scholarship and volunteer projects in computational astrophysics (from my CV)."
+    curriculo:
+      title: "Resume & Material"
+      lead: ""
+    lattes:
+      title: "Lattes Platform (CNPq)"
+      lead: ""
+    contato:
+      title: "Let's connect"
+      lead: "Reach me through your preferred channel."
+  es:
+    sobre:
+      title: "Trayectoria entre código y estrellas"
+      lead: ""
+    projetos:
+      title: "Lo que construyo"
+      lead: "Haz clic en cualquier tarjeta para ver los detalles técnicos."
+    trabalhos:
+      title: "Todo lo que hago en GitHub"
+      lead: "Lista completa de mis repositorios — públicos y privados — con un breve resumen de cada uno. Haz clic en cualquier tarjeta para ver detalles."
+    pesquisa:
+      title: "Astronomía computacional"
+      lead: "Proyectos de investigación en astrofísica computacional. Haz clic para expandir."
+    bolsas:
+      title: "Iniciación Científica e Investigación"
+      lead: "Proyectos de beca y voluntariado en astrofísica computacional (de mi CV)."
+    curriculo:
+      title: "Currículum y Material"
+      lead: ""
+    lattes:
+      title: "Plataforma Lattes (CNPq)"
+      lead: ""
+    contato:
+      title: "Conectemos"
+      lead: "Contáctame por el canal que prefieras."
+  fr:
+    sobre:
+      title: "Parcours entre code et étoiles"
+      lead: ""
+    projetos:
+      title: "Ce que je construis"
+      lead: "Cliquez sur une carte pour révéler les détails techniques."
+    trabalhos:
+      title: "Tout ce que je fais sur GitHub"
+      lead: "Liste complète de mes dépôts — publics et privés — avec un court résumé de chacun. Cliquez sur une carte pour les détails."
+    pesquisa:
+      title: "Astronomie computationnelle"
+      lead: "Projets de recherche en astrophysique computationnelle. Cliquez pour déployer."
+    bolsas:
+      title: "Initiation Scientifique et Recherche"
+      lead: "Projets de bourse et bénévoles en astrophysique computationnelle (issus de mon CV)."
+    curriculo:
+      title: "CV et Matériel"
+      lead: ""
+    lattes:
+      title: "Plateforme Lattes (CNPq)"
+      lead: ""
+    contato:
+      title: "Restons en contact"
+      lead: "Joignez-moi par le canal de votre choix."
+about:
+  pt:
+    - "Sou estudante de <strong>Engenharia de Computação</strong> no <strong>Instituto Federal Fluminense (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, e bolsista de Iniciação Científica (<strong>PIBIC/CNPq</strong>). Minha pesquisa fica na fronteira entre computação e astronomia: arqueologia galáctica, populações estelares e estrutura da Via Láctea, com aprendizado de máquina aplicado a dados do <em>Gaia</em> e de surveys complementares."
+    - "Do lado de engenharia, domino <strong>Python</strong> e <strong>C</strong>, redes de computadores (certificações <strong>Cisco CCNA, CyberOps e IoT</strong>), administração de servidores Linux e desenvolvimento de software full-stack. Participo da <strong>International Astronomy and Astrophysics Competition</strong> (IAAC 2024 e 2025) e apresentei trabalhos em eventos como FEBRACE, Mostratec, CONFICT e na Feira Brasileira de Iniciação Científica."
+    - "Sou Técnico em Informática pelo IFF (2020–2022), membro do Centro de Representação Estudantil e um dos organizadores da Semana de Computação, Engenharia e Gestão do IFF."
+  en:
+    - "I am an undergraduate <strong>Computer Engineering</strong> student at the <strong>Fluminense Federal Institute (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, and a Scientific Initiation Scholar (<strong>PIBIC/CNPq</strong>). My research lies at the frontier of computing and astronomy: galactic archaeology, stellar populations and the structure of the Milky Way, with machine learning applied to <em>Gaia</em> and complementary survey data."
+    - "On the engineering side, I master <strong>Python</strong> and <strong>C</strong>, computer networks (Cisco <strong>CCNA, CyberOps and IoT</strong> certifications), Linux server administration and full-stack software development. I take part in the <strong>International Astronomy and Astrophysics Competition</strong> (IAAC 2024 and 2025) and presented work at events such as FEBRACE, Mostratec, CONFICT and the Brazilian Science Fair."
+    - "I hold a Technical degree in Computer Science from IFF (2020–2022), am a member of the Student Representation Center and one of the organizers of the IFF Computing, Engineering and Management Week."
+  es:
+    - "Soy estudiante de <strong>Ingeniería Informática</strong> en el <strong>Instituto Federal Fluminense (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, y becario de Iniciación Científica (<strong>PIBIC/CNPq</strong>). Mi investigación está en la frontera entre computación y astronomía: arqueología galáctica, poblaciones estelares y estructura de la Vía Láctea, con aprendizaje automático aplicado a datos del <em>Gaia</em> y de relevamientos complementarios."
+    - "Del lado de la ingeniería, domino <strong>Python</strong> y <strong>C</strong>, redes de computadoras (certificaciones <strong>Cisco CCNA, CyberOps e IoT</strong>), administración de servidores Linux y desarrollo de software full-stack. Participo de la <strong>International Astronomy and Astrophysics Competition</strong> (IAAC 2024 y 2025) y presenté trabajos en eventos como FEBRACE, Mostratec, CONFICT y la Feria Brasileña de Iniciación Científica."
+    - "Soy Técnico en Informática por el IFF (2020–2022), miembro del Centro de Representación Estudiantil y uno de los organizadores de la Semana de Computación, Ingeniería y Gestión del IFF."
+  fr:
+    - "Je suis étudiant en <strong>génie informatique</strong> à l'<strong>Institut Fédéral Fluminense (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, et boursier d'Initiation Scientifique (<strong>PIBIC/CNPq</strong>). Ma recherche se situe à la frontière de l'informatique et de l'astronomie : archéologie galactique, populations stellaires et structure de la Voie lactée, avec apprentissage automatique appliqué aux données du <em>Gaia</em> et de relevés complémentaires."
+    - "Côté ingénierie, je maîtrise <strong>Python</strong> et <strong>C</strong>, les réseaux informatiques (certifications <strong>Cisco CCNA, CyberOps et IoT</strong>), l'administration de serveurs Linux et le développement logiciel full-stack. Je participe à l'<strong>International Astronomy and Astrophysics Competition</strong> (IAAC 2024 et 2025) et ai présenté des travaux lors d'événements comme FEBRACE, Mostratec, CONFICT et la Foire Brésilienne d'Initiation Scientifique."
+    - "Je suis titulaire d'un diplôme technique en informatique de l'IFF (2020–2022), membre du Centre de Représentation Étudiante et l'un des organisateurs de la Semaine Informatique, Ingénierie et Gestion de l'IFF."
+vis:
+  pt:
+    "público": "Público"
+    privado: "Privado"
+  en:
+    "público": "Public"
+    privado: "Private"
+  es:
+    "público": "Público"
+    privado: "Privado"
+  fr:
+    "público": "Public"
+    privado: "Privé"
+cat:
+  pt:
+    software: "Software"
+    pesquisa: "Pesquisa"
+    academico: "Acadêmico"
+    pessoal: "Pessoal"
+  en:
+    software: "Software"
+    pesquisa: "Research"
+    academico: "Academic"
+    pessoal: "Personal"
+  es:
+    software: "Software"
+    pesquisa: "Investigación"
+    academico: "Académico"
+    pessoal: "Personal"
+  fr:
+    software: "Logiciel"
+    pesquisa: "Recherche"
+    academico: "Académique"
+    pessoal: "Personnel"
+contactLabels:
+  pt:
+    email: "Email"
+    github: "GitHub"
+    linkedin: "LinkedIn"
+    scholar: "Google Scholar"
+    orcid: "ORCID"
+    lattes: "Lattes"
+    instagram: "Instagram"
+    site: "Site oficial"
+    location: "Localização"
+  en:
+    email: "Email"
+    github: "GitHub"
+    linkedin: "LinkedIn"
+    scholar: "Google Scholar"
+    orcid: "ORCID"
+    lattes: "Lattes"
+    instagram: "Instagram"
+    site: "Official site"
+    location: "Location"
+  es:
+    email: "Correo"
+    github: "GitHub"
+    linkedin: "LinkedIn"
+    scholar: "Google Scholar"
+    orcid: "ORCID"
+    lattes: "Lattes"
+    instagram: "Instagram"
+    site: "Sitio oficial"
+    location: "Ubicación"
+  fr:
+    email: "Courriel"
+    github: "GitHub"
+    linkedin: "LinkedIn"
+    scholar: "Google Scholar"
+    orcid: "ORCID"
+    lattes: "Lattes"
+    instagram: "Instagram"
+    site: "Site officiel"
+    location: "Localisation"
+bolsas:
+  pt:
+    orientLabel: "Orientação"
+    periodLabel: "Período"
+  en:
+    orientLabel: "Supervisor"
+    periodLabel: "Period"
+  es:
+    orientLabel: "Supervisor"
+    periodLabel: "Período"
+  fr:
+    orientLabel: "Encadrant"
+    periodLabel: "Période"
+footer:
+  pt: "feito com café, código e um céu estrelado."
+  en: "made with coffee, code and a starry sky."
+  es: "hecho con café, código y un cielo estrellado."
+  fr: "fait avec du café, du code et un ciel étoilé."
