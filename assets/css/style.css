@@ -18,7 +18,7 @@
   --grad-soft: linear-gradient(135deg, rgba(110,168,254,.18), rgba(182,146,255,.18));
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   --radius: 18px;
-  --maxw: 1480px;
+  --maxw: 1800px;
   --font: "Inter", system-ui, -apple-system, sans-serif;
   --display: "Space Grotesk", var(--font);
 }
@@ -248,11 +248,11 @@ main, .nav, .footer { position: relative; z-index: 2; }
   gap: 30px;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 130px clamp(16px, 5vw, 56px) 80px;
+  padding: 130px clamp(16px, 4vw, 32px) 80px;
 }
 .disclaimer {
   max-width: var(--maxw); margin: 0 auto;
-  padding: 14px clamp(16px, 5vw, 56px);
+  padding: 14px clamp(16px, 4vw, 32px);
 }
 .disclaimer .l {
   display: none; margin: 0; padding: 12px 16px;
@@ -373,7 +373,7 @@ html[lang="fr"] .disclaimer .lang-fr { display: block; }
 .section {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 120px clamp(16px, 5vw, 56px);
+  padding: 120px clamp(16px, 4vw, 32px);
 }
 .section__head { margin-bottom: 48px; }
 .section__kicker {
