@@ -20,7 +20,7 @@
   --radius: 18px;
   --maxw: 1800px;
   --font: "Inter", system-ui, -apple-system, sans-serif;
-  --display: "Space Grotesk", var(--font);
+  --display: "Sora", var(--font);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -409,7 +409,7 @@ html[lang="fr"] .disclaimer .lang-fr { display: block; }
 .stat__label { color: var(--muted); font-size: .85rem; }
 
 /* ---------- Cartões de projeto ---------- */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
 .card {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -519,7 +519,7 @@ html[lang="fr"] .disclaimer .lang-fr { display: block; }
 .acc__detail { padding: 0 24px 22px; color: var(--muted); font-size: .92rem; }
 
 /* ---------- Bolsas / Pesquisa ---------- */
-.bolsas { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+.bolsas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .bolsa {
   display: flex; gap: 16px; align-items: flex-start;
   background: var(--panel); border: 1px solid var(--border);
