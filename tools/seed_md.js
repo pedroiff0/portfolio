@@ -67,23 +67,41 @@ function transposeI18n() {
   return out;
 }
 
-// instagram real vem do .orig (no projects.js ele é uma variável, não literal)
-let INSTAGRAM = D.INSTAGRAM;
-try {
-  const o = fs.readFileSync(path.join(ROOT, 'assets/js/projects.js.orig'), 'utf8');
-  const m = o.match(/const INSTAGRAM = "([^"]*)";/);
-  if (m) INSTAGRAM = m[1];
-} catch (e) {}
+// instagram real vem do EXTRA.instagram no .orig
+const INSTAGRAM = (D.EXTRA && D.EXTRA.instagram) || D.INSTAGRAM || '';
 
 // ---- monta MD limpo ----
+const EXEMPLO = `
+## COMO EDITAR (pode apagar este bloco depois)
+Copie um card abaixo, cole e troque os textos. Regras:
+  - Cada projeto = um bloco "### Nome do Projeto" (a linha com ### é o título).
+  - Campos de 1 linha: repo:, stack:, tags:, cat:, visibility:, icon:
+      stack e tags: separem por vírgula.
+  - Texto: 🇧🇷 é OBRIGATÓRIO. 🇺🇸 🇪🇸 🇫🇷 são opcionais (se faltar, o site usa o 🇧🇷).
+  - cat: software | pesquisa | academico | pessoal
+  - visibility: público | privado
+  - icon: cash | academic | quiz | web | latex | star | globe | github | teacher | exam | leaf | box | table | function | formula | life | dashboard | profile  (ou outro nome de ícone existente em assets/js/main.js)
+  - NÃO mexa em index.html / assets/css/style.css / assets/js/main.js.
+  - Depois de editar: python3 tools/build.py  (ou só commitar — o pre-commit já gera).
+
+### Nome do Projeto (MODELO — copie daqui p/ baixo)
+repo: https://github.com/pedroiff0/SEU-REPO
+stack: Node.js, Express, MongoDB
+tags: Tag1, Tag2, Tag3
+cat: software
+visibility: privado
+icon: star
+
+🇧🇷 Descreva o projeto em português aqui.
+🇺🇸 Describe the project in English here.
+🇪🇸 Describe el proyecto en español aquí.
+🇫🇷 Décrivez le projet en français ici.
+`;
+
 let md = '';
 md += '# Portfolio — fonte editável (Markdown)\n';
 md += '\n';
-md += '> Edite abaixo no Obsidian. **Não** mexer em `index.html` / `assets/css/style.css` / `assets/js/main.js`.\n';
-md += '> Cada projeto/bolsa é uma subseção `###`. Bandeiras marcam idioma: 🇧🇷 pt · 🇺🇸 en · 🇪🇸 es · 🇫🇷 fr.\n';
-md += '> Campos de 1 linha: `repo:`, `stack:`, `tags:`, `cat:`, `visibility:`, `icon:`, `desc:`, `title:`, `kind:`.\n';
-md += '> Se faltar en/es/fr, **herda o 🇧🇷**. O bloco `## Interface (i18n)` quase não se mexe.\n';
-md += '\n';
+md += EXEMPLO + '\n';
 md += '## Metadados\n';
 md += 'full_name: ' + D.FULL_NAME + '\n';
 md += 'orcid: ' + D.ORCID + '\n';

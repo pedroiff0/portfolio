@@ -1,14 +1,35 @@
 # Portfolio — fonte editável (Markdown)
 
-> Edite abaixo no Obsidian. **Não** mexer em `index.html` / `assets/css/style.css` / `assets/js/main.js`.
-> Cada projeto/bolsa é uma subseção `###`. Bandeiras marcam idioma: 🇧🇷 pt · 🇺🇸 en · 🇪🇸 es · 🇫🇷 fr.
-> Campos de 1 linha: `repo:`, `stack:`, `tags:`, `cat:`, `visibility:`, `icon:`, `desc:`, `title:`, `kind:`.
-> Se faltar en/es/fr, **herda o 🇧🇷**. O bloco `## Interface (i18n)` quase não se mexe.
+
+## COMO EDITAR (pode apagar este bloco depois)
+Copie um card abaixo, cole e troque os textos. Regras:
+  - Cada projeto = um bloco "### Nome do Projeto" (a linha com ### é o título).
+  - Campos de 1 linha: repo:, stack:, tags:, cat:, visibility:, icon:
+      stack e tags: separem por vírgula.
+  - Texto: 🇧🇷 é OBRIGATÓRIO. 🇺🇸 🇪🇸 🇫🇷 são opcionais (se faltar, o site usa o 🇧🇷).
+  - cat: software | pesquisa | academico | pessoal
+  - visibility: público | privado
+  - icon: cash | academic | quiz | web | latex | star | globe | github | teacher | exam | leaf | box | table | function | formula | life | dashboard | profile  (ou outro nome de ícone existente em assets/js/main.js)
+  - NÃO mexa em index.html / assets/css/style.css / assets/js/main.js.
+  - Depois de editar: python3 tools/build.py  (ou só commitar — o pre-commit já gera).
+
+### Nome do Projeto (MODELO — copie daqui p/ baixo)
+repo: https://github.com/pedroiff0/SEU-REPO
+stack: Node.js, Express, MongoDB
+tags: Tag1, Tag2, Tag3
+cat: software
+visibility: privado
+icon: star
+
+🇧🇷 Descreva o projeto em português aqui.
+🇺🇸 Describe the project in English here.
+🇪🇸 Describe el proyecto en español aquí.
+🇫🇷 Décrivez le projet en français ici.
 
 ## Metadados
 full_name: Pedro Henrique Rocha de Andrade
 orcid: 0009-0003-6724-4640
-instagram: undefined
+instagram: fckpeeh
 featured: ReLaTeX, Sistema Acadêmico, Sistema de Avaliações, Currículo (CV)
 
 ## Projetos
