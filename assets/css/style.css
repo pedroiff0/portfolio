@@ -248,7 +248,7 @@ main, .nav, .footer { position: relative; z-index: 2; }
   gap: 30px;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 110px clamp(16px, 4vw, 32px) 56px;
+  padding: 84px clamp(16px, 4vw, 32px) 56px;
 }
 .disclaimer {
   max-width: var(--maxw); margin: 0 auto;
@@ -373,9 +373,9 @@ html[lang="fr"] .disclaimer .lang-fr { display: block; }
 .section {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 84px clamp(16px, 4vw, 32px);
+  padding: 54px clamp(16px, 4vw, 32px);
 }
-.section__head { margin-bottom: 32px; }
+.section__head { margin-bottom: 22px; }
 .section__kicker {
   font-family: var(--display);
   font-size: .85rem; letter-spacing: 3px; text-transform: uppercase;
