@@ -373,9 +373,9 @@ html[lang="fr"] .disclaimer .lang-fr { display: block; }
 .section {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 120px clamp(16px, 4vw, 32px);
+  padding: 84px clamp(16px, 4vw, 32px);
 }
-.section__head { margin-bottom: 48px; }
+.section__head { margin-bottom: 32px; }
 .section__kicker {
   font-family: var(--display);
   font-size: .85rem; letter-spacing: 3px; text-transform: uppercase;
@@ -652,7 +652,7 @@ html[lang="fr"] .disclaimer .lang-fr { display: block; }
   .cv__page { margin: 0 auto; transform: none; }
   .lattes { gap: 22px; }
   .contact { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .section { padding: 76px clamp(16px, 5vw, 32px); }
+  .section { padding: 60px clamp(16px, 5vw, 32px); }
 }
 
 @media (max-width: 600px) {
