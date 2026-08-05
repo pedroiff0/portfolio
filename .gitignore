@@ -9,3 +9,6 @@ node_modules/
 
 # Backups
 *.bak
+
+# Obsidian vault metadata (se abrir /home/pedro/portfolio como vault)
+.obsidian/
