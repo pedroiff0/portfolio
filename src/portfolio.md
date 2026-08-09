@@ -30,35 +30,35 @@ icon: star
 full_name: Pedro Henrique Rocha de Andrade
 orcid: 0009-0003-6724-4640
 instagram: fckpeeh
-featured: ReLaTeX, Sistema Acadêmico, Sistema de Avaliações, Currículo (CV)
+featured: ReLaTeX, Sistema Acadêmico, Projeto Profissional (template), awesome-skills, meu-setup
 
 ## Projetos
 
 ### Finanças App
 repo: https://github.com/pedroiff0/financas-app
-stack: Node.js, Express, MongoDB, Mongoose, EJS, JWT, Zod, Docker, Helmet
+stack: Node.js 20, Express, MongoDB, Mongoose, EJS, JWT, Zod, Jest, Docker, Helmet
 tags: Finanças, Full-stack, Web App, Orçamento, Investimentos
 cat: software
 visibility: privado
 icon: cash
 
-🇧🇷 Aplicação web pessoal de finanças: contas, transações, categorias, orçamentos e metas, com módulo de investimentos (ativos, trades, corretoras) e relatórios. Backend Node/Express + MongoDB, frontend EJS SSR, autenticação JWT, validação Zod e boas práticas de segurança (Helmet, rate-limit, CSP). Deploy via Docker Compose.
-🇺🇸 Personal finance web app: accounts, transactions, categories, budgets and goals, with an investments module (assets, trades, brokers) and reports. Node/Express + MongoDB backend, EJS SSR frontend, JWT auth, Zod validation and security hardening (Helmet, rate-limit, CSP). Deployed via Docker Compose.
-🇪🇸 Aplicación web personal de finanzas: cuentas, transacciones, categorías, presupuestos y metas, con módulo de inversiones (activos, trades, corredoras) e informes. Backend Node/Express + MongoDB, frontend EJS SSR, autenticación JWT, validación Zod y endurecimiento de seguridad (Helmet, rate-limit, CSP). Despliegue vía Docker Compose.
-🇫🇷 Application web personnelle de finances : comptes, transactions, catégories, budgets et objectifs, avec un module d'investissement (actifs, trades, courtiers) et rapports. Backend Node/Express + MongoDB, frontend EJS SSR, auth JWT, validation Zod et durcissement sécurité (Helmet, rate-limit, CSP). Déploiement via Docker Compose.
+🇧🇷 Aplicação web de controle financeiro pessoal com três módulos independentes (ligados/desligados por flag): Finanças (contas, categorias, lançamentos, recorrências, orçamentos por envelope, metas), Investimentos (carteira multi-corretora, preço médio ponderado, proventos, resultado realizado/não realizado) e Moto (manutenções, abastecimentos com km/l, gastos, custo por km, alertas de revisão). Backend Node/Express + MongoDB, frontend EJS SSR, autenticação JWT, validação Zod e boas práticas de segurança (Helmet, rate-limit, CSP). Deploy via Docker Compose.
+🇺🇸 Personal finance web app with three independent, flag-toggled modules: Finances (accounts, categories, entries, recurrences, envelope budgets, goals), Investments (multi-broker portfolio, weighted average price, dividends, realized/unrealized results) and Motorcycle (maintenance, refuels with km/l, expenses, cost per km, service alerts). Node/Express + MongoDB backend, EJS SSR frontend, JWT auth, Zod validation and security hardening (Helmet, rate-limit, CSP). Deployed via Docker Compose.
+🇪🇸 Aplicación web de control financiero personal con tres módulos independientes (activables por flag): Finanzas (cuentas, categorías, movimientos, recurrencias, presupuestos por sobre, metas), Inversiones (cartera multicorredora, precio medio ponderado, dividendos, resultado realizado/no realizado) y Moto (mantenimientos, repostajes con km/l, gastos, costo por km, alertas de revisión). Backend Node/Express + MongoDB, frontend EJS SSR, autenticación JWT, validación Zod y endurecimiento de seguridad (Helmet, rate-limit, CSP). Despliegue vía Docker Compose.
+🇫🇷 Application web de gestion financière personnelle avec trois modules indépendants (activables par flag) : Finances (comptes, catégories, écritures, récurrences, budgets par enveloppe, objectifs), Investissements (portefeuille multi-courtiers, prix moyen pondéré, dividendes, résultat réalisé/latent) et Moto (entretiens, pleins avec km/l, dépenses, coût au km, alertes de révision). Backend Node/Express + MongoDB, frontend EJS SSR, auth JWT, validation Zod et durcissement sécurité (Helmet, rate-limit, CSP). Déploiement via Docker Compose.
 
 ### Sistema Acadêmico
 repo: https://github.com/pedroiff0/sistema-academico
 stack: Node.js, Express, MongoDB, Mongoose, EJS, JWT, Docker, vis-network
-tags: Full-stack, Web App, Academia, CR/Boletim, API Bot
+tags: Full-stack, Web App, Academia, CR/Boletim, Multi-curso, API Bot
 cat: software
 visibility: privado
 icon: academic
 
-🇧🇷 Web exclusivo para alunos de Eng. de Computação do IFF acompanharem grade, diário, notas, frequência, boletim/CR e planejamento. Fork do padrão de avaliações, com diário, ementário, grafo de dependências e API de ingestão por bot (Telegram). Deploy via Docker Compose + systemd.
-🇺🇸 Exclusive web app for Computer Engineering students at IFF to track curriculum, diary, grades, attendance, GPA/report card and planning. Fork of the evaluations standard, with diary, ementa, dependency graph and a Telegram-bot ingestion API. Deployed via Docker Compose + systemd.
-🇪🇸 Aplicación web exclusiva para alumnos de Ingeniería Informática del IFF para seguir malla, diario, notas, asistencia, CR/boletín y planificación. Fork del estándar de evaluaciones, con diario, ementario, grafo de dependencias y API de ingesta por bot de Telegram. Despliegue vía Docker Compose + systemd.
-🇫🇷 Application web exclusive pour les étudiants en génie informatique de l'IFF afin de suivre le programme, le journal, les notes, la fréquentation, la moyenne/bulletin et la planification. Fork de la norme d'évaluations, avec journal, ementa, graphe de dépendances et API d'ingestion par bot Telegram. Déploiement via Docker Compose + systemd.
+🇧🇷 Web exclusivo para alunos do IFF acompanharem grade curricular (PPC), diário, notas, frequência, boletim/CR e planejamento. Multi-curso: Engenharia de Computação (Bom Jesus do Itabapoana) e Sistemas de Informação (Itaperuna). Fork do padrão de avaliações, com diário, ementário, grafo de dependências e API de ingestão por bot (Telegram). Deploy via Docker Compose + systemd.
+🇺🇸 Exclusive web app for IFF students to track the curriculum (PPC), diary, grades, attendance, GPA/report card and planning. Multi-course: Computer Engineering (Bom Jesus do Itabapoana) and Information Systems (Itaperuna). Fork of the evaluations standard, with diary, ementa, dependency graph and a Telegram-bot ingestion API. Deployed via Docker Compose + systemd.
+🇪🇸 Aplicación web exclusiva para alumnos del IFF para seguir la malla (PPC), diario, notas, asistencia, CR/boletín y planificación. Multicurso: Ingeniería Informática (Bom Jesus do Itabapoana) y Sistemas de Información (Itaperuna). Fork del estándar de evaluaciones, con diario, ementario, grafo de dependencias y API de ingesta por bot de Telegram. Despliegue vía Docker Compose + systemd.
+🇫🇷 Application web exclusive pour les étudiants de l'IFF afin de suivre le programme (PPC), le journal, les notes, la fréquentation, la moyenne/bulletin et la planification. Multi-filière : génie informatique (Bom Jesus do Itabapoana) et systèmes d'information (Itaperuna). Fork de la norme d'évaluations, avec journal, ementa, graphe de dépendances et API d'ingestion par bot Telegram. Déploiement via Docker Compose + systemd.
 
 ### Sistema de Avaliações
 repo: https://github.com/pedroiff0/avaliacoes
@@ -95,7 +95,7 @@ icon: exam
 
 ### Portal Acadêmico IFF (academicoWeb)
 repo: https://github.com/pedroiff0/academicoWeb
-stack: Web, Node.js, Scraping
+stack: Python, Flask, Jinja2, Scraping
 tags: Web App, IFF, Dashboard
 cat: software
 visibility: privado
@@ -118,7 +118,7 @@ icon: latex
 
 ### Verdementa
 repo: https://github.com/pedroiff0/verdementa
-stack: Meta-repo, Node.js
+stack: Meta-repo, Python, PowerShell
 tags: Suíte Comercial, ERP
 cat: software
 visibility: privado
@@ -127,44 +127,83 @@ icon: leaf
 🇧🇷 Meta-repositório que agrupa Caixas, ControleEstoque, LevantamentoEstoque e Planilhador — suíte de ferramentas comerciais.
 
 ### Caixas
-repo: https://github.com/pedroiff0/Caixas
-stack: Node.js, CI
+repo: https://github.com/pedroiff0/caixas
+stack: Python, Flask, SQLAlchemy, Alembic, Jinja2, AdminLTE
 tags: Controle de Caixa, Relatórios
 cat: software
 visibility: privado
 icon: cash
 
-🇧🇷 Sistema para lançamento de controles de caixa com menus, relatórios e funcionalidades extras.
+🇧🇷 Aplicação web para registrar fechamentos diários de caixa (vendas, depósitos, vales, total contado na gaveta), gerar relatórios e manter histórico imprimível. Flask + SQLAlchemy + Alembic, com endpoints REST auxiliares e migrations versionadas em CI.
 
 ### ControleEstoque
-repo: https://github.com/pedroiff0/ControleEstoque
-stack: Node.js, CI
+repo: https://github.com/pedroiff0/controle-estoque
+stack: Python, CI, CSV/PDF
 tags: Inventário, Estoque
 cat: software
 visibility: privado
 icon: box
 
-🇧🇷 Sistema de controle/contagem de inventário de estoque.
+🇧🇷 Aplicação para contagem rápida de inventário, com persistência de sessão, consolidação de contagens e geração de relatórios em CSV/PDF.
 
 ### LevantamentoEstoque
-repo: https://github.com/pedroiff0/LevantamentoEstoque
-stack: Node.js, CI
+repo: https://github.com/pedroiff0/levantamento-estoque
+stack: Python, CI, PDF
 tags: Estoque, Compras
 cat: software
 visibility: privado
 icon: box
 
-🇧🇷 Levantamento de itens que são alvo de compras repetidas.
+🇧🇷 Sistema de levantamento de estoque por cor/tamanho, com persistência de sessão, extração de dados de PDF e geração de relatórios — voltado a itens de compra repetida.
 
 ### Planilhador
-repo: https://github.com/pedroiff0/Planilhador
-stack: Node.js, CI
+repo: https://github.com/pedroiff0/planilhador
+stack: Python, CI, XML/NFCe
 tags: NFCe, Planilhas
 cat: software
 visibility: privado
 icon: table
 
-🇧🇷 Ferramentas NFCe / planilhamento.
+🇧🇷 Ferramentas para processar XMLs de NFCe e gerar relatórios/planilhas automatizados.
+
+### Projeto Profissional (template)
+repo: https://github.com/pedroiff0/projeto-profissional
+stack: Node.js 20, Express, MongoDB, Mongoose, EJS, JWT, Zod, Jest, Docker
+tags: Template, Boilerplate, Segurança, Auth, Open Source
+cat: software
+visibility: público
+icon: web
+
+🇧🇷 Template base endurecido para iniciar qualquer aplicação web Node: autenticação JWT, papéis admin/user, registro controlado pelo admin (sem autocadastro), CSP sem inline, rate limit, CSRF guard, validação Zod e suíte Jest+Supertest desde o primeiro commit. Docker Compose com app não-root e filesystem read-only.
+🇺🇸 Hardened starter template for any Node web app: JWT auth (httpOnly cookie or Bearer), admin/user roles, admin-controlled registration (no self sign-up), inline-free CSP, input sanitization, rate limiting, CSRF guard, Zod validation and a Jest+Supertest suite from the first commit. Docker Compose with a non-root, read-only app container.
+🇪🇸 Plantilla base endurecida para iniciar cualquier aplicación web Node: autenticación JWT (cookie httpOnly o Bearer), roles admin/user, registro controlado por el admin (sin autoregistro), CSP sin inline, saneamiento, rate limit, guard CSRF, validación Zod y suite Jest+Supertest desde el primer commit. Docker Compose con app no-root y sistema de archivos de solo lectura.
+🇫🇷 Modèle de base durci pour démarrer toute application web Node : authentification JWT (cookie httpOnly ou Bearer), rôles admin/user, inscription contrôlée par l'admin (pas d'auto-inscription), CSP sans inline, assainissement, rate limit, garde CSRF, validation Zod et suite Jest+Supertest dès le premier commit. Docker Compose avec app non-root en lecture seule.
+
+### awesome-skills
+repo: https://github.com/pedroiff0/awesome-skills
+stack: Markdown, YAML, Python, Hermes Agent
+tags: IA, Agentes, Automação, Open Source, Memória Procedural
+cat: software
+visibility: público
+icon: book
+
+🇧🇷 Coleção pessoal de skills (memória procedural) para o agente Hermes — 102 skills em 23 categorias, cada uma com SKILL.md (frontmatter YAML + instruções) e, opcionalmente, references/, scripts/ e templates/. Índice do README gerado por script; cobre de manutenção de sites Quartz e i18n a MLOps, LaTeX e automação de desktop.
+🇺🇸 Personal collection of skills (procedural memory) for the Hermes agent — 102 skills across 23 categories, each with SKILL.md (YAML frontmatter + instructions) plus optional references/, scripts/ and templates/. Script-generated README index; spans Quartz site maintenance and i18n, MLOps, LaTeX and desktop automation.
+🇪🇸 Colección personal de skills (memoria procedural) para el agente Hermes — 102 skills en 23 categorías, cada una con SKILL.md (frontmatter YAML + instrucciones) y, opcionalmente, references/, scripts/ y templates/. Índice del README generado por script; abarca desde sitios Quartz e i18n hasta MLOps, LaTeX y automatización de escritorio.
+🇫🇷 Collection personnelle de skills (mémoire procédurale) pour l'agent Hermes — 102 skills en 23 catégories, chacune avec SKILL.md (frontmatter YAML + instructions) et, en option, references/, scripts/ et templates/. Index du README généré par script ; du site Quartz et de l'i18n au MLOps, LaTeX et à l'automatisation du bureau.
+
+### meu-setup
+repo: https://github.com/pedroiff0/meu-setup
+stack: Python, YAML, Bash, PowerShell, apt/dnf/pacman/zypper, winget, Homebrew
+tags: Dotfiles, Provisionamento, Multi-distro, Open Source, Idempotente
+cat: software
+visibility: público
+icon: box
+
+🇧🇷 Mapa de todos os programas que uso (Linux, Windows e macOS) com instaladores automáticos e uma única fonte de verdade: packages.yaml. O instalador Linux detecta a distro (apt/dnf/pacman/zypper), é idempotente e tem cadeia de fallback (nativo → flatpak → snap → script oficial). Um gerador produz install.ps1, install.sh e o inventário; o bootstrap repopula a máquina do zero com um comando.
+🇺🇸 A map of every program I use (Linux, Windows and macOS) with automated installers and a single source of truth: packages.yaml. The Linux installer detects the distro (apt/dnf/pacman/zypper), is idempotent and has a fallback chain (native → flatpak → snap → official script). A generator produces install.ps1, install.sh and the inventory; the bootstrap repopulates a fresh machine with one command.
+🇪🇸 Mapa de todos los programas que uso (Linux, Windows y macOS) con instaladores automáticos y una única fuente de verdad: packages.yaml. El instalador Linux detecta la distro (apt/dnf/pacman/zypper), es idempotente y tiene cadena de fallback (nativo → flatpak → snap → script oficial). Un generador produce install.ps1, install.sh y el inventario; el bootstrap repuebla la máquina con un comando.
+🇫🇷 Carte de tous les programmes que j'utilise (Linux, Windows et macOS) avec des installateurs automatiques et une source unique de vérité : packages.yaml. L'installateur Linux détecte la distro (apt/dnf/pacman/zypper), est idempotent et dispose d'une chaîne de repli (natif → flatpak → snap → script officiel). Un générateur produit install.ps1, install.sh et l'inventaire ; le bootstrap repeuple la machine en une commande.
 
 ### anomaly_detection
 repo: https://github.com/pedroiff0/anomaly_detection
@@ -194,7 +233,7 @@ icon: spectrum
 
 ### research
 repo: https://github.com/pedroiff0/research
-stack: Python, arXiv
+stack: Python, arXiv API, Pandas, Matplotlib, PyPDF2, python-docx
 tags: Literatura, arXiv
 cat: pesquisa
 visibility: privado
@@ -210,7 +249,7 @@ repo: https://github.com/pedroiff0/cv
 stack: LaTeX, altacv, Makefile, biblatex
 tags: Multilíngue, PT/EN/ES/FR
 cat: academico
-visibility: privado
+visibility: público
 icon: document
 
 🇧🇷 CV em LaTeX (classe altacv), multilíngue (PT/EN/ES/FR) compilado via Makefile. Inclui ORCID, Google Scholar e publicações em congressos (CONFICT, SAB, SBPC).
@@ -249,8 +288,8 @@ icon: latex
 🇧🇷 Modelos LaTeX para uso geral.
 
 ### page (Quartz)
-repo: https://github.com/pedroiff0/page
-stack: Quartz, Obsidian, MDX
+repo: https://github.com/pedroiff0/quartz-site
+stack: Quartz, Obsidian, Markdown, TypeScript, GitHub Actions
 tags: Site Oficial, Obsidian, Multilíngue
 cat: pessoal
 visibility: público
