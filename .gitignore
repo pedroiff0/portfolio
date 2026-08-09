@@ -10,6 +10,10 @@ node_modules/
 # Backups
 *.bak
 
+# Python (tools/gen_quartz.py importa tools/build.py)
+__pycache__/
+*.pyc
+
 # Obsidian vault metadata (se abrir /home/pedro/portfolio como vault)
 .obsidian/
 

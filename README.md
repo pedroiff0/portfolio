@@ -22,9 +22,70 @@ assets/js/main.js       # starfield canvas, scroll reveal, accordions, nav
 
 ## Como editar
 
-- Conteúdo dos cartões e da pesquisa: `assets/js/projects.js` (`PROJECTS`, `RESEARCH`).
-- Textos fixos (Sobre, Lattes, Contato): `index.html`.
-- Cores/tipografia/animções: `--accent`, `--grad`, etc. em `assets/css/style.css`.
+**A fonte é o Markdown, não o JS.** Nunca edite `assets/js/projects.js` à mão:
+ele é compilado e sobrescrito pelo pre-commit.
+
+- Projetos, bolsas e contatos: `src/portfolio.md`
+- Textos de interface (nav, hero, rótulos, i18n): `src/interface.yaml`
+- Cores/tipografia/animações: `assets/css/style.css`
+
+Depois de editar:
+
+```bash
+python3 tools/build.py     # regenera assets/js/projects.js
+node tools/verify.js       # confere contra o snapshot .orig
+```
+
+O hook `pre-commit` já roda o build e faz `git add` do JS gerado.
+
+### Formato de um projeto
+
+```
+### Nome do Projeto
+repo: https://github.com/pedroiff0/foo     (opcional — sem ele, o cartão
+slug: foo                                   mostra "sem repositório público")
+stack: Node.js, Express, MongoDB
+tags: Full-stack, Web App
+cat: software | academico | pesquisa | pessoal
+visibility: público | privado | planejamento | elaboracao
+icon: cash
+
+🇧🇷 texto em português
+🇺🇸 english text
+🇪🇸 texto en español
+🇫🇷 texte en français
+```
+
+Idioma faltando herda o 🇧🇷. O campo `slug:` é opcional e só serve para casar
+com a nota já existente no quartz-site (ver abaixo); sem ele, o slug é
+derivado do nome.
+
+## Sincronizar com o quartz-site
+
+`src/portfolio.md` é a **fonte única** dos projetos: as notas de
+`content/<lang>/projects/` do quartz-site são geradas a partir dele.
+
+```bash
+python3 tools/gen_quartz.py            # dry-run: mostra o que mudaria
+python3 tools/gen_quartz.py --write    # aplica
+python3 tools/gen_quartz.py --check    # exit 1 se dessincronizado
+```
+
+O script gera as quatro línguas (`pt-br`, `en`, `es`, `fr`) e só controla:
+
+- os campos de frontmatter `title`, `tags`, `repo`, `status`;
+- o bloco entre `<!-- gerado por ... -->` e `<!-- fim do bloco gerado -->`.
+
+Todo o resto — `publish`, `created`, `password`, e principalmente o corpo
+escrito à mão — é preservado. Em notas que já têm texto humano o bloco entra
+em modo reduzido (só stack e repositório), para não duplicar o resumo.
+
+O caminho do site vem de `$QUARTZ_SITE` (padrão:
+`/home/pedro/Repositorios/pessoal/quartz-site`).
+
+**Atenção:** o `content/` do quartz-site é um vault Obsidian sincronizado por
+Syncthing e vive sujo no git. O script nunca commita — rode `git status` lá e
+separe as mudanças à mão.
 
 ## Rodar localmente
 

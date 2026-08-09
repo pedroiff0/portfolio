@@ -35,6 +35,7 @@ featured: ReLaTeX, Sistema Acadêmico, Projeto Profissional (template), awesome-
 ## Projetos
 
 ### Finanças App
+slug: financas
 repo: https://github.com/pedroiff0/financas-app
 stack: Node.js 20, Express, MongoDB, Mongoose, EJS, JWT, Zod, Jest, Docker, Helmet
 tags: Finanças, Full-stack, Web App, Orçamento, Investimentos
@@ -61,6 +62,7 @@ icon: academic
 🇫🇷 Application web exclusive pour les étudiants de l'IFF afin de suivre le programme (PPC), le journal, les notes, la fréquentation, la moyenne/bulletin et la planification. Multi-filière : génie informatique (Bom Jesus do Itabapoana) et systèmes d'information (Itaperuna). Fork de la norme d'évaluations, avec journal, ementa, graphe de dépendances et API d'ingestion par bot Telegram. Déploiement via Docker Compose + systemd.
 
 ### Sistema de Avaliações
+slug: avaliacoes
 repo: https://github.com/pedroiff0/avaliacoes
 stack: Node.js, Express, MongoDB, LaTeX, EJS
 tags: EdTech, LaTeX, Provas, Multi-variantes
@@ -100,6 +102,7 @@ icon: exam
 🇫🇷 Fork destiné aux candidats aux concours : banque de QCM, parcours par programme officiel, planning souple, Pomodoro, examens blancs en PDF et application mobile Expo à parité fonctionnelle complète.
 
 ### Portal Acadêmico IFF (academicoWeb)
+slug: academicoweb
 repo: https://github.com/pedroiff0/academicoWeb
 stack: Python, Flask, Jinja2, Scraping
 tags: Web App, IFF, Scraping, Arquivado
@@ -191,6 +194,7 @@ icon: table
 🇫🇷 Outils pour traiter les XML de NFCe (facture électronique brésilienne) et générer rapports et tableurs automatisés.
 
 ### Projeto Profissional (template)
+slug: projeto-profissional
 repo: https://github.com/pedroiff0/projeto-profissional
 stack: Node.js 20, Express, MongoDB, Mongoose, EJS, JWT, Zod, Jest, Docker
 tags: Template, Boilerplate, Segurança, Auth, Open Source
@@ -321,6 +325,7 @@ icon: latex
 🇫🇷 Modèles LaTeX à usage général : articles, rapports, mémoires, diapositives, affiches, fascicules, séries d'exercices, examens et références ABNT.
 
 ### page (Quartz)
+slug: page
 repo: https://github.com/pedroiff0/quartz-site
 stack: Quartz, Obsidian, Markdown, TypeScript, GitHub Actions
 tags: Site Oficial, Obsidian, Multilíngue
@@ -334,6 +339,7 @@ icon: globe
 🇫🇷 Site personnel/académique officiel, multilingue (PT complet ; EN/ES/FR partiels), en Quartz à partir du vault Obsidian. Publié sur www.phrandrade.com. C'est le hub consolidé : recherche, notes de cours, médias et blog. Ce portfolio en est la page d'accueil.
 
 ### Livro-Texto de Cálculo
+slug: livrocalculo
 stack: LaTeX, Python, Sphinx
 tags: Material Didático, Cálculo, Algoritmos, Autoral
 cat: academico
@@ -346,6 +352,7 @@ icon: function
 🇫🇷 Manuel de Calcul de ma propre plume, en cours de rédaction, écrit en LaTeX — des fondements aux systèmes linéaires. Couvre une révision Python/Calcul I, les systèmes de bases numériques (binaire, octal, décimal, hexadécimal) et les systèmes linéaires (élimination de Gauss et factorisation LU, avec et sans pivotage). Chaque chapitre possède son propre annexe d'algorithmes en version simplifiée, ainsi que des exemples originaux complétant le manuel de référence. Mise en page arrêtée ; révision du formatage (style Sphinx) et des encadrés d'algorithmes en cours.
 
 ### Arquivo de Apostilas
+slug: apostilas
 stack: LaTeX
 tags: Material Didático, Engenharia de Computação, Autoral
 cat: academico
@@ -358,6 +365,7 @@ icon: formula
 🇫🇷 Projet, en cours de planification, d'écrire mes propres fascicules couvrant tout le programme de génie informatique — avec théorie, exercices et expériences commentées. Couvre Calcul I–IV et Calcul Numérique, Physique I–IV (avec place pour la Quantique et les Particules), Algèbre Linéaire, Algorithmes et Structures de Données, Équations Différentielles, Mécanique des Solides et des Fluides, Électricité et Électronique, Bases de Données, Génie Logiciel, Compilateurs, Programmation, Réseaux, Architecture des Ordinateurs, Systèmes d'Exploitation et Embarqués, Méthodologie Scientifique et Astrophysique. Complète les notes de cours déjà publiées sur le site officiel.
 
 ### arXiv Searcher
+slug: searcher
 stack: Python, arXiv API, Docker, LaTeX, Markdown
 tags: Automação, Pesquisa, Daemon, BibTeX
 cat: pesquisa
@@ -384,6 +392,7 @@ icon: life
 🇫🇷 Vault Obsidian de gestion de vie selon la méthode PARA (projets, domaines, ressources, archives), avec plus de 4000 fichiers — la base de connaissances personnelle d'où sortent notes, planification et journal.
 
 ### HardCoreLife (plataforma)
+slug: hardcorelife
 stack: Node.js, Express, MongoDB, Docker
 tags: Life OS, Modular, Multi-módulo, Família
 cat: pessoal
@@ -409,6 +418,7 @@ icon: dashboard
 🇫🇷 Tableau de bord personnel d'habitudes et de métriques de vie, dérivé du vault hardcore-life et première étape concrète vers la plateforme HardCoreLife. Node + Express + MongoDB, déploiement via Docker. En développement.
 
 ### guia-github
+slug: guiagithub
 repo: https://github.com/pedroiff0/guia-github
 stack: Docs, GitHub Actions, Shell
 tags: Boas Práticas, Templates, Versionamento
@@ -435,6 +445,7 @@ icon: profile
 🇫🇷 README de profil GitHub (bio, Tech & Tools, projets en vedette).
 
 ### Portfólio (este site)
+slug: portfolio
 repo: https://github.com/pedroiff0/portfolio
 stack: HTML, CSS, JavaScript, Canvas, Python, GitHub Pages
 tags: Portfólio, Página Única, Multilíngue, Sem Framework

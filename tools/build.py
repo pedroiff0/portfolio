@@ -235,6 +235,10 @@ def parse_projetos(block):
             "tags": [s.strip() for s in kv.get("tags", "").split(",") if s.strip()],
             "brief": brief,
         }
+        # slug opcional: usado por tools/gen_quartz.py para casar com a nota
+        # já existente no quartz-site. Não vai para o JS do site.
+        if kv.get("slug"):
+            repo["slug"] = kv["slug"].strip()
         repos.append(repo)
     return repos
 
