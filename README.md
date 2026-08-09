@@ -76,6 +76,11 @@ O script gera as quatro línguas (`pt-br`, `en`, `es`, `fr`) e só controla:
 - os campos de frontmatter `title`, `tags`, `repo`, `status`;
 - o bloco entre `<!-- gerado por ... -->` e `<!-- fim do bloco gerado -->`.
 
+O resumo, o rótulo de repositório e o status saem traduzidos por idioma. O
+`title` e as `tags` ficam no original de propósito: o título é nome próprio do
+projeto, e as tags são usadas pelo Quartz para agrupar notas — traduzi-las
+fragmentaria cada grupo em quatro.
+
 Todo o resto — `publish`, `created`, `password`, e principalmente o corpo
 escrito à mão — é preservado. Em notas que já têm texto humano o bloco entra
 em modo reduzido (só stack e repositório), para não duplicar o resumo.
