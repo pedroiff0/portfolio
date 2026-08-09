@@ -503,5 +503,5 @@ desc: 🇧🇷 Bolsa PIBIC/CNPq: aprendizado de máquina sobre Gaia DR3 + GALAH 
 ## Extra
 instagram: fckpeeh
 hobby: Animações e simulações científicas (divulgação científica em física/astronomia).
-grade: 74 disciplinas mapeadas no Sistema Acadêmico (grade IFF Eng. de Computação, 1º→10º período).
+grade: 90 disciplinas mapeadas no Sistema Acadêmico (grade IFF Eng. de Computação, 1º→10º período).
 nickname: cinzento
