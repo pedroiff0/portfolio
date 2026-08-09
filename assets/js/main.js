@@ -255,10 +255,10 @@
       </div>
       <p class="card__summary">${brief}</p>
       <div class="card__stack">${(p.tags || []).map((s) => `<span class="tagp">${s}</span>`).join("")} ${(p.stack || []).slice(0, 4).map((s) => `<span class="tagp tagp--tech">${s}</span>`).join("")}</div>
-      <div class="card__more">Detalhes <span class="chev">▾</span></div>
+      <div class="card__more">${t("labels.details") || "Detalhes"} <span class="chev">▾</span></div>
       <div class="card__detail">
         <p>${brief}</p>
-        <a class="card__repo" href="${p.repo}" target="_blank" rel="noopener">↗ Ver repositório no GitHub</a>
+        ${p.repo ? `<a class="card__repo" href="${p.repo}" target="_blank" rel="noopener">${t("labels.viewRepo") || "↗ Ver repositório no GitHub"}</a>` : `<span class="card__norepo">${t("labels.noRepo") || "Sem repositório público ainda"}</span>`}
       </div>
     </article>`;
   };

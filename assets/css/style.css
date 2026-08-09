@@ -467,6 +467,15 @@ html[lang="fr"] .disclaimer .lang-fr { display: block; }
   margin-top: 14px; font-size: .84rem; color: var(--accent-2);
 }
 .card__repo:hover { text-decoration: underline; }
+.card__norepo {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 14px; padding: 4px 10px;
+  font-size: .78rem; font-style: italic; letter-spacing: .01em;
+  color: var(--muted, #9aa4b2);
+  border: 1px dashed rgba(255, 255, 255, .18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .03);
+}
 
 .cat { margin-bottom: 44px; }
 .cat__title {

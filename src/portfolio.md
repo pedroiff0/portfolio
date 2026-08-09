@@ -82,6 +82,9 @@ visibility: privado
 icon: teacher
 
 🇧🇷 Fork do Sistema de Avaliações com banco pessoal + banco global compartilhado (fork de questões entre professores), PDF por pool com peso e gabarito opcional.
+🇺🇸 Fork of the Evaluations System with a personal bank plus a shared global bank (questions forked between teachers), pool-based PDF generation with weighting and optional answer key.
+🇪🇸 Fork del Sistema de Evaluaciones con banco personal más banco global compartido (preguntas bifurcadas entre profesores), generación de PDF por pool con peso y solucionario opcional.
+🇫🇷 Fork du Système d'Évaluations avec une banque personnelle et une banque globale partagée (questions forkées entre enseignants), génération de PDF par pool avec pondération et corrigé optionnel.
 
 ### Avaliações Concurseiro
 repo: https://github.com/pedroiff0/avaliacoes-concurseiro
@@ -92,16 +95,22 @@ visibility: privado
 icon: exam
 
 🇧🇷 Fork focado em concurseiros: banco de MCQ, trilhas por edital, cronograma maleável, Pomodoro, simulados em PDF e app mobile Expo com paridade total de funcionalidades.
+🇺🇸 Fork aimed at civil-service exam candidates: MCQ bank, syllabus-driven study tracks, flexible schedule, Pomodoro, PDF mock exams and an Expo mobile app with full feature parity.
+🇪🇸 Fork enfocado en opositores: banco de preguntas de opción múltiple, itinerarios por temario, cronograma flexible, Pomodoro, simulacros en PDF y app móvil Expo con paridad total de funciones.
+🇫🇷 Fork destiné aux candidats aux concours : banque de QCM, parcours par programme officiel, planning souple, Pomodoro, examens blancs en PDF et application mobile Expo à parité fonctionnelle complète.
 
 ### Portal Acadêmico IFF (academicoWeb)
 repo: https://github.com/pedroiff0/academicoWeb
 stack: Python, Flask, Jinja2, Scraping
-tags: Web App, IFF, Dashboard
+tags: Web App, IFF, Scraping, Arquivado
 cat: software
 visibility: privado
 icon: web
 
-🇧🇷 Sistema web que acessa os dados acadêmicos do IFF com as credenciais oficiais: dashboard, diário, material de aula, boletim e histórico escolar.
+🇧🇷 Sistema web que acessava os dados acadêmicos do IFF com as credenciais oficiais — dashboard, diário, material de aula, boletim e histórico escolar — via scraping. Arquivado: a migração do IFF para o SUAP torna a abordagem original obsoleta, e o Sistema Acadêmico o sucede. A técnica de scraping fica registrada como referência técnica (possível tema de TCC).
+🇺🇸 Web system that pulled IFF academic data using official credentials — dashboard, diary, course material, report card and transcript — via scraping. Archived: IFF's migration to SUAP makes the original approach obsolete, and Sistema Acadêmico supersedes it. The scraping technique remains documented as a technical reference (a possible thesis topic).
+🇪🇸 Sistema web que accedía a los datos académicos del IFF con las credenciales oficiales — dashboard, diario, material de clase, boletín e historial — mediante scraping. Archivado: la migración del IFF al SUAP vuelve obsoleto el enfoque original, y el Sistema Académico lo sucede. La técnica de scraping queda documentada como referencia técnica (posible tema de TFG).
+🇫🇷 Système web qui accédait aux données académiques de l'IFF avec les identifiants officiels — tableau de bord, journal, supports de cours, bulletin et relevé — par scraping. Archivé : la migration de l'IFF vers SUAP rend l'approche initiale obsolète, et le Sistema Acadêmico lui succède. La technique de scraping reste documentée comme référence technique (sujet de mémoire possible).
 
 ### ReLaTeX
 repo: https://github.com/pedroiff0/relatex
@@ -125,6 +134,9 @@ visibility: privado
 icon: leaf
 
 🇧🇷 Meta-repositório que agrupa Caixas, ControleEstoque, LevantamentoEstoque e Planilhador — suíte de ferramentas comerciais.
+🇺🇸 Meta-repository grouping Caixas, ControleEstoque, LevantamentoEstoque and Planilhador — a suite of retail management tools in real production use.
+🇪🇸 Metarrepositorio que agrupa Caixas, ControleEstoque, LevantamentoEstoque y Planilhador — suite de herramientas comerciales en uso real en producción.
+🇫🇷 Méta-dépôt regroupant Caixas, ControleEstoque, LevantamentoEstoque et Planilhador — une suite d'outils commerciaux en usage réel en production.
 
 ### Caixas
 repo: https://github.com/pedroiff0/caixas
@@ -135,6 +147,9 @@ visibility: privado
 icon: cash
 
 🇧🇷 Aplicação web para registrar fechamentos diários de caixa (vendas, depósitos, vales, total contado na gaveta), gerar relatórios e manter histórico imprimível. Flask + SQLAlchemy + Alembic, com endpoints REST auxiliares e migrations versionadas em CI.
+🇺🇸 Web app to record daily cash-register closings (sales, deposits, vouchers, counted drawer total), generate reports and keep a printable history. Flask + SQLAlchemy + Alembic, with auxiliary REST endpoints and migrations versioned in CI. In production and in real daily use.
+🇪🇸 Aplicación web para registrar cierres diarios de caja (ventas, depósitos, vales, total contado en el cajón), generar informes y mantener un historial imprimible. Flask + SQLAlchemy + Alembic, con endpoints REST auxiliares y migraciones versionadas en CI. En producción y en uso real diario.
+🇫🇷 Application web pour enregistrer les clôtures de caisse quotidiennes (ventes, dépôts, bons, total compté en caisse), générer des rapports et conserver un historique imprimable. Flask + SQLAlchemy + Alembic, avec endpoints REST auxiliaires et migrations versionnées en CI. En production et en usage quotidien réel.
 
 ### ControleEstoque
 repo: https://github.com/pedroiff0/controle-estoque
@@ -145,6 +160,9 @@ visibility: privado
 icon: box
 
 🇧🇷 Aplicação para contagem rápida de inventário, com persistência de sessão, consolidação de contagens e geração de relatórios em CSV/PDF.
+🇺🇸 App for fast inventory counting, with session persistence, consolidation of counts and CSV/PDF report generation.
+🇪🇸 Aplicación para conteo rápido de inventario, con persistencia de sesión, consolidación de conteos y generación de informes en CSV/PDF.
+🇫🇷 Application de comptage rapide d'inventaire, avec persistance de session, consolidation des comptages et génération de rapports en CSV/PDF.
 
 ### LevantamentoEstoque
 repo: https://github.com/pedroiff0/levantamento-estoque
@@ -155,6 +173,9 @@ visibility: privado
 icon: box
 
 🇧🇷 Sistema de levantamento de estoque por cor/tamanho, com persistência de sessão, extração de dados de PDF e geração de relatórios — voltado a itens de compra repetida.
+🇺🇸 Stock-taking system by colour and size, with session persistence, data extraction from PDFs and report generation — aimed at repeatedly purchased items.
+🇪🇸 Sistema de levantamiento de existencias por color y talla, con persistencia de sesión, extracción de datos desde PDF y generación de informes — orientado a artículos de compra recurrente.
+🇫🇷 Système d'inventaire par couleur et taille, avec persistance de session, extraction de données depuis des PDF et génération de rapports — destiné aux articles achetés de façon récurrente.
 
 ### Planilhador
 repo: https://github.com/pedroiff0/planilhador
@@ -165,6 +186,9 @@ visibility: privado
 icon: table
 
 🇧🇷 Ferramentas para processar XMLs de NFCe e gerar relatórios/planilhas automatizados.
+🇺🇸 Tools to process NFCe (Brazilian e-invoice) XML files and generate automated reports and spreadsheets.
+🇪🇸 Herramientas para procesar XML de NFCe (factura electrónica brasileña) y generar informes y hojas de cálculo automatizados.
+🇫🇷 Outils pour traiter les XML de NFCe (facture électronique brésilienne) et générer rapports et tableurs automatisés.
 
 ### Projeto Profissional (template)
 repo: https://github.com/pedroiff0/projeto-profissional
@@ -266,6 +290,9 @@ visibility: público
 icon: function
 
 🇧🇷 Repositório de códigos da disciplina Cálculo Numérico 2025.2, com CI e documentação.
+🇺🇸 Code repository for the Numerical Methods course (2025.2), with CI and documentation — implementations of root finding, interpolation, numerical integration and linear systems.
+🇪🇸 Repositorio de códigos de la asignatura Cálculo Numérico 2025.2, con CI y documentación — implementaciones de búsqueda de raíces, interpolación, integración numérica y sistemas lineales.
+🇫🇷 Dépôt de codes du cours de Calcul Numérique 2025.2, avec CI et documentation — implémentations de recherche de racines, interpolation, intégration numérique et systèmes linéaires.
 
 ### Formulários
 repo: https://github.com/pedroiff0/formularios
@@ -276,6 +303,9 @@ visibility: público
 icon: formula
 
 🇧🇷 Coleção de folhas de fórmulas e resumos em LaTeX organizados por disciplina.
+🇺🇸 Collection of LaTeX formula sheets and summaries organized by course — mathematics and physics, typeset with siunitx.
+🇪🇸 Colección de formularios y resúmenes en LaTeX organizados por asignatura — matemáticas y física, compuestos con siunitx.
+🇫🇷 Collection de formulaires et résumés en LaTeX organisés par matière — mathématiques et physique, composés avec siunitx.
 
 ### Modelos LaTeX
 repo: https://github.com/pedroiff0/modelos
@@ -286,6 +316,9 @@ visibility: privado
 icon: latex
 
 🇧🇷 Modelos LaTeX para uso geral.
+🇺🇸 LaTeX templates for general use: articles, reports, theses, slides, posters, booklets, problem sets, exams and ABNT-compliant references.
+🇪🇸 Plantillas LaTeX de uso general: artículos, informes, tesis, diapositivas, pósteres, apuntes, listas de ejercicios, exámenes y referencias según ABNT.
+🇫🇷 Modèles LaTeX à usage général : articles, rapports, mémoires, diapositives, affiches, fascicules, séries d'exercices, examens et références ABNT.
 
 ### page (Quartz)
 repo: https://github.com/pedroiff0/quartz-site
@@ -295,37 +328,98 @@ cat: pessoal
 visibility: público
 icon: globe
 
-🇧🇷 Site pessoal/acadêmico oficial, multilíngue (PT completo; EN/ES/FR parciais), em Quartz a partir do vault Obsidian. Publicado em github.io/page (migrando p/ www.phrandrade.com).
+🇧🇷 Site pessoal/acadêmico oficial, multilíngue (PT completo; EN/ES/FR parciais), em Quartz a partir do vault Obsidian. Publicado em www.phrandrade.com. É o consolidado: pesquisa, notas de disciplinas, mídia e blog. Este portfólio é a página de boas-vindas dele.
+🇺🇸 Official personal/academic site, multilingual (full PT; partial EN/ES/FR), built with Quartz from an Obsidian vault. Published at www.phrandrade.com. It is the consolidated hub: research, course notes, media and blog. This portfolio is its welcome page.
+🇪🇸 Sitio personal/académico oficial, multilingüe (PT completo; EN/ES/FR parciales), en Quartz a partir del vault de Obsidian. Publicado en www.phrandrade.com. Es el consolidado: investigación, apuntes de asignaturas, medios y blog. Este portafolio es su página de bienvenida.
+🇫🇷 Site personnel/académique officiel, multilingue (PT complet ; EN/ES/FR partiels), en Quartz à partir du vault Obsidian. Publié sur www.phrandrade.com. C'est le hub consolidé : recherche, notes de cours, médias et blog. Ce portfolio en est la page d'accueil.
+
+### Livro-Texto de Cálculo
+stack: LaTeX, Python, Sphinx
+tags: Material Didático, Cálculo, Algoritmos, Autoral
+cat: academico
+visibility: elaboracao
+icon: function
+
+🇧🇷 Material didático próprio de Cálculo, em elaboração, escrito em LaTeX — dos fundamentos a sistemas lineares. Cobre revisão de Python/Cálculo I, sistemas de bases numéricas (binária, octal, decimal, hexadecimal) e sistemas lineares (eliminação de Gauss e fatoração LU, com e sem pivotamento). Cada capítulo traz apêndice próprio de algoritmos em versão simplificada, além de exemplos autorais que complementam o livro-texto padrão. Layout já ajustado; revisão de formatação (padrão Sphinx) e dos quadros de algoritmos em andamento.
+🇺🇸 My own Calculus textbook, in progress, written in LaTeX — from fundamentals to linear systems. Covers a Python/Calculus I refresher, numeral base systems (binary, octal, decimal, hexadecimal) and linear systems (Gaussian elimination and LU factorization, with and without pivoting). Each chapter has its own appendix of algorithms in simplified form, plus original examples complementing the standard textbook. Layout is settled; formatting review (Sphinx-style) and algorithm boxes still under way.
+🇪🇸 Material didáctico propio de Cálculo, en elaboración, escrito en LaTeX — de los fundamentos a los sistemas lineales. Cubre un repaso de Python/Cálculo I, sistemas de bases numéricas (binaria, octal, decimal, hexadecimal) y sistemas lineales (eliminación de Gauss y factorización LU, con y sin pivoteo). Cada capítulo trae su propio apéndice de algoritmos en versión simplificada, además de ejemplos de autoría propia que complementan el libro de texto estándar. Maquetación ya ajustada; revisión de formato (estilo Sphinx) y de los cuadros de algoritmos en curso.
+🇫🇷 Manuel de Calcul de ma propre plume, en cours de rédaction, écrit en LaTeX — des fondements aux systèmes linéaires. Couvre une révision Python/Calcul I, les systèmes de bases numériques (binaire, octal, décimal, hexadécimal) et les systèmes linéaires (élimination de Gauss et factorisation LU, avec et sans pivotage). Chaque chapitre possède son propre annexe d'algorithmes en version simplifiée, ainsi que des exemples originaux complétant le manuel de référence. Mise en page arrêtée ; révision du formatage (style Sphinx) et des encadrés d'algorithmes en cours.
+
+### Arquivo de Apostilas
+stack: LaTeX
+tags: Material Didático, Engenharia de Computação, Autoral
+cat: academico
+visibility: planejamento
+icon: formula
+
+🇧🇷 Plano, em planejamento, de escrever apostilas próprias cobrindo toda a grade de Engenharia de Computação — com teoria, exercícios e experimentos comentados. Abrange Cálculos I–IV e Cálculo Numérico, Física I–IV (com espaço para Quântica e de Partículas), Álgebra Linear, Algoritmos e Estruturas de Dados, Equações Diferenciais, Mecânica dos Sólidos e Fluidos, Eletricidade e Eletrônica, Banco de Dados, Engenharia de Software, Compiladores, Programação, Redes, Arquitetura de Computadores, Sistemas Operacionais e Embarcados, Metodologia Científica e Astrofísica. Complementa as notas de disciplinas já publicadas no site oficial.
+🇺🇸 A planned series of my own course booklets covering the entire Computer Engineering curriculum — with theory, exercises and annotated experiments. Spans Calculus I–IV and Numerical Methods, Physics I–IV (with room for Quantum and Particle Physics), Linear Algebra, Algorithms and Data Structures, Differential Equations, Solid and Fluid Mechanics, Electricity and Electronics, Databases, Software Engineering, Compilers, Programming, Networks, Computer Architecture, Operating and Embedded Systems, Scientific Methodology and Astrophysics. Complements the course notes already published on the official site.
+🇪🇸 Plan, en planificación, de escribir apuntes propios que cubran toda la malla de Ingeniería Informática — con teoría, ejercicios y experimentos comentados. Abarca Cálculos I–IV y Cálculo Numérico, Física I–IV (con espacio para Cuántica y de Partículas), Álgebra Lineal, Algoritmos y Estructuras de Datos, Ecuaciones Diferenciales, Mecánica de Sólidos y Fluidos, Electricidad y Electrónica, Bases de Datos, Ingeniería de Software, Compiladores, Programación, Redes, Arquitectura de Computadores, Sistemas Operativos y Embebidos, Metodología Científica y Astrofísica. Complementa los apuntes de asignaturas ya publicados en el sitio oficial.
+🇫🇷 Projet, en cours de planification, d'écrire mes propres fascicules couvrant tout le programme de génie informatique — avec théorie, exercices et expériences commentées. Couvre Calcul I–IV et Calcul Numérique, Physique I–IV (avec place pour la Quantique et les Particules), Algèbre Linéaire, Algorithmes et Structures de Données, Équations Différentielles, Mécanique des Solides et des Fluides, Électricité et Électronique, Bases de Données, Génie Logiciel, Compilateurs, Programmation, Réseaux, Architecture des Ordinateurs, Systèmes d'Exploitation et Embarqués, Méthodologie Scientifique et Astrophysique. Complète les notes de cours déjà publiées sur le site officiel.
+
+### arXiv Searcher
+stack: Python, arXiv API, Docker, LaTeX, Markdown
+tags: Automação, Pesquisa, Daemon, BibTeX
+cat: pesquisa
+visibility: planejamento
+icon: star
+
+🇧🇷 Ferramenta, em planejamento, para buscar e organizar automaticamente artigos do arXiv por assunto ou palavra-chave. Pensada para rodar como daemon (possivelmente dockerizado), consultando a API do arXiv periodicamente e gerando saída diária em Markdown (tabela com data, título, primeiro autor, área e link) e citações prontas em LaTeX, na mesma estrutura de referência dos meus artigos. Configuração via planilha CSV, com área de busca padrão e opção de busca avulsa por palavra-chave sem alterar essa configuração.
+🇺🇸 A planned tool to automatically search and organize arXiv papers by subject or keyword. Designed to run as a daemon (possibly dockerized), polling the arXiv API periodically and producing a daily Markdown digest (table with date, title, first author, field and link) plus ready-to-use LaTeX citations matching the reference structure of my own papers. Configured via a CSV sheet, with a default search field and the option of a one-off keyword search that leaves the configuration untouched.
+🇪🇸 Herramienta, en planificación, para buscar y organizar automáticamente artículos de arXiv por tema o palabra clave. Pensada para ejecutarse como demonio (posiblemente dockerizado), consultando la API de arXiv periódicamente y generando salida diaria en Markdown (tabla con fecha, título, primer autor, área y enlace) y citas listas en LaTeX, con la misma estructura de referencia de mis artículos. Configuración mediante hoja CSV, con área de búsqueda por defecto y opción de búsqueda suelta por palabra clave sin alterar esa configuración.
+🇫🇷 Outil, en cours de planification, pour rechercher et organiser automatiquement les articles d'arXiv par sujet ou mot-clé. Conçu pour tourner en démon (éventuellement dockerisé), interrogeant périodiquement l'API arXiv et produisant une sortie quotidienne en Markdown (tableau avec date, titre, premier auteur, domaine et lien) ainsi que des citations LaTeX prêtes à l'emploi, dans la même structure de référence que mes articles. Configuration via une feuille CSV, avec un domaine de recherche par défaut et la possibilité d'une recherche ponctuelle par mot-clé sans modifier cette configuration.
+
 
 ### hardcore-life
 repo: https://github.com/pedroiff0/hardcore-life
-stack: Obsidian, PARA
-tags: Produtividade, Second Brain
+stack: Obsidian, PARA, Markdown
+tags: Produtividade, Second Brain, PARA
 cat: pessoal
 visibility: privado
 icon: life
 
-🇧🇷 Vault Obsidian de gestão de vida (PARA: projetos, áreas, recursos, arquivos) — 4000+ arquivos.
+🇧🇷 Vault Obsidian de gestão de vida pelo método PARA (projetos, áreas, recursos, arquivos), com mais de 4000 arquivos — a base de conhecimento pessoal de onde saem notas, planejamento e diário.
+🇺🇸 Obsidian vault for life management using the PARA method (projects, areas, resources, archives), with over 4000 files — the personal knowledge base behind my notes, planning and journal.
+🇪🇸 Vault de Obsidian para gestión de vida con el método PARA (proyectos, áreas, recursos, archivos), con más de 4000 archivos — la base de conocimiento personal de la que salen notas, planificación y diario.
+🇫🇷 Vault Obsidian de gestion de vie selon la méthode PARA (projets, domaines, ressources, archives), avec plus de 4000 fichiers — la base de connaissances personnelle d'où sortent notes, planification et journal.
+
+### HardCoreLife (plataforma)
+stack: Node.js, Express, MongoDB, Docker
+tags: Life OS, Modular, Multi-módulo, Família
+cat: pessoal
+visibility: planejamento
+icon: dashboard
+
+🇧🇷 Plataforma pessoal modular, em planejamento, para reunir num só sistema o que hoje vive espalhado em planilhas e apps soltos. Um núcleo, vários módulos integrados: Controle Financeiro, Investimentos, Automotivo, Tarefas, Streamings (assinaturas) e Compartilhamento Familiar com acesso restrito por convite. Acesso pensado em duas camadas: web (aberta ou restrita conforme o módulo) e área privada.
+🇺🇸 A planned modular personal platform to bring into one system what today lives scattered across spreadsheets and standalone apps. One core, several integrated modules: Finances, Investments, Vehicles, Tasks, Streaming subscriptions and Family Sharing with invite-only access. Access designed in two layers: web (open or restricted depending on the module) and a private area.
+🇪🇸 Plataforma personal modular, en planificación, para reunir en un solo sistema lo que hoy vive disperso en hojas de cálculo y apps sueltas. Un núcleo, varios módulos integrados: Control Financiero, Inversiones, Automotriz, Tareas, Streamings (suscripciones) y Compartición Familiar con acceso restringido por invitación. Acceso pensado en dos capas: web (abierta o restringida según el módulo) y área privada.
+🇫🇷 Plateforme personnelle modulaire, en cours de planification, pour réunir dans un seul système ce qui vit aujourd'hui éparpillé entre tableurs et applications isolées. Un noyau, plusieurs modules intégrés : Finances, Investissements, Automobile, Tâches, Abonnements streaming et Partage Familial sur invitation. Accès pensé en deux couches : web (ouverte ou restreinte selon le module) et espace privé.
 
 ### dashboard-life
 repo: https://github.com/pedroiff0/dashboard-life
-stack: Dashboard
-tags: Life OS
+stack: Node.js, Express, MongoDB, Docker
+tags: Life OS, Hábitos, Métricas
 cat: pessoal
 visibility: privado
 icon: dashboard
 
-🇧🇷 Dashboard de vida (derivado do hardcore-life).
+🇧🇷 Dashboard pessoal de hábitos e métricas de vida, derivado do vault hardcore-life e primeiro passo concreto rumo à plataforma HardCoreLife. Node + Express + MongoDB, deploy via Docker. Em desenvolvimento.
+🇺🇸 Personal dashboard for habits and life metrics, derived from the hardcore-life vault and the first concrete step towards the HardCoreLife platform. Node + Express + MongoDB, deployed via Docker. Under development.
+🇪🇸 Dashboard personal de hábitos y métricas de vida, derivado del vault hardcore-life y primer paso concreto hacia la plataforma HardCoreLife. Node + Express + MongoDB, despliegue vía Docker. En desarrollo.
+🇫🇷 Tableau de bord personnel d'habitudes et de métriques de vie, dérivé du vault hardcore-life et première étape concrète vers la plateforme HardCoreLife. Node + Express + MongoDB, déploiement via Docker. En développement.
 
 ### guia-github
 repo: https://github.com/pedroiff0/guia-github
-stack: Docs, Actions
-tags: Boas Práticas, Templates
+stack: Docs, GitHub Actions, Shell
+tags: Boas Práticas, Templates, Versionamento
 cat: pessoal
 visibility: público
 icon: github
 
-🇧🇷 Boas práticas, templates e exemplos de uso profissional do GitHub (Actions, Projects, Issues, Branching) para projetos Python.
+🇧🇷 Guia próprio de Git e boas práticas de versionamento — prático, não mais um manual genérico de comandos. Reúne templates, exemplos de Actions, Projects, Issues e estratégias de branching, com módulos sobre dockerização, versionamento em arquiteturas de microsserviços e padrões de documentação de repositório.
+🇺🇸 My own guide to Git and versioning best practices — hands-on, not yet another generic command manual. Gathers templates and examples of Actions, Projects, Issues and branching strategies, with modules on dockerization, versioning in microservice architectures and repository documentation standards.
+🇪🇸 Guía propia de Git y buenas prácticas de versionado — práctica, no un manual genérico más de comandos. Reúne plantillas y ejemplos de Actions, Projects, Issues y estrategias de ramificación, con módulos sobre dockerización, versionado en arquitecturas de microservicios y estándares de documentación de repositorio.
+🇫🇷 Mon propre guide de Git et des bonnes pratiques de versionnage — pratique, et non un énième manuel générique de commandes. Rassemble modèles et exemples d'Actions, Projects, Issues et stratégies de branches, avec des modules sur la dockerisation, le versionnage en architecture microservices et les standards de documentation de dépôt.
 
 ### Perfil GitHub
 repo: https://github.com/pedroiff0/pedroiff0
@@ -335,7 +429,24 @@ cat: pessoal
 visibility: público
 icon: profile
 
-🇧🇷 README de perfil do GitHub (bio, Tech & Tools, featured projects).
+🇧🇷 README de perfil do GitHub (bio, Tech & Tools, projetos em destaque).
+🇺🇸 GitHub profile README (bio, Tech & Tools, featured projects).
+🇪🇸 README de perfil de GitHub (bio, Tech & Tools, proyectos destacados).
+🇫🇷 README de profil GitHub (bio, Tech & Tools, projets en vedette).
+
+### Portfólio (este site)
+repo: https://github.com/pedroiff0/portfolio
+stack: HTML, CSS, JavaScript, Canvas, Python, GitHub Pages
+tags: Portfólio, Página Única, Multilíngue, Sem Framework
+cat: pessoal
+visibility: público
+icon: globe
+
+🇧🇷 Este portfólio: página única animada, multilíngue (PT/EN/ES/FR), sem framework — canvas de estrelas com repulsão ao mouse, cartões expansíveis e seletor de idioma persistido. O conteúdo não vive no HTML: é escrito em Markdown (src/portfolio.md) e compilado por um script Python para JS, com verificação automática no pre-commit. Serve de página de boas-vindas para o site oficial, onde está o conteúdo completo.
+🇺🇸 This portfolio: a single animated page, multilingual (PT/EN/ES/FR), framework-free — star canvas with mouse repulsion, expandable cards and a persisted language switcher. Content does not live in the HTML: it is written in Markdown (src/portfolio.md) and compiled to JS by a Python script, with automatic verification on pre-commit. It serves as the welcome page for the official site, where the full content lives.
+🇪🇸 Este portafolio: página única animada, multilingüe (PT/EN/ES/FR), sin framework — canvas de estrellas con repulsión al ratón, tarjetas expandibles y selector de idioma persistido. El contenido no vive en el HTML: se escribe en Markdown (src/portfolio.md) y se compila a JS con un script de Python, con verificación automática en el pre-commit. Sirve de página de bienvenida al sitio oficial, donde está el contenido completo.
+🇫🇷 Ce portfolio : page unique animée, multilingue (PT/EN/ES/FR), sans framework — canvas d'étoiles avec répulsion à la souris, cartes dépliables et sélecteur de langue persistant. Le contenu ne vit pas dans le HTML : il est écrit en Markdown (src/portfolio.md) et compilé en JS par un script Python, avec vérification automatique au pre-commit. Il sert de page d'accueil au site officiel, où se trouve le contenu complet.
+
 
 ## Bolsas
 

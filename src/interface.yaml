@@ -156,15 +156,40 @@ vis:
   pt:
     "público": "Público"
     privado: "Privado"
+    planejamento: "Em planejamento"
+    elaboracao: "Em elaboração"
   en:
     "público": "Public"
     privado: "Private"
+    planejamento: "Planned"
+    elaboracao: "In progress"
   es:
     "público": "Público"
     privado: "Privado"
+    planejamento: "En planificación"
+    elaboracao: "En elaboración"
   fr:
     "público": "Public"
     privado: "Privé"
+    planejamento: "En projet"
+    elaboracao: "En cours"
+labels:
+  pt:
+    details: "Detalhes"
+    viewRepo: "↗ Ver repositório no GitHub"
+    noRepo: "Sem repositório público ainda"
+  en:
+    details: "Details"
+    viewRepo: "↗ View repository on GitHub"
+    noRepo: "No public repository yet"
+  es:
+    details: "Detalles"
+    viewRepo: "↗ Ver repositorio en GitHub"
+    noRepo: "Aún sin repositorio público"
+  fr:
+    details: "Détails"
+    viewRepo: "↗ Voir le dépôt sur GitHub"
+    noRepo: "Pas encore de dépôt public"
 cat:
   pt:
     software: "Software"
