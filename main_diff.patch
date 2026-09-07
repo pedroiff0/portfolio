@@ -1,0 +1,435 @@
+diff --git a/assets/js/main.js b/assets/js/main.js
+index 56b3f56..4db35fe 100644
+--- a/assets/js/main.js
++++ b/assets/js/main.js
+@@ -2267,10 +2267,14 @@
+     warpAnimId = requestAnimationFrame(renderWarpFrame);
+   }
+ 
+-  function openSectorDossier(sectorName) {
++  function openSectorDossier(sectorName, syncHash = true) {
+     if (!sectorDossierOverlay) return;
+     if (activeSector === sectorName && sectorDossierOverlay.classList.contains("active")) return;
+ 
++    if (syncHash && window.location.hash !== `#${sectorName}`) {
++      window.history.pushState(null, "", `#${sectorName}`);
++    }
++
+     if (mainHudViewport) {
+       mainHudViewport.classList.remove("warp-returning");
+       mainHudViewport.classList.add("warp-departing");
+@@ -2320,9 +2324,13 @@
+     });
+   }
+ 
+-  function closeSectorDossier() {
++  function closeSectorDossier(syncHash = true) {
+     activeSector = null;
+ 
++    if (syncHash && window.location.hash && window.location.hash !== "#hub" && window.location.hash !== "#") {
++      window.history.pushState(null, "", "#hub");
++    }
++
+     if (!sectorDossierOverlay || !sectorDossierOverlay.classList.contains("active")) {
+       // If already closed or transitioning, ensure HUD is 100% visible and interactive
+       if (sectorDossierOverlay) {
+@@ -2363,10 +2371,23 @@
+     });
+   }
+ 
++  function handleHashNavigation() {
++    const rawHash = (window.location.hash || "").replace(/^#/, "").toLowerCase();
++    const validSectors = ["sobre", "software", "pesquisa", "contato"];
++    if (validSectors.includes(rawHash)) {
++      openSectorDossier(rawHash, false);
++    } else if (rawHash === "hub" || rawHash === "" || rawHash === "home") {
++      if (sectorDossierOverlay && sectorDossierOverlay.classList.contains("active")) {
++        closeSectorDossier(false);
++      }
++    }
++  }
++
+   function initSectorNavigation() {
+     // Corner nodes + Mobile dock buttons + Core stage buttons + Footer sector buttons
+     document.querySelectorAll("[data-open-sector]").forEach((btn) => {
+-      btn.addEventListener("click", () => {
++      btn.addEventListener("click", (e) => {
++        // e.preventDefault();
+         openSectorDossier(btn.dataset.openSector);
+       });
+       btn.addEventListener("mouseenter", () => sfx.hover());
+@@ -2375,7 +2396,7 @@
+     // Home actions (Brand logos, "Pedro Rocha" in footers)
+     document.querySelectorAll("[data-action='home']").forEach((btn) => {
+       btn.addEventListener("click", (e) => {
+-        e.preventDefault();
++        // e.preventDefault();
+         closeSectorDossier();
+         sfx.warp();
+       });
+@@ -2384,7 +2405,8 @@
+ 
+     // Switcher tabs inside dossier header
+     document.querySelectorAll("[data-switch-sector]").forEach((btn) => {
+-      btn.addEventListener("click", () => {
++      btn.addEventListener("click", (e) => {
++        // e.preventDefault();
+         openSectorDossier(btn.dataset.switchSector);
+       });
+       btn.addEventListener("mouseenter", () => sfx.hover());
+@@ -2392,10 +2414,22 @@
+ 
+     const closeBtn = document.getElementById("closeDossierBtn");
+     if (closeBtn) {
+-      closeBtn.addEventListener("click", closeSectorDossier);
++      closeBtn.addEventListener("click", (e) => {
++        // e.preventDefault();
++        closeSectorDossier();
++      });
+       closeBtn.addEventListener("mouseenter", () => sfx.hover());
+     }
+ 
++    // Browser back/forward navigation support
++    window.addEventListener("hashchange", handleHashNavigation);
++    window.addEventListener("popstate", handleHashNavigation);
++
++    // Initial check if opened with a hash
++    if (window.location.hash) {
++      setTimeout(handleHashNavigation, 100);
++    }
++
+     // Hover sound on interactive footer links and buttons
+     document.querySelectorAll(".rodape-icone-link, .btn-hud-pill, .btn-core").forEach((el) => {
+       el.addEventListener("mouseenter", () => sfx.hover());
+@@ -3430,7 +3464,7 @@
+   function initCommandPalette() {
+     window.addEventListener("keydown", (e) => {
+       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+-        e.preventDefault();
++        // e.preventDefault();
+         openCommandPalette();
+       }
+     });
+@@ -3940,29 +3974,13 @@
+   function triggerHesoyamCheat() {
+     sfx.hesoyam();
+     document.body.classList.add("gta-hesoyam-flash");
+-
+-    let gtaHud = document.getElementById("gtaHudBar");
+-    if (!gtaHud) {
+-      gtaHud = document.createElement("div");
+-      gtaHud.id = "gtaHudBar";
+-      gtaHud.className = "gta-hud-bar";
+-      gtaHud.innerHTML = `
+-        <div class="gta-money-line">+$250,000</div>
+-        <div class="gta-status-line">
+-          <div class="gta-meter gta-health"><div class="gta-meter-fill"></div><span>❤️ 100%</span></div>
+-          <div class="gta-meter gta-armor"><div class="gta-meter-fill"></div><span>🛡️ 100%</span></div>
+-        </div>
+-      `;
+-      document.body.appendChild(gtaHud);
+-    }
+-
++    updateExplorerCash(250000);
+     showToast("💵 HESOYAM // +$250.000, Saúde e Blindagem no Máximo!", "cash");
+     completeQuest("hacker");
+ 
+     setTimeout(() => {
+       document.body.classList.remove("gta-hesoyam-flash");
+-      if (gtaHud && gtaHud.parentNode) gtaHud.remove();
+-    }, 5000);
++    }, 2000);
+   }
+ 
+   let pkInterval = null;
+@@ -4011,10 +4029,50 @@
+     completeQuest("hacker");
+   }
+ 
++  /* ============================================================
++     12.3 YOUTUBE MINI PLAYER CONTROLLER
++     ============================================================ */
++  function playYouTubeTrack({ title, videoId }) {
++    const player = document.getElementById("ytMiniPlayer");
++    const titleEl = document.getElementById("ytPlayerTitle");
++    const iframe = document.getElementById("ytIframe");
++    const minBtn = document.getElementById("ytMinimizeBtn");
++    const closeBtn = document.getElementById("ytCloseBtn");
++
++    if (!player || !iframe) return;
++
++    if (titleEl && title) titleEl.textContent = title;
++    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
++
++    player.classList.add("active");
++    player.classList.remove("minimized");
++
++    if (!player.dataset.wired) {
++      player.dataset.wired = "true";
++      if (minBtn) {
++        minBtn.addEventListener("click", () => {
++          player.classList.toggle("minimized");
++        });
++      }
++      if (closeBtn) {
++        closeBtn.addEventListener("click", () => {
++          iframe.src = "";
++          player.classList.remove("active");
++        });
++      }
++    }
++  }
++
+   function triggerBMTHEasterEgg() {
+     sfx.bmth();
+     document.body.classList.add("bmth-glitch-active");
+ 
++    // Launch YouTube Mini Player playing BMTH - Can You Feel My Heart
++    playYouTubeTrack({
++      title: "Can You Feel My Heart — Bring Me The Horizon (Sempiternal)",
++      videoId: "QJJYpsA5tv8"
++    });
++
+     let banner = document.getElementById("bmthBanner");
+     if (!banner) {
+       banner = document.createElement("div");
+@@ -4028,7 +4086,7 @@
+       document.body.appendChild(banner);
+     }
+ 
+-    showToast("🎸 'Can you hear the silence?' // Can you feel my heart...", "star");
++    showToast("🎸 'Can you hear the silence?' // Tocando no Mini Player do YouTube...", "star");
+     completeQuest("hacker");
+ 
+     setTimeout(() => {
+@@ -4037,6 +4095,136 @@
+     }, 4500);
+   }
+ 
++  /* ============================================================
++     PERSISTENT HUB HUD (Explorer Status: Collapsible + Cash + Minimap)
++     ============================================================ */
++  let explorerCash = 250000;
++  let minimapAnimId = null;
++
++  function updateExplorerCash(amountToAdd = 0) {
++    explorerCash += amountToAdd;
++    const cashEl = document.getElementById("hudCashDisplay");
++    if (cashEl) {
++      cashEl.textContent = `+$${explorerCash.toLocaleString("en-US")}`;
++    }
++  }
++
++  function renderMinimapRadar() {
++    const canvas = document.getElementById("hudMinimap");
++    if (!canvas) return;
++    const mctx = canvas.getContext("2d");
++    if (!mctx) return;
++
++    const mw = canvas.width;
++    const mh = canvas.height;
++    const cx = mw / 2;
++    const cy = mh / 2;
++    const now = performance.now() * 0.001;
++
++    mctx.clearRect(0, 0, mw, mh);
++
++    // Radar Grid Circles
++    mctx.strokeStyle = "rgba(94, 234, 212, 0.25)";
++    mctx.lineWidth = 1;
++    mctx.beginPath();
++    mctx.arc(cx, cy, 18, 0, Math.PI * 2);
++    mctx.stroke();
++
++    mctx.beginPath();
++    mctx.arc(cx, cy, 38, 0, Math.PI * 2);
++    mctx.stroke();
++
++    // Radar Sweep Line
++    const sweepAngle = (now * 1.8) % (Math.PI * 2);
++    mctx.save();
++    mctx.beginPath();
++    mctx.moveTo(cx, cy);
++    mctx.arc(cx, cy, 46, sweepAngle - 0.35, sweepAngle);
++    mctx.fillStyle = "rgba(94, 234, 212, 0.15)";
++    mctx.fill();
++    mctx.restore();
++
++    // Center Hub Blip (Orbital Station)
++    mctx.beginPath();
++    mctx.arc(cx, cy, 3.5, 0, Math.PI * 2);
++    mctx.fillStyle = "#5eead4";
++    mctx.shadowColor = "#5eead4";
++    mctx.shadowBlur = 6;
++    mctx.fill();
++    mctx.shadowBlur = 0;
++
++    // Sector Blips: S1 Terra (top-left), S2 Marte (top-right), S3 Saturno (bottom-left), S4 Gargântua (bottom-right)
++    const sectors = [
++      { name: "Terra", x: cx - 26, y: cy - 20, color: "#6ea8fe" },
++      { name: "Marte", x: cx + 26, y: cy - 20, color: "#ef4444" },
++      { name: "Saturno", x: cx - 26, y: cy + 20, color: "#fbbf24" },
++      { name: "Gargântua", x: cx + 26, y: cy + 20, color: "#c084fc" }
++    ];
++
++    sectors.forEach((s) => {
++      mctx.beginPath();
++      mctx.arc(s.x, s.y, 2.8, 0, Math.PI * 2);
++      mctx.fillStyle = s.color;
++      mctx.fill();
++    });
++
++    minimapAnimId = requestAnimationFrame(renderMinimapRadar);
++  }
++
++  function initPersistentHubHud() {
++    let hud = document.getElementById("hubHudBar");
++    if (!hud) {
++      hud = document.createElement("aside");
++      hud.id = "hubHudBar";
++      hud.className = "gta-hud-bar";
++      hud.setAttribute("aria-label", "Status do Explorador");
++      hud.setAttribute("role", "status");
++      hud.innerHTML = `
++        <div class="gta-hud-header">
++          <span class="gta-hud-title" data-i18n="hud.statusExplorer">STATUS EXPLORADOR</span>
++          <button class="hud-collapse-btn" id="hudCollapseToggle" aria-label="Colapsar HUD" title="Expandir/Colapsar Status">
++            <span class="hud-collapse-icon">➖</span>
++          </button>
++        </div>
++        <div class="gta-hud-collapsible-content" id="hudCollapsibleContent">
++          <div class="gta-status-line">
++            <div class="gta-meter gta-health"><div class="gta-meter-fill"></div><span>❤️ 100%</span></div>
++            <div class="gta-meter gta-armor"><div class="gta-meter-fill"></div><span>🛡️ 100%</span></div>
++          </div>
++          <div class="gta-money-line" id="hudCashDisplay" title="Saldo de Créditos Orbitais">+$250,000</div>
++          <div class="gta-minimap-wrap">
++            <span class="gta-minimap-label">📡 RADAR ORBITAL // MINIMAP</span>
++            <canvas id="hudMinimap" width="130" height="96"></canvas>
++          </div>
++        </div>
++      `;
++      document.body.appendChild(hud);
++
++      const collapseBtn = document.getElementById("hudCollapseToggle");
++      const collapseIcon = collapseBtn ? collapseBtn.querySelector(".hud-collapse-icon") : null;
++      if (collapseBtn) {
++        collapseBtn.addEventListener("click", () => {
++          hud.classList.toggle("collapsed");
++          const isCollapsed = hud.classList.contains("collapsed");
++          if (collapseIcon) collapseIcon.textContent = isCollapsed ? "➕" : "➖";
++          localStorage.setItem("portfolio_hud_collapsed", isCollapsed ? "1" : "0");
++          sfx.click();
++        });
++
++        const wasCollapsed = localStorage.getItem("portfolio_hud_collapsed") === "1";
++        if (wasCollapsed) {
++          hud.classList.add("collapsed");
++          if (collapseIcon) collapseIcon.textContent = "➕";
++        }
++      }
++
++      if (!minimapAnimId) {
++        renderMinimapRadar();
++      }
++    }
++    hud.style.display = "flex";
++  }
++
+   function triggerKratosEasterEgg() {
+     sfx.kratos();
+     document.body.classList.add("spartan-rage-active", "screen-quake-active");
+@@ -4741,29 +4929,6 @@
+     }
+   }
+ 
+-  /* ============================================================
+-     PERSISTENT HUB HUD (Always visible health/armor status)
+-     ============================================================ */
+-  function initPersistentHubHud() {
+-    let hud = document.getElementById("hubHudBar");
+-    if (!hud) {
+-      hud = document.createElement("div");
+-      hud.id = "hubHudBar";
+-      hud.className = "gta-hud-bar";
+-      hud.setAttribute("aria-label", "Status do Explorador");
+-      hud.setAttribute("role", "status");
+-      hud.innerHTML = `
+-        <div class="gta-status-line">
+-          <div class="gta-meter gta-health"><div class="gta-meter-fill"></div><span>❤️ 100%</span></div>
+-          <div class="gta-meter gta-armor"><div class="gta-meter-fill"></div><span>🛡️ 100%</span></div>
+-        </div>
+-        <div class="gta-money-line" style="font-size:0.85rem; color: var(--accent-cyan); margin-top:4px;">EXPLORADOR // ATIVO</div>
+-      `;
+-      document.body.appendChild(hud);
+-    }
+-    hud.style.display = "flex";
+-  }
+-
+   /* ============================================================
+      13. i18n APPLIER & LANGUAGE ENGINE
+      ============================================================ */
+@@ -4781,6 +4946,13 @@
+       }
+     });
+ 
++    // Translate placeholders
++    document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
++      const key = el.getAttribute("data-i18n-placeholder");
++      const val = t(key);
++      if (val) el.setAttribute("placeholder", val);
++    });
++
+     // Translate all hardcoded kickers
+     document.querySelectorAll(".section-dossier-kicker").forEach((el) => {
+       const panel = el.closest(".dossier-panel");
+@@ -4956,7 +5128,7 @@
+       updateSfxUI();
+ 
+       const toggleSfx = (e) => {
+-        if (e) e.preventDefault();
++        if (e) // e.preventDefault();
+         getAudioContext();
+         sfxEnabled = !sfxEnabled;
+         localStorage.setItem("portfolio_sfx", sfxEnabled ? "true" : "false");
+@@ -5005,6 +5177,25 @@
+       });
+     }
+ 
++    // Mobile topbar drawer toggle (< 900px)
++    const mobileTopbarToggle = document.getElementById("mobileTopbarToggle");
++    const topHudBar = document.getElementById("topHudBar");
++    const closeMobileTopbarBtn = document.getElementById("closeMobileTopbarBtn");
++
++    if (mobileTopbarToggle && topHudBar) {
++      mobileTopbarToggle.addEventListener("click", () => {
++        topHudBar.classList.toggle("mobile-open");
++        sfx.click();
++      });
++    }
++
++    if (closeMobileTopbarBtn && topHudBar) {
++      closeMobileTopbarBtn.addEventListener("click", () => {
++        topHudBar.classList.remove("mobile-open");
++        sfx.click();
++      });
++    }
++
+     // Persistent GTA HUD on hub (always visible)
+     initPersistentHubHud();
+ 
+@@ -5033,3 +5224,14 @@
+     init();
+   }
+ })();
++
++window.addEventListener("hashchange", () => {
++  const escBtn = document.getElementById("closeDossierMobileBtn");
++  if (!escBtn) return;
++  const hash = window.location.hash.replace("#", "");
++  if (["sobre", "software", "pesquisa", "contato"].includes(hash)) {
++    escBtn.style.display = "flex";
++  } else {
++    escBtn.style.display = "none";
++  }
++});

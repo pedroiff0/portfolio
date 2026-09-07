@@ -521,13 +521,45 @@ body.cursor-active .cursor-glow {
 }
 
 .top-hud-bar {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-150%);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  z-index: 20;
+  gap: 12px;
+  width: auto;
+  max-width: 90vw;
+  padding: 6px 14px;
+  background: rgba(6, 10, 26, 0.75);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  transition: all 0.4s var(--ease-out-expo);
+  opacity: 0;
+}
+
+/* Invisible hit area to trigger hover */
+.top-hud-bar::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -60px;
+}
+
+.top-hud-bar:hover,
+.top-hud-bar:focus-within {
+  opacity: 1;
+  background: rgba(6, 10, 26, 0.96);
+  border-color: var(--panel-border-hover);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.75), 0 0 20px rgba(94, 234, 212, 0.2);
+  transform: translateX(-50%) translateY(2px);
 }
 
 .hud-brand {
@@ -998,8 +1030,30 @@ body.cursor-active .cursor-glow {
   padding: 16px clamp(18px, 4vw, 48px);
   background: rgba(6, 9, 24, 0.95);
   border-bottom: 1px solid var(--panel-border);
-  z-index: 10;
-  flex: none;
+  z-index: 50;
+  
+  /* Collapsed by default, appear on hover */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(-90%);
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.dossier-header-bar:hover,
+.dossier-header-bar:focus-within {
+  transform: translateY(0);
+}
+
+/* Invisible hit area to trigger hover */
+.dossier-header-bar::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
 }
 
 .dossier-nav-left {
@@ -1065,6 +1119,8 @@ body.cursor-active .cursor-glow {
   flex: 1;
   overflow-y: auto;
   padding: 40px clamp(18px, 4vw, 48px) 80px;
+  display: flex;
+  flex-direction: column;
 }
 
 .dossier-panel {
@@ -1907,6 +1963,8 @@ body.cursor-active .cursor-glow {
    8. UNIFIED LIQUID GLASS COSMIC FOOTER
    ============================================================ */
 .app-footer {
+  position: relative;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1938,7 +1996,7 @@ body.cursor-active .cursor-glow {
 }
 
 .app-footer--dossier {
-  margin-top: 48px;
+  margin-top: auto;
   width: 100%;
 }
 
@@ -3185,29 +3243,6 @@ body.konami-active {
     justify-content: center;
   }
 
-  .hud-task-tracker {
-    display: none !important;
-  }
-
-  .gta-hud-bar {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    top: auto !important;
-    bottom: 90px !important;
-    flex-direction: row !important;
-    padding: 8px 14px !important;
-    font-size: 0.7rem;
-  }
-
-  .gta-status-line {
-    flex-direction: row !important;
-  }
-
-  .gta-meter-fill {
-    width: 36px !important;
-    height: 6px !important;
-  }
-
   .mobile-hud-dock {
     display: flex !important;
   }
@@ -3232,6 +3267,37 @@ body.konami-active {
 }
 
 /* ============================================================
+   FLOATING MOBILE QUICK CONTROLS TOGGLE (< 900px)
+   ============================================================ */
+.mobile-topbar-toggle {
+  display: none;
+  position: fixed;
+  top: 12px;
+  left: 14px;
+  z-index: 10000;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(6, 10, 26, 0.92);
+  border: 1.5px solid rgba(94, 234, 212, 0.4);
+  color: var(--accent-cyan);
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(94, 234, 212, 0.25);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.mobile-topbar-toggle:hover,
+.mobile-topbar-toggle:active {
+  transform: scale(1.08);
+  border-color: var(--accent-cyan);
+}
+
+/* ============================================================
    EASTER EGG WIDGETS - HIDDEN BY DEFAULT
    ============================================================ */
 .easteregg-widget {
@@ -3242,7 +3308,7 @@ body.konami-active {
 }
 
 /* ============================================================
-   HUD STATUS BAR (Persistent on Hub)
+   HUD STATUS BAR (Persistent on Hub) - Collapsible with Minimap & Money
    ============================================================ */
 .gta-hud-bar {
   position: fixed;
@@ -3252,7 +3318,7 @@ body.konami-active {
   background: rgba(6, 10, 26, 0.94);
   border: 1.5px solid rgba(94, 234, 212, 0.4);
   border-radius: var(--radius-md);
-  padding: 14px 18px;
+  padding: 12px 16px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -3262,12 +3328,285 @@ body.konami-active {
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(94, 234, 212, 0.2);
   animation: slideInLeftHUD 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gta-hud-bar.collapsed .gta-hud-collapsible-content {
+  display: none !important;
+}
+
+.gta-hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+}
+
+.gta-hud-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+}
+
+.hud-collapse-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-muted);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hud-collapse-btn:hover {
+  color: #fff;
+  border-color: var(--accent-cyan);
+  background: rgba(94, 234, 212, 0.2);
+}
+
+.gta-hud-collapsible-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.gta-minimap-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(2, 6, 18, 0.7);
+  border: 1px solid rgba(94, 234, 212, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 6px;
+  position: relative;
+}
+
+.gta-minimap-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: left;
+}
+
+#hudMinimap {
+  display: block;
+  border-radius: 4px;
+  background: #030714;
 }
 
 [data-theme="light"] .gta-hud-bar {
   background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(30, 41, 59, 0.15);
+  border-color: rgba(30, 41, 59, 0.18);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .gta-minimap-wrap {
+  background: #f1f5f9;
+  border-color: rgba(30, 41, 59, 0.15);
+}
+
+[data-theme="light"] #hudMinimap {
+  background: #e2e8f0;
+}
+
+/* ============================================================
+   FLOATING YOUTUBE MINI PLAYER
+   ============================================================ */
+.yt-mini-player {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 320px;
+  background: rgba(6, 10, 26, 0.96);
+  border: 1.5px solid rgba(168, 85, 247, 0.45);
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 25px rgba(168, 85, 247, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 10002;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  animation: hudCardPop 0.35s var(--ease-out-expo);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.yt-mini-player.active {
+  display: flex;
+}
+
+.yt-mini-player.minimized {
+  width: 260px;
+}
+
+.yt-mini-player.minimized .yt-player-body {
+  display: none;
+}
+
+.yt-player-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(14, 20, 48, 0.85);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.yt-player-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.yt-pulse-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c084fc;
+  box-shadow: 0 0 8px #c084fc;
+  flex-shrink: 0;
+  animation: warpTelemetryPulse 1s infinite alternate;
+}
+
+.yt-player-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #e9d5ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.yt-player-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.yt-btn-ctrl {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.yt-btn-ctrl:hover {
+  color: #fff;
+  background: rgba(168, 85, 247, 0.3);
+  border-color: #c084fc;
+}
+
+.yt-btn-close:hover {
+  background: rgba(239, 68, 68, 0.3);
+  border-color: #ef4444;
+  color: #fca5a5;
+}
+
+.yt-player-body {
+  width: 100%;
+  height: 180px;
+  background: #000;
+}
+
+@media (max-width: 900px) {
+  .mobile-topbar-toggle {
+    display: flex !important;
+  }
+
+  .top-hud-bar {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 14px;
+    right: 14px;
+    transform: none !important;
+    width: auto;
+    max-width: calc(100vw - 28px);
+    border-radius: var(--radius-lg);
+    flex-direction: column;
+    padding: 16px;
+    gap: 14px;
+    z-index: 10001;
+    background: rgba(6, 10, 26, 0.98);
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9);
+  }
+
+  .top-hud-bar.mobile-open {
+    display: flex !important;
+    animation: hudCardPop 0.3s var(--ease-out-expo);
+  }
+
+  .top-hud-bar .hud-brand {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .top-hud-bar .hud-top-controls {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .top-hud-bar .lang-switch-hud {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .top-hud-bar .btn-hud-pill {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-topbar-close-mobile {
+    display: flex !important;
+  }
+
+  .gta-hud-bar {
+    left: 10px !important;
+    transform: none !important;
+    top: auto !important;
+    bottom: 84px !important;
+    padding: 8px 12px !important;
+    font-size: 0.72rem;
+    max-width: 240px;
+  }
+
+  .gta-hud-bar.collapsed {
+    padding: 6px 10px !important;
+  }
+
+  .yt-mini-player {
+    right: 10px;
+    bottom: 84px;
+    width: calc(100vw - 20px);
+    max-width: 320px;
+  }
 }
 
 .interstellar-hero-banner {
@@ -3466,3 +3805,19 @@ body.endurance-spin-active .sector-dossier-overlay {
   }
 }
 
+@media (max-width: 900px) {
+  .dossier-header-bar { display: none !important; }
+  .sector-dossier-overlay.active ~ #topHudBar.mobile-open .btn-topbar-close-dossier { display: flex !important; }
+}
+@media (max-width: 900px) {
+  .warp-hud-telemetry {
+    padding: 10px 16px;
+    transform: scale(0.85);
+  }
+}
+[data-theme="light"] #cosmosCanvas,
+[data-theme="light"] #introCanvas,
+[data-theme="light"] #warpTravelCanvas {
+  filter: invert(1) hue-rotate(180deg) contrast(0.9);
+  opacity: 0.85;
+}

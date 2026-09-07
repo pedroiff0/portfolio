@@ -749,7 +749,22 @@ const I18N = {
       location: "Localização"
     },
     bolsas: { orientLabel: "Orientação", periodLabel: "Período" },
-    footer: "feito com café, código e um céu estrelado."
+    footer: "feito com café, código e um céu estrelado.",
+    hud: {
+      returnBtn: "Retornar ao Hub [ESC]",
+      introBtn: "🚀 Intro",
+      searchBtn: "Buscar",
+      hubActive: "EXPLORADOR // ATIVO",
+      missions: "MISSÕES",
+      exploreProjects: "Explorar Projetos",
+      connect: "Conectar",
+      goldenRecord: "Clique no Disco Dourado para decodificar a mensagem interestelar gravada em Bom Jesus do Itabapoana - RJ.",
+      tesseractSync: "Clique para sincronizar os dados da singularidade através do tesseract gravitacional.",
+      docking: "🌀 Iniciar Acoplamento (68 RPM)",
+      statusExplorer: "STATUS EXPLORADOR",
+      radar: "📡 RADAR ORBITAL // MINIMAP",
+      skipIntro: "Pular [ESC] ⏭️"
+    }
   },
   en: {
     nav: [ "About", "Projects", "Work", "Research", "Resume", "Lattes", "Contact" ],
@@ -816,7 +831,22 @@ const I18N = {
       location: "Location"
     },
     bolsas: { orientLabel: "Supervisor", periodLabel: "Period" },
-    footer: "made with coffee, code and a starry sky."
+    footer: "made with coffee, code and a starry sky.",
+    hud: {
+      returnBtn: "Return to Hub [ESC]",
+      introBtn: "🚀 Intro",
+      searchBtn: "Search",
+      hubActive: "EXPLORER // ACTIVE",
+      missions: "MISSIONS",
+      exploreProjects: "Explore Projects",
+      connect: "Connect",
+      goldenRecord: "Click the Golden Record to decode the interstellar message recorded in Bom Jesus do Itabapoana - RJ.",
+      tesseractSync: "Click to synchronize singularity data through the gravitational tesseract.",
+      docking: "🌀 Initiate Docking (68 RPM)",
+      statusExplorer: "EXPLORER STATUS",
+      radar: "📡 ORBITAL RADAR // MINIMAP",
+      skipIntro: "Skip [ESC] ⏭️"
+    }
   },
   es: {
     nav: [
@@ -899,7 +929,22 @@ const I18N = {
       location: "Ubicación"
     },
     bolsas: { orientLabel: "Supervisor", periodLabel: "Período" },
-    footer: "hecho con café, código y un cielo estrellado."
+    footer: "hecho con café, código y un cielo estrellado.",
+    hud: {
+      returnBtn: "Volver al Hub [ESC]",
+      introBtn: "🚀 Intro",
+      searchBtn: "Buscar",
+      hubActive: "EXPLORADOR // ACTIVO",
+      missions: "MISIONES",
+      exploreProjects: "Explorar Proyectos",
+      connect: "Conectar",
+      goldenRecord: "Haz clic en el Disco Dorado para decodificar el mensaje interestelar grabado en Bom Jesus do Itabapoana - RJ.",
+      tesseractSync: "Haz clic para sincronizar los datos de la singularidad a través del teseracto gravitacional.",
+      docking: "🌀 Iniciar Acoplamiento (68 RPM)",
+      statusExplorer: "ESTADO EXPLORADOR",
+      radar: "📡 RADAR ORBITAL // MINIMAPA",
+      skipIntro: "Saltar [ESC] ⏭️"
+    }
   },
   fr: {
     nav: [ "À propos", "Projets", "Travaux", "Recherche", "CV", "Lattes", "Contact" ],
@@ -974,7 +1019,22 @@ const I18N = {
       location: "Localisation"
     },
     bolsas: { orientLabel: "Encadrant", periodLabel: "Période" },
-    footer: "fait avec du café, du code et un ciel étoilé."
+    footer: "fait avec du café, du code et un ciel étoilé.",
+    hud: {
+      returnBtn: "Retour au Hub [ESC]",
+      introBtn: "🚀 Intro",
+      searchBtn: "Recherche",
+      hubActive: "EXPLORATEUR // ACTIF",
+      missions: "MISSIONS",
+      exploreProjects: "Explorer les Projets",
+      connect: "Connexion",
+      goldenRecord: "Cliquez sur le Disque d.Or pour décoder le message interstellaire enregistré à Bom Jesus do Itabapoana - RJ.",
+      tesseractSync: "Cliquez pour synchroniser les données de la singularité à travers le tesseract gravitationnel.",
+      docking: "🌀 Initier l.Amarrage (68 RPM)",
+      statusExplorer: "STATUT EXPLORATEUR",
+      radar: "📡 RADAR ORBITAL // MINICARTE",
+      skipIntro: "Passer [ESC] ⏭️"
+    }
   }
 };
 

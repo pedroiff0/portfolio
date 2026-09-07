@@ -953,15 +953,18 @@
 
           // 3D Orbital Trajectory (Descends from 400km LEO down to South America LZ-01)
           const isMobile = window.innerWidth < 900;
-          const startZ = isMobile ? 5.2 : 4.6;
-          const endZ = isMobile ? 2.4 : 2.05;
+          const startZ = isMobile ? 5.6 : 4.6;
+          const endZ = isMobile ? 2.9 : 2.05;
           const startX = isMobile ? 0 : 0.45;
           const endX = isMobile ? 0 : 0.68;
+          const startY = isMobile ? 0.65 : 0.2;
+          const endY = isMobile ? 0.25 : -0.25;
 
           camera.position.z = startZ - (startZ - endZ) * Math.pow(p, 1.5);
           camera.position.x = startX + (endX - startX) * p;
-          camera.position.y = 0.2 - p * 0.45;
-          camera.lookAt(earthObj.group.position.x + 0.2 * p, earthObj.group.position.y, 0);
+          camera.position.y = startY - (startY - endY) * p;
+          const targetY = isMobile ? 0.45 : earthObj.group.position.y;
+          camera.lookAt(earthObj.group.position.x + (isMobile ? 0 : 0.2 * p), targetY, 0);
 
           // Re-entry Plasma Shockwave Flare intensity
           if (p > 0.35 && p < 0.96) {
