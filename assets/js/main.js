@@ -4196,11 +4196,7 @@
         </div>
       `;
       document.body.appendChild(hud);
-
-          if (collapseIcon) collapseIcon.textContent = "➕";
-        }
-      }
-
+      
       if (!minimapAnimId) {
         renderMinimapRadar();
       }
