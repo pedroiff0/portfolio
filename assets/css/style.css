@@ -1025,11 +1025,33 @@ body.cursor-active .cursor-glow {
   border-bottom: 1px solid var(--panel-border);
   z-index: 50;
 
-  /* Always visible & reachable — it used to be collapsed off-screen and only
-     reveal on hover (translateY(-90%)), which meant "Retornar ao Hub" and the
-     sector tabs were unreliable to hit (no hover on touch, easy to lose focus)
-     and effectively broke in-hub navigation. It's a normal flex item now. */
-  flex: none;
+  /* Reveal-on-hover by design (restored per feedback). This is safe from the
+     "navigation gets stuck" bug a previous pass fixed here — that bug was
+     .dossier-panel's own layout collapsing (see the panelFadeIn / width:100%
+     fixes elsewhere in this file), not this bar's visibility. ESC always
+     closes the dossier regardless of hover (see the keydown handler in
+     main.js), so this control is never the only way out. */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(-90%);
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.dossier-header-bar:hover,
+.dossier-header-bar:focus-within {
+  transform: translateY(0);
+}
+
+/* Invisible hit area to trigger hover */
+.dossier-header-bar::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
 }
 
 .dossier-nav-left {
