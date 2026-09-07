@@ -4182,9 +4182,6 @@
       hud.innerHTML = `
         <div class="gta-hud-header">
           <span class="gta-hud-title" data-i18n="hud.statusExplorer">STATUS EXPLORADOR</span>
-          <button class="hud-collapse-btn" id="hudCollapseToggle" aria-label="Colapsar HUD" title="Expandir/Colapsar Status">
-            <span class="hud-collapse-icon">➖</span>
-          </button>
         </div>
         <div class="gta-hud-collapsible-content" id="hudCollapsibleContent">
           <div class="gta-status-line">
@@ -4200,20 +4197,6 @@
       `;
       document.body.appendChild(hud);
 
-      const collapseBtn = document.getElementById("hudCollapseToggle");
-      const collapseIcon = collapseBtn ? collapseBtn.querySelector(".hud-collapse-icon") : null;
-      if (collapseBtn) {
-        collapseBtn.addEventListener("click", () => {
-          hud.classList.toggle("collapsed");
-          const isCollapsed = hud.classList.contains("collapsed");
-          if (collapseIcon) collapseIcon.textContent = isCollapsed ? "➕" : "➖";
-          localStorage.setItem("portfolio_hud_collapsed", isCollapsed ? "1" : "0");
-          sfx.click();
-        });
-
-        const wasCollapsed = localStorage.getItem("portfolio_hud_collapsed") === "1";
-        if (wasCollapsed) {
-          hud.classList.add("collapsed");
           if (collapseIcon) collapseIcon.textContent = "➕";
         }
       }
@@ -5198,6 +5181,30 @@
 
     // Persistent GTA HUD on hub (always visible)
     initPersistentHubHud();
+const gargantuaCanvas = document.getElementById("gargantuaBgCanvas");
+if (gargantuaCanvas) {
+  new ResizeObserver((entries) => {
+    for (let entry of entries) {
+      if (entry.contentRect.width > 0 && window.gargantua3DInstance) {
+        window.gargantua3DInstance.resize();
+      }
+    }
+  }).observe(gargantuaCanvas.parentElement);
+}
+
+const spectrumCanvas = document.getElementById("spectrumCanvas");
+if (spectrumCanvas) {
+  new ResizeObserver((entries) => {
+    for (let entry of entries) {
+      if (entry.contentRect.width > 0) {
+        const slider = document.getElementById("spectrumSlider");
+        if (slider) {
+          slider.dispatchEvent(new Event('input'));
+        }
+      }
+    }
+  }).observe(spectrumCanvas.parentElement);
+}
 
     const copyLattesBtn = document.getElementById("copyLattesBtn");
     if (copyLattesBtn) {

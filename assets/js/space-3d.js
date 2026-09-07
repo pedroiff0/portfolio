@@ -1105,8 +1105,8 @@
 
       const scene = new THREE.Scene();
       const getDims = () => ({
-        w: Math.max(280, window.innerWidth || document.body.clientWidth),
-        h: Math.max(240, window.innerHeight || document.body.clientHeight || 420)
+        w: Math.max(280, canvas.parentElement.clientWidth || window.innerWidth),
+        h: Math.max(240, canvas.parentElement.clientHeight || window.innerHeight)
       });
 
       const dims = getDims();
