@@ -736,6 +736,20 @@ body.cursor-active .cursor-glow {
 
 @keyframes orbRingSpin { to { transform: rotate(360deg); } }
 
+.core-orb-visual.is-3d canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50%;
+  pointer-events: auto;
+}
+
+.core-orb-visual.is-3d .core-orb-planet,
+.core-orb-visual.is-3d .core-orb-ring {
+  display: none !important;
+}
+
 .core-actions {
   display: flex;
   align-items: center;

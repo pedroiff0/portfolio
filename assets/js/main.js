@@ -803,9 +803,20 @@
     introCanvas = document.getElementById("introCanvas");
     if (!overlay || !introCanvas) return;
 
-    ictx = introCanvas.getContext("2d");
-    resizeIntroCanvas();
-    window.addEventListener("resize", resizeIntroCanvas);
+    let intro3D = null;
+    if (window.Space3D && typeof window.Space3D.initIntroScene === "function") {
+      try {
+        intro3D = window.Space3D.initIntroScene(introCanvas);
+      } catch (e) {
+        console.warn("3D Intro scene fallback:", e);
+      }
+    }
+
+    if (!intro3D) {
+      ictx = introCanvas.getContext("2d");
+      resizeIntroCanvas();
+      window.addEventListener("resize", resizeIntroCanvas);
+    }
 
     introStartTime = performance.now();
     introActive = true;
@@ -903,26 +914,34 @@
         }
       }
 
-      ictx.clearRect(0, 0, iw, ih);
+      if (intro3D) {
+        intro3D.render(p, elapsed);
+        if (p >= 1.0 && !impactTriggered) {
+          impactTriggered = true;
+          impactStartTime = now;
+          sfx.impact();
+        }
+      } else if (ictx) {
+        ictx.clearRect(0, 0, iw, ih);
 
-      // Apply Camera Shake upon Atmospheric Impact
-      let shakeX = 0, shakeY = 0;
-      if (shakeIntensity > 0.1) {
-        shakeX = (Math.random() - 0.5) * shakeIntensity;
-        shakeY = (Math.random() - 0.5) * shakeIntensity;
-        shakeIntensity *= 0.90;
-      }
+        // Apply Camera Shake upon Atmospheric Impact
+        let shakeX = 0, shakeY = 0;
+        if (shakeIntensity > 0.1) {
+          shakeX = (Math.random() - 0.5) * shakeIntensity;
+          shakeY = (Math.random() - 0.5) * shakeIntensity;
+          shakeIntensity *= 0.90;
+        }
 
-      ictx.save();
-      ictx.translate(shakeX, shakeY);
+        ictx.save();
+        ictx.translate(shakeX, shakeY);
 
-      // 1. Deep Space Cosmic Background with Galactic Band
-      ictx.fillStyle = "#010309";
-      ictx.fillRect(0, 0, iw, ih);
+        // 1. Deep Space Cosmic Background with Galactic Band
+        ictx.fillStyle = "#010309";
+        ictx.fillRect(0, 0, iw, ih);
 
-      const milkyGrad = ictx.createLinearGradient(0, 0, iw, ih);
-      milkyGrad.addColorStop(0, "rgba(15, 23, 42, 0.4)");
-      milkyGrad.addColorStop(0.35, "rgba(49, 27, 98, 0.18)");
+        const milkyGrad = ictx.createLinearGradient(0, 0, iw, ih);
+        milkyGrad.addColorStop(0, "rgba(15, 23, 42, 0.4)");
+        milkyGrad.addColorStop(0.35, "rgba(49, 27, 98, 0.18)");
       milkyGrad.addColorStop(0.65, "rgba(14, 116, 144, 0.12)");
       milkyGrad.addColorStop(1, "rgba(2, 6, 23, 0.6)");
       ictx.fillStyle = milkyGrad;
@@ -1445,7 +1464,9 @@
         return;
       }
 
-      ictx.restore(); // End Camera Shake Transform
+      if (ictx) {
+        ictx.restore(); // End Camera Shake Transform
+      }
 
       requestAnimationFrame(renderIntroLoop);
     }
@@ -1461,6 +1482,10 @@
 
     function dismissIntro() {
       introActive = false;
+      if (intro3D) {
+        try { intro3D.destroy(); } catch (e) {}
+        intro3D = null;
+      }
       if (overlay) overlay.classList.add("dismissed");
       if (mainHudViewport) {
         mainHudViewport.classList.remove("warp-departing");
@@ -1591,6 +1616,8 @@
     }
   }
 
+  let warp3D = null;
+
   function resizeWarpCanvas() {
     if (!warpCanvas) return;
     warpDpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -1602,10 +1629,19 @@
 
   function initWarpTravelEngine() {
     if (!warpCanvas) return;
-    warpCtx = warpCanvas.getContext("2d");
-    resizeWarpCanvas();
-    window.addEventListener("resize", resizeWarpCanvas);
-    initWarpStars();
+    if (window.Space3D && typeof window.Space3D.initWarpScene === "function") {
+      try {
+        warp3D = window.Space3D.initWarpScene(warpCanvas);
+      } catch (e) {
+        console.warn("3D Warp scene fallback:", e);
+      }
+    }
+    if (!warp3D) {
+      warpCtx = warpCanvas.getContext("2d");
+      resizeWarpCanvas();
+      window.addEventListener("resize", resizeWarpCanvas);
+      initWarpStars();
+    }
   }
 
   function drawPlanet(pctx, type, cx, cy, radius, progress) {
@@ -2087,7 +2123,11 @@
     if (warpDestText) warpDestText.textContent = dest.coords;
 
     warpOverlay.classList.add("active");
-    resizeWarpCanvas();
+    if (warp3D) {
+      warp3D.setDestination(dest.type);
+    } else {
+      resizeWarpCanvas();
+    }
 
     const startTime = performance.now();
     const duration = 1650; // Calm, cinematic 1.65-second interplanetary transition
@@ -2123,14 +2163,17 @@
         warpDestText.textContent = dest.coords;
       }
 
-      if (warpCtx) {
+      const warpSpeedFactor = Math.sin(p * Math.PI);
+
+      if (warp3D) {
+        warp3D.render(p, warpSpeedFactor);
+      } else if (warpCtx) {
         warpCtx.clearRect(0, 0, warpW, warpH);
 
         const cx = warpW / 2;
         const cy = warpH / 2;
 
         // 1. Star Streaks in Hyperdrive (Smooth bell curve velocity)
-        const warpSpeedFactor = Math.sin(p * Math.PI);
         const currentSpeed = 16 + Math.pow(warpSpeedFactor, 1.35) * 165;
 
         warpCtx.lineWidth = 1.8 * warpDpr;
@@ -2260,6 +2303,10 @@
         sectorDossierOverlay.classList.add("active", "dossier-arriving");
         initCounters();
         wireSpotlights(sectorDossierOverlay);
+
+        if (sectorName === "contato" && gargantua3DInstance && typeof gargantua3DInstance.resize === "function") {
+          setTimeout(() => gargantua3DInstance.resize(), 60);
+        }
       },
       onComplete: () => {
         if (sectorDossierOverlay) sectorDossierOverlay.classList.remove("dossier-arriving");
@@ -3777,12 +3824,19 @@
       });
     }
 
-    // Interactive core orb hook
+    // Interactive 3D core orb hook
     const coreOrb = document.querySelector(".core-orb-visual");
     if (coreOrb) {
+      if (window.Space3D && typeof window.Space3D.initCoreOrb === "function") {
+        try {
+          window.Space3D.initCoreOrb(coreOrb);
+        } catch (e) {
+          console.warn("3D Core Orb fallback:", e);
+        }
+      }
       coreOrb.addEventListener("click", () => {
         sfx.warp();
-        showToast("Core Station Orb sincronizado com a rede neural", "star");
+        showToast("Core Station Orb 3D sincronizado com a rede neural", "star");
         completeQuest("orb");
       });
       coreOrb.addEventListener("mouseenter", () => sfx.hover());
@@ -4096,12 +4150,21 @@
     } catch (e) {}
   }
 
-  /* ============================================================
-     12.5 GARGÂNTUA LIVE RELATIVISTIC CANVAS BACKGROUND (INTERESTELAR)
-     ============================================================ */
+  let gargantua3DInstance = null;
+
   function initGargantuaBackground() {
     const canvas = document.getElementById("gargantuaBgCanvas");
     if (!canvas) return;
+
+    if (window.Space3D && typeof window.Space3D.initGargantuaBg === "function") {
+      try {
+        gargantua3DInstance = window.Space3D.initGargantuaBg(canvas);
+        if (gargantua3DInstance) return;
+      } catch (e) {
+        console.warn("3D Gargantua bg fallback:", e);
+      }
+    }
+
     const ctx = canvas.getContext("2d");
     let width = 0;
     let height = 0;
