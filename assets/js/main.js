@@ -224,6 +224,136 @@
         osc2.start(now);
         osc2.stop(now + 0.7);
       } catch (e) {}
+    },
+    simoleons: () => {
+      if (!sfxEnabled) return;
+      try {
+        playTone(1318.51, "sine", 0.1, 0.05); // E6
+        setTimeout(() => playTone(1760.00, "triangle", 0.25, 0.06), 70); // A6
+        setTimeout(() => playTone(2093.00, "sine", 0.35, 0.04), 140); // C7
+        [200, 260, 320, 370, 420].forEach((delay, i) => {
+          setTimeout(() => {
+            playTone(2400 + i * 180, "sine", 0.04, 0.025);
+          }, delay);
+        });
+      } catch (e) {}
+    },
+    hesoyam: () => {
+      if (!sfxEnabled) return;
+      try {
+        const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
+        notes.forEach((freq, idx) => {
+          setTimeout(() => {
+            playTone(freq, "triangle", 0.08, 0.04);
+          }, idx * 55);
+        });
+        setTimeout(() => {
+          playTone(2093.00, "sine", 0.3, 0.05);
+        }, notes.length * 55);
+      } catch (e) {}
+    },
+    godmode: () => {
+      if (!sfxEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sawtooth";
+        osc.frequency.setValueAtTime(220, now);
+        osc.frequency.exponentialRampToValueAtTime(1760, now + 1.2);
+        gain.gain.setValueAtTime(0.01, now);
+        gain.gain.linearRampToValueAtTime(0.07, now + 0.6);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.4);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 1.4);
+
+        const osc2 = ctx.createOscillator();
+        const gain2 = ctx.createGain();
+        osc2.type = "sine";
+        osc2.frequency.setValueAtTime(110, now);
+        osc2.frequency.exponentialRampToValueAtTime(440, now + 0.8);
+        gain2.gain.setValueAtTime(0.08, now);
+        gain2.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        osc2.start(now);
+        osc2.stop(now + 1.2);
+      } catch (e) {}
+    },
+    bmth: () => {
+      if (!sfxEnabled) return;
+      try {
+        const melody = [
+          { f: 392.00, d: 160, type: "sawtooth", g: 0.045 },
+          { f: 392.00, d: 160, type: "sawtooth", g: 0.045 },
+          { f: 466.16, d: 180, type: "sawtooth", g: 0.05 },
+          { f: 523.25, d: 320, type: "sawtooth", g: 0.055 },
+          { f: 466.16, d: 200, type: "sawtooth", g: 0.045 },
+          { f: 392.00, d: 240, type: "sawtooth", g: 0.045 },
+          { f: 349.23, d: 400, type: "sawtooth", g: 0.04 }
+        ];
+        let t = 0;
+        melody.forEach((note) => {
+          setTimeout(() => {
+            playTone(note.f, note.type, note.d / 1000, note.g);
+          }, t);
+          t += note.d + 30;
+        });
+      } catch (e) {}
+    },
+    kratos: () => {
+      if (!sfxEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sawtooth";
+        osc.frequency.setValueAtTime(82.4, now);
+        osc.frequency.exponentialRampToValueAtTime(110.0, now + 0.6);
+        osc.frequency.exponentialRampToValueAtTime(73.4, now + 1.6);
+        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.8);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 1.8);
+
+        setTimeout(() => {
+          playTone(180, "square", 0.15, 0.08);
+          playTone(90, "sine", 0.35, 0.1);
+        }, 300);
+      } catch (e) {}
+    },
+    focusScan: () => {
+      if (!sfxEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(2400, now);
+        osc.frequency.exponentialRampToValueAtTime(800, now + 0.35);
+        osc.frequency.exponentialRampToValueAtTime(1800, now + 0.6);
+        gain.gain.setValueAtTime(0.06, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.65);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.65);
+
+        setTimeout(() => {
+          playTone(1760, "triangle", 0.12, 0.035);
+          setTimeout(() => playTone(2637, "sine", 0.18, 0.03), 80);
+        }, 350);
+      } catch (e) {}
     }
   };
 
@@ -2876,6 +3006,79 @@
 
     // Secret Easter Egg Commands
     const secretActions = [];
+
+    // The Sims Motherlode Cheat
+    if (q.includes("motherload") || q.includes("motherlord") || q.includes("motherlode") || q.includes("sims") || q.includes("simoleon") || q.includes("rosebud")) {
+      secretActions.push({
+        type: "secret",
+        title: "💰 CHEAT THE SIMS: motherlode (+§50.000 Simoleons)",
+        sub: "Easter Egg // 'Kaching! Crédito de §50.000 Simoleons concedido ao saldo orbital'",
+        icon: "cash",
+        tag: "THE SIMS CHEAT",
+        act: () => triggerMotherloadCheat()
+      });
+    }
+
+    // GTA San Andreas Money & Health Cheat (HESOYAM)
+    if (q.includes("hesoyam") || q.includes("sanandreas") || q.includes("san andreas") || q.includes("gta sa") || q.includes("baguvix") || q.includes("aezakmi")) {
+      secretActions.push({
+        type: "secret",
+        title: "💵 CHEAT GTA SAN ANDREAS: HESOYAM (+$250.000 + Colete/Vida)",
+        sub: "Easter Egg // '+$250k, Vida 100%, Colete 100% e Reparo de Veículo'",
+        icon: "cash",
+        tag: "GTA SA CHEAT",
+        act: () => triggerHesoyamCheat()
+      });
+    }
+
+    // GTA 5 Invincibility Godmode (PAINKILLER / 1-999-724-654-5537)
+    if (q.includes("painkiller") || q.includes("godmode") || q.includes("god mode") || q.includes("imortal") || q.includes("1-999-724-654-5537") || q.includes("19997246545537")) {
+      secretActions.push({
+        type: "secret",
+        title: "⭐ CHEAT GTA V: PAINKILLER / GODMODE (Imortalidade 5 Minutos)",
+        sub: "Easter Egg // '1-999-724-654-5537: Escudo cósmico invulnerável por 5 minutos'",
+        icon: "star",
+        tag: "GTA V CHEAT",
+        act: () => triggerPainkillerCheat()
+      });
+    }
+
+    // Bring Me The Horizon (BMTH / Sempiternal / Can You Feel My Heart)
+    if (q.includes("bmth") || q.includes("bring me the horizon") || q.includes("can you feel my heart") || q.includes("sempiternal") || q.includes("parasite") || q.includes("shadow moses") || q.includes("kingslayer")) {
+      secretActions.push({
+        type: "secret",
+        title: "🎸 BRING ME THE HORIZON: Can You Feel My Heart",
+        sub: "Easter Egg // Sempiternal Synthesizer Overdrive // 'Can you feel my heart?'",
+        icon: "star",
+        tag: "BMTH",
+        act: () => triggerBMTHEasterEgg()
+      });
+    }
+
+    // God of War (Kratos / Leviathan Axe / BOY!)
+    if (q.includes("kratos") || q.includes("god of war") || q.includes("gow") || q.includes("boy") || q.includes("leviathan") || q.includes("spartan") || q.includes("ragnarok")) {
+      secretActions.push({
+        type: "secret",
+        title: "🪓 GOD OF WAR: Kratos & Leviathan Axe (BOY!)",
+        sub: "Easter Egg // 'BOY! Não tenha pena. Seja melhor.' — Spartan Rage",
+        icon: "darkmatter",
+        tag: "GOD OF WAR",
+        act: () => triggerKratosEasterEgg()
+      });
+    }
+
+    // Horizon Zero Dawn (Aloy / Focus / Gaia)
+    if (q.includes("aloy") || q.includes("horizon") || q.includes("focus") || q.includes("hzd") || q.includes("zero dawn") || q.includes("cauldron") || q.includes("nora")) {
+      secretActions.push({
+        type: "secret",
+        title: "👁️ HORIZON ZERO DAWN: Varredura Holográfica Focus (Aloy)",
+        sub: "Easter Egg // 'Sistema Focus de Realidade Aumentada // Gaia Core Ativo'",
+        icon: "spectrum",
+        tag: "HORIZON",
+        act: () => triggerHorizonEasterEgg()
+      });
+    }
+
     if (q.includes("matrix") || q.includes("neo")) {
       secretActions.push({
         type: "secret",
@@ -3516,8 +3719,213 @@
     }, 12000);
   }
 
+  /* ============================================================
+     12.2 EASTER EGG POP CULTURE & CHEAT TRIGGERS
+     ============================================================ */
+  function triggerMotherloadCheat() {
+    sfx.simoleons();
+    document.body.classList.add("sims-green-flash");
+
+    let container = document.getElementById("simoleonContainer");
+    if (!container) {
+      container = document.createElement("div");
+      container.id = "simoleonContainer";
+      container.className = "simoleon-particles-container";
+      document.body.appendChild(container);
+    }
+    container.innerHTML = "";
+
+    const count = 35;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement("span");
+      p.className = "simoleon-particle";
+      p.textContent = "§";
+      p.style.left = `${Math.random() * 92 + 4}%`;
+      p.style.animationDelay = `${Math.random() * 0.8}s`;
+      p.style.animationDuration = `${Math.random() * 1.2 + 1.8}s`;
+      p.style.fontSize = `${Math.random() * 1.6 + 1.2}rem`;
+      container.appendChild(p);
+    }
+
+    let pill = document.getElementById("simsCashPill");
+    if (!pill) {
+      pill = document.createElement("div");
+      pill.id = "simsCashPill";
+      pill.className = "sims-cash-pill";
+      pill.innerHTML = `<span>💰 +§50.000 SIMOLEONS</span><small>THE SIMS CHEAT ACTIVATED</small>`;
+      document.body.appendChild(pill);
+    }
+
+    showToast("💰 MOTHERLODE ATIVADO! +§50.000 Simoleons depositados no tesouro galáctico!", "cash");
+    completeQuest("hacker");
+
+    setTimeout(() => {
+      document.body.classList.remove("sims-green-flash");
+      if (pill && pill.parentNode) pill.remove();
+      if (container && container.parentNode) container.remove();
+    }, 4500);
+  }
+
+  function triggerHesoyamCheat() {
+    sfx.hesoyam();
+    document.body.classList.add("gta-hesoyam-flash");
+
+    let gtaHud = document.getElementById("gtaHudBar");
+    if (!gtaHud) {
+      gtaHud = document.createElement("div");
+      gtaHud.id = "gtaHudBar";
+      gtaHud.className = "gta-hud-bar";
+      gtaHud.innerHTML = `
+        <div class="gta-money-line">+$250,000</div>
+        <div class="gta-status-line">
+          <div class="gta-meter gta-health"><div class="gta-meter-fill"></div><span>❤️ 100%</span></div>
+          <div class="gta-meter gta-armor"><div class="gta-meter-fill"></div><span>🛡️ 100%</span></div>
+        </div>
+      `;
+      document.body.appendChild(gtaHud);
+    }
+
+    showToast("💵 HESOYAM ATIVADO! +$250.000, Vida Máxima e Colete Restaurados!", "cash");
+    completeQuest("hacker");
+
+    setTimeout(() => {
+      document.body.classList.remove("gta-hesoyam-flash");
+      if (gtaHud && gtaHud.parentNode) gtaHud.remove();
+    }, 5000);
+  }
+
+  let pkInterval = null;
+  function triggerPainkillerCheat() {
+    sfx.godmode();
+    document.body.classList.add("painkiller-active");
+
+    if (pkInterval) clearInterval(pkInterval);
+
+    let badge = document.getElementById("painkillerTimer");
+    if (!badge) {
+      badge = document.createElement("div");
+      badge.id = "painkillerTimer";
+      badge.className = "painkiller-timer-badge";
+      document.body.appendChild(badge);
+    }
+
+    let remainingSec = 300; // 5 minutes
+    const updateTimerText = () => {
+      const m = Math.floor(remainingSec / 60).toString().padStart(2, "0");
+      const s = (remainingSec % 60).toString().padStart(2, "0");
+      if (badge) {
+        badge.innerHTML = `
+          <span class="pk-star">⭐</span>
+          <span class="pk-label">INVENCIBILIDADE (GTA V):</span>
+          <strong class="pk-time">${m}:${s}</strong>
+        `;
+      }
+    };
+    updateTimerText();
+
+    pkInterval = setInterval(() => {
+      remainingSec--;
+      if (remainingSec <= 0) {
+        clearInterval(pkInterval);
+        pkInterval = null;
+        document.body.classList.remove("painkiller-active");
+        if (badge && badge.parentNode) badge.remove();
+        showToast("⭐ Efeito de Invencibilidade expirado", "star");
+      } else {
+        updateTimerText();
+      }
+    }, 1000);
+
+    showToast("⭐ PAINKILLER ATIVADO! Imortalidade cósmica por 5 minutos!", "star");
+    completeQuest("hacker");
+  }
+
+  function triggerBMTHEasterEgg() {
+    sfx.bmth();
+    document.body.classList.add("bmth-glitch-active");
+
+    let banner = document.getElementById("bmthBanner");
+    if (!banner) {
+      banner = document.createElement("div");
+      banner.id = "bmthBanner";
+      banner.className = "bmth-center-banner";
+      banner.innerHTML = `
+        <div class="bmth-head">🎸 BRING ME THE HORIZON // SEMPITERNAL</div>
+        <div class="bmth-quote">"Can you hear the silence? Can you see the dark? Can you fix the broken? CAN YOU FEEL MY HEART?"</div>
+        <div class="bmth-eq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      `;
+      document.body.appendChild(banner);
+    }
+
+    showToast("🎸 BMTH: 'CAN YOU FEEL MY HEART' // Sempiternal Protocol Overdrive!", "star");
+    completeQuest("hacker");
+
+    setTimeout(() => {
+      document.body.classList.remove("bmth-glitch-active");
+      if (banner && banner.parentNode) banner.remove();
+    }, 4500);
+  }
+
+  function triggerKratosEasterEgg() {
+    sfx.kratos();
+    document.body.classList.add("spartan-rage-active", "screen-quake-active");
+
+    let banner = document.getElementById("kratosBanner");
+    if (!banner) {
+      banner = document.createElement("div");
+      banner.id = "kratosBanner";
+      banner.className = "kratos-center-banner";
+      banner.innerHTML = `
+        <div class="kratos-axe-icon">🪓</div>
+        <div class="kratos-title">GOD OF WAR // SPARTAN RAGE</div>
+        <div class="kratos-quote">"BOY! Não tenha pena. Seja melhor."</div>
+      `;
+      document.body.appendChild(banner);
+    }
+
+    setTimeout(() => document.body.classList.remove("screen-quake-active"), 900);
+
+    showToast("🪓 KRATOS: 'BOY! Não tenha pena. Seja melhor.' // Fúria Espartana!", "star");
+    completeQuest("hacker");
+
+    setTimeout(() => {
+      document.body.classList.remove("spartan-rage-active");
+      if (banner && banner.parentNode) banner.remove();
+    }, 4200);
+  }
+
+  function triggerHorizonEasterEgg() {
+    sfx.focusScan();
+    document.body.classList.add("focus-scan-active");
+
+    let overlay = document.getElementById("horizonFocusOverlay");
+    if (!overlay) {
+      overlay = document.createElement("div");
+      overlay.id = "horizonFocusOverlay";
+      overlay.className = "horizon-focus-overlay";
+      overlay.innerHTML = `
+        <div class="focus-tri-reticle"></div>
+        <div class="focus-scan-line"></div>
+        <div class="focus-hud-tag">👁️ FOCUS DE REALIDADE AUMENTADA // ALVO: ALOY (NORA) // GAIA CORE ONLINE</div>
+      `;
+      document.body.appendChild(overlay);
+    }
+
+    showToast("👁️ FOCUS ATIVADO: Varredura holográfica em 360° // Alvo: Aloy dos Nora!", "spectrum");
+    completeQuest("hacker");
+
+    setTimeout(() => {
+      document.body.classList.remove("focus-scan-active");
+      if (overlay && overlay.parentNode) overlay.remove();
+    }, 4500);
+  }
+
+  // Global Keydown Handler: Konami Code & Real-Time Typing Cheat Buffer
+  let keySequenceBuffer = "";
   window.addEventListener("keydown", (e) => {
     const key = e.key.toLowerCase();
+
+    // 1. Konami check
     if (key === KONAMI_CODE[konamiIndex]) {
       konamiIndex++;
       if (konamiIndex === KONAMI_CODE.length) {
@@ -3526,6 +3934,38 @@
       }
     } else {
       konamiIndex = 0;
+    }
+
+    // 2. Global Cheat Code keystroke tracker (only when not focused on an input)
+    if (["input", "textarea", "select"].includes(document.activeElement?.tagName?.toLowerCase())) {
+      return;
+    }
+
+    if (e.key.length === 1) {
+      keySequenceBuffer += key;
+      if (keySequenceBuffer.length > 25) {
+        keySequenceBuffer = keySequenceBuffer.slice(-25);
+      }
+
+      if (keySequenceBuffer.endsWith("motherload") || keySequenceBuffer.endsWith("motherlord") || keySequenceBuffer.endsWith("motherlode")) {
+        keySequenceBuffer = "";
+        triggerMotherloadCheat();
+      } else if (keySequenceBuffer.endsWith("hesoyam")) {
+        keySequenceBuffer = "";
+        triggerHesoyamCheat();
+      } else if (keySequenceBuffer.endsWith("painkiller") || keySequenceBuffer.endsWith("godmode")) {
+        keySequenceBuffer = "";
+        triggerPainkillerCheat();
+      } else if (keySequenceBuffer.endsWith("bmth") || keySequenceBuffer.endsWith("sempiternal")) {
+        keySequenceBuffer = "";
+        triggerBMTHEasterEgg();
+      } else if (keySequenceBuffer.endsWith("kratos") || keySequenceBuffer.endsWith("spartan")) {
+        keySequenceBuffer = "";
+        triggerKratosEasterEgg();
+      } else if (keySequenceBuffer.endsWith("aloy") || keySequenceBuffer.endsWith("focus") || keySequenceBuffer.endsWith("hzd")) {
+        keySequenceBuffer = "";
+        triggerHorizonEasterEgg();
+      }
     }
   });
 
@@ -3939,21 +4379,36 @@
 
     const sfxBtn = document.getElementById("sfxToggle");
     if (sfxBtn) {
-      const updateSfxIcon = () => {
-        sfxBtn.innerHTML = sfxEnabled ? iconSVG("volume") : iconSVG("volumeMute");
+      const updateSfxUI = () => {
+        sfxBtn.innerHTML = `
+          <span class="sfx-icon-wrap" style="display:inline-flex;align-items:center;justify-content:center;">
+            ${sfxEnabled ? iconSVG("volume") : iconSVG("volumeMute")}
+          </span>
+          <span class="sfx-label">${sfxEnabled ? "SFX" : "MUTE"}</span>
+        `;
         sfxBtn.classList.toggle("active", sfxEnabled);
-        sfxBtn.setAttribute("title", sfxEnabled ? "Efeitos Sonoros: Ativados" : "Efeitos Sonoros: Desativados");
+        sfxBtn.setAttribute("title", sfxEnabled ? "Efeitos Sonoros: Ativados (Clique para Desativar)" : "Efeitos Sonoros: Desativados (Clique para Ativar)");
+        sfxBtn.setAttribute("aria-pressed", sfxEnabled ? "true" : "false");
       };
-      updateSfxIcon();
-      sfxBtn.addEventListener("click", () => {
+      updateSfxUI();
+
+      const toggleSfx = (e) => {
+        if (e) e.preventDefault();
         getAudioContext();
         sfxEnabled = !sfxEnabled;
         localStorage.setItem("portfolio_sfx", sfxEnabled ? "true" : "false");
-        updateSfxIcon();
-        if (sfxEnabled) sfx.success();
-        showToast(sfxEnabled ? "Efeitos sonoros ativados!" : "Efeitos sonoros desativados", sfxEnabled ? "volume" : "volumeMute");
+        updateSfxUI();
+        if (sfxEnabled) {
+          sfx.success();
+          showToast("🔊 Efeitos sonoros ativados!", "volume");
+        } else {
+          showToast("🔇 Efeitos sonoros desativados", "volumeMute");
+        }
         completeQuest("sfx");
-      });
+      };
+
+      sfxBtn.addEventListener("click", toggleSfx);
+      sfxBtn.addEventListener("touchstart", () => getAudioContext(), { passive: true });
     }
 
     document.querySelectorAll(".filter-btn").forEach((btn) => {

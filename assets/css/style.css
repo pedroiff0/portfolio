@@ -552,6 +552,29 @@ body.cursor-active .cursor-glow {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   transition: all 0.25s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn-hud-pill svg,
+.btn-hud-pill .icon {
+  width: 14px;
+  height: 14px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.sfx-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sfx-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .btn-hud-pill:hover {
@@ -559,6 +582,13 @@ body.cursor-active .cursor-glow {
   background: rgba(110, 168, 254, 0.12);
   border-color: var(--panel-border-hover);
   transform: translateY(-2px);
+}
+
+#sfxToggle.active {
+  color: var(--accent-cyan);
+  background: rgba(94, 234, 212, 0.12);
+  border-color: rgba(94, 234, 212, 0.5);
+  box-shadow: 0 0 14px rgba(94, 234, 212, 0.25);
 }
 
 .lang-switch-hud {
@@ -2187,7 +2217,7 @@ body.cursor-active .cursor-glow {
   color: var(--text-main);
 }
 
-/* ---------- 9. RESPONSIVE BREAKPOINTS ---------- */
+/* ---------- 9. RESPONSIVE BREAKPOINTS (MOBILE-FIRST OPTIMIZATIONS) ---------- */
 @media (max-width: 1024px) {
   .corner-node { padding: 10px 16px; }
   .corner-node__icon { width: 36px; height: 36px; font-size: 1.2rem; }
@@ -2204,22 +2234,43 @@ body.cursor-active .cursor-glow {
 @media (max-width: 900px) {
   .corner-node { display: none !important; }
   .mobile-hud-dock { display: flex !important; }
-  .center-core-stage { width: 92%; max-width: 500px; }
-  .core-name-title { font-size: 2.8rem; }
+  .center-core-stage { width: 94%; max-width: 520px; padding: 20px 12px 100px; }
+  .core-name-title { font-size: clamp(2.2rem, 8vw, 3.2rem); }
   .core-orb-visual { width: 110px; height: 110px; margin-bottom: 16px; }
   .core-orb-planet { width: 56px; height: 56px; }
-  .app-footer--hud { margin-bottom: 68px; font-size: 0.72rem; padding: 10px 14px; }
-  .dossier-sector-tabs { display: none; }
+  .app-footer--hud { margin-bottom: 78px; font-size: 0.72rem; padding: 10px 14px; }
+  
+  /* Horizontal scrollable sector tabs inside dossier */
+  .dossier-sector-tabs {
+    display: flex !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 6px;
+    padding: 2px 0;
+  }
+  .dossier-sector-tabs::-webkit-scrollbar { display: none; }
+  .tab-sector-btn {
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 0.72rem;
+    min-height: 38px;
+  }
+  
   .intro-mission-tag { font-size: 0.7rem; padding: 4px 12px; max-width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   
-  /* Task Tracker on mobile (<900px): compact top-right pill */
+  /* Task Tracker on mobile: bottom-sheet drawer */
   .hud-task-tracker {
-    top: 70px;
-    right: 16px;
+    position: fixed;
+    top: auto;
+    bottom: 84px;
+    right: 14px;
     transform: none;
+    z-index: 99;
   }
   .hud-task-tracker:not(.expanded) .task-tracker-toggle {
     display: inline-flex;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(94, 234, 212, 0.3);
   }
   .hud-task-tracker:not(.expanded) .task-tracker-card {
     display: none;
@@ -2227,29 +2278,412 @@ body.cursor-active .cursor-glow {
   .hud-task-tracker.expanded .task-tracker-card {
     display: flex;
     position: fixed;
-    top: 70px;
-    right: 16px;
-    width: min(320px, calc(100vw - 32px));
-    max-height: calc(100vh - 160px);
-    z-index: 999;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    width: 100vw;
+    max-height: 85vh;
+    border-radius: 20px 20px 0 0;
+    border-bottom: none;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(94, 234, 212, 0.2);
+    z-index: 9999;
   }
 }
 
 @media (max-width: 600px) {
-  .cards-grid { grid-template-columns: 1fr; }
-  .contacts-grid { grid-template-columns: 1fr; }
+  .top-hud-bar { padding: 8px 10px; gap: 8px; }
+  .hud-brand span { font-size: 0.95rem; }
+  .hud-top-controls { gap: 5px; }
+  .btn-hud-pill { padding: 5px 10px; font-size: 0.74rem; min-height: 36px; gap: 5px; }
+  .btn-hud-pill .kbd-shortcut { display: none !important; }
+  .lang-btn { padding: 4px 6px; font-size: 0.68rem; }
+  
+  .cards-grid { grid-template-columns: 1fr; gap: 14px; }
+  .contacts-grid { grid-template-columns: 1fr; gap: 12px; }
   .about__stats-grid { grid-template-columns: 1fr; }
-  .core-name-title { font-size: 2.4rem; }
-  .btn-hud-pill span:not(.kbd-shortcut) { display: none; }
-  .dossier-header-bar { padding: 12px 16px; }
-  .dossier-content-body { padding: 24px 16px 80px; }
-  .intro-overlay { padding: 16px 14px; }
-  .intro-devops-stream { height: 130px; padding: 10px 14px; font-size: 0.72rem; }
-  .intro-control-card { padding: 14px 16px; gap: 8px; }
+  
+  .dossier-header-bar { padding: 10px 14px; gap: 8px; flex-wrap: wrap; }
+  .btn-return-hub { padding: 6px 12px; font-size: 0.75rem; min-height: 38px; }
+  .dossier-sector-title { font-size: 0.8rem; }
+  .dossier-content-body { padding: 18px 14px 100px; }
+  
+  .intro-overlay { padding: 14px 12px; }
+  .intro-devops-stream { height: 120px; padding: 8px 12px; font-size: 0.7rem; }
+  .intro-control-card { padding: 12px 14px; gap: 6px; }
   .intro-mission-tag { display: none; }
-  .btn-skip-intro { margin-left: auto; }
-  .app-footer { flex-direction: column; align-items: flex-start; }
-  .hud-task-tracker { top: 62px; right: 10px; }
+  .btn-skip-intro { margin-left: auto; font-size: 0.72rem; padding: 6px 12px; }
+  
+  .app-footer { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .hud-task-tracker { bottom: 80px; right: 10px; }
+  
+  .filters-row {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 8px;
+    padding: 4px 0;
+  }
+  .filters-row::-webkit-scrollbar { display: none; }
+  .filter-btn { white-space: nowrap; min-height: 38px; }
+  
+  .mobile-hud-dock {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 6px 4px;
+    padding-bottom: max(6px, env(safe-area-inset-bottom, 6px));
+  }
+  .dock-btn {
+    padding: 6px 8px;
+    font-size: 0.65rem;
+    min-height: 46px;
+  }
+}
+
+/* ============================================================
+   EASTER EGGS: THE SIMS, GTA SAN ANDREAS, GTA V, BMTH, GOW, HORIZON
+   ============================================================ */
+
+/* 1. The Sims: Simoleons & Motherlode */
+.sims-green-flash {
+  box-shadow: inset 0 0 80px rgba(34, 197, 94, 0.45) !important;
+  transition: box-shadow 0.3s ease;
+}
+
+.simoleon-particles-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+.simoleon-particle {
+  position: absolute;
+  bottom: 0;
+  color: #4ade80;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-shadow: 0 0 12px rgba(34, 197, 94, 0.9), 0 0 24px rgba(74, 222, 128, 0.6);
+  animation: simoleonRise linear forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes simoleonRise {
+  0% { transform: translateY(0) scale(0.6) rotate(0deg); opacity: 0; }
+  15% { opacity: 1; transform: translateY(-15vh) scale(1.1) rotate(15deg); }
+  85% { opacity: 0.9; }
+  100% { transform: translateY(-105vh) scale(1.3) rotate(60deg); opacity: 0; }
+}
+
+.sims-cash-pill {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, rgba(20, 83, 45, 0.95), rgba(34, 197, 94, 0.9));
+  border: 2px solid #86efac;
+  border-radius: var(--radius-full);
+  padding: 10px 24px;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  box-shadow: 0 10px 35px rgba(34, 197, 94, 0.5), 0 0 25px rgba(134, 239, 172, 0.4);
+  z-index: 10001;
+  animation: bounceInDown 0.5s ease;
+}
+
+.sims-cash-pill span { font-size: 1.15rem; letter-spacing: 1px; }
+.sims-cash-pill small { font-family: var(--font-mono); font-size: 0.68rem; color: #dcfce7; letter-spacing: 1px; }
+
+/* 2. GTA San Andreas: HESOYAM */
+.gta-hesoyam-flash {
+  box-shadow: inset 0 0 100px rgba(34, 197, 94, 0.55) !important;
+}
+
+.gta-hud-bar {
+  position: fixed;
+  top: 75px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid #22c55e;
+  border-radius: 8px;
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  z-index: 10001;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(34, 197, 94, 0.4);
+  animation: slideInRight 0.4s ease;
+}
+
+.gta-money-line {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #22c55e;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 0 0 10px rgba(34, 197, 94, 0.8);
+  letter-spacing: 2px;
+}
+
+.gta-status-line {
+  display: flex;
+  gap: 12px;
+}
+
+.gta-meter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.gta-meter-fill {
+  width: 50px;
+  height: 8px;
+  background: #374151;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gta-meter-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.gta-health .gta-meter-fill::after { background: #ef4444; }
+.gta-armor .gta-meter-fill::after { background: #3b82f6; }
+
+/* 3. GTA V: PAINKILLER / GODMODE */
+.painkiller-active {
+  box-shadow: inset 0 0 60px rgba(251, 191, 36, 0.55), inset 0 0 120px rgba(245, 158, 11, 0.3) !important;
+  animation: godmodePulse 2s infinite alternate ease-in-out;
+}
+
+@keyframes godmodePulse {
+  0% { box-shadow: inset 0 0 45px rgba(251, 191, 36, 0.45); }
+  100% { box-shadow: inset 0 0 75px rgba(251, 191, 36, 0.7), inset 0 0 140px rgba(245, 158, 11, 0.4); }
+}
+
+.painkiller-timer-badge {
+  position: fixed;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.95), rgba(67, 56, 202, 0.9));
+  border: 2px solid #fbbf24;
+  border-radius: var(--radius-full);
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(251, 191, 36, 0.5);
+  z-index: 10001;
+}
+
+.pk-star { color: #fbbf24; font-size: 1.1rem; animation: spinStar 4s linear infinite; }
+@keyframes spinStar { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.pk-time { font-size: 1.05rem; color: #fbbf24; font-weight: 800; }
+
+/* 4. Bring Me The Horizon (BMTH) Glitch & Overlay */
+.bmth-glitch-active {
+  animation: bmthGlitchPulse 0.4s infinite alternate;
+}
+
+@keyframes bmthGlitchPulse {
+  0% { filter: hue-rotate(0deg) contrast(1.05); }
+  50% { filter: hue-rotate(180deg) invert(0.08) contrast(1.2); }
+  100% { filter: hue-rotate(360deg) contrast(1.1); }
+}
+
+.bmth-center-banner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(5, 5, 10, 0.95);
+  border: 2px solid #ec4899;
+  border-radius: var(--radius-lg);
+  padding: 24px 32px;
+  text-align: center;
+  z-index: 10002;
+  box-shadow: 0 0 50px rgba(236, 72, 153, 0.5), inset 0 0 30px rgba(6, 182, 212, 0.2);
+  animation: popScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  max-width: 90vw;
+}
+
+.bmth-head {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #ec4899;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.bmth-quote {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.bmth-eq {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6px;
+  height: 28px;
+}
+
+.bmth-eq span {
+  width: 5px;
+  background: linear-gradient(to top, #ec4899, #06b6d4);
+  border-radius: 2px;
+  animation: bmthEqBar 0.5s infinite alternate ease-in-out;
+}
+
+.bmth-eq span:nth-child(2) { animation-delay: 0.1s; }
+.bmth-eq span:nth-child(3) { animation-delay: 0.2s; }
+.bmth-eq span:nth-child(4) { animation-delay: 0.3s; }
+.bmth-eq span:nth-child(5) { animation-delay: 0.15s; }
+.bmth-eq span:nth-child(6) { animation-delay: 0.25s; }
+.bmth-eq span:nth-child(7) { animation-delay: 0.35s; }
+
+@keyframes bmthEqBar {
+  0% { height: 4px; }
+  100% { height: 26px; }
+}
+
+/* 5. God of War: Spartan Rage */
+.spartan-rage-active {
+  box-shadow: inset 0 0 90px rgba(220, 38, 38, 0.75), inset 0 0 160px rgba(185, 28, 28, 0.45) !important;
+  animation: spartanFlames 1s infinite alternate;
+}
+
+@keyframes spartanFlames {
+  0% { box-shadow: inset 0 0 70px rgba(220, 38, 38, 0.65); }
+  100% { box-shadow: inset 0 0 110px rgba(239, 68, 68, 0.85), inset 0 0 180px rgba(185, 28, 28, 0.5); }
+}
+
+.screen-quake-active {
+  animation: screenQuake 0.15s infinite;
+}
+
+@keyframes screenQuake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  25% { transform: translate(-2px, -2px) rotate(-0.5deg); }
+  50% { transform: translate(-3px, 0px) rotate(0.5deg); }
+  75% { transform: translate(3px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -1px) rotate(0.5deg); }
+}
+
+.kratos-center-banner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(40, 5, 5, 0.98), rgba(15, 0, 0, 0.98));
+  border: 2px solid #ef4444;
+  border-radius: var(--radius-lg);
+  padding: 24px 32px;
+  text-align: center;
+  z-index: 10002;
+  box-shadow: 0 0 60px rgba(220, 38, 38, 0.7);
+  animation: popScale 0.3s ease;
+  max-width: 90vw;
+}
+
+.kratos-axe-icon { font-size: 2.2rem; margin-bottom: 6px; }
+.kratos-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: #f87171;
+  letter-spacing: 2px;
+}
+.kratos-quote {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: #fecaca;
+  font-style: italic;
+  margin-top: 6px;
+}
+
+/* 6. Horizon Zero Dawn: Focus Hologram */
+.focus-scan-active {
+  box-shadow: inset 0 0 60px rgba(6, 182, 212, 0.5), inset 0 0 120px rgba(168, 85, 247, 0.3) !important;
+}
+
+.horizon-focus-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.focus-tri-reticle {
+  width: 140px;
+  height: 140px;
+  border: 2px solid #06b6d4;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: rgba(6, 182, 212, 0.1);
+  box-shadow: 0 0 35px rgba(6, 182, 212, 0.6);
+  animation: focusPulse 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes focusPulse {
+  0% { transform: scale(0.8) rotate(0deg); opacity: 0.6; }
+  100% { transform: scale(1.2) rotate(180deg); opacity: 1; filter: drop-shadow(0 0 15px #a855f7); }
+}
+
+.focus-hud-tag {
+  margin-top: 24px;
+  background: rgba(4, 10, 24, 0.9);
+  border: 1px solid #06b6d4;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #67e8f9;
+  letter-spacing: 1px;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+}
+
+@keyframes popScale {
+  0% { transform: translate(-50%, -50%) scale(0.7); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes bounceInDown {
+  0% { transform: translate(-50%, -100px); opacity: 0; }
+  60% { transform: translate(-50%, 10px); opacity: 1; }
+  100% { transform: translate(-50%, 0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  0% { transform: translateX(100px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
 }
 
 /* ============================================================
