@@ -41,7 +41,7 @@
   --radius-lg: 20px;
   --radius-full: 9999px;
 
-  --max-w: 1280px;
+  --max-w: 100%;
   --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-display: "Sora", var(--font-sans);
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -383,26 +383,31 @@ body.cursor-active .cursor-glow {
 .main-hud-viewport {
   position: relative;
   width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 24px clamp(20px, 4vw, 48px);
+  padding: 20px clamp(16px, 3.5vw, 48px);
   z-index: 10;
   overflow: hidden;
   transform-origin: center center;
-  transition: transform 0.65s cubic-bezier(0.7, 0, 0.84, 0), opacity 0.5s ease, filter 0.5s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, filter 0.35s ease;
+  will-change: transform, opacity;
 }
 
 .main-hud-viewport.warp-departing {
-  transform: scale(2.6);
-  filter: blur(14px) brightness(1.6);
+  transform: scale(2.2);
+  filter: blur(12px) brightness(1.5);
   opacity: 0;
   pointer-events: none;
 }
 
 .main-hud-viewport.warp-returning {
-  animation: hubZoomReturn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: scale(1);
+  filter: blur(0) brightness(1);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* ============================================================
@@ -414,7 +419,8 @@ body.cursor-active .cursor-glow {
   z-index: 5500;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.25s ease;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
   background: radial-gradient(circle at center, rgba(3, 7, 24, 0.4) 0%, rgba(1, 2, 8, 0.95) 100%);
   display: flex;
   align-items: center;
@@ -424,7 +430,8 @@ body.cursor-active .cursor-glow {
 
 .warp-travel-overlay.active {
   opacity: 1;
-  pointer-events: auto;
+  visibility: visible;
+  pointer-events: none;
 }
 
 #warpTravelCanvas {
@@ -1188,7 +1195,7 @@ body.cursor-active .cursor-glow {
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: 22px;
 }
 
@@ -1416,7 +1423,7 @@ body.cursor-active .cursor-glow {
   padding-top: 14px;
 }
 
-.bolsas-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.bolsas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 18px; }
 .bolsa-card { display: flex; gap: 16px; align-items: flex-start; }
 .bolsa-card__icon {
   width: 46px; height: 46px;
@@ -1540,7 +1547,7 @@ body.cursor-active .cursor-glow {
 .btn-copy-lattes:hover { color: var(--accent-cyan); }
 .lattes-resume { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
 
-.contacts-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.contacts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
 .contact-card { display: flex; align-items: center; gap: 14px; }
 .contact-card__icon {
   width: 44px; height: 44px;

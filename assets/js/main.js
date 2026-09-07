@@ -361,6 +361,255 @@
     { name: "Sydney", lat: -33.87, lon: 151.21, size: 2.3 }
   ];
 
+  // Realistic Spherical 3D Projection Helpers
+  const AXIAL_TILT = 23.44 * (Math.PI / 180); // Earth's obliquity 23.44 deg
+  const cosTilt = Math.cos(AXIAL_TILT);
+  const sinTilt = Math.sin(AXIAL_TILT);
+  // Sun light direction vector in 3D (normalized, from upper-left)
+  const SUN_DIR = { x: -0.62, y: -0.38, z: 0.68 };
+
+  function projectGeo(latDeg, lonDeg, earthRotDeg) {
+    const phi = latDeg * (Math.PI / 180);
+    const lam = (lonDeg + earthRotDeg) * (Math.PI / 180);
+    const x0 = Math.cos(phi) * Math.sin(lam);
+    const y0 = -Math.sin(phi);
+    const z0 = Math.cos(phi) * Math.cos(lam);
+
+    // Apply Earth Axial Obliquity
+    const x1 = x0 * cosTilt - y0 * sinTilt;
+    const y1 = x0 * sinTilt + y0 * cosTilt;
+    const z1 = z0;
+
+    const dotL = x1 * SUN_DIR.x + y1 * SUN_DIR.y + z1 * SUN_DIR.z;
+    return { x: x1, y: y1, z: z1, dotL };
+  }
+
+  // Multi-Scale Photorealistic Weather Systems Generator for Earth
+  const EARTH_WEATHER_SYSTEMS = [
+    // 1. Tropical Cyclones & Hurricanes with Realistic Logarithmic Spiral Arms
+    { lat: 24, lon: -56, type: "cyclone", arms: 3, r: 0.28, rot: 1.55, b: 0.22, eyeR: 0.04 },
+    { lat: -20, lon: 74, type: "cyclone", arms: 3, r: 0.26, rot: -1.45, b: 0.22, eyeR: 0.04 },
+    { lat: 19, lon: 132, type: "cyclone", arms: 4, r: 0.32, rot: 1.75, b: 0.24, eyeR: 0.05 },
+
+    // 2. Equatorial ITCZ Convective Storm Belt (Undulating Clusters across Oceans)
+    { lat: 6, lon: -38, type: "itcz", r: 0.32, rot: 1.0, count: 6 },
+    { lat: 4, lon: 18, type: "itcz", r: 0.34, rot: 1.0, count: 7 },
+    { lat: 7, lon: 98, type: "itcz", r: 0.33, rot: 1.0, count: 6 },
+    { lat: 5, lon: 162, type: "itcz", r: 0.35, rot: 1.0, count: 7 },
+    { lat: 6, lon: -132, type: "itcz", r: 0.32, rot: 1.0, count: 6 },
+
+    // 3. Mid-Latitude Baroclinic Storm Waves & Cold Front Systems
+    { lat: 48, lon: -26, type: "front", r: 0.30, rot: 1.25, curve: 0.4 },
+    { lat: 52, lon: 148, type: "front", r: 0.28, rot: 1.2, curve: 0.45 },
+    { lat: -46, lon: -58, type: "front", r: 0.32, rot: -1.15, curve: -0.4 },
+    { lat: -48, lon: 108, type: "front", r: 0.30, rot: -1.2, curve: -0.42 },
+    { lat: -44, lon: -178, type: "front", r: 0.29, rot: -1.1, curve: -0.38 },
+
+    // 4. Subpolar Wispy Cirrus Streams & Jetstream Filaments
+    { lat: 68, lon: 38, type: "cirrus", r: 0.26, rot: 0.95 },
+    { lat: 64, lon: -108, type: "cirrus", r: 0.25, rot: 0.95 },
+    { lat: -65, lon: -22, type: "cirrus", r: 0.28, rot: -0.9 },
+    { lat: -66, lon: 128, type: "cirrus", r: 0.27, rot: -0.9 },
+
+    // 5. Continental Convective Cumulus Blankets
+    { lat: -5, lon: -62, type: "cumulus", r: 0.28, rot: 1.0, count: 6 },
+    { lat: 1, lon: 24, type: "cumulus", r: 0.26, rot: 1.0, count: 5 },
+    { lat: -3, lon: 116, type: "cumulus", r: 0.26, rot: 1.0, count: 5 }
+  ];
+
+  function drawRealisticEarthClouds(ctx, cx, cy, er, rotDeg, sunDir) {
+    const shadowOffX = -sunDir.x * er * 0.034;
+    const shadowOffY = -sunDir.y * er * 0.034;
+
+    // PASS 1: Volumetric Cast Cloud Shadows onto Ocean & Continents Below
+    ctx.fillStyle = "rgba(1, 4, 18, 0.46)";
+    EARTH_WEATHER_SYSTEMS.forEach((ws) => {
+      const currentLon = (ws.lon + rotDeg * ws.rot) % 360;
+      const cp = projectGeo(ws.lat, currentLon, 0);
+      if (cp.z > 0.05) {
+        const cpx = cx + cp.x * er + shadowOffX;
+        const cpy = cy + cp.y * er + shadowOffY;
+        const sysR = er * ws.r;
+
+        if (ws.type === "cyclone") {
+          for (let a = 0; a < ws.arms; a++) {
+            const baseAngle = a * (Math.PI * 2 / ws.arms);
+            for (let s = 1; s <= 5; s++) {
+              const theta = baseAngle + s * 0.55;
+              const rDist = sysR * 0.18 * Math.exp(ws.b * s);
+              const sx = cpx + Math.cos(theta) * rDist;
+              const sy = cpy + Math.sin(theta) * (rDist * 0.65);
+              const nodeR = sysR * (0.15 + s * 0.045);
+              ctx.beginPath();
+              ctx.arc(sx, sy, nodeR, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+        } else if (ws.type === "itcz" || ws.type === "cumulus") {
+          const n = ws.count || 5;
+          for (let i = 0; i < n; i++) {
+            const offX = (i - n / 2) * (sysR * 0.32);
+            const offY = Math.sin(i * 1.6) * (sysR * 0.14);
+            const puffR = sysR * (0.35 + Math.cos(i) * 0.1);
+            ctx.beginPath();
+            ctx.arc(cpx + offX, cpy + offY, puffR, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        } else if (ws.type === "front") {
+          for (let i = 0; i < 6; i++) {
+            const t = i / 5;
+            const fx = cpx + (t - 0.5) * sysR * 1.6;
+            const fy = cpy + Math.sin(t * Math.PI) * (sysR * ws.curve * 1.2);
+            const fR = sysR * (0.28 + (1 - t) * 0.15);
+            ctx.beginPath();
+            ctx.arc(fx, fy, fR, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        } else {
+          ctx.beginPath();
+          ctx.ellipse(cpx, cpy, sysR * 0.9, sysR * 0.24, 0.35, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    });
+
+    // PASS 2: Multi-Layer Billowy Clouds with Forward Scattering & Twilight Illumination
+    EARTH_WEATHER_SYSTEMS.forEach((ws) => {
+      const currentLon = (ws.lon + rotDeg * ws.rot) % 360;
+      const cp = projectGeo(ws.lat, currentLon, 0);
+      if (cp.z > 0.05) {
+        const cpx = cx + cp.x * er * 1.018;
+        const cpy = cy + cp.y * er * 1.018;
+        const sysR = er * ws.r;
+
+        const sunIllum = Math.max(0.04, Math.min(1, (cp.dotL + 0.35) * 1.4));
+        const isTerminator = cp.dotL > -0.15 && cp.dotL < 0.28;
+
+        if (ws.type === "cyclone") {
+          for (let a = 0; a < ws.arms; a++) {
+            const baseAngle = a * (Math.PI * 2 / ws.arms);
+            for (let s = 1; s <= 5; s++) {
+              const theta = baseAngle + s * 0.55;
+              const rDist = sysR * 0.18 * Math.exp(ws.b * s);
+              const sx = cpx + Math.cos(theta) * rDist;
+              const sy = cpy + Math.sin(theta) * (rDist * 0.65);
+              const nodeR = sysR * (0.16 + s * 0.045);
+
+              const armGrad = ctx.createRadialGradient(
+                sx + sunDir.x * nodeR * 0.35,
+                sy + sunDir.y * nodeR * 0.35,
+                2,
+                sx,
+                sy,
+                nodeR
+              );
+
+              if (isTerminator) {
+                armGrad.addColorStop(0, `rgba(254, 215, 170, ${0.94 * sunIllum})`);
+                armGrad.addColorStop(0.5, `rgba(251, 146, 60, ${0.68 * sunIllum})`);
+                armGrad.addColorStop(0.85, `rgba(244, 63, 94, ${0.35 * sunIllum})`);
+              } else {
+                armGrad.addColorStop(0, `rgba(255, 255, 255, ${0.98 * sunIllum})`);
+                armGrad.addColorStop(0.55, `rgba(224, 242, 254, ${0.80 * sunIllum})`);
+                armGrad.addColorStop(0.85, `rgba(186, 230, 253, ${0.35 * sunIllum})`);
+              }
+              armGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+              ctx.fillStyle = armGrad;
+              ctx.beginPath();
+              ctx.arc(sx, sy, nodeR, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+
+          // Dense Central Eye-Wall & Clear Storm Eye
+          const eyeWallGrad = ctx.createRadialGradient(cpx, cpy, sysR * 0.04, cpx, cpy, sysR * 0.22);
+          eyeWallGrad.addColorStop(0, "rgba(1, 4, 18, 0.45)");
+          eyeWallGrad.addColorStop(0.2, `rgba(255, 255, 255, ${0.98 * sunIllum})`);
+          eyeWallGrad.addColorStop(0.7, `rgba(224, 242, 254, ${0.78 * sunIllum})`);
+          eyeWallGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+          ctx.fillStyle = eyeWallGrad;
+          ctx.beginPath();
+          ctx.arc(cpx, cpy, sysR * 0.22, 0, Math.PI * 2);
+          ctx.fill();
+
+        } else if (ws.type === "itcz" || ws.type === "cumulus") {
+          const n = ws.count || 5;
+          for (let i = 0; i < n; i++) {
+            const offX = (i - n / 2) * (sysR * 0.32);
+            const offY = Math.sin(i * 1.6) * (sysR * 0.14);
+            const puffR = sysR * (0.36 + Math.cos(i) * 0.1);
+            const px = cpx + offX;
+            const py = cpy + offY;
+
+            const puffGrad = ctx.createRadialGradient(
+              px + sunDir.x * puffR * 0.35,
+              py + sunDir.y * puffR * 0.35,
+              2,
+              px,
+              py,
+              puffR
+            );
+
+            if (isTerminator) {
+              puffGrad.addColorStop(0, `rgba(254, 215, 170, ${0.94 * sunIllum})`);
+              puffGrad.addColorStop(0.55, `rgba(251, 146, 60, ${0.65 * sunIllum})`);
+            } else {
+              puffGrad.addColorStop(0, `rgba(255, 255, 255, ${0.96 * sunIllum})`);
+              puffGrad.addColorStop(0.6, `rgba(224, 242, 254, ${0.74 * sunIllum})`);
+            }
+            puffGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+            ctx.fillStyle = puffGrad;
+            ctx.beginPath();
+            ctx.arc(px, py, puffR, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        } else if (ws.type === "front") {
+          for (let i = 0; i < 6; i++) {
+            const t = i / 5;
+            const fx = cpx + (t - 0.5) * sysR * 1.6;
+            const fy = cpy + Math.sin(t * Math.PI) * (sysR * ws.curve * 1.2);
+            const fR = sysR * (0.28 + (1 - t) * 0.15);
+
+            const frontGrad = ctx.createRadialGradient(
+              fx + sunDir.x * fR * 0.35,
+              fy + sunDir.y * fR * 0.35,
+              2,
+              fx,
+              fy,
+              fR
+            );
+
+            if (isTerminator) {
+              frontGrad.addColorStop(0, `rgba(254, 215, 170, ${0.92 * sunIllum})`);
+              frontGrad.addColorStop(0.55, `rgba(251, 146, 60, ${0.62 * sunIllum})`);
+            } else {
+              frontGrad.addColorStop(0, `rgba(255, 255, 255, ${0.94 * sunIllum})`);
+              frontGrad.addColorStop(0.6, `rgba(224, 242, 254, ${0.72 * sunIllum})`);
+            }
+            frontGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+            ctx.fillStyle = frontGrad;
+            ctx.beginPath();
+            ctx.arc(fx, fy, fR, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        } else {
+          const cirrusGrad = ctx.createLinearGradient(cpx - sysR, cpy, cpx + sysR, cpy);
+          cirrusGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
+          cirrusGrad.addColorStop(0.5, `rgba(224, 242, 254, ${0.65 * sunIllum})`);
+          cirrusGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+          ctx.fillStyle = cirrusGrad;
+          ctx.beginPath();
+          ctx.ellipse(cpx, cpy, sysR * 0.9, sysR * 0.22, 0.35, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    });
+  }
+
   function initIntroCinematic() {
     const overlay = document.getElementById("introOverlay");
     introCanvas = document.getElementById("introCanvas");
@@ -439,29 +688,6 @@
         termLines.scrollTop = termLines.scrollHeight;
       }, item.t);
     });
-
-    // Realistic Spherical 3D Projection Helpers
-    const AXIAL_TILT = 23.44 * (Math.PI / 180); // Earth's obliquity 23.44 deg
-    const cosTilt = Math.cos(AXIAL_TILT);
-    const sinTilt = Math.sin(AXIAL_TILT);
-    // Sun light direction vector in 3D (normalized, from upper-left)
-    const SUN_DIR = { x: -0.62, y: -0.38, z: 0.68 };
-
-    function projectGeo(latDeg, lonDeg, earthRotDeg) {
-      const phi = latDeg * (Math.PI / 180);
-      const lam = (lonDeg + earthRotDeg) * (Math.PI / 180);
-      const x0 = Math.cos(phi) * Math.sin(lam);
-      const y0 = -Math.sin(phi);
-      const z0 = Math.cos(phi) * Math.cos(lam);
-
-      // Apply Earth Axial Obliquity
-      const x1 = x0 * cosTilt - y0 * sinTilt;
-      const y1 = x0 * sinTilt + y0 * cosTilt;
-      const z1 = z0;
-
-      const dotL = x1 * SUN_DIR.x + y1 * SUN_DIR.y + z1 * SUN_DIR.z;
-      return { x: x1, y: y1, z: z1, dotL };
-    }
 
     function renderIntroLoop(now) {
       if (!introActive) return;
@@ -700,137 +926,7 @@
       });
 
       // ---------- 7. ADVANCED VOLUMETRIC CLOUD SYSTEMS & CYCLONES WITH CAST SHADOWS ----------
-      const cloudRotDeg = earthRotDeg * 1.08;
-
-      // Realistic Cloud Systems: Cyclones, ITCZ bands, Baroclinic storm fronts, Cirrus wisps
-      const CLOUD_SYSTEMS = [
-        // 1. Northern Tropical Cyclone Vortex (Atlantic / Caribbean)
-        { lat: 24, lon: -58, type: "cyclone", arms: 3, radius: 0.24, rotSpeed: 1.6 },
-        // 2. Southern Tropical Cyclone Vortex (Indian / Pacific)
-        { lat: -20, lon: 75, type: "cyclone", arms: 3, radius: 0.22, rotSpeed: -1.4 },
-        // 3. Equatorial ITCZ (Intertropical Convergence Zone) Billowing Clusters
-        { lat: 6, lon: -35, type: "itcz", radius: 0.28, rotSpeed: 1.0 },
-        { lat: 4, lon: 20, type: "itcz", radius: 0.32, rotSpeed: 1.0 },
-        { lat: 8, lon: 130, type: "itcz", radius: 0.30, rotSpeed: 1.0 },
-        { lat: 5, lon: -140, type: "itcz", radius: 0.29, rotSpeed: 1.0 },
-        // 4. Mid-Latitude Storm Fronts (Baroclinic swirls)
-        { lat: 48, lon: -20, type: "front", radius: 0.26, rotSpeed: 1.2 },
-        { lat: 52, lon: 150, type: "front", radius: 0.25, rotSpeed: 1.2 },
-        { lat: -45, lon: -60, type: "front", radius: 0.28, rotSpeed: -1.1 },
-        { lat: -48, lon: 110, type: "front", radius: 0.27, rotSpeed: -1.1 },
-        // 5. High-Altitude Cirrus Filaments & Polar Vortex
-        { lat: 72, lon: 40, type: "cirrus", radius: 0.22, rotSpeed: 0.9 },
-        { lat: -68, lon: -30, type: "cirrus", radius: 0.24, rotSpeed: -0.9 },
-        { lat: 35, lon: -115, type: "cirrus", radius: 0.20, rotSpeed: 1.1 },
-        { lat: -32, lon: -170, type: "cirrus", radius: 0.21, rotSpeed: -1.1 }
-      ];
-
-      // PASS A: Cast Shadows onto Ocean / Continents (Shifted opposite to Sun vector)
-      const shadowOffsetX = -SUN_DIR.x * er * 0.032;
-      const shadowOffsetY = -SUN_DIR.y * er * 0.032;
-
-      CLOUD_SYSTEMS.forEach((cs, idx) => {
-        const currentLon = (cs.lon + cloudRotDeg * cs.rotSpeed) % 360;
-        const cp = projectGeo(cs.lat, currentLon, 0);
-        if (cp.z > 0.08) {
-          const cpx = ex + cp.x * er + shadowOffsetX;
-          const cpy = ey + cp.y * er + shadowOffsetY;
-          const sysR = er * cs.radius;
-
-          ictx.fillStyle = "rgba(1, 4, 18, 0.44)";
-          if (cs.type === "cyclone") {
-            for (let a = 0; a < cs.arms; a++) {
-              const armAngle = (a * (Math.PI * 2 / cs.arms)) + elapsed * cs.rotSpeed * 0.8;
-              const ax = cpx + Math.cos(armAngle) * (sysR * 0.5);
-              const ay = cpy + Math.sin(armAngle) * (sysR * 0.35);
-              ictx.beginPath();
-              ictx.ellipse(ax, ay, sysR * 0.45, sysR * 0.22, armAngle, 0, Math.PI * 2);
-              ictx.fill();
-            }
-          } else {
-            ictx.beginPath();
-            ictx.ellipse(cpx, cpy, sysR * 0.85, sysR * 0.38, (idx * 0.45), 0, Math.PI * 2);
-            ictx.fill();
-          }
-        }
-      });
-
-      // PASS B: Volumetric Multi-Cluster Cloud Bodies with Sunlit Highlights & Sunset Glow
-      CLOUD_SYSTEMS.forEach((cs, idx) => {
-        const currentLon = (cs.lon + cloudRotDeg * cs.rotSpeed) % 360;
-        const cp = projectGeo(cs.lat, currentLon, 0);
-        if (cp.z > 0.08) {
-          const cpx = ex + cp.x * er * 1.018;
-          const cpy = ey + cp.y * er * 1.018;
-          const sysR = er * cs.radius;
-
-          // Day/Night and Terminator Shading factor for clouds
-          const sunIllum = Math.max(0, Math.min(1, (cp.dotL + 0.35) * 1.4));
-          const isTerminator = cp.dotL > -0.15 && cp.dotL < 0.25;
-
-          if (cs.type === "cyclone") {
-            // Render Cyclone Spiral Arms + Clear Eye
-            for (let a = 0; a < cs.arms; a++) {
-              const armAngle = (a * (Math.PI * 2 / cs.arms)) + elapsed * cs.rotSpeed * 0.8;
-              const ax = cpx + Math.cos(armAngle) * (sysR * 0.45);
-              const ay = cpy + Math.sin(armAngle) * (sysR * 0.32);
-
-              const armGrad = ictx.createRadialGradient(ax, ay, 2, ax, ay, sysR * 0.55);
-              if (isTerminator) {
-                armGrad.addColorStop(0, `rgba(254, 215, 170, ${0.92 * sunIllum})`);
-                armGrad.addColorStop(0.6, `rgba(251, 146, 60, ${0.65 * sunIllum})`);
-              } else {
-                armGrad.addColorStop(0, `rgba(255, 255, 255, ${0.95 * sunIllum})`);
-                armGrad.addColorStop(0.65, `rgba(224, 242, 254, ${0.72 * sunIllum})`);
-              }
-              armGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-
-              ictx.fillStyle = armGrad;
-              ictx.beginPath();
-              ictx.ellipse(ax, ay, sysR * 0.5, sysR * 0.24, armAngle + 0.3, 0, Math.PI * 2);
-              ictx.fill();
-            }
-
-            // Central Storm Eye Ring
-            ictx.beginPath();
-            ictx.arc(cpx, cpy, sysR * 0.1, 0, Math.PI * 2);
-            ictx.fillStyle = "rgba(2, 6, 23, 0.4)";
-            ictx.fill();
-          } else {
-            // Billowing ITCZ / Frontal / Cirrus System with Multi-Puff Volume
-            for (let pIdx = 0; pIdx < 3; pIdx++) {
-              const puffOffX = (pIdx - 1) * sysR * 0.35;
-              const puffOffY = Math.sin(pIdx * 1.8 + elapsed) * sysR * 0.15;
-              const px = cpx + puffOffX;
-              const py = cpy + puffOffY;
-              const puffR = sysR * (0.45 + pIdx * 0.1);
-
-              const cloudGrad = ictx.createRadialGradient(
-                px + SUN_DIR.x * puffR * 0.3,
-                py + SUN_DIR.y * puffR * 0.3,
-                2,
-                px,
-                py,
-                puffR
-              );
-
-              if (isTerminator) {
-                cloudGrad.addColorStop(0, `rgba(254, 215, 170, ${0.90 * sunIllum})`);
-                cloudGrad.addColorStop(0.55, `rgba(251, 146, 60, ${0.60 * sunIllum})`);
-              } else {
-                cloudGrad.addColorStop(0, `rgba(255, 255, 255, ${0.92 * sunIllum})`);
-                cloudGrad.addColorStop(0.6, `rgba(224, 242, 254, ${0.68 * sunIllum})`);
-              }
-              cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-
-              ictx.fillStyle = cloudGrad;
-              ictx.beginPath();
-              ictx.ellipse(px, py, puffR, puffR * 0.55, (idx * 0.4 + pIdx * 0.2), 0, Math.PI * 2);
-              ictx.fill();
-            }
-          }
-        }
-      });
+      drawRealisticEarthClouds(ictx, ex, ey, er, earthRotDeg, SUN_DIR);
 
       // Sunlit Atmospheric Horizon Crescent (Limb Brightening)
       const sunRimGrad = ictx.createRadialGradient(
@@ -1165,9 +1261,12 @@
     requestAnimationFrame(renderIntroLoop);
 
     function dismissIntro() {
-      if (!introActive) return;
       introActive = false;
-      overlay.classList.add("dismissed");
+      if (overlay) overlay.classList.add("dismissed");
+      if (mainHudViewport) {
+        mainHudViewport.classList.remove("warp-departing");
+        mainHudViewport.classList.remove("warp-returning");
+      }
       sfx.warp();
       showToast("Central Pedro Rocha Conectada // IFF LZ-01", "star");
       completeQuest("landing");
@@ -1175,14 +1274,21 @@
 
     const enterBtn = document.getElementById("enterMissionBtn");
     const skipBtn = document.getElementById("skipIntroBtn");
-    if (enterBtn) enterBtn.addEventListener("click", dismissIntro);
-    if (skipBtn) skipBtn.addEventListener("click", dismissIntro);
+    if (enterBtn && !enterBtn._hasListener) {
+      enterBtn._hasListener = true;
+      enterBtn.addEventListener("click", dismissIntro);
+    }
+    if (skipBtn && !skipBtn._hasListener) {
+      skipBtn._hasListener = true;
+      skipBtn.addEventListener("click", dismissIntro);
+    }
 
     const replayBtn = document.getElementById("replayIntroBtn");
-    if (replayBtn) {
+    if (replayBtn && !replayBtn._hasListener) {
+      replayBtn._hasListener = true;
       replayBtn.addEventListener("click", () => {
         closeSectorDossier();
-        overlay.classList.remove("dismissed");
+        if (overlay) overlay.classList.remove("dismissed");
         introActive = true;
         initIntroCinematic();
       });
@@ -1619,102 +1725,89 @@
     // ============================================================
     // TERRA & HUB // SISTEMA SOLAR (SETOR 01 & HUB CENTRAL ENDURANCE)
     // ============================================================
-    const atmoGrad = pctx.createRadialGradient(0, 0, radius * 0.82, 0, 0, radius * 1.45);
-    atmoGrad.addColorStop(0, "rgba(56, 189, 248, 0.75)");
-    atmoGrad.addColorStop(0.25, "rgba(96, 165, 250, 0.45)");
-    atmoGrad.addColorStop(0.55, "rgba(129, 140, 248, 0.22)");
-    atmoGrad.addColorStop(0.85, "rgba(14, 116, 144, 0.08)");
+    // 1. Realistic Multi-Layer Rayleigh Atmospheric Scattering Halo
+    const atmoGrad = pctx.createRadialGradient(0, 0, radius * 0.88, 0, 0, radius * 1.52);
+    atmoGrad.addColorStop(0, "rgba(56, 189, 248, 0.95)");      // Intense Stratosphere Cyan
+    atmoGrad.addColorStop(0.15, "rgba(96, 165, 250, 0.82)");   // Nitrogen Rayleigh Blue
+    atmoGrad.addColorStop(0.35, "rgba(129, 140, 248, 0.45)");  // Deep Mesosphere Indigo
+    atmoGrad.addColorStop(0.65, "rgba(14, 116, 144, 0.14)");   // Thermosphere
     atmoGrad.addColorStop(1, "rgba(56, 189, 248, 0)");
-
     pctx.beginPath();
-    pctx.arc(0, 0, radius * 1.45, 0, Math.PI * 2);
+    pctx.arc(0, 0, radius * 1.52, 0, Math.PI * 2);
     pctx.fillStyle = atmoGrad;
     pctx.fill();
 
-    // Base Sphere with 3D Light Source
+    // 2. Base Ocean Sphere with 3D Sunlit Directional Depth
     pctx.save();
     pctx.beginPath();
     pctx.arc(0, 0, radius, 0, Math.PI * 2);
     pctx.clip();
 
-    const lx = -radius * 0.35;
-    const ly = -radius * 0.35;
-    const sphereGrad = pctx.createRadialGradient(lx, ly, radius * 0.05, 0, 0, radius);
-    sphereGrad.addColorStop(0, "#0284c7");
-    sphereGrad.addColorStop(0.35, "#0369a1");
-    sphereGrad.addColorStop(0.7, "#07264a");
-    sphereGrad.addColorStop(0.92, "#04152e");
-    sphereGrad.addColorStop(1, "#010712");
-    pctx.fillStyle = sphereGrad;
+    const lx = -radius * 0.38;
+    const ly = -radius * 0.38;
+    const oceanGrad = pctx.createRadialGradient(lx, ly, radius * 0.05, 0, 0, radius * 1.05);
+    oceanGrad.addColorStop(0, "#0284c7");    // Sunlit Azure Waters
+    oceanGrad.addColorStop(0.28, "#0369a1"); // Continental Shelf Blue
+    oceanGrad.addColorStop(0.6, "#07264a");  // Deep Abyssal Ocean
+    oceanGrad.addColorStop(0.88, "#04152e"); // Shadow Ocean
+    oceanGrad.addColorStop(1, "#010712");
+    pctx.fillStyle = oceanGrad;
     pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
 
-    // Continents with spherical rotation
-    const rot = progress * 1.5;
-    pctx.fillStyle = "#15803d";
-    pctx.shadowColor = "#166534";
-    pctx.shadowBlur = 3;
+    // 3. Specular Sun Glint on Ocean
+    const glintGrad = pctx.createRadialGradient(lx * 0.85, ly * 0.85, 2, lx * 0.85, ly * 0.85, radius * 0.45);
+    glintGrad.addColorStop(0, "rgba(255, 255, 255, 0.6)");
+    glintGrad.addColorStop(0.25, "rgba(186, 230, 253, 0.28)");
+    glintGrad.addColorStop(0.6, "rgba(56, 189, 248, 0.08)");
+    glintGrad.addColorStop(1, "rgba(2, 132, 199, 0)");
+    pctx.fillStyle = glintGrad;
+    pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
 
+    // 4. Continents & Detailed Biomes with Natural Terrain Contours
+    const rot = progress * 1.5;
     for (let c = -1; c <= 1; c++) {
-      const cxOffset = (c * radius * 1.4 + rot * radius * 0.7) % (radius * 2.2) - radius * 0.4;
+      const cxOffset = (c * radius * 1.45 + rot * radius * 0.72) % (radius * 2.25) - radius * 0.38;
+
+      // South America / Africa Landmasses
+      pctx.fillStyle = "#15803d"; // Lush Amazon / Congo Rainforest
       pctx.beginPath();
-      pctx.ellipse(cxOffset, -radius * 0.25, radius * 0.36, radius * 0.24, 0.2, 0, Math.PI * 2);
-      pctx.ellipse(cxOffset + radius * 0.22, radius * 0.22, radius * 0.42, radius * 0.26, -0.15, 0, Math.PI * 2);
+      pctx.ellipse(cxOffset, -radius * 0.15, radius * 0.38, radius * 0.26, 0.15, 0, Math.PI * 2);
+      pctx.ellipse(cxOffset + radius * 0.26, radius * 0.18, radius * 0.44, radius * 0.28, -0.12, 0, Math.PI * 2);
+      pctx.fill();
+
+      // Sahara / Desert Highlands Biome
+      pctx.fillStyle = "#d97706";
+      pctx.beginPath();
+      pctx.ellipse(cxOffset + radius * 0.12, -radius * 0.28, radius * 0.24, radius * 0.14, 0.08, 0, Math.PI * 2);
+      pctx.fill();
+
+      // Mountain Ridges (Andes / Himalayas)
+      pctx.fillStyle = "#1e293b";
+      pctx.beginPath();
+      pctx.ellipse(cxOffset - radius * 0.18, -radius * 0.12, radius * 0.06, radius * 0.32, 0.18, 0, Math.PI * 2);
       pctx.fill();
     }
+
+    // Polar Ice Caps (Arctic & Antarctic)
+    pctx.fillStyle = "#f8fafc";
+    pctx.shadowColor = "#bae6fd";
+    pctx.shadowBlur = 6;
+    pctx.beginPath();
+    pctx.ellipse(0, -radius * 0.94, radius * 0.42, radius * 0.13, 0, 0, Math.PI * 2);
+    pctx.ellipse(0, radius * 0.96, radius * 0.46, radius * 0.15, 0, 0, Math.PI * 2);
+    pctx.fill();
     pctx.shadowBlur = 0;
 
-    // PASS 1: Volumetric Cloud Shadows onto Ocean & Continents
-    pctx.fillStyle = "rgba(1, 4, 18, 0.42)";
-    for (let c = -1; c <= 1; c++) {
-      const cxOffset = (c * radius * 1.6 + rot * radius * 0.85) % (radius * 2.4) - radius * 0.45;
-      pctx.beginPath();
-      pctx.ellipse(cxOffset + radius * 0.05, -radius * 0.28, radius * 0.28, radius * 0.14, 0.3, 0, Math.PI * 2);
-      pctx.ellipse(cxOffset - radius * 0.1, radius * 0.32, radius * 0.32, radius * 0.12, -0.2, 0, Math.PI * 2);
-      pctx.ellipse(cxOffset + radius * 0.15, 0, radius * 0.45, radius * 0.10, 0.05, 0, Math.PI * 2);
-      pctx.fill();
-    }
+    // 5. Realistic Volumetric Clouds on Planet Sphere
+    drawRealisticEarthClouds(pctx, 0, 0, radius, rot * 60, { x: -0.62, y: -0.38, z: 0.68 });
 
-    // PASS 2: Volumetric Swirling Clouds with Cyclones & Highlights
-    for (let c = -1; c <= 1; c++) {
-      const cxOffset = (c * radius * 1.6 + rot * radius * 0.85) % (radius * 2.4) - radius * 0.5;
-
-      // Cyclone Spiral Swirl
-      const cycloneGrad = pctx.createRadialGradient(cxOffset, -radius * 0.32, 2, cxOffset, -radius * 0.32, radius * 0.3);
-      cycloneGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
-      cycloneGrad.addColorStop(0.6, "rgba(224, 242, 254, 0.75)");
-      cycloneGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-      pctx.fillStyle = cycloneGrad;
-      pctx.beginPath();
-      pctx.ellipse(cxOffset, -radius * 0.32, radius * 0.3, radius * 0.16, 0.25, 0, Math.PI * 2);
-      pctx.fill();
-
-      // Equatorial ITCZ Cloud Streamers
-      const itczGrad = pctx.createRadialGradient(cxOffset + radius * 0.1, -radius * 0.02, 2, cxOffset + radius * 0.1, -radius * 0.02, radius * 0.45);
-      itczGrad.addColorStop(0, "rgba(255, 255, 255, 0.92)");
-      itczGrad.addColorStop(0.55, "rgba(224, 242, 254, 0.7)");
-      itczGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-      pctx.fillStyle = itczGrad;
-      pctx.beginPath();
-      pctx.ellipse(cxOffset + radius * 0.1, -radius * 0.02, radius * 0.48, radius * 0.11, -0.05, 0, Math.PI * 2);
-      pctx.fill();
-
-      // Southern Baroclinic Storm Front
-      const frontGrad = pctx.createRadialGradient(cxOffset - radius * 0.15, radius * 0.28, 2, cxOffset - radius * 0.15, radius * 0.28, radius * 0.35);
-      frontGrad.addColorStop(0, "rgba(254, 215, 170, 0.85)");
-      frontGrad.addColorStop(0.5, "rgba(224, 242, 254, 0.65)");
-      frontGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-      pctx.fillStyle = frontGrad;
-      pctx.beginPath();
-      pctx.ellipse(cxOffset - radius * 0.15, radius * 0.28, radius * 0.36, radius * 0.13, 0.15, 0, Math.PI * 2);
-      pctx.fill();
-    }
-
-    // 3D Terminator Shadow with Sunset Twilight Rim
-    const shadowGrad = pctx.createRadialGradient(radius * 0.35, radius * 0.35, radius * 0.4, 0, 0, radius * 1.05);
+    // 6. 3D Terminator Shadow with Sunset Twilight Rim
+    const shadowGrad = pctx.createRadialGradient(radius * 0.38, radius * 0.38, radius * 0.35, 0, 0, radius * 1.05);
     shadowGrad.addColorStop(0, "rgba(0, 0, 0, 0)");
-    shadowGrad.addColorStop(0.65, "rgba(2, 4, 12, 0.45)");
-    shadowGrad.addColorStop(0.85, "rgba(251, 146, 60, 0.22)");
-    shadowGrad.addColorStop(1, "rgba(1, 2, 6, 0.92)");
+    shadowGrad.addColorStop(0.62, "rgba(2, 4, 12, 0.45)");
+    shadowGrad.addColorStop(0.82, "rgba(251, 146, 60, 0.32)");  // Sunset Twilight Amber
+    shadowGrad.addColorStop(0.92, "rgba(244, 63, 94, 0.18)");   // Sunset Rose
+    shadowGrad.addColorStop(1, "rgba(1, 2, 6, 0.94)");
     pctx.fillStyle = shadowGrad;
     pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
 
@@ -1769,16 +1862,19 @@
     const onArrival = callbacks.onArrival;
     const onComplete = callbacks.onComplete;
 
-    if (reduceMotion) {
-      if (typeof onArrival === "function") onArrival();
-      if (typeof onComplete === "function") onComplete();
+    if (reduceMotion || !warpOverlay || !warpCanvas) {
+      if (typeof onArrival === "function") {
+        try { onArrival(); } catch (e) {}
+      }
+      if (typeof onComplete === "function") {
+        try { onComplete(); } catch (e) {}
+      }
       return;
     }
 
-    if (!warpOverlay || !warpCanvas) {
-      if (typeof onArrival === "function") onArrival();
-      if (typeof onComplete === "function") onComplete();
-      return;
+    if (warpAnimId) {
+      cancelAnimationFrame(warpAnimId);
+      warpAnimId = null;
     }
 
     const dest = WARP_DESTINATIONS[sectorKey] || WARP_DESTINATIONS.hub;
@@ -1791,13 +1887,20 @@
     resizeWarpCanvas();
 
     const startTime = performance.now();
-    const duration = 680;
+    const duration = 520;
     let arrivalFired = false;
 
-    if (warpAnimId) {
-      cancelAnimationFrame(warpAnimId);
-      warpAnimId = null;
-    }
+    // Safety fallback timeout to ensure overlay is always dismissed
+    const safetyTimer = setTimeout(() => {
+      if (!arrivalFired && typeof onArrival === "function") {
+        try { onArrival(); } catch (e) {}
+      }
+      if (warpOverlay) warpOverlay.classList.remove("active");
+      isWarping = false;
+      if (typeof onComplete === "function") {
+        try { onComplete(); } catch (e) {}
+      }
+    }, duration + 150);
 
     function renderWarpFrame(now) {
       const elapsed = now - startTime;
@@ -1811,7 +1914,7 @@
 
         // 1. Star Streaks in Hyperdrive
         const warpSpeedFactor = Math.sin(p * Math.PI);
-        const currentSpeed = 20 + warpSpeedFactor * 160;
+        const currentSpeed = 25 + warpSpeedFactor * 180;
 
         warpCtx.lineWidth = 1.6 * warpDpr;
         for (let i = 0; i < warpStars.length; i++) {
@@ -1858,19 +1961,18 @@
         }
 
         // 3. Approaching Celestial Planet
-        if (p >= 0.16) {
-          const planetP = Math.min(1, (p - 0.16) / 0.68);
-          const easedScale = Math.pow(planetP, 2.5);
+        if (p >= 0.12) {
+          const planetP = Math.min(1, (p - 0.12) / 0.72);
+          const easedScale = Math.pow(planetP, 2.2);
           const maxPlanetRadius = Math.min(warpW, warpH) * 0.38;
           const currentRadius = Math.max(2, maxPlanetRadius * easedScale);
-
           drawPlanet(warpCtx, dest.type, cx, cy, currentRadius, p);
         }
 
         // 4. Atmosphere Penetration Flash (Orbital entry)
-        if (p >= 0.68) {
-          const flashP = (p - 0.68) / 0.32;
-          const flashAlpha = Math.sin(flashP * Math.PI) * 0.75;
+        if (p >= 0.65) {
+          const flashP = (p - 0.65) / 0.35;
+          const flashAlpha = Math.sin(flashP * Math.PI) * 0.7;
           const flashGrad = warpCtx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(warpW, warpH) * 0.8);
           flashGrad.addColorStop(0, `rgba(255, 255, 255, ${flashAlpha})`);
           flashGrad.addColorStop(0.4, dest.colorAtmo.replace(/[\d\.]+\)$/, `${flashAlpha * 0.7})`));
@@ -1880,19 +1982,24 @@
         }
       }
 
-      // Fire arrival when approaching target orbit (~58% progress)
-      if (p >= 0.58 && !arrivalFired) {
+      // Fire arrival at ~52% progress
+      if (p >= 0.52 && !arrivalFired) {
         arrivalFired = true;
-        if (typeof onArrival === "function") onArrival();
+        if (typeof onArrival === "function") {
+          try { onArrival(); } catch (e) {}
+        }
       }
 
       if (p < 1) {
         warpAnimId = requestAnimationFrame(renderWarpFrame);
       } else {
+        clearTimeout(safetyTimer);
         warpOverlay.classList.remove("active");
         isWarping = false;
         warpAnimId = null;
-        if (typeof onComplete === "function") onComplete();
+        if (typeof onComplete === "function") {
+          try { onComplete(); } catch (e) {}
+        }
       }
     }
 
@@ -1905,7 +2012,8 @@
 
     sfx.warp();
 
-    if (mainHudViewport && !sectorDossierOverlay.classList.contains("active")) {
+    if (mainHudViewport) {
+      mainHudViewport.classList.remove("warp-returning");
       mainHudViewport.classList.add("warp-departing");
     }
 
@@ -1939,34 +2047,49 @@
         wireSpotlights(sectorDossierOverlay);
       },
       onComplete: () => {
-        setTimeout(() => {
-          if (sectorDossierOverlay) sectorDossierOverlay.classList.remove("dossier-arriving");
-        }, 500);
+        if (sectorDossierOverlay) sectorDossierOverlay.classList.remove("dossier-arriving");
       }
     });
   }
 
   function closeSectorDossier() {
-    if (!sectorDossierOverlay || !sectorDossierOverlay.classList.contains("active")) return;
+    activeSector = null;
+
+    if (!sectorDossierOverlay || !sectorDossierOverlay.classList.contains("active")) {
+      // If already closed or transitioning, ensure HUD is 100% visible and interactive
+      if (sectorDossierOverlay) {
+        sectorDossierOverlay.classList.remove("active", "dossier-departing", "dossier-arriving");
+      }
+      if (mainHudViewport) {
+        mainHudViewport.classList.remove("warp-departing");
+        mainHudViewport.classList.add("warp-returning");
+        setTimeout(() => {
+          if (mainHudViewport) mainHudViewport.classList.remove("warp-returning");
+        }, 450);
+      }
+      return;
+    }
 
     sfx.warp();
     sectorDossierOverlay.classList.add("dossier-departing");
 
     triggerInterplanetaryWarp("hub", {
       onArrival: () => {
-        sectorDossierOverlay.classList.remove("active", "dossier-departing", "dossier-arriving");
-        activeSector = null;
+        if (sectorDossierOverlay) {
+          sectorDossierOverlay.classList.remove("active", "dossier-departing", "dossier-arriving");
+        }
         if (mainHudViewport) {
           mainHudViewport.classList.remove("warp-departing");
-          mainHudViewport.classList.remove("warp-returning");
-          void mainHudViewport.offsetWidth; // trigger reflow
           mainHudViewport.classList.add("warp-returning");
         }
       },
       onComplete: () => {
-        setTimeout(() => {
-          if (mainHudViewport) mainHudViewport.classList.remove("warp-returning");
-        }, 700);
+        if (sectorDossierOverlay) {
+          sectorDossierOverlay.classList.remove("active", "dossier-departing", "dossier-arriving");
+        }
+        if (mainHudViewport) {
+          mainHudViewport.classList.remove("warp-returning", "warp-departing");
+        }
       }
     });
   }
