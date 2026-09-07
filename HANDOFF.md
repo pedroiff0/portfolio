@@ -8,6 +8,45 @@ See also: `CLAUDE.md` (architecture map + commands) and
 `.claude/skills/cosmic-portfolio/SKILL.md` (playbook for this specific
 "gamified space-hub portfolio" pattern — CSS/JS gotchas, testing method).
 
+## 2026-09-07 (part 3) — Earth day/night lights, topbar hover restored
+
+- **Restored `.dossier-header-bar` to reveal-on-hover** (per explicit
+  feedback) — session-1 had made it permanently visible while chasing the
+  navigation-stuck bug, but that bug turned out to be `.dossier-panel`'s own
+  layout collapsing (see part 1's containing-block/flex-shrink writeup), not
+  this bar's visibility. Confirmed safe to revert: ESC closes the dossier
+  unconditionally via its own `keydown` handler regardless of hover state,
+  so the close button is never the only way out. The global top bar (brand/
+  SFX/language switcher) stays always-visible — hiding *that* one was an
+  actual functional bug (nobody could find the language switcher).
+- **Implemented a real day/night terminator with city lights** on the 3D
+  Earth (`create3DEarthGroup`), replacing the old approach of baking city
+  glow permanently into the day texture (visible even in broad daylight).
+  Added `getDayNightLightsMaterial()` — a small custom `ShaderMaterial`
+  (same pattern as the existing atmosphere Fresnel shader) that samples a
+  separate night-lights-only texture and fades it in via
+  `smoothstep` on `dot(worldNormal, sunDirection)`, so lights only show on
+  the side facing away from the light. Found and fixed two real bugs while
+  verifying this end-to-end with Playwright (screenshot bursts, then a
+  temporary "force nightFactor to 1.0 / 10x city radius" debug pass to
+  isolate rendering from lighting-angle luck — reverted after confirming):
+  the night-lights shell's radius offset (`radius*1.001`) was too close to
+  the Earth surface and z-fighting discarded it entirely; and city dots
+  sized for the old baked-map approach (2.4x) are imperceptible at the small
+  ~150px hero-orb scale this Earth is mostly viewed at (bumped to 4.5x).
+  Also nudged Mars/Earth/Saturn's directional lights (already done in part 1)
+  is what makes the day/night split itself readable — see that entry.
+- Not attempted: matching the referenced Three.js `webgpu_tsl_earth` example
+  itself — that demo runs on `WebGPURenderer` + TSL node materials with
+  real NASA imagery, atmospheric multi-scatter, and specular ocean
+  reflections; this codebase's vendored `three.min.js` is a classic
+  `WebGLRenderer` build with hand-drawn canvas textures. The day/night city-
+  lights *behavior* is now real and working; the *fidelity* gap (procedural
+  continents vs. real satellite imagery, no true specular highlight, no
+  cloud self-shadowing) is a much larger, separate undertaking — would need
+  either sourcing real equirectangular Earth textures or a genuine renderer
+  upgrade, not a same-session fix.
+
 ## 2026-09-07 (part 2) — Follow-up fixes from user QA
 
 - **Easter eggs stacking multiple quest completions/toasts per click** — every

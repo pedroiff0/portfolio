@@ -142,12 +142,51 @@
       });
     },
 
+    // Day/night city-lights overlay — the signature look of a photorealistic
+    // Earth render (see e.g. Three.js's webgpu_tsl_earth example): city
+    // lights fade in only on the side of the sphere facing away from the
+    // sun, instead of being permanently baked into the day texture.
+    getDayNightLightsMaterial(nightTexture, sunDirection) {
+      return new THREE.ShaderMaterial({
+        vertexShader: `
+          varying vec3 vWorldNormal;
+          varying vec2 vUv;
+          void main() {
+            vWorldNormal = normalize(mat3(modelMatrix) * normal);
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          varying vec3 vWorldNormal;
+          varying vec2 vUv;
+          uniform sampler2D nightMap;
+          uniform vec3 sunDirection;
+          void main() {
+            float ndotl = dot(normalize(vWorldNormal), normalize(sunDirection));
+            // Soft terminator: fully off well into daylight, fully on well into night.
+            float nightFactor = smoothstep(0.15, -0.25, ndotl);
+            vec4 tex = texture2D(nightMap, vUv);
+            gl_FragColor = vec4(tex.rgb, tex.a * nightFactor);
+          }
+        `,
+        uniforms: {
+          nightMap: { value: nightTexture },
+          sunDirection: { value: sunDirection }
+        },
+        transparent: true,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+      });
+    },
+
     getEarthTextures() {
       if (this._textures.earthMap) {
         return {
           map: this._textures.earthMap,
           clouds: this._textures.earthClouds,
-          specular: this._textures.earthSpecular
+          specular: this._textures.earthSpecular,
+          nightLights: this._textures.earthNightLights
         };
       }
 
@@ -226,23 +265,35 @@
         ctx.stroke();
       });
 
-      // Night City Lights (Warm Amber Clusters)
+      this._textures.earthMap = new THREE.CanvasTexture(cv);
+      this._textures.earthMap.wrapS = THREE.RepeatWrapping;
+
+      // 1b. Night lights map — kept as its own transparent texture (instead
+      // of baked into the day map) so they can be shown only on the dark
+      // side of the terminator by the day/night shader below. Baking them
+      // into the day map made cities glow even in broad daylight.
+      const nightCv = document.createElement("canvas");
+      nightCv.width = w; nightCv.height = h;
+      const nightCtx = nightCv.getContext("2d");
       GEO_CITIES.forEach((c) => {
         const cx = ((c.lon + 180) / 360) * w;
         const cy = ((90 - c.lat) / 180) * h;
-        const rad = c.size * 2.4;
-        const cityGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
-        cityGrad.addColorStop(0, "rgba(254, 240, 138, 0.98)");
-        cityGrad.addColorStop(0.4, "rgba(245, 158, 11, 0.75)");
+        // Sized up from the original 2.4x baked-map value — this Earth is
+        // mostly seen as a small ~150px hero orb rather than full-viewport
+        // (unlike the reference render), so pinpoint-sized lights would be
+        // imperceptible there even though correctly positioned.
+        const rad = c.size * 4.5;
+        const cityGrad = nightCtx.createRadialGradient(cx, cy, 0, cx, cy, rad);
+        cityGrad.addColorStop(0, "rgba(255, 244, 189, 1)");
+        cityGrad.addColorStop(0.4, "rgba(253, 186, 76, 0.85)");
         cityGrad.addColorStop(1, "rgba(234, 88, 12, 0)");
-        ctx.fillStyle = cityGrad;
-        ctx.beginPath();
-        ctx.arc(cx, cy, rad, 0, Math.PI * 2);
-        ctx.fill();
+        nightCtx.fillStyle = cityGrad;
+        nightCtx.beginPath();
+        nightCtx.arc(cx, cy, rad, 0, Math.PI * 2);
+        nightCtx.fill();
       });
-
-      this._textures.earthMap = new THREE.CanvasTexture(cv);
-      this._textures.earthMap.wrapS = THREE.RepeatWrapping;
+      this._textures.earthNightLights = new THREE.CanvasTexture(nightCv);
+      this._textures.earthNightLights.wrapS = THREE.RepeatWrapping;
 
       // 2. Specular Map (Water = 1.0 high gloss, Land = 0.05 matte)
       const specCv = document.createElement("canvas");
@@ -312,7 +363,8 @@
       return {
         map: this._textures.earthMap,
         clouds: this._textures.earthClouds,
-        specular: this._textures.earthSpecular
+        specular: this._textures.earthSpecular,
+        nightLights: this._textures.earthNightLights
       };
     },
 
@@ -446,6 +498,23 @@
       const earthMesh = new THREE.Mesh(earthGeo, earthMat);
       group.add(earthMesh);
 
+      // 1b. Night lights — only visible on the side facing away from the sun.
+      // Matches the directional lights positioned around (7-8, 2.5, -1.5/-2)
+      // across initCoreOrb/initIntroScene/initWarpScene.
+      let nightLightsMesh = null;
+      if (textures.nightLights) {
+        const nightMat = this.getDayNightLightsMaterial(
+          textures.nightLights,
+          new THREE.Vector3(7, 2.5, -1.5).normalize()
+        );
+        // radius*1.001 was too close to the surface and likely z-fighting
+        // against earthMesh at typical camera distances, silently discarding
+        // the layer; 1.006 clears it while still sitting well under the
+        // cloud layer at 1.014.
+        nightLightsMesh = new THREE.Mesh(new THREE.SphereGeometry(radius * 1.006, 64, 64), nightMat);
+        group.add(nightLightsMesh);
+      }
+
       // 2. Dynamic 3D Cloud Layer
       const cloudGeo = new THREE.SphereGeometry(radius * 1.014, 64, 64);
       const cloudMat = new THREE.MeshStandardMaterial({
@@ -477,6 +546,9 @@
         update: () => {
           earthMesh.rotation.y += 0.0018;
           cloudMesh.rotation.y += 0.0026;
+          // Keep the night-lights shell locked to the landmasses/cities it
+          // maps to — it must spin exactly with earthMesh, not clouds.
+          if (nightLightsMesh) nightLightsMesh.rotation.y = earthMesh.rotation.y;
         }
       };
     },
