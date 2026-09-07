@@ -737,7 +737,13 @@ const I18N = {
       viewRepo: "↗ Ver repositório no GitHub",
       noRepo: "Sem repositório público ainda"
     },
-    cat: { software: "Software", pesquisa: "Pesquisa", academico: "Acadêmico", pessoal: "Pessoal" },
+    cat: {
+      all: "Todos",
+      software: "Software",
+      pesquisa: "Pesquisa",
+      academico: "Acadêmico",
+      pessoal: "Pessoal"
+    },
     contactLabels: {
       email: "Email",
       github: "GitHub",
@@ -758,6 +764,7 @@ const I18N = {
       hubActive: "EXPLORADOR // ATIVO",
       missions: "MISSÕES",
       exploreProjects: "Explorar Projetos",
+      terminal: "Terminal (⌘K)",
       connect: "Conectar",
       goldenRecord: "Clique no Disco Dourado para decodificar a mensagem interestelar gravada em Bom Jesus do Itabapoana - RJ.",
       tesseractSync: "Clique para sincronizar os dados da singularidade através do tesseract gravitacional.",
@@ -765,6 +772,13 @@ const I18N = {
       statusExplorer: "STATUS EXPLORADOR",
       radar: "📡 RADAR ORBITAL // MINIMAP",
       skipIntro: "Pular [ESC] ⏭️"
+    },
+    sectorNav: {
+      sobre: "Sobre",
+      software: "Software",
+      pesquisa: "Pesquisa",
+      contato: "Contato",
+      contatoFull: "CV & Contatos"
     },
     hub: {
       sector1: { kicker: "SETOR 01 // TERRA", title: "Sobre Mim", sub: "Trajetória & Métricas" },
@@ -842,7 +856,13 @@ const I18N = {
       viewRepo: "↗ View repository on GitHub",
       noRepo: "No public repository yet"
     },
-    cat: { software: "Software", pesquisa: "Research", academico: "Academic", pessoal: "Personal" },
+    cat: {
+      all: "All",
+      software: "Software",
+      pesquisa: "Research",
+      academico: "Academic",
+      pessoal: "Personal"
+    },
     contactLabels: {
       email: "Email",
       github: "GitHub",
@@ -863,6 +883,7 @@ const I18N = {
       hubActive: "EXPLORER // ACTIVE",
       missions: "MISSIONS",
       exploreProjects: "Explore Projects",
+      terminal: "Terminal (⌘K)",
       connect: "Connect",
       goldenRecord: "Click the Golden Record to decode the interstellar message recorded in Bom Jesus do Itabapoana - RJ.",
       tesseractSync: "Click to synchronize singularity data through the gravitational tesseract.",
@@ -870,6 +891,13 @@ const I18N = {
       statusExplorer: "EXPLORER STATUS",
       radar: "📡 ORBITAL RADAR // MINIMAP",
       skipIntro: "Skip [ESC] ⏭️"
+    },
+    sectorNav: {
+      sobre: "About",
+      software: "Software",
+      pesquisa: "Research",
+      contato: "Contact",
+      contatoFull: "CV & Contact"
     },
     hub: {
       sector1: { kicker: "SECTOR 01 // EARTH", title: "About Me", sub: "Journey & Metrics" },
@@ -959,6 +987,7 @@ const I18N = {
       noRepo: "Aún sin repositorio público"
     },
     cat: {
+      all: "Todos",
       software: "Software",
       pesquisa: "Investigación",
       academico: "Académico",
@@ -984,6 +1013,7 @@ const I18N = {
       hubActive: "EXPLORADOR // ACTIVO",
       missions: "MISIONES",
       exploreProjects: "Explorar Proyectos",
+      terminal: "Terminal (⌘K)",
       connect: "Conectar",
       goldenRecord: "Haz clic en el Disco Dorado para decodificar el mensaje interestelar grabado en Bom Jesus do Itabapoana - RJ.",
       tesseractSync: "Haz clic para sincronizar los datos de la singularidad a través del teseracto gravitacional.",
@@ -991,6 +1021,13 @@ const I18N = {
       statusExplorer: "ESTADO EXPLORADOR",
       radar: "📡 RADAR ORBITAL // MINIMAPA",
       skipIntro: "Saltar [ESC] ⏭️"
+    },
+    sectorNav: {
+      sobre: "Sobre mí",
+      software: "Software",
+      pesquisa: "Investigación",
+      contato: "Contacto",
+      contatoFull: "CV y Contacto"
     },
     hub: {
       sector1: { kicker: "SECTOR 01 // TIERRA", title: "Sobre Mí", sub: "Trayectoria & Métricas" },
@@ -1076,6 +1113,7 @@ const I18N = {
       noRepo: "Pas encore de dépôt public"
     },
     cat: {
+      all: "Tous",
       software: "Logiciel",
       pesquisa: "Recherche",
       academico: "Académique",
@@ -1101,6 +1139,7 @@ const I18N = {
       hubActive: "EXPLORATEUR // ACTIF",
       missions: "MISSIONS",
       exploreProjects: "Explorer les Projets",
+      terminal: "Terminal (⌘K)",
       connect: "Connexion",
       goldenRecord: "Cliquez sur le Disque d.Or pour décoder le message interstellaire enregistré à Bom Jesus do Itabapoana - RJ.",
       tesseractSync: "Cliquez pour synchroniser les données de la singularité à travers le tesseract gravitationnel.",
@@ -1108,6 +1147,13 @@ const I18N = {
       statusExplorer: "STATUT EXPLORATEUR",
       radar: "📡 RADAR ORBITAL // MINICARTE",
       skipIntro: "Passer [ESC] ⏭️"
+    },
+    sectorNav: {
+      sobre: "À propos",
+      software: "Logiciel",
+      pesquisa: "Recherche",
+      contato: "Contact",
+      contatoFull: "CV et Contact"
     },
     hub: {
       sector1: {

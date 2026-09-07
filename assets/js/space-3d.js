@@ -190,174 +190,29 @@
         };
       }
 
-      // 1. High-Resolution Diffuse Texture (2048 x 1024)
-      const w = 2048, h = 1024;
-      const cv = document.createElement("canvas");
-      cv.width = w; cv.height = h;
-      const ctx = cv.getContext("2d");
+      // Real equirectangular NASA-derived imagery (day map, night lights,
+      // ocean specular mask, cloud layer) shipped in assets/img/planets/ —
+      // see the README there for provenance. Replaces the earlier hand-drawn
+      // canvas continents/cities, which read as a rough sketch rather than a
+      // real planet next to any actual photo of Earth.
+      const loader = new THREE.TextureLoader();
+      const base = "assets/img/planets/";
 
-      // Deep Ocean Bathymetry Gradient
-      const oceanGrad = ctx.createLinearGradient(0, 0, 0, h);
-      oceanGrad.addColorStop(0.0, "#081d36");
-      oceanGrad.addColorStop(0.25, "#031526");
-      oceanGrad.addColorStop(0.5, "#020f1e");
-      oceanGrad.addColorStop(0.75, "#031526");
-      oceanGrad.addColorStop(1.0, "#081d36");
-      ctx.fillStyle = oceanGrad;
-      ctx.fillRect(0, 0, w, h);
-
-      // Coastal Shallows and Reefs
-      Object.keys(GEO_LANDMASSES).forEach((k) => {
-        const poly = GEO_LANDMASSES[k];
-        if (!poly || !poly.length) return;
-        ctx.beginPath();
-        poly.forEach(([lat, lon], idx) => {
-          const x = ((lon + 180) / 360) * w;
-          const y = ((90 - lat) / 180) * h;
-          if (idx === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        });
-        ctx.closePath();
-        ctx.lineWidth = 16;
-        ctx.strokeStyle = "rgba(6, 182, 212, 0.35)";
-        ctx.stroke();
-      });
-
-      // Continents with Biome Shading
-      Object.keys(GEO_LANDMASSES).forEach((k) => {
-        const poly = GEO_LANDMASSES[k];
-        if (!poly || !poly.length) return;
-        ctx.beginPath();
-        poly.forEach(([lat, lon], idx) => {
-          const x = ((lon + 180) / 360) * w;
-          const y = ((90 - lat) / 180) * h;
-          if (idx === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        });
-        ctx.closePath();
-
-        if (k === "southAmerica") {
-          const saGrad = ctx.createLinearGradient(0, 0, 0, h);
-          saGrad.addColorStop(0.4, "#165b33"); // Amazon Basin
-          saGrad.addColorStop(0.6, "#2d6a4f"); // Cerrado
-          saGrad.addColorStop(0.85, "#52796f"); // Pampas
-          ctx.fillStyle = saGrad;
-        } else if (k === "africa") {
-          const afGrad = ctx.createLinearGradient(0, 0, 0, h);
-          afGrad.addColorStop(0.3, "#d97706"); // Sahara Desert
-          afGrad.addColorStop(0.5, "#15803d"); // Congo Rainforest
-          afGrad.addColorStop(0.8, "#65a30d"); // Savanna
-          ctx.fillStyle = afGrad;
-        } else if (k === "antarctica" || k === "greenland") {
-          ctx.fillStyle = "#f8fafc";
-        } else {
-          const genGrad = ctx.createLinearGradient(0, 0, 0, h);
-          genGrad.addColorStop(0.2, "#e2e8f0");
-          genGrad.addColorStop(0.35, "#2d6a4f");
-          genGrad.addColorStop(0.5, "#386641");
-          genGrad.addColorStop(0.7, "#ca8a04");
-          ctx.fillStyle = genGrad;
-        }
-        ctx.fill();
-
-        ctx.lineWidth = 2.5;
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
-        ctx.stroke();
-      });
-
-      this._textures.earthMap = new THREE.CanvasTexture(cv);
+      this._textures.earthMap = loader.load(base + "earth_day_4096.jpg");
       this._textures.earthMap.wrapS = THREE.RepeatWrapping;
+      // No explicit color-space/encoding tagging here on purpose: none of
+      // this file's renderers set outputEncoding, so tagging just this one
+      // texture as sRGB without also fixing the renderer's output stage
+      // would double up the gamma correction and make it render too dark —
+      // left as the implicit default like every other texture in this file.
 
-      // 1b. Night lights map — kept as its own transparent texture (instead
-      // of baked into the day map) so they can be shown only on the dark
-      // side of the terminator by the day/night shader below. Baking them
-      // into the day map made cities glow even in broad daylight.
-      const nightCv = document.createElement("canvas");
-      nightCv.width = w; nightCv.height = h;
-      const nightCtx = nightCv.getContext("2d");
-      GEO_CITIES.forEach((c) => {
-        const cx = ((c.lon + 180) / 360) * w;
-        const cy = ((90 - c.lat) / 180) * h;
-        // Sized up from the original 2.4x baked-map value — this Earth is
-        // mostly seen as a small ~150px hero orb rather than full-viewport
-        // (unlike the reference render), so pinpoint-sized lights would be
-        // imperceptible there even though correctly positioned.
-        const rad = c.size * 4.5;
-        const cityGrad = nightCtx.createRadialGradient(cx, cy, 0, cx, cy, rad);
-        cityGrad.addColorStop(0, "rgba(255, 244, 189, 1)");
-        cityGrad.addColorStop(0.4, "rgba(253, 186, 76, 0.85)");
-        cityGrad.addColorStop(1, "rgba(234, 88, 12, 0)");
-        nightCtx.fillStyle = cityGrad;
-        nightCtx.beginPath();
-        nightCtx.arc(cx, cy, rad, 0, Math.PI * 2);
-        nightCtx.fill();
-      });
-      this._textures.earthNightLights = new THREE.CanvasTexture(nightCv);
+      this._textures.earthNightLights = loader.load(base + "earth_night_4096.jpg");
       this._textures.earthNightLights.wrapS = THREE.RepeatWrapping;
 
-      // 2. Specular Map (Water = 1.0 high gloss, Land = 0.05 matte)
-      const specCv = document.createElement("canvas");
-      specCv.width = 1024; specCv.height = 512;
-      const specCtx = specCv.getContext("2d");
-      specCtx.fillStyle = "#ffffff";
-      specCtx.fillRect(0, 0, 1024, 512);
-      specCtx.fillStyle = "#0a0a0a";
-      Object.keys(GEO_LANDMASSES).forEach((k) => {
-        const poly = GEO_LANDMASSES[k];
-        if (!poly || !poly.length) return;
-        specCtx.beginPath();
-        poly.forEach(([lat, lon], idx) => {
-          const x = ((lon + 180) / 360) * 1024;
-          const y = ((90 - lat) / 180) * 512;
-          if (idx === 0) specCtx.moveTo(x, y);
-          else specCtx.lineTo(x, y);
-        });
-        specCtx.closePath();
-        specCtx.fill();
-      });
-      this._textures.earthSpecular = new THREE.CanvasTexture(specCv);
+      this._textures.earthSpecular = loader.load(base + "earth_specular_2048.jpg");
+      this._textures.earthSpecular.wrapS = THREE.RepeatWrapping;
 
-      // 3. Dynamic Procedural Cloud Layer (1024 x 512)
-      const cloudCv = document.createElement("canvas");
-      cloudCv.width = 1024; cloudCv.height = 512;
-      const cctx = cloudCv.getContext("2d");
-      cctx.clearRect(0, 0, 1024, 512);
-
-      for (let y = 0; y < 512; y += 4) {
-        const lat = 90 - (y / 512) * 180;
-        const itcz = Math.exp(-Math.pow(lat / 14, 2)) * 0.72;
-        const polar = Math.exp(-Math.pow((Math.abs(lat) - 60) / 16, 2)) * 0.62;
-        const baseDensity = itcz + polar + 0.12;
-
-        for (let x = 0; x < 1024; x += 4) {
-          const nx = x / 1024;
-          const ny = y / 512;
-          const noise = Math.sin(nx * 16 + ny * 8) * Math.cos(nx * 28 - ny * 14) * 0.5 + 0.5;
-          const noise2 = Math.sin(nx * 42 + ny * 20) * 0.5 + 0.5;
-          const alpha = Math.max(0, Math.min(0.92, (noise * 0.65 + noise2 * 0.35 + baseDensity - 0.44) * 1.55));
-          if (alpha > 0.05) {
-            cctx.fillStyle = `rgba(255, 255, 255, ${alpha.toFixed(3)})`;
-            cctx.fillRect(x, y, 4, 4);
-          }
-        }
-      }
-
-      // Cyclone Eddies
-      const cyclones = [{ x: 340, y: 170, r: 50 }, { x: 720, y: 330, r: 60 }, { x: 500, y: 190, r: 42 }];
-      cyclones.forEach((cyc) => {
-        for (let a = 0; a < Math.PI * 6; a += 0.12) {
-          const r = (a / (Math.PI * 6)) * cyc.r;
-          const px = cyc.x + Math.cos(a) * r;
-          const py = cyc.y + Math.sin(a) * (r * 0.58);
-          const alpha = (1 - r / cyc.r) * 0.85;
-          cctx.fillStyle = `rgba(255, 255, 255, ${alpha.toFixed(3)})`;
-          cctx.beginPath();
-          cctx.arc(px, py, 6 + r * 0.1, 0, Math.PI * 2);
-          cctx.fill();
-        }
-      });
-
-      this._textures.earthClouds = new THREE.CanvasTexture(cloudCv);
+      this._textures.earthClouds = loader.load(base + "earth_clouds_1024.png");
       this._textures.earthClouds.wrapS = THREE.RepeatWrapping;
 
       return {
@@ -487,13 +342,18 @@
       const group = new THREE.Group();
       const textures = this.getEarthTextures();
 
-      // 1. Earth Surface Mesh
+      // 1. Earth Surface Mesh — MeshPhongMaterial + specularMap on purpose:
+      // this is the exact texture/material pairing three.js's own earth
+      // examples use it for (white=ocean=shiny, black=land=matte). Using it
+      // as a MeshStandardMaterial roughnessMap (as the old procedural
+      // version did) is backwards — roughnessMap treats white as *rough*,
+      // which would have made the ocean matte and land glossy.
       const earthGeo = new THREE.SphereGeometry(radius, 64, 64);
-      const earthMat = new THREE.MeshStandardMaterial({
+      const earthMat = new THREE.MeshPhongMaterial({
         map: textures.map,
-        roughness: 0.6,
-        metalness: 0.08,
-        roughnessMap: textures.specular
+        specularMap: textures.specular,
+        specular: new THREE.Color(0x333333),
+        shininess: 12
       });
       const earthMesh = new THREE.Mesh(earthGeo, earthMat);
       group.add(earthMesh);
@@ -840,7 +700,7 @@
       group.add(trussMesh);
 
       const coreGeo = new THREE.CylinderGeometry(0.18, 0.18, 0.5, 24);
-      const coreMat = new THREE.MeshStandardMaterial({ color: 0x5eead4, metalness: 0.7, roughness: 0.3 });
+      const coreMat = new THREE.MeshStandardMaterial({ color: 0xb692ff, metalness: 0.7, roughness: 0.3 });
       const coreMesh = new THREE.Mesh(coreGeo, coreMat);
       group.add(coreMesh);
 
@@ -882,7 +742,7 @@
       ringMesh.rotation.x = Math.PI / 2.2;
       satGroup.add(ringMesh);
 
-      const satMesh = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.06, 0.14), new THREE.MeshStandardMaterial({ color: 0x5eead4, metalness: 0.9 }));
+      const satMesh = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.06, 0.14), new THREE.MeshStandardMaterial({ color: 0xb692ff, metalness: 0.9 }));
       satMesh.position.set(1.36, 0, 0);
       satGroup.add(satMesh);
       scene.add(satGroup);

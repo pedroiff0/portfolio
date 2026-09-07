@@ -1090,7 +1090,7 @@
         ictx.fillStyle = baseBiome;
         ictx.fill();
 
-        ictx.strokeStyle = "rgba(94, 234, 212, 0.28)";
+        ictx.strokeStyle = "rgba(182, 146, 255, 0.28)";
         ictx.lineWidth = 1;
         ictx.stroke();
       });
@@ -1170,9 +1170,9 @@
       const pulse = Math.sin(elapsed * 6) * 4 + 18;
 
       ictx.save();
-      ictx.strokeStyle = "rgba(94, 234, 212, 0.85)";
+      ictx.strokeStyle = "rgba(182, 146, 255, 0.85)";
       ictx.lineWidth = 1.5;
-      ictx.shadowColor = "rgba(94, 234, 212, 0.9)";
+      ictx.shadowColor = "rgba(182, 146, 255, 0.9)";
       ictx.shadowBlur = 10;
 
       // Rotating reticle ring
@@ -1182,7 +1182,7 @@
 
       ictx.beginPath();
       ictx.arc(tx, ty, 3.5, 0, Math.PI * 2);
-      ictx.fillStyle = "#5eead4";
+      ictx.fillStyle = "#b692ff";
       ictx.fill();
 
       // Target cardinal crosshairs
@@ -1195,7 +1195,7 @@
 
       // Target Telemetry Tag & Tactical Invasion Departure Lore
       ictx.font = "600 10px JetBrains Mono, monospace";
-      ictx.fillStyle = "#5eead4";
+      ictx.fillStyle = "#b692ff";
       ictx.fillText("TARGET: 21.7°S 41.3°W // LZ-01 EVACUATION VECTOR", tx + pulse + 8, ty + 3);
       ictx.restore();
 
@@ -1236,7 +1236,7 @@
             size: Math.random() * 4.5 + 1.5,
             life: 1.0,
             decay: Math.random() * 0.024 + 0.014,
-            color: Math.random() < 0.4 ? "#5eead4" : (Math.random() < 0.75 ? "#fde047" : "#fb923c")
+            color: Math.random() < 0.4 ? "#b692ff" : (Math.random() < 0.75 ? "#fde047" : "#fb923c")
           });
         }
 
@@ -1376,7 +1376,7 @@
 
         // RCS Attitude Control Jets
         if (Math.sin(elapsed * 5) > 0.6) {
-          ictx.fillStyle = "rgba(94, 234, 212, 0.9)";
+          ictx.fillStyle = "rgba(182, 146, 255, 0.9)";
           ictx.beginPath();
           ictx.moveTo(-20, -18); ictx.lineTo(-26, -28); ictx.lineTo(-14, -20);
           ictx.fill();
@@ -1395,9 +1395,9 @@
             ictx.save();
             ictx.beginPath();
             ictx.arc(tx, ty, ring.r, 0, Math.PI * 2);
-            ictx.strokeStyle = `rgba(94, 234, 212, ${ring.alpha * 0.88})`;
+            ictx.strokeStyle = `rgba(182, 146, 255, ${ring.alpha * 0.88})`;
             ictx.lineWidth = 3.5;
-            ictx.shadowColor = "rgba(94, 234, 212, 0.95)";
+            ictx.shadowColor = "rgba(182, 146, 255, 0.95)";
             ictx.shadowBlur = 18;
             ictx.stroke();
             ictx.restore();
@@ -1427,9 +1427,9 @@
         if (beaconAlpha > 0.05) {
           ictx.save();
           const beamGrad = ictx.createLinearGradient(tx, ty, tx, ty - 180);
-          beamGrad.addColorStop(0, `rgba(94, 234, 212, ${beaconAlpha * 0.85})`);
+          beamGrad.addColorStop(0, `rgba(182, 146, 255, ${beaconAlpha * 0.85})`);
           beamGrad.addColorStop(0.4, `rgba(253, 224, 71, ${beaconAlpha * 0.5})`);
-          beamGrad.addColorStop(1, "rgba(94, 234, 212, 0)");
+          beamGrad.addColorStop(1, "rgba(182, 146, 255, 0)");
           ictx.fillStyle = beamGrad;
           ictx.beginPath();
           ictx.moveTo(tx - 6, ty);
@@ -1440,7 +1440,7 @@
           ictx.fill();
 
           ictx.font = "700 11px JetBrains Mono, monospace";
-          ictx.fillStyle = `rgba(94, 234, 212, ${beaconAlpha})`;
+          ictx.fillStyle = `rgba(182, 146, 255, ${beaconAlpha})`;
           ictx.fillText("POUSO CONCLUÍDO // ESTAÇÃO SINCRONIZADA", tx + 14, ty - 30);
           ictx.restore();
         }
@@ -1450,7 +1450,7 @@
           const flashGrad = safeRadialGradient(ictx, tx, ty, 5, tx, ty, iw * 0.9);
           flashGrad.addColorStop(0, `rgba(255, 255, 255, ${flashAlpha})`);
           flashGrad.addColorStop(0.25, `rgba(253, 224, 71, ${flashAlpha * 0.75})`);
-          flashGrad.addColorStop(0.55, `rgba(94, 234, 212, ${flashAlpha * 0.35})`);
+          flashGrad.addColorStop(0.55, `rgba(182, 146, 255, ${flashAlpha * 0.35})`);
           flashGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
           ictx.fillStyle = flashGrad;
           ictx.fillRect(0, 0, iw, ih);
@@ -1587,8 +1587,8 @@
       speed: "WARP 9.60c // ACOPLAMENTO 68 RPM",
       coords: "HUB CENTRAL // NAVE ENDURANCE [SISTEMA SOLAR]",
       type: "hub",
-      colorCore: "#5eead4",
-      colorAtmo: "rgba(94, 234, 212, 0.55)"
+      colorCore: "#b692ff",
+      colorAtmo: "rgba(182, 146, 255, 0.55)"
     }
   };
 
@@ -2069,7 +2069,7 @@
 
       if (type === "hub") {
         // High-Tech Endurance 12-Pod Ring Spacecraft Structure (Rotating at 68 RPM)
-        pctx.strokeStyle = "rgba(94, 234, 212, 0.85)";
+        pctx.strokeStyle = "rgba(182, 146, 255, 0.85)";
         pctx.lineWidth = Math.max(1.5, radius * 0.025);
         pctx.beginPath();
         pctx.ellipse(0, 0, radius * 1.5, radius * 0.45, -0.2, 0, Math.PI * 2);
@@ -2082,8 +2082,8 @@
           const sy = Math.sin(sAngle) * (radius * 0.45);
           pctx.beginPath();
           pctx.arc(sx, sy, Math.max(2.2, radius * 0.035), 0, Math.PI * 2);
-          pctx.fillStyle = a % 3 === 0 ? "#5eead4" : "#e2e8f0";
-          pctx.shadowColor = "#5eead4";
+          pctx.fillStyle = a % 3 === 0 ? "#b692ff" : "#e2e8f0";
+          pctx.shadowColor = "#b692ff";
           pctx.shadowBlur = 6;
           pctx.fill();
         }
@@ -2482,7 +2482,7 @@
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
         size: (Math.random() * 2.5 + 1.2) * (dpr || 1),
-        color: Math.random() > 0.5 ? "#5eead4" : (Math.random() > 0.3 ? "#f59e0b" : "#ec4899")
+        color: Math.random() > 0.5 ? "#b692ff" : (Math.random() > 0.3 ? "#f59e0b" : "#ec4899")
       });
     }
 
@@ -2661,7 +2661,7 @@
           ctx.beginPath();
           ctx.moveTo(nodeCoords[i].x, nodeCoords[i].y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(94, 234, 212, ${mAlpha})`;
+          ctx.strokeStyle = `rgba(182, 146, 255, ${mAlpha})`;
           ctx.lineWidth = 1.4 * dpr;
           ctx.stroke();
         }
@@ -2682,7 +2682,7 @@
 
       const mGrad = ctx.createLinearGradient(m.x, m.y, tailX, tailY);
       mGrad.addColorStop(0, `rgba(255, 255, 255, ${m.life})`);
-      mGrad.addColorStop(0.3, `rgba(94, 234, 212, ${m.life * 0.8})`);
+      mGrad.addColorStop(0.3, `rgba(182, 146, 255, ${m.life * 0.8})`);
       mGrad.addColorStop(1, "rgba(110, 168, 254, 0)");
 
       ctx.beginPath();
@@ -4136,7 +4136,7 @@
     mctx.clearRect(0, 0, mw, mh);
 
     // Radar Grid Circles
-    mctx.strokeStyle = "rgba(94, 234, 212, 0.25)";
+    mctx.strokeStyle = "rgba(182, 146, 255, 0.25)";
     mctx.lineWidth = 1;
     mctx.beginPath();
     mctx.arc(cx, cy, 18, 0, Math.PI * 2);
@@ -4152,7 +4152,7 @@
     mctx.beginPath();
     mctx.moveTo(cx, cy);
     mctx.arc(cx, cy, 46, sweepAngle - 0.35, sweepAngle);
-    mctx.fillStyle = "rgba(94, 234, 212, 0.15)";
+    mctx.fillStyle = "rgba(182, 146, 255, 0.15)";
     mctx.fill();
     mctx.restore();
 
@@ -4160,8 +4160,8 @@
     const hubIsCurrent = !activeSector;
     mctx.beginPath();
     mctx.arc(cx, cy, hubIsCurrent ? 4.5 + Math.sin(now * 4) * 1 : 3.5, 0, Math.PI * 2);
-    mctx.fillStyle = "#5eead4";
-    mctx.shadowColor = "#5eead4";
+    mctx.fillStyle = "#b692ff";
+    mctx.shadowColor = "#b692ff";
     mctx.shadowBlur = hubIsCurrent ? 12 : 6;
     mctx.fill();
     mctx.shadowBlur = 0;

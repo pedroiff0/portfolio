@@ -200,21 +200,25 @@ labels:
     noRepo: "Pas encore de dépôt public"
 cat:
   pt:
+    all: "Todos"
     software: "Software"
     pesquisa: "Pesquisa"
     academico: "Acadêmico"
     pessoal: "Pessoal"
   en:
+    all: "All"
     software: "Software"
     pesquisa: "Research"
     academico: "Academic"
     pessoal: "Personal"
   es:
+    all: "Todos"
     software: "Software"
     pesquisa: "Investigación"
     academico: "Académico"
     pessoal: "Personal"
   fr:
+    all: "Tous"
     software: "Logiciel"
     pesquisa: "Recherche"
     academico: "Académique"
@@ -286,6 +290,7 @@ hud:
     hubActive: "EXPLORADOR // ATIVO"
     missions: "MISSÕES"
     exploreProjects: "Explorar Projetos"
+    terminal: "Terminal (⌘K)"
     connect: "Conectar"
     goldenRecord: "Clique no Disco Dourado para decodificar a mensagem interestelar gravada em Bom Jesus do Itabapoana - RJ."
     tesseractSync: "Clique para sincronizar os dados da singularidade através do tesseract gravitacional."
@@ -300,6 +305,7 @@ hud:
     hubActive: "EXPLORER // ACTIVE"
     missions: "MISSIONS"
     exploreProjects: "Explore Projects"
+    terminal: "Terminal (⌘K)"
     connect: "Connect"
     goldenRecord: "Click the Golden Record to decode the interstellar message recorded in Bom Jesus do Itabapoana - RJ."
     tesseractSync: "Click to synchronize singularity data through the gravitational tesseract."
@@ -314,6 +320,7 @@ hud:
     hubActive: "EXPLORADOR // ACTIVO"
     missions: "MISIONES"
     exploreProjects: "Explorar Proyectos"
+    terminal: "Terminal (⌘K)"
     connect: "Conectar"
     goldenRecord: "Haz clic en el Disco Dorado para decodificar el mensaje interestelar grabado en Bom Jesus do Itabapoana - RJ."
     tesseractSync: "Haz clic para sincronizar los datos de la singularidad a través del teseracto gravitacional."
@@ -328,6 +335,7 @@ hud:
     hubActive: "EXPLORATEUR // ACTIF"
     missions: "MISSIONS"
     exploreProjects: "Explorer les Projets"
+    terminal: "Terminal (⌘K)"
     connect: "Connexion"
     goldenRecord: "Cliquez sur le Disque d.Or pour décoder le message interstellaire enregistré à Bom Jesus do Itabapoana - RJ."
     tesseractSync: "Cliquez pour synchroniser les données de la singularité à travers le tesseract gravitationnel."
@@ -335,6 +343,33 @@ hud:
     statusExplorer: "STATUT EXPLORATEUR"
     radar: "📡 RADAR ORBITAL // MINICARTE"
     skipIntro: "Passer [ESC] ⏭️"
+# Short sector labels reused by the mobile bottom dock and both footers'
+# sector-jump buttons.
+sectorNav:
+  pt:
+    sobre: "Sobre"
+    software: "Software"
+    pesquisa: "Pesquisa"
+    contato: "Contato"
+    contatoFull: "CV & Contatos"
+  en:
+    sobre: "About"
+    software: "Software"
+    pesquisa: "Research"
+    contato: "Contact"
+    contatoFull: "CV & Contact"
+  es:
+    sobre: "Sobre mí"
+    software: "Software"
+    pesquisa: "Investigación"
+    contato: "Contacto"
+    contatoFull: "CV y Contacto"
+  fr:
+    sobre: "À propos"
+    software: "Logiciel"
+    pesquisa: "Recherche"
+    contato: "Contact"
+    contatoFull: "CV et Contact"
 # 4 corner-node cards on the hub (desktop) — kicker/title/sub per sector.
 hub:
   pt:

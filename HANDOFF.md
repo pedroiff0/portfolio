@@ -8,6 +8,75 @@ See also: `CLAUDE.md` (architecture map + commands) and
 `.claude/skills/cosmic-portfolio/SKILL.md` (playbook for this specific
 "gamified space-hub portfolio" pattern — CSS/JS gotchas, testing method).
 
+## 2026-09-07 (part 4) — Purple theme, real Earth textures, unified topbar
+
+- **Theme color is purple now.** `--accent-cyan` (used pervasively as *the*
+  primary glow/border/link color — borders, focus rings, icons, shadows) and
+  every hardcoded literal of the same color (`#b692ff` was `#5eead4`,
+  `182, 146, 255` was `94, 234, 212`) were swapped across
+  `style.css`/`main.js`/`space-3d.js`/`index.html` via a global search-
+  replace (110 occurrences). The variable is still *named* `--accent-cyan`
+  for now — renaming it is cosmetic and was deprioritized to keep this a
+  low-risk value swap; do that rename as a follow-up if it bothers you.
+  Planet atmosphere colors (Earth's blue, Mars' orange, etc.) were left
+  alone on purpose — those are physically-flavored, not site-theme colors.
+- **Setores 03/04 (bottom corner nodes) were sitting on top of the footer**
+  — `.node-bottom-left/-right` used a flat `bottom: 36px`, which doesn't
+  reserve enough clearance for the footer's real rendered height. Bumped to
+  96px (mirrors the top nodes' own 96px).
+- **Real 3D Earth textures**, replacing the hand-drawn procedural canvas
+  ones — see the "Earth day/night terminator" entry below the fold for the
+  city-lights shader itself; this is the follow-up the user explicitly asked
+  for after comparing against Three.js's own `webgpu_tsl_earth` example.
+  Sourced real equirectangular imagery (day map, night lights, ocean
+  specular mask, cloud layer) from `three.js`'s own MIT-licensed example
+  assets (`examples/textures/planets/` in the mrdoob/three.js repo) into
+  `assets/img/planets/` — see the README there for provenance/licensing.
+  `getEarthTextures()` now just `THREE.TextureLoader().load()`s these
+  instead of drawing continents from hand-plotted lat/lon polygons. Also
+  fixed the Earth material itself while at it: it was `MeshStandardMaterial`
+  with the specular mask wired in as a `roughnessMap` — backwards (white=
+  ocean would read as *rough*, black=land as *glossy*, the opposite of
+  reality). Switched to `MeshPhongMaterial` + `specularMap`, the pairing
+  this exact texture asset is designed for (and what three.js's own earth
+  examples use it as). `GEO_LANDMASSES`/`GEO_CITIES` in `space-3d.js` are
+  now dead code (no longer referenced) — harmless, left in case Mars/Saturn
+  ever want similar real-texture treatment, but safe to delete.
+  Not attempted: Mars/Saturn are still procedural (no equivalent free
+  texture set was sourced this pass) — only lighting/blob-density fixes
+  from an earlier session apply there.
+- **Unified the two topbars.** `.top-hud-bar` (hub: brand, intro replay,
+  terminal search, SFX, language switcher) and `.dossier-header-bar`
+  (in-sector: return-to-hub, sector tabs) used to be different bars with
+  different controls. Per feedback they should be "the same bar everywhere,
+  on hover": added a `.dossier-header-controls` block (terminal button +
+  a second language-switcher instance — `.lang-btn` clicks/active-state are
+  already wired generically via `querySelectorAll`, so duplicating the
+  markup needed no JS changes) to the dossier header, and reverted
+  `.top-hud-bar` back to reveal-on-hover (it had been made permanently
+  visible in an earlier pass specifically to fix the language switcher being
+  undiscoverable — now that the in-sector bar carries the same language
+  switcher, that concern doesn't require permanent visibility anymore).
+  Both bars now behave identically: hidden until hover, same control set.
+- **Task tracker (right side, quest list) now starts collapsed** — added the
+  `minimized` class to `#hudTaskTracker` by default. The collapse
+  infrastructure (`.task-tracker-toggle` pill, `#taskMinimizeBtn`) already
+  existed in CSS/JS but nothing set the initial state, so the full 300px
+  card rendered on top of dossier-panel text (and, being on the same "GTA
+  HUD" pattern as the explorer-status panel from an earlier pass, needed the
+  identical default-collapsed treatment for the same reason).
+- **More untranslated UI chrome fixed**: hero CTA buttons ("Explorar
+  Projetos"/"Terminal"/"Conectar"), the topbar search button, the desktop
+  dossier close button (`#closeDossierBtn` — only the *mobile* close button
+  had `data-i18n` before), the mobile bottom-dock labels, both footers'
+  sector-jump buttons, and the project category filter tabs (Todos/
+  Software/Pesquisa/Acadêmico/Pessoal) all got real i18n keys wired via
+  `data-i18n` (new `hud.terminal`, `sectorNav.*`, `cat.all` keys). Not yet
+  covered: deeper per-panel content — CV section labels ("Repositório do
+  CV", "PDF (PT)/(EN)"), the Lattes ID label, and easter-egg widget copy are
+  still hardcoded Portuguese. Worth a dedicated pass rather than a partial
+  one; flagging so it isn't mistaken for "fully translated now."
+
 ## 2026-09-07 (part 3) — Earth day/night lights, topbar hover restored
 
 - **Restored `.dossier-header-bar` to reveal-on-hover** (per explicit
