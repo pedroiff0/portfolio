@@ -547,7 +547,18 @@
     { lat: -3, lon: 116, type: "cumulus", r: 0.26, rot: 1.0, count: 5 }
   ];
 
+  function safeRadialGradient(ctx, x0, y0, r0, x1, y1, r1) {
+    const sX0 = Number.isFinite(x0) ? x0 : 0;
+    const sY0 = Number.isFinite(y0) ? y0 : 0;
+    const sX1 = Number.isFinite(x1) ? x1 : sX0;
+    const sY1 = Number.isFinite(y1) ? y1 : sY0;
+    const sR0 = Math.max(0, Number.isFinite(r0) ? r0 : 0);
+    const sR1 = Math.max(sR0 + 0.1, Number.isFinite(r1) ? r1 : sR0 + 0.1);
+    return ctx.createRadialGradient(sX0, sY0, sR0, sX1, sY1, sR1);
+  }
+
   function drawRealisticEarthClouds(ctx, cx, cy, er, rotDeg, sunDir) {
+    if (!ctx || er <= 0) return;
     const shadowOffX = -sunDir.x * er * 0.034;
     const shadowOffY = -sunDir.y * er * 0.034;
 
@@ -559,7 +570,7 @@
       if (cp.z > 0.05) {
         const cpx = cx + cp.x * er + shadowOffX;
         const cpy = cy + cp.y * er + shadowOffY;
-        const sysR = er * ws.r;
+        const sysR = Math.max(1, er * ws.r);
 
         if (ws.type === "cyclone") {
           for (let a = 0; a < ws.arms; a++) {
@@ -569,7 +580,7 @@
               const rDist = sysR * 0.18 * Math.exp(ws.b * s);
               const sx = cpx + Math.cos(theta) * rDist;
               const sy = cpy + Math.sin(theta) * (rDist * 0.65);
-              const nodeR = sysR * (0.15 + s * 0.045);
+              const nodeR = Math.max(0.5, sysR * (0.15 + s * 0.045));
               ctx.beginPath();
               ctx.arc(sx, sy, nodeR, 0, Math.PI * 2);
               ctx.fill();
@@ -580,7 +591,7 @@
           for (let i = 0; i < n; i++) {
             const offX = (i - n / 2) * (sysR * 0.32);
             const offY = Math.sin(i * 1.6) * (sysR * 0.14);
-            const puffR = sysR * (0.35 + Math.cos(i) * 0.1);
+            const puffR = Math.max(0.5, sysR * (0.35 + Math.cos(i) * 0.1));
             ctx.beginPath();
             ctx.arc(cpx + offX, cpy + offY, puffR, 0, Math.PI * 2);
             ctx.fill();
@@ -590,14 +601,14 @@
             const t = i / 5;
             const fx = cpx + (t - 0.5) * sysR * 1.6;
             const fy = cpy + Math.sin(t * Math.PI) * (sysR * ws.curve * 1.2);
-            const fR = sysR * (0.28 + (1 - t) * 0.15);
+            const fR = Math.max(0.5, sysR * (0.28 + (1 - t) * 0.15));
             ctx.beginPath();
             ctx.arc(fx, fy, fR, 0, Math.PI * 2);
             ctx.fill();
           }
         } else {
           ctx.beginPath();
-          ctx.ellipse(cpx, cpy, sysR * 0.9, sysR * 0.24, 0.35, 0, Math.PI * 2);
+          ctx.ellipse(cpx, cpy, Math.max(1, sysR * 0.9), Math.max(0.5, sysR * 0.24), 0.35, 0, Math.PI * 2);
           ctx.fill();
         }
       }
@@ -610,7 +621,7 @@
       if (cp.z > 0.05) {
         const cpx = cx + cp.x * er * 1.018;
         const cpy = cy + cp.y * er * 1.018;
-        const sysR = er * ws.r;
+        const sysR = Math.max(1, er * ws.r);
 
         const sunIllum = Math.max(0.04, Math.min(1, (cp.dotL + 0.35) * 1.4));
         const isTerminator = cp.dotL > -0.15 && cp.dotL < 0.28;
@@ -623,12 +634,13 @@
               const rDist = sysR * 0.18 * Math.exp(ws.b * s);
               const sx = cpx + Math.cos(theta) * rDist;
               const sy = cpy + Math.sin(theta) * (rDist * 0.65);
-              const nodeR = sysR * (0.16 + s * 0.045);
+              const nodeR = Math.max(1, sysR * (0.16 + s * 0.045));
 
-              const armGrad = ctx.createRadialGradient(
+              const armGrad = safeRadialGradient(
+                ctx,
                 sx + sunDir.x * nodeR * 0.35,
                 sy + sunDir.y * nodeR * 0.35,
-                2,
+                nodeR * 0.1,
                 sx,
                 sy,
                 nodeR
@@ -653,14 +665,14 @@
           }
 
           // Dense Central Eye-Wall & Clear Storm Eye
-          const eyeWallGrad = ctx.createRadialGradient(cpx, cpy, sysR * 0.04, cpx, cpy, sysR * 0.22);
+          const eyeWallGrad = safeRadialGradient(ctx, cpx, cpy, sysR * 0.04, cpx, cpy, Math.max(1, sysR * 0.22));
           eyeWallGrad.addColorStop(0, "rgba(1, 4, 18, 0.45)");
           eyeWallGrad.addColorStop(0.2, `rgba(255, 255, 255, ${0.98 * sunIllum})`);
           eyeWallGrad.addColorStop(0.7, `rgba(224, 242, 254, ${0.78 * sunIllum})`);
           eyeWallGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
           ctx.fillStyle = eyeWallGrad;
           ctx.beginPath();
-          ctx.arc(cpx, cpy, sysR * 0.22, 0, Math.PI * 2);
+          ctx.arc(cpx, cpy, Math.max(1, sysR * 0.22), 0, Math.PI * 2);
           ctx.fill();
 
         } else if (ws.type === "itcz" || ws.type === "cumulus") {
@@ -668,14 +680,15 @@
           for (let i = 0; i < n; i++) {
             const offX = (i - n / 2) * (sysR * 0.32);
             const offY = Math.sin(i * 1.6) * (sysR * 0.14);
-            const puffR = sysR * (0.36 + Math.cos(i) * 0.1);
+            const puffR = Math.max(1, sysR * (0.36 + Math.cos(i) * 0.1));
             const px = cpx + offX;
             const py = cpy + offY;
 
-            const puffGrad = ctx.createRadialGradient(
+            const puffGrad = safeRadialGradient(
+              ctx,
               px + sunDir.x * puffR * 0.35,
               py + sunDir.y * puffR * 0.35,
-              2,
+              puffR * 0.1,
               px,
               py,
               puffR
@@ -700,12 +713,13 @@
             const t = i / 5;
             const fx = cpx + (t - 0.5) * sysR * 1.6;
             const fy = cpy + Math.sin(t * Math.PI) * (sysR * ws.curve * 1.2);
-            const fR = sysR * (0.28 + (1 - t) * 0.15);
+            const fR = Math.max(1, sysR * (0.28 + (1 - t) * 0.15));
 
-            const frontGrad = ctx.createRadialGradient(
+            const frontGrad = safeRadialGradient(
+              ctx,
               fx + sunDir.x * fR * 0.35,
               fy + sunDir.y * fR * 0.35,
-              2,
+              fR * 0.1,
               fx,
               fy,
               fR
@@ -733,7 +747,7 @@
 
           ctx.fillStyle = cirrusGrad;
           ctx.beginPath();
-          ctx.ellipse(cpx, cpy, sysR * 0.9, sysR * 0.22, 0.35, 0, Math.PI * 2);
+          ctx.ellipse(cpx, cpy, Math.max(1, sysR * 0.9), Math.max(0.5, sysR * 0.22), 0.35, 0, Math.PI * 2);
           ctx.fill();
         }
       }
@@ -898,7 +912,7 @@
       const earthRotDeg = 15 + elapsed * 7.5;
 
       // ---------- 3. ATMOSPHERIC RAYLEIGH & MULTI-LAYER SCATTERING (OUTER HALO) ----------
-      const atmoGrad = ictx.createRadialGradient(ex, ey, er * 0.92, ex, ey, er * 1.48);
+      const atmoGrad = safeRadialGradient(ictx, ex, ey, er * 0.92, ex, ey, er * 1.48);
       atmoGrad.addColorStop(0, "rgba(56, 189, 248, 0.95)");     // Stratosphere Intense Cyan
       atmoGrad.addColorStop(0.12, "rgba(96, 165, 250, 0.82)");   // Rayleigh Nitrogen Blue
       atmoGrad.addColorStop(0.28, "rgba(129, 140, 248, 0.48)");  // Mesosphere Deep Indigo
@@ -945,7 +959,8 @@
       ictx.restore();
 
       // ---------- 4. EARTH OCEAN SPHERE (DIFFUSE & SPECULAR GLINT) ----------
-      const oceanGrad = ictx.createRadialGradient(
+      const oceanGrad = safeRadialGradient(
+        ictx,
         ex + SUN_DIR.x * er * 0.52,
         ey + SUN_DIR.y * er * 0.52,
         er * 0.08,
@@ -967,7 +982,7 @@
       // Specular Sun Glint on Ocean
       const glintX = ex + SUN_DIR.x * er * 0.45;
       const glintY = ey + SUN_DIR.y * er * 0.45;
-      const glintGrad = ictx.createRadialGradient(glintX, glintY, 2, glintX, glintY, er * 0.48);
+      const glintGrad = safeRadialGradient(ictx, glintX, glintY, 2, glintX, glintY, er * 0.48);
       glintGrad.addColorStop(0, "rgba(255, 255, 255, 0.65)");
       glintGrad.addColorStop(0.2, "rgba(186, 230, 253, 0.32)");
       glintGrad.addColorStop(0.5, "rgba(56, 189, 248, 0.12)");
@@ -1018,7 +1033,8 @@
       });
 
       // Night-Side Terminator Shadow Mask with Sunset Amber/Rose Rim
-      const nightGrad = ictx.createRadialGradient(
+      const nightGrad = safeRadialGradient(
+        ictx,
         ex - SUN_DIR.x * er * 0.8,
         ey - SUN_DIR.y * er * 0.8,
         er * 0.1,
@@ -1059,7 +1075,8 @@
       drawRealisticEarthClouds(ictx, ex, ey, er, earthRotDeg, SUN_DIR);
 
       // Sunlit Atmospheric Horizon Crescent (Limb Brightening)
-      const sunRimGrad = ictx.createRadialGradient(
+      const sunRimGrad = safeRadialGradient(
+        ictx,
         ex + SUN_DIR.x * er * 0.94,
         ey + SUN_DIR.y * er * 0.94,
         er * 0.02,
@@ -1185,7 +1202,8 @@
           ictx.restore();
 
           // Hypersonic Bow Shock Wave Plasma Envelopes
-          const shockGrad = ictx.createRadialGradient(
+          const shockGrad = safeRadialGradient(
+            ictx,
             shipX + 10, shipY + 10,
             15,
             shipX - 30, shipY - 20,
@@ -1366,7 +1384,7 @@
 
         // 4. Blinding Thermal Plasma Flash
         if (flashAlpha > 0.01) {
-          const flashGrad = ictx.createRadialGradient(tx, ty, 5, tx, ty, iw * 0.9);
+          const flashGrad = safeRadialGradient(ictx, tx, ty, 5, tx, ty, iw * 0.9);
           flashGrad.addColorStop(0, `rgba(255, 255, 255, ${flashAlpha})`);
           flashGrad.addColorStop(0.25, `rgba(253, 224, 71, ${flashAlpha * 0.75})`);
           flashGrad.addColorStop(0.55, `rgba(94, 234, 212, ${flashAlpha * 0.35})`);
@@ -1375,12 +1393,12 @@
           ictx.fillRect(0, 0, iw, ih);
           flashAlpha *= 0.88;
         }
+      }
 
-        // Automatically pass directly into Station HUD exactly 1.0s after landing (total 3.0s)
-        if (elapsed >= totalDuration || timeSinceImpact >= 1.0) {
-          dismissIntro();
-          return;
-        }
+      // Automatically pass directly into Station HUD exactly 1.0s after landing (total 3.0s)
+      if (elapsed >= totalDuration) {
+        dismissIntro();
+        return;
       }
 
       ictx.restore(); // End Camera Shake Transform
@@ -1389,6 +1407,13 @@
     }
 
     requestAnimationFrame(renderIntroLoop);
+
+    // Guaranteed fail-safe: dismiss intro after 3.2s
+    setTimeout(() => {
+      if (introActive) {
+        dismissIntro();
+      }
+    }, 3200);
 
     function dismissIntro() {
       introActive = false;

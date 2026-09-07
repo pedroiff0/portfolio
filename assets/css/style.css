@@ -223,40 +223,52 @@ body.cursor-active .cursor-glow {
 /* Intro Perimeter HUD: Top Bar & Bottom Flight Dock (Unblocked Earth) */
 .intro-top-tape {
   position: relative;
-  z-index: 10;
+  z-index: 20;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   max-width: var(--max-w);
   margin: 0 auto;
+  padding: 14px 20px 0;
 }
 
 .intro-mission-tag {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 8px;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 2px;
+  font-size: 0.68rem;
+  letter-spacing: 1.2px;
   color: var(--accent-cyan);
-  padding: 6px 16px;
-  background: rgba(8, 12, 30, 0.75);
-  border: 1px solid var(--panel-border-hover);
+  padding: 4px 14px;
+  background: rgba(6, 10, 24, 0.85);
+  border: 1px solid rgba(94, 234, 212, 0.35);
   border-radius: var(--radius-full);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 10px rgba(94, 234, 212, 0.15);
+  text-transform: uppercase;
+  margin: 0 auto;
 }
 
 .btn-skip-intro {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
-  background: rgba(8, 12, 30, 0.75);
+  background: rgba(6, 10, 24, 0.85);
   border: 1px solid var(--panel-border);
-  padding: 7px 18px;
+  padding: 5px 12px;
   border-radius: var(--radius-full);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   transition: all 0.25s ease;
+  cursor: pointer;
 }
 
 .btn-skip-intro:hover {
@@ -2257,7 +2269,8 @@ body.cursor-active .cursor-glow {
     min-height: 38px;
   }
   
-  .intro-mission-tag { font-size: 0.7rem; padding: 4px 12px; max-width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .intro-top-tape { padding: 10px 14px 0; }
+  .intro-mission-tag { font-size: 0.65rem; padding: 3px 12px; max-width: 65%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   
   /* Task Tracker on mobile: bottom-sheet drawer */
   .hud-task-tracker {
@@ -2308,11 +2321,25 @@ body.cursor-active .cursor-glow {
   .dossier-sector-title { font-size: 0.8rem; }
   .dossier-content-body { padding: 18px 14px 100px; }
   
-  .intro-overlay { padding: 14px 12px; }
+  .intro-overlay { padding: 10px 10px 14px; }
+  .intro-top-tape { padding: 8px 8px 0; }
+  .intro-mission-tag {
+    display: inline-flex !important;
+    font-size: 0.60rem;
+    padding: 3px 10px;
+    letter-spacing: 0.8px;
+    max-width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .btn-skip-intro {
+    right: 8px;
+    font-size: 0.65rem;
+    padding: 4px 8px;
+  }
   .intro-devops-stream { height: 120px; padding: 8px 12px; font-size: 0.7rem; }
   .intro-control-card { padding: 12px 14px; gap: 6px; }
-  .intro-mission-tag { display: none; }
-  .btn-skip-intro { margin-left: auto; font-size: 0.72rem; padding: 6px 12px; }
   
   .app-footer { flex-direction: column; align-items: flex-start; gap: 12px; }
   .hud-task-tracker { bottom: 80px; right: 10px; }
