@@ -3146,88 +3146,88 @@
     // Secret Easter Egg Commands
     const secretActions = [];
 
-    // The Sims Motherlode Cheat
+    // Motherlode Cheat
     if (q.includes("motherload") || q.includes("motherlord") || q.includes("motherlode") || q.includes("sims") || q.includes("simoleon") || q.includes("rosebud")) {
       secretActions.push({
         type: "secret",
-        title: "💰 CHEAT THE SIMS: motherlode (+§50.000 Simoleons)",
-        sub: "Easter Egg // 'Kaching! Crédito de §50.000 Simoleons concedido ao saldo orbital'",
+        title: "💰 MOTHERLODE (+§50.000 Simoleons)",
+        sub: "Código Secreto // 'Kaching! +§50.000 Simoleons concedidos ao saldo orbital'",
         icon: "cash",
-        tag: "THE SIMS CHEAT",
+        tag: "CHEAT CODE",
         act: () => triggerMotherloadCheat()
       });
     }
 
-    // GTA San Andreas Money & Health Cheat (HESOYAM)
+    // HESOYAM
     if (q.includes("hesoyam") || q.includes("sanandreas") || q.includes("san andreas") || q.includes("gta sa") || q.includes("baguvix") || q.includes("aezakmi")) {
       secretActions.push({
         type: "secret",
-        title: "💵 CHEAT GTA SAN ANDREAS: HESOYAM (+$250.000 + Colete/Vida)",
-        sub: "Easter Egg // '+$250k, Vida 100%, Colete 100% e Reparo de Veículo'",
+        title: "💵 HESOYAM (+$250.000 + Colete/Vida)",
+        sub: "Código Secreto // '+$250k, Vida 100%, Colete 100% e Reparo Imediato'",
         icon: "cash",
-        tag: "GTA SA CHEAT",
+        tag: "CHEAT CODE",
         act: () => triggerHesoyamCheat()
       });
     }
 
-    // GTA 5 Invincibility Godmode (PAINKILLER / 1-999-724-654-5537)
+    // PAINKILLER / 1-999-724-654-5537
     if (q.includes("painkiller") || q.includes("godmode") || q.includes("god mode") || q.includes("imortal") || q.includes("1-999-724-654-5537") || q.includes("19997246545537")) {
       secretActions.push({
         type: "secret",
-        title: "⭐ CHEAT GTA V: PAINKILLER / GODMODE (Imortalidade 5 Minutos)",
-        sub: "Easter Egg // '1-999-724-654-5537: Escudo cósmico invulnerável por 5 minutos'",
+        title: "⭐ PAINKILLER (Invencibilidade 5 Minutos)",
+        sub: "Código Secreto // '1-999-724-654-5537: Escudo cósmico invulnerável por 5 minutos'",
         icon: "star",
-        tag: "GTA V CHEAT",
+        tag: "CHEAT CODE",
         act: () => triggerPainkillerCheat()
       });
     }
 
-    // Bring Me The Horizon (BMTH / Sempiternal / Can You Feel My Heart)
+    // Can You Feel My Heart / Sempiternal
     if (q.includes("bmth") || q.includes("bring me the horizon") || q.includes("can you feel my heart") || q.includes("sempiternal") || q.includes("parasite") || q.includes("shadow moses") || q.includes("kingslayer")) {
       secretActions.push({
         type: "secret",
-        title: "🎸 BRING ME THE HORIZON: Can You Feel My Heart",
-        sub: "Easter Egg // Sempiternal Synthesizer Overdrive // 'Can you feel my heart?'",
+        title: "🎸 CAN YOU FEEL MY HEART // SEMPITERNAL",
+        sub: "Transmissão Sonora // 'Can you hear the silence? Can you feel my heart?'",
         icon: "star",
-        tag: "BMTH",
+        tag: "TRANSMISSÃO",
         act: () => triggerBMTHEasterEgg()
       });
     }
 
-    // God of War (Kratos / Leviathan Axe / BOY!)
+    // Fúria Espartana (BOY!)
     if (q.includes("kratos") || q.includes("god of war") || q.includes("gow") || q.includes("boy") || q.includes("leviathan") || q.includes("spartan") || q.includes("ragnarok")) {
       secretActions.push({
         type: "secret",
-        title: "🪓 GOD OF WAR: Kratos & Leviathan Axe (BOY!)",
-        sub: "Easter Egg // 'BOY! Não tenha pena. Seja melhor.' — Spartan Rage",
+        title: "🪓 FÚRIA ANCESTRAL // \"BOY!\"",
+        sub: "Ressonância Antiga // 'BOY! Não tenha pena. Seja melhor.'",
         icon: "darkmatter",
-        tag: "GOD OF WAR",
+        tag: "ARTEFATO",
         act: () => triggerKratosEasterEgg()
       });
     }
 
-    // Horizon Zero Dawn (Aloy / Focus / Gaia)
+    // Varredura Focus (Gaia)
     if (q.includes("aloy") || q.includes("horizon") || q.includes("focus") || q.includes("hzd") || q.includes("zero dawn") || q.includes("cauldron") || q.includes("nora")) {
       secretActions.push({
         type: "secret",
-        title: "👁️ HORIZON ZERO DAWN: Varredura Holográfica Focus (Aloy)",
-        sub: "Easter Egg // 'Sistema Focus de Realidade Aumentada // Gaia Core Ativo'",
+        title: "👁️ VARREDURA FOCUS // SISTEMA GAIA",
+        sub: "Interface Neural // 'Rede de Realidade Aumentada Sincronizada'",
         icon: "spectrum",
-        tag: "HORIZON",
+        tag: "OVERRIDE",
         act: () => triggerHorizonEasterEgg()
       });
     }
 
-    // Lady Gaga - Born This Way
+    // Born This Way
     if (q.includes("born this way") || q.includes("bornthisway") || q.includes("lady gaga") || q.includes("gaga") || q.includes("monster")) {
       secretActions.push({
         type: "secret",
-        title: "✨ LADY GAGA: Born This Way (Cosmic Synth Theme)",
-        sub: "Easter Egg // 'I'm on the right track baby, I was born this way!'",
+        title: "✨ BORN THIS WAY // SYNTH THEME",
+        sub: "Frequência Cósmica // 'I'm on the right track baby, I was born this way!'",
         icon: "star",
-        tag: "BORN THIS WAY",
+        tag: "ÁUDIO",
         act: () => {
-          showToast("✨ Lady Gaga: Born This Way! 🌈🎶", "star");
+          showToast("✨ 'I'm on the right track baby, I was born this way!' 🌈🎶", "star");
           sfx.bornThisWay();
           completeQuest("hacker");
         }
@@ -3923,11 +3923,11 @@
       pill = document.createElement("div");
       pill.id = "simsCashPill";
       pill.className = "sims-cash-pill";
-      pill.innerHTML = `<span>💰 +§50.000 SIMOLEONS</span><small>THE SIMS CHEAT ACTIVATED</small>`;
+      pill.innerHTML = `<span>💰 +§50.000 SIMOLEONS</span><small>CÓDIGO SECRETO ATIVADO</small>`;
       document.body.appendChild(pill);
     }
 
-    showToast("💰 MOTHERLODE ATIVADO! +§50.000 Simoleons depositados no tesouro galáctico!", "cash");
+    showToast("💰 MOTHERLODE // +§50.000 Simoleons depositados no tesouro orbital!", "cash");
     completeQuest("hacker");
 
     setTimeout(() => {
@@ -3956,7 +3956,7 @@
       document.body.appendChild(gtaHud);
     }
 
-    showToast("💵 HESOYAM ATIVADO! +$250.000, Vida Máxima e Colete Restaurados!", "cash");
+    showToast("💵 HESOYAM // +$250.000, Saúde e Blindagem no Máximo!", "cash");
     completeQuest("hacker");
 
     setTimeout(() => {
@@ -3987,7 +3987,7 @@
       if (badge) {
         badge.innerHTML = `
           <span class="pk-star">⭐</span>
-          <span class="pk-label">INVENCIBILIDADE (GTA V):</span>
+          <span class="pk-label">INVENCIBILIDADE:</span>
           <strong class="pk-time">${m}:${s}</strong>
         `;
       }
@@ -4007,7 +4007,7 @@
       }
     }, 1000);
 
-    showToast("⭐ PAINKILLER ATIVADO! Imortalidade cósmica por 5 minutos!", "star");
+    showToast("⭐ PAINKILLER // Escudo invulnerável ativado (5 min)!", "star");
     completeQuest("hacker");
   }
 
@@ -4021,14 +4021,14 @@
       banner.id = "bmthBanner";
       banner.className = "bmth-center-banner";
       banner.innerHTML = `
-        <div class="bmth-head">🎸 BRING ME THE HORIZON // SEMPITERNAL</div>
+        <div class="bmth-head">🎸 CAN YOU FEEL MY HEART // SEMPITERNAL</div>
         <div class="bmth-quote">"Can you hear the silence? Can you see the dark? Can you fix the broken? CAN YOU FEEL MY HEART?"</div>
         <div class="bmth-eq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
       `;
       document.body.appendChild(banner);
     }
 
-    showToast("🎸 BMTH: 'CAN YOU FEEL MY HEART' // Sempiternal Protocol Overdrive!", "star");
+    showToast("🎸 'Can you hear the silence?' // Can you feel my heart...", "star");
     completeQuest("hacker");
 
     setTimeout(() => {
@@ -4048,7 +4048,7 @@
       banner.className = "kratos-center-banner";
       banner.innerHTML = `
         <div class="kratos-axe-icon">🪓</div>
-        <div class="kratos-title">GOD OF WAR // SPARTAN RAGE</div>
+        <div class="kratos-title">FÚRIA ANCESTRAL</div>
         <div class="kratos-quote">"BOY! Não tenha pena. Seja melhor."</div>
       `;
       document.body.appendChild(banner);
@@ -4056,7 +4056,7 @@
 
     setTimeout(() => document.body.classList.remove("screen-quake-active"), 900);
 
-    showToast("🪓 KRATOS: 'BOY! Não tenha pena. Seja melhor.' // Fúria Espartana!", "star");
+    showToast("🪓 'BOY! Não tenha pena. Seja melhor.' // Fúria Ativada!", "star");
     completeQuest("hacker");
 
     setTimeout(() => {
@@ -4077,12 +4077,12 @@
       overlay.innerHTML = `
         <div class="focus-tri-reticle"></div>
         <div class="focus-scan-line"></div>
-        <div class="focus-hud-tag">👁️ FOCUS DE REALIDADE AUMENTADA // ALVO: ALOY (NORA) // GAIA CORE ONLINE</div>
+        <div class="focus-hud-tag">👁️ FOCUS INTERFACE // REDE NEURAL ATIVA // GAIA OVERRIDE</div>
       `;
       document.body.appendChild(overlay);
     }
 
-    showToast("👁️ FOCUS ATIVADO: Varredura holográfica em 360° // Alvo: Aloy dos Nora!", "spectrum");
+    showToast("👁️ FOCUS ATIVADO // Varredura holográfica em 360°", "spectrum");
     completeQuest("hacker");
 
     setTimeout(() => {
@@ -4145,7 +4145,7 @@
      ============================================================ */
   function triggerNolanTotem() {
     sfx.bornThisWay();
-    showToast("🌀 NOLAN: 'O pião continua girando no limbo...' // Inception & Tenet!", "star");
+    showToast("🌀 'O pião continua girando sem parar...' // Paradoxo Quântico", "star");
     completeQuest("hacker");
     completeQuest("easterEgg");
     triggerSupernovaBurst(window.innerWidth * 0.5 * (dpr || 1), window.innerHeight * 0.5 * (dpr || 1));
@@ -4153,7 +4153,7 @@
 
   function triggerGargantuaInterstellar() {
     sfx.bornThisWay();
-    showToast("🕳️ INTERESTELAR: 'Não entre suave nessa noite escura...' // Gargântua Singularity!", "star");
+    showToast("🕳️ 'Não entre dócil nessa noite escura...' // Singularidade Gravitacional", "star");
     completeQuest("hacker");
     completeQuest("easterEgg");
   }
@@ -4162,74 +4162,74 @@
     {
       id: "hesoyam",
       icon: "💵",
-      name: "GTA San Andreas",
-      desc: "HESOYAM (+$250k)",
+      name: "HESOYAM",
+      desc: "+$250k & Blindagem",
       action: triggerHesoyamCheat
     },
     {
       id: "painkiller",
       icon: "🛡️",
-      name: "GTA V",
-      desc: "PAINKILLER (Invencibilidade)",
+      name: "PAINKILLER",
+      desc: "Invencibilidade Temporária",
       action: triggerPainkillerCheat
     },
     {
       id: "motherlode",
       icon: "💎",
-      name: "The Sims",
-      desc: "MOTHERLODE (+§50k)",
+      name: "MOTHERLODE",
+      desc: "+§50.000 Simoleons",
       action: triggerMotherloadCheat
     },
     {
       id: "konami",
       icon: "🕹️",
-      name: "Contra",
-      desc: "Código Konami (30 Vidas)",
+      name: "CÓDIGO SECRETO",
+      desc: "30 Vidas & Frequência Retrô",
       action: triggerKonamiMode
     },
     {
       id: "gargantua",
       icon: "🕳️",
-      name: "Interestelar",
-      desc: "Gargântua (Kip Thorne)",
+      name: "SINGULARIDADE",
+      desc: "Horizonte de Eventos",
       action: triggerGargantuaInterstellar
     },
     {
       id: "nolan",
       icon: "🌀",
-      name: "Christopher Nolan",
-      desc: "Totem (Inception)",
+      name: "TOTEM",
+      desc: "Paradoxo do Pião",
       action: triggerNolanTotem
     },
     {
       id: "bmth",
       icon: "🎸",
-      name: "Bring Me The Horizon",
+      name: "SEMPITERNAL",
       desc: "Can You Feel My Heart",
       action: triggerBMTHEasterEgg
     },
     {
       id: "gow",
       icon: "🪓",
-      name: "God of War",
-      desc: "Kratos (Fúria Espartana)",
+      name: "FÚRIA",
+      desc: "Leviatã // BOY!",
       action: triggerKratosEasterEgg
     },
     {
       id: "hzd",
       icon: "👁️",
-      name: "Horizon Zero Dawn",
-      desc: "Focus (Aloy / Gaia)",
+      name: "FOCUS",
+      desc: "Varredura Holográfica",
       action: triggerHorizonEasterEgg
     },
     {
       id: "bornthisway",
       icon: "⭐",
-      name: "Born This Way",
-      desc: "Lady Gaga Synth Theme",
+      name: "SINTONIA",
+      desc: "Born This Way",
       action: () => {
         sfx.bornThisWay();
-        showToast("⭐ BORN THIS WAY: 'Baby, you were born this way!' 🎵", "star");
+        showToast("⭐ 'Baby, you were born this way!' 🎵", "star");
         completeQuest("easterEgg");
       }
     }
@@ -4266,8 +4266,8 @@
       const btn = document.createElement("button");
       btn.className = `floating-easter-egg ${discoveredSet.has(egg.id) ? "discovered" : ""}`;
       btn.dataset.eggId = egg.id;
-      btn.setAttribute("aria-label", `Easter Egg Cósmico: ${egg.name}`);
-      btn.setAttribute("title", `${egg.name} // Clique para ativar segredo`);
+      btn.setAttribute("aria-label", "Relíquia Enigmática");
+      btn.setAttribute("title", "Sinal Misterioso // Toque para decodificar");
 
       const pos = positions[idx];
       if (pos.top) btn.style.top = pos.top;
@@ -4276,10 +4276,7 @@
       if (pos.right) btn.style.right = pos.right;
       btn.style.animationDelay = `${idx * -2.4}s`;
 
-      btn.innerHTML = `
-        <span class="egg-radar-ring"></span>
-        <span class="egg-icon">${egg.icon}</span>
-      `;
+      btn.innerHTML = `<span class="egg-icon">${egg.icon}</span>`;
 
       btn.addEventListener("click", (e) => {
         e.stopPropagation();

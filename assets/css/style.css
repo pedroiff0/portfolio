@@ -1843,20 +1843,17 @@ body.cursor-active .cursor-glow {
 .floating-easter-egg {
   position: absolute;
   z-index: 35;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  border: 1px solid rgba(94, 234, 212, 0.45);
-  background: radial-gradient(circle at 35% 35%, rgba(15, 23, 42, 0.94), rgba(6, 10, 26, 0.98));
-  box-shadow: 0 0 16px rgba(94, 234, 212, 0.28), inset 0 0 10px rgba(94, 234, 212, 0.15);
+  border: none;
+  background: transparent;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   animation: floatEgg 4.8s ease-in-out infinite alternate;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
   user-select: none;
   touch-action: manipulation;
   padding: 0;
@@ -1865,9 +1862,7 @@ body.cursor-active .cursor-glow {
 
 .floating-easter-egg:hover,
 .floating-easter-egg:focus-visible {
-  transform: scale(1.22) !important;
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 28px rgba(94, 234, 212, 0.65), inset 0 0 14px rgba(94, 234, 212, 0.35);
+  transform: scale(1.32) !important;
   z-index: 45;
 }
 
@@ -1876,28 +1871,20 @@ body.cursor-active .cursor-glow {
 }
 
 .floating-easter-egg .egg-icon {
-  font-size: 1.25rem;
+  font-size: 2.1rem;
   line-height: 1;
-  filter: drop-shadow(0 0 6px rgba(94, 234, 212, 0.6));
+  filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.65)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.85));
+  transition: transform 0.25s ease, filter 0.25s ease;
   pointer-events: none;
 }
 
-.floating-easter-egg .egg-radar-ring {
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 1px solid rgba(94, 234, 212, 0.35);
-  animation: eggRadarPulse 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
-  pointer-events: none;
+.floating-easter-egg:hover .egg-icon,
+.floating-easter-egg:focus-visible .egg-icon {
+  filter: drop-shadow(0 0 18px rgba(94, 234, 212, 0.95)) drop-shadow(0 0 32px rgba(56, 189, 248, 0.85));
 }
 
-.floating-easter-egg.discovered {
-  border-color: rgba(253, 224, 71, 0.65);
-  box-shadow: 0 0 20px rgba(253, 224, 71, 0.35);
-}
-
-.floating-easter-egg.discovered .egg-radar-ring {
-  border-color: rgba(253, 224, 71, 0.4);
+.floating-easter-egg.discovered .egg-icon {
+  filter: drop-shadow(0 0 14px rgba(253, 224, 71, 0.85)) drop-shadow(0 0 26px rgba(245, 158, 11, 0.5));
 }
 
 .floating-easter-egg.collected-burst {
@@ -1908,11 +1895,6 @@ body.cursor-active .cursor-glow {
   0% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-12px) rotate(4deg); }
   100% { transform: translateY(-6px) rotate(-4deg); }
-}
-
-@keyframes eggRadarPulse {
-  0% { transform: scale(0.85); opacity: 0.8; }
-  100% { transform: scale(1.65); opacity: 0; }
 }
 
 @keyframes eggBurstAnim {
@@ -2533,48 +2515,55 @@ body.cursor-active .cursor-glow {
 
 .sims-cash-pill {
   position: fixed;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 24px;
+  bottom: 24px;
   background: linear-gradient(135deg, rgba(20, 83, 45, 0.95), rgba(34, 197, 94, 0.9));
   border: 2px solid #86efac;
   border-radius: var(--radius-full);
-  padding: 10px 24px;
+  padding: 10px 22px;
   color: #ffffff;
   font-family: var(--font-display);
   font-weight: 700;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 2px;
   box-shadow: 0 10px 35px rgba(34, 197, 94, 0.5), 0 0 25px rgba(134, 239, 172, 0.4);
   z-index: 10001;
-  animation: bounceInDown 0.5s ease;
+  animation: slideInLeftHUD 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .sims-cash-pill span { font-size: 1.15rem; letter-spacing: 1px; }
 .sims-cash-pill small { font-family: var(--font-mono); font-size: 0.68rem; color: #dcfce7; letter-spacing: 1px; }
 
-/* 2. GTA San Andreas: HESOYAM */
+/* 2. HUD Status Bar (Money, Health, Armor) - Left Lateral Fixed opposite to Task Tracker */
 .gta-hesoyam-flash {
   box-shadow: inset 0 0 100px rgba(34, 197, 94, 0.55) !important;
 }
 
 .gta-hud-bar {
   position: fixed;
-  top: 75px;
-  right: 20px;
-  background: rgba(0, 0, 0, 0.85);
-  border: 2px solid #22c55e;
-  border-radius: 8px;
-  padding: 12px 18px;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(6, 10, 26, 0.94);
+  border: 1.5px solid rgba(34, 197, 94, 0.55);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
+  align-items: flex-start;
+  gap: 8px;
   z-index: 10001;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(34, 197, 94, 0.4);
-  animation: slideInRight 0.4s ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9), 0 0 25px rgba(34, 197, 94, 0.35);
+  animation: slideInLeftHUD 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideInLeftHUD {
+  from { transform: translateY(-50%) translateX(-40px); opacity: 0; }
+  to { transform: translateY(-50%) translateX(0); opacity: 1; }
 }
 
 .gta-money-line {
@@ -2618,6 +2607,23 @@ body.cursor-active .cursor-glow {
 
 .gta-health .gta-meter-fill::after { background: #ef4444; }
 .gta-armor .gta-meter-fill::after { background: #3b82f6; }
+
+@media (max-width: 900px) {
+  .gta-hud-bar {
+    left: 10px;
+    bottom: 80px;
+    top: auto;
+    transform: none;
+    padding: 10px 14px;
+  }
+  .sims-cash-pill {
+    left: 10px;
+    bottom: 80px;
+    top: auto;
+    transform: none;
+    padding: 8px 16px;
+  }
+}
 
 /* 3. GTA V: PAINKILLER / GODMODE */
 .painkiller-active {
