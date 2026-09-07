@@ -162,43 +162,43 @@
     </main>
 
     <!-- 4 PERIMETER CORNER HUD NODES (Desktop View) -->
-    <!-- Top-Left: Setor 01 / Sobre Mim -->
-    <div class="corner-node node-top-left" data-open-sector="sobre" role="button" aria-label="Abrir Setor 01: Sobre Mim">
-      <div class="corner-node__icon">👤</div>
+    <!-- Top-Left: Setor 01 / Terra / Sobre Mim -->
+    <div class="corner-node node-top-left" data-open-sector="sobre" role="button" aria-label="Abrir Setor 01: Terra (Sobre Mim)">
+      <div class="corner-node__icon">🌍</div>
       <div class="corner-node__texts">
-        <span class="corner-node__kicker">SETOR 01 // PERFIL</span>
+        <span class="corner-node__kicker">SETOR 01 // TERRA</span>
         <span class="corner-node__title">Sobre Mim</span>
         <span class="corner-node__sub">Trajetória &amp; Métricas</span>
       </div>
     </div>
 
-    <!-- Top-Right: Setor 02 / Software -->
-    <div class="corner-node node-top-right" data-open-sector="software" role="button" aria-label="Abrir Setor 02: Software & Sistemas">
-      <div class="corner-node__icon">💻</div>
+    <!-- Top-Right: Setor 02 / Marte / Software -->
+    <div class="corner-node node-top-right" data-open-sector="software" role="button" aria-label="Abrir Setor 02: Marte (Software & Sistemas)">
+      <div class="corner-node__icon">🔴</div>
       <div class="corner-node__texts">
-        <span class="corner-node__kicker">SETOR 02 // SOFTWARE</span>
+        <span class="corner-node__kicker">SETOR 02 // MARTE</span>
         <span class="corner-node__title">Projetos &amp; Código</span>
         <span class="corner-node__sub">12 Sistemas no GitHub</span>
       </div>
     </div>
 
-    <!-- Bottom-Left: Setor 03 / Pesquisa -->
-    <div class="corner-node node-bottom-left" data-open-sector="pesquisa" role="button" aria-label="Abrir Setor 03: Pesquisa Astrofísica">
-      <div class="corner-node__icon">🔭</div>
+    <!-- Bottom-Left: Setor 03 / Saturno / Pesquisa -->
+    <div class="corner-node node-bottom-left" data-open-sector="pesquisa" role="button" aria-label="Abrir Setor 03: Saturno (Pesquisa Astrofísica)">
+      <div class="corner-node__icon">🪐</div>
       <div class="corner-node__texts">
-        <span class="corner-node__kicker">SETOR 03 // ASTROFÍSICA</span>
+        <span class="corner-node__kicker">SETOR 03 // SATURNO</span>
         <span class="corner-node__title">Pesquisa &amp; Bolsas</span>
         <span class="corner-node__sub">Gaia DR3, GALAH &amp; PIBIC</span>
       </div>
     </div>
 
-    <!-- Bottom-Right: Setor 04 / CV & Contatos -->
-    <div class="corner-node node-bottom-right" data-open-sector="contato" role="button" aria-label="Abrir Setor 04: CV & Contatos">
-      <div class="corner-node__icon">📄</div>
+    <!-- Bottom-Right: Setor 04 / Gargântua / CV & Contatos -->
+    <div class="corner-node node-bottom-right" data-open-sector="contato" role="button" aria-label="Abrir Setor 04: Gargântua (CV & Contatos)">
+      <div class="corner-node__icon">🕳️</div>
       <div class="corner-node__texts">
-        <span class="corner-node__kicker">SETOR 04 // ARQUIVOS</span>
+        <span class="corner-node__kicker">SETOR 04 // GARGÂNTUA</span>
         <span class="corner-node__title">CV &amp; Contatos</span>
-        <span class="corner-node__sub">LaTeX altacv &amp; Lattes CNPq</span>
+        <span class="corner-node__sub">Interestelar &amp; Lattes CNPq</span>
       </div>
     </div>
 
@@ -348,10 +348,10 @@
 
       <!-- Quick Switcher Tabs between Sectors -->
       <div class="dossier-sector-tabs">
-        <button class="tab-sector-btn" data-switch-sector="sobre">01 // Sobre</button>
-        <button class="tab-sector-btn" data-switch-sector="software">02 // Software</button>
-        <button class="tab-sector-btn" data-switch-sector="pesquisa">03 // Pesquisa</button>
-        <button class="tab-sector-btn" data-switch-sector="contato">04 // CV &amp; Contato</button>
+        <button class="tab-sector-btn" data-switch-sector="sobre">01 // Terra</button>
+        <button class="tab-sector-btn" data-switch-sector="software">02 // Marte</button>
+        <button class="tab-sector-btn" data-switch-sector="pesquisa">03 // Saturno</button>
+        <button class="tab-sector-btn" data-switch-sector="contato">04 // Gargântua</button>
       </div>
     </div>
 
@@ -360,7 +360,7 @@
       <!-- PANEL 1: SOBRE MIM -->
       <div class="dossier-panel" id="panel-sobre">
         <div class="section-dossier-head">
-          <span class="section-dossier-kicker">SETOR 01 // TRAJETÓRIA &amp; FORMAÇÃO</span>
+          <span class="section-dossier-kicker">SETOR 01 // TERRA · TRAJETÓRIA &amp; FORMAÇÃO</span>
           <h2 class="section-dossier-title" data-i18n="sections.sobre.title">Trajetória entre código e estrelas</h2>
         </div>
         <div class="about__grid">
@@ -428,7 +428,7 @@
       <!-- PANEL 2: SOFTWARE & PROJETOS -->
       <div class="dossier-panel" id="panel-software">
         <div class="section-dossier-head">
-          <span class="section-dossier-kicker">SETOR 02 // SOFTWARE &amp; ENGENHARIA</span>
+          <span class="section-dossier-kicker">SETOR 02 // MARTE · SOFTWARE &amp; ENGENHARIA</span>
           <h2 class="section-dossier-title" data-i18n="sections.projetos.title">O que eu construo</h2>
           <p class="section-dossier-lead" data-i18n="sections.projetos.lead">Clique em qualquer cartão para ver o dossiê técnico detalhado.</p>
         </div>
@@ -459,11 +459,11 @@
         </div>
       </div>
 
-      <!-- PANEL 3: PESQUISA & BOLSAS -->
+      <!-- PANEL 3: PESQUISA & ASTROFÍSICA -->
       <div class="dossier-panel" id="panel-pesquisa">
         <div class="section-dossier-head">
-          <span class="section-dossier-kicker">SETOR 03 // ASTROFÍSICA &amp; CNPQ</span>
-          <h2 class="section-dossier-title" data-i18n="sections.pesquisa.title">Astronomia computacional</h2>
+          <span class="section-dossier-kicker">SETOR 03 // SATURNO · ASTROFÍSICA &amp; CNPQ</span>
+          <h2 class="section-dossier-title" data-i18n="sections.pesquisa.title">Ciência de dados e o cosmos</h2>
           <p class="section-dossier-lead">Projetos de pesquisa em astrofísica e Iniciação Científica (PIBIC/CNPq).</p>
         </div>
 
@@ -475,7 +475,7 @@
               <span class="spectrum-widget__title-badge">GALAH DR4 &amp; Gaia Wavelengths</span>
             </div>
             <div class="spectrum-widget__info" id="spectrumInfo">
-              Arraste o cursor abaixo para inspecionar linhas de absorção
+              Comprimento: 6563 Å (Hα) · Transição n=3→2
             </div>
           </div>
           <canvas id="spectrumCanvas"></canvas>
@@ -493,7 +493,7 @@
         <div class="bolsas-grid" id="bolsaList"><!-- preenchido por JS --></div>
 
         <!-- Easter Egg: Gaia DR3 Pulsar Acoustic Synthesizer -->
-        <div class="easteregg-widget" id="pulsarWidget">
+        <div class="easteregg-widget" id="pulsarWidget" style="margin-top: 32px;">
           <div class="easteregg-widget__head">
             <div class="easteregg-badge">⚡ EASTER EGG // ASTROFÍSICA RELATIVÍSTICA</div>
             <span class="easteregg-tag">Pulsar Gaia DR3 Acústico</span>
@@ -510,96 +510,175 @@
         </div>
       </div>
 
-      <!-- PANEL 4: CV, LATTES & CONTATOS -->
+      <!-- PANEL 4: GARGÂNTUA / CV, LATTES & CONTATOS (INTERESTELAR / NOLAN) -->
       <div class="dossier-panel" id="panel-contato">
-        <div class="section-dossier-head">
-          <span class="section-dossier-kicker">SETOR 04 // CURRICULUM &amp; CONEXÕES</span>
-          <h2 class="section-dossier-title" data-i18n="sections.curriculo.title">Curriculum Vitae &amp; Contatos</h2>
-        </div>
+        <div class="panel-gargantua-wrap">
+          <!-- Dynamic Gargantua Black Hole Relativistic Canvas Background -->
+          <canvas id="gargantuaBgCanvas" class="gargantua-bg-canvas" aria-hidden="true"></canvas>
 
-        <!-- CV Section -->
-        <div class="cv-container">
-          <div class="cv-info">
-            <p class="cv-info__text">
-              Meu CV é mantido em LaTeX (classe <code>altacv</code>) com versões sincronizadas em
-              português, inglês, espanhol e francês. Compilado via <code>Makefile</code>.
-            </p>
-            <div class="cv-actions">
-              <a class="btn-core btn-core--primary" href="https://github.com/pedroiff0/cv" target="_blank" rel="noopener">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.8-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg>
-                <span>Repositório do CV</span>
-              </a>
-              <a class="btn-core btn-core--ghost" href="https://raw.githubusercontent.com/pedroiff0/cv/main/portugueseCV.pdf" target="_blank" rel="noopener">
-                <span>PDF (PT)</span>
-              </a>
-              <a class="btn-core btn-core--ghost" href="https://raw.githubusercontent.com/pedroiff0/cv/main/englishCV.pdf" target="_blank" rel="noopener">
-                <span>PDF (EN)</span>
-              </a>
-            </div>
-          </div>
-          <div class="cv-preview-3d" aria-hidden="true">
-            <div class="cv-sheet">
-              <div class="cv-sheet__scanline"></div>
-              <div class="cv-sheet__header"></div>
-              <div class="cv-sheet__lines">
-                <span style="width:75%"></span><span style="width:90%"></span>
-                <span style="width:65%"></span><span style="width:85%"></span>
-                <span style="width:50%"></span><span style="width:95%"></span>
+          <div class="panel-gargantua-content">
+            <!-- Christopher Nolan / Interstellar Epic Hero Banner -->
+            <div class="interstellar-hero-banner">
+              <span class="section-dossier-kicker">SETOR 04 // SINGULARIDADE GARGÂNTUA · PROTOCOLO LAZARUS</span>
+              <h2 class="section-dossier-title" style="color: #fef08a;">Horizonte de Eventos · Onde o Código Transcende o Espaço-Tempo</h2>
+
+              <div class="nolan-quote-wrap">
+                <p class="nolan-quote-text">
+                  "Não entre dócil nessa noite escura. A fúria, a fúria contra a morte da luz."
+                </p>
+                <span class="nolan-quote-author">
+                  — Prof. John Brand / Dylan Thomas · <em>Interestelar</em> (Dir. Christopher Nolan)
+                </span>
+                <p class="nolan-quote-text" style="font-size: 0.95rem; margin-top: 10px; color: #fde68a;">
+                  "O amor é a única coisa que somos capazes de perceber que transcende as dimensões de tempo e espaço."
+                </p>
+              </div>
+
+              <div class="tars-telemetry-strip">
+                <span class="tars-telemetry-tag">🤖 TARS // IA TÁTICA</span>
+                <span>Honestidade: <strong>90%</strong></span>
+                <span>·</span>
+                <span>Humor: <strong>75%</strong></span>
+                <span>·</span>
+                <span>Parâmetro: <em>"Não é possível... Não, é necessário."</em></span>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Lattes Section -->
-        <div class="lattes-container">
-          <div class="spotlight-card lattes-card">
-            <div class="lattes-avatar" aria-hidden="true">PR</div>
-            <h3 class="lattes-name">Pedro Henrique Rocha de Andrade</h3>
-            <div class="lattes-id-wrap">
-              <span>ID Lattes:</span>
-              <code>6818168089966785</code>
-              <button class="btn-copy-lattes" id="copyLattesBtn" title="Copiar ID Lattes">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-              </button>
+            <!-- CV Section -->
+            <div class="cv-container">
+              <div class="cv-info">
+                <p class="cv-info__text">
+                  Meu CV é mantido em LaTeX (classe <code>altacv</code>) com versões sincronizadas em
+                  português, inglês, espanhol e francês. Compilado via <code>Makefile</code> e pronto para download imediato.
+                </p>
+                <div class="cv-actions">
+                  <a class="btn-core btn-core--primary" href="https://github.com/pedroiff0/cv" target="_blank" rel="noopener">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.8-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg>
+                    <span>Repositório do CV</span>
+                  </a>
+                  <a class="btn-core btn-core--ghost" href="https://raw.githubusercontent.com/pedroiff0/cv/main/portugueseCV.pdf" target="_blank" rel="noopener">
+                    <span>PDF (PT)</span>
+                  </a>
+                  <a class="btn-core btn-core--ghost" href="https://raw.githubusercontent.com/pedroiff0/cv/main/englishCV.pdf" target="_blank" rel="noopener">
+                    <span>PDF (EN)</span>
+                  </a>
+                </div>
+              </div>
+              <div class="cv-preview-3d" aria-hidden="true">
+                <div class="cv-sheet">
+                  <div class="cv-sheet__scanline"></div>
+                  <div class="cv-sheet__header"></div>
+                  <div class="cv-sheet__lines">
+                    <span style="width:75%"></span><span style="width:90%"></span>
+                    <span style="width:65%"></span><span style="width:85%"></span>
+                    <span style="width:50%"></span><span style="width:95%"></span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <a class="btn-core btn-core--primary" href="http://lattes.cnpq.br/6818168089966785" target="_blank" rel="noopener" style="width: 100%;">
-              <span>Abrir Currículo Lattes</span>
-            </a>
-          </div>
-          <div class="lattes-resume">
-            <p>
-              Estudante de Engenharia de Computação no IFF (Bom Jesus do Itabapoana - RJ),
-              bolsista de Iniciação Científica (PIBIC/CNPq), com pesquisa na interseção
-              entre métodos computacionais e problemas astrofísicos — arqueologia galáctica,
-              populações estelares e estrutura da Via Láctea.
-            </p>
-          </div>
-        </div>
 
-        <!-- Contacts Grid -->
-        <div class="section-dossier-head" style="margin-top: 32px;">
-          <span class="section-dossier-kicker">CANAIS DIRETOS</span>
-          <h3 class="section-dossier-title" style="font-size: 1.8rem;" data-i18n="sections.contato.title">Vamos nos conectar</h3>
-        </div>
-        <div class="contacts-grid" id="contactList"><!-- preenchido por JS --></div>
+            <!-- Lattes Section -->
+            <div class="lattes-container">
+              <div class="spotlight-card lattes-card">
+                <div class="lattes-avatar" aria-hidden="true">PR</div>
+                <h3 class="lattes-name">Pedro Henrique Rocha de Andrade</h3>
+                <div class="lattes-id-wrap">
+                  <span>ID Lattes:</span>
+                  <code>6818168089966785</code>
+                  <button class="btn-copy-lattes" id="copyLattesBtn" title="Copiar ID Lattes">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  </button>
+                </div>
+                <a class="btn-core btn-core--primary" href="http://lattes.cnpq.br/6818168089966785" target="_blank" rel="noopener" style="width: 100%;">
+                  <span>Abrir Currículo Lattes</span>
+                </a>
+              </div>
+              <div class="lattes-resume">
+                <p>
+                  Estudante de Engenharia de Computação no IFF (Bom Jesus do Itabapoana - RJ),
+                  bolsista de Iniciação Científica (PIBIC/CNPq), com pesquisa na interseção
+                  entre métodos computacionais e problemas astrofísicos — arqueologia galáctica,
+                  populações estelares e estrutura da Via Láctea.
+                </p>
+              </div>
+            </div>
 
-        <!-- Easter Egg: Quantum Relay Ping Simulator -->
-        <div class="easteregg-widget" id="quantumPingWidget">
-          <div class="easteregg-widget__head">
-            <div class="easteregg-badge">📡 EASTER EGG // LINK DE TRANSMISSÃO QUÂNTICA</div>
-            <span class="easteregg-tag">Latência da Luz (c = 299.792 km/s)</span>
-          </div>
-          <div class="quantum-ping-content">
-            <button class="btn-core btn-core--primary" id="quantumPingBtn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11l-2 2 4 4 2-2M13 3l8 8-3 3-8-8zM14 6l4 4M9 14l4 4"/></svg>
-              <span>Disparar Feixe de Ping Relativístico</span>
-            </button>
-            <div class="quantum-ping-results" id="quantumPingResults">
-              <div class="ping-node"><span class="ping-dest">🌍 ISS (Órbita LEO):</span> <strong class="ping-val">2.6 ms</strong></div>
-              <div class="ping-node"><span class="ping-dest">🌕 Lua (Base Tranquilidade):</span> <strong class="ping-val">1.28 s</strong></div>
-              <div class="ping-node"><span class="ping-dest">🪐 Marte (Cratera Jezero):</span> <strong class="ping-val">4.34 min</strong></div>
-              <div class="ping-node"><span class="ping-dest">🛸 Voyager 1 (Espaço Profundo):</span> <strong class="ping-val">22h 38m</strong></div>
-              <div class="ping-node"><span class="ping-dest">✨ Próxima Centauri:</span> <strong class="ping-val">4.246 anos</strong></div>
+            <!-- Contacts Grid -->
+            <div class="section-dossier-head" style="margin-top: 32px;">
+              <span class="section-dossier-kicker">CANAIS DIRETOS // TRANSMISSÃO DEEP SPACE</span>
+              <h3 class="section-dossier-title" style="font-size: 1.8rem;" data-i18n="sections.contato.title">Vamos nos conectar</h3>
+            </div>
+            <div class="contacts-grid" id="contactList"><!-- preenchido por JS --></div>
+
+            <!-- Interstellar Easter Egg 1: Murph's Gravity Watch (Morse "S-T-A-Y") -->
+            <div class="easteregg-widget" id="murphWatchWidget" style="margin-top: 32px;">
+              <div class="easteregg-widget__head">
+                <div class="easteregg-badge" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.35);">
+                  ⏳ EASTER EGG // RELÓGIO DE GRAVIDADE DE MURPH (5D TESSERACT)
+                </div>
+                <span class="easteregg-tag" style="color: #fbbf24; border-color: rgba(245, 158, 11, 0.3);">Anomalia Gravitacional Morse</span>
+              </div>
+              <div class="murph-watch-grid">
+                <div class="murph-watch-dial">
+                  <div class="watch-tick-mark" style="transform: rotate(0deg);"></div>
+                  <div class="watch-tick-mark" style="transform: rotate(90deg);"></div>
+                  <div class="watch-tick-mark" style="transform: rotate(180deg);"></div>
+                  <div class="watch-tick-mark" style="transform: rotate(270deg);"></div>
+                  <div class="watch-hand-second" id="murphSecondHand"></div>
+                  <div class="watch-center-cap"></div>
+                </div>
+                <div>
+                  <button class="btn-core btn-core--primary" id="decodeMorseBtn" style="background: linear-gradient(135deg, #f59e0b, #d97706); margin-bottom: 12px;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6z"/></svg>
+                    <span>Decodificar Transmissão Quântica de Cooper (S-T-A-Y)</span>
+                  </button>
+                  <div class="morse-display-box">
+                    <span class="morse-code-text" id="morseCodeStream">...  -  .-  -.--</span>
+                    <p class="morse-decoded-text" id="morseDecodedText">
+                      Clique para sincronizar os dados da singularidade através do tesseract gravitacional.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interstellar Easter Egg 2: Endurance Docking Maneuver (68 RPM) -->
+            <div class="easteregg-widget endurance-docking-widget">
+              <div class="easteregg-widget__head">
+                <div class="easteregg-badge" style="background: rgba(94, 234, 212, 0.15); color: var(--accent-cyan); border-color: rgba(94, 234, 212, 0.35);">
+                  🚀 EASTER EGG // MANOBRA DE ACOPLAMENTO DA ENDURANCE (68 RPM)
+                </div>
+                <span class="easteregg-tag">"It's not possible... No, it's necessary."</span>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;">
+                <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 520px; line-height: 1.5;">
+                  Sincronize os retrofoguetes da nave para acoplar com a estação em rotação descontrolada a 68 RPM no horizonte de Gargântua.
+                </p>
+                <button class="btn-core endurance-docking-btn" id="enduranceDockingBtn">
+                  <span>🌀 Iniciar Acoplamento (68 RPM)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Easter Egg 3: Quantum Relay Ping Simulator -->
+            <div class="easteregg-widget" id="quantumPingWidget" style="margin-top: 20px;">
+              <div class="easteregg-widget__head">
+                <div class="easteregg-badge">📡 EASTER EGG // LINK DE TRANSMISSÃO QUÂNTICA</div>
+                <span class="easteregg-tag">Latência da Luz (c = 299.792 km/s)</span>
+              </div>
+              <div class="quantum-ping-content">
+                <button class="btn-core btn-core--primary" id="quantumPingBtn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11l-2 2 4 4 2-2M13 3l8 8-3 3-8-8zM14 6l4 4M9 14l4 4"/></svg>
+                  <span>Disparar Feixe de Ping Relativístico</span>
+                </button>
+                <div class="quantum-ping-results" id="quantumPingResults">
+                  <div class="ping-node"><span class="ping-dest">🌍 Terra (Estação LEO):</span> <strong class="ping-val">2.6 ms</strong></div>
+                  <div class="ping-node"><span class="ping-dest">🌕 Lua (Base Tranquilidade):</span> <strong class="ping-val">1.28 s</strong></div>
+                  <div class="ping-node"><span class="ping-dest">🪐 Marte (Olympus Mons):</span> <strong class="ping-val">4.34 min</strong></div>
+                  <div class="ping-node"><span class="ping-dest">🪐 Saturno (Anéis &amp; Titã):</span> <strong class="ping-val">1h 19m</strong></div>
+                  <div class="ping-node"><span class="ping-dest">🕳️ Gargântua (Singularidade):</span> <strong class="ping-val">Dilatação 1h = 7 anos</strong></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

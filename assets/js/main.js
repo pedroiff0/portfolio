@@ -1220,41 +1220,41 @@
 
   const WARP_DESTINATIONS = {
     sobre: {
-      name: "TERRA // BASE ORBITAL LZ-01",
-      speed: "WARP 9.84c // EVACUAÇÃO TÁTICA",
-      coords: "SETOR 01: TERRA SOB CERCO [RESGATE DE DADOS & FORMAÇÃO]",
+      name: "TERRA // BASE LEO & IFF",
+      speed: "WARP 9.84c // VETOR ORBITAL",
+      coords: "SETOR 01: SISTEMA SOLAR // TERRA [ÓRBITA LEO]",
       type: "earth",
       colorCore: "#38bdf8",
       colorAtmo: "rgba(56, 189, 248, 0.65)"
     },
     software: {
-      name: "KEPLER-186F // CYBER MATRIX",
-      speed: "WARP 9.92c // MINERAÇÃO DE RECURSOS",
-      coords: "SETOR 02: KEPLER-186F [12 SOFTWARES & ARQUITETURA]",
-      type: "cyber",
-      colorCore: "#22d3ee",
-      colorAtmo: "rgba(34, 211, 238, 0.6)"
+      name: "MARTE // BASE OLYMPUS MONS",
+      speed: "WARP 9.92c // REDE MARCIANA",
+      coords: "SETOR 02: SISTEMA SOLAR // MARTE [VALLES MARINERIS]",
+      type: "mars",
+      colorCore: "#f97316",
+      colorAtmo: "rgba(249, 115, 22, 0.6)"
     },
     pesquisa: {
-      name: "PULSAR GAIA DR3 // NÚCLEO CIENTÍFICO",
-      speed: "WARP 9.99c // RECURSOS DE ENERGIA",
-      coords: "SETOR 03: PULSAR GAIA DR3 [ASTROFÍSICA & CNPQ]",
-      type: "pulsar",
-      colorCore: "#c084fc",
-      colorAtmo: "rgba(192, 132, 252, 0.7)"
+      name: "SATURNO // TITÃ & ANÉIS CASSINI",
+      speed: "WARP 9.99c // LAB ASTROFÍSICA",
+      coords: "SETOR 03: SISTEMA SOLAR // SATURNO [LAB CNPQ & TITÃ]",
+      type: "saturn",
+      colorCore: "#fbbf24",
+      colorAtmo: "rgba(251, 191, 36, 0.65)"
     },
     contato: {
-      name: "SOLARIS // CENTRAL DE TRANSMISSÃO",
-      speed: "WARP 9.75c // CANAL DE RESGATE",
-      coords: "SETOR 04: SOLARIS [CURRICULUM VITAE & CONTATOS]",
-      type: "solaris",
-      colorCore: "#fbbf24",
-      colorAtmo: "rgba(244, 63, 94, 0.65)"
+      name: "GARGÂNTUA // BURACO NEGRO (INTERESTELAR)",
+      speed: "WARP 9.999c // WORMHOLE RELATIVÍSTICO",
+      coords: "SETOR 04: SINGULARIDADE // GARGÂNTUA [HORIZONTE DE EVENTOS]",
+      type: "gargantua",
+      colorCore: "#f59e0b",
+      colorAtmo: "rgba(245, 158, 11, 0.75)"
     },
     hub: {
-      name: "BASE CENTRAL // CONTENÇÃO DA TERRA",
-      speed: "WARP 9.60c // RETORNO AO PERÍMETRO",
-      coords: "HUB CENTRAL [ÓRBITA LEO // CONTENÇÃO DE DEFESA]",
+      name: "ESTAÇÃO ENDURANCE // SISTEMA SOLAR",
+      speed: "WARP 9.60c // ACOPLAMENTO 68 RPM",
+      coords: "HUB CENTRAL // NAVE ENDURANCE [SISTEMA SOLAR]",
       type: "hub",
       colorCore: "#5eead4",
       colorAtmo: "rgba(94, 234, 212, 0.55)"
@@ -1262,10 +1262,10 @@
   };
 
   const sectorTitles = {
-    sobre: "SETOR 01 // SOBRE MIM & FORMAÇÃO",
-    software: "SETOR 02 // SOFTWARE & REPOSITÓRIOS",
-    pesquisa: "SETOR 03 // ASTROFÍSICA & CNPQ",
-    contato: "SETOR 04 // CURRICULUM VITAE & CONTATOS"
+    sobre: "SETOR 01 // TERRA · TRAJETÓRIA & FORMAÇÃO",
+    software: "SETOR 02 // MARTE · SOFTWARE & REPOSITÓRIOS",
+    pesquisa: "SETOR 03 // SATURNO · ASTROFÍSICA & CNPQ",
+    contato: "SETOR 04 // GARGÂNTUA · CV & CONTATOS (INTERESTELAR)"
   };
 
   // Hyperspace Star Particle System (140 3D warp stars)
@@ -1308,34 +1308,330 @@
     pctx.save();
     pctx.translate(cx, cy);
 
-    // 1. Atmosphere Glow Rim (Multi-layered Rayleigh Scattering)
-    const atmoGrad = pctx.createRadialGradient(0, 0, radius * 0.82, 0, 0, radius * 1.45);
-    if (type === "earth" || type === "hub") {
-      atmoGrad.addColorStop(0, "rgba(56, 189, 248, 0.75)");
-      atmoGrad.addColorStop(0.25, "rgba(96, 165, 250, 0.45)");
-      atmoGrad.addColorStop(0.55, "rgba(129, 140, 248, 0.22)");
-      atmoGrad.addColorStop(0.85, "rgba(14, 116, 144, 0.08)");
-      atmoGrad.addColorStop(1, "rgba(56, 189, 248, 0)");
-    } else if (type === "cyber") {
-      atmoGrad.addColorStop(0, "rgba(34, 211, 238, 0.65)");
-      atmoGrad.addColorStop(0.5, "rgba(99, 102, 241, 0.3)");
-      atmoGrad.addColorStop(1, "rgba(34, 211, 238, 0)");
-    } else if (type === "pulsar") {
-      atmoGrad.addColorStop(0, "rgba(192, 132, 252, 0.75)");
-      atmoGrad.addColorStop(0.5, "rgba(245, 158, 11, 0.3)");
-      atmoGrad.addColorStop(1, "rgba(192, 132, 252, 0)");
-    } else if (type === "solaris") {
-      atmoGrad.addColorStop(0, "rgba(251, 191, 36, 0.8)");
-      atmoGrad.addColorStop(0.5, "rgba(244, 63, 94, 0.35)");
-      atmoGrad.addColorStop(1, "rgba(251, 191, 36, 0)");
+    // ============================================================
+    // GARGÂNTUA // BURACO NEGRO SUPERMASSIVO (INTERESTELAR / NOLAN)
+    // ============================================================
+    if (type === "gargantua" || type === "solaris") {
+      const bhRadius = radius * 0.95;
+      const rot = progress * 1.6;
+
+      // 1. Einstein Ring Gravitational Lensing Halo (Distorted Spacetime)
+      const lensGrad = pctx.createRadialGradient(0, 0, bhRadius * 0.45, 0, 0, bhRadius * 1.65);
+      lensGrad.addColorStop(0, "rgba(254, 240, 138, 0.95)");
+      lensGrad.addColorStop(0.2, "rgba(245, 158, 11, 0.8)");
+      lensGrad.addColorStop(0.45, "rgba(234, 88, 12, 0.4)");
+      lensGrad.addColorStop(0.75, "rgba(180, 83, 9, 0.15)");
+      lensGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+
+      pctx.beginPath();
+      pctx.arc(0, 0, bhRadius * 1.65, 0, Math.PI * 2);
+      pctx.fillStyle = lensGrad;
+      pctx.fill();
+
+      // 2. Gravitationally Lensed Upper Accretion Disk Arc (Bent over the top)
+      pctx.save();
+      pctx.beginPath();
+      pctx.ellipse(0, -bhRadius * 0.35, bhRadius * 1.35, bhRadius * 0.85, 0, Math.PI * 0.95, Math.PI * 2.05);
+      pctx.lineWidth = Math.max(3, bhRadius * 0.22);
+      const upperArcGrad = pctx.createLinearGradient(-bhRadius * 1.3, 0, bhRadius * 1.3, 0);
+      upperArcGrad.addColorStop(0, "rgba(255, 255, 255, 0.98)");   // Relativistic Doppler Blue/Gold Boost (Left)
+      upperArcGrad.addColorStop(0.35, "rgba(253, 224, 71, 0.95)");
+      upperArcGrad.addColorStop(0.7, "rgba(249, 115, 22, 0.65)");
+      upperArcGrad.addColorStop(1, "rgba(185, 28, 28, 0.35)");    // Relativistic Redshift (Right)
+      pctx.strokeStyle = upperArcGrad;
+      pctx.shadowColor = "#f59e0b";
+      pctx.shadowBlur = 18;
+      pctx.stroke();
+      pctx.restore();
+
+      // 3. Gravitationally Lensed Lower Accretion Disk Arc (Bent beneath the bottom)
+      pctx.save();
+      pctx.beginPath();
+      pctx.ellipse(0, bhRadius * 0.35, bhRadius * 1.35, bhRadius * 0.85, 0, 0, Math.PI * 1.1);
+      pctx.lineWidth = Math.max(2, bhRadius * 0.16);
+      const lowerArcGrad = pctx.createLinearGradient(-bhRadius * 1.3, 0, bhRadius * 1.3, 0);
+      lowerArcGrad.addColorStop(0, "rgba(255, 255, 255, 0.92)");
+      lowerArcGrad.addColorStop(0.4, "rgba(251, 191, 36, 0.85)");
+      lowerArcGrad.addColorStop(1, "rgba(194, 65, 12, 0.3)");
+      pctx.strokeStyle = lowerArcGrad;
+      pctx.stroke();
+      pctx.restore();
+
+      // 4. Equatorial Accretion Disk Ring (Relativistic Matter Stream)
+      pctx.save();
+      pctx.beginPath();
+      pctx.ellipse(0, 0, bhRadius * 1.7, bhRadius * 0.32, -0.08, 0, Math.PI * 2);
+      pctx.lineWidth = Math.max(3.5, bhRadius * 0.28);
+      const eqDiskGrad = pctx.createLinearGradient(-bhRadius * 1.7, 0, bhRadius * 1.7, 0);
+      eqDiskGrad.addColorStop(0, "rgba(255, 255, 255, 1.0)");      // Blinding Doppler Brightening (Approaching side)
+      eqDiskGrad.addColorStop(0.25, "rgba(254, 240, 138, 0.95)");
+      eqDiskGrad.addColorStop(0.55, "rgba(245, 158, 11, 0.85)");
+      eqDiskGrad.addColorStop(0.85, "rgba(234, 88, 12, 0.5)");
+      eqDiskGrad.addColorStop(1, "rgba(124, 45, 18, 0.25)");      // Doppler Dimming (Receding side)
+      pctx.strokeStyle = eqDiskGrad;
+      pctx.shadowColor = "#fbbf24";
+      pctx.shadowBlur = 24;
+      pctx.stroke();
+      pctx.restore();
+
+      // 5. Razor-Thin Photon Sphere (1.5x Schwarzschild Radius)
+      pctx.save();
+      pctx.beginPath();
+      pctx.arc(0, 0, bhRadius * 0.56, 0, Math.PI * 2);
+      pctx.strokeStyle = "rgba(255, 255, 255, 0.98)";
+      pctx.lineWidth = Math.max(1.5, bhRadius * 0.035);
+      pctx.shadowColor = "#ffffff";
+      pctx.shadowBlur = 12;
+      pctx.stroke();
+      pctx.restore();
+
+      // 6. Schwarzschild Event Horizon (Infinite Pitch-Black Shadow)
+      pctx.beginPath();
+      pctx.arc(0, 0, bhRadius * 0.52, 0, Math.PI * 2);
+      pctx.fillStyle = "#000000";
+      pctx.fill();
+
+      // 7. Relativistic Accretion Flares & Swirling Vortices
+      for (let f = 0; f < 5; f++) {
+        const fAngle = (f * Math.PI * 2 / 5) + rot * 1.8;
+        const fDist = bhRadius * (0.8 + (f % 3) * 0.25);
+        const fx = Math.cos(fAngle) * fDist;
+        const fy = Math.sin(fAngle) * (fDist * 0.22);
+        pctx.beginPath();
+        pctx.arc(fx, fy, Math.max(2, bhRadius * 0.06), 0, Math.PI * 2);
+        pctx.fillStyle = f % 2 === 0 ? "rgba(255, 255, 255, 0.9)" : "rgba(253, 224, 71, 0.85)";
+        pctx.shadowColor = "#fef08a";
+        pctx.shadowBlur = 8;
+        pctx.fill();
+      }
+
+      pctx.restore();
+      return;
     }
+
+    // ============================================================
+    // MARTE // SISTEMA SOLAR (O PLANETA VERMELHO · SETOR 02)
+    // ============================================================
+    if (type === "mars" || type === "cyber") {
+      // 1. Thin Salmon-Amber Martian Atmospheric Haze
+      const atmoGrad = pctx.createRadialGradient(0, 0, radius * 0.85, 0, 0, radius * 1.35);
+      atmoGrad.addColorStop(0, "rgba(249, 115, 22, 0.6)");
+      atmoGrad.addColorStop(0.5, "rgba(239, 68, 68, 0.25)");
+      atmoGrad.addColorStop(1, "rgba(249, 115, 22, 0)");
+      pctx.beginPath();
+      pctx.arc(0, 0, radius * 1.35, 0, Math.PI * 2);
+      pctx.fillStyle = atmoGrad;
+      pctx.fill();
+
+      // 2. Base Sphere with Iron Oxide Rust Terrain & 3D Lighting
+      pctx.save();
+      pctx.beginPath();
+      pctx.arc(0, 0, radius, 0, Math.PI * 2);
+      pctx.clip();
+
+      const lx = -radius * 0.35;
+      const ly = -radius * 0.35;
+      const marsGrad = pctx.createRadialGradient(lx, ly, radius * 0.05, 0, 0, radius);
+      marsGrad.addColorStop(0, "#ea580c");   // Sunlit Iron Dust
+      marsGrad.addColorStop(0.4, "#c2410c");  // Rust Highlands
+      marsGrad.addColorStop(0.75, "#7c2d12"); // Volcanic Basalt
+      marsGrad.addColorStop(0.92, "#451a03"); // Deep Shadow Canyon
+      marsGrad.addColorStop(1, "#180702");
+      pctx.fillStyle = marsGrad;
+      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+
+      // Rotating Martian Geographic Features (Valles Marineris & Highlands)
+      const rot = progress * 1.3;
+      pctx.fillStyle = "#431407"; // Dark volcanic rock
+      for (let c = -1; c <= 1; c++) {
+        const cxOffset = (c * radius * 1.5 + rot * radius * 0.6) % (radius * 2.2) - radius * 0.35;
+        // Valles Marineris Canyon Scar
+        pctx.beginPath();
+        pctx.ellipse(cxOffset, -radius * 0.08, radius * 0.55, radius * 0.09, -0.08, 0, Math.PI * 2);
+        pctx.fill();
+
+        // Olympus Mons Shield Volcano Caldera
+        pctx.beginPath();
+        pctx.arc(cxOffset - radius * 0.25, -radius * 0.22, radius * 0.16, 0, Math.PI * 2);
+        pctx.fillStyle = "#9a3412";
+        pctx.fill();
+        pctx.beginPath();
+        pctx.arc(cxOffset - radius * 0.25, -radius * 0.22, radius * 0.05, 0, Math.PI * 2);
+        pctx.fillStyle = "#290c04";
+        pctx.fill();
+      }
+
+      // Brilliant White Carbon Dioxide / Water-Ice Polar Caps
+      pctx.fillStyle = "#f8fafc";
+      pctx.shadowColor = "#bae6fd";
+      pctx.shadowBlur = 6;
+      // North Polar Ice Cap
+      pctx.beginPath();
+      pctx.ellipse(0, -radius * 0.92, radius * 0.38, radius * 0.14, 0, 0, Math.PI * 2);
+      pctx.fill();
+      // South Polar Ice Cap
+      pctx.beginPath();
+      pctx.ellipse(0, radius * 0.94, radius * 0.32, radius * 0.12, 0, 0, Math.PI * 2);
+      pctx.fill();
+      pctx.shadowBlur = 0;
+
+      // Martian Dust Storm Fronts
+      pctx.fillStyle = "rgba(253, 186, 116, 0.35)";
+      for (let c = -1; c <= 1; c++) {
+        const cxOffset = (c * radius * 1.8 + rot * radius * 0.8) % (radius * 2.4) - radius * 0.45;
+        pctx.beginPath();
+        pctx.ellipse(cxOffset + radius * 0.15, radius * 0.25, radius * 0.4, radius * 0.12, 0.1, 0, Math.PI * 2);
+        pctx.fill();
+      }
+
+      // 3D Terminator Shadow
+      const shadowGrad = pctx.createRadialGradient(radius * 0.35, radius * 0.35, radius * 0.4, 0, 0, radius * 1.05);
+      shadowGrad.addColorStop(0, "rgba(0, 0, 0, 0)");
+      shadowGrad.addColorStop(0.65, "rgba(2, 4, 12, 0.45)");
+      shadowGrad.addColorStop(1, "rgba(1, 2, 6, 0.92)");
+      pctx.fillStyle = shadowGrad;
+      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+
+      pctx.restore(); // end clip
+
+      // Mars Orbital Vector Ring & Telemetry
+      pctx.save();
+      pctx.rotate(-0.25);
+      pctx.strokeStyle = "rgba(249, 115, 22, 0.7)";
+      pctx.lineWidth = Math.max(1.2, radius * 0.025);
+      pctx.setLineDash([8, 12]);
+      pctx.beginPath();
+      pctx.ellipse(0, 0, radius * 1.45, radius * 0.42, 0, 0, Math.PI * 2);
+      pctx.stroke();
+      pctx.restore();
+
+      pctx.restore();
+      return;
+    }
+
+    // ============================================================
+    // SATURNO // SISTEMA SOLAR (O GIGANTE DOS ANÉIS · SETOR 03)
+    // ============================================================
+    if (type === "saturn" || type === "pulsar") {
+      // 1. Golden Atmospheric Halo
+      const atmoGrad = pctx.createRadialGradient(0, 0, radius * 0.82, 0, 0, radius * 1.4);
+      atmoGrad.addColorStop(0, "rgba(251, 191, 36, 0.75)");
+      atmoGrad.addColorStop(0.45, "rgba(217, 119, 6, 0.3)");
+      atmoGrad.addColorStop(1, "rgba(251, 191, 36, 0)");
+      pctx.beginPath();
+      pctx.arc(0, 0, radius * 1.4, 0, Math.PI * 2);
+      pctx.fillStyle = atmoGrad;
+      pctx.fill();
+
+      // Draw Back Half of Saturn Rings (Behind the planet)
+      pctx.save();
+      pctx.rotate(-0.35);
+      // Ring A & B
+      const ringGrad = pctx.createRadialGradient(0, 0, radius * 1.15, 0, 0, radius * 2.35);
+      ringGrad.addColorStop(0, "rgba(254, 240, 138, 0.88)");
+      ringGrad.addColorStop(0.48, "rgba(217, 119, 6, 0.75)");
+      ringGrad.addColorStop(0.55, "rgba(2, 4, 12, 0.15)");    // Cassini Division Gap!
+      ringGrad.addColorStop(0.62, "rgba(251, 191, 36, 0.85)");
+      ringGrad.addColorStop(0.92, "rgba(180, 83, 9, 0.55)");
+      ringGrad.addColorStop(1, "rgba(251, 191, 36, 0)");
+
+      pctx.beginPath();
+      pctx.ellipse(0, 0, radius * 2.35, radius * 0.65, 0, Math.PI, Math.PI * 2); // Top/Back arc
+      pctx.lineWidth = Math.max(3, radius * 0.28);
+      pctx.strokeStyle = ringGrad;
+      pctx.stroke();
+      pctx.restore();
+
+      // 2. Base Sphere with Banded Golden Gas Atmosphere
+      pctx.save();
+      pctx.beginPath();
+      pctx.arc(0, 0, radius, 0, Math.PI * 2);
+      pctx.clip();
+
+      const lx = -radius * 0.35;
+      const ly = -radius * 0.35;
+      const saturnGrad = pctx.createRadialGradient(lx, ly, radius * 0.05, 0, 0, radius);
+      saturnGrad.addColorStop(0, "#fef08a");   // Cream Ammonia Clouds
+      saturnGrad.addColorStop(0.35, "#fde047");
+      saturnGrad.addColorStop(0.65, "#d97706");
+      saturnGrad.addColorStop(0.9, "#92400e");
+      saturnGrad.addColorStop(1, "#291204");
+      pctx.fillStyle = saturnGrad;
+      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+
+      // Zonal Atmospheric Cloud Bands
+      const bandColors = [
+        "rgba(254, 240, 138, 0.6)",
+        "rgba(180, 83, 9, 0.45)",
+        "rgba(253, 224, 71, 0.5)",
+        "rgba(146, 64, 14, 0.55)",
+        "rgba(254, 240, 138, 0.4)"
+      ];
+      for (let b = -3; b <= 3; b++) {
+        pctx.fillStyle = bandColors[(b + 3) % bandColors.length];
+        pctx.beginPath();
+        pctx.fillRect(-radius, (b * radius * 0.26) - radius * 0.08, radius * 2, radius * 0.16);
+      }
+
+      // Rings Shadow Band projected onto Saturn's Equator
+      pctx.fillStyle = "rgba(2, 4, 12, 0.65)";
+      pctx.beginPath();
+      pctx.ellipse(0, radius * 0.08, radius * 0.95, radius * 0.14, -0.15, 0, Math.PI * 2);
+      pctx.fill();
+
+      // 3D Terminator Shadow
+      const shadowGrad = pctx.createRadialGradient(radius * 0.35, radius * 0.35, radius * 0.4, 0, 0, radius * 1.05);
+      shadowGrad.addColorStop(0, "rgba(0, 0, 0, 0)");
+      shadowGrad.addColorStop(0.65, "rgba(2, 4, 12, 0.45)");
+      shadowGrad.addColorStop(1, "rgba(1, 2, 6, 0.92)");
+      pctx.fillStyle = shadowGrad;
+      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+
+      pctx.restore(); // end clip
+
+      // Draw Front Half of Saturn Rings (Crossing in front of the planet)
+      pctx.save();
+      pctx.rotate(-0.35);
+      pctx.beginPath();
+      pctx.ellipse(0, 0, radius * 2.35, radius * 0.65, 0, 0, Math.PI); // Bottom/Front arc
+      pctx.lineWidth = Math.max(3, radius * 0.28);
+      pctx.strokeStyle = ringGrad;
+      pctx.shadowColor = "#f59e0b";
+      pctx.shadowBlur = 10;
+      pctx.stroke();
+
+      // Orbiting Titan Moon
+      const titanAngle = progress * 2.2;
+      const tx = Math.cos(titanAngle) * (radius * 2.7);
+      const ty = Math.sin(titanAngle) * (radius * 0.85);
+      pctx.beginPath();
+      pctx.arc(tx, ty, Math.max(2.5, radius * 0.05), 0, Math.PI * 2);
+      pctx.fillStyle = "#fb923c";
+      pctx.shadowColor = "#ea580c";
+      pctx.shadowBlur = 8;
+      pctx.fill();
+      pctx.restore();
+
+      pctx.restore();
+      return;
+    }
+
+    // ============================================================
+    // TERRA & HUB // SISTEMA SOLAR (SETOR 01 & HUB CENTRAL ENDURANCE)
+    // ============================================================
+    const atmoGrad = pctx.createRadialGradient(0, 0, radius * 0.82, 0, 0, radius * 1.45);
+    atmoGrad.addColorStop(0, "rgba(56, 189, 248, 0.75)");
+    atmoGrad.addColorStop(0.25, "rgba(96, 165, 250, 0.45)");
+    atmoGrad.addColorStop(0.55, "rgba(129, 140, 248, 0.22)");
+    atmoGrad.addColorStop(0.85, "rgba(14, 116, 144, 0.08)");
+    atmoGrad.addColorStop(1, "rgba(56, 189, 248, 0)");
 
     pctx.beginPath();
     pctx.arc(0, 0, radius * 1.45, 0, Math.PI * 2);
     pctx.fillStyle = atmoGrad;
     pctx.fill();
 
-    // 2. Base Sphere with 3D Light Source
+    // Base Sphere with 3D Light Source
     pctx.save();
     pctx.beginPath();
     pctx.arc(0, 0, radius, 0, Math.PI * 2);
@@ -1344,162 +1640,88 @@
     const lx = -radius * 0.35;
     const ly = -radius * 0.35;
     const sphereGrad = pctx.createRadialGradient(lx, ly, radius * 0.05, 0, 0, radius);
+    sphereGrad.addColorStop(0, "#0284c7");
+    sphereGrad.addColorStop(0.35, "#0369a1");
+    sphereGrad.addColorStop(0.7, "#07264a");
+    sphereGrad.addColorStop(0.92, "#04152e");
+    sphereGrad.addColorStop(1, "#010712");
+    pctx.fillStyle = sphereGrad;
+    pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
 
-    if (type === "earth" || type === "hub") {
-      sphereGrad.addColorStop(0, "#0284c7");
-      sphereGrad.addColorStop(0.35, "#0369a1");
-      sphereGrad.addColorStop(0.7, "#07264a");
-      sphereGrad.addColorStop(0.92, "#04152e");
-      sphereGrad.addColorStop(1, "#010712");
-      pctx.fillStyle = sphereGrad;
-      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+    // Continents with spherical rotation
+    const rot = progress * 1.5;
+    pctx.fillStyle = "#15803d";
+    pctx.shadowColor = "#166534";
+    pctx.shadowBlur = 3;
 
-      // Continents with spherical rotation
-      const rot = progress * 1.5;
-      pctx.fillStyle = "#15803d";
-      pctx.shadowColor = "#166534";
-      pctx.shadowBlur = 3;
-
-      for (let c = -1; c <= 1; c++) {
-        const cxOffset = (c * radius * 1.4 + rot * radius * 0.7) % (radius * 2.2) - radius * 0.4;
-        pctx.beginPath();
-        pctx.ellipse(cxOffset, -radius * 0.25, radius * 0.36, radius * 0.24, 0.2, 0, Math.PI * 2);
-        pctx.ellipse(cxOffset + radius * 0.22, radius * 0.22, radius * 0.42, radius * 0.26, -0.15, 0, Math.PI * 2);
-        pctx.fill();
-      }
-      pctx.shadowBlur = 0;
-
-      // PASS 1: Volumetric Cloud Shadows onto Ocean & Continents
-      pctx.fillStyle = "rgba(1, 4, 18, 0.42)";
-      for (let c = -1; c <= 1; c++) {
-        const cxOffset = (c * radius * 1.6 + rot * radius * 0.85) % (radius * 2.4) - radius * 0.45;
-        // Cyclone vortex shadow
-        pctx.beginPath();
-        pctx.ellipse(cxOffset + radius * 0.05, -radius * 0.28, radius * 0.28, radius * 0.14, 0.3, 0, Math.PI * 2);
-        pctx.ellipse(cxOffset - radius * 0.1, radius * 0.32, radius * 0.32, radius * 0.12, -0.2, 0, Math.PI * 2);
-        pctx.ellipse(cxOffset + radius * 0.15, 0, radius * 0.45, radius * 0.10, 0.05, 0, Math.PI * 2);
-        pctx.fill();
-      }
-
-      // PASS 2: Volumetric Swirling Clouds with Cyclones & Highlights
-      for (let c = -1; c <= 1; c++) {
-        const cxOffset = (c * radius * 1.6 + rot * radius * 0.85) % (radius * 2.4) - radius * 0.5;
-
-        // Cyclone Spiral Swirl
-        const cycloneGrad = pctx.createRadialGradient(cxOffset, -radius * 0.32, 2, cxOffset, -radius * 0.32, radius * 0.3);
-        cycloneGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
-        cycloneGrad.addColorStop(0.6, "rgba(224, 242, 254, 0.75)");
-        cycloneGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-        pctx.fillStyle = cycloneGrad;
-        pctx.beginPath();
-        pctx.ellipse(cxOffset, -radius * 0.32, radius * 0.3, radius * 0.16, 0.25, 0, Math.PI * 2);
-        pctx.fill();
-
-        // Equatorial ITCZ Cloud Streamers
-        const itczGrad = pctx.createRadialGradient(cxOffset + radius * 0.1, -radius * 0.02, 2, cxOffset + radius * 0.1, -radius * 0.02, radius * 0.45);
-        itczGrad.addColorStop(0, "rgba(255, 255, 255, 0.92)");
-        itczGrad.addColorStop(0.55, "rgba(224, 242, 254, 0.7)");
-        itczGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-        pctx.fillStyle = itczGrad;
-        pctx.beginPath();
-        pctx.ellipse(cxOffset + radius * 0.1, -radius * 0.02, radius * 0.48, radius * 0.11, -0.05, 0, Math.PI * 2);
-        pctx.fill();
-
-        // Southern Baroclinic Storm Front
-        const frontGrad = pctx.createRadialGradient(cxOffset - radius * 0.15, radius * 0.28, 2, cxOffset - radius * 0.15, radius * 0.28, radius * 0.35);
-        frontGrad.addColorStop(0, "rgba(254, 215, 170, 0.85)"); // Twilight tint
-        frontGrad.addColorStop(0.5, "rgba(224, 242, 254, 0.65)");
-        frontGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-        pctx.fillStyle = frontGrad;
-        pctx.beginPath();
-        pctx.ellipse(cxOffset - radius * 0.15, radius * 0.28, radius * 0.36, radius * 0.13, 0.15, 0, Math.PI * 2);
-        pctx.fill();
-      }
-    } else if (type === "cyber") {
-      sphereGrad.addColorStop(0, "#0e2348");
-      sphereGrad.addColorStop(0.6, "#060e22");
-      sphereGrad.addColorStop(1, "#02040b");
-      pctx.fillStyle = sphereGrad;
-      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
-
-      // Cyan / Indigo Digital Wireframe Grid
-      pctx.strokeStyle = "rgba(34, 211, 238, 0.6)";
-      pctx.lineWidth = Math.max(1, radius * 0.015);
-      const rot = progress * 1.4;
-
-      // Latitudes
-      for (let lat = -0.75; lat <= 0.75; lat += 0.35) {
-        pctx.beginPath();
-        const rLat = radius * Math.cos(lat * Math.PI * 0.5);
-        const yLat = radius * lat;
-        pctx.ellipse(0, yLat, rLat, rLat * 0.28, 0, 0, Math.PI * 2);
-        pctx.stroke();
-      }
-
-      // Longitudes
-      for (let lon = 0; lon < Math.PI; lon += Math.PI / 4) {
-        pctx.beginPath();
-        const wLon = radius * Math.sin(lon + rot);
-        pctx.ellipse(0, 0, Math.abs(wLon), radius, 0, 0, Math.PI * 2);
-        pctx.stroke();
-      }
-    } else if (type === "pulsar") {
-      sphereGrad.addColorStop(0, "#ffffff");
-      sphereGrad.addColorStop(0.2, "#e879f9");
-      sphereGrad.addColorStop(0.55, "#8b5cf6");
-      sphereGrad.addColorStop(0.85, "#3b0764");
-      sphereGrad.addColorStop(1, "#0f021e");
-      pctx.fillStyle = sphereGrad;
-      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
-
-      // Pulsar core texture
-      const pulseScale = 1 + Math.sin(progress * Math.PI * 8) * 0.08;
-      const coreGrad = pctx.createRadialGradient(0, 0, 0, 0, 0, radius * 0.4 * pulseScale);
-      coreGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
-      coreGrad.addColorStop(0.5, "rgba(216, 180, 254, 0.6)");
-      coreGrad.addColorStop(1, "rgba(147, 51, 234, 0)");
-      pctx.fillStyle = coreGrad;
+    for (let c = -1; c <= 1; c++) {
+      const cxOffset = (c * radius * 1.4 + rot * radius * 0.7) % (radius * 2.2) - radius * 0.4;
       pctx.beginPath();
-      pctx.arc(0, 0, radius * 0.4 * pulseScale, 0, Math.PI * 2);
+      pctx.ellipse(cxOffset, -radius * 0.25, radius * 0.36, radius * 0.24, 0.2, 0, Math.PI * 2);
+      pctx.ellipse(cxOffset + radius * 0.22, radius * 0.22, radius * 0.42, radius * 0.26, -0.15, 0, Math.PI * 2);
       pctx.fill();
-    } else if (type === "solaris") {
-      sphereGrad.addColorStop(0, "#fef08a");
-      sphereGrad.addColorStop(0.35, "#f59e0b");
-      sphereGrad.addColorStop(0.75, "#dc2626");
-      sphereGrad.addColorStop(1, "#450a0a");
-      pctx.fillStyle = sphereGrad;
-      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+    }
+    pctx.shadowBlur = 0;
 
-      // Granulation & solar flares
-      for (let i = 0; i < 6; i++) {
-        const angle = (i * Math.PI / 3) + progress * 0.6;
-        const dist = radius * (0.3 + (i % 3) * 0.2);
-        const fx = Math.cos(angle) * dist;
-        const fy = Math.sin(angle) * dist;
-        const flareGrad = pctx.createRadialGradient(fx, fy, 0, fx, fy, radius * 0.25);
-        flareGrad.addColorStop(0, "rgba(254, 240, 138, 0.7)");
-        flareGrad.addColorStop(1, "rgba(239, 68, 68, 0)");
-        pctx.fillStyle = flareGrad;
-        pctx.beginPath();
-        pctx.arc(fx, fy, radius * 0.25, 0, Math.PI * 2);
-        pctx.fill();
-      }
+    // PASS 1: Volumetric Cloud Shadows onto Ocean & Continents
+    pctx.fillStyle = "rgba(1, 4, 18, 0.42)";
+    for (let c = -1; c <= 1; c++) {
+      const cxOffset = (c * radius * 1.6 + rot * radius * 0.85) % (radius * 2.4) - radius * 0.45;
+      pctx.beginPath();
+      pctx.ellipse(cxOffset + radius * 0.05, -radius * 0.28, radius * 0.28, radius * 0.14, 0.3, 0, Math.PI * 2);
+      pctx.ellipse(cxOffset - radius * 0.1, radius * 0.32, radius * 0.32, radius * 0.12, -0.2, 0, Math.PI * 2);
+      pctx.ellipse(cxOffset + radius * 0.15, 0, radius * 0.45, radius * 0.10, 0.05, 0, Math.PI * 2);
+      pctx.fill();
     }
 
-    // 3. 3D Terminator Shadow with Sunset Twilight Rim
+    // PASS 2: Volumetric Swirling Clouds with Cyclones & Highlights
+    for (let c = -1; c <= 1; c++) {
+      const cxOffset = (c * radius * 1.6 + rot * radius * 0.85) % (radius * 2.4) - radius * 0.5;
+
+      // Cyclone Spiral Swirl
+      const cycloneGrad = pctx.createRadialGradient(cxOffset, -radius * 0.32, 2, cxOffset, -radius * 0.32, radius * 0.3);
+      cycloneGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
+      cycloneGrad.addColorStop(0.6, "rgba(224, 242, 254, 0.75)");
+      cycloneGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+      pctx.fillStyle = cycloneGrad;
+      pctx.beginPath();
+      pctx.ellipse(cxOffset, -radius * 0.32, radius * 0.3, radius * 0.16, 0.25, 0, Math.PI * 2);
+      pctx.fill();
+
+      // Equatorial ITCZ Cloud Streamers
+      const itczGrad = pctx.createRadialGradient(cxOffset + radius * 0.1, -radius * 0.02, 2, cxOffset + radius * 0.1, -radius * 0.02, radius * 0.45);
+      itczGrad.addColorStop(0, "rgba(255, 255, 255, 0.92)");
+      itczGrad.addColorStop(0.55, "rgba(224, 242, 254, 0.7)");
+      itczGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+      pctx.fillStyle = itczGrad;
+      pctx.beginPath();
+      pctx.ellipse(cxOffset + radius * 0.1, -radius * 0.02, radius * 0.48, radius * 0.11, -0.05, 0, Math.PI * 2);
+      pctx.fill();
+
+      // Southern Baroclinic Storm Front
+      const frontGrad = pctx.createRadialGradient(cxOffset - radius * 0.15, radius * 0.28, 2, cxOffset - radius * 0.15, radius * 0.28, radius * 0.35);
+      frontGrad.addColorStop(0, "rgba(254, 215, 170, 0.85)");
+      frontGrad.addColorStop(0.5, "rgba(224, 242, 254, 0.65)");
+      frontGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+      pctx.fillStyle = frontGrad;
+      pctx.beginPath();
+      pctx.ellipse(cxOffset - radius * 0.15, radius * 0.28, radius * 0.36, radius * 0.13, 0.15, 0, Math.PI * 2);
+      pctx.fill();
+    }
+
+    // 3D Terminator Shadow with Sunset Twilight Rim
     const shadowGrad = pctx.createRadialGradient(radius * 0.35, radius * 0.35, radius * 0.4, 0, 0, radius * 1.05);
     shadowGrad.addColorStop(0, "rgba(0, 0, 0, 0)");
     shadowGrad.addColorStop(0.65, "rgba(2, 4, 12, 0.45)");
-    shadowGrad.addColorStop(0.85, "rgba(251, 146, 60, 0.22)"); // Twilight Sunset Rim
+    shadowGrad.addColorStop(0.85, "rgba(251, 146, 60, 0.22)");
     shadowGrad.addColorStop(1, "rgba(1, 2, 6, 0.92)");
     pctx.fillStyle = shadowGrad;
     pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
 
     pctx.restore(); // end clip
 
-    // 4. Planet Orbit Features (Rings, Defense Forcefields, Beams outside clipping mask)
+    // Planet Orbit Features (Endurance Spacecraft / Tactical Planetary Defense)
     if (type === "earth" || type === "hub") {
-      // Tactical Planetary Defense Forcefield Rings (Earth Siege & Evacuation Lore)
       pctx.save();
       pctx.strokeStyle = "rgba(239, 68, 68, 0.4)";
       pctx.lineWidth = Math.max(1, radius * 0.015);
@@ -1517,68 +1739,27 @@
       pctx.setLineDash([]);
 
       if (type === "hub") {
-        // High-Tech Orbital Station Ring Structure
+        // High-Tech Endurance 12-Pod Ring Spacecraft Structure (Rotating at 68 RPM)
         pctx.strokeStyle = "rgba(94, 234, 212, 0.85)";
         pctx.lineWidth = Math.max(1.5, radius * 0.025);
         pctx.beginPath();
         pctx.ellipse(0, 0, radius * 1.5, radius * 0.45, -0.2, 0, Math.PI * 2);
         pctx.stroke();
 
-        // Orbital Solar Arrays on Station Ring
-        for (let a = 0; a < 4; a++) {
-          const sAngle = (a * Math.PI / 2) + progress * 0.5;
+        // 12 Modular Pods on Endurance Ring
+        for (let a = 0; a < 12; a++) {
+          const sAngle = (a * Math.PI * 2 / 12) + progress * 0.8;
           const sx = Math.cos(sAngle) * (radius * 1.5);
           const sy = Math.sin(sAngle) * (radius * 0.45);
           pctx.beginPath();
-          pctx.arc(sx, sy, Math.max(2, radius * 0.035), 0, Math.PI * 2);
-          pctx.fillStyle = "#5eead4";
+          pctx.arc(sx, sy, Math.max(2.2, radius * 0.035), 0, Math.PI * 2);
+          pctx.fillStyle = a % 3 === 0 ? "#5eead4" : "#e2e8f0";
           pctx.shadowColor = "#5eead4";
-          pctx.shadowBlur = 8;
+          pctx.shadowBlur = 6;
           pctx.fill();
         }
       }
       pctx.restore();
-    } else if (type === "cyber") {
-      pctx.save();
-      pctx.rotate(-0.35);
-      pctx.beginPath();
-      pctx.ellipse(0, 0, radius * 1.5, radius * 0.4, 0, 0, Math.PI * 2);
-      pctx.strokeStyle = "rgba(34, 211, 238, 0.85)";
-      pctx.lineWidth = Math.max(1.5, radius * 0.035);
-      pctx.shadowColor = "#22d3ee";
-      pctx.shadowBlur = 12;
-      pctx.stroke();
-      pctx.restore();
-    } else if (type === "pulsar") {
-      pctx.save();
-      pctx.rotate(0.2);
-      const jetGrad = pctx.createLinearGradient(0, -radius * 2.2, 0, radius * 2.2);
-      jetGrad.addColorStop(0, "rgba(216, 180, 254, 0)");
-      jetGrad.addColorStop(0.3, "rgba(255, 255, 255, 0.85)");
-      jetGrad.addColorStop(0.5, "rgba(192, 132, 252, 0.95)");
-      jetGrad.addColorStop(0.7, "rgba(255, 255, 255, 0.85)");
-      jetGrad.addColorStop(1, "rgba(216, 180, 254, 0)");
-
-      pctx.fillStyle = jetGrad;
-      pctx.shadowColor = "#c084fc";
-      pctx.shadowBlur = 16;
-      pctx.fillRect(-radius * 0.06, -radius * 2.2, radius * 0.12, radius * 4.4);
-
-      pctx.beginPath();
-      pctx.ellipse(0, 0, radius * 1.6, radius * 0.45, 0.3, 0, Math.PI * 2);
-      pctx.strokeStyle = "rgba(245, 158, 11, 0.75)";
-      pctx.lineWidth = Math.max(2, radius * 0.04);
-      pctx.shadowColor = "#f59e0b";
-      pctx.shadowBlur = 14;
-      pctx.stroke();
-      pctx.restore();
-    } else if (type === "solaris") {
-      const waveR = radius * (1.1 + (progress * 2) % 0.6);
-      pctx.beginPath();
-      pctx.arc(0, 0, waveR, 0, Math.PI * 2);
-      pctx.strokeStyle = `rgba(251, 191, 36, ${Math.max(0, 0.6 - (waveR - radius) / radius)})`;
-      pctx.lineWidth = 2;
-      pctx.stroke();
     }
 
     pctx.restore();
@@ -2586,6 +2767,78 @@
         }
       });
     }
+    if (q.includes("interstellar") || q.includes("interestelar") || q.includes("nolan")) {
+      secretActions.push({
+        type: "secret",
+        title: "🌌 EXECUTAR: Protocolo Lazarus / Interestelar (Christopher Nolan)",
+        sub: "Easter Egg // 'Não entre dócil nessa noite escura. A fúria contra a morte da luz.'",
+        icon: "star",
+        tag: "INTERSTELLAR",
+        act: () => {
+          showToast("🌌 Interestelar (Nolan): 'O amor é a única coisa que transcende as dimensões do tempo e espaço.'", "star");
+          openSectorDossier("contato");
+          completeQuest("hacker");
+        }
+      });
+    }
+    if (q.includes("gargantua") || q.includes("blackhole") || q.includes("buraco") || q.includes("singularidade")) {
+      secretActions.push({
+        type: "secret",
+        title: "🕳️ EXECUTAR: Horizonte de Eventos de Gargântua",
+        sub: "Easter Egg // Buraco Negro Supermassivo (100M M☉ · Dilatação: 1h = 7 anos)",
+        icon: "darkmatter",
+        tag: "GARGÂNTUA",
+        act: () => {
+          showToast("🕳️ Gargântua: Singularidade e lente gravitacional de Einstein atingidas!", "star");
+          openSectorDossier("contato");
+          completeQuest("hacker");
+        }
+      });
+    }
+    if (q.includes("stay") || q.includes("murph") || q.includes("relogio") || q.includes("tesseract")) {
+      secretActions.push({
+        type: "secret",
+        title: "⏳ EXECUTAR: Sinal Gravitacional 5D de Cooper (S-T-A-Y)",
+        sub: "Easter Egg // 'S-T-A-Y... Foi ele o tempo todo. Meu pai era o meu fantasma.'",
+        icon: "satellite",
+        tag: "MORSE",
+        act: () => {
+          openSectorDossier("contato");
+          const dBtn = document.getElementById("decodeMorseBtn");
+          if (dBtn) dBtn.click();
+          completeQuest("hacker");
+        }
+      });
+    }
+    if (q.includes("tars") || q.includes("case")) {
+      secretActions.push({
+        type: "secret",
+        title: "🤖 EXECUTAR: Telemetria TARS (IA Tática)",
+        sub: "Easter Egg // Honestidade: 90% · Humor: 75% · 'É necessário.'",
+        icon: "dashboard",
+        tag: "TARS",
+        act: () => {
+          showToast("🤖 TARS: 'Olá Cooper. Configuração de honestidade em 90%. Pronto para o acoplamento!'", "dashboard");
+          sfx.warp();
+          completeQuest("hacker");
+        }
+      });
+    }
+    if (q.includes("endurance") || q.includes("docking") || q.includes("acoplamento") || q.includes("68")) {
+      secretActions.push({
+        type: "secret",
+        title: "🌀 EXECUTAR: Manobra de Acoplamento Endurance (68 RPM)",
+        sub: "Easter Egg // 'Cooper, it's not possible! — No, it's necessary.'",
+        icon: "star",
+        tag: "ENDURANCE",
+        act: () => {
+          openSectorDossier("contato");
+          const docBtn = document.getElementById("enduranceDockingBtn");
+          if (docBtn) docBtn.click();
+          completeQuest("hacker");
+        }
+      });
+    }
     if (q === "42" || q.includes("guia") || q.includes("mochileiro") || q.includes("douglas")) {
       secretActions.push({
         type: "secret",
@@ -2595,20 +2848,6 @@
         tag: "SECRET",
         act: () => {
           showToast("🌌 42: A Resposta para a Vida, o Universo e Tudo Mais. Não Entre em Pânico!", "star");
-          sfx.warp();
-          completeQuest("hacker");
-        }
-      });
-    }
-    if (q.includes("blackhole") || q.includes("buraco") || q.includes("singularidade") || q.includes("gargantua")) {
-      secretActions.push({
-        type: "secret",
-        title: "🕳️ EXECUTAR: Horizonte de Eventos de Gargantua",
-        sub: "Easter Egg // Dilatação Temporal Relativística",
-        icon: "darkmatter",
-        tag: "SECRET",
-        act: () => {
-          showToast("🕳️ Horizonte de Eventos atingido. Dilatação temporal: 1h aqui = 7 anos na Terra.", "star");
           sfx.warp();
           completeQuest("hacker");
         }
@@ -2903,6 +3142,28 @@
       }
     },
     {
+      id: "murphWatch",
+      title: "Relógio Gravitacional de Murph",
+      desc: "Decodificar a mensagem em código Morse 'S-T-A-Y' no Setor 04 (Gargântua)",
+      xp: 150,
+      action: () => {
+        openSectorDossier("contato");
+        const morseBtn = document.getElementById("decodeMorseBtn");
+        if (morseBtn) morseBtn.click();
+      }
+    },
+    {
+      id: "enduranceDock",
+      title: "Acoplamento Endurance a 68 RPM",
+      desc: "Executar manobra de sincronização de rotação com a Endurance no Setor 04",
+      xp: 200,
+      action: () => {
+        openSectorDossier("contato");
+        const dockBtn = document.getElementById("enduranceDockingBtn");
+        if (dockBtn) dockBtn.click();
+      }
+    },
+    {
       id: "hacker",
       title: "Terminal Hacker Cósmico",
       desc: "Executar comando secreto no ⌘K (ex: matrix, 42, blackhole, apollo)",
@@ -3172,6 +3433,162 @@
     } catch (e) {}
   }
 
+  /* ============================================================
+     12.5 GARGÂNTUA LIVE RELATIVISTIC CANVAS BACKGROUND (INTERESTELAR)
+     ============================================================ */
+  function initGargantuaBackground() {
+    const canvas = document.getElementById("gargantuaBgCanvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+
+    function resize() {
+      const parent = canvas.parentElement || canvas.closest(".dossier-panel") || document.body;
+      const rect = parent.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = canvas.width = (rect.width || window.innerWidth) * dpr;
+      height = canvas.height = (rect.height || window.innerHeight) * dpr;
+      canvas.style.width = (rect.width || window.innerWidth) + "px";
+      canvas.style.height = (rect.height || window.innerHeight) + "px";
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+
+    // Particle accretion disk stream (120 relativistic orbiting particles)
+    const ACCRETION_PARTICLES = [];
+    const count = 120;
+    for (let i = 0; i < count; i++) {
+      ACCRETION_PARTICLES.push({
+        angle: Math.random() * Math.PI * 2,
+        dist: Math.random() * 0.75 + 0.55,
+        speed: (Math.random() * 0.008 + 0.004) * (Math.random() > 0.5 ? 1 : 1),
+        size: Math.random() * 2.2 + 0.8,
+        color: Math.random() > 0.4 ? "rgba(254, 240, 138, 0.9)" : "rgba(249, 115, 22, 0.85)"
+      });
+    }
+
+    function renderGargantua() {
+      const panel = document.getElementById("panel-contato");
+      const isVisible = panel && panel.classList.contains("active");
+
+      if (!isVisible && !reduceMotion) {
+        requestAnimationFrame(renderGargantua);
+        return;
+      }
+
+      ctx.clearRect(0, 0, width, height);
+
+      const cx = width * 0.5;
+      const cy = Math.min(height * 0.38, 320 * dpr);
+      const baseR = Math.min(width, height) * 0.28;
+      const bhRadius = Math.max(75 * dpr, baseR);
+
+      ctx.save();
+      ctx.translate(cx, cy);
+
+      // 1. Relativistic Spacetime Lensing Gradient (Einstein Halo)
+      const haloGrad = ctx.createRadialGradient(0, 0, bhRadius * 0.5, 0, 0, bhRadius * 2.2);
+      haloGrad.addColorStop(0, "rgba(254, 240, 138, 0.4)");
+      haloGrad.addColorStop(0.25, "rgba(245, 158, 11, 0.25)");
+      haloGrad.addColorStop(0.6, "rgba(234, 88, 12, 0.1)");
+      haloGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.beginPath();
+      ctx.arc(0, 0, bhRadius * 2.2, 0, Math.PI * 2);
+      ctx.fillStyle = haloGrad;
+      ctx.fill();
+
+      // 2. Upper Lensed Accretion Arc (Gravitationally bent over the top)
+      ctx.save();
+      ctx.beginPath();
+      ctx.ellipse(0, -bhRadius * 0.38, bhRadius * 1.45, bhRadius * 0.92, 0, Math.PI * 0.94, Math.PI * 2.06);
+      ctx.lineWidth = Math.max(4, bhRadius * 0.22);
+      const upperGrad = ctx.createLinearGradient(-bhRadius * 1.45, 0, bhRadius * 1.45, 0);
+      upperGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)"); // Doppler blueshift
+      upperGrad.addColorStop(0.3, "rgba(253, 224, 71, 0.85)");
+      upperGrad.addColorStop(0.7, "rgba(249, 115, 22, 0.5)");
+      upperGrad.addColorStop(1, "rgba(185, 28, 28, 0.2)"); // Redshift
+      ctx.strokeStyle = upperGrad;
+      ctx.shadowColor = "#f59e0b";
+      ctx.shadowBlur = 20 * dpr;
+      ctx.stroke();
+      ctx.restore();
+
+      // 3. Lower Lensed Accretion Arc (Gravitationally bent beneath the bottom)
+      ctx.save();
+      ctx.beginPath();
+      ctx.ellipse(0, bhRadius * 0.38, bhRadius * 1.45, bhRadius * 0.92, 0, 0, Math.PI * 1.06);
+      ctx.lineWidth = Math.max(3, bhRadius * 0.16);
+      const lowerGrad = ctx.createLinearGradient(-bhRadius * 1.45, 0, bhRadius * 1.45, 0);
+      lowerGrad.addColorStop(0, "rgba(255, 255, 255, 0.85)");
+      lowerGrad.addColorStop(0.4, "rgba(251, 191, 36, 0.65)");
+      lowerGrad.addColorStop(1, "rgba(194, 65, 12, 0.2)");
+      ctx.strokeStyle = lowerGrad;
+      ctx.stroke();
+      ctx.restore();
+
+      // 4. Swirling Relativistic Accretion Matter Particles
+      ACCRETION_PARTICLES.forEach((p) => {
+        p.angle += p.speed * (1.2 / p.dist);
+        const rx = bhRadius * 1.8 * p.dist;
+        const ry = bhRadius * 0.38 * p.dist;
+        const px = Math.cos(p.angle) * rx;
+        const py = Math.sin(p.angle) * ry;
+
+        const isBehind = Math.sin(p.angle) < 0 && Math.abs(px) < bhRadius * 0.55;
+        if (!isBehind) {
+          ctx.beginPath();
+          ctx.arc(px, py, p.size * dpr, 0, Math.PI * 2);
+          const alpha = px < 0 ? 0.95 : 0.45;
+          ctx.fillStyle = p.color.replace(/[\d\.]+\)$/, `${alpha})`);
+          ctx.fill();
+        }
+      });
+
+      // 5. Equatorial Accretion Disk (Front matter stream)
+      ctx.save();
+      ctx.beginPath();
+      ctx.ellipse(0, 0, bhRadius * 1.85, bhRadius * 0.36, -0.06, 0, Math.PI * 2);
+      ctx.lineWidth = Math.max(5, bhRadius * 0.28);
+      const eqGrad = ctx.createLinearGradient(-bhRadius * 1.85, 0, bhRadius * 1.85, 0);
+      eqGrad.addColorStop(0, "rgba(255, 255, 255, 1.0)");
+      eqGrad.addColorStop(0.2, "rgba(254, 240, 138, 0.95)");
+      eqGrad.addColorStop(0.5, "rgba(245, 158, 11, 0.8)");
+      eqGrad.addColorStop(0.8, "rgba(234, 88, 12, 0.4)");
+      eqGrad.addColorStop(1, "rgba(124, 45, 18, 0.15)");
+      ctx.strokeStyle = eqGrad;
+      ctx.shadowColor = "#fbbf24";
+      ctx.shadowBlur = 28 * dpr;
+      ctx.stroke();
+      ctx.restore();
+
+      // 6. Razor-Thin Photon Sphere (1.5x Schwarzschild Radius)
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(0, 0, bhRadius * 0.58, 0, Math.PI * 2);
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.95)";
+      ctx.lineWidth = Math.max(1.8, bhRadius * 0.03);
+      ctx.shadowColor = "#ffffff";
+      ctx.shadowBlur = 14 * dpr;
+      ctx.stroke();
+      ctx.restore();
+
+      // 7. Schwarzschild Event Horizon (Absolute Black)
+      ctx.beginPath();
+      ctx.arc(0, 0, bhRadius * 0.54, 0, Math.PI * 2);
+      ctx.fillStyle = "#000000";
+      ctx.fill();
+
+      ctx.restore();
+
+      requestAnimationFrame(renderGargantua);
+    }
+
+    renderGargantua();
+  }
+
   function initEasterEggWidgets() {
     // 1. Voyager Golden Record
     const voyagerBtn = document.getElementById("voyagerGoldenRecordBtn");
@@ -3222,6 +3639,116 @@
         completeQuest("quantumPing");
       });
     }
+
+    // 4. Murph's Gravity Watch (Morse "S-T-A-Y")
+    const decodeMorseBtn = document.getElementById("decodeMorseBtn");
+    const murphSecondHand = document.getElementById("murphSecondHand");
+    const morseDecodedText = document.getElementById("morseDecodedText");
+    const morseCodeStream = document.getElementById("morseCodeStream");
+
+    // Continuous subtle quantum jitter on second hand
+    let watchAngle = 0;
+    setInterval(() => {
+      if (murphSecondHand && !murphSecondHand.classList.contains("transmitting")) {
+        watchAngle = (watchAngle + 6 + (Math.random() > 0.8 ? 4 : 0)) % 360;
+        murphSecondHand.style.transform = `translateX(-50%) rotate(${watchAngle}deg)`;
+      }
+    }, 1000);
+
+    if (decodeMorseBtn) {
+      decodeMorseBtn.addEventListener("click", () => {
+        if (murphSecondHand) murphSecondHand.classList.add("transmitting");
+
+        // Morse Code Timing for "S T A Y" (...  -  .-  -.--)
+        // dot = 80ms, dash = 240ms, element pause = 80ms, letter pause = 240ms
+        const MORSE_EVENTS = [
+          // S: . . .
+          { type: "dot", dur: 80 }, { type: "space", dur: 80 },
+          { type: "dot", dur: 80 }, { type: "space", dur: 80 },
+          { type: "dot", dur: 80 }, { type: "letter", dur: 260 },
+          // T: -
+          { type: "dash", dur: 240 }, { type: "letter", dur: 260 },
+          // A: . -
+          { type: "dot", dur: 80 }, { type: "space", dur: 80 },
+          { type: "dash", dur: 240 }, { type: "letter", dur: 260 },
+          // Y: - . - -
+          { type: "dash", dur: 240 }, { type: "space", dur: 80 },
+          { type: "dot", dur: 80 }, { type: "space", dur: 80 },
+          { type: "dash", dur: 240 }, { type: "space", dur: 80 },
+          { type: "dash", dur: 240 }
+        ];
+
+        let elapsed = 0;
+        MORSE_EVENTS.forEach((ev) => {
+          setTimeout(() => {
+            if (ev.type === "dot") {
+              playTone(740, "sine", 0.08, 0.05);
+              if (murphSecondHand) murphSecondHand.style.transform = `translateX(-50%) rotate(${Math.random() * 40 - 20}deg)`;
+            } else if (ev.type === "dash") {
+              playTone(740, "sine", 0.24, 0.06);
+              if (murphSecondHand) murphSecondHand.style.transform = `translateX(-50%) rotate(${Math.random() * 90 + 30}deg)`;
+            }
+          }, elapsed);
+          elapsed += ev.dur;
+        });
+
+        if (morseCodeStream) {
+          morseCodeStream.style.color = "#ffffff";
+          morseCodeStream.style.textShadow = "0 0 16px #f59e0b";
+        }
+
+        setTimeout(() => {
+          if (morseDecodedText) {
+            morseDecodedText.innerHTML = `✨ <strong>DECODIFICAÇÃO CONCLUÍDA:</strong> <code>S - T - A - Y</code><br/>
+            <em>"Não me deixe ir, Murph... Foi ele o tempo todo. Meu pai era o meu fantasma no tesseract 5D."</em>`;
+          }
+          if (murphSecondHand) murphSecondHand.classList.remove("transmitting");
+          sfx.success();
+          showToast("⏳ Transmissão de Cooper Decodificada: STAY (Fique)", "star");
+          completeQuest("murphWatch");
+        }, elapsed + 200);
+      });
+    }
+
+    // 5. Endurance Docking Maneuver (68 RPM)
+    const enduranceBtn = document.getElementById("enduranceDockingBtn");
+    if (enduranceBtn) {
+      enduranceBtn.addEventListener("click", () => {
+        document.body.classList.add("endurance-spin-active");
+        sfx.warp();
+
+        // Synthesize 68 RPM Thruster Spin Audio Sweep
+        if (sfxEnabled) {
+          try {
+            const ctx = getAudioContext();
+            if (ctx) {
+              const now = ctx.currentTime;
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = "sawtooth";
+              osc.frequency.setValueAtTime(80, now);
+              osc.frequency.exponentialRampToValueAtTime(360, now + 2.0);
+              osc.frequency.exponentialRampToValueAtTime(110, now + 4.0);
+              gain.gain.setValueAtTime(0.08, now);
+              gain.gain.exponentialRampToValueAtTime(0.0001, now + 4.2);
+              osc.connect(gain);
+              gain.connect(ctx.destination);
+              osc.start(now);
+              osc.stop(now + 4.2);
+            }
+          } catch (e) {}
+        }
+
+        showToast("🚀 CASE: 'Estamos a 68 RPM... Cooper, isso é loucura!' — Acoplamento concluído!", "star");
+        completeQuest("enduranceDock");
+
+        setTimeout(() => {
+          document.body.classList.remove("endurance-spin-active");
+          sfx.success();
+          showToast("🔒 Acoplamento com a Estação Endurance travado com 100% de integridade!", "box");
+        }, 4500);
+      });
+    }
   }
 
   /* ============================================================
@@ -3268,6 +3795,7 @@
     initWarpTravelEngine();
     initSectorNavigation();
     initCosmos();
+    initGargantuaBackground();
     initCursor();
     applyI18n();
 
