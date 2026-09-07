@@ -1723,6 +1723,321 @@ body.cursor-active .cursor-glow {
   box-shadow: 0 0 14px rgba(94, 234, 212, 0.4);
 }
 
+/* ============================================================
+   8. RIGHT LATERAL HUD TASK LIST / GAMIFIED ONBOARDING TRACKER
+   ============================================================ */
+.hud-task-tracker {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 85;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: auto;
+  font-family: var(--font-sans);
+  transition: transform 0.4s var(--ease-out-expo), opacity 0.3s ease;
+}
+
+/* Floating Toggle Button (visible when tracker is minimized or hovered) */
+.task-tracker-toggle {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(9, 13, 30, 0.88);
+  border: 1px solid rgba(94, 234, 212, 0.35);
+  border-radius: var(--radius-full);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px rgba(94, 234, 212, 0.2);
+  backdrop-filter: blur(16px);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.task-tracker-toggle:hover {
+  transform: scale(1.04) translateX(-4px);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7), 0 0 22px rgba(94, 234, 212, 0.4);
+  background: rgba(14, 20, 48, 0.95);
+}
+.task-tracker-toggle__icon { font-size: 1rem; }
+.task-tracker-toggle__label { font-weight: 700; color: var(--accent-cyan); }
+.task-tracker-toggle__badge {
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(94, 234, 212, 0.16);
+  color: #fff;
+  font-weight: 700;
+}
+.task-tracker-toggle__chevron {
+  transition: transform 0.3s ease;
+}
+
+/* When minimized, show toggle pill and hide card */
+.hud-task-tracker.minimized .task-tracker-toggle {
+  display: inline-flex;
+}
+.hud-task-tracker.minimized .task-tracker-card {
+  display: none;
+}
+
+/* Expanded Holographic Quest Card */
+.task-tracker-card {
+  width: 300px;
+  background: rgba(8, 12, 28, 0.88);
+  border: 1px solid rgba(110, 168, 254, 0.24);
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(110, 168, 254, 0.12);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: hudCardPop 0.4s var(--ease-out-expo);
+}
+
+@keyframes hudCardPop {
+  0% { opacity: 0; transform: scale(0.92) translateX(20px); }
+  100% { opacity: 1; transform: scale(1) translateX(0); }
+}
+
+.task-tracker-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(140, 165, 255, 0.12);
+}
+
+.task-tracker-rank {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rank-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+}
+
+.rank-xp {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-purple);
+  font-weight: 600;
+}
+
+.task-tracker-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-tracker-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.btn-tracker-icon:hover {
+  color: var(--text-main);
+  background: rgba(110, 168, 254, 0.16);
+  border-color: rgba(110, 168, 254, 0.4);
+  transform: scale(1.08);
+}
+
+/* Progress bar inside card */
+.task-tracker-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.task-progress-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+.task-progress-text strong {
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+  font-size: 0.8rem;
+}
+.task-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.task-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #5eead4 0%, #6ea8fe 50%, #b692ff 100%);
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(94, 234, 212, 0.6);
+  transition: width 0.5s var(--ease-out-expo);
+}
+
+/* Task items list */
+.task-items-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.task-item:hover {
+  background: rgba(110, 168, 254, 0.08);
+  border-color: rgba(110, 168, 254, 0.25);
+  transform: translateX(-2px);
+}
+
+.task-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid rgba(140, 165, 255, 0.35);
+  background: rgba(0, 0, 0, 0.3);
+  margin-top: 2px;
+  flex-shrink: 0;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+.task-check svg {
+  display: none;
+  width: 12px;
+  height: 12px;
+  stroke: #020308;
+}
+
+.task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-grow: 1;
+  min-width: 0;
+}
+.task-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.task-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.task-xp-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent-cyan);
+  background: rgba(94, 234, 212, 0.1);
+  padding: 1px 5px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.task-desc {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* Completed Task State */
+.task-item.completed {
+  background: rgba(94, 234, 212, 0.04);
+  border-color: rgba(94, 234, 212, 0.18);
+}
+.task-item.completed .task-check {
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 8px rgba(94, 234, 212, 0.5);
+}
+.task-item.completed .task-check svg {
+  display: block;
+}
+.task-item.completed .task-title {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(94, 234, 212, 0.6);
+}
+.task-item.completed .task-xp-tag {
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Achievement 100% Unlocked Badge */
+.task-achievement-badge {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, rgba(255, 212, 121, 0.15) 0%, rgba(94, 234, 212, 0.15) 100%);
+  border: 1px solid rgba(255, 212, 121, 0.4);
+  box-shadow: 0 0 16px rgba(255, 212, 121, 0.2);
+  animation: badgeGlowPulse 2.5s infinite alternate;
+}
+.task-achievement-badge.unlocked {
+  display: flex;
+}
+@keyframes badgeGlowPulse {
+  0% { box-shadow: 0 0 12px rgba(255, 212, 121, 0.2); }
+  100% { box-shadow: 0 0 24px rgba(94, 234, 212, 0.4); }
+}
+.badge-icon { font-size: 1.4rem; }
+.badge-info {
+  display: flex;
+  flex-direction: column;
+}
+.badge-info strong {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--accent-amber);
+}
+.badge-info span {
+  font-size: 0.68rem;
+  color: var(--text-main);
+}
+
 /* ---------- 9. RESPONSIVE BREAKPOINTS ---------- */
 @media (max-width: 1024px) {
   .corner-node { padding: 10px 16px; }
@@ -1747,6 +2062,28 @@ body.cursor-active .cursor-glow {
   .app-footer--hud { margin-bottom: 68px; font-size: 0.72rem; padding: 10px 14px; }
   .dossier-sector-tabs { display: none; }
   .intro-mission-tag { font-size: 0.7rem; padding: 4px 12px; max-width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  
+  /* Task Tracker on mobile (<900px): compact top-right pill */
+  .hud-task-tracker {
+    top: 70px;
+    right: 16px;
+    transform: none;
+  }
+  .hud-task-tracker:not(.expanded) .task-tracker-toggle {
+    display: inline-flex;
+  }
+  .hud-task-tracker:not(.expanded) .task-tracker-card {
+    display: none;
+  }
+  .hud-task-tracker.expanded .task-tracker-card {
+    display: flex;
+    position: fixed;
+    top: 70px;
+    right: 16px;
+    width: min(320px, calc(100vw - 32px));
+    max-height: calc(100vh - 160px);
+    z-index: 999;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1763,6 +2100,7 @@ body.cursor-active .cursor-glow {
   .intro-mission-tag { display: none; }
   .btn-skip-intro { margin-left: auto; }
   .app-footer { flex-direction: column; align-items: flex-start; }
+  .hud-task-tracker { top: 62px; right: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

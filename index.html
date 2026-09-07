@@ -202,6 +202,61 @@
       </div>
     </div>
 
+    <!-- ============================================================
+         RIGHT LATERAL HUD TASK LIST / GAMIFIED ONBOARDING TRACKER
+         ============================================================ -->
+    <aside class="hud-task-tracker" id="hudTaskTracker" aria-label="Missões de Exploração e Onboarding">
+      <!-- Tracker Floating Toggle Pill -->
+      <button class="task-tracker-toggle" id="taskTrackerToggle" aria-expanded="true" title="Alternar Painel de Missões">
+        <span class="task-tracker-toggle__icon">🎯</span>
+        <span class="task-tracker-toggle__label">MISSÕES</span>
+        <span class="task-tracker-toggle__badge" id="taskBadgeCount">0/8</span>
+        <svg class="task-tracker-toggle__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+
+      <!-- Tracker Expanded Holographic Card -->
+      <div class="task-tracker-card" id="taskTrackerCard">
+        <div class="task-tracker-head">
+          <div class="task-tracker-rank">
+            <span class="rank-tag" id="userRankTag">CADETE // LVL 1</span>
+            <span class="rank-xp" id="userXpTotal">0 XP</span>
+          </div>
+          <div class="task-tracker-head-actions">
+            <button class="btn-tracker-icon" id="taskResetBtn" title="Reiniciar Progresso de Exploração" aria-label="Reiniciar Missões">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
+            </button>
+            <button class="btn-tracker-icon" id="taskMinimizeBtn" title="Minimizar Painel" aria-label="Minimizar">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="task-tracker-progress">
+          <div class="task-progress-text">
+            <span>Exploração da Estação</span>
+            <strong id="taskProgressPercent">0%</strong>
+          </div>
+          <div class="task-progress-bar">
+            <div class="task-progress-fill" id="taskProgressFill"></div>
+          </div>
+        </div>
+
+        <!-- Task List Items -->
+        <ul class="task-items-list" id="taskItemsList" role="list">
+          <!-- Populated dynamically by JS -->
+        </ul>
+
+        <!-- Achievement Unlocked Card -->
+        <div class="task-achievement-badge" id="taskAchievementBadge">
+          <span class="badge-icon">🎖️</span>
+          <div class="badge-info">
+            <strong>COMANDANTE CÓSMICO</strong>
+            <span>100% da Estação Explorada!</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
     <!-- Unified Liquid Glass Cosmic Footer (Main HUD) -->
     <footer class="app-footer app-footer--hud">
       <div class="rodape-frase">

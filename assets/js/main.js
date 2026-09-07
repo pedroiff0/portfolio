@@ -147,6 +147,46 @@
       playTone(523.25, "sine", 0.08, 0.025);
       setTimeout(() => playTone(659.25, "sine", 0.1, 0.03), 60);
       setTimeout(() => playTone(783.99, "sine", 0.16, 0.035), 120);
+    },
+    questComplete: () => {
+      if (!sfxEnabled) return;
+      playTone(523.25, "sine", 0.09, 0.03); // C5
+      setTimeout(() => playTone(659.25, "sine", 0.09, 0.035), 60); // E5
+      setTimeout(() => playTone(783.99, "sine", 0.12, 0.04), 120); // G5
+      setTimeout(() => playTone(1046.50, "triangle", 0.25, 0.045), 180); // C6
+    },
+    impact: () => {
+      if (!sfxEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+        // Low Frequency Atmospheric Shockwave Boom
+        const osc1 = ctx.createOscillator();
+        const gain1 = ctx.createGain();
+        osc1.type = "sawtooth";
+        osc1.frequency.setValueAtTime(130, now);
+        osc1.frequency.exponentialRampToValueAtTime(24, now + 1.2);
+        gain1.gain.setValueAtTime(0.12, now);
+        gain1.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+        osc1.connect(gain1);
+        gain1.connect(ctx.destination);
+        osc1.start(now);
+        osc1.stop(now + 1.2);
+
+        // Ionized Blast Resonance
+        const osc2 = ctx.createOscillator();
+        const gain2 = ctx.createGain();
+        osc2.type = "sine";
+        osc2.frequency.setValueAtTime(520, now);
+        osc2.frequency.exponentialRampToValueAtTime(70, now + 0.7);
+        gain2.gain.setValueAtTime(0.08, now);
+        gain2.gain.exponentialRampToValueAtTime(0.0001, now + 0.7);
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        osc2.start(now);
+        osc2.stop(now + 0.7);
+      } catch (e) {}
     }
   };
 
@@ -297,6 +337,14 @@
     introActive = true;
     introProgress = 0;
 
+    // Impact & Physics Event State
+    let impactTriggered = false;
+    let impactStartTime = 0;
+    const impactSparks = [];
+    const shockwaveRings = [];
+    let flashAlpha = 0;
+    let shakeIntensity = 0;
+
     // Background Stars with Spectral Classification (O, B, A, F, G, K, M)
     const introStars = [];
     const spectralColors = ["#bae6fd", "#93c5fd", "#ffffff", "#fef08a", "#fdba74", "#f87171"];
@@ -314,7 +362,7 @@
 
     // Plasma ionization fire embers for re-entry trail
     const plasmaParticles = [];
-    for (let i = 0; i < 70; i++) {
+    for (let i = 0; i < 80; i++) {
       plasmaParticles.push({
         x: 0, y: 0,
         vx: 0, vy: 0,
@@ -332,7 +380,7 @@
       { t: 1850, text: "> [ATMOSPHERE] Entering Mesosphere (Mach 25.4) · Plasma sheath forming", cls: "warn" },
       { t: 2400, text: "> [TELEMETRY] Retro-thrusters firing: 21.7° S, 41.3° W // IFF Station", cls: "success" },
       { t: 3000, text: "> [CI/CD] LaTeX Altacv Automated Build: PT/EN/ES/FR dossier READY", cls: "success" },
-      { t: 3500, text: "> [LANDING] Touchdown confirmed at Station Hub. Welcome, Pedro Rocha.", cls: "highlight" }
+      { t: 3450, text: "> [IMPACT/LANDING] Touchdown confirmed at Station LZ. Pedro Rocha ONLINE.", cls: "highlight" }
     ];
 
     const termLines = document.getElementById("introTerminalLines");
@@ -354,7 +402,7 @@
 
     const progressTimer = setInterval(() => {
       if (!introActive) { clearInterval(progressTimer); return; }
-      introProgress = Math.min(introProgress + 1.8, 100);
+      introProgress = Math.min(introProgress + 1.85, 100);
       if (progressFill) progressFill.style.width = `${introProgress}%`;
       
       if (statusPercent) {
@@ -365,9 +413,9 @@
         } else if (introProgress < 85) {
           statusPercent.textContent = `${Math.round(introProgress)}% (ALT: 24 KM // MACH 3.2)`;
         } else if (introProgress < 100) {
-          statusPercent.textContent = `${Math.round(introProgress)}% (ALT: 2 KM // SUBSONIC)`;
+          statusPercent.textContent = `${Math.round(introProgress)}% (IMPACTO IMINENTE // POUSO)`;
         } else {
-          statusPercent.textContent = `100% (POUSO CONFIRMADO)`;
+          statusPercent.textContent = `100% (POUSO E IMPACTO CONCLUÍDOS)`;
         }
       }
 
@@ -406,6 +454,17 @@
       const p = introProgress / 100;
 
       ictx.clearRect(0, 0, iw, ih);
+
+      // Apply Camera Shake upon Atmospheric Impact
+      let shakeX = 0, shakeY = 0;
+      if (shakeIntensity > 0.1) {
+        shakeX = (Math.random() - 0.5) * shakeIntensity;
+        shakeY = (Math.random() - 0.5) * shakeIntensity;
+        shakeIntensity *= 0.90;
+      }
+
+      ictx.save();
+      ictx.translate(shakeX, shakeY);
 
       // 1. Deep Space Cosmic Background with Galactic Band
       ictx.fillStyle = "#010309";
@@ -623,194 +682,309 @@
 
       // ---------- 8. HOLOGRAPHIC TARGET LOCK (IFF / CAMPOS 21.7°S, 41.3°W) ----------
       const targetGeo = projectGeo(-21.75, -41.32, earthRotDeg);
-      if (targetGeo.z > 0.05) {
-        const tx = ex + targetGeo.x * er;
-        const ty = ey + targetGeo.y * er;
-        const pulse = Math.sin(elapsed * 6) * 4 + 18;
+      let tx = ex + targetGeo.x * er;
+      let ty = ey + targetGeo.y * er;
+      if (targetGeo.z <= 0.02) {
+        tx = ex - er * 0.18;
+        ty = ey + er * 0.15;
+      }
 
+      const pulse = Math.sin(elapsed * 6) * 4 + 18;
+
+      ictx.save();
+      ictx.strokeStyle = "rgba(94, 234, 212, 0.85)";
+      ictx.lineWidth = 1.5;
+      ictx.shadowColor = "rgba(94, 234, 212, 0.9)";
+      ictx.shadowBlur = 10;
+
+      // Rotating reticle ring
+      ictx.beginPath();
+      ictx.arc(tx, ty, pulse, 0, Math.PI * 2);
+      ictx.stroke();
+
+      ictx.beginPath();
+      ictx.arc(tx, ty, 3.5, 0, Math.PI * 2);
+      ictx.fillStyle = "#5eead4";
+      ictx.fill();
+
+      // Target cardinal crosshairs
+      ictx.beginPath();
+      ictx.moveTo(tx - pulse - 6, ty); ictx.lineTo(tx - pulse + 2, ty);
+      ictx.moveTo(tx + pulse - 2, ty); ictx.lineTo(tx + pulse + 6, ty);
+      ictx.moveTo(tx, ty - pulse - 6); ictx.lineTo(tx, ty - pulse + 2);
+      ictx.moveTo(tx, ty + pulse - 2); ictx.lineTo(tx, ty + pulse + 6);
+      ictx.stroke();
+
+      // Target Telemetry Tag
+      ictx.font = "600 10px JetBrains Mono, monospace";
+      ictx.fillStyle = "#5eead4";
+      ictx.fillText("TARGET: 21.7°S 41.3°W // IFF LZ-01", tx + pulse + 8, ty + 3);
+      ictx.restore();
+
+      // ---------- 9. REALISTIC HYPERSONIC SPACECRAFT & RE-ENTRY PLASMA ----------
+      // Spacecraft Trajectory: Descent from Upper-Left directly into Earth Target LZ
+      const shipStartX = iw * 0.06;
+      const shipStartY = -60;
+      const ctrlX = iw * 0.26;
+      const ctrlY = ih * 0.28;
+
+      const u = Math.min(1, p / 0.88);
+      const invU = 1 - u;
+      const shipX = invU * invU * shipStartX + 2 * invU * u * ctrlX + u * u * tx;
+      const shipY = invU * invU * shipStartY + 2 * invU * u * ctrlY + u * u * ty;
+
+      const dx = 2 * invU * (ctrlX - shipStartX) + 2 * u * (tx - ctrlX);
+      const dy = 2 * invU * (ctrlY - shipStartY) + 2 * u * (ty - ctrlY);
+      const shipAngle = Math.atan2(dy, dx);
+
+      // Peak Re-entry Hypersonic Heating Intensity (peaks during mid-descent)
+      const plasmaIntensity = Math.sin(Math.min(1, Math.max(0, (p - 0.12) / 0.72)) * Math.PI);
+
+      // Trigger Impact when spacecraft arrives at Earth LZ (at u >= 1 or p >= 0.88)
+      if ((p >= 0.88 || u >= 1.0) && !impactTriggered) {
+        impactTriggered = true;
+        impactStartTime = now;
+        sfx.impact();
+        shakeIntensity = 30;
+        flashAlpha = 1.0;
+
+        for (let i = 0; i < 120; i++) {
+          const ang = Math.random() * Math.PI * 2;
+          const spd = Math.random() * 15 + 3;
+          impactSparks.push({
+            x: tx, y: ty,
+            vx: Math.cos(ang) * spd,
+            vy: Math.sin(ang) * spd,
+            size: Math.random() * 4.5 + 1.5,
+            life: 1.0,
+            decay: Math.random() * 0.022 + 0.012,
+            color: Math.random() < 0.4 ? "#5eead4" : (Math.random() < 0.75 ? "#fde047" : "#fb923c")
+          });
+        }
+
+        shockwaveRings.push(
+          { r: 6, maxR: er * 0.9, speed: 5.6, alpha: 0.95 },
+          { r: 2, maxR: er * 0.75, speed: 4.2, alpha: 0.8 },
+          { r: 1, maxR: er * 0.55, speed: 2.8, alpha: 0.65 }
+        );
+      }
+
+      // Draw Hypersonic Ship & Trail before impact
+      if (!impactTriggered) {
+        if (plasmaIntensity > 0.05) {
+          // Hypersonic Streamlines
+          ictx.save();
+          ictx.strokeStyle = `rgba(255, 200, 100, ${plasmaIntensity * 0.4})`;
+          ictx.lineWidth = 1.2;
+          for (let s = 0; s < 6; s++) {
+            const streamOffY = (s - 2.5) * 16;
+            const streamLen = 140 + Math.random() * 60;
+            ictx.beginPath();
+            ictx.moveTo(shipX - streamLen, shipY + streamOffY - streamLen * 0.4);
+            ictx.lineTo(shipX + 20, shipY + streamOffY);
+            ictx.stroke();
+          }
+          ictx.restore();
+
+          // Hypersonic Bow Shock Wave Plasma Envelopes
+          const shockGrad = ictx.createRadialGradient(
+            shipX + 10, shipY + 10,
+            15,
+            shipX - 30, shipY - 20,
+            95
+          );
+          shockGrad.addColorStop(0, `rgba(255, 255, 255, ${plasmaIntensity * 0.95})`);
+          shockGrad.addColorStop(0.18, `rgba(253, 224, 71, ${plasmaIntensity * 0.85})`);
+          shockGrad.addColorStop(0.45, `rgba(249, 115, 22, ${plasmaIntensity * 0.7})`);
+          shockGrad.addColorStop(0.75, `rgba(192, 38, 211, ${plasmaIntensity * 0.4})`);
+          shockGrad.addColorStop(1, "rgba(59, 130, 246, 0)");
+
+          ictx.fillStyle = shockGrad;
+          ictx.beginPath();
+          ictx.arc(shipX, shipY, 95, 0, Math.PI * 2);
+          ictx.fill();
+
+          // Plasma Ionization Trail & Burning Flame Wake
+          plasmaParticles.forEach((pt) => {
+            if (pt.life <= 0) {
+              pt.x = shipX - Math.cos(shipAngle) * 35 + (Math.random() - 0.5) * 14;
+              pt.y = shipY - Math.sin(shipAngle) * 35 + (Math.random() - 0.5) * 14;
+              pt.vx = -Math.cos(shipAngle) * (Math.random() * 6 + 4) + (Math.random() - 0.5) * 2;
+              pt.vy = -Math.sin(shipAngle) * (Math.random() * 6 + 4) + (Math.random() - 0.5) * 2;
+              pt.life = pt.maxLife;
+            } else {
+              pt.x += pt.vx;
+              pt.y += pt.vy;
+              pt.life--;
+              const lifeFrac = pt.life / pt.maxLife;
+              ictx.beginPath();
+              ictx.arc(pt.x, pt.y, pt.size * lifeFrac, 0, Math.PI * 2);
+              ictx.fillStyle = `hsla(${pt.hue}, 100%, 65%, ${lifeFrac * plasmaIntensity * 0.8})`;
+              ictx.fill();
+            }
+          });
+        }
+
+        // Render Aerospace Spacecraft Vector Geometry
         ictx.save();
-        ictx.strokeStyle = "rgba(94, 234, 212, 0.85)";
-        ictx.lineWidth = 1.5;
-        ictx.shadowColor = "rgba(94, 234, 212, 0.9)";
-        ictx.shadowBlur = 10;
+        ictx.translate(shipX, shipY);
+        ictx.rotate(shipAngle);
 
-        // Rotating reticle ring
+        // Heat Shield Belly
         ictx.beginPath();
-        ictx.arc(tx, ty, pulse, 0, Math.PI * 2);
-        ictx.stroke();
-
-        ictx.beginPath();
-        ictx.arc(tx, ty, 3.5, 0, Math.PI * 2);
-        ictx.fillStyle = "#5eead4";
+        ictx.moveTo(48, 0);
+        ictx.lineTo(-32, -24);
+        ictx.lineTo(-24, 0);
+        ictx.lineTo(-32, 24);
+        ictx.closePath();
+        ictx.fillStyle = plasmaIntensity > 0.2 ? "#7c2d12" : "#1e293b";
         ictx.fill();
 
-        // Target cardinal crosshairs
+        // Thermal glow along leading edges
+        if (plasmaIntensity > 0.1) {
+          ictx.strokeStyle = `rgba(253, 224, 71, ${plasmaIntensity * 0.95})`;
+          ictx.lineWidth = 3;
+          ictx.stroke();
+        }
+
+        // Aerospace White Hull
         ictx.beginPath();
-        ictx.moveTo(tx - pulse - 6, ty); ictx.lineTo(tx - pulse + 2, ty);
-        ictx.moveTo(tx + pulse - 2, ty); ictx.lineTo(tx + pulse + 6, ty);
-        ictx.moveTo(tx, ty - pulse - 6); ictx.lineTo(tx, ty - pulse + 2);
-        ictx.moveTo(tx, ty + pulse - 2); ictx.lineTo(tx, ty + pulse + 6);
+        ictx.moveTo(44, 0);
+        ictx.lineTo(-26, -18);
+        ictx.lineTo(-18, 0);
+        ictx.lineTo(-26, 18);
+        ictx.closePath();
+        const hullGrad = ictx.createLinearGradient(0, -20, 0, 20);
+        hullGrad.addColorStop(0, "#e2e8f0");
+        hullGrad.addColorStop(0.5, "#ffffff");
+        hullGrad.addColorStop(1, "#94a3b8");
+        ictx.fillStyle = hullGrad;
+        ictx.fill();
+        ictx.strokeStyle = "rgba(110, 168, 254, 0.8)";
+        ictx.lineWidth = 1.4;
         ictx.stroke();
 
-        // Target Telemetry Tag
-        ictx.font = "600 10px JetBrains Mono, monospace";
-        ictx.fillStyle = "#5eead4";
-        ictx.fillText("TARGET: 21.7°S 41.3°W // IFF LZ-01", tx + pulse + 8, ty + 3);
+        // Cockpit Canopy
+        ictx.beginPath();
+        ictx.ellipse(14, 0, 10, 4.2, 0, 0, Math.PI * 2);
+        const canopyGrad = ictx.createLinearGradient(10, -4, 18, 4);
+        canopyGrad.addColorStop(0, "#38bdf8");
+        canopyGrad.addColorStop(0.5, "#0284c7");
+        canopyGrad.addColorStop(1, "#082f49");
+        ictx.fillStyle = canopyGrad;
+        ictx.fill();
+
+        // Winglet Solar Panels
+        ictx.beginPath();
+        ictx.moveTo(-16, -14); ictx.lineTo(-30, -26); ictx.lineTo(-24, -14);
+        ictx.moveTo(-16, 14); ictx.lineTo(-30, 26); ictx.lineTo(-24, 14);
+        ictx.fillStyle = "#64748b";
+        ictx.fill();
+
+        // Navigation Strobes
+        const strobe = Math.sin(elapsed * 8) > 0.4;
+        if (strobe || p > 0.85) {
+          ictx.beginPath();
+          ictx.arc(-28, -24, 2.5, 0, Math.PI * 2);
+          ictx.fillStyle = "#ef4444";
+          ictx.fill();
+
+          ictx.beginPath();
+          ictx.arc(-28, 24, 2.5, 0, Math.PI * 2);
+          ictx.fillStyle = "#22c55e";
+          ictx.fill();
+        }
+
+        // RCS Attitude Control Jets
+        if (Math.sin(elapsed * 5) > 0.6) {
+          ictx.fillStyle = "rgba(94, 234, 212, 0.9)";
+          ictx.beginPath();
+          ictx.moveTo(-20, -18); ictx.lineTo(-26, -28); ictx.lineTo(-14, -20);
+          ictx.fill();
+        }
+
         ictx.restore();
       }
 
-      // ---------- 9. REALISTIC HYPERSONIC SPACECRAFT & RE-ENTRY PLASMA ----------
-      // Spacecraft Trajectory: Descent from Upper-Left towards the Earth Hub
-      const shipStartX = iw * 0.12;
-      const shipStartY = -80;
-      const shipTargetX = isMobile ? iw * 0.5 : iw * 0.38;
-      const shipTargetY = isMobile ? ih * 0.48 : ih * 0.54;
-
-      // Trajectory interpolation
-      const shipX = shipStartX + (shipTargetX - shipStartX) * Math.min(1, p * 1.12);
-      const shipY = shipStartY + (shipTargetY - shipStartY) * Math.min(1, p * 1.12);
-
-      // Ship banking angle (radians)
-      const shipAngle = Math.PI * 0.28 + Math.sin(elapsed * 2) * 0.05;
-
-      // Peak Re-entry Hypersonic Heating Intensity (peaks at p: 30% -> 80%)
-      const plasmaIntensity = Math.sin(Math.min(1, Math.max(0, (p - 0.15) / 0.7)) * Math.PI);
-
-      if (plasmaIntensity > 0.05) {
-        // Hypersonic Streamlines
-        ictx.save();
-        ictx.strokeStyle = `rgba(255, 200, 100, ${plasmaIntensity * 0.4})`;
-        ictx.lineWidth = 1.2;
-        for (let s = 0; s < 6; s++) {
-          const streamOffY = (s - 2.5) * 16;
-          const streamLen = 140 + Math.random() * 60;
-          ictx.beginPath();
-          ictx.moveTo(shipX - streamLen, shipY + streamOffY - streamLen * 0.4);
-          ictx.lineTo(shipX + 20, shipY + streamOffY);
-          ictx.stroke();
-        }
-        ictx.restore();
-
-        // Hypersonic Bow Shock Wave Plasma Envelopes
-        const shockGrad = ictx.createRadialGradient(
-          shipX + 10, shipY + 10,
-          15,
-          shipX - 30, shipY - 20,
-          95
-        );
-        shockGrad.addColorStop(0, `rgba(255, 255, 255, ${plasmaIntensity * 0.95})`);
-        shockGrad.addColorStop(0.18, `rgba(253, 224, 71, ${plasmaIntensity * 0.85})`);
-        shockGrad.addColorStop(0.45, `rgba(249, 115, 22, ${plasmaIntensity * 0.7})`);
-        shockGrad.addColorStop(0.75, `rgba(192, 38, 211, ${plasmaIntensity * 0.4})`);
-        shockGrad.addColorStop(1, "rgba(59, 130, 246, 0)");
-
-        ictx.fillStyle = shockGrad;
-        ictx.beginPath();
-        ictx.arc(shipX, shipY, 95, 0, Math.PI * 2);
-        ictx.fill();
-
-        // Plasma Ionization Trail & Burning Flame Wake
-        plasmaParticles.forEach((pt) => {
-          if (pt.life <= 0) {
-            pt.x = shipX - Math.cos(shipAngle) * 35 + (Math.random() - 0.5) * 14;
-            pt.y = shipY - Math.sin(shipAngle) * 35 + (Math.random() - 0.5) * 14;
-            pt.vx = -Math.cos(shipAngle) * (Math.random() * 6 + 4) + (Math.random() - 0.5) * 2;
-            pt.vy = -Math.sin(shipAngle) * (Math.random() * 6 + 4) + (Math.random() - 0.5) * 2;
-            pt.life = pt.maxLife;
-          } else {
-            pt.x += pt.vx;
-            pt.y += pt.vy;
-            pt.life--;
-            const lifeFrac = pt.life / pt.maxLife;
+      // ---------- 10. IMPACT EVENT RENDERING (SHOCKWAVE, SPARKS, THERMAL FLASH) ----------
+      if (impactTriggered) {
+        // 1. Expanding Atmospheric Shockwave Rings
+        shockwaveRings.forEach((ring) => {
+          ring.r += ring.speed;
+          ring.alpha *= 0.95;
+          if (ring.alpha > 0.01) {
+            ictx.save();
             ictx.beginPath();
-            ictx.arc(pt.x, pt.y, pt.size * lifeFrac, 0, Math.PI * 2);
-            ictx.fillStyle = `hsla(${pt.hue}, 100%, 65%, ${lifeFrac * plasmaIntensity * 0.8})`;
+            ictx.arc(tx, ty, ring.r, 0, Math.PI * 2);
+            ictx.strokeStyle = `rgba(94, 234, 212, ${ring.alpha * 0.85})`;
+            ictx.lineWidth = 3.5;
+            ictx.shadowColor = "rgba(94, 234, 212, 0.9)";
+            ictx.shadowBlur = 18;
+            ictx.stroke();
+            ictx.restore();
+          }
+        });
+
+        // 2. High-Velocity Radial Impact Sparks
+        impactSparks.forEach((sp) => {
+          sp.x += sp.vx;
+          sp.y += sp.vy;
+          sp.vx *= 0.96;
+          sp.vy *= 0.96;
+          sp.life -= sp.decay;
+          if (sp.life > 0) {
+            ictx.beginPath();
+            ictx.arc(sp.x, sp.y, sp.size * sp.life, 0, Math.PI * 2);
+            ictx.fillStyle = sp.color;
+            ictx.globalAlpha = Math.max(0, sp.life);
             ictx.fill();
           }
         });
+        ictx.globalAlpha = 1;
+
+        // 3. Touchdown Hologram Beacon
+        const timeSinceImpact = (now - impactStartTime) / 1000;
+        const beaconAlpha = Math.max(0, Math.min(1, 1.4 - timeSinceImpact * 0.8));
+        if (beaconAlpha > 0.05) {
+          ictx.save();
+          const beamGrad = ictx.createLinearGradient(tx, ty, tx, ty - 180);
+          beamGrad.addColorStop(0, `rgba(94, 234, 212, ${beaconAlpha * 0.85})`);
+          beamGrad.addColorStop(0.4, `rgba(253, 224, 71, ${beaconAlpha * 0.5})`);
+          beamGrad.addColorStop(1, "rgba(94, 234, 212, 0)");
+          ictx.fillStyle = beamGrad;
+          ictx.beginPath();
+          ictx.moveTo(tx - 6, ty);
+          ictx.lineTo(tx + 6, ty);
+          ictx.lineTo(tx + 18, ty - 180);
+          ictx.lineTo(tx - 18, ty - 180);
+          ictx.closePath();
+          ictx.fill();
+
+          ictx.font = "700 11px JetBrains Mono, monospace";
+          ictx.fillStyle = `rgba(94, 234, 212, ${beaconAlpha})`;
+          ictx.fillText("POUSO CONCLUÍDO // ESTAÇÃO SINCRONIZADA", tx + 14, ty - 30);
+          ictx.restore();
+        }
+
+        // 4. Blinding Thermal Plasma Flash
+        if (flashAlpha > 0.01) {
+          const flashGrad = ictx.createRadialGradient(tx, ty, 5, tx, ty, iw * 0.9);
+          flashGrad.addColorStop(0, `rgba(255, 255, 255, ${flashAlpha})`);
+          flashGrad.addColorStop(0.25, `rgba(253, 224, 71, ${flashAlpha * 0.75})`);
+          flashGrad.addColorStop(0.55, `rgba(94, 234, 212, ${flashAlpha * 0.35})`);
+          flashGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+          ictx.fillStyle = flashGrad;
+          ictx.fillRect(0, 0, iw, ih);
+          flashAlpha *= 0.91;
+        }
+
+        // Auto-dismiss into Station HUD after impact shockwave settles (~1.35s)
+        if (timeSinceImpact > 1.35) {
+          dismissIntro();
+        }
       }
 
-      // Render Aerospace Spacecraft Vector Geometry
-      ictx.save();
-      ictx.translate(shipX, shipY);
-      ictx.rotate(shipAngle);
-
-      // Heat Shield Belly (Dark Carbon-Carbon Ceramic with Heat Expansion Lines)
-      ictx.beginPath();
-      ictx.moveTo(48, 0);
-      ictx.lineTo(-32, -24);
-      ictx.lineTo(-24, 0);
-      ictx.lineTo(-32, 24);
-      ictx.closePath();
-      ictx.fillStyle = plasmaIntensity > 0.2 ? "#7c2d12" : "#1e293b";
-      ictx.fill();
-
-      // Thermal glow along leading edges during atmospheric re-entry
-      if (plasmaIntensity > 0.1) {
-        ictx.strokeStyle = `rgba(253, 224, 71, ${plasmaIntensity * 0.95})`;
-        ictx.lineWidth = 3;
-        ictx.stroke();
-      }
-
-      // Aerospace White Hull (Upper Fuselage)
-      ictx.beginPath();
-      ictx.moveTo(44, 0);
-      ictx.lineTo(-26, -18);
-      ictx.lineTo(-18, 0);
-      ictx.lineTo(-26, 18);
-      ictx.closePath();
-      const hullGrad = ictx.createLinearGradient(0, -20, 0, 20);
-      hullGrad.addColorStop(0, "#e2e8f0");
-      hullGrad.addColorStop(0.5, "#ffffff");
-      hullGrad.addColorStop(1, "#94a3b8");
-      ictx.fillStyle = hullGrad;
-      ictx.fill();
-      ictx.strokeStyle = "rgba(110, 168, 254, 0.8)";
-      ictx.lineWidth = 1.4;
-      ictx.stroke();
-
-      // Cockpit Canopy (Polarized Reflective Glass)
-      ictx.beginPath();
-      ictx.ellipse(14, 0, 10, 4.2, 0, 0, Math.PI * 2);
-      const canopyGrad = ictx.createLinearGradient(10, -4, 18, 4);
-      canopyGrad.addColorStop(0, "#38bdf8");
-      canopyGrad.addColorStop(0.5, "#0284c7");
-      canopyGrad.addColorStop(1, "#082f49");
-      ictx.fillStyle = canopyGrad;
-      ictx.fill();
-
-      // Winglet Solar / Aerodynamic Panels
-      ictx.beginPath();
-      ictx.moveTo(-16, -14); ictx.lineTo(-30, -26); ictx.lineTo(-24, -14);
-      ictx.moveTo(-16, 14); ictx.lineTo(-30, 26); ictx.lineTo(-24, 14);
-      ictx.fillStyle = "#64748b";
-      ictx.fill();
-
-      // Navigation Strobes (Red Port, Green Starboard, Strobe White Beacon)
-      const strobe = Math.sin(elapsed * 8) > 0.4;
-      if (strobe || p > 0.85) {
-        // Port Red
-        ictx.beginPath();
-        ictx.arc(-28, -24, 2.5, 0, Math.PI * 2);
-        ictx.fillStyle = "#ef4444";
-        ictx.fill();
-
-        // Starboard Green
-        ictx.beginPath();
-        ictx.arc(-28, 24, 2.5, 0, Math.PI * 2);
-        ictx.fillStyle = "#22c55e";
-        ictx.fill();
-      }
-
-      // RCS Attitude Control Jets (Intermittent micro-pulses)
-      if (Math.sin(elapsed * 5) > 0.6) {
-        ictx.fillStyle = "rgba(94, 234, 212, 0.9)";
-        ictx.beginPath();
-        ictx.moveTo(-20, -18); ictx.lineTo(-26, -28); ictx.lineTo(-14, -20);
-        ictx.fill();
-      }
-
-      ictx.restore();
+      ictx.restore(); // End Camera Shake Transform
 
       requestAnimationFrame(renderIntroLoop);
     }
@@ -823,6 +997,7 @@
       overlay.classList.add("dismissed");
       sfx.warp();
       showToast("Missão Inicializada: Central Pedro Rocha // IFF", "star");
+      completeQuest("landing");
     }
 
     const enterBtn = document.getElementById("enterMissionBtn");
@@ -872,6 +1047,12 @@
     if (!sectorDossierOverlay) return;
     activeSector = sectorName;
     sfx.warp();
+
+    // Trigger Gamified Onboarding Quests
+    if (sectorName === "sobre") completeQuest("sobre");
+    else if (sectorName === "software") completeQuest("software");
+    else if (sectorName === "pesquisa") completeQuest("pesquisa");
+    else if (sectorName === "contato") completeQuest("contato");
 
     // Update active tab buttons
     document.querySelectorAll("[data-switch-sector]").forEach((btn) => {
@@ -1572,6 +1753,7 @@
     }
     renderCmdItems("");
     sfx.modal();
+    completeQuest("cmd");
   }
 
   function closeCommandPalette() {
@@ -1675,7 +1857,261 @@
   }
 
   /* ============================================================
-     12. i18n APPLIER & LANGUAGE ENGINE
+     12. GAMIFIED ONBOARDING & EXPLORATION QUEST TRACKER
+     ============================================================ */
+  const QUESTS = [
+    {
+      id: "landing",
+      title: "Pouso Orbital",
+      desc: "Completar a descida e reentrada na Terra",
+      xp: 150,
+      action: () => {
+        const overlay = document.getElementById("introOverlay");
+        if (overlay) {
+          closeSectorDossier();
+          overlay.classList.remove("dismissed");
+          introActive = true;
+          introProgress = 0;
+          initIntroCinematic();
+        }
+      }
+    },
+    {
+      id: "software",
+      title: "Engenharia de Software",
+      desc: "Abrir o Setor 02 e explorar os 12 projetos",
+      xp: 100,
+      action: () => openSectorDossier("software")
+    },
+    {
+      id: "pesquisa",
+      title: "Astrofísica & CNPq",
+      desc: "Explorar a Pesquisa Científica Gaia DR3 no Setor 03",
+      xp: 100,
+      action: () => openSectorDossier("pesquisa")
+    },
+    {
+      id: "sobre",
+      title: "Registro de Bordo",
+      desc: "Acessar biografia e trajetória acadêmica no Setor 01",
+      xp: 100,
+      action: () => openSectorDossier("sobre")
+    },
+    {
+      id: "cmd",
+      title: "Terminal Cósmico (⌘K)",
+      desc: "Abrir a Paleta de Comandos ⌘K / Ctrl+K",
+      xp: 100,
+      action: () => openCommandPalette()
+    },
+    {
+      id: "contato",
+      title: "Canais de Transmissão",
+      desc: "Acessar o Setor 04 com Lattes, GitHub e CV",
+      xp: 100,
+      action: () => openSectorDossier("contato")
+    },
+    {
+      id: "sfx",
+      title: "Sintetizador Acústico",
+      desc: "Alternar ou testar o áudio espacial Web Audio",
+      xp: 50,
+      action: () => {
+        const sfxBtn = document.getElementById("sfxToggle");
+        if (sfxBtn) sfxBtn.click();
+      }
+    },
+    {
+      id: "orb",
+      title: "Sonda Planetária 3D",
+      desc: "Interagir com o Core Orb ou centro da estação",
+      xp: 100,
+      action: () => {
+        closeSectorDossier();
+        sfx.warp();
+        showToast("Core Station Orb sincronizado com a rede neural", "star");
+        completeQuest("orb");
+      }
+    }
+  ];
+
+  function getCompletedQuests() {
+    try {
+      const raw = localStorage.getItem("portfolio_quests_v1");
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveCompletedQuests(list) {
+    try {
+      localStorage.setItem("portfolio_quests_v1", JSON.stringify(list));
+    } catch (e) {}
+  }
+
+  function completeQuest(questId) {
+    const completed = getCompletedQuests();
+    if (completed.includes(questId)) return;
+
+    const quest = QUESTS.find((q) => q.id === questId);
+    if (!quest) return;
+
+    completed.push(questId);
+    saveCompletedQuests(completed);
+
+    sfx.questComplete();
+    showToast(`🎯 Missão Cumprida: ${quest.title} (+${quest.xp} XP)`, "star");
+
+    if (completed.length === QUESTS.length) {
+      setTimeout(() => {
+        sfx.warp();
+        showToast("🏆 CONQUISTA MÁXIMA: 100% da Estação Explorada! Patente: COMANDANTE CÓSMICO", "star");
+      }, 400);
+    }
+
+    renderTaskTracker();
+  }
+
+  function getRank(xp, completedCount) {
+    if (completedCount === QUESTS.length) {
+      return { name: "COMANDANTE CÓSMICO", level: 4 };
+    }
+    if (xp >= 450) {
+      return { name: "ENGENHEIRO ORBITAL", level: 3 };
+    }
+    if (xp >= 200) {
+      return { name: "EXPLORADOR", level: 2 };
+    }
+    return { name: "CADETE", level: 1 };
+  }
+
+  function renderTaskTracker() {
+    const trackerEl = document.getElementById("hudTaskTracker");
+    const badgeCount = document.getElementById("taskBadgeCount");
+    const userRankTag = document.getElementById("userRankTag");
+    const userXpTotal = document.getElementById("userXpTotal");
+    const progressPercent = document.getElementById("taskProgressPercent");
+    const progressFill = document.getElementById("taskProgressFill");
+    const taskItemsList = document.getElementById("taskItemsList");
+    const achievementBadge = document.getElementById("taskAchievementBadge");
+
+    if (!trackerEl || !taskItemsList) return;
+
+    const completed = getCompletedQuests();
+    let totalXp = 0;
+    completed.forEach((id) => {
+      const q = QUESTS.find((item) => item.id === id);
+      if (q) totalXp += q.xp;
+    });
+
+    const count = completed.length;
+    const total = QUESTS.length;
+    const pct = Math.round((count / total) * 100);
+    const rank = getRank(totalXp, count);
+
+    if (badgeCount) badgeCount.textContent = `${count}/${total}`;
+    if (userRankTag) userRankTag.textContent = `${rank.name} // LVL ${rank.level}`;
+    if (userXpTotal) userXpTotal.textContent = `${totalXp} XP`;
+    if (progressPercent) progressPercent.textContent = `${pct}%`;
+    if (progressFill) progressFill.style.width = `${pct}%`;
+
+    if (achievementBadge) {
+      achievementBadge.classList.toggle("unlocked", count === total);
+    }
+
+    taskItemsList.innerHTML = QUESTS.map((q) => {
+      const isDone = completed.includes(q.id);
+      return `
+        <li class="task-item ${isDone ? "completed" : ""}" data-quest-id="${q.id}" role="button" tabindex="0" title="${isDone ? "Missão concluída!" : "Clique para executar esta missão"}">
+          <span class="task-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div class="task-info">
+            <div class="task-title-row">
+              <span class="task-title">${q.title}</span>
+              <span class="task-xp-tag">+${q.xp} XP</span>
+            </div>
+            <span class="task-desc">${q.desc}</span>
+          </div>
+        </li>
+      `;
+    }).join("");
+
+    taskItemsList.querySelectorAll(".task-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        const qId = item.dataset.questId;
+        const quest = QUESTS.find((q) => q.id === qId);
+        if (quest && typeof quest.action === "function") {
+          quest.action();
+        }
+      });
+      item.addEventListener("mouseenter", () => sfx.hover());
+    });
+  }
+
+  function initTaskTracker() {
+    const trackerEl = document.getElementById("hudTaskTracker");
+    const toggleBtn = document.getElementById("taskTrackerToggle");
+    const minimizeBtn = document.getElementById("taskMinimizeBtn");
+    const resetBtn = document.getElementById("taskResetBtn");
+
+    if (!trackerEl) return;
+
+    renderTaskTracker();
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isMobile = window.innerWidth < 900;
+        if (isMobile) {
+          trackerEl.classList.toggle("expanded");
+        } else {
+          trackerEl.classList.toggle("minimized");
+        }
+        sfx.click();
+      });
+    }
+
+    if (minimizeBtn) {
+      minimizeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isMobile = window.innerWidth < 900;
+        if (isMobile) {
+          trackerEl.classList.remove("expanded");
+        } else {
+          trackerEl.classList.add("minimized");
+        }
+        sfx.click();
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        localStorage.removeItem("portfolio_quests_v1");
+        renderTaskTracker();
+        sfx.click();
+        showToast("Progresso de missões reiniciado!", "box");
+      });
+    }
+
+    // Interactive core orb hook
+    const coreOrb = document.querySelector(".core-orb-visual");
+    if (coreOrb) {
+      coreOrb.addEventListener("click", () => {
+        sfx.warp();
+        showToast("Core Station Orb sincronizado com a rede neural", "star");
+        completeQuest("orb");
+      });
+      coreOrb.addEventListener("mouseenter", () => sfx.hover());
+    }
+  }
+
+  /* ============================================================
+     13. i18n APPLIER & LANGUAGE ENGINE
      ============================================================ */
   function applyI18n() {
     document.documentElement.lang = lang;
@@ -1710,7 +2146,7 @@
   }
 
   /* ============================================================
-     13. INITIALIZATION
+     14. INITIALIZATION
      ============================================================ */
   function init() {
     initIntroCinematic();
@@ -1727,6 +2163,7 @@
 
     initSpectrumSimulator();
     initCommandPalette();
+    initTaskTracker();
 
     document.querySelectorAll(".lang-btn").forEach((btn) => {
       btn.addEventListener("click", () => applyLang(btn.dataset.lang));
@@ -1747,6 +2184,7 @@
         updateSfxIcon();
         if (sfxEnabled) sfx.success();
         showToast(sfxEnabled ? "Efeitos sonoros ativados!" : "Efeitos sonoros desativados", sfxEnabled ? "volume" : "volumeMute");
+        completeQuest("sfx");
       });
     }
 
