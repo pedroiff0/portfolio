@@ -1783,31 +1783,143 @@ body.cursor-active .cursor-glow {
 .modal-proj__stack { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 24px; }
 .modal-proj__actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 
-/* Toast */
+/* Gamification Toast - Centered at Top-Middle of Screen for Desktop and Mobile */
 .toast-container {
   position: fixed;
-  bottom: 24px; right: 24px;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 99999;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-.toast {
-  display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 18px;
-  background: rgba(10, 16, 40, 0.95);
-  border: 1px solid var(--accent-cyan);
-  border-radius: var(--radius-md);
-  color: var(--text-main);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(94, 234, 212, 0.3);
-  font-size: 0.85rem;
-  animation: toastIn 0.35s var(--ease-out-expo) forwards, toastOut 0.35s ease forwards 3s;
+  pointer-events: none;
+  max-width: min(92vw, 680px);
+  width: max-content;
 }
 
-@keyframes toastIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-@keyframes toastOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
+.toast {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  padding: 10px 22px;
+  background: rgba(8, 14, 38, 0.94);
+  border: 1px solid var(--accent-cyan);
+  border-radius: var(--radius-full);
+  color: var(--text-main);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 24px rgba(94, 234, 212, 0.4);
+  font-size: 0.86rem;
+  font-family: var(--font-mono);
+  animation: toastDropIn 0.35s var(--ease-out-expo) forwards, toastDropOut 0.35s ease forwards 3.2s;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  user-select: none;
+}
+
+.toast .toast-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--accent-cyan);
+}
+
+@keyframes toastDropIn {
+  from { transform: translateY(-30px) scale(0.92); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes toastDropOut {
+  from { transform: translateY(0) scale(1); opacity: 1; }
+  to { transform: translateY(-24px) scale(0.92); opacity: 0; }
+}
+
+/* ============================================================
+   7.8 FLOATING INTERACTIVE EASTER EGG RELICS (2 PER VIEW)
+   ============================================================ */
+.floating-easter-egg {
+  position: absolute;
+  z-index: 35;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(94, 234, 212, 0.45);
+  background: radial-gradient(circle at 35% 35%, rgba(15, 23, 42, 0.94), rgba(6, 10, 26, 0.98));
+  box-shadow: 0 0 16px rgba(94, 234, 212, 0.28), inset 0 0 10px rgba(94, 234, 212, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: floatEgg 4.8s ease-in-out infinite alternate;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+  user-select: none;
+  touch-action: manipulation;
+  padding: 0;
+  outline: none;
+}
+
+.floating-easter-egg:hover,
+.floating-easter-egg:focus-visible {
+  transform: scale(1.22) !important;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 28px rgba(94, 234, 212, 0.65), inset 0 0 14px rgba(94, 234, 212, 0.35);
+  z-index: 45;
+}
+
+.floating-easter-egg:active {
+  transform: scale(0.92) !important;
+}
+
+.floating-easter-egg .egg-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px rgba(94, 234, 212, 0.6));
+  pointer-events: none;
+}
+
+.floating-easter-egg .egg-radar-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(94, 234, 212, 0.35);
+  animation: eggRadarPulse 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.floating-easter-egg.discovered {
+  border-color: rgba(253, 224, 71, 0.65);
+  box-shadow: 0 0 20px rgba(253, 224, 71, 0.35);
+}
+
+.floating-easter-egg.discovered .egg-radar-ring {
+  border-color: rgba(253, 224, 71, 0.4);
+}
+
+.floating-easter-egg.collected-burst {
+  animation: eggBurstAnim 0.6s var(--ease-out-expo) forwards !important;
+}
+
+@keyframes floatEgg {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(4deg); }
+  100% { transform: translateY(-6px) rotate(-4deg); }
+}
+
+@keyframes eggRadarPulse {
+  0% { transform: scale(0.85); opacity: 0.8; }
+  100% { transform: scale(1.65); opacity: 0; }
+}
+
+@keyframes eggBurstAnim {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
 
 /* ============================================================
    8. UNIFIED LIQUID GLASS COSMIC FOOTER

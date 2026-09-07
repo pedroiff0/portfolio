@@ -892,8 +892,8 @@
       if (!introActive) return;
 
       const elapsed = (now - introStartTime) / 1000;
-      const descentDuration = 2.0; // 2.0s descent to impact
-      const totalDuration = 3.0;   // 3.0s total (1.0s after landing)
+      const descentDuration = 3.0; // 3.0s re-entry descent to touchdown & impact
+      const totalDuration = 3.2;   // 3.2s total (0.2s touchdown impact flash then enter Hub directly)
       const p = Math.min(1, elapsed / descentDuration);
 
       // Update Real-Time Progress Bar & Telemetry Status
@@ -1458,27 +1458,28 @@
         }
       }
 
-      // Automatically pass directly into Station HUD exactly 1.0s after landing (total 3.0s)
-      if (elapsed >= totalDuration) {
-        dismissIntro();
-        return;
-      }
-
       if (ictx) {
         ictx.restore(); // End Camera Shake Transform
       }
+    }
 
-      requestAnimationFrame(renderIntroLoop);
+    // Automatically pass directly into Station HUD (3.2s total)
+    if (elapsed >= totalDuration) {
+      dismissIntro();
+      return;
     }
 
     requestAnimationFrame(renderIntroLoop);
+  }
 
-    // Guaranteed fail-safe: dismiss intro after 3.2s
+    requestAnimationFrame(renderIntroLoop);
+
+    // Guaranteed fail-safe: dismiss intro after 3.4s
     setTimeout(() => {
       if (introActive) {
         dismissIntro();
       }
-    }, 3200);
+    }, 3400);
 
     function dismissIntro() {
       introActive = false;
@@ -2130,7 +2131,7 @@
     }
 
     const startTime = performance.now();
-    const duration = 1650; // Calm, cinematic 1.65-second interplanetary transition
+    const duration = 1000; // Fast and snappy 1.0-second interplanetary warp transition
     let arrivalFired = false;
 
     // Safety fallback timeout to ensure overlay is always dismissed
@@ -2143,7 +2144,7 @@
       if (typeof onComplete === "function") {
         try { onComplete(); } catch (e) {}
       }
-    }, duration + 200);
+    }, duration + 120);
 
     function renderWarpFrame(now) {
       const elapsed = now - startTime;
@@ -2242,8 +2243,8 @@
         }
       }
 
-      // Fire arrival at ~60% progress while hyperspace cruise comfortably masks the DOM swap
-      if (p >= 0.60 && !arrivalFired) {
+      // Fire arrival at ~50% progress while hyperspace cruise comfortably masks the DOM swap
+      if (p >= 0.50 && !arrivalFired) {
         arrivalFired = true;
         if (typeof onArrival === "function") {
           try { onArrival(); } catch (e) {}
@@ -2304,6 +2305,11 @@
         initCounters();
         wireSpotlights(sectorDossierOverlay);
 
+        const currentPanel = document.getElementById(`panel-${sectorName}`);
+        if (currentPanel) {
+          renderFloatingEasterEggs(currentPanel, sectorName);
+        }
+
         if (sectorName === "contato" && gargantua3DInstance && typeof gargantua3DInstance.resize === "function") {
           setTimeout(() => gargantua3DInstance.resize(), 60);
         }
@@ -2325,6 +2331,7 @@
       if (mainHudViewport) {
         mainHudViewport.classList.remove("warp-departing");
         mainHudViewport.classList.add("warp-returning");
+        renderFloatingEasterEggs(mainHudViewport, "hub");
         setTimeout(() => {
           if (mainHudViewport) mainHudViewport.classList.remove("warp-returning");
         }, 650);
@@ -2342,6 +2349,7 @@
         if (mainHudViewport) {
           mainHudViewport.classList.remove("warp-departing");
           mainHudViewport.classList.add("warp-returning");
+          renderFloatingEasterEggs(mainHudViewport, "hub");
         }
       },
       onComplete: () => {
@@ -3655,6 +3663,15 @@
       desc: "Digitar o Código Konami: ↑ ↑ ↓ ↓ ← → ← → B A",
       xp: 300,
       action: () => triggerKonamiMode()
+    },
+    {
+      id: "easterEgg",
+      title: "Caçador de Relíquias Cósmicas",
+      desc: "Encontrar e decodificar um dos Easter Eggs flutuantes",
+      xp: 200,
+      action: () => {
+        showToast("🔍 Dica: Procure ícones flutuantes misteriosos no Hub e nos Setores!", "star");
+      }
     }
   ];
 
@@ -4122,6 +4139,179 @@
       }
     }
   });
+
+  /* ============================================================
+     12.3 FLOATING EASTER EGG RELICS (2 PER PAGE / SECTOR)
+     ============================================================ */
+  function triggerNolanTotem() {
+    sfx.bornThisWay();
+    showToast("🌀 NOLAN: 'O pião continua girando no limbo...' // Inception & Tenet!", "star");
+    completeQuest("hacker");
+    completeQuest("easterEgg");
+    triggerSupernovaBurst(window.innerWidth * 0.5 * (dpr || 1), window.innerHeight * 0.5 * (dpr || 1));
+  }
+
+  function triggerGargantuaInterstellar() {
+    sfx.bornThisWay();
+    showToast("🕳️ INTERESTELAR: 'Não entre suave nessa noite escura...' // Gargântua Singularity!", "star");
+    completeQuest("hacker");
+    completeQuest("easterEgg");
+  }
+
+  const FLOATING_EASTER_EGGS_LIST = [
+    {
+      id: "hesoyam",
+      icon: "💵",
+      name: "GTA San Andreas",
+      desc: "HESOYAM (+$250k)",
+      action: triggerHesoyamCheat
+    },
+    {
+      id: "painkiller",
+      icon: "🛡️",
+      name: "GTA V",
+      desc: "PAINKILLER (Invencibilidade)",
+      action: triggerPainkillerCheat
+    },
+    {
+      id: "motherlode",
+      icon: "💎",
+      name: "The Sims",
+      desc: "MOTHERLODE (+§50k)",
+      action: triggerMotherloadCheat
+    },
+    {
+      id: "konami",
+      icon: "🕹️",
+      name: "Contra",
+      desc: "Código Konami (30 Vidas)",
+      action: triggerKonamiMode
+    },
+    {
+      id: "gargantua",
+      icon: "🕳️",
+      name: "Interestelar",
+      desc: "Gargântua (Kip Thorne)",
+      action: triggerGargantuaInterstellar
+    },
+    {
+      id: "nolan",
+      icon: "🌀",
+      name: "Christopher Nolan",
+      desc: "Totem (Inception)",
+      action: triggerNolanTotem
+    },
+    {
+      id: "bmth",
+      icon: "🎸",
+      name: "Bring Me The Horizon",
+      desc: "Can You Feel My Heart",
+      action: triggerBMTHEasterEgg
+    },
+    {
+      id: "gow",
+      icon: "🪓",
+      name: "God of War",
+      desc: "Kratos (Fúria Espartana)",
+      action: triggerKratosEasterEgg
+    },
+    {
+      id: "hzd",
+      icon: "👁️",
+      name: "Horizon Zero Dawn",
+      desc: "Focus (Aloy / Gaia)",
+      action: triggerHorizonEasterEgg
+    },
+    {
+      id: "bornthisway",
+      icon: "⭐",
+      name: "Born This Way",
+      desc: "Lady Gaga Synth Theme",
+      action: () => {
+        sfx.bornThisWay();
+        showToast("⭐ BORN THIS WAY: 'Baby, you were born this way!' 🎵", "star");
+        completeQuest("easterEgg");
+      }
+    }
+  ];
+
+  function renderFloatingEasterEggs(container, pageKey) {
+    if (!container) return;
+
+    container.querySelectorAll(".floating-easter-egg").forEach((el) => el.remove());
+
+    const pageIndexMap = { hub: 0, sobre: 2, software: 4, pesquisa: 6, contato: 8 };
+    const baseIdx = pageIndexMap[pageKey] !== undefined ? pageIndexMap[pageKey] : 0;
+    const egg1 = FLOATING_EASTER_EGGS_LIST[baseIdx % FLOATING_EASTER_EGGS_LIST.length];
+    const egg2 = FLOATING_EASTER_EGGS_LIST[(baseIdx + 1) % FLOATING_EASTER_EGGS_LIST.length];
+
+    const pair = [egg1, egg2];
+    const isMobile = window.innerWidth < 900;
+    const positions = isMobile
+      ? [
+          { top: "14%", right: "6%" },
+          { bottom: "16%", left: "6%" }
+        ]
+      : [
+          { top: "22%", left: "8%" },
+          { top: "72%", right: "8%" }
+        ];
+
+    let discoveredSet = new Set();
+    try {
+      discoveredSet = new Set(JSON.parse(localStorage.getItem("portfolio_discovered_eggs_v1") || "[]"));
+    } catch (e) {}
+
+    pair.forEach((egg, idx) => {
+      const btn = document.createElement("button");
+      btn.className = `floating-easter-egg ${discoveredSet.has(egg.id) ? "discovered" : ""}`;
+      btn.dataset.eggId = egg.id;
+      btn.setAttribute("aria-label", `Easter Egg Cósmico: ${egg.name}`);
+      btn.setAttribute("title", `${egg.name} // Clique para ativar segredo`);
+
+      const pos = positions[idx];
+      if (pos.top) btn.style.top = pos.top;
+      if (pos.bottom) btn.style.bottom = pos.bottom;
+      if (pos.left) btn.style.left = pos.left;
+      if (pos.right) btn.style.right = pos.right;
+      btn.style.animationDelay = `${idx * -2.4}s`;
+
+      btn.innerHTML = `
+        <span class="egg-radar-ring"></span>
+        <span class="egg-icon">${egg.icon}</span>
+      `;
+
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        btn.classList.add("collected-burst", "discovered");
+
+        discoveredSet.add(egg.id);
+        try {
+          localStorage.setItem("portfolio_discovered_eggs_v1", JSON.stringify([...discoveredSet]));
+        } catch (err) {}
+
+        if (typeof egg.action === "function") {
+          egg.action();
+        }
+        completeQuest("easterEgg");
+
+        setTimeout(() => btn.classList.remove("collected-burst"), 700);
+      });
+
+      container.appendChild(btn);
+    });
+  }
+
+  function updateAllFloatingEasterEggs() {
+    const hubViewport = document.querySelector(".main-hud-viewport");
+    if (hubViewport) {
+      renderFloatingEasterEggs(hubViewport, "hub");
+    }
+    document.querySelectorAll(".dossier-panel").forEach((panel) => {
+      const pageKey = panel.id.replace("panel-", "");
+      renderFloatingEasterEggs(panel, pageKey);
+    });
+  }
 
   function playPulsarAudio() {
     if (!sfxEnabled) return;
@@ -4667,6 +4857,8 @@
         if (e.target === projectModalBackdrop) closeProjectModal();
       });
     }
+
+    updateAllFloatingEasterEggs();
   }
 
   if (document.readyState === "loading") {
