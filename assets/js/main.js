@@ -4287,6 +4287,29 @@
           localStorage.setItem("portfolio_discovered_eggs_v1", JSON.stringify([...discoveredSet]));
         } catch (err) {}
 
+        // Reveal the corresponding easter egg widget
+        const eggWidgetMap = {
+          voyager: "voyagerWidget",
+          pulsar: "pulsarWidget",
+          bmth: "bmthWidget",
+          gow: "gowRuneWidget",
+          hzd: "horizonFocusWidget",
+          sims: "simsVaultWidget",
+          hesoyam: "gtaHesoyamWidget",
+          konami: null,
+          gargantua: null,
+          nolan: null,
+          bornthisway: null
+        };
+        const widgetId = eggWidgetMap[egg.id];
+        if (widgetId) {
+          const widget = document.getElementById(widgetId);
+          if (widget) {
+            widget.classList.add("is-revealed");
+            widget.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        }
+
         if (typeof egg.action === "function") {
           egg.action();
         }
@@ -4352,32 +4375,31 @@
       }
     }
 
+    // 2D fallback - full screen Gargantua
     const ctx = canvas.getContext("2d");
     let width = 0;
     let height = 0;
     let dpr = 1;
 
     function resize() {
-      const parent = canvas.parentElement || canvas.closest(".dossier-panel") || document.body;
-      const rect = parent.getBoundingClientRect();
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = canvas.width = (rect.width || window.innerWidth) * dpr;
-      height = canvas.height = (rect.height || window.innerHeight) * dpr;
-      canvas.style.width = (rect.width || window.innerWidth) + "px";
-      canvas.style.height = (rect.height || window.innerHeight) + "px";
+      width = canvas.width = window.innerWidth * dpr;
+      height = canvas.height = window.innerHeight * dpr;
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
     }
 
     resize();
     window.addEventListener("resize", resize);
 
-    // Particle accretion disk stream (120 relativistic orbiting particles)
+    // Particle accretion disk stream (200 relativistic orbiting particles)
     const ACCRETION_PARTICLES = [];
-    const count = 120;
+    const count = 200;
     for (let i = 0; i < count; i++) {
       ACCRETION_PARTICLES.push({
         angle: Math.random() * Math.PI * 2,
-        dist: Math.random() * 0.75 + 0.55,
-        speed: (Math.random() * 0.008 + 0.004) * (Math.random() > 0.5 ? 1 : 1),
+        dist: Math.random() * 0.9 + 0.55,
+        speed: (Math.random() * 0.008 + 0.004) * (1.2 / (0.55 + Math.random() * 0.9)),
         size: Math.random() * 2.2 + 0.8,
         color: Math.random() > 0.4 ? "rgba(254, 240, 138, 0.9)" : "rgba(249, 115, 22, 0.85)"
       });
@@ -4385,7 +4407,7 @@
 
     function renderGargantua() {
       const panel = document.getElementById("panel-contato");
-      const isVisible = panel && panel.classList.contains("active");
+      const isVisible = !panel || panel.classList.contains("active");
 
       if (!isVisible && !reduceMotion) {
         requestAnimationFrame(renderGargantua);
@@ -4395,34 +4417,34 @@
       ctx.clearRect(0, 0, width, height);
 
       const cx = width * 0.5;
-      const cy = Math.min(height * 0.38, 320 * dpr);
-      const baseR = Math.min(width, height) * 0.28;
-      const bhRadius = Math.max(75 * dpr, baseR);
+      const cy = height * 0.42;
+      const baseR = Math.min(width, height) * 0.32;
+      const bhRadius = Math.max(100 * dpr, baseR);
 
       ctx.save();
       ctx.translate(cx, cy);
 
       // 1. Relativistic Spacetime Lensing Gradient (Einstein Halo)
-      const haloGrad = ctx.createRadialGradient(0, 0, bhRadius * 0.5, 0, 0, bhRadius * 2.2);
-      haloGrad.addColorStop(0, "rgba(254, 240, 138, 0.4)");
-      haloGrad.addColorStop(0.25, "rgba(245, 158, 11, 0.25)");
-      haloGrad.addColorStop(0.6, "rgba(234, 88, 12, 0.1)");
+      const haloGrad = ctx.createRadialGradient(0, 0, bhRadius * 0.5, 0, 0, bhRadius * 2.5);
+      haloGrad.addColorStop(0, "rgba(254, 240, 138, 0.5)");
+      haloGrad.addColorStop(0.2, "rgba(245, 158, 11, 0.35)");
+      haloGrad.addColorStop(0.5, "rgba(234, 88, 12, 0.15)");
       haloGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
       ctx.beginPath();
-      ctx.arc(0, 0, bhRadius * 2.2, 0, Math.PI * 2);
+      ctx.arc(0, 0, bhRadius * 2.5, 0, Math.PI * 2);
       ctx.fillStyle = haloGrad;
       ctx.fill();
 
       // 2. Upper Lensed Accretion Arc (Gravitationally bent over the top)
       ctx.save();
       ctx.beginPath();
-      ctx.ellipse(0, -bhRadius * 0.38, bhRadius * 1.45, bhRadius * 0.92, 0, Math.PI * 0.94, Math.PI * 2.06);
+      ctx.ellipse(0, -bhRadius * 0.38, bhRadius * 1.55, bhRadius * 0.95, 0, Math.PI * 0.94, Math.PI * 2.06);
       ctx.lineWidth = Math.max(4, bhRadius * 0.22);
-      const upperGrad = ctx.createLinearGradient(-bhRadius * 1.45, 0, bhRadius * 1.45, 0);
-      upperGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)"); // Doppler blueshift
+      const upperGrad = ctx.createLinearGradient(-bhRadius * 1.55, 0, bhRadius * 1.55, 0);
+      upperGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
       upperGrad.addColorStop(0.3, "rgba(253, 224, 71, 0.85)");
       upperGrad.addColorStop(0.7, "rgba(249, 115, 22, 0.5)");
-      upperGrad.addColorStop(1, "rgba(185, 28, 28, 0.2)"); // Redshift
+      upperGrad.addColorStop(1, "rgba(185, 28, 28, 0.2)");
       ctx.strokeStyle = upperGrad;
       ctx.shadowColor = "#f59e0b";
       ctx.shadowBlur = 20 * dpr;
@@ -4432,9 +4454,9 @@
       // 3. Lower Lensed Accretion Arc (Gravitationally bent beneath the bottom)
       ctx.save();
       ctx.beginPath();
-      ctx.ellipse(0, bhRadius * 0.38, bhRadius * 1.45, bhRadius * 0.92, 0, 0, Math.PI * 1.06);
+      ctx.ellipse(0, bhRadius * 0.38, bhRadius * 1.55, bhRadius * 0.95, 0, 0, Math.PI * 1.06);
       ctx.lineWidth = Math.max(3, bhRadius * 0.16);
-      const lowerGrad = ctx.createLinearGradient(-bhRadius * 1.45, 0, bhRadius * 1.45, 0);
+      const lowerGrad = ctx.createLinearGradient(-bhRadius * 1.55, 0, bhRadius * 1.55, 0);
       lowerGrad.addColorStop(0, "rgba(255, 255, 255, 0.85)");
       lowerGrad.addColorStop(0.4, "rgba(251, 191, 36, 0.65)");
       lowerGrad.addColorStop(1, "rgba(194, 65, 12, 0.2)");
@@ -4445,8 +4467,8 @@
       // 4. Swirling Relativistic Accretion Matter Particles
       ACCRETION_PARTICLES.forEach((p) => {
         p.angle += p.speed * (1.2 / p.dist);
-        const rx = bhRadius * 1.8 * p.dist;
-        const ry = bhRadius * 0.38 * p.dist;
+        const rx = bhRadius * 1.9 * p.dist;
+        const ry = bhRadius * 0.4 * p.dist;
         const px = Math.cos(p.angle) * rx;
         const py = Math.sin(p.angle) * ry;
 
@@ -4463,9 +4485,9 @@
       // 5. Equatorial Accretion Disk (Front matter stream)
       ctx.save();
       ctx.beginPath();
-      ctx.ellipse(0, 0, bhRadius * 1.85, bhRadius * 0.36, -0.06, 0, Math.PI * 2);
+      ctx.ellipse(0, 0, bhRadius * 1.95, bhRadius * 0.38, -0.06, 0, Math.PI * 2);
       ctx.lineWidth = Math.max(5, bhRadius * 0.28);
-      const eqGrad = ctx.createLinearGradient(-bhRadius * 1.85, 0, bhRadius * 1.85, 0);
+      const eqGrad = ctx.createLinearGradient(-bhRadius * 1.95, 0, bhRadius * 1.95, 0);
       eqGrad.addColorStop(0, "rgba(255, 255, 255, 1.0)");
       eqGrad.addColorStop(0.2, "rgba(254, 240, 138, 0.95)");
       eqGrad.addColorStop(0.5, "rgba(245, 158, 11, 0.8)");
@@ -4473,24 +4495,22 @@
       eqGrad.addColorStop(1, "rgba(124, 45, 18, 0.15)");
       ctx.strokeStyle = eqGrad;
       ctx.shadowColor = "#fbbf24";
-      ctx.shadowBlur = 28 * dpr;
+      ctx.shadowBlur = 25 * dpr;
       ctx.stroke();
       ctx.restore();
 
-      // 6. Razor-Thin Photon Sphere (1.5x Schwarzschild Radius)
-      ctx.save();
+      // 6. Photon Sphere (1.5x Schwarzschild radius)
       ctx.beginPath();
-      ctx.arc(0, 0, bhRadius * 0.58, 0, Math.PI * 2);
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.95)";
-      ctx.lineWidth = Math.max(1.8, bhRadius * 0.03);
+      ctx.arc(0, 0, bhRadius * 0.73, 0, Math.PI * 2);
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.9)";
+      ctx.lineWidth = Math.max(1.5, bhRadius * 0.025);
       ctx.shadowColor = "#ffffff";
-      ctx.shadowBlur = 14 * dpr;
+      ctx.shadowBlur = 10 * dpr;
       ctx.stroke();
-      ctx.restore();
 
-      // 7. Schwarzschild Event Horizon (Absolute Black)
+      // 7. Schwarzschild Event Horizon (Absolute black)
       ctx.beginPath();
-      ctx.arc(0, 0, bhRadius * 0.54, 0, Math.PI * 2);
+      ctx.arc(0, 0, bhRadius * 0.7, 0, Math.PI * 2);
       ctx.fillStyle = "#000000";
       ctx.fill();
 
@@ -4498,7 +4518,6 @@
 
       requestAnimationFrame(renderGargantua);
     }
-
     renderGargantua();
   }
 
@@ -4723,6 +4742,29 @@
   }
 
   /* ============================================================
+     PERSISTENT HUB HUD (Always visible health/armor status)
+     ============================================================ */
+  function initPersistentHubHud() {
+    let hud = document.getElementById("hubHudBar");
+    if (!hud) {
+      hud = document.createElement("div");
+      hud.id = "hubHudBar";
+      hud.className = "gta-hud-bar";
+      hud.setAttribute("aria-label", "Status do Explorador");
+      hud.setAttribute("role", "status");
+      hud.innerHTML = `
+        <div class="gta-status-line">
+          <div class="gta-meter gta-health"><div class="gta-meter-fill"></div><span>❤️ 100%</span></div>
+          <div class="gta-meter gta-armor"><div class="gta-meter-fill"></div><span>🛡️ 100%</span></div>
+        </div>
+        <div class="gta-money-line" style="font-size:0.85rem; color: var(--accent-cyan); margin-top:4px;">EXPLORADOR // ATIVO</div>
+      `;
+      document.body.appendChild(hud);
+    }
+    hud.style.display = "flex";
+  }
+
+  /* ============================================================
      13. i18n APPLIER & LANGUAGE ENGINE
      ============================================================ */
   function applyI18n() {
@@ -4736,6 +4778,113 @@
         el.innerHTML = Array.isArray(val) ? val.map((p) => `<p>${p}</p>`).join("") : val;
       } else {
         el.textContent = val;
+      }
+    });
+
+    // Translate all hardcoded kickers
+    document.querySelectorAll(".section-dossier-kicker").forEach((el) => {
+      const panel = el.closest(".dossier-panel");
+      if (!panel) return;
+      const panelId = panel.id;
+      let kickerKey = null;
+      if (panelId === "panel-sobre") kickerKey = "kickers.setor01";
+      else if (panelId === "panel-software") kickerKey = "kickers.setor02";
+      else if (panelId === "panel-pesquisa") kickerKey = "kickers.setor03";
+      else if (panelId === "panel-contato") kickerKey = "kickers.setor04";
+      if (kickerKey) {
+        const val = t(kickerKey);
+        if (val) el.textContent = val;
+      }
+    });
+
+    // Translate sector titles
+    document.querySelectorAll(".section-dossier-title").forEach((el) => {
+      const panel = el.closest(".dossier-panel");
+      if (!panel) return;
+      const panelId = panel.id;
+      let titleKey = null;
+      if (panelId === "panel-sobre") titleKey = "titles.setor01";
+      else if (panelId === "panel-software") titleKey = "titles.setor02";
+      else if (panelId === "panel-pesquisa") titleKey = "titles.setor03";
+      else if (panelId === "panel-contato") titleKey = "titles.setor04";
+      if (titleKey) {
+        const val = t(titleKey);
+        if (val) el.textContent = val;
+      }
+    });
+
+    // Translate sector leads
+    document.querySelectorAll(".section-dossier-lead").forEach((el) => {
+      const panel = el.closest(".dossier-panel");
+      if (!panel) return;
+      const panelId = panel.id;
+      let leadKey = null;
+      if (panelId === "panel-software") leadKey = "leads.setor02";
+      else if (panelId === "panel-pesquisa") leadKey = "leads.setor03";
+      if (leadKey) {
+        const val = t(leadKey);
+        if (val) el.textContent = val;
+      }
+    });
+
+    // Translate interstellar banner (Nolan quotes)
+    const quote1 = document.querySelector(".nolan-quote-text");
+    if (quote1) {
+      const val = t("interstellar.quote1");
+      if (val) quote1.textContent = val;
+    }
+    const quote1Author = document.querySelector(".nolan-quote-author");
+    if (quote1Author) {
+      const val = t("interstellar.quote1Author");
+      if (val) quote1Author.innerHTML = val;
+    }
+    const quote2 = document.querySelector(".nolan-quote-wrap .nolan-quote-text:last-child");
+    if (quote2) {
+      const val = t("interstellar.quote2");
+      if (val) quote2.textContent = val;
+    }
+    // TARS telemetry strip
+    const tarsStrip = document.querySelector(".tars-telemetry-strip");
+    if (tarsStrip) {
+      const tarsLabel = t("interstellar.tarsLabel");
+      const honesty = t("interstellar.honesty");
+      const humor = t("interstellar.humor");
+      const paramLabel = t("interstellar.paramLabel");
+      if (tarsLabel && honesty && humor && paramLabel) {
+        tarsStrip.innerHTML = `
+          <span>${tarsLabel}</span>
+          <span>${honesty} <strong>90%</strong></span>
+          <span>·</span>
+          <span>${humor} <strong>75%</strong></span>
+          <span>·</span>
+          <span>${paramLabel} <em>"Não é possível... Não, é necessário."</em></span>
+        `;
+      }
+    }
+
+    // Translate footer
+    const footer = document.querySelector(".rodape-frase");
+    if (footer) {
+      const val = t("footer");
+      if (val) {
+        const links = footer.querySelector(".rodape-links");
+        footer.innerHTML = val;
+        if (links) footer.appendChild(links);
+      }
+    }
+
+    // Translate corner nodes
+    const cornerMappings = [
+      { selector: ".node-top-left .corner-node__kicker", key: "kickers.setor01" },
+      { selector: ".node-top-right .corner-node__kicker", key: "kickers.setor02" },
+      { selector: ".node-bottom-left .corner-node__kicker", key: "kickers.setor03" },
+      { selector: ".node-bottom-right .corner-node__kicker", key: "kickers.setor04" }
+    ];
+    cornerMappings.forEach(({ selector, key }) => {
+      const el = document.querySelector(selector);
+      if (el) {
+        const val = t(key);
+        if (val) el.textContent = val;
       }
     });
 
@@ -4762,6 +4911,12 @@
      14. INITIALIZATION
      ============================================================ */
   function init() {
+    // Restore theme preference
+    const savedTheme = localStorage.getItem("portfolio_theme");
+    if (savedTheme) {
+      document.body.setAttribute("data-theme", savedTheme);
+    }
+
     initIntroCinematic();
     initWarpTravelEngine();
     initSectorNavigation();
@@ -4838,6 +4993,20 @@
         renderAllReposGrouped();
       });
     }
+
+    // Theme toggle
+    const themeBtn = document.getElementById("themeToggleBtn");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        const cur = document.body.getAttribute("data-theme");
+        const next = cur === "light" ? "dark" : "light";
+        document.body.setAttribute("data-theme", next);
+        localStorage.setItem("portfolio_theme", next);
+      });
+    }
+
+    // Persistent GTA HUD on hub (always visible)
+    initPersistentHubHud();
 
     const copyLattesBtn = document.getElementById("copyLattesBtn");
     if (copyLattesBtn) {

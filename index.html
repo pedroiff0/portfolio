@@ -19,7 +19,16 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body>
+<body data-theme="dark">
+
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Alternar tema claro/escuro" title="Alternar Tema">
+    <span class="theme-icon-dark">🌙</span>
+    <span class="theme-icon-light">☀️</span>
+  </button>
 
   <!-- 1. CINEMATIC INTRO: REALISTIC ASTROPHYSICS RE-ENTRY & DEVOPS STREAM -->
   <div class="intro-overlay" id="introOverlay">

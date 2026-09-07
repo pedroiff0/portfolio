@@ -1101,33 +1101,60 @@
       if (!canvas) return null;
 
       const scene = new THREE.Scene();
-      const parent = canvas.parentElement || canvas.closest(".dossier-panel") || document.body;
-      const getDims = () => {
-        const rect = parent.getBoundingClientRect();
-        return {
-          w: Math.max(280, rect.width || window.innerWidth),
-          h: Math.max(240, rect.height || 420)
-        };
-      };
+      const getDims = () => ({
+        w: Math.max(280, window.innerWidth || document.body.clientWidth),
+        h: Math.max(240, window.innerHeight || document.body.clientHeight || 420)
+      });
 
       const dims = getDims();
-      const camera = new THREE.PerspectiveCamera(45, dims.w / dims.h, 0.1, 100);
+      const camera = new THREE.PerspectiveCamera(45, dims.w / dims.h, 0.1, 200);
       camera.position.set(0, 0.35, 4.2);
 
       const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
       renderer.setSize(dims.w, dims.h);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x000000, 0);
 
-      const gargantuaObj = this.create3DGargantuaGroup(1.35);
+      // Create enhanced Gargantua with more photorealistic elements
+      const gargantuaObj = this.create3DGargantuaGroup(1.8);
       scene.add(gargantuaObj.group);
+
+      // Add volumetric accretion particles
+      const particleGeo = new THREE.BufferGeometry();
+      const particleCount = 600;
+      const positions = new Float32Array(particleCount * 3);
+      const colors = new Float32Array(particleCount * 3);
+      for (let i = 0; i < particleCount; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 1.0 + Math.random() * 2.5;
+        positions[i * 3] = Math.cos(angle) * dist;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 0.15;
+        positions[i * 3 + 2] = Math.sin(angle) * dist;
+        const brightness = 0.5 + Math.random() * 0.5;
+        colors[i * 3] = brightness;
+        colors[i * 3 + 1] = brightness * (0.6 + Math.random() * 0.4);
+        colors[i * 3 + 2] = brightness * (0.2 + Math.random() * 0.3);
+      }
+      particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      particleGeo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+      const particleMat = new THREE.PointsMaterial({
+        size: 0.04,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.7,
+        blending: THREE.AdditiveBlending
+      });
+      const particles = new THREE.Points(particleGeo, particleMat);
+      particles.rotation.x = Math.PI / 2.3;
+      scene.add(particles);
 
       let targetRotY = 0;
       let targetRotX = 0;
       const onPointerMove = (e) => {
         const cx = (e.clientX / window.innerWidth) * 2 - 1;
         const cy = (e.clientY / window.innerHeight) * 2 - 1;
-        targetRotY = cx * 0.25;
-        targetRotX = cy * 0.15;
+        targetRotY = cx * 0.15;
+        targetRotX = cy * 0.1;
       };
       window.addEventListener("pointermove", onPointerMove, { passive: true });
 
@@ -1135,7 +1162,7 @@
         const d = getDims();
         camera.aspect = d.w / d.h;
         camera.updateProjectionMatrix();
-        renderer.setSize(d.w, d.h);
+        renderer.setSize(d.w, d.h, false);
       };
       window.addEventListener("resize", onResize);
 
@@ -1148,8 +1175,9 @@
 
         if (isVisible) {
           gargantuaObj.update(time);
-          gargantuaObj.group.rotation.y += (targetRotY - gargantuaObj.group.rotation.y) * 0.05;
-          gargantuaObj.group.rotation.x += (targetRotX - gargantuaObj.group.rotation.x) * 0.05;
+          particles.rotation.z += 0.0008;
+          gargantuaObj.group.rotation.y += (targetRotY - gargantuaObj.group.rotation.y) * 0.03;
+          gargantuaObj.group.rotation.x += (targetRotX - gargantuaObj.group.rotation.x) * 0.03;
           renderer.render(scene, camera);
         }
       }
