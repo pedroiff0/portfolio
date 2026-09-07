@@ -412,14 +412,15 @@
     // High-speed telemetry stream log schedule (total 3.0s sequence)
     const devopsLogs = [
       { t: 80, text: "> [SYS_INIT] Hypervisor online · Cluster Sync OK", cls: "highlight" },
-      { t: 300, text: "> [KERNEL] Booting Antigravity OS v4.2 · Neural Bus Active", cls: "highlight" },
-      { t: 600, text: "> [DOCKER] 14 containers verified: Overleaf, Redis, Fastify", cls: "success" },
-      { t: 950, text: "> [ASTRO_NAV] Ephemeris match: Gaia DR3 & Kepler Catalogues OK", cls: "highlight" },
-      { t: 1300, text: "> [MESOSPHERE] Reentrada hipersônica · Plasma Mach 25.4 (1920°C)", cls: "warn" },
-      { t: 1650, text: "> [TELEMETRY] Retro-propulsores acionados: 21.7° S, 41.3° W // IFF LZ", cls: "success" },
-      { t: 2000, text: "> [IMPACT/LANDING] Pouso e impacto concluídos com sucesso!", cls: "highlight" },
-      { t: 2350, text: "> [CI/CD] LaTeX Altacv Automated Build: PT/EN/ES/FR dossier READY", cls: "success" },
-      { t: 2700, text: "> [STATION_LOCK] Sincronização 100% · Acessando Estação Pedro Rocha...", cls: "success" }
+      { t: 50, text: "> [ALERTA GLOBAL] Anomalias extraterrestres detectadas em órbita baixa da Terra", cls: "warn" },
+      { t: 300, text: "> [KERNEL] Booting Antigravity Defense OS · Protocolo Evacuação Ativado", cls: "highlight" },
+      { t: 600, text: "> [DOCKER] 14 containers de código empacotados para transporte interplanetário", cls: "success" },
+      { t: 950, text: "> [ASTRO_NAV] Vetores de fuga calculados: Kepler-186f, Gaia DR3 e Solaris", cls: "highlight" },
+      { t: 1300, text: "> [MESOSPHERE] Reentrada tática · Descida no IFF LZ-01 para resgatar repositórios", cls: "warn" },
+      { t: 1650, text: "> [TELEMETRY] Coordenadas 21.7° S, 41.3° W sincronizadas // Extraindo dados", cls: "success" },
+      { t: 2000, text: "> [RESCUE_LOCK] Código e pesquisas salvos! Preparando dobra hiperespacial...", cls: "highlight" },
+      { t: 2350, text: "> [HYPERDRIVE] Motores de dobra carregados a 100% · Rumo aos novos mundos", cls: "success" },
+      { t: 2700, text: "> [WARP_READY] Hub Central Pronto: Decolar para buscar recursos nos setores!", cls: "success" }
     ];
 
     const termLines = document.getElementById("introTerminalLines");
@@ -540,23 +541,57 @@
       // Earth Rotation (degrees)
       const earthRotDeg = 15 + elapsed * 7.5;
 
-      // ---------- 3. ATMOSPHERIC RAYLEIGH SCATTERING (OUTER HALO) ----------
-      const atmoGrad = ictx.createRadialGradient(ex, ey, er * 0.94, ex, ey, er * 1.38);
-      atmoGrad.addColorStop(0, "rgba(56, 189, 248, 0.82)");
-      atmoGrad.addColorStop(0.12, "rgba(99, 102, 241, 0.45)");
-      atmoGrad.addColorStop(0.35, "rgba(168, 85, 247, 0.18)");
-      atmoGrad.addColorStop(0.7, "rgba(14, 116, 144, 0.06)");
+      // ---------- 3. ATMOSPHERIC RAYLEIGH & MULTI-LAYER SCATTERING (OUTER HALO) ----------
+      const atmoGrad = ictx.createRadialGradient(ex, ey, er * 0.92, ex, ey, er * 1.48);
+      atmoGrad.addColorStop(0, "rgba(56, 189, 248, 0.95)");     // Stratosphere Intense Cyan
+      atmoGrad.addColorStop(0.12, "rgba(96, 165, 250, 0.82)");   // Rayleigh Nitrogen Blue
+      atmoGrad.addColorStop(0.28, "rgba(129, 140, 248, 0.48)");  // Mesosphere Deep Indigo
+      atmoGrad.addColorStop(0.50, "rgba(192, 132, 252, 0.22)");  // Thermosphere Violet Glow
+      atmoGrad.addColorStop(0.78, "rgba(14, 116, 144, 0.08)");   // Exosphere Faint Corona
       atmoGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
 
       ictx.fillStyle = atmoGrad;
       ictx.beginPath();
-      ictx.arc(ex, ey, er * 1.38, 0, Math.PI * 2);
+      ictx.arc(ex, ey, er * 1.48, 0, Math.PI * 2);
       ictx.fill();
+
+      // Tactical Planetary Defense Forcefield Grid (Earth Invasion Alert Lore)
+      const shieldPulse = Math.sin(elapsed * 4) * 0.15 + 0.85;
+      ictx.save();
+      ictx.strokeStyle = `rgba(239, 68, 68, ${0.35 * shieldPulse})`;
+      ictx.lineWidth = 1.6;
+      ictx.setLineDash([8, 14]);
+      ictx.beginPath();
+      ictx.arc(ex, ey, er * 1.18, 0, Math.PI * 2);
+      ictx.stroke();
+
+      ictx.strokeStyle = `rgba(245, 158, 11, ${0.45 * shieldPulse})`;
+      ictx.lineWidth = 1.2;
+      ictx.setLineDash([4, 20]);
+      ictx.beginPath();
+      ictx.arc(ex, ey, er * 1.26, 0, Math.PI * 2);
+      ictx.stroke();
+      ictx.setLineDash([]);
+
+      // Tactical Invasion Anomaly Beacons along Defense Perimeter
+      for (let b = 0; b < 4; b++) {
+        const bAngle = (b * Math.PI / 2) + elapsed * 0.4;
+        const bx = ex + Math.cos(bAngle) * (er * 1.22);
+        const by = ey + Math.sin(bAngle) * (er * 1.22);
+        ictx.beginPath();
+        ictx.arc(bx, by, 3, 0, Math.PI * 2);
+        ictx.fillStyle = b % 2 === 0 ? "#ef4444" : "#f59e0b";
+        ictx.shadowColor = "#ef4444";
+        ictx.shadowBlur = 8;
+        ictx.fill();
+      }
+      ictx.shadowBlur = 0;
+      ictx.restore();
 
       // ---------- 4. EARTH OCEAN SPHERE (DIFFUSE & SPECULAR GLINT) ----------
       const oceanGrad = ictx.createRadialGradient(
-        ex + SUN_DIR.x * er * 0.5,
-        ey + SUN_DIR.y * er * 0.5,
+        ex + SUN_DIR.x * er * 0.52,
+        ey + SUN_DIR.y * er * 0.52,
         er * 0.08,
         ex,
         ey,
@@ -576,16 +611,17 @@
       // Specular Sun Glint on Ocean
       const glintX = ex + SUN_DIR.x * er * 0.45;
       const glintY = ey + SUN_DIR.y * er * 0.45;
-      const glintGrad = ictx.createRadialGradient(glintX, glintY, 2, glintX, glintY, er * 0.45);
-      glintGrad.addColorStop(0, "rgba(255, 255, 255, 0.55)");
-      glintGrad.addColorStop(0.2, "rgba(186, 230, 253, 0.25)");
+      const glintGrad = ictx.createRadialGradient(glintX, glintY, 2, glintX, glintY, er * 0.48);
+      glintGrad.addColorStop(0, "rgba(255, 255, 255, 0.65)");
+      glintGrad.addColorStop(0.2, "rgba(186, 230, 253, 0.32)");
+      glintGrad.addColorStop(0.5, "rgba(56, 189, 248, 0.12)");
       glintGrad.addColorStop(1, "rgba(2, 132, 199, 0)");
       ictx.fillStyle = glintGrad;
       ictx.beginPath();
       ictx.arc(ex, ey, er, 0, Math.PI * 2);
       ictx.fill();
 
-      // Clip inside Earth Sphere for Continents & City Lights
+      // Clip inside Earth Sphere for Continents, Night Lights & Volumetric Clouds
       ictx.save();
       ictx.beginPath();
       ictx.arc(ex, ey, er, 0, Math.PI * 2);
@@ -611,21 +647,21 @@
         });
         ictx.closePath();
 
-        let baseBiome = "rgba(22, 101, 52, 0.85)";
-        if (key === "africa") baseBiome = "rgba(180, 83, 9, 0.8)";
-        if (key === "antarctica" || key === "greenland") baseBiome = "rgba(241, 245, 249, 0.95)";
-        if (key === "northAmerica") baseBiome = "rgba(34, 197, 94, 0.75)";
-        if (key === "australia") baseBiome = "rgba(194, 65, 12, 0.85)";
+        let baseBiome = "rgba(22, 101, 52, 0.88)";
+        if (key === "africa") baseBiome = "rgba(180, 83, 9, 0.82)";
+        if (key === "antarctica" || key === "greenland") baseBiome = "rgba(241, 245, 249, 0.96)";
+        if (key === "northAmerica") baseBiome = "rgba(34, 197, 94, 0.78)";
+        if (key === "australia") baseBiome = "rgba(194, 65, 12, 0.88)";
 
         ictx.fillStyle = baseBiome;
         ictx.fill();
 
-        ictx.strokeStyle = "rgba(94, 234, 212, 0.25)";
+        ictx.strokeStyle = "rgba(94, 234, 212, 0.28)";
         ictx.lineWidth = 1;
         ictx.stroke();
       });
 
-      // Night-Side Terminator Shadow Mask
+      // Night-Side Terminator Shadow Mask with Sunset Amber/Rose Rim
       const nightGrad = ictx.createRadialGradient(
         ex - SUN_DIR.x * er * 0.8,
         ey - SUN_DIR.y * er * 0.8,
@@ -634,9 +670,10 @@
         ey,
         er * 1.05
       );
-      nightGrad.addColorStop(0, "rgba(1, 4, 12, 0.94)");
-      nightGrad.addColorStop(0.5, "rgba(1, 4, 12, 0.78)");
-      nightGrad.addColorStop(0.85, "rgba(245, 158, 11, 0.15)");
+      nightGrad.addColorStop(0, "rgba(1, 4, 12, 0.95)");
+      nightGrad.addColorStop(0.55, "rgba(1, 4, 12, 0.82)");
+      nightGrad.addColorStop(0.82, "rgba(251, 146, 60, 0.38)");  // Warm Twilight Sunset Amber
+      nightGrad.addColorStop(0.92, "rgba(244, 63, 94, 0.22)");   // Sunset Crimson/Rose
       nightGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
       ictx.fillStyle = nightGrad;
       ictx.beginPath();
@@ -662,46 +699,151 @@
         }
       });
 
-      // ---------- 7. ATMOSPHERIC CLOUDS ----------
-      const cloudRotDeg = earthRotDeg * 1.15;
-      for (let c = 0; c < 12; c++) {
-        const clat = ((c * 37) % 140) - 70;
-        const clon = (c * 65 + cloudRotDeg * 1.2) % 360 - 180;
-        const cp = projectGeo(clat, clon, 0);
+      // ---------- 7. ADVANCED VOLUMETRIC CLOUD SYSTEMS & CYCLONES WITH CAST SHADOWS ----------
+      const cloudRotDeg = earthRotDeg * 1.08;
 
-        if (cp.z > 0.1) {
-          const cpx = ex + cp.x * er * 1.015;
-          const cpy = ey + cp.y * er * 1.015;
-          const cloudSize = er * (0.18 + (c % 4) * 0.06);
+      // Realistic Cloud Systems: Cyclones, ITCZ bands, Baroclinic storm fronts, Cirrus wisps
+      const CLOUD_SYSTEMS = [
+        // 1. Northern Tropical Cyclone Vortex (Atlantic / Caribbean)
+        { lat: 24, lon: -58, type: "cyclone", arms: 3, radius: 0.24, rotSpeed: 1.6 },
+        // 2. Southern Tropical Cyclone Vortex (Indian / Pacific)
+        { lat: -20, lon: 75, type: "cyclone", arms: 3, radius: 0.22, rotSpeed: -1.4 },
+        // 3. Equatorial ITCZ (Intertropical Convergence Zone) Billowing Clusters
+        { lat: 6, lon: -35, type: "itcz", radius: 0.28, rotSpeed: 1.0 },
+        { lat: 4, lon: 20, type: "itcz", radius: 0.32, rotSpeed: 1.0 },
+        { lat: 8, lon: 130, type: "itcz", radius: 0.30, rotSpeed: 1.0 },
+        { lat: 5, lon: -140, type: "itcz", radius: 0.29, rotSpeed: 1.0 },
+        // 4. Mid-Latitude Storm Fronts (Baroclinic swirls)
+        { lat: 48, lon: -20, type: "front", radius: 0.26, rotSpeed: 1.2 },
+        { lat: 52, lon: 150, type: "front", radius: 0.25, rotSpeed: 1.2 },
+        { lat: -45, lon: -60, type: "front", radius: 0.28, rotSpeed: -1.1 },
+        { lat: -48, lon: 110, type: "front", radius: 0.27, rotSpeed: -1.1 },
+        // 5. High-Altitude Cirrus Filaments & Polar Vortex
+        { lat: 72, lon: 40, type: "cirrus", radius: 0.22, rotSpeed: 0.9 },
+        { lat: -68, lon: -30, type: "cirrus", radius: 0.24, rotSpeed: -0.9 },
+        { lat: 35, lon: -115, type: "cirrus", radius: 0.20, rotSpeed: 1.1 },
+        { lat: -32, lon: -170, type: "cirrus", radius: 0.21, rotSpeed: -1.1 }
+      ];
 
-          ictx.fillStyle = "rgba(2, 6, 23, 0.35)";
-          ictx.beginPath();
-          ictx.ellipse(cpx + 3, cpy + 3, cloudSize, cloudSize * 0.45, (c * 0.4), 0, Math.PI * 2);
-          ictx.fill();
+      // PASS A: Cast Shadows onto Ocean / Continents (Shifted opposite to Sun vector)
+      const shadowOffsetX = -SUN_DIR.x * er * 0.032;
+      const shadowOffsetY = -SUN_DIR.y * er * 0.032;
 
-          const cloudGrad = ictx.createRadialGradient(cpx, cpy, 2, cpx, cpy, cloudSize);
-          const cloudAlpha = Math.max(0.15, Math.min(0.75, (cp.dotL + 0.4) * 0.8));
-          cloudGrad.addColorStop(0, `rgba(255, 255, 255, ${cloudAlpha})`);
-          cloudGrad.addColorStop(0.7, `rgba(224, 242, 254, ${cloudAlpha * 0.6})`);
-          cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-          ictx.fillStyle = cloudGrad;
-          ictx.beginPath();
-          ictx.ellipse(cpx, cpy, cloudSize, cloudSize * 0.45, (c * 0.4), 0, Math.PI * 2);
-          ictx.fill();
+      CLOUD_SYSTEMS.forEach((cs, idx) => {
+        const currentLon = (cs.lon + cloudRotDeg * cs.rotSpeed) % 360;
+        const cp = projectGeo(cs.lat, currentLon, 0);
+        if (cp.z > 0.08) {
+          const cpx = ex + cp.x * er + shadowOffsetX;
+          const cpy = ey + cp.y * er + shadowOffsetY;
+          const sysR = er * cs.radius;
+
+          ictx.fillStyle = "rgba(1, 4, 18, 0.44)";
+          if (cs.type === "cyclone") {
+            for (let a = 0; a < cs.arms; a++) {
+              const armAngle = (a * (Math.PI * 2 / cs.arms)) + elapsed * cs.rotSpeed * 0.8;
+              const ax = cpx + Math.cos(armAngle) * (sysR * 0.5);
+              const ay = cpy + Math.sin(armAngle) * (sysR * 0.35);
+              ictx.beginPath();
+              ictx.ellipse(ax, ay, sysR * 0.45, sysR * 0.22, armAngle, 0, Math.PI * 2);
+              ictx.fill();
+            }
+          } else {
+            ictx.beginPath();
+            ictx.ellipse(cpx, cpy, sysR * 0.85, sysR * 0.38, (idx * 0.45), 0, Math.PI * 2);
+            ictx.fill();
+          }
         }
-      }
+      });
 
-      // Sunlit Atmospheric Horizon Crescent
+      // PASS B: Volumetric Multi-Cluster Cloud Bodies with Sunlit Highlights & Sunset Glow
+      CLOUD_SYSTEMS.forEach((cs, idx) => {
+        const currentLon = (cs.lon + cloudRotDeg * cs.rotSpeed) % 360;
+        const cp = projectGeo(cs.lat, currentLon, 0);
+        if (cp.z > 0.08) {
+          const cpx = ex + cp.x * er * 1.018;
+          const cpy = ey + cp.y * er * 1.018;
+          const sysR = er * cs.radius;
+
+          // Day/Night and Terminator Shading factor for clouds
+          const sunIllum = Math.max(0, Math.min(1, (cp.dotL + 0.35) * 1.4));
+          const isTerminator = cp.dotL > -0.15 && cp.dotL < 0.25;
+
+          if (cs.type === "cyclone") {
+            // Render Cyclone Spiral Arms + Clear Eye
+            for (let a = 0; a < cs.arms; a++) {
+              const armAngle = (a * (Math.PI * 2 / cs.arms)) + elapsed * cs.rotSpeed * 0.8;
+              const ax = cpx + Math.cos(armAngle) * (sysR * 0.45);
+              const ay = cpy + Math.sin(armAngle) * (sysR * 0.32);
+
+              const armGrad = ictx.createRadialGradient(ax, ay, 2, ax, ay, sysR * 0.55);
+              if (isTerminator) {
+                armGrad.addColorStop(0, `rgba(254, 215, 170, ${0.92 * sunIllum})`);
+                armGrad.addColorStop(0.6, `rgba(251, 146, 60, ${0.65 * sunIllum})`);
+              } else {
+                armGrad.addColorStop(0, `rgba(255, 255, 255, ${0.95 * sunIllum})`);
+                armGrad.addColorStop(0.65, `rgba(224, 242, 254, ${0.72 * sunIllum})`);
+              }
+              armGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+              ictx.fillStyle = armGrad;
+              ictx.beginPath();
+              ictx.ellipse(ax, ay, sysR * 0.5, sysR * 0.24, armAngle + 0.3, 0, Math.PI * 2);
+              ictx.fill();
+            }
+
+            // Central Storm Eye Ring
+            ictx.beginPath();
+            ictx.arc(cpx, cpy, sysR * 0.1, 0, Math.PI * 2);
+            ictx.fillStyle = "rgba(2, 6, 23, 0.4)";
+            ictx.fill();
+          } else {
+            // Billowing ITCZ / Frontal / Cirrus System with Multi-Puff Volume
+            for (let pIdx = 0; pIdx < 3; pIdx++) {
+              const puffOffX = (pIdx - 1) * sysR * 0.35;
+              const puffOffY = Math.sin(pIdx * 1.8 + elapsed) * sysR * 0.15;
+              const px = cpx + puffOffX;
+              const py = cpy + puffOffY;
+              const puffR = sysR * (0.45 + pIdx * 0.1);
+
+              const cloudGrad = ictx.createRadialGradient(
+                px + SUN_DIR.x * puffR * 0.3,
+                py + SUN_DIR.y * puffR * 0.3,
+                2,
+                px,
+                py,
+                puffR
+              );
+
+              if (isTerminator) {
+                cloudGrad.addColorStop(0, `rgba(254, 215, 170, ${0.90 * sunIllum})`);
+                cloudGrad.addColorStop(0.55, `rgba(251, 146, 60, ${0.60 * sunIllum})`);
+              } else {
+                cloudGrad.addColorStop(0, `rgba(255, 255, 255, ${0.92 * sunIllum})`);
+                cloudGrad.addColorStop(0.6, `rgba(224, 242, 254, ${0.68 * sunIllum})`);
+              }
+              cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+              ictx.fillStyle = cloudGrad;
+              ictx.beginPath();
+              ictx.ellipse(px, py, puffR, puffR * 0.55, (idx * 0.4 + pIdx * 0.2), 0, Math.PI * 2);
+              ictx.fill();
+            }
+          }
+        }
+      });
+
+      // Sunlit Atmospheric Horizon Crescent (Limb Brightening)
       const sunRimGrad = ictx.createRadialGradient(
-        ex + SUN_DIR.x * er * 0.92,
-        ey + SUN_DIR.y * er * 0.92,
+        ex + SUN_DIR.x * er * 0.94,
+        ey + SUN_DIR.y * er * 0.94,
         er * 0.02,
         ex,
         ey,
         er
       );
-      sunRimGrad.addColorStop(0, "rgba(186, 230, 253, 0.45)");
-      sunRimGrad.addColorStop(0.3, "rgba(56, 189, 248, 0.2)");
+      sunRimGrad.addColorStop(0, "rgba(224, 242, 254, 0.65)");
+      sunRimGrad.addColorStop(0.3, "rgba(56, 189, 248, 0.35)");
+      sunRimGrad.addColorStop(0.7, "rgba(99, 102, 241, 0.12)");
       sunRimGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
       ictx.fillStyle = sunRimGrad;
       ictx.beginPath();
@@ -745,10 +887,10 @@
       ictx.moveTo(tx, ty + pulse - 2); ictx.lineTo(tx, ty + pulse + 6);
       ictx.stroke();
 
-      // Target Telemetry Tag
+      // Target Telemetry Tag & Tactical Invasion Departure Lore
       ictx.font = "600 10px JetBrains Mono, monospace";
       ictx.fillStyle = "#5eead4";
-      ictx.fillText("TARGET: 21.7°S 41.3°W // IFF LZ-01", tx + pulse + 8, ty + 3);
+      ictx.fillText("TARGET: 21.7°S 41.3°W // LZ-01 EVACUATION VECTOR", tx + pulse + 8, ty + 3);
       ictx.restore();
 
       // ---------- 9. REALISTIC HYPERSONIC SPACECRAFT & RE-ENTRY PLASMA ----------
@@ -1078,44 +1220,44 @@
 
   const WARP_DESTINATIONS = {
     sobre: {
-      name: "TERRA // ESTAÇÃO BASE IFF",
-      speed: "WARP 9.84c // VETOR ORBITAL",
-      coords: "SETOR 01: TERRA // BASE IFF [RA 19h 50m / Dec +08° 52′]",
+      name: "TERRA // BASE ORBITAL LZ-01",
+      speed: "WARP 9.84c // EVACUAÇÃO TÁTICA",
+      coords: "SETOR 01: TERRA SOB CERCO [RESGATE DE DADOS & FORMAÇÃO]",
       type: "earth",
       colorCore: "#38bdf8",
-      colorAtmo: "rgba(56, 189, 248, 0.55)"
+      colorAtmo: "rgba(56, 189, 248, 0.65)"
     },
     software: {
       name: "KEPLER-186F // CYBER MATRIX",
-      speed: "WARP 9.92c // REDE DIGITAL",
-      coords: "SETOR 02: KEPLER-186F // CYBER MATRIX [RA 19h 54m / Dec +43° 57′]",
+      speed: "WARP 9.92c // MINERAÇÃO DE RECURSOS",
+      coords: "SETOR 02: KEPLER-186F [12 SOFTWARES & ARQUITETURA]",
       type: "cyber",
       colorCore: "#22d3ee",
-      colorAtmo: "rgba(34, 211, 238, 0.5)"
+      colorAtmo: "rgba(34, 211, 238, 0.6)"
     },
     pesquisa: {
-      name: "PULSAR GAIA DR3 // ASTROFÍSICA",
-      speed: "WARP 9.99c // RELATIVIDADE",
-      coords: "SETOR 03: PULSAR GAIA DR3 // LAB CNPQ [RA 18h 36m / Dec +38° 47′]",
+      name: "PULSAR GAIA DR3 // NÚCLEO CIENTÍFICO",
+      speed: "WARP 9.99c // RECURSOS DE ENERGIA",
+      coords: "SETOR 03: PULSAR GAIA DR3 [ASTROFÍSICA & CNPQ]",
       type: "pulsar",
       colorCore: "#c084fc",
-      colorAtmo: "rgba(192, 132, 252, 0.6)"
+      colorAtmo: "rgba(192, 132, 252, 0.7)"
     },
     contato: {
       name: "SOLARIS // CENTRAL DE TRANSMISSÃO",
-      speed: "WARP 9.75c // LINK QUÂNTICO",
-      coords: "SETOR 04: SOLARIS // LINK CV & CONTATO [RA 05h 35m / Dec -05° 23′]",
+      speed: "WARP 9.75c // CANAL DE RESGATE",
+      coords: "SETOR 04: SOLARIS [CURRICULUM VITAE & CONTATOS]",
       type: "solaris",
       colorCore: "#fbbf24",
-      colorAtmo: "rgba(244, 63, 94, 0.55)"
+      colorAtmo: "rgba(244, 63, 94, 0.65)"
     },
     hub: {
-      name: "ESTAÇÃO CENTRAL // ORBITAL HUB",
-      speed: "WARP 9.60c // RETORNO À BASE",
-      coords: "HUB CENTRAL // BASE TERRA [ÓRBITA LEO]",
+      name: "BASE CENTRAL // CONTENÇÃO DA TERRA",
+      speed: "WARP 9.60c // RETORNO AO PERÍMETRO",
+      coords: "HUB CENTRAL [ÓRBITA LEO // CONTENÇÃO DE DEFESA]",
       type: "hub",
       colorCore: "#5eead4",
-      colorAtmo: "rgba(94, 234, 212, 0.45)"
+      colorAtmo: "rgba(94, 234, 212, 0.55)"
     }
   };
 
@@ -1166,32 +1308,30 @@
     pctx.save();
     pctx.translate(cx, cy);
 
-    // 1. Atmosphere Glow Rim
-    const atmoGrad = pctx.createRadialGradient(0, 0, radius * 0.85, 0, 0, radius * 1.35);
-    if (type === "earth") {
-      atmoGrad.addColorStop(0, "rgba(56, 189, 248, 0.45)");
-      atmoGrad.addColorStop(0.6, "rgba(56, 189, 248, 0.15)");
+    // 1. Atmosphere Glow Rim (Multi-layered Rayleigh Scattering)
+    const atmoGrad = pctx.createRadialGradient(0, 0, radius * 0.82, 0, 0, radius * 1.45);
+    if (type === "earth" || type === "hub") {
+      atmoGrad.addColorStop(0, "rgba(56, 189, 248, 0.75)");
+      atmoGrad.addColorStop(0.25, "rgba(96, 165, 250, 0.45)");
+      atmoGrad.addColorStop(0.55, "rgba(129, 140, 248, 0.22)");
+      atmoGrad.addColorStop(0.85, "rgba(14, 116, 144, 0.08)");
       atmoGrad.addColorStop(1, "rgba(56, 189, 248, 0)");
     } else if (type === "cyber") {
-      atmoGrad.addColorStop(0, "rgba(34, 211, 238, 0.5)");
-      atmoGrad.addColorStop(0.6, "rgba(99, 102, 241, 0.2)");
+      atmoGrad.addColorStop(0, "rgba(34, 211, 238, 0.65)");
+      atmoGrad.addColorStop(0.5, "rgba(99, 102, 241, 0.3)");
       atmoGrad.addColorStop(1, "rgba(34, 211, 238, 0)");
     } else if (type === "pulsar") {
-      atmoGrad.addColorStop(0, "rgba(192, 132, 252, 0.6)");
-      atmoGrad.addColorStop(0.5, "rgba(245, 158, 11, 0.25)");
+      atmoGrad.addColorStop(0, "rgba(192, 132, 252, 0.75)");
+      atmoGrad.addColorStop(0.5, "rgba(245, 158, 11, 0.3)");
       atmoGrad.addColorStop(1, "rgba(192, 132, 252, 0)");
     } else if (type === "solaris") {
-      atmoGrad.addColorStop(0, "rgba(251, 191, 36, 0.65)");
-      atmoGrad.addColorStop(0.5, "rgba(244, 63, 94, 0.3)");
+      atmoGrad.addColorStop(0, "rgba(251, 191, 36, 0.8)");
+      atmoGrad.addColorStop(0.5, "rgba(244, 63, 94, 0.35)");
       atmoGrad.addColorStop(1, "rgba(251, 191, 36, 0)");
-    } else {
-      atmoGrad.addColorStop(0, "rgba(94, 234, 212, 0.5)");
-      atmoGrad.addColorStop(0.6, "rgba(96, 165, 250, 0.2)");
-      atmoGrad.addColorStop(1, "rgba(94, 234, 212, 0)");
     }
 
     pctx.beginPath();
-    pctx.arc(0, 0, radius * 1.35, 0, Math.PI * 2);
+    pctx.arc(0, 0, radius * 1.45, 0, Math.PI * 2);
     pctx.fillStyle = atmoGrad;
     pctx.fill();
 
@@ -1205,37 +1345,74 @@
     const ly = -radius * 0.35;
     const sphereGrad = pctx.createRadialGradient(lx, ly, radius * 0.05, 0, 0, radius);
 
-    if (type === "earth") {
-      sphereGrad.addColorStop(0, "#2563eb");
-      sphereGrad.addColorStop(0.45, "#1d4ed8");
-      sphereGrad.addColorStop(0.85, "#0b1b4f");
-      sphereGrad.addColorStop(1, "#030718");
+    if (type === "earth" || type === "hub") {
+      sphereGrad.addColorStop(0, "#0284c7");
+      sphereGrad.addColorStop(0.35, "#0369a1");
+      sphereGrad.addColorStop(0.7, "#07264a");
+      sphereGrad.addColorStop(0.92, "#04152e");
+      sphereGrad.addColorStop(1, "#010712");
       pctx.fillStyle = sphereGrad;
       pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
 
-      // Continents with rotation
-      const rot = progress * 1.2;
-      pctx.fillStyle = "#10b981";
-      pctx.shadowColor = "#059669";
-      pctx.shadowBlur = 4;
+      // Continents with spherical rotation
+      const rot = progress * 1.5;
+      pctx.fillStyle = "#15803d";
+      pctx.shadowColor = "#166534";
+      pctx.shadowBlur = 3;
 
       for (let c = -1; c <= 1; c++) {
-        const cxOffset = (c * radius * 1.5 + rot * radius * 0.6) % (radius * 2) - radius * 0.3;
+        const cxOffset = (c * radius * 1.4 + rot * radius * 0.7) % (radius * 2.2) - radius * 0.4;
         pctx.beginPath();
-        pctx.ellipse(cxOffset, -radius * 0.2, radius * 0.35, radius * 0.22, 0.2, 0, Math.PI * 2);
-        pctx.ellipse(cxOffset + radius * 0.2, radius * 0.25, radius * 0.4, radius * 0.28, -0.15, 0, Math.PI * 2);
+        pctx.ellipse(cxOffset, -radius * 0.25, radius * 0.36, radius * 0.24, 0.2, 0, Math.PI * 2);
+        pctx.ellipse(cxOffset + radius * 0.22, radius * 0.22, radius * 0.42, radius * 0.26, -0.15, 0, Math.PI * 2);
+        pctx.fill();
+      }
+      pctx.shadowBlur = 0;
+
+      // PASS 1: Volumetric Cloud Shadows onto Ocean & Continents
+      pctx.fillStyle = "rgba(1, 4, 18, 0.42)";
+      for (let c = -1; c <= 1; c++) {
+        const cxOffset = (c * radius * 1.6 + rot * radius * 0.85) % (radius * 2.4) - radius * 0.45;
+        // Cyclone vortex shadow
+        pctx.beginPath();
+        pctx.ellipse(cxOffset + radius * 0.05, -radius * 0.28, radius * 0.28, radius * 0.14, 0.3, 0, Math.PI * 2);
+        pctx.ellipse(cxOffset - radius * 0.1, radius * 0.32, radius * 0.32, radius * 0.12, -0.2, 0, Math.PI * 2);
+        pctx.ellipse(cxOffset + radius * 0.15, 0, radius * 0.45, radius * 0.10, 0.05, 0, Math.PI * 2);
         pctx.fill();
       }
 
-      // Cloud swirls
-      pctx.shadowBlur = 0;
-      pctx.fillStyle = "rgba(255, 255, 255, 0.42)";
+      // PASS 2: Volumetric Swirling Clouds with Cyclones & Highlights
       for (let c = -1; c <= 1; c++) {
-        const cxOffset = (c * radius * 1.8 + rot * radius * 0.8) % (radius * 2.2) - radius * 0.5;
+        const cxOffset = (c * radius * 1.6 + rot * radius * 0.85) % (radius * 2.4) - radius * 0.5;
+
+        // Cyclone Spiral Swirl
+        const cycloneGrad = pctx.createRadialGradient(cxOffset, -radius * 0.32, 2, cxOffset, -radius * 0.32, radius * 0.3);
+        cycloneGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
+        cycloneGrad.addColorStop(0.6, "rgba(224, 242, 254, 0.75)");
+        cycloneGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+        pctx.fillStyle = cycloneGrad;
         pctx.beginPath();
-        pctx.ellipse(cxOffset, -radius * 0.4, radius * 0.45, radius * 0.08, 0.1, 0, Math.PI * 2);
-        pctx.ellipse(cxOffset + radius * 0.1, 0, radius * 0.5, radius * 0.09, -0.05, 0, Math.PI * 2);
-        pctx.ellipse(cxOffset - radius * 0.15, radius * 0.45, radius * 0.38, radius * 0.07, 0.12, 0, Math.PI * 2);
+        pctx.ellipse(cxOffset, -radius * 0.32, radius * 0.3, radius * 0.16, 0.25, 0, Math.PI * 2);
+        pctx.fill();
+
+        // Equatorial ITCZ Cloud Streamers
+        const itczGrad = pctx.createRadialGradient(cxOffset + radius * 0.1, -radius * 0.02, 2, cxOffset + radius * 0.1, -radius * 0.02, radius * 0.45);
+        itczGrad.addColorStop(0, "rgba(255, 255, 255, 0.92)");
+        itczGrad.addColorStop(0.55, "rgba(224, 242, 254, 0.7)");
+        itczGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+        pctx.fillStyle = itczGrad;
+        pctx.beginPath();
+        pctx.ellipse(cxOffset + radius * 0.1, -radius * 0.02, radius * 0.48, radius * 0.11, -0.05, 0, Math.PI * 2);
+        pctx.fill();
+
+        // Southern Baroclinic Storm Front
+        const frontGrad = pctx.createRadialGradient(cxOffset - radius * 0.15, radius * 0.28, 2, cxOffset - radius * 0.15, radius * 0.28, radius * 0.35);
+        frontGrad.addColorStop(0, "rgba(254, 215, 170, 0.85)"); // Twilight tint
+        frontGrad.addColorStop(0.5, "rgba(224, 242, 254, 0.65)");
+        frontGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+        pctx.fillStyle = frontGrad;
+        pctx.beginPath();
+        pctx.ellipse(cxOffset - radius * 0.15, radius * 0.28, radius * 0.36, radius * 0.13, 0.15, 0, Math.PI * 2);
         pctx.fill();
       }
     } else if (type === "cyber") {
@@ -1307,34 +1484,61 @@
         pctx.arc(fx, fy, radius * 0.25, 0, Math.PI * 2);
         pctx.fill();
       }
-    } else {
-      // Hub view
-      sphereGrad.addColorStop(0, "#38bdf8");
-      sphereGrad.addColorStop(0.4, "#0284c7");
-      sphereGrad.addColorStop(0.85, "#082f49");
-      sphereGrad.addColorStop(1, "#020617");
-      pctx.fillStyle = sphereGrad;
-      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
-
-      pctx.strokeStyle = "rgba(94, 234, 212, 0.5)";
-      pctx.lineWidth = Math.max(1, radius * 0.012);
-      pctx.beginPath();
-      pctx.arc(0, 0, radius * 0.7, 0, Math.PI * 2);
-      pctx.stroke();
     }
 
-    // 3. 3D Terminator Shadow
+    // 3. 3D Terminator Shadow with Sunset Twilight Rim
     const shadowGrad = pctx.createRadialGradient(radius * 0.35, radius * 0.35, radius * 0.4, 0, 0, radius * 1.05);
     shadowGrad.addColorStop(0, "rgba(0, 0, 0, 0)");
     shadowGrad.addColorStop(0.65, "rgba(2, 4, 12, 0.45)");
-    shadowGrad.addColorStop(1, "rgba(1, 2, 6, 0.88)");
+    shadowGrad.addColorStop(0.85, "rgba(251, 146, 60, 0.22)"); // Twilight Sunset Rim
+    shadowGrad.addColorStop(1, "rgba(1, 2, 6, 0.92)");
     pctx.fillStyle = shadowGrad;
     pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
 
     pctx.restore(); // end clip
 
-    // 4. Planet Orbit Features (Rings, Beams, Stations outside clipping mask)
-    if (type === "cyber") {
+    // 4. Planet Orbit Features (Rings, Defense Forcefields, Beams outside clipping mask)
+    if (type === "earth" || type === "hub") {
+      // Tactical Planetary Defense Forcefield Rings (Earth Siege & Evacuation Lore)
+      pctx.save();
+      pctx.strokeStyle = "rgba(239, 68, 68, 0.4)";
+      pctx.lineWidth = Math.max(1, radius * 0.015);
+      pctx.setLineDash([6, 10]);
+      pctx.beginPath();
+      pctx.arc(0, 0, radius * 1.2, 0, Math.PI * 2);
+      pctx.stroke();
+
+      pctx.strokeStyle = "rgba(245, 158, 11, 0.45)";
+      pctx.lineWidth = Math.max(1, radius * 0.012);
+      pctx.setLineDash([4, 16]);
+      pctx.beginPath();
+      pctx.arc(0, 0, radius * 1.28, 0, Math.PI * 2);
+      pctx.stroke();
+      pctx.setLineDash([]);
+
+      if (type === "hub") {
+        // High-Tech Orbital Station Ring Structure
+        pctx.strokeStyle = "rgba(94, 234, 212, 0.85)";
+        pctx.lineWidth = Math.max(1.5, radius * 0.025);
+        pctx.beginPath();
+        pctx.ellipse(0, 0, radius * 1.5, radius * 0.45, -0.2, 0, Math.PI * 2);
+        pctx.stroke();
+
+        // Orbital Solar Arrays on Station Ring
+        for (let a = 0; a < 4; a++) {
+          const sAngle = (a * Math.PI / 2) + progress * 0.5;
+          const sx = Math.cos(sAngle) * (radius * 1.5);
+          const sy = Math.sin(sAngle) * (radius * 0.45);
+          pctx.beginPath();
+          pctx.arc(sx, sy, Math.max(2, radius * 0.035), 0, Math.PI * 2);
+          pctx.fillStyle = "#5eead4";
+          pctx.shadowColor = "#5eead4";
+          pctx.shadowBlur = 8;
+          pctx.fill();
+        }
+      }
+      pctx.restore();
+    } else if (type === "cyber") {
       pctx.save();
       pctx.rotate(-0.35);
       pctx.beginPath();
