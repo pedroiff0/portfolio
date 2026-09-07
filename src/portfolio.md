@@ -29,7 +29,7 @@ icon: star
 ## Metadados
 full_name: Pedro Henrique Rocha de Andrade
 orcid: 0009-0003-6724-4640
-instagram: fckpeeh
+instagram: ra.pedroh
 featured: ReLaTeX, Sistema Acadêmico, Projeto Profissional (template), awesome-skills, meu-setup
 
 ## Projetos
@@ -496,12 +496,12 @@ desc: 🇧🇷 Bolsa PIBIC/CNPq: aprendizado de máquina sobre Gaia DR3 + GALAH 
 - icon: scholar | labelKey: scholar | value: Pedro H. R. de Andrade | href: https://scholar.google.com.br/citations?user=qG9tHGEAAAAJ&hl=pt-BR
 - icon: orcid | labelKey: orcid | value: 0009-0003-6724-4640 | href: https://orcid.org/0009-0003-6724-4640
 - icon: lattes | labelKey: lattes | value: 6818168089966785 | href: http://lattes.cnpq.br/6818168089966785
-- icon: instagram | labelKey: instagram | value: @fckpeeh | href: https://instagram.com/fckpeeh
+- icon: instagram | labelKey: instagram | value: @ra.pedroh | href: https://instagram.com/ra.pedroh
 - icon: globe | labelKey: site | value: www.phrandrade.com | href: https://www.phrandrade.com/pt-br/
 - icon: pin | labelKey: location | value: Bom Jesus do Itabapoana, RJ — Brasil
 
 ## Extra
-instagram: fckpeeh
+instagram: ra.pedroh
 hobby: Animações e simulações científicas (divulgação científica em física/astronomia).
 grade: 90 disciplinas mapeadas no Sistema Acadêmico (grade IFF Eng. de Computação, 1º→10º período).
 nickname: cinzento

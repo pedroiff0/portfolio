@@ -4,255 +4,555 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pedro Rocha — Engenharia de Computação &amp; Astrofísica</title>
-  <meta name="description" content="Portfólio de Pedro Rocha: Engenharia de Computação (IFF), bolsista PIBIC/CNPq, pesquisa em astrofísica computacional. Projetos: ReLaTeX, Sistema Acadêmico, Sistema de Avaliações, Currículo, Lattes." />
-  <meta name="author" content="Pedro Rocha" />
+  <meta name="description" content="Portfólio de Pedro Rocha: Engenharia de Computação (IFF), bolsista PIBIC/CNPq, pesquisa em astrofísica computacional, sistemas distribuídos e software acadêmico." />
+  <meta name="author" content="Pedro Henrique Rocha de Andrade" />
   <meta property="og:title" content="Pedro Rocha — Engenharia de Computação & Astrofísica" />
-  <meta property="og:description" content="Portfólio profissional: software, pesquisa astronômica e produtividade acadêmica." />
+  <meta property="og:description" content="Portfólio profissional: software, pesquisa astronômica e computação científica." />
   <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#03050c" />
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <!-- Fundo: galáxias rotacionando (mouse) + constelações + estrelas -->
-  <canvas id="galaxies" aria-hidden="true"></canvas>
-  <canvas id="constel" aria-hidden="true"></canvas>
-  <canvas id="starfield" aria-hidden="true"></canvas>
-  <div class="nebula nebula--1" aria-hidden="true"></div>
-  <div class="nebula nebula--2" aria-hidden="true"></div>
-  <div class="grid-overlay" aria-hidden="true"></div>
-  <div class="bg-veil" aria-hidden="true"></div>
 
-  <!-- Barra de navegação -->
-  <header class="nav" id="nav">
-    <a class="nav__brand" href="#inicio">
-      <span class="nav__logo" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="28" height="28"><circle cx="16" cy="16" r="6" fill="url(#g1)"/><ellipse cx="16" cy="16" rx="14" ry="5.5" fill="none" stroke="url(#g1)" stroke-width="1.4" transform="rotate(-25 16 16)"/><defs><linearGradient id="g1" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#6ea8fe"/><stop offset="1" stop-color="#b692ff"/></linearGradient></defs></svg>
-      </span>
-      <span>Pedro<strong>Rocha</strong></span>
-    </a>
-    <nav class="nav__links" aria-label="Navegação principal">
-      <a href="#sobre" data-i18n-nav="0">Sobre</a>
-      <a href="#projetos" data-i18n-nav="1">Projetos</a>
-      <a href="#trabalhos" data-i18n-nav="2">Trabalhos</a>
-      <a href="#pesquisa" data-i18n-nav="3">Pesquisa</a>
-      <a href="#curriculo" data-i18n-nav="4">Currículo</a>
-      <a href="#lattes" data-i18n-nav="5">Lattes</a>
-      <a href="#contato" class="nav__cta" data-i18n-nav="6">Contato</a>
-    </nav>
-    <div class="lang-switch" role="group" aria-label="Selecionar idioma / Select language / Seleccionar idioma / Choisir la langue">
-      <button class="lang-btn" data-lang="pt" aria-label="Português (Brasil)">
-        <svg class="flag" viewBox="0 0 20 14"><rect width="20" height="14" fill="#009b3a"/><path d="M10 2.2 17.6 7 10 11.8 2.4 7z" fill="#ffdf00"/><circle cx="10" cy="7" r="2.4" fill="#002776"/><path d="M8.4 6.4a2.4 2.4 0 0 1 3.2 0" fill="none" stroke="#fff" stroke-width=".4"/></svg>
-        <span>PT-BR</span>
-      </button>
-      <button class="lang-btn" data-lang="en" aria-label="English">
-        <svg class="flag" viewBox="0 0 20 14"><rect width="20" height="14" fill="#fff"/><g fill="#b22234"><rect width="20" height="1.4"/><rect y="2.8" width="20" height="1.4"/><rect y="5.6" width="20" height="1.4"/><rect y="8.4" width="20" height="1.4"/><rect y="11.2" width="20" height="1.4"/></g><rect width="8" height="7.6" fill="#3c3b6e"/></svg>
-        <span>EN</span>
-      </button>
-      <button class="lang-btn" data-lang="es" aria-label="Español">
-        <svg class="flag" viewBox="0 0 20 14"><rect width="20" height="14" fill="#aa151b"/><rect y="3.5" width="20" height="7" fill="#f1bf00"/><rect y="0" width="20" height="3.5" fill="#aa151b"/><rect y="10.5" width="20" height="3.5" fill="#aa151b"/></svg>
-        <span>ES</span>
-      </button>
-      <button class="lang-btn" data-lang="fr" aria-label="Français">
-        <svg class="flag" viewBox="0 0 20 14"><rect width="6.6" height="14" fill="#0055A4"/><rect x="6.6" width="6.8" height="14" fill="#fff"/><rect x="13.4" width="6.6" height="14" fill="#EF4135"/></svg>
-        <span>FR</span>
-      </button>
+  <!-- 1. CINEMATIC INTRO: REALISTIC ASTROPHYSICS RE-ENTRY & DEVOPS STREAM -->
+  <div class="intro-overlay" id="introOverlay">
+    <canvas id="introCanvas"></canvas>
+
+    <!-- Top Perimeter Tape -->
+    <div class="intro-top-tape">
+      <div class="intro-mission-tag">
+        <span class="pulse-dot"></span>
+        <span>ASTROPHYSICS ORBITAL DESCENT // TARGET: 21.7° S, 41.3° W // IFF</span>
+      </div>
+      <button class="btn-skip-intro" id="skipIntroBtn">Pular Introdução [ESC] ⏭️</button>
     </div>
-    <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
-      <span></span><span></span><span></span>
+
+    <!-- Bottom Perimeter Flight Dock (DevOps Stream + Flight Telemetry) -->
+    <div class="intro-bottom-dock">
+      <!-- Live DevOps Pipeline Stream Terminal -->
+      <div class="intro-devops-stream">
+        <div class="intro-devops-stream__head">
+          <span>// LIVE CI/CD &amp; DEVOPS TELEMETRY</span>
+          <span style="color: var(--accent-cyan); font-weight: 600;">● STREAMING</span>
+        </div>
+        <div class="intro-devops-stream__lines" id="introTerminalLines">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Re-entry Telemetry & Enter Button -->
+      <div class="intro-control-card">
+        <div class="intro-altitude-telemetry">
+          <span>STATUS DE POUSO:</span>
+          <strong id="introStatusPercent">0% (ALT: 400 KM)</strong>
+        </div>
+        <div class="intro-progress-bar">
+          <div class="intro-progress-fill" id="introProgressFill"></div>
+        </div>
+        <button class="btn-core btn-core--primary" id="enterMissionBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span>ACESSAR SISTEMA / HUB</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COSMOS BACKGROUND CANVAS & AMBIENT SHADERS -->
+  <canvas id="cosmosCanvas" aria-hidden="true"></canvas>
+  <div class="cosmic-overlay" aria-hidden="true">
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="cyber-grid"></div>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <!-- INTERACTIVE COSMIC CURSOR -->
+  <div id="cursorGlow" class="cursor-glow" aria-hidden="true"></div>
+  <div id="cursorDot" class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- TOAST NOTIFICATIONS CONTAINER -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- ============================================================
+       2. MAIN COSMIC HUD VIEWPORT (ZERO ACCIDENTAL OVERFLOW)
+       ============================================================ -->
+  <div class="main-hud-viewport" id="mainHudViewport">
+    <!-- Top HUD Navigation Bar -->
+    <header class="top-hud-bar">
+      <div class="hud-brand">
+        <svg viewBox="0 0 32 32" width="28" height="28">
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32">
+              <stop stop-color="#5eead4" />
+              <stop offset="0.5" stop-color="#6ea8fe" />
+              <stop offset="1" stop-color="#b692ff" />
+            </linearGradient>
+          </defs>
+          <circle cx="16" cy="16" r="6" fill="url(#logoGrad)" />
+          <ellipse cx="16" cy="16" rx="14" ry="4.8" fill="none" stroke="url(#logoGrad)" stroke-width="1.6" transform="rotate(-28 16 16)" />
+        </svg>
+        <span>Pedro<strong>Rocha</strong></span>
+      </div>
+
+      <div class="hud-top-controls">
+        <button class="btn-hud-pill" id="replayIntroBtn" title="Reassistir Animação de Entrada">
+          <span>🚀 Intro</span>
+        </button>
+
+        <button class="btn-hud-pill" data-open-cmd aria-label="Abrir Terminal (Ctrl+K)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span>Buscar</span>
+          <span class="kbd-shortcut">⌘K</span>
+        </button>
+
+        <button class="btn-hud-pill" id="sfxToggle" aria-label="Alternar Efeitos Sonoros"></button>
+
+        <!-- Language Switcher -->
+        <div class="lang-switch-hud" role="group" aria-label="Selecionar Idioma">
+          <button class="lang-btn" data-lang="pt">PT</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="es">ES</button>
+          <button class="lang-btn" data-lang="fr">FR</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Central Minimalist Core Stage -->
+    <main class="center-core-stage">
+      <div class="core-telemetry-tag">
+        <span class="pulse-dot"></span>
+        <span>ORBITAL STATION // IFF BOM JESUS // PIBIC/CNPq</span>
+      </div>
+
+      <h1 class="core-name-title">
+        Pedro <span>Rocha</span>
+      </h1>
+
+      <p class="core-subtitle" data-i18n="hero.sub">
+        Construo software para a academia e uso computação para entender o cosmos.
+        Estudante de <strong>Engenharia de Computação</strong> e bolsista de Iniciação Científica (PIBIC/CNPq).
+      </p>
+
+      <!-- Interactive 3D Cosmic Core Orb in Center -->
+      <div class="core-orb-visual" aria-hidden="true" title="Arraste para interagir com a gravidade">
+        <div class="core-orb-planet"></div>
+        <div class="core-orb-ring"><span class="core-orb-moon"></span></div>
+      </div>
+
+      <div class="core-actions">
+        <button class="btn-core btn-core--primary" data-open-sector="software">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span>Explorar Projetos</span>
+        </button>
+        <button class="btn-core btn-core--ghost" data-open-cmd>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          <span>Terminal (⌘K)</span>
+        </button>
+        <button class="btn-core btn-core--ghost" data-open-sector="contato">
+          <span>Conectar</span>
+        </button>
+      </div>
+    </main>
+
+    <!-- 4 PERIMETER CORNER HUD NODES (Desktop View) -->
+    <!-- Top-Left: Setor 01 / Sobre Mim -->
+    <div class="corner-node node-top-left" data-open-sector="sobre" role="button" aria-label="Abrir Setor 01: Sobre Mim">
+      <div class="corner-node__icon">👤</div>
+      <div class="corner-node__texts">
+        <span class="corner-node__kicker">SETOR 01 // PERFIL</span>
+        <span class="corner-node__title">Sobre Mim</span>
+        <span class="corner-node__sub">Trajetória &amp; Métricas</span>
+      </div>
+    </div>
+
+    <!-- Top-Right: Setor 02 / Software -->
+    <div class="corner-node node-top-right" data-open-sector="software" role="button" aria-label="Abrir Setor 02: Software & Sistemas">
+      <div class="corner-node__icon">💻</div>
+      <div class="corner-node__texts">
+        <span class="corner-node__kicker">SETOR 02 // SOFTWARE</span>
+        <span class="corner-node__title">Projetos &amp; Código</span>
+        <span class="corner-node__sub">12 Sistemas no GitHub</span>
+      </div>
+    </div>
+
+    <!-- Bottom-Left: Setor 03 / Pesquisa -->
+    <div class="corner-node node-bottom-left" data-open-sector="pesquisa" role="button" aria-label="Abrir Setor 03: Pesquisa Astrofísica">
+      <div class="corner-node__icon">🔭</div>
+      <div class="corner-node__texts">
+        <span class="corner-node__kicker">SETOR 03 // ASTROFÍSICA</span>
+        <span class="corner-node__title">Pesquisa &amp; Bolsas</span>
+        <span class="corner-node__sub">Gaia DR3, GALAH &amp; PIBIC</span>
+      </div>
+    </div>
+
+    <!-- Bottom-Right: Setor 04 / CV & Contatos -->
+    <div class="corner-node node-bottom-right" data-open-sector="contato" role="button" aria-label="Abrir Setor 04: CV & Contatos">
+      <div class="corner-node__icon">📄</div>
+      <div class="corner-node__texts">
+        <span class="corner-node__kicker">SETOR 04 // ARQUIVOS</span>
+        <span class="corner-node__title">CV &amp; Contatos</span>
+        <span class="corner-node__sub">LaTeX altacv &amp; Lattes CNPq</span>
+      </div>
+    </div>
+
+    <!-- Unified Liquid Glass Cosmic Footer (Main HUD) -->
+    <footer class="app-footer app-footer--hud">
+      <div class="rodape-frase">
+        &copy; 2026
+        <a class="rodape-marca" href="#" data-action="home" aria-label="Pedro Rocha — Central Hub">Pedro Rocha</a>
+        — Engenharia de Computação &amp; Astrofísica Computacional · IFF / PIBIC-CNPq, feito com
+        <span class="rodape-icone" title="café" aria-label="café" role="img">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 8h1a3 3 0 0 1 0 6h-1"/><path d="M3 8h14v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8Z"/><path d="M7 4c0 1-1 1-1 2M11 3c0 1-1 1-1 2M15 4c0 1-1 1-1 2"/></svg>
+        </span>,
+        <span class="rodape-icone" title="código" aria-label="código" role="img">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/><path d="M14 4l-4 16"/></svg>
+        </span> e
+        <span class="rodape-icone" title="cometas" aria-label="cometas" role="img">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="16" cy="8" r="3.2" fill="currentColor" stroke="none"/><path d="M13 11 3 21"/><path d="M12 7 6 10M17 13l-3 6"/></svg>
+        </span>
+        por <a href="https://github.com/pedroiff0" target="_blank" rel="noopener">Pedro Henrique Rocha de Andrade</a>
+        · <button class="footer-sector-btn" data-open-sector="sobre">Sobre</button>
+        · <button class="footer-sector-btn" data-open-sector="software">Software</button>
+        · <button class="footer-sector-btn" data-open-sector="pesquisa">Pesquisa</button>
+        · <button class="footer-sector-btn" data-open-sector="contato">CV &amp; Contatos</button>
+        · <a href="https://www.phrandrade.com/pt-br/" target="_blank" rel="noopener" class="footer-site-link">Site Oficial ↗</a>
+      </div>
+      <nav class="rodape-links" aria-label="Redes sociais e profissionais">
+        <a class="rodape-icone-link" href="https://github.com/pedroiff0" target="_blank" rel="noopener" title="GitHub (@pedroiff0)" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+        </a>
+        <a class="rodape-icone-link" href="https://www.linkedin.com/in/pedroiff0/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.45 1.45 0 1 0 0-2.9 1.45 1.45 0 0 0 0 2.9m1.39 9.74v-8.37H5.07v8.37h2.78z"/></svg>
+        </a>
+        <a class="rodape-icone-link" href="https://instagram.com/ra.pedroh" target="_blank" rel="noopener" title="Instagram (@ra.pedroh)" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a class="rodape-icone-link" href="https://www.phrandrade.com/pt-br/" target="_blank" rel="noopener" title="Site Oficial" aria-label="Site Oficial">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"/></svg>
+        </a>
+      </nav>
+    </footer>
+  </div>
+
+  <!-- MOBILE HUD BOTTOM DOCK (< 900px) -->
+  <nav class="mobile-hud-dock" aria-label="Navegação Mobile">
+    <button class="dock-btn" data-open-sector="sobre">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      <span>Sobre</span>
     </button>
-  </header>
+    <button class="dock-btn" data-open-sector="software">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h2M11 8h6"/></svg>
+      <span>Software</span>
+    </button>
+    <button class="dock-btn" data-open-sector="pesquisa">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+      <span>Pesquisa</span>
+    </button>
+    <button class="dock-btn" data-open-sector="contato">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+      <span>Contato</span>
+    </button>
+  </nav>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="inicio">
-      <div class="hero__inner">
-        <p class="hero__eyebrow" data-i18n="hero.eyebrow">Engenharia de Computação · Instituto Federal Fluminense</p>
-        <h1 class="hero__title">
-          Pedro <span class="grad">Rocha</span>
-        </h1>
-        <p class="hero__fullname">Pedro Henrique Rocha de Andrade</p>
-        <p class="hero__sub" data-i18n="hero.sub">
-          Construo software para a academia e uso computação para entender o cosmos.
-          Estudante de Engenharia de Computação, bolsista de Iniciação Científica
-          (PIBIC/CNPq), na interseção entre <em>métodos computacionais</em> e
-          <em>astrofísica</em>.
-        </p>
-        <div class="hero__actions">
-          <a href="#projetos" class="btn btn--primary" data-i18n="hero.ver">Ver projetos</a>
-          <a href="#contato" class="btn btn--ghost" data-i18n="hero.falar">Falar comigo</a>
-        </div>
-        <div class="hero__badges" id="heroBadges"><!-- preenchido por JS --></div>
-        <p class="hero__note" id="heroNote"></p>
+  <!-- ============================================================
+       3. DEDICATED SECTOR DOSSIER OVERLAYS (NO SCROLL CLUTTER)
+       ============================================================ -->
+  <div class="sector-dossier-overlay" id="sectorDossierOverlay" role="dialog" aria-modal="true">
+    <!-- Dossier Sticky Header Bar -->
+    <div class="dossier-header-bar">
+      <div class="dossier-nav-left">
+        <button class="btn-return-hub" id="closeDossierBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+          <span>Retornar ao Hub [ESC]</span>
+        </button>
+        <span class="dossier-sector-title" id="dossierActiveTitle">SETOR 01 // SOBRE MIM</span>
       </div>
-      <div class="hero__orbit" aria-hidden="true">
-        <div class="planet"></div>
-        <div class="ring ring--1"><span class="moon moon--1"></span></div>
-        <div class="ring ring--2"><span class="moon moon--2"></span></div>
-        <div class="ring ring--3"><span class="moon moon--3"></span></div>
-      </div>
-      <a class="scroll-cue" href="#sobre" aria-label="Rolar para baixo">
-        <span></span>
-      </a>
-    </section>
 
-    <div class="disclaimer">
-      <p class="l lang-pt">⚠️ <strong>Aviso:</strong> Este é um portfólio-resumo de projetos no GitHub. Para o conteúdo completo (pesquisa, disciplinas, mídia e blog), visite meu <a href="https://www.phrandrade.com/pt-br/" target="_blank" rel="noopener">site oficial</a>.</p>
-      <p class="l lang-en">⚠️ <strong>Disclaimer:</strong> This is a short GitHub-projects portfolio. For the full content (research, classes, media and blog), visit my <a href="https://www.phrandrade.com/en/" target="_blank" rel="noopener">official site</a>.</p>
-      <p class="l lang-es">⚠️ <strong>Aviso:</strong> Este es un portafolio-resumen de proyectos en GitHub. Para el contenido completo (investigación, asignaturas, medios y blog), visita mi <a href="https://www.phrandrade.com/es/" target="_blank" rel="noopener">sitio oficial</a>.</p>
-      <p class="l lang-fr">⚠️ <strong>Avertissement :</strong> Ceci est un portfolio résumé de projets GitHub. Pour le contenu complet (recherche, matières, médias et blog), visitez mon <a href="https://www.phrandrade.com/fr/" target="_blank" rel="noopener">site officiel</a>.</p>
+      <!-- Quick Switcher Tabs between Sectors -->
+      <div class="dossier-sector-tabs">
+        <button class="tab-sector-btn" data-switch-sector="sobre">01 // Sobre</button>
+        <button class="tab-sector-btn" data-switch-sector="software">02 // Software</button>
+        <button class="tab-sector-btn" data-switch-sector="pesquisa">03 // Pesquisa</button>
+        <button class="tab-sector-btn" data-switch-sector="contato">04 // CV &amp; Contato</button>
+      </div>
     </div>
 
-    <section class="section" id="sobre">
-      <div class="section__head reveal">
-        <span class="section__kicker">01 — Sobre mim</span>
-        <h2 class="section__title" data-i18n="sections.sobre.title">Trajetória entre código e estrelas</h2>
-      </div>
-      <div class="about">
-        <div class="about__text reveal" data-i18n="about" data-html="1"><!-- preenchido por JS --></div>
-        <div class="about__stats reveal">
-          <div class="stat">
-            <span class="stat__num" data-count="90">0</span>
-            <span class="stat__label">disciplinas mapeadas no Sistema Acadêmico</span>
-          </div>
-          <div class="stat">
-            <span class="stat__num" data-count="2">0</span>
-            <span class="stat__label">edições IAAC (2024 &amp; 2025)</span>
-          </div>
-          <div class="stat">
-            <span class="stat__num" data-count="3">0</span>
-            <span class="stat__label">certificações Cisco (CCNA/CyberOps/IoT)</span>
-          </div>
-          <div class="stat">
-            <span class="stat__num" data-count="28">0</span>
-            <span class="stat__label">repositórios no GitHub (públicos + privados)</span>
-          </div>
+    <!-- Dossier Scrollable Content Body -->
+    <div class="dossier-content-body">
+      <!-- PANEL 1: SOBRE MIM -->
+      <div class="dossier-panel" id="panel-sobre">
+        <div class="section-dossier-head">
+          <span class="section-dossier-kicker">SETOR 01 // TRAJETÓRIA &amp; FORMAÇÃO</span>
+          <h2 class="section-dossier-title" data-i18n="sections.sobre.title">Trajetória entre código e estrelas</h2>
         </div>
-      </div>
-    </section>
-
-    <!-- PROJETOS -->
-    <section class="section" id="projetos">
-      <div class="section__head reveal">
-        <span class="section__kicker">02 — Projetos de software</span>
-        <h2 class="section__title" data-i18n="sections.projetos.title">O que eu construo</h2>
-        <p class="section__lead" data-i18n="sections.projetos.lead">Clique em qualquer cartão para revelar os detalhes técnicos.</p>
-      </div>
-      <div class="cards" id="projectGrid"><!-- preenchido por JS --></div>
-    </section>
-
-    <!-- TODOS OS TRABALHOS -->
-    <section class="section" id="trabalhos">
-      <div class="section__head reveal">
-        <span class="section__kicker">02b — Todos os trabalhos</span>
-        <h2 class="section__title" data-i18n="sections.trabalhos.title">Tudo o que eu faço no GitHub</h2>
-        <p class="section__lead" data-i18n="sections.trabalhos.lead">
-          Lista completa dos meus repositórios — públicos e privados — com um short brief de cada um.
-          Clique em qualquer cartão para ver os detalhes.
-        </p>
-      </div>
-      <div id="allRepos"><!-- preenchido por JS (por categoria) --></div>
-    </section>
-
-    <!-- PESQUISA -->
-    <section class="section" id="pesquisa">
-      <div class="section__head reveal">
-        <span class="section__kicker">03 — Pesquisa</span>
-        <h2 class="section__title" data-i18n="sections.pesquisa.title">Astronomia computacional</h2>
-        <p class="section__lead" data-i18n="sections.pesquisa.lead">Linhas de pesquisa e projetos científicos — expanda para ler.</p>
-      </div>
-      <div class="accordion" id="researchList"><!-- preenchido por JS --></div>
-    </section>
-
-    <!-- BOLSAS / PESQUISA -->
-    <section class="section" id="bolsas">
-      <div class="section__head reveal">
-        <span class="section__kicker">03b — Projetos de bolsa</span>
-        <h2 class="section__title" data-i18n="sections.bolsas.title">Iniciação Científica &amp; Pesquisa</h2>
-        <p class="section__lead" data-i18n="sections.bolsas.lead">Projetos de bolsa e voluntariado em astrofísica computacional (extraídos do meu CV).</p>
-      </div>
-      <div class="bolsas" id="bolsaList"><!-- preenchido por JS --></div>
-    </section>
-
-    <!-- CURRICULO -->
-    <section class="section" id="curriculo">
-      <div class="section__head reveal">
-        <span class="section__kicker">04 — Currículo</span>
-        <h2 class="section__title" data-i18n="sections.curriculo.title">Curriculum Vitae</h2>
-      </div>
-      <div class="cv reveal">
-        <p class="cv__text">
-          Meu CV é mantido em LaTeX (classe <code>altacv</code>) com versões em
-          português, inglês, espanhol e francês. É compilado automaticamente via
-          <code>Makefile</code> (<code>make portugueseCV</code>, <code>make englishCV</code>…).
-        </p>
-        <div class="cv__preview" aria-hidden="true">
-          <div class="cv__page">
-            <div class="cv__bar"></div>
-            <div class="cv__lines">
-              <span style="width:60%"></span><span style="width:90%"></span>
-              <span style="width:75%"></span><span style="width:85%"></span>
-              <span style="width:50%"></span><span style="width:95%"></span>
-              <span style="width:70%"></span><span style="width:80%"></span>
+        <div class="about__grid">
+          <div class="about__text" data-i18n="about" data-html="1"><!-- preenchido por JS --></div>
+          <div class="about__stats-grid">
+            <div class="spotlight-card stat-box">
+              <span class="stat-box__num" data-count="90">0</span>
+              <span class="stat-box__label">disciplinas mapeadas no Sistema Acadêmico</span>
+            </div>
+            <div class="spotlight-card stat-box">
+              <span class="stat-box__num" data-count="2">0</span>
+              <span class="stat-box__label">edições IAAC (2024 &amp; 2025)</span>
+            </div>
+            <div class="spotlight-card stat-box">
+              <span class="stat-box__num" data-count="3">0</span>
+              <span class="stat-box__label">certificações Cisco (CCNA / CyberOps / IoT)</span>
+            </div>
+            <div class="spotlight-card stat-box">
+              <span class="stat-box__num" data-count="28">0</span>
+              <span class="stat-box__label">repositórios no GitHub (públicos + privados)</span>
             </div>
           </div>
         </div>
-        <div class="cv__actions">
-          <a class="btn btn--primary" href="https://github.com/pedroiff0/cv" target="_blank" rel="noopener">Repositório do CV</a>
-          <a class="btn btn--ghost" href="https://raw.githubusercontent.com/pedroiff0/cv/main/portugueseCV.pdf" target="_blank" rel="noopener">CV (PT) PDF</a>
-          <a class="btn btn--ghost" href="https://raw.githubusercontent.com/pedroiff0/cv/main/englishCV.pdf" target="_blank" rel="noopener">CV (EN) PDF</a>
-        </div>
-      </div>
-    </section>
 
-    <!-- LATTES -->
-    <section class="section" id="lattes">
-      <div class="section__head reveal">
-        <span class="section__kicker">05 — Lattes</span>
-        <h2 class="section__title" data-i18n="sections.lattes.title">Plataforma Lattes (CNPq)</h2>
-      </div>
-      <div class="lattes reveal">
-        <div class="lattes__card">
-          <div class="lattes__avatar" aria-hidden="true">PR</div>
-          <div class="lattes__body">
-            <h3>Pedro Henrique Rocha de Andrade</h3>
-            <p class="lattes__id">ID Lattes: <code>6818168089966785</code></p>
-            <a class="btn btn--primary" href="http://lattes.cnpq.br/6818168089966785" target="_blank" rel="noopener">Abrir currículo Lattes</a>
+        <div class="tech-matrix">
+          <div class="tech-matrix__title">// CORE STACK &amp; FERRAMENTAS CIENTÍFICAS</div>
+          <div class="tech-matrix__tags">
+            <span class="tech-badge">Python 3</span>
+            <span class="tech-badge">C (C99/C11)</span>
+            <span class="tech-badge">Node.js &amp; Express</span>
+            <span class="tech-badge">MongoDB</span>
+            <span class="tech-badge">Astropy &amp; Gaia DR3</span>
+            <span class="tech-badge">GALAH DR4 Spectrograms</span>
+            <span class="tech-badge">Linux Administration</span>
+            <span class="tech-badge">Docker &amp; Docker Compose</span>
+            <span class="tech-badge">LaTeX &amp; Sphinx</span>
+            <span class="tech-badge">Cisco CCNA &amp; Networks</span>
+            <span class="tech-badge">Machine Learning</span>
           </div>
         </div>
-        <div class="lattes__resume">
-          <p>
-            Estudante de Engenharia de Computação no IFF (Bom Jesus do Itabapoana - RJ),
-            bolsista de Iniciação Científica (PIBIC/CNPq), com pesquisa na interseção
-            entre métodos computacionais e problemas astrofísicos — arqueologia galáctica,
-            populações estelares e estrutura da Via Láctea. Experiência em aprendizado de
-            máquina aplicado a dados astronômicos (Gaia, surveys complementares),
-            simulações dinâmicas de aglomerados de galáxias e remoção de rastros de
-            satélites em imagens astronômicas.
-          </p>
+      </div>
+
+      <!-- PANEL 2: SOFTWARE & PROJETOS -->
+      <div class="dossier-panel" id="panel-software">
+        <div class="section-dossier-head">
+          <span class="section-dossier-kicker">SETOR 02 // SOFTWARE &amp; ENGENHARIA</span>
+          <h2 class="section-dossier-title" data-i18n="sections.projetos.title">O que eu construo</h2>
+          <p class="section-dossier-lead" data-i18n="sections.projetos.lead">Clique em qualquer cartão para ver o dossiê técnico detalhado.</p>
+        </div>
+
+        <!-- Controls: Category Filter + Search -->
+        <div class="projects-controls">
+          <div class="filter-tabs">
+            <button class="filter-btn active" data-category="all"><span>Todos</span></button>
+            <button class="filter-btn" data-category="software"><span>Software</span></button>
+            <button class="filter-btn" data-category="pesquisa"><span>Pesquisa</span></button>
+            <button class="filter-btn" data-category="academico"><span>Acadêmico</span></button>
+            <button class="filter-btn" data-category="pessoal"><span>Pessoal</span></button>
+          </div>
+
+          <div class="search-box">
+            <svg class="search-box__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="projectSearch" placeholder="Filtrar por nome, tecnologia ou tag..." aria-label="Buscar projetos" />
+          </div>
+        </div>
+
+        <div class="cards-grid" id="projectGrid"><!-- preenchido por JS --></div>
+
+        <div class="cat-group">
+          <div class="cat-group__head">
+            <h3 class="cat-group__title">Todos os Trabalhos no GitHub</h3>
+          </div>
+          <div id="allRepos"><!-- preenchido por JS --></div>
         </div>
       </div>
-    </section>
 
-    <!-- CONTATO -->
-    <section class="section" id="contato">
-      <div class="section__head reveal">
-        <span class="section__kicker">06 — Contato</span>
-        <h2 class="section__title" data-i18n="sections.contato.title">Vamos nos conectar</h2>
+      <!-- PANEL 3: PESQUISA & BOLSAS -->
+      <div class="dossier-panel" id="panel-pesquisa">
+        <div class="section-dossier-head">
+          <span class="section-dossier-kicker">SETOR 03 // ASTROFÍSICA &amp; CNPQ</span>
+          <h2 class="section-dossier-title" data-i18n="sections.pesquisa.title">Astronomia computacional</h2>
+          <p class="section-dossier-lead">Projetos de pesquisa em astrofísica e Iniciação Científica (PIBIC/CNPq).</p>
+        </div>
+
+        <!-- Interactive Stellar Spectrum Simulator -->
+        <div class="spectrum-widget">
+          <div class="spectrum-widget__head">
+            <div class="spectrum-widget__title">
+              <span>🔭 Simulador de Espectro Estelar</span>
+              <span class="spectrum-widget__title-badge">GALAH DR4 &amp; Gaia Wavelengths</span>
+            </div>
+            <div class="spectrum-widget__info" id="spectrumInfo">
+              Arraste o cursor abaixo para inspecionar linhas de absorção
+            </div>
+          </div>
+          <canvas id="spectrumCanvas"></canvas>
+          <div class="spectrum-controls">
+            <input type="range" id="spectrumSlider" class="spectrum-slider" min="3800" max="8600" value="6563" step="1" aria-label="Comprimento de onda em Angstroms" />
+          </div>
+        </div>
+
+        <div class="research-accordion" id="researchList"><!-- preenchido por JS --></div>
+
+        <div class="section-dossier-head" style="margin-top: 40px;">
+          <span class="section-dossier-kicker">INICIAÇÃO CIENTÍFICA &amp; BOLSAS</span>
+          <h3 class="section-dossier-title" style="font-size: 1.8rem;" data-i18n="sections.bolsas.title">Projetos de Bolsa</h3>
+        </div>
+        <div class="bolsas-grid" id="bolsaList"><!-- preenchido por JS --></div>
       </div>
-      <div class="contact reveal" id="contactList"><!-- preenchido por JS --></div>
-    </section>
-  </main>
 
-  <footer class="footer">
-    <div class="footer__inner">
-      <span>© <span id="year"></span> <a href="https://www.phrandrade.com/pt-br/" target="_blank" rel="noopener">Pedro Henrique Rocha de Andrade</a> — <span data-i18n="footer">feito com café, código e um céu estrelado.</span></span>
-      <a href="#inicio" class="footer__top">Voltar ao topo ↑</a>
+      <!-- PANEL 4: CV, LATTES & CONTATOS -->
+      <div class="dossier-panel" id="panel-contato">
+        <div class="section-dossier-head">
+          <span class="section-dossier-kicker">SETOR 04 // CURRICULUM &amp; CONEXÕES</span>
+          <h2 class="section-dossier-title" data-i18n="sections.curriculo.title">Curriculum Vitae &amp; Contatos</h2>
+        </div>
+
+        <!-- CV Section -->
+        <div class="cv-container">
+          <div class="cv-info">
+            <p class="cv-info__text">
+              Meu CV é mantido em LaTeX (classe <code>altacv</code>) com versões sincronizadas em
+              português, inglês, espanhol e francês. Compilado via <code>Makefile</code>.
+            </p>
+            <div class="cv-actions">
+              <a class="btn-core btn-core--primary" href="https://github.com/pedroiff0/cv" target="_blank" rel="noopener">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.8-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg>
+                <span>Repositório do CV</span>
+              </a>
+              <a class="btn-core btn-core--ghost" href="https://raw.githubusercontent.com/pedroiff0/cv/main/portugueseCV.pdf" target="_blank" rel="noopener">
+                <span>PDF (PT)</span>
+              </a>
+              <a class="btn-core btn-core--ghost" href="https://raw.githubusercontent.com/pedroiff0/cv/main/englishCV.pdf" target="_blank" rel="noopener">
+                <span>PDF (EN)</span>
+              </a>
+            </div>
+          </div>
+          <div class="cv-preview-3d" aria-hidden="true">
+            <div class="cv-sheet">
+              <div class="cv-sheet__scanline"></div>
+              <div class="cv-sheet__header"></div>
+              <div class="cv-sheet__lines">
+                <span style="width:75%"></span><span style="width:90%"></span>
+                <span style="width:65%"></span><span style="width:85%"></span>
+                <span style="width:50%"></span><span style="width:95%"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lattes Section -->
+        <div class="lattes-container">
+          <div class="spotlight-card lattes-card">
+            <div class="lattes-avatar" aria-hidden="true">PR</div>
+            <h3 class="lattes-name">Pedro Henrique Rocha de Andrade</h3>
+            <div class="lattes-id-wrap">
+              <span>ID Lattes:</span>
+              <code>6818168089966785</code>
+              <button class="btn-copy-lattes" id="copyLattesBtn" title="Copiar ID Lattes">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </div>
+            <a class="btn-core btn-core--primary" href="http://lattes.cnpq.br/6818168089966785" target="_blank" rel="noopener" style="width: 100%;">
+              <span>Abrir Currículo Lattes</span>
+            </a>
+          </div>
+          <div class="lattes-resume">
+            <p>
+              Estudante de Engenharia de Computação no IFF (Bom Jesus do Itabapoana - RJ),
+              bolsista de Iniciação Científica (PIBIC/CNPq), com pesquisa na interseção
+              entre métodos computacionais e problemas astrofísicos — arqueologia galáctica,
+              populações estelares e estrutura da Via Láctea.
+            </p>
+          </div>
+        </div>
+
+        <!-- Contacts Grid -->
+        <div class="section-dossier-head" style="margin-top: 32px;">
+          <span class="section-dossier-kicker">CANAIS DIRETOS</span>
+          <h3 class="section-dossier-title" style="font-size: 1.8rem;" data-i18n="sections.contato.title">Vamos nos conectar</h3>
+        </div>
+        <div class="contacts-grid" id="contactList"><!-- preenchido por JS --></div>
+      </div>
+
+      <!-- Unified Liquid Glass Cosmic Footer (Inside Dossier) -->
+      <footer class="app-footer app-footer--dossier">
+        <div class="rodape-frase">
+          &copy; 2026
+          <a class="rodape-marca" href="#" data-action="home" aria-label="Pedro Rocha — Central Hub">Pedro Rocha</a>
+          — Engenharia de Computação &amp; Astrofísica Computacional · IFF / PIBIC-CNPq, feito com
+          <span class="rodape-icone" title="café" aria-label="café" role="img">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 8h1a3 3 0 0 1 0 6h-1"/><path d="M3 8h14v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8Z"/><path d="M7 4c0 1-1 1-1 2M11 3c0 1-1 1-1 2M15 4c0 1-1 1-1 2"/></svg>
+          </span>,
+          <span class="rodape-icone" title="código" aria-label="código" role="img">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/><path d="M14 4l-4 16"/></svg>
+          </span> e
+          <span class="rodape-icone" title="cometas" aria-label="cometas" role="img">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="16" cy="8" r="3.2" fill="currentColor" stroke="none"/><path d="M13 11 3 21"/><path d="M12 7 6 10M17 13l-3 6"/></svg>
+          </span>
+          por <a href="https://github.com/pedroiff0" target="_blank" rel="noopener">Pedro Henrique Rocha de Andrade</a>
+          · <button class="footer-sector-btn" data-open-sector="sobre">Sobre</button>
+          · <button class="footer-sector-btn" data-open-sector="software">Software</button>
+          · <button class="footer-sector-btn" data-open-sector="pesquisa">Pesquisa</button>
+          · <button class="footer-sector-btn" data-open-sector="contato">CV &amp; Contatos</button>
+          · <a href="https://www.phrandrade.com/pt-br/" target="_blank" rel="noopener" class="footer-site-link">Site Oficial ↗</a>
+        </div>
+        <nav class="rodape-links" aria-label="Redes sociais e profissionais">
+          <a class="rodape-icone-link" href="https://github.com/pedroiff0" target="_blank" rel="noopener" title="GitHub (@pedroiff0)" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+          </a>
+          <a class="rodape-icone-link" href="https://www.linkedin.com/in/pedroiff0/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.45 1.45 0 1 0 0-2.9 1.45 1.45 0 0 0 0 2.9m1.39 9.74v-8.37H5.07v8.37h2.78z"/></svg>
+          </a>
+          <a class="rodape-icone-link" href="https://instagram.com/ra.pedroh" target="_blank" rel="noopener" title="Instagram (@ra.pedroh)" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a class="rodape-icone-link" href="https://www.phrandrade.com/pt-br/" target="_blank" rel="noopener" title="Site Oficial" aria-label="Site Oficial">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"/></svg>
+          </a>
+        </nav>
+      </footer>
     </div>
-  </footer>
+  </div>
+
+  <!-- COMMAND PALETTE MODAL -->
+  <div class="cmd-backdrop" id="cmdBackdrop" role="dialog" aria-modal="true" aria-label="Command Palette">
+    <div class="cmd-modal">
+      <div class="cmd-search-wrap">
+        <svg class="cmd-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" class="cmd-input" id="cmdInput" placeholder="Buscar projetos, pesquisa, comandos, contatos..." />
+        <span class="cmd-esc-badge">ESC</span>
+      </div>
+      <div class="cmd-results" id="cmdResults"></div>
+      <div class="cmd-footer">
+        <span>Navegar: <kbd>↑</kbd> <kbd>↓</kbd></span>
+        <span>Executar: <kbd>↵</kbd></span>
+        <span>Fechar: <kbd>ESC</kbd></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT DETAILS MODAL -->
+  <div class="project-modal-backdrop" id="projectModalBackdrop" role="dialog" aria-modal="true" aria-label="Detalhes do Projeto">
+    <div class="project-modal-content">
+      <button class="project-modal__close" id="projectModalClose" aria-label="Fechar modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-proj__header">
+        <div class="modal-proj__icon" id="modalProjIcon"></div>
+        <div>
+          <h2 class="modal-proj__title" id="modalProjTitle"></h2>
+          <div style="display: flex; gap: 8px;">
+            <span class="badge-vis badge-vis--public" id="modalProjVis"></span>
+            <span class="tag-cat" id="modalProjCat"></span>
+          </div>
+        </div>
+      </div>
+      <p class="modal-proj__desc" id="modalProjDesc"></p>
+      <div class="modal-proj__section-title">// STACK &amp; TAGS TÉCNICAS</div>
+      <div class="modal-proj__stack" id="modalProjStack"></div>
+      <div class="modal-proj__actions" id="modalProjActions"></div>
+    </div>
+  </div>
 
   <script src="assets/js/projects.js"></script>
   <script src="assets/js/main.js"></script>

@@ -655,8 +655,8 @@ const CONTACTS = [
   {
     icon: "instagram",
     labelKey: "instagram",
-    value: "@fckpeeh",
-    href: "https://instagram.com/fckpeeh"
+    value: "@ra.pedroh",
+    href: "https://instagram.com/ra.pedroh"
   },
   {
     icon: "globe",
@@ -673,7 +673,7 @@ const CONTACTS = [
 ];
 
 const EXTRA = {
-  instagram: "fckpeeh",
+  instagram: "ra.pedroh",
   hobby: "Animações e simulações científicas (divulgação científica em física/astronomia).",
   grade: "90 disciplinas mapeadas no Sistema Acadêmico (grade IFF Eng. de Computação, 1º→10º período).",
   nickname: "cinzento"
