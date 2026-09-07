@@ -718,7 +718,8 @@ const I18N = {
       },
       curriculo: { title: "Currículo & Material", lead: "" },
       lattes: { title: "Plataforma Lattes (CNPq)", lead: "" },
-      contato: { title: "Vamos nos conectar", lead: "Fale comigo pelo canal que preferir." }
+      contato: { title: "Vamos nos conectar", lead: "Fale comigo pelo canal que preferir." },
+      contatoHero: { title: "Horizonte de Eventos · Onde o Código Transcende o Espaço-Tempo" }
     },
     about: [
       "Sou estudante de <strong>Engenharia de Computação</strong> no <strong>Instituto Federal Fluminense (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, e bolsista de Iniciação Científica (<strong>PIBIC/CNPq</strong>). Minha pesquisa fica na fronteira entre computação e astronomia: arqueologia galáctica, populações estelares e estrutura da Via Láctea, com aprendizado de máquina aplicado a dados do <em>Gaia</em> e de surveys complementares.",
@@ -764,6 +765,28 @@ const I18N = {
       statusExplorer: "STATUS EXPLORADOR",
       radar: "📡 RADAR ORBITAL // MINIMAP",
       skipIntro: "Pular [ESC] ⏭️"
+    },
+    hub: {
+      sector1: { kicker: "SETOR 01 // TERRA", title: "Sobre Mim", sub: "Trajetória & Métricas" },
+      sector2: { kicker: "SETOR 02 // MARTE", title: "Projetos & Código", sub: "12 Sistemas no GitHub" },
+      sector3: {
+        kicker: "SETOR 03 // SATURNO",
+        title: "Pesquisa & Bolsas",
+        sub: "Gaia DR3, GALAH & PIBIC"
+      },
+      sector4: {
+        kicker: "SETOR 04 // GARGÂNTUA",
+        title: "CV & Contatos",
+        sub: "Interestelar & Lattes CNPq"
+      }
+    },
+    kickers: {
+      sobre: "SETOR 01 // TERRA · TRAJETÓRIA & FORMAÇÃO",
+      software: "SETOR 02 // MARTE · SOFTWARE & ENGENHARIA",
+      pesquisa: "SETOR 03 // SATURNO · ASTROFÍSICA & CNPQ",
+      bolsas: "INICIAÇÃO CIENTÍFICA & BOLSAS",
+      contato: "SETOR 04 // SINGULARIDADE GARGÂNTUA · PROTOCOLO LAZARUS",
+      contatoChannels: "CANAIS DIRETOS // TRANSMISSÃO DEEP SPACE"
     }
   },
   en: {
@@ -800,7 +823,8 @@ const I18N = {
       },
       curriculo: { title: "Resume & Material", lead: "" },
       lattes: { title: "Lattes Platform (CNPq)", lead: "" },
-      contato: { title: "Let's connect", lead: "Reach me through your preferred channel." }
+      contato: { title: "Let's connect", lead: "Reach me through your preferred channel." },
+      contatoHero: { title: "Event Horizon · Where Code Transcends Spacetime" }
     },
     about: [
       "I am an undergraduate <strong>Computer Engineering</strong> student at the <strong>Fluminense Federal Institute (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, and a Scientific Initiation Scholar (<strong>PIBIC/CNPq</strong>). My research lies at the frontier of computing and astronomy: galactic archaeology, stellar populations and the structure of the Milky Way, with machine learning applied to <em>Gaia</em> and complementary survey data.",
@@ -846,6 +870,28 @@ const I18N = {
       statusExplorer: "EXPLORER STATUS",
       radar: "📡 ORBITAL RADAR // MINIMAP",
       skipIntro: "Skip [ESC] ⏭️"
+    },
+    hub: {
+      sector1: { kicker: "SECTOR 01 // EARTH", title: "About Me", sub: "Journey & Metrics" },
+      sector2: { kicker: "SECTOR 02 // MARS", title: "Projects & Code", sub: "12 Systems on GitHub" },
+      sector3: {
+        kicker: "SECTOR 03 // SATURN",
+        title: "Research & Grants",
+        sub: "Gaia DR3, GALAH & PIBIC"
+      },
+      sector4: {
+        kicker: "SECTOR 04 // GARGANTUA",
+        title: "CV & Contacts",
+        sub: "Interstellar & Lattes CNPq"
+      }
+    },
+    kickers: {
+      sobre: "SECTOR 01 // EARTH · JOURNEY & EDUCATION",
+      software: "SECTOR 02 // MARS · SOFTWARE & ENGINEERING",
+      pesquisa: "SECTOR 03 // SATURN · ASTROPHYSICS & CNPQ",
+      bolsas: "SCIENTIFIC INITIATION & GRANTS",
+      contato: "SECTOR 04 // GARGANTUA SINGULARITY · LAZARUS PROTOCOL",
+      contatoChannels: "DIRECT CHANNELS // DEEP SPACE TRANSMISSION"
     }
   },
   es: {
@@ -893,7 +939,8 @@ const I18N = {
       },
       curriculo: { title: "Currículum y Material", lead: "" },
       lattes: { title: "Plataforma Lattes (CNPq)", lead: "" },
-      contato: { title: "Conectemos", lead: "Contáctame por el canal que prefieras." }
+      contato: { title: "Conectemos", lead: "Contáctame por el canal que prefieras." },
+      contatoHero: { title: "Horizonte de Sucesos · Donde el Código Trasciende el Espacio-Tiempo" }
     },
     about: [
       "Soy estudiante de <strong>Ingeniería Informática</strong> en el <strong>Instituto Federal Fluminense (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, y becario de Iniciación Científica (<strong>PIBIC/CNPq</strong>). Mi investigación está en la frontera entre computación y astronomía: arqueología galáctica, poblaciones estelares y estructura de la Vía Láctea, con aprendizaje automático aplicado a datos del <em>Gaia</em> y de relevamientos complementarios.",
@@ -944,6 +991,32 @@ const I18N = {
       statusExplorer: "ESTADO EXPLORADOR",
       radar: "📡 RADAR ORBITAL // MINIMAPA",
       skipIntro: "Saltar [ESC] ⏭️"
+    },
+    hub: {
+      sector1: { kicker: "SECTOR 01 // TIERRA", title: "Sobre Mí", sub: "Trayectoria & Métricas" },
+      sector2: {
+        kicker: "SECTOR 02 // MARTE",
+        title: "Proyectos & Código",
+        sub: "12 Sistemas en GitHub"
+      },
+      sector3: {
+        kicker: "SECTOR 03 // SATURNO",
+        title: "Investigación & Becas",
+        sub: "Gaia DR3, GALAH & PIBIC"
+      },
+      sector4: {
+        kicker: "SECTOR 04 // GARGANTÚA",
+        title: "CV & Contactos",
+        sub: "Interestelar & Lattes CNPq"
+      }
+    },
+    kickers: {
+      sobre: "SECTOR 01 // TIERRA · TRAYECTORIA & FORMACIÓN",
+      software: "SECTOR 02 // MARTE · SOFTWARE & INGENIERÍA",
+      pesquisa: "SECTOR 03 // SATURNO · ASTROFÍSICA & CNPQ",
+      bolsas: "INICIACIÓN CIENTÍFICA & BECAS",
+      contato: "SECTOR 04 // SINGULARIDAD GARGANTÚA · PROTOCOLO LÁZARO",
+      contatoChannels: "CANALES DIRECTOS // TRANSMISIÓN DEEP SPACE"
     }
   },
   fr: {
@@ -983,7 +1056,8 @@ const I18N = {
       },
       curriculo: { title: "CV et Matériel", lead: "" },
       lattes: { title: "Plateforme Lattes (CNPq)", lead: "" },
-      contato: { title: "Restons en contact", lead: "Joignez-moi par le canal de votre choix." }
+      contato: { title: "Restons en contact", lead: "Joignez-moi par le canal de votre choix." },
+      contatoHero: { title: "Horizon des Événements · Où le Code Transcende l'Espace-Temps" }
     },
     about: [
       "Je suis étudiant en <strong>génie informatique</strong> à l'<strong>Institut Fédéral Fluminense (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, et boursier d'Initiation Scientifique (<strong>PIBIC/CNPq</strong>). Ma recherche se situe à la frontière de l'informatique et de l'astronomie : archéologie galactique, populations stellaires et structure de la Voie lactée, avec apprentissage automatique appliqué aux données du <em>Gaia</em> et de relevés complémentaires.",
@@ -1034,6 +1108,32 @@ const I18N = {
       statusExplorer: "STATUT EXPLORATEUR",
       radar: "📡 RADAR ORBITAL // MINICARTE",
       skipIntro: "Passer [ESC] ⏭️"
+    },
+    hub: {
+      sector1: {
+        kicker: "SECTEUR 01 // TERRE",
+        title: "À propos de moi",
+        sub: "Parcours & Statistiques"
+      },
+      sector2: { kicker: "SECTEUR 02 // MARS", title: "Projets & Code", sub: "12 systèmes sur GitHub" },
+      sector3: {
+        kicker: "SECTEUR 03 // SATURNE",
+        title: "Recherche & Bourses",
+        sub: "Gaia DR3, GALAH & PIBIC"
+      },
+      sector4: {
+        kicker: "SECTEUR 04 // GARGANTUA",
+        title: "CV & Contacts",
+        sub: "Interstellaire & Lattes CNPq"
+      }
+    },
+    kickers: {
+      sobre: "SECTEUR 01 // TERRE · PARCOURS & FORMATION",
+      software: "SECTEUR 02 // MARS · LOGICIEL & INGÉNIERIE",
+      pesquisa: "SECTEUR 03 // SATURNE · ASTROPHYSIQUE & CNPQ",
+      bolsas: "INITIATION SCIENTIFIQUE & BOURSES",
+      contato: "SECTEUR 04 // SINGULARITÉ GARGANTUA · PROTOCOLE LAZARE",
+      contatoChannels: "CANAUX DIRECTS // TRANSMISSION DEEP SPACE"
     }
   }
 };

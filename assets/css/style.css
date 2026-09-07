@@ -1935,26 +1935,6 @@ body.cursor-active .cursor-glow {
   filter: drop-shadow(0 0 14px rgba(253, 224, 71, 0.85)) drop-shadow(0 0 26px rgba(245, 158, 11, 0.5));
 }
 
-/* Once decoded, the relic identifies where it's from (no longer anonymous) */
-.egg-label {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 4px;
-  white-space: nowrap;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.6px;
-  color: #fde68a;
-  background: rgba(6, 10, 26, 0.88);
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  border-radius: var(--radius-full);
-  padding: 2px 8px;
-  pointer-events: none;
-}
-
 .floating-easter-egg.collected-burst {
   animation: eggBurstAnim 0.6s var(--ease-out-expo) forwards !important;
 }
@@ -2187,6 +2167,11 @@ body.cursor-active .cursor-glow {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  /* Flex items don't shrink below their content's min-content width by
+     default, which let long rank names (e.g. "ASTROFÍSICO DE ELITE",
+     "COMANDANTE SUPREMO") force this column to wrap into two lines instead
+     of just truncating. min-width:0 lets it shrink properly. */
+  min-width: 0;
 }
 
 .rank-tag {
@@ -2196,6 +2181,10 @@ body.cursor-active .cursor-glow {
   letter-spacing: 1.5px;
   color: var(--accent-cyan);
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .rank-xp {
@@ -3274,7 +3263,8 @@ body.konami-active {
 .gta-hud-bar {
   position: fixed;
   left: 24px;
-  bottom: 24px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 200px;
   max-width: calc(100vw - 48px);
   background: rgba(6, 10, 26, 0.94);
@@ -3291,8 +3281,11 @@ body.konami-active {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(94, 234, 212, 0.2);
   animation: slideInLeftHUD 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  /* Collapsed by default (just the title pill) so it never sits on top of
-     dossier text or the mobile CTA stack — expand on demand. */
+  /* Vertically centered on the left — mirrors .hud-task-tracker, which sits
+     centered on the right (see its own comment: "opposite to Task Tracker").
+     Collapsed by default (just the title pill) so it never sits on top of
+     dossier text, and no longer anchored to bottom:24px (that was colliding
+     with the footer). */
 }
 
 .gta-hud-bar.collapsed {

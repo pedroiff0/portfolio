@@ -3090,7 +3090,7 @@
       return `rgb(${Math.round(r * 255)}, ${Math.round(g * 255)}, ${Math.round(b * 255)})`;
     }
 
-    function drawSpectrum(targetWavelength) {
+    function drawSpectrum(targetWavelength, isUserInteraction = true) {
       const w = canvas.width = canvas.clientWidth * (window.devicePixelRatio || 1);
       const h = canvas.height = canvas.clientHeight * (window.devicePixelRatio || 1);
       const minW = 3800, maxW = 8600;
@@ -3122,7 +3122,7 @@
       const match = absorptionLines.find((l) => Math.abs(l.lambda - targetWavelength) < 45);
       if (match) {
         info.innerHTML = `🔭 <strong>${targetWavelength} Å</strong> — Linha: <span style="color:var(--accent-amber);">${match.name}</span> (${match.element})`;
-        if (match.name.includes("H-alpha") || targetWavelength === 6563) {
+        if (isUserInteraction && (match.name.includes("H-alpha") || targetWavelength === 6563)) {
           completeQuest("spectrum");
         }
       } else {
@@ -3134,7 +3134,11 @@
       drawSpectrum(parseInt(e.target.value, 10));
     });
 
-    drawSpectrum(6563);
+    // Initial render only — the default slider value happens to be exactly
+    // H-alpha (6563), so without the isUserInteraction guard this alone
+    // completed the "spectrum" quest (and fired its toast) on every page
+    // load, before the user ever touched the slider.
+    drawSpectrum(6563, false);
   }
 
   /* ============================================================
@@ -3965,7 +3969,6 @@
     }
 
     showToast("💰 MOTHERLODE // +§50.000 Simoleons depositados no tesouro orbital!", "cash");
-    completeQuest("hacker");
 
     setTimeout(() => {
       document.body.classList.remove("sims-green-flash");
@@ -3979,7 +3982,6 @@
     document.body.classList.add("gta-hesoyam-flash");
     updateExplorerCash(250000);
     showToast("💵 HESOYAM // +$250.000, Saúde e Blindagem no Máximo!", "cash");
-    completeQuest("hacker");
 
     setTimeout(() => {
       document.body.classList.remove("gta-hesoyam-flash");
@@ -4029,7 +4031,6 @@
     }, 1000);
 
     showToast("⭐ PAINKILLER // Escudo invulnerável ativado (5 min)!", "star");
-    completeQuest("hacker");
   }
 
   /* ============================================================
@@ -4090,7 +4091,6 @@
     }
 
     showToast("🎸 'Can you hear the silence?' // Tocando no Mini Player do YouTube...", "star");
-    completeQuest("hacker");
 
     setTimeout(() => {
       document.body.classList.remove("bmth-glitch-active");
@@ -4282,7 +4282,6 @@
     setTimeout(() => document.body.classList.remove("screen-quake-active"), 900);
 
     showToast("🪓 'BOY! Não tenha pena. Seja melhor.' // Fúria Ativada!", "star");
-    completeQuest("hacker");
 
     setTimeout(() => {
       document.body.classList.remove("spartan-rage-active");
@@ -4308,7 +4307,6 @@
     }
 
     showToast("👁️ FOCUS ATIVADO // Varredura holográfica em 360°", "spectrum");
-    completeQuest("hacker");
 
     setTimeout(() => {
       document.body.classList.remove("focus-scan-active");
@@ -4371,16 +4369,12 @@
   function triggerNolanTotem() {
     sfx.bornThisWay();
     showToast("🌀 'O pião continua girando sem parar...' // Paradoxo Quântico", "star");
-    completeQuest("hacker");
-    completeQuest("easterEgg");
     triggerSupernovaBurst(window.innerWidth * 0.5 * (dpr || 1), window.innerHeight * 0.5 * (dpr || 1));
   }
 
   function triggerGargantuaInterstellar() {
     sfx.bornThisWay();
     showToast("🕳️ 'Não entre dócil nessa noite escura...' // Singularidade Gravitacional", "star");
-    completeQuest("hacker");
-    completeQuest("easterEgg");
   }
 
   const FLOATING_EASTER_EGGS_LIST = [
@@ -4508,19 +4502,16 @@
       if (pos.right) btn.style.right = pos.right;
       btn.style.animationDelay = `${idx * -2.4}s`;
 
-      btn.innerHTML = `<span class="egg-icon">${egg.icon}</span>${alreadyDiscovered ? `<span class="egg-label">${egg.name}</span>` : ""}`;
+      // Icon only — no on-screen text, before or after discovery. The name/
+      // source is exposed via title/aria-label (hover tooltip + screen
+      // readers) instead of a visible label.
+      btn.innerHTML = `<span class="egg-icon">${egg.icon}</span>`;
 
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
         btn.classList.add("collected-burst", "discovered");
         btn.setAttribute("title", revealedTitle);
         btn.setAttribute("aria-label", `Relíquia decodificada: ${egg.name}`);
-        if (!btn.querySelector(".egg-label")) {
-          const label = document.createElement("span");
-          label.className = "egg-label";
-          label.textContent = egg.name;
-          btn.appendChild(label);
-        }
 
         const firstDiscovery = !discoveredSet.has(egg.id);
         discoveredSet.add(egg.id);
@@ -5007,51 +4998,13 @@
       if (val) el.setAttribute("placeholder", val);
     });
 
-    // Translate all hardcoded kickers
-    document.querySelectorAll(".section-dossier-kicker").forEach((el) => {
-      const panel = el.closest(".dossier-panel");
-      if (!panel) return;
-      const panelId = panel.id;
-      let kickerKey = null;
-      if (panelId === "panel-sobre") kickerKey = "kickers.setor01";
-      else if (panelId === "panel-software") kickerKey = "kickers.setor02";
-      else if (panelId === "panel-pesquisa") kickerKey = "kickers.setor03";
-      else if (panelId === "panel-contato") kickerKey = "kickers.setor04";
-      if (kickerKey) {
-        const val = t(kickerKey);
-        if (val) el.textContent = val;
-      }
-    });
-
-    // Translate sector titles
-    document.querySelectorAll(".section-dossier-title").forEach((el) => {
-      const panel = el.closest(".dossier-panel");
-      if (!panel) return;
-      const panelId = panel.id;
-      let titleKey = null;
-      if (panelId === "panel-sobre") titleKey = "titles.setor01";
-      else if (panelId === "panel-software") titleKey = "titles.setor02";
-      else if (panelId === "panel-pesquisa") titleKey = "titles.setor03";
-      else if (panelId === "panel-contato") titleKey = "titles.setor04";
-      if (titleKey) {
-        const val = t(titleKey);
-        if (val) el.textContent = val;
-      }
-    });
-
-    // Translate sector leads
-    document.querySelectorAll(".section-dossier-lead").forEach((el) => {
-      const panel = el.closest(".dossier-panel");
-      if (!panel) return;
-      const panelId = panel.id;
-      let leadKey = null;
-      if (panelId === "panel-software") leadKey = "leads.setor02";
-      else if (panelId === "panel-pesquisa") leadKey = "leads.setor03";
-      if (leadKey) {
-        const val = t(leadKey);
-        if (val) el.textContent = val;
-      }
-    });
+    // Kickers/titles/leads are translated individually via [data-i18n] above
+    // (kickers.*, sections.*.title, sections.*.lead) — this used to be a
+    // second, panel-id-based pass targeting kickers.setorNN/titles.setorNN/
+    // leads.setorNN, none of which ever existed in interface.yaml, so it was
+    // silently a no-op; removed rather than resurrected to avoid the second
+    // pass re-overwriting an already-translated kicker with the wrong text
+    // (some panels have more than one .section-dossier-kicker).
 
     // Translate interstellar banner (Nolan quotes)
     const quote1 = document.querySelector(".nolan-quote-text");
@@ -5099,20 +5052,8 @@
       }
     }
 
-    // Translate corner nodes
-    const cornerMappings = [
-      { selector: ".node-top-left .corner-node__kicker", key: "kickers.setor01" },
-      { selector: ".node-top-right .corner-node__kicker", key: "kickers.setor02" },
-      { selector: ".node-bottom-left .corner-node__kicker", key: "kickers.setor03" },
-      { selector: ".node-bottom-right .corner-node__kicker", key: "kickers.setor04" }
-    ];
-    cornerMappings.forEach(({ selector, key }) => {
-      const el = document.querySelector(selector);
-      if (el) {
-        const val = t(key);
-        if (val) el.textContent = val;
-      }
-    });
+    // Corner nodes (hub.sectorN.kicker/title/sub) are translated individually
+    // via [data-i18n] above, same as the dossier kickers.
 
     document.querySelectorAll(".lang-btn").forEach((b) => {
       b.classList.toggle("active", b.dataset.lang === lang);

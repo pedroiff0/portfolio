@@ -8,6 +8,57 @@ See also: `CLAUDE.md` (architecture map + commands) and
 `.claude/skills/cosmic-portfolio/SKILL.md` (playbook for this specific
 "gamified space-hub portfolio" pattern — CSS/JS gotchas, testing method).
 
+## 2026-09-07 (part 2) — Follow-up fixes from user QA
+
+- **Easter eggs stacking multiple quest completions/toasts per click** — every
+  `triggerXCheat`/`triggerXEasterEgg` function called `completeQuest("hacker")`
+  itself, *in addition to* `renderFloatingEasterEggs`'s click handler already
+  calling `completeQuest("easterEgg")` — a single relic click could fire up to
+  3 toasts. Removed the redundant `completeQuest("hacker")` calls from those
+  trigger functions; "hacker" now only completes from the command-palette
+  (⌘K) flow it's actually meant to track (`"Executar comando secreto no ⌘K"`).
+  Also removed the duplicated `completeQuest("easterEgg")` inside
+  `triggerNolanTotem`/`triggerGargantuaInterstellar` (the click handler
+  already adds it once, generically, for any relic).
+- **"Espectroscopia H-Alpha" quest auto-completing on every page load** — a
+  real bug, unrelated to easter eggs: `initSpectrumSimulator()` called
+  `drawSpectrum(6563)` once on init just to pre-render the widget, and 6563 Å
+  happens to be exactly the H-alpha wavelength the quest checks for, so it
+  fired (and toasted) on load regardless of whether the user ever touched the
+  slider. `drawSpectrum` now takes an `isUserInteraction` flag; only the
+  slider's own `input` handler passes `true`.
+- Floating easter eggs are icon-only again — no visible text label, before
+  *or* after discovery (the source is still exposed via `title`/
+  `aria-label` for hover tooltips and screen readers, just not as on-screen
+  text). A prior fix in this same session had added a small always-visible
+  label after discovery; reverted per explicit feedback.
+- HUD "Status Explorador" moved back to vertically centered on the **left**
+  (`top:50%`), mirroring `.hud-task-tracker` on the right (there's a comment
+  in the CSS itself: `/* HUD Status Bar ... Left Lateral Fixed opposite to
+  Task Tracker */`) — a session-2 fix had anchored it to `bottom:24px`, which
+  both broke the intended left/right symmetry and collided with the footer.
+  Collapsed-by-default is unchanged.
+- **Hub corner-node sector cards (kicker/title/sub) and every dossier-panel
+  kicker were never translated** — not a wiring bug so much as the i18n data
+  never existing: `applyI18n()` looked up `kickers.setorNN` / `titles.setorNN`
+  / `leads.setorNN` for these, and none of those keys were ever defined in
+  `src/interface.yaml` (`t()` silently returns `""` for a missing path, so it
+  was a no-op, not an error). Added real `hub.sectorN.{kicker,title,sub}` and
+  `kickers.{sobre,software,pesquisa,bolsas,contato,contatoChannels}` entries
+  (4 languages) to `interface.yaml`, wired each corner-node/kicker span with
+  its own `data-i18n` attribute, and removed the old generic panel-id-based
+  translation passes in `applyI18n` (besides being dead code, matching by
+  ancestor `.dossier-panel` id was unsafe — some panels have more than one
+  `.section-dossier-kicker`, e.g. Setor 03's own kicker vs. the "bolsas"
+  sub-section's, so a single `kickers.setor03` value would have overwritten
+  both with the same text). Also added `sections.contatoHero.title` (Setor
+  04's main heading had no i18n key at all before) and wired
+  `sections.pesquisa.lead` to its paragraph (the key already existed in the
+  YAML but nothing referenced it).
+- Ran `python3 tools/build.py` to regenerate `assets/js/projects.js` with the
+  new i18n content — remember to do this after any `interface.yaml`/
+  `portfolio.md` edit, the pre-commit hook only catches it at commit time.
+
 ## 2026-09-07 — Bug sweep + dark-only theme
 
 Large fix pass triggered by a user report covering nearly the whole site. Root
