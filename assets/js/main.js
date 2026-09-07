@@ -1648,6 +1648,47 @@
   let galaxy = { cx: 0.78, cy: 0.4, rot: 0, spin: 0.001, arms: 3, stars: [] };
   let constelNodes = [];
   let meteors = [];
+  let supernovas = [];
+
+  function triggerSupernovaBurst(x, y) {
+    if (!cosmosCanvas || !ctx) return;
+    const supernova = {
+      x: x || (cw * 0.5),
+      y: y || (ch * 0.5),
+      radius: 4,
+      maxRadius: 160 * (dpr || 1),
+      particles: [],
+      alpha: 1,
+      decay: 0.02
+    };
+
+    for (let i = 0; i < 36; i++) {
+      const angle = (i / 36) * Math.PI * 2;
+      const speed = (Math.random() * 5 + 2) * (dpr || 1);
+      supernova.particles.push({
+        x: supernova.x,
+        y: supernova.y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        size: (Math.random() * 2.5 + 1.2) * (dpr || 1),
+        color: Math.random() > 0.5 ? "#5eead4" : (Math.random() > 0.3 ? "#f59e0b" : "#ec4899")
+      });
+    }
+
+    supernovas.push(supernova);
+
+    if (sfxEnabled) {
+      try {
+        playTone(523.25, "sine", 0.12, 0.04);
+        setTimeout(() => playTone(659.25, "triangle", 0.15, 0.04), 60);
+        setTimeout(() => playTone(783.99, "sine", 0.2, 0.045), 120);
+        setTimeout(() => playTone(1046.50, "sine", 0.35, 0.05), 180);
+      } catch (e) {}
+    }
+
+    showToast("✨ Supernova Descoberta! Radiação cósmica registrada nos sensores.", "star");
+    completeQuest("supernova");
+  }
 
   function initCosmos() {
     if (!cosmosCanvas) return;
@@ -1663,6 +1704,13 @@
 
     window.addEventListener("pointerleave", () => {
       mouse.active = false;
+    });
+
+    cosmosCanvas.addEventListener("click", (e) => {
+      const rect = cosmosCanvas.getBoundingClientRect();
+      const clickX = (e.clientX - rect.left) * dpr;
+      const clickY = (e.clientY - rect.top) * dpr;
+      triggerSupernovaBurst(clickX, clickY);
     });
 
     if (!reduceMotion) requestAnimationFrame(renderCosmos);
@@ -1840,6 +1888,38 @@
       if (m.life <= 0 || m.x > cw || m.y > ch) {
         meteors.splice(i, 1);
       }
+    }
+
+    // Supernovas Render Loop
+    for (let i = supernovas.length - 1; i >= 0; i--) {
+      const sn = supernovas[i];
+      sn.radius += (sn.maxRadius - sn.radius) * 0.08;
+      sn.alpha -= sn.decay;
+
+      if (sn.alpha <= 0.01) {
+        supernovas.splice(i, 1);
+        continue;
+      }
+
+      ctx.beginPath();
+      ctx.arc(sn.x, sn.y, sn.radius, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(245, 158, 11, ${sn.alpha * 0.8})`;
+      ctx.lineWidth = 2.5 * dpr;
+      ctx.shadowColor = "#f59e0b";
+      ctx.shadowBlur = 15;
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      for (const p of sn.particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = sn.alpha;
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
     }
 
     requestAnimationFrame(renderCosmos);
@@ -2231,6 +2311,9 @@
       const match = absorptionLines.find((l) => Math.abs(l.lambda - targetWavelength) < 45);
       if (match) {
         info.innerHTML = `🔭 <strong>${targetWavelength} Å</strong> — Linha: <span style="color:var(--accent-amber);">${match.name}</span> (${match.element})`;
+        if (match.name.includes("H-alpha") || targetWavelength === 6563) {
+          completeQuest("spectrum");
+        }
       } else {
         info.innerHTML = `🔭 <strong>${targetWavelength} Å</strong> — Espectro Contínuo Estelar (GAIA DR3 / GALAH DR4)`;
       }
@@ -2244,7 +2327,7 @@
   }
 
   /* ============================================================
-     10. COMMAND PALETTE (Cmd+K / Ctrl+K)
+     10. COMMAND PALETTE (Cmd+K / Ctrl+K) & SECRET EASTER EGGS
      ============================================================ */
   const cmdBackdrop = document.getElementById("cmdBackdrop");
   const cmdInput = document.getElementById("cmdInput");
@@ -2283,6 +2366,107 @@
       { type: "lang", title: "Changer de langue : Français (FR)", sub: "fr", icon: "globe", act: () => applyLang("fr") }
     ];
 
+    // Secret Easter Egg Commands
+    const secretActions = [];
+    if (q.includes("matrix") || q.includes("neo")) {
+      secretActions.push({
+        type: "secret",
+        title: "⚡ EXECUTAR: Protocolo Matrix (Digital Rain)",
+        sub: "Easter Egg // 'There is no spoon...'",
+        icon: "darkmatter",
+        tag: "SECRET",
+        act: () => {
+          showToast("🟢 Modo Matrix Ativado: Siga o coelho branco...", "star");
+          triggerKonamiMode();
+          completeQuest("hacker");
+        }
+      });
+    }
+    if (q === "42" || q.includes("guia") || q.includes("mochileiro") || q.includes("douglas")) {
+      secretActions.push({
+        type: "secret",
+        title: "🌌 EXECUTAR: O Sentido da Vida, do Universo e Tudo Mais",
+        sub: "Easter Egg // Resposta: 42 (Douglas Adams)",
+        icon: "star",
+        tag: "SECRET",
+        act: () => {
+          showToast("🌌 42: A Resposta para a Vida, o Universo e Tudo Mais. Não Entre em Pânico!", "star");
+          sfx.warp();
+          completeQuest("hacker");
+        }
+      });
+    }
+    if (q.includes("blackhole") || q.includes("buraco") || q.includes("singularidade") || q.includes("gargantua")) {
+      secretActions.push({
+        type: "secret",
+        title: "🕳️ EXECUTAR: Horizonte de Eventos de Gargantua",
+        sub: "Easter Egg // Dilatação Temporal Relativística",
+        icon: "darkmatter",
+        tag: "SECRET",
+        act: () => {
+          showToast("🕳️ Horizonte de Eventos atingido. Dilatação temporal: 1h aqui = 7 anos na Terra.", "star");
+          sfx.warp();
+          completeQuest("hacker");
+        }
+      });
+    }
+    if (q.includes("apollo") || q.includes("saturn") || q.includes("nasa") || q.includes("moon")) {
+      secretActions.push({
+        type: "secret",
+        title: "🚀 EXECUTAR: Telemetria Apollo 11 (Saturn V)",
+        sub: "Easter Egg // 'Houston, Tranquility Base here. The Eagle has landed.'",
+        icon: "satellite",
+        tag: "SECRET",
+        act: () => {
+          showToast("🚀 Apollo 11: 'Um pequeno passo para o homem, um salto gigante para a humanidade.'", "satellite");
+          sfx.warp();
+          completeQuest("hacker");
+        }
+      });
+    }
+    if (q.includes("coffee") || q.includes("cafe") || q.includes("cafeina")) {
+      secretActions.push({
+        type: "secret",
+        title: "☕ EXECUTAR: Injeção de Cafeína DevOps",
+        sub: "Easter Egg // Recarga de 100% de Uptime",
+        icon: "box",
+        tag: "SECRET",
+        act: () => {
+          showToast("☕ Cafeína injetada nos servidores: Uptime 100%, 0 bugs!", "box");
+          sfx.success();
+          completeQuest("hacker");
+        }
+      });
+    }
+    if (q.includes("sudo") || q.includes("root") || q.includes("admin")) {
+      secretActions.push({
+        type: "secret",
+        title: "💻 EXECUTAR: sudo su (Root Cósmico)",
+        sub: "Easter Egg // root@pedro-rocha:~#",
+        icon: "dashboard",
+        tag: "SECRET",
+        act: () => {
+          showToast("💻 Acesso Root Concedido: Bem-vindo, Administrador da Galáxia.", "dashboard");
+          sfx.success();
+          completeQuest("hacker");
+        }
+      });
+    }
+    if (q.includes("gaia") || q.includes("pulsar") || q.includes("astro")) {
+      secretActions.push({
+        type: "secret",
+        title: "🔭 EXECUTAR: Sonda Espacial Gaia DR3 Astrometric Stream",
+        sub: "Easter Egg // 1.8 bilhão de fontes astrométricas",
+        icon: "spectrum",
+        tag: "SECRET",
+        act: () => {
+          showToast("🔭 Gaia DR3: Sincronização astrométrica com 1.8 bilhão de estrelas concluída!", "spectrum");
+          openSectorDossier("pesquisa");
+          completeQuest("hacker");
+        }
+      });
+    }
+
     D.REPOS.forEach((r) => {
       actions.push({
         type: "project",
@@ -2295,7 +2479,7 @@
     });
 
     if (q) {
-      actions = actions.filter((a) => a.title.toLowerCase().includes(q) || (a.sub && a.sub.toLowerCase().includes(q)));
+      actions = [...secretActions, ...actions.filter((a) => a.title.toLowerCase().includes(q) || (a.sub && a.sub.toLowerCase().includes(q)))];
     }
 
     cmdResults.innerHTML = actions.slice(0, 12).map((a, idx) => `
@@ -2383,20 +2567,6 @@
       }
     },
     {
-      id: "software",
-      title: "Engenharia de Software",
-      desc: "Abrir o Setor 02 e explorar os 12 projetos",
-      xp: 100,
-      action: () => openSectorDossier("software")
-    },
-    {
-      id: "pesquisa",
-      title: "Astrofísica & CNPq",
-      desc: "Explorar a Pesquisa Científica Gaia DR3 no Setor 03",
-      xp: 100,
-      action: () => openSectorDossier("pesquisa")
-    },
-    {
       id: "sobre",
       title: "Registro de Bordo",
       desc: "Acessar biografia e trajetória acadêmica no Setor 01",
@@ -2404,11 +2574,18 @@
       action: () => openSectorDossier("sobre")
     },
     {
-      id: "cmd",
-      title: "Terminal Cósmico (⌘K)",
-      desc: "Abrir a Paleta de Comandos ⌘K / Ctrl+K",
+      id: "software",
+      title: "Engenharia de Software",
+      desc: "Explorar o catálogo de softwares e 12 projetos no Setor 02",
       xp: 100,
-      action: () => openCommandPalette()
+      action: () => openSectorDossier("software")
+    },
+    {
+      id: "pesquisa",
+      title: "Astrofísica & Gaia DR3",
+      desc: "Inspecionar a Pesquisa Científica Gaia DR3 no Setor 03",
+      xp: 100,
+      action: () => openSectorDossier("pesquisa")
     },
     {
       id: "contato",
@@ -2416,6 +2593,13 @@
       desc: "Acessar o Setor 04 com Lattes, GitHub e CV",
       xp: 100,
       action: () => openSectorDossier("contato")
+    },
+    {
+      id: "cmd",
+      title: "Terminal Cósmico (⌘K)",
+      desc: "Abrir a Paleta de Comandos ⌘K / Ctrl+K",
+      xp: 100,
+      action: () => openCommandPalette()
     },
     {
       id: "sfx",
@@ -2430,14 +2614,109 @@
     {
       id: "orb",
       title: "Sonda Planetária 3D",
-      desc: "Interagir com o Core Orb ou centro da estação",
+      desc: "Interagir com o Core Station Orb no Hub",
       xp: 100,
       action: () => {
         closeSectorDossier();
         sfx.warp();
-        showToast("Core Station Orb sincronizado com a rede neural", "star");
+        showToast("🔮 Core Station Orb sincronizado com a rede neural", "star");
         completeQuest("orb");
       }
+    },
+    {
+      id: "spectrum",
+      title: "Espectroscopia H-Alpha",
+      desc: "Ajustar o espectrômetro para a raia Hα (6563 Å) no Setor 03",
+      xp: 150,
+      action: () => {
+        openSectorDossier("pesquisa");
+        const slider = document.getElementById("spectrumSlider");
+        if (slider) {
+          slider.value = "6563";
+          slider.dispatchEvent(new Event("input"));
+        }
+      }
+    },
+    {
+      id: "lang",
+      title: "Poliglota Intergaláctico",
+      desc: "Alternar o idioma da interface (EN, ES, FR ou PT)",
+      xp: 100,
+      action: () => applyLang(lang === "pt" ? "en" : "pt")
+    },
+    {
+      id: "filter",
+      title: "Filtro de Arquitetura",
+      desc: "Filtrar os projetos por categoria tecnológica",
+      xp: 80,
+      action: () => {
+        openSectorDossier("software");
+        const filterBtn = document.querySelector(".filter-btn[data-category='software']");
+        if (filterBtn) filterBtn.click();
+      }
+    },
+    {
+      id: "supernova",
+      title: "Caçador de Supernovas",
+      desc: "Descobrir uma estrela oculta clicando no cosmos",
+      xp: 150,
+      action: () => {
+        closeSectorDossier();
+        triggerSupernovaBurst(window.innerWidth * 0.5 * (dpr || 1), window.innerHeight * 0.4 * (dpr || 1));
+      }
+    },
+    {
+      id: "goldenRecord",
+      title: "Disco de Ouro Voyager",
+      desc: "Ativar a transmissão interestelar no Setor 01",
+      xp: 150,
+      action: () => {
+        openSectorDossier("sobre");
+        const grBtn = document.getElementById("voyagerGoldenRecordBtn");
+        if (grBtn) grBtn.click();
+      }
+    },
+    {
+      id: "pulsarAudio",
+      title: "Eco de Pulsar Cósmico",
+      desc: "Ouvir a frequência acústica de Gaia DR3 no Setor 03",
+      xp: 150,
+      action: () => {
+        openSectorDossier("pesquisa");
+        const pBtn = document.getElementById("pulsarAudioBtn");
+        if (pBtn) pBtn.click();
+      }
+    },
+    {
+      id: "quantumPing",
+      title: "Ping Quântico Relativístico",
+      desc: "Disparar feixe de sinal quântico no Setor 04",
+      xp: 150,
+      action: () => {
+        openSectorDossier("contato");
+        const qBtn = document.getElementById("quantumPingBtn");
+        if (qBtn) qBtn.click();
+      }
+    },
+    {
+      id: "hacker",
+      title: "Terminal Hacker Cósmico",
+      desc: "Executar comando secreto no ⌘K (ex: matrix, 42, blackhole, apollo)",
+      xp: 200,
+      action: () => {
+        openCommandPalette();
+        if (cmdInput) {
+          cmdInput.value = "matrix";
+          renderCmdItems("matrix");
+        }
+      }
+    },
+    {
+      id: "konami",
+      title: "Protocolo Konami Hiperespacial",
+      desc: "Digitar o Código Konami: ↑ ↑ ↓ ↓ ← → ← → B A",
+      xp: 300,
+      action: () => triggerKonamiMode()
     }
   ];
 
@@ -2474,7 +2753,7 @@
     if (completed.length === QUESTS.length) {
       setTimeout(() => {
         sfx.warp();
-        showToast("🏆 CONQUISTA MÁXIMA: 100% da Estação Explorada! Patente: COMANDANTE CÓSMICO", "star");
+        showToast("🏆 CONQUISTA MÁXIMA: 100% da Estação Explorada! Patente: COMANDANTE SUPREMO DO COSMOS", "star");
       }, 400);
     }
 
@@ -2483,15 +2762,18 @@
 
   function getRank(xp, completedCount) {
     if (completedCount === QUESTS.length) {
-      return { name: "COMANDANTE CÓSMICO", level: 4 };
+      return { name: "COMANDANTE SUPREMO", level: 5 };
     }
-    if (xp >= 450) {
-      return { name: "ENGENHEIRO ORBITAL", level: 3 };
+    if (xp >= 1500) {
+      return { name: "ASTROFÍSICO DE ELITE", level: 4 };
     }
-    if (xp >= 200) {
-      return { name: "EXPLORADOR", level: 2 };
+    if (xp >= 900) {
+      return { name: "ENGENHEIRO CÓSMICO", level: 3 };
     }
-    return { name: "CADETE", level: 1 };
+    if (xp >= 400) {
+      return { name: "EXPLORADOR ORBITAL", level: 2 };
+    }
+    return { name: "CADETE ESPACIAL", level: 1 };
   }
 
   function renderTaskTracker() {
@@ -2616,6 +2898,128 @@
     }
   }
 
+  // Konami Code Listener (↑ ↑ ↓ ↓ ← → ← → B A)
+  const KONAMI_CODE = ["arrowup", "arrowup", "arrowdown", "arrowdown", "arrowleft", "arrowright", "arrowleft", "arrowright", "b", "a"];
+  let konamiIndex = 0;
+
+  function triggerKonamiMode() {
+    document.body.classList.add("konami-active");
+    sfx.warp();
+
+    let banner = document.getElementById("konamiBanner");
+    if (!banner) {
+      banner = document.createElement("div");
+      banner.id = "konamiBanner";
+      banner.className = "konami-banner";
+      banner.textContent = "🚀 PROTOCOLO KONAMI ATIVADO // MODO MATRIZ HIPERESPACIAL (+300 XP)";
+      document.body.appendChild(banner);
+    }
+
+    showToast("🎮 Código Konami Aceito! Velocidade Hiperespacial Máxima!", "star");
+    completeQuest("konami");
+
+    setTimeout(() => triggerSupernovaBurst(window.innerWidth * 0.3 * (dpr || 1), window.innerHeight * 0.3 * (dpr || 1)), 100);
+    setTimeout(() => triggerSupernovaBurst(window.innerWidth * 0.7 * (dpr || 1), window.innerHeight * 0.5 * (dpr || 1)), 350);
+    setTimeout(() => triggerSupernovaBurst(window.innerWidth * 0.5 * (dpr || 1), window.innerHeight * 0.7 * (dpr || 1)), 600);
+
+    setTimeout(() => {
+      document.body.classList.remove("konami-active");
+      if (banner && banner.parentNode) banner.remove();
+    }, 12000);
+  }
+
+  window.addEventListener("keydown", (e) => {
+    const key = e.key.toLowerCase();
+    if (key === KONAMI_CODE[konamiIndex]) {
+      konamiIndex++;
+      if (konamiIndex === KONAMI_CODE.length) {
+        konamiIndex = 0;
+        triggerKonamiMode();
+      }
+    } else {
+      konamiIndex = 0;
+    }
+  });
+
+  function playPulsarAudio() {
+    if (!sfxEnabled) return;
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      const pulseRate = 12.5;
+      const pulseInterval = 1 / pulseRate;
+      const count = 22;
+
+      for (let i = 0; i < count; i++) {
+        const t = now + i * pulseInterval;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sawtooth";
+        osc.frequency.setValueAtTime(320 + (i % 2) * 80, t);
+        osc.frequency.exponentialRampToValueAtTime(80, t + 0.025);
+        gain.gain.setValueAtTime(0.06, t);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.025);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(t);
+        osc.stop(t + 0.025);
+      }
+    } catch (e) {}
+  }
+
+  function initEasterEggWidgets() {
+    // 1. Voyager Golden Record
+    const voyagerBtn = document.getElementById("voyagerGoldenRecordBtn");
+    const voyagerLog = document.getElementById("voyagerLogText");
+    const voyagerOrb = document.getElementById("voyagerDiskOrb");
+    if (voyagerBtn) {
+      voyagerBtn.addEventListener("click", () => {
+        if (voyagerOrb) voyagerOrb.classList.add("spinning");
+        sfx.warp();
+        if (voyagerLog) {
+          voyagerLog.innerHTML = `📡 <strong>TRANSMISSÃO INTERESTELAR DECODIFICADA:</strong><br/>
+          <em>"Mensagem enviada de Bom Jesus do Itabapoana - RJ (21°08'02"S 41°40'48"W): Engenharia de Computação, Astrofísica e paixão por explorar o infinito. Olá aos habitantes do cosmos!"</em>`;
+        }
+        showToast("📀 Disco de Ouro Voyager Ativado! Mensagem interestelar transmitida.", "star");
+        completeQuest("goldenRecord");
+        setTimeout(() => { if (voyagerOrb) voyagerOrb.classList.remove("spinning"); }, 5000);
+      });
+    }
+
+    // 2. Gaia DR3 Pulsar Acoustic Synthesizer
+    const pulsarBtn = document.getElementById("pulsarAudioBtn");
+    const pulsarTelemetry = document.getElementById("pulsarTelemetryText");
+    if (pulsarBtn) {
+      pulsarBtn.addEventListener("click", () => {
+        playPulsarAudio();
+        if (pulsarTelemetry) {
+          pulsarTelemetry.innerHTML = `⚡ <strong>PULSO SINTETIZADO:</strong> 12.5 Hz (750 RPM) // Campo Magnético B: 1.4 × 10¹² G // Período P = 0.080s // Gaia DR3 Source 405928192`;
+        }
+        showToast("⚡ Pulso de Estrela de Nêutrons Gaia DR3 Sintetizado!", "spectrum");
+        completeQuest("pulsarAudio");
+      });
+    }
+
+    // 3. Quantum Relay Ping Simulator
+    const pingBtn = document.getElementById("quantumPingBtn");
+    const pingNodes = document.querySelectorAll(".ping-node");
+    if (pingBtn) {
+      pingBtn.addEventListener("click", () => {
+        sfx.click();
+        showToast("📡 Feixe Quântico Relativístico Disparado a c = 299.792 km/s...", "satellite");
+        pingNodes.forEach((node, i) => {
+          setTimeout(() => {
+            node.classList.add("ping-active");
+            playTone(600 + i * 150, "sine", 0.08, 0.03);
+            setTimeout(() => node.classList.remove("ping-active"), 1200);
+          }, i * 250);
+        });
+        completeQuest("quantumPing");
+      });
+    }
+  }
+
   /* ============================================================
      13. i18n APPLIER & LANGUAGE ENGINE
      ============================================================ */
@@ -2649,6 +3053,7 @@
     renderContacts();
     renderResearch();
     showToast(`Idioma: ${l.toUpperCase()}`, "globe");
+    completeQuest("lang");
   }
 
   /* ============================================================
@@ -2671,6 +3076,7 @@
     initSpectrumSimulator();
     initCommandPalette();
     initTaskTracker();
+    initEasterEggWidgets();
 
     document.querySelectorAll(".lang-btn").forEach((btn) => {
       btn.addEventListener("click", () => applyLang(btn.dataset.lang));
@@ -2702,6 +3108,7 @@
         currentCategory = btn.dataset.category;
         renderProjectsShowcase();
         sfx.click();
+        completeQuest("filter");
       });
     });
 

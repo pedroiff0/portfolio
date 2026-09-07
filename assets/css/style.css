@@ -2245,6 +2245,227 @@ body.cursor-active .cursor-glow {
   .hud-task-tracker { top: 62px; right: 10px; }
 }
 
+/* ============================================================
+   EASTER EGGS & INTERACTIVE SECTOR WIDGETS
+   ============================================================ */
+.easteregg-widget {
+  margin-top: 32px;
+  background: rgba(8, 14, 34, 0.75);
+  border: 1px dashed rgba(94, 234, 212, 0.4);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(94, 234, 212, 0.05);
+  transition: all 0.3s ease;
+}
+
+.easteregg-widget:hover {
+  border-color: var(--accent-cyan);
+  background: rgba(10, 18, 44, 0.9);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(94, 234, 212, 0.2);
+}
+
+.easteregg-widget__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.easteregg-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  letter-spacing: 1px;
+}
+
+.easteregg-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+/* Voyager Golden Record */
+.voyager-record-content {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.voyager-disk-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.voyager-disk {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fef08a 0%, #eab308 40%, #854d0e 80%, #451a03 100%);
+  border: 2px solid #fef08a;
+  box-shadow: 0 0 20px rgba(234, 179, 8, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.voyager-disk:hover, .voyager-disk.spinning {
+  animation: voyagerDiskSpin 3s infinite linear;
+  box-shadow: 0 0 35px rgba(234, 179, 8, 0.8);
+}
+
+@keyframes voyagerDiskSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.voyager-disk__grooves {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(69, 26, 3, 0.4);
+}
+
+.voyager-disk__center {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #451a03;
+  color: #fef08a;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.voyager-log-box {
+  flex: 1;
+  min-width: 240px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+
+.voyager-log-title {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #fbbf24;
+  margin-bottom: 4px;
+}
+
+.voyager-log-text {
+  font-size: 0.82rem;
+  color: var(--text-main);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Pulsar Widget */
+.pulsar-widget-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pulsar-telemetry-badge {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--accent-purple);
+  background: rgba(147, 51, 234, 0.1);
+  border: 1px solid rgba(147, 51, 234, 0.3);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+}
+
+/* Quantum Ping Results */
+.quantum-ping-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quantum-ping-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+}
+
+.ping-node {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(94, 234, 212, 0.15);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: all 0.25s ease;
+}
+
+.ping-node.ping-active {
+  border-color: var(--accent-cyan);
+  background: rgba(94, 234, 212, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(94, 234, 212, 0.3);
+}
+
+.ping-dest {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.ping-val {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent-cyan);
+}
+
+/* Konami Code Retro Matrix / Aurora Mode */
+body.konami-active {
+  animation: konamiHueRotate 8s infinite linear;
+}
+
+@keyframes konamiHueRotate {
+  0% { filter: hue-rotate(0deg) saturate(1.4); }
+  50% { filter: hue-rotate(180deg) saturate(1.8); }
+  100% { filter: hue-rotate(360deg) saturate(1.4); }
+}
+
+.konami-banner {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  background: linear-gradient(135deg, #ec4899, #8b5cf6, #06b6d4);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 8px 24px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 35px rgba(236, 72, 153, 0.6);
+  pointer-events: none;
+  animation: konamiBannerPulse 0.8s infinite alternate;
+}
+
+@keyframes konamiBannerPulse {
+  0% { transform: translateX(-50%) scale(0.96); box-shadow: 0 0 20px rgba(236, 72, 153, 0.5); }
+  100% { transform: translateX(-50%) scale(1.04); box-shadow: 0 0 45px rgba(6, 182, 212, 0.8); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
