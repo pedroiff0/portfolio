@@ -335,7 +335,6 @@
 
     introStartTime = performance.now();
     introActive = true;
-    introProgress = 0;
 
     // Impact & Physics Event State
     let impactTriggered = false;
@@ -373,17 +372,17 @@
       });
     }
 
+    // High-speed telemetry stream log schedule (total 3.0s sequence)
     const devopsLogs = [
-      { t: 150, text: "> [SYS_INIT] Hypervisor online · Cluster Sync OK", cls: "highlight" },
-      { t: 450, text: "> [KERNEL] Booting Antigravity OS v4.2 · Neural Bus Active", cls: "highlight" },
-      { t: 850, text: "> [DOCKER] 14 containers verified: Overleaf, MongoDB, Redis, Fastify", cls: "success" },
-      { t: 1250, text: "> [ASTRO_NAV] Ephemeris match: Gaia DR3 & Kepler Catalogues OK", cls: "highlight" },
-      { t: 1650, text: "> [SPECTRO] GALAH DR4 stellar spectrum simulator calibrated", cls: "highlight" },
-      { t: 2050, text: "> [ATMOSPHERE] Entering Mesosphere (Mach 25.4) · Plasma sheath forming", cls: "warn" },
-      { t: 2450, text: "> [TELEMETRY] Retro-thrusters firing: 21.7° S, 41.3° W // IFF Station LZ", cls: "success" },
-      { t: 2850, text: "> [CI/CD] LaTeX Altacv Automated Build: PT/EN/ES/FR dossier READY", cls: "success" },
-      { t: 3150, text: "> [GUIDANCE] Subsonic transition · Aerobraking lock 100%", cls: "highlight" },
-      { t: 3450, text: "> [IMPACT/LANDING] Touchdown confirmed at Station LZ. Pedro Rocha ONLINE.", cls: "success" }
+      { t: 80, text: "> [SYS_INIT] Hypervisor online · Cluster Sync OK", cls: "highlight" },
+      { t: 300, text: "> [KERNEL] Booting Antigravity OS v4.2 · Neural Bus Active", cls: "highlight" },
+      { t: 600, text: "> [DOCKER] 14 containers verified: Overleaf, Redis, Fastify", cls: "success" },
+      { t: 950, text: "> [ASTRO_NAV] Ephemeris match: Gaia DR3 & Kepler Catalogues OK", cls: "highlight" },
+      { t: 1300, text: "> [MESOSPHERE] Reentrada hipersônica · Plasma Mach 25.4 (1920°C)", cls: "warn" },
+      { t: 1650, text: "> [TELEMETRY] Retro-propulsores acionados: 21.7° S, 41.3° W // IFF LZ", cls: "success" },
+      { t: 2000, text: "> [IMPACT/LANDING] Pouso e impacto concluídos com sucesso!", cls: "highlight" },
+      { t: 2350, text: "> [CI/CD] LaTeX Altacv Automated Build: PT/EN/ES/FR dossier READY", cls: "success" },
+      { t: 2700, text: "> [STATION_LOCK] Sincronização 100% · Acessando Estação Pedro Rocha...", cls: "success" }
     ];
 
     const termLines = document.getElementById("introTerminalLines");
@@ -402,30 +401,6 @@
         termLines.scrollTop = termLines.scrollHeight;
       }, item.t);
     });
-
-    const progressTimer = setInterval(() => {
-      if (!introActive) { clearInterval(progressTimer); return; }
-      introProgress = Math.min(introProgress + 1.85, 100);
-      if (progressFill) progressFill.style.width = `${introProgress}%`;
-      
-      if (statusPercent) {
-        if (introProgress < 25) {
-          statusPercent.textContent = `${Math.round(introProgress)}% (ALT: 380 KM // MACH 25)`;
-        } else if (introProgress < 60) {
-          statusPercent.textContent = `${Math.round(introProgress)}% (ALT: 85 KM // PLASMA 1920°C)`;
-        } else if (introProgress < 85) {
-          statusPercent.textContent = `${Math.round(introProgress)}% (ALT: 24 KM // MACH 3.2)`;
-        } else if (introProgress < 100) {
-          statusPercent.textContent = `${Math.round(introProgress)}% (IMPACTO IMINENTE // POUSO)`;
-        } else {
-          statusPercent.textContent = `100% (POUSO E IMPACTO CONCLUÍDOS)`;
-        }
-      }
-
-      if (introProgress >= 100) {
-        clearInterval(progressTimer);
-      }
-    }, 60);
 
     // Realistic Spherical 3D Projection Helpers
     const AXIAL_TILT = 23.44 * (Math.PI / 180); // Earth's obliquity 23.44 deg
@@ -454,7 +429,27 @@
       if (!introActive) return;
 
       const elapsed = (now - introStartTime) / 1000;
-      const p = introProgress / 100;
+      const descentDuration = 2.0; // 2.0s descent to impact
+      const totalDuration = 3.0;   // 3.0s total (1.0s after landing)
+      const p = Math.min(1, elapsed / descentDuration);
+
+      // Update Real-Time Progress Bar & Telemetry Status
+      if (progressFill) {
+        progressFill.style.width = `${Math.min(100, Math.round(p * 100))}%`;
+      }
+      if (statusPercent) {
+        if (p < 0.28) {
+          statusPercent.textContent = `${Math.round(p * 100)}% (ALT: 380 KM // MACH 25)`;
+        } else if (p < 0.65) {
+          statusPercent.textContent = `${Math.round(p * 100)}% (ALT: 85 KM // PLASMA 1920°C)`;
+        } else if (p < 0.95) {
+          statusPercent.textContent = `${Math.round(p * 100)}% (ALT: 24 KM // MACH 3.2)`;
+        } else if (p < 1.0) {
+          statusPercent.textContent = `99% (POUSO E IMPACTO IMINENTE)`;
+        } else {
+          statusPercent.textContent = `100% (POUSO CONCLUÍDO // ENTRANDO NO HUB...)`;
+        }
+      }
 
       ictx.clearRect(0, 0, iw, ih);
 
@@ -505,8 +500,8 @@
       const ex = baseCx;
       const ey = baseCy;
 
-      // Earth Rotation (degrees): tuned so Brazil is facing the viewer at peak descent
-      const earthRotDeg = 15 + elapsed * 6.5;
+      // Earth Rotation (degrees)
+      const earthRotDeg = 15 + elapsed * 7.5;
 
       // ---------- 3. ATMOSPHERIC RAYLEIGH SCATTERING (OUTER HALO) ----------
       const atmoGrad = ictx.createRadialGradient(ex, ey, er * 0.94, ex, ey, er * 1.38);
@@ -564,7 +559,6 @@
         const polygon = GEO_LANDMASSES[key];
         const projected = polygon.map((pt) => projectGeo(pt[0], pt[1], earthRotDeg));
 
-        // Only draw if at least some points are visible on the front hemisphere
         const visiblePts = projected.filter((p) => p.z > -0.1);
         if (visiblePts.length < 3) return;
 
@@ -580,17 +574,15 @@
         });
         ictx.closePath();
 
-        // Biome Color Palette based on region & lighting
-        let baseBiome = "rgba(22, 101, 52, 0.85)"; // Lush forest
-        if (key === "africa") baseBiome = "rgba(180, 83, 9, 0.8)"; // Savanna & Sahara
-        if (key === "antarctica" || key === "greenland") baseBiome = "rgba(241, 245, 249, 0.95)"; // Polar Ice
+        let baseBiome = "rgba(22, 101, 52, 0.85)";
+        if (key === "africa") baseBiome = "rgba(180, 83, 9, 0.8)";
+        if (key === "antarctica" || key === "greenland") baseBiome = "rgba(241, 245, 249, 0.95)";
         if (key === "northAmerica") baseBiome = "rgba(34, 197, 94, 0.75)";
         if (key === "australia") baseBiome = "rgba(194, 65, 12, 0.85)";
 
         ictx.fillStyle = baseBiome;
         ictx.fill();
 
-        // Terrain relief border
         ictx.strokeStyle = "rgba(94, 234, 212, 0.25)";
         ictx.lineWidth = 1;
         ictx.stroke();
@@ -607,14 +599,14 @@
       );
       nightGrad.addColorStop(0, "rgba(1, 4, 12, 0.94)");
       nightGrad.addColorStop(0.5, "rgba(1, 4, 12, 0.78)");
-      nightGrad.addColorStop(0.85, "rgba(245, 158, 11, 0.15)"); // Twilight amber rim
+      nightGrad.addColorStop(0.85, "rgba(245, 158, 11, 0.15)");
       nightGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
       ictx.fillStyle = nightGrad;
       ictx.beginPath();
       ictx.arc(ex, ey, er, 0, Math.PI * 2);
       ictx.fill();
 
-      // ---------- 6. NIGHT-SIDE ANTHROPOGENIC CITY LIGHTS ----------
+      // ---------- 6. NIGHT-SIDE CITY LIGHTS ----------
       GEO_CITIES.forEach((city) => {
         const pr = projectGeo(city.lat, city.lon, earthRotDeg);
         if (pr.z > 0.05 && pr.dotL < 0.12) {
@@ -633,7 +625,7 @@
         }
       });
 
-      // ---------- 7. DYNAMIC ATMOSPHERIC CLOUDS (CORIOLIS SWIRLS) ----------
+      // ---------- 7. ATMOSPHERIC CLOUDS ----------
       const cloudRotDeg = earthRotDeg * 1.15;
       for (let c = 0; c < 12; c++) {
         const clat = ((c * 37) % 140) - 70;
@@ -645,13 +637,11 @@
           const cpy = ey + cp.y * er * 1.015;
           const cloudSize = er * (0.18 + (c % 4) * 0.06);
 
-          // Cloud drop shadow
           ictx.fillStyle = "rgba(2, 6, 23, 0.35)";
           ictx.beginPath();
           ictx.ellipse(cpx + 3, cpy + 3, cloudSize, cloudSize * 0.45, (c * 0.4), 0, Math.PI * 2);
           ictx.fill();
 
-          // Cloud Body
           const cloudGrad = ictx.createRadialGradient(cpx, cpy, 2, cpx, cpy, cloudSize);
           const cloudAlpha = Math.max(0.15, Math.min(0.75, (cp.dotL + 0.4) * 0.8));
           cloudGrad.addColorStop(0, `rgba(255, 255, 255, ${cloudAlpha})`);
@@ -664,7 +654,7 @@
         }
       }
 
-      // Sunlit Atmospheric Horizon Crescent (Mie Scattering)
+      // Sunlit Atmospheric Horizon Crescent
       const sunRimGrad = ictx.createRadialGradient(
         ex + SUN_DIR.x * er * 0.92,
         ey + SUN_DIR.y * er * 0.92,
@@ -726,12 +716,12 @@
 
       // ---------- 9. REALISTIC HYPERSONIC SPACECRAFT & RE-ENTRY PLASMA ----------
       // Spacecraft Trajectory: Descent from Upper-Left directly into Earth Target LZ
-      const shipStartX = iw * 0.06;
+      const shipStartX = iw * 0.05;
       const shipStartY = -60;
       const ctrlX = iw * 0.26;
       const ctrlY = ih * 0.28;
 
-      const u = Math.min(1, p / 0.88);
+      const u = p; // Complete descent in 2.0 seconds
       const invU = 1 - u;
       const shipX = invU * invU * shipStartX + 2 * invU * u * ctrlX + u * u * tx;
       const shipY = invU * invU * shipStartY + 2 * invU * u * ctrlY + u * u * ty;
@@ -740,48 +730,48 @@
       const dy = 2 * invU * (ctrlY - shipStartY) + 2 * u * (ty - ctrlY);
       const shipAngle = Math.atan2(dy, dx);
 
-      // Peak Re-entry Hypersonic Heating Intensity (peaks during mid-descent)
-      const plasmaIntensity = Math.sin(Math.min(1, Math.max(0, (p - 0.12) / 0.72)) * Math.PI);
+      // Peak Re-entry Hypersonic Heating Intensity
+      const plasmaIntensity = Math.sin(Math.min(1, Math.max(0, (p - 0.08) / 0.84)) * Math.PI);
 
-      // Trigger Impact when spacecraft arrives at Earth LZ (at u >= 1 or p >= 0.88)
-      if ((p >= 0.88 || u >= 1.0) && !impactTriggered) {
+      // Trigger Impact when spacecraft reaches Earth surface at elapsed >= 2.0s
+      if (p >= 1.0 && !impactTriggered) {
         impactTriggered = true;
         impactStartTime = now;
         sfx.impact();
-        shakeIntensity = 30;
+        shakeIntensity = 34;
         flashAlpha = 1.0;
 
-        for (let i = 0; i < 120; i++) {
+        for (let i = 0; i < 130; i++) {
           const ang = Math.random() * Math.PI * 2;
-          const spd = Math.random() * 15 + 3;
+          const spd = Math.random() * 16 + 4;
           impactSparks.push({
             x: tx, y: ty,
             vx: Math.cos(ang) * spd,
             vy: Math.sin(ang) * spd,
             size: Math.random() * 4.5 + 1.5,
             life: 1.0,
-            decay: Math.random() * 0.022 + 0.012,
+            decay: Math.random() * 0.024 + 0.014,
             color: Math.random() < 0.4 ? "#5eead4" : (Math.random() < 0.75 ? "#fde047" : "#fb923c")
           });
         }
 
         shockwaveRings.push(
-          { r: 6, maxR: er * 0.9, speed: 5.6, alpha: 0.95 },
-          { r: 2, maxR: er * 0.75, speed: 4.2, alpha: 0.8 },
-          { r: 1, maxR: er * 0.55, speed: 2.8, alpha: 0.65 }
+          { r: 6, maxR: er * 0.95, speed: 7.2, alpha: 0.95 },
+          { r: 2, maxR: er * 0.8, speed: 5.4, alpha: 0.8 },
+          { r: 1, maxR: er * 0.6, speed: 3.6, alpha: 0.65 }
         );
       }
 
-      // Draw Hypersonic Ship & Trail before impact
+      // Draw Hypersonic Ship & Plasma Trail during descent (0.0s -> 2.0s)
       if (!impactTriggered) {
         if (plasmaIntensity > 0.05) {
           // Hypersonic Streamlines
           ictx.save();
-          ictx.strokeStyle = `rgba(255, 200, 100, ${plasmaIntensity * 0.4})`;
-          ictx.lineWidth = 1.2;
+          ictx.strokeStyle = `rgba(255, 200, 100, ${plasmaIntensity * 0.45})`;
+          ictx.lineWidth = 1.4;
           for (let s = 0; s < 6; s++) {
             const streamOffY = (s - 2.5) * 16;
-            const streamLen = 140 + Math.random() * 60;
+            const streamLen = 150 + Math.random() * 70;
             ictx.beginPath();
             ictx.moveTo(shipX - streamLen, shipY + streamOffY - streamLen * 0.4);
             ictx.lineTo(shipX + 20, shipY + streamOffY);
@@ -794,7 +784,7 @@
             shipX + 10, shipY + 10,
             15,
             shipX - 30, shipY - 20,
-            95
+            100
           );
           shockGrad.addColorStop(0, `rgba(255, 255, 255, ${plasmaIntensity * 0.95})`);
           shockGrad.addColorStop(0.18, `rgba(253, 224, 71, ${plasmaIntensity * 0.85})`);
@@ -804,7 +794,7 @@
 
           ictx.fillStyle = shockGrad;
           ictx.beginPath();
-          ictx.arc(shipX, shipY, 95, 0, Math.PI * 2);
+          ictx.arc(shipX, shipY, 100, 0, Math.PI * 2);
           ictx.fill();
 
           // Plasma Ionization Trail & Burning Flame Wake
@@ -822,7 +812,7 @@
               const lifeFrac = pt.life / pt.maxLife;
               ictx.beginPath();
               ictx.arc(pt.x, pt.y, pt.size * lifeFrac, 0, Math.PI * 2);
-              ictx.fillStyle = `hsla(${pt.hue}, 100%, 65%, ${lifeFrac * plasmaIntensity * 0.8})`;
+              ictx.fillStyle = `hsla(${pt.hue}, 100%, 65%, ${lifeFrac * plasmaIntensity * 0.85})`;
               ictx.fill();
             }
           });
@@ -914,14 +904,14 @@
         // 1. Expanding Atmospheric Shockwave Rings
         shockwaveRings.forEach((ring) => {
           ring.r += ring.speed;
-          ring.alpha *= 0.95;
+          ring.alpha *= 0.94;
           if (ring.alpha > 0.01) {
             ictx.save();
             ictx.beginPath();
             ictx.arc(tx, ty, ring.r, 0, Math.PI * 2);
-            ictx.strokeStyle = `rgba(94, 234, 212, ${ring.alpha * 0.85})`;
+            ictx.strokeStyle = `rgba(94, 234, 212, ${ring.alpha * 0.88})`;
             ictx.lineWidth = 3.5;
-            ictx.shadowColor = "rgba(94, 234, 212, 0.9)";
+            ictx.shadowColor = "rgba(94, 234, 212, 0.95)";
             ictx.shadowBlur = 18;
             ictx.stroke();
             ictx.restore();
@@ -947,7 +937,7 @@
 
         // 3. Touchdown Hologram Beacon
         const timeSinceImpact = (now - impactStartTime) / 1000;
-        const beaconAlpha = Math.max(0, Math.min(1, 1.4 - timeSinceImpact * 0.8));
+        const beaconAlpha = Math.max(0, Math.min(1, 1.2 - timeSinceImpact * 1.0));
         if (beaconAlpha > 0.05) {
           ictx.save();
           const beamGrad = ictx.createLinearGradient(tx, ty, tx, ty - 180);
@@ -978,12 +968,13 @@
           flashGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
           ictx.fillStyle = flashGrad;
           ictx.fillRect(0, 0, iw, ih);
-          flashAlpha *= 0.91;
+          flashAlpha *= 0.88;
         }
 
-        // Auto-dismiss into Station HUD after impact shockwave settles (~1.35s)
-        if (timeSinceImpact > 1.35) {
+        // Automatically pass directly into Station HUD exactly 1.0s after landing (total 3.0s)
+        if (elapsed >= totalDuration || timeSinceImpact >= 1.0) {
           dismissIntro();
+          return;
         }
       }
 
@@ -999,7 +990,7 @@
       introActive = false;
       overlay.classList.add("dismissed");
       sfx.warp();
-      showToast("Missão Inicializada: Central Pedro Rocha // IFF", "star");
+      showToast("Central Pedro Rocha Conectada // IFF LZ-01", "star");
       completeQuest("landing");
     }
 
@@ -1014,7 +1005,6 @@
         closeSectorDossier();
         overlay.classList.remove("dismissed");
         introActive = true;
-        introProgress = 0;
         initIntroCinematic();
       });
     }
