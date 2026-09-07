@@ -317,6 +317,22 @@
   </nav>
 
   <!-- ============================================================
+       INTERPLANETARY HYPERSPACE / WARP TRAVEL ZOOM OVERLAY
+       ============================================================ -->
+  <div class="warp-travel-overlay" id="warpTravelOverlay" aria-hidden="true">
+    <canvas id="warpTravelCanvas"></canvas>
+    <div class="warp-hud-telemetry" id="warpTelemetry">
+      <div class="warp-speed-tag">
+        <span class="warp-pulse"></span>
+        <span id="warpSpeedText">WARP DRIVE ENGAGED // 9.8c</span>
+      </div>
+      <div class="warp-destination-tag" id="warpDestinationText">
+        SALTO HIPERESPACIAL: DESTINO EM APROXIMAÇÃO
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
        3. DEDICATED SECTOR DOSSIER OVERLAYS (NO SCROLL CLUTTER)
        ============================================================ -->
   <div class="sector-dossier-overlay" id="sectorDossierOverlay" role="dialog" aria-modal="true">

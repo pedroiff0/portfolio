@@ -139,9 +139,46 @@
     },
     warp: () => {
       if (!sfxEnabled) return;
-      playTone(220, "sawtooth", 0.25, 0.04);
-      setTimeout(() => playTone(587.33, "sine", 0.2, 0.035), 80);
-      setTimeout(() => playTone(880, "sine", 0.3, 0.035), 180);
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+        // Spool-up frequency sweep
+        const osc1 = ctx.createOscillator();
+        const gain1 = ctx.createGain();
+        osc1.type = "sawtooth";
+        osc1.frequency.setValueAtTime(140, now);
+        osc1.frequency.exponentialRampToValueAtTime(880, now + 0.35);
+        osc1.frequency.exponentialRampToValueAtTime(320, now + 0.65);
+        gain1.gain.setValueAtTime(0.01, now);
+        gain1.gain.linearRampToValueAtTime(0.06, now + 0.25);
+        gain1.gain.exponentialRampToValueAtTime(0.0001, now + 0.7);
+        osc1.connect(gain1);
+        gain1.connect(ctx.destination);
+        osc1.start(now);
+        osc1.stop(now + 0.7);
+
+        // Relativistic sub-bass rumble
+        const osc2 = ctx.createOscillator();
+        const gain2 = ctx.createGain();
+        osc2.type = "sine";
+        osc2.frequency.setValueAtTime(65, now);
+        osc2.frequency.exponentialRampToValueAtTime(130, now + 0.2);
+        osc2.frequency.exponentialRampToValueAtTime(40, now + 0.6);
+        gain2.gain.setValueAtTime(0.08, now);
+        gain2.gain.exponentialRampToValueAtTime(0.0001, now + 0.65);
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        osc2.start(now);
+        osc2.stop(now + 0.65);
+
+        // Arrival acoustic resonance chime
+        setTimeout(() => {
+          if (!sfxEnabled) return;
+          playTone(587.33, "sine", 0.12, 0.03);
+          setTimeout(() => playTone(880, "triangle", 0.18, 0.035), 50);
+        }, 450);
+      } catch (e) {}
     },
     success: () => {
       playTone(523.25, "sine", 0.08, 0.025);
@@ -1024,10 +1061,63 @@
   }
 
   /* ============================================================
-     4. DEDICATED SECTOR DOSSIER OVERLAY ROUTER
+     4. INTERPLANETARY WARP TRAVEL ENGINE & DEDICATED SECTOR DOSSIER ROUTER
      ============================================================ */
+  const warpOverlay = document.getElementById("warpTravelOverlay");
+  const warpCanvas = document.getElementById("warpTravelCanvas");
+  const warpSpeedText = document.getElementById("warpSpeedText");
+  const warpDestText = document.getElementById("warpDestinationText");
+  const mainHudViewport = document.getElementById("mainHudViewport");
   const sectorDossierOverlay = document.getElementById("sectorDossierOverlay");
   const dossierActiveTitle = document.getElementById("dossierActiveTitle");
+
+  let warpCtx = null;
+  let warpW = 0, warpH = 0, warpDpr = 1;
+  let warpAnimId = null;
+  let isWarping = false;
+
+  const WARP_DESTINATIONS = {
+    sobre: {
+      name: "TERRA // ESTAÇÃO BASE IFF",
+      speed: "WARP 9.84c // VETOR ORBITAL",
+      coords: "SETOR 01: TERRA // BASE IFF [RA 19h 50m / Dec +08° 52′]",
+      type: "earth",
+      colorCore: "#38bdf8",
+      colorAtmo: "rgba(56, 189, 248, 0.55)"
+    },
+    software: {
+      name: "KEPLER-186F // CYBER MATRIX",
+      speed: "WARP 9.92c // REDE DIGITAL",
+      coords: "SETOR 02: KEPLER-186F // CYBER MATRIX [RA 19h 54m / Dec +43° 57′]",
+      type: "cyber",
+      colorCore: "#22d3ee",
+      colorAtmo: "rgba(34, 211, 238, 0.5)"
+    },
+    pesquisa: {
+      name: "PULSAR GAIA DR3 // ASTROFÍSICA",
+      speed: "WARP 9.99c // RELATIVIDADE",
+      coords: "SETOR 03: PULSAR GAIA DR3 // LAB CNPQ [RA 18h 36m / Dec +38° 47′]",
+      type: "pulsar",
+      colorCore: "#c084fc",
+      colorAtmo: "rgba(192, 132, 252, 0.6)"
+    },
+    contato: {
+      name: "SOLARIS // CENTRAL DE TRANSMISSÃO",
+      speed: "WARP 9.75c // LINK QUÂNTICO",
+      coords: "SETOR 04: SOLARIS // LINK CV & CONTATO [RA 05h 35m / Dec -05° 23′]",
+      type: "solaris",
+      colorCore: "#fbbf24",
+      colorAtmo: "rgba(244, 63, 94, 0.55)"
+    },
+    hub: {
+      name: "ESTAÇÃO CENTRAL // ORBITAL HUB",
+      speed: "WARP 9.60c // RETORNO À BASE",
+      coords: "HUB CENTRAL // BASE TERRA [ÓRBITA LEO]",
+      type: "hub",
+      colorCore: "#5eead4",
+      colorAtmo: "rgba(94, 234, 212, 0.45)"
+    }
+  };
 
   const sectorTitles = {
     sobre: "SETOR 01 // SOBRE MIM & FORMAÇÃO",
@@ -1036,41 +1126,464 @@
     contato: "SETOR 04 // CURRICULUM VITAE & CONTATOS"
   };
 
-  function openSectorDossier(sectorName) {
-    if (!sectorDossierOverlay) return;
-    activeSector = sectorName;
-    sfx.warp();
+  // Hyperspace Star Particle System (140 3D warp stars)
+  const WARP_PARTICLES_COUNT = 140;
+  let warpStars = [];
 
-    // Trigger Gamified Onboarding Quests
-    if (sectorName === "sobre") completeQuest("sobre");
-    else if (sectorName === "software") completeQuest("software");
-    else if (sectorName === "pesquisa") completeQuest("pesquisa");
-    else if (sectorName === "contato") completeQuest("contato");
+  function initWarpStars() {
+    warpStars = [];
+    for (let i = 0; i < WARP_PARTICLES_COUNT; i++) {
+      warpStars.push({
+        x: (Math.random() - 0.5) * 2000,
+        y: (Math.random() - 0.5) * 2000,
+        z: Math.random() * 1000 + 1,
+        pz: 1000,
+        radius: Math.random() * 1.5 + 0.8,
+        color: Math.random() > 0.3 ? "#e2e8f0" : (Math.random() > 0.5 ? "#67e8f9" : "#c084fc")
+      });
+    }
+  }
 
-    // Update active tab buttons
-    document.querySelectorAll("[data-switch-sector]").forEach((btn) => {
-      btn.classList.toggle("active", btn.dataset.switchSector === sectorName);
-    });
+  function resizeWarpCanvas() {
+    if (!warpCanvas) return;
+    warpDpr = Math.min(window.devicePixelRatio || 1, 2);
+    warpW = warpCanvas.width = window.innerWidth * warpDpr;
+    warpH = warpCanvas.height = window.innerHeight * warpDpr;
+    warpCanvas.style.width = window.innerWidth + "px";
+    warpCanvas.style.height = window.innerHeight + "px";
+  }
 
-    // Update active panel
-    document.querySelectorAll(".dossier-panel").forEach((panel) => {
-      panel.classList.toggle("active", panel.id === `panel-${sectorName}`);
-    });
+  function initWarpTravelEngine() {
+    if (!warpCanvas) return;
+    warpCtx = warpCanvas.getContext("2d");
+    resizeWarpCanvas();
+    window.addEventListener("resize", resizeWarpCanvas);
+    initWarpStars();
+  }
 
-    if (dossierActiveTitle) {
-      dossierActiveTitle.textContent = sectorTitles[sectorName] || "SETOR SELECIONADO";
+  function drawPlanet(pctx, type, cx, cy, radius, progress) {
+    if (radius <= 1) return;
+    pctx.save();
+    pctx.translate(cx, cy);
+
+    // 1. Atmosphere Glow Rim
+    const atmoGrad = pctx.createRadialGradient(0, 0, radius * 0.85, 0, 0, radius * 1.35);
+    if (type === "earth") {
+      atmoGrad.addColorStop(0, "rgba(56, 189, 248, 0.45)");
+      atmoGrad.addColorStop(0.6, "rgba(56, 189, 248, 0.15)");
+      atmoGrad.addColorStop(1, "rgba(56, 189, 248, 0)");
+    } else if (type === "cyber") {
+      atmoGrad.addColorStop(0, "rgba(34, 211, 238, 0.5)");
+      atmoGrad.addColorStop(0.6, "rgba(99, 102, 241, 0.2)");
+      atmoGrad.addColorStop(1, "rgba(34, 211, 238, 0)");
+    } else if (type === "pulsar") {
+      atmoGrad.addColorStop(0, "rgba(192, 132, 252, 0.6)");
+      atmoGrad.addColorStop(0.5, "rgba(245, 158, 11, 0.25)");
+      atmoGrad.addColorStop(1, "rgba(192, 132, 252, 0)");
+    } else if (type === "solaris") {
+      atmoGrad.addColorStop(0, "rgba(251, 191, 36, 0.65)");
+      atmoGrad.addColorStop(0.5, "rgba(244, 63, 94, 0.3)");
+      atmoGrad.addColorStop(1, "rgba(251, 191, 36, 0)");
+    } else {
+      atmoGrad.addColorStop(0, "rgba(94, 234, 212, 0.5)");
+      atmoGrad.addColorStop(0.6, "rgba(96, 165, 250, 0.2)");
+      atmoGrad.addColorStop(1, "rgba(94, 234, 212, 0)");
     }
 
-    sectorDossierOverlay.classList.add("active");
-    initCounters();
-    wireSpotlights(sectorDossierOverlay);
+    pctx.beginPath();
+    pctx.arc(0, 0, radius * 1.35, 0, Math.PI * 2);
+    pctx.fillStyle = atmoGrad;
+    pctx.fill();
+
+    // 2. Base Sphere with 3D Light Source
+    pctx.save();
+    pctx.beginPath();
+    pctx.arc(0, 0, radius, 0, Math.PI * 2);
+    pctx.clip();
+
+    const lx = -radius * 0.35;
+    const ly = -radius * 0.35;
+    const sphereGrad = pctx.createRadialGradient(lx, ly, radius * 0.05, 0, 0, radius);
+
+    if (type === "earth") {
+      sphereGrad.addColorStop(0, "#2563eb");
+      sphereGrad.addColorStop(0.45, "#1d4ed8");
+      sphereGrad.addColorStop(0.85, "#0b1b4f");
+      sphereGrad.addColorStop(1, "#030718");
+      pctx.fillStyle = sphereGrad;
+      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+
+      // Continents with rotation
+      const rot = progress * 1.2;
+      pctx.fillStyle = "#10b981";
+      pctx.shadowColor = "#059669";
+      pctx.shadowBlur = 4;
+
+      for (let c = -1; c <= 1; c++) {
+        const cxOffset = (c * radius * 1.5 + rot * radius * 0.6) % (radius * 2) - radius * 0.3;
+        pctx.beginPath();
+        pctx.ellipse(cxOffset, -radius * 0.2, radius * 0.35, radius * 0.22, 0.2, 0, Math.PI * 2);
+        pctx.ellipse(cxOffset + radius * 0.2, radius * 0.25, radius * 0.4, radius * 0.28, -0.15, 0, Math.PI * 2);
+        pctx.fill();
+      }
+
+      // Cloud swirls
+      pctx.shadowBlur = 0;
+      pctx.fillStyle = "rgba(255, 255, 255, 0.42)";
+      for (let c = -1; c <= 1; c++) {
+        const cxOffset = (c * radius * 1.8 + rot * radius * 0.8) % (radius * 2.2) - radius * 0.5;
+        pctx.beginPath();
+        pctx.ellipse(cxOffset, -radius * 0.4, radius * 0.45, radius * 0.08, 0.1, 0, Math.PI * 2);
+        pctx.ellipse(cxOffset + radius * 0.1, 0, radius * 0.5, radius * 0.09, -0.05, 0, Math.PI * 2);
+        pctx.ellipse(cxOffset - radius * 0.15, radius * 0.45, radius * 0.38, radius * 0.07, 0.12, 0, Math.PI * 2);
+        pctx.fill();
+      }
+    } else if (type === "cyber") {
+      sphereGrad.addColorStop(0, "#0e2348");
+      sphereGrad.addColorStop(0.6, "#060e22");
+      sphereGrad.addColorStop(1, "#02040b");
+      pctx.fillStyle = sphereGrad;
+      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+
+      // Cyan / Indigo Digital Wireframe Grid
+      pctx.strokeStyle = "rgba(34, 211, 238, 0.6)";
+      pctx.lineWidth = Math.max(1, radius * 0.015);
+      const rot = progress * 1.4;
+
+      // Latitudes
+      for (let lat = -0.75; lat <= 0.75; lat += 0.35) {
+        pctx.beginPath();
+        const rLat = radius * Math.cos(lat * Math.PI * 0.5);
+        const yLat = radius * lat;
+        pctx.ellipse(0, yLat, rLat, rLat * 0.28, 0, 0, Math.PI * 2);
+        pctx.stroke();
+      }
+
+      // Longitudes
+      for (let lon = 0; lon < Math.PI; lon += Math.PI / 4) {
+        pctx.beginPath();
+        const wLon = radius * Math.sin(lon + rot);
+        pctx.ellipse(0, 0, Math.abs(wLon), radius, 0, 0, Math.PI * 2);
+        pctx.stroke();
+      }
+    } else if (type === "pulsar") {
+      sphereGrad.addColorStop(0, "#ffffff");
+      sphereGrad.addColorStop(0.2, "#e879f9");
+      sphereGrad.addColorStop(0.55, "#8b5cf6");
+      sphereGrad.addColorStop(0.85, "#3b0764");
+      sphereGrad.addColorStop(1, "#0f021e");
+      pctx.fillStyle = sphereGrad;
+      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+
+      // Pulsar core texture
+      const pulseScale = 1 + Math.sin(progress * Math.PI * 8) * 0.08;
+      const coreGrad = pctx.createRadialGradient(0, 0, 0, 0, 0, radius * 0.4 * pulseScale);
+      coreGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
+      coreGrad.addColorStop(0.5, "rgba(216, 180, 254, 0.6)");
+      coreGrad.addColorStop(1, "rgba(147, 51, 234, 0)");
+      pctx.fillStyle = coreGrad;
+      pctx.beginPath();
+      pctx.arc(0, 0, radius * 0.4 * pulseScale, 0, Math.PI * 2);
+      pctx.fill();
+    } else if (type === "solaris") {
+      sphereGrad.addColorStop(0, "#fef08a");
+      sphereGrad.addColorStop(0.35, "#f59e0b");
+      sphereGrad.addColorStop(0.75, "#dc2626");
+      sphereGrad.addColorStop(1, "#450a0a");
+      pctx.fillStyle = sphereGrad;
+      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+
+      // Granulation & solar flares
+      for (let i = 0; i < 6; i++) {
+        const angle = (i * Math.PI / 3) + progress * 0.6;
+        const dist = radius * (0.3 + (i % 3) * 0.2);
+        const fx = Math.cos(angle) * dist;
+        const fy = Math.sin(angle) * dist;
+        const flareGrad = pctx.createRadialGradient(fx, fy, 0, fx, fy, radius * 0.25);
+        flareGrad.addColorStop(0, "rgba(254, 240, 138, 0.7)");
+        flareGrad.addColorStop(1, "rgba(239, 68, 68, 0)");
+        pctx.fillStyle = flareGrad;
+        pctx.beginPath();
+        pctx.arc(fx, fy, radius * 0.25, 0, Math.PI * 2);
+        pctx.fill();
+      }
+    } else {
+      // Hub view
+      sphereGrad.addColorStop(0, "#38bdf8");
+      sphereGrad.addColorStop(0.4, "#0284c7");
+      sphereGrad.addColorStop(0.85, "#082f49");
+      sphereGrad.addColorStop(1, "#020617");
+      pctx.fillStyle = sphereGrad;
+      pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+
+      pctx.strokeStyle = "rgba(94, 234, 212, 0.5)";
+      pctx.lineWidth = Math.max(1, radius * 0.012);
+      pctx.beginPath();
+      pctx.arc(0, 0, radius * 0.7, 0, Math.PI * 2);
+      pctx.stroke();
+    }
+
+    // 3. 3D Terminator Shadow
+    const shadowGrad = pctx.createRadialGradient(radius * 0.35, radius * 0.35, radius * 0.4, 0, 0, radius * 1.05);
+    shadowGrad.addColorStop(0, "rgba(0, 0, 0, 0)");
+    shadowGrad.addColorStop(0.65, "rgba(2, 4, 12, 0.45)");
+    shadowGrad.addColorStop(1, "rgba(1, 2, 6, 0.88)");
+    pctx.fillStyle = shadowGrad;
+    pctx.fillRect(-radius, -radius, radius * 2, radius * 2);
+
+    pctx.restore(); // end clip
+
+    // 4. Planet Orbit Features (Rings, Beams, Stations outside clipping mask)
+    if (type === "cyber") {
+      pctx.save();
+      pctx.rotate(-0.35);
+      pctx.beginPath();
+      pctx.ellipse(0, 0, radius * 1.5, radius * 0.4, 0, 0, Math.PI * 2);
+      pctx.strokeStyle = "rgba(34, 211, 238, 0.85)";
+      pctx.lineWidth = Math.max(1.5, radius * 0.035);
+      pctx.shadowColor = "#22d3ee";
+      pctx.shadowBlur = 12;
+      pctx.stroke();
+      pctx.restore();
+    } else if (type === "pulsar") {
+      pctx.save();
+      pctx.rotate(0.2);
+      const jetGrad = pctx.createLinearGradient(0, -radius * 2.2, 0, radius * 2.2);
+      jetGrad.addColorStop(0, "rgba(216, 180, 254, 0)");
+      jetGrad.addColorStop(0.3, "rgba(255, 255, 255, 0.85)");
+      jetGrad.addColorStop(0.5, "rgba(192, 132, 252, 0.95)");
+      jetGrad.addColorStop(0.7, "rgba(255, 255, 255, 0.85)");
+      jetGrad.addColorStop(1, "rgba(216, 180, 254, 0)");
+
+      pctx.fillStyle = jetGrad;
+      pctx.shadowColor = "#c084fc";
+      pctx.shadowBlur = 16;
+      pctx.fillRect(-radius * 0.06, -radius * 2.2, radius * 0.12, radius * 4.4);
+
+      pctx.beginPath();
+      pctx.ellipse(0, 0, radius * 1.6, radius * 0.45, 0.3, 0, Math.PI * 2);
+      pctx.strokeStyle = "rgba(245, 158, 11, 0.75)";
+      pctx.lineWidth = Math.max(2, radius * 0.04);
+      pctx.shadowColor = "#f59e0b";
+      pctx.shadowBlur = 14;
+      pctx.stroke();
+      pctx.restore();
+    } else if (type === "solaris") {
+      const waveR = radius * (1.1 + (progress * 2) % 0.6);
+      pctx.beginPath();
+      pctx.arc(0, 0, waveR, 0, Math.PI * 2);
+      pctx.strokeStyle = `rgba(251, 191, 36, ${Math.max(0, 0.6 - (waveR - radius) / radius)})`;
+      pctx.lineWidth = 2;
+      pctx.stroke();
+    }
+
+    pctx.restore();
+  }
+
+  function triggerInterplanetaryWarp(sectorKey, callbacks = {}) {
+    const onArrival = callbacks.onArrival;
+    const onComplete = callbacks.onComplete;
+
+    if (reduceMotion) {
+      if (typeof onArrival === "function") onArrival();
+      if (typeof onComplete === "function") onComplete();
+      return;
+    }
+
+    if (!warpOverlay || !warpCanvas) {
+      if (typeof onArrival === "function") onArrival();
+      if (typeof onComplete === "function") onComplete();
+      return;
+    }
+
+    const dest = WARP_DESTINATIONS[sectorKey] || WARP_DESTINATIONS.hub;
+    isWarping = true;
+
+    if (warpSpeedText) warpSpeedText.textContent = dest.speed;
+    if (warpDestText) warpDestText.textContent = dest.coords;
+
+    warpOverlay.classList.add("active");
+    resizeWarpCanvas();
+
+    const startTime = performance.now();
+    const duration = 680;
+    let arrivalFired = false;
+
+    if (warpAnimId) {
+      cancelAnimationFrame(warpAnimId);
+      warpAnimId = null;
+    }
+
+    function renderWarpFrame(now) {
+      const elapsed = now - startTime;
+      const p = Math.min(1, Math.max(0, elapsed / duration));
+
+      if (warpCtx) {
+        warpCtx.clearRect(0, 0, warpW, warpH);
+
+        const cx = warpW / 2;
+        const cy = warpH / 2;
+
+        // 1. Star Streaks in Hyperdrive
+        const warpSpeedFactor = Math.sin(p * Math.PI);
+        const currentSpeed = 20 + warpSpeedFactor * 160;
+
+        warpCtx.lineWidth = 1.6 * warpDpr;
+        for (let i = 0; i < warpStars.length; i++) {
+          const s = warpStars[i];
+          s.pz = s.z;
+          s.z -= currentSpeed;
+          if (s.z <= 10) {
+            s.z = 1000;
+            s.pz = 1000;
+          }
+
+          const k = (520 * warpDpr) / s.z;
+          const pk = (520 * warpDpr) / s.pz;
+
+          const sx = cx + s.x * k;
+          const sy = cy + s.y * k;
+          const spx = cx + s.x * pk;
+          const spy = cy + s.y * pk;
+
+          const alpha = Math.min(1, Math.max(0.1, (1000 - s.z) / 800));
+          warpCtx.strokeStyle = s.color;
+          warpCtx.globalAlpha = alpha * (0.3 + warpSpeedFactor * 0.7);
+
+          warpCtx.beginPath();
+          warpCtx.moveTo(spx, spy);
+          warpCtx.lineTo(sx, sy);
+          warpCtx.stroke();
+        }
+        warpCtx.globalAlpha = 1;
+
+        // 2. Warp Tunnel Concentric Rings
+        const ringAlpha = warpSpeedFactor * 0.35;
+        if (ringAlpha > 0.02) {
+          for (let r = 1; r <= 3; r++) {
+            const rRadius = ((p * 3 + r * 0.33) % 1) * Math.max(warpW, warpH) * 0.7;
+            warpCtx.beginPath();
+            warpCtx.arc(cx, cy, rRadius, 0, Math.PI * 2);
+            warpCtx.strokeStyle = dest.colorAtmo;
+            warpCtx.lineWidth = 2 * warpDpr;
+            warpCtx.globalAlpha = ringAlpha * (1 - rRadius / (Math.max(warpW, warpH) * 0.7));
+            warpCtx.stroke();
+          }
+          warpCtx.globalAlpha = 1;
+        }
+
+        // 3. Approaching Celestial Planet
+        if (p >= 0.16) {
+          const planetP = Math.min(1, (p - 0.16) / 0.68);
+          const easedScale = Math.pow(planetP, 2.5);
+          const maxPlanetRadius = Math.min(warpW, warpH) * 0.38;
+          const currentRadius = Math.max(2, maxPlanetRadius * easedScale);
+
+          drawPlanet(warpCtx, dest.type, cx, cy, currentRadius, p);
+        }
+
+        // 4. Atmosphere Penetration Flash (Orbital entry)
+        if (p >= 0.68) {
+          const flashP = (p - 0.68) / 0.32;
+          const flashAlpha = Math.sin(flashP * Math.PI) * 0.75;
+          const flashGrad = warpCtx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(warpW, warpH) * 0.8);
+          flashGrad.addColorStop(0, `rgba(255, 255, 255, ${flashAlpha})`);
+          flashGrad.addColorStop(0.4, dest.colorAtmo.replace(/[\d\.]+\)$/, `${flashAlpha * 0.7})`));
+          flashGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+          warpCtx.fillStyle = flashGrad;
+          warpCtx.fillRect(0, 0, warpW, warpH);
+        }
+      }
+
+      // Fire arrival when approaching target orbit (~58% progress)
+      if (p >= 0.58 && !arrivalFired) {
+        arrivalFired = true;
+        if (typeof onArrival === "function") onArrival();
+      }
+
+      if (p < 1) {
+        warpAnimId = requestAnimationFrame(renderWarpFrame);
+      } else {
+        warpOverlay.classList.remove("active");
+        isWarping = false;
+        warpAnimId = null;
+        if (typeof onComplete === "function") onComplete();
+      }
+    }
+
+    warpAnimId = requestAnimationFrame(renderWarpFrame);
+  }
+
+  function openSectorDossier(sectorName) {
+    if (!sectorDossierOverlay) return;
+    if (activeSector === sectorName && sectorDossierOverlay.classList.contains("active")) return;
+
+    sfx.warp();
+
+    if (mainHudViewport && !sectorDossierOverlay.classList.contains("active")) {
+      mainHudViewport.classList.add("warp-departing");
+    }
+
+    triggerInterplanetaryWarp(sectorName, {
+      onArrival: () => {
+        activeSector = sectorName;
+
+        // Trigger Gamified Onboarding Quests
+        if (sectorName === "sobre") completeQuest("sobre");
+        else if (sectorName === "software") completeQuest("software");
+        else if (sectorName === "pesquisa") completeQuest("pesquisa");
+        else if (sectorName === "contato") completeQuest("contato");
+
+        // Update active tab buttons
+        document.querySelectorAll("[data-switch-sector]").forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.switchSector === sectorName);
+        });
+
+        // Update active panel
+        document.querySelectorAll(".dossier-panel").forEach((panel) => {
+          panel.classList.toggle("active", panel.id === `panel-${sectorName}`);
+        });
+
+        if (dossierActiveTitle) {
+          dossierActiveTitle.textContent = sectorTitles[sectorName] || "SETOR SELECIONADO";
+        }
+
+        sectorDossierOverlay.classList.remove("dossier-departing");
+        sectorDossierOverlay.classList.add("active", "dossier-arriving");
+        initCounters();
+        wireSpotlights(sectorDossierOverlay);
+      },
+      onComplete: () => {
+        setTimeout(() => {
+          if (sectorDossierOverlay) sectorDossierOverlay.classList.remove("dossier-arriving");
+        }, 500);
+      }
+    });
   }
 
   function closeSectorDossier() {
-    if (!sectorDossierOverlay) return;
-    sectorDossierOverlay.classList.remove("active");
-    activeSector = null;
-    sfx.click();
+    if (!sectorDossierOverlay || !sectorDossierOverlay.classList.contains("active")) return;
+
+    sfx.warp();
+    sectorDossierOverlay.classList.add("dossier-departing");
+
+    triggerInterplanetaryWarp("hub", {
+      onArrival: () => {
+        sectorDossierOverlay.classList.remove("active", "dossier-departing", "dossier-arriving");
+        activeSector = null;
+        if (mainHudViewport) {
+          mainHudViewport.classList.remove("warp-departing");
+          mainHudViewport.classList.remove("warp-returning");
+          void mainHudViewport.offsetWidth; // trigger reflow
+          mainHudViewport.classList.add("warp-returning");
+        }
+      },
+      onComplete: () => {
+        setTimeout(() => {
+          if (mainHudViewport) mainHudViewport.classList.remove("warp-returning");
+        }, 700);
+      }
+    });
   }
 
   function initSectorNavigation() {
@@ -2143,6 +2656,7 @@
      ============================================================ */
   function init() {
     initIntroCinematic();
+    initWarpTravelEngine();
     initSectorNavigation();
     initCosmos();
     initCursor();
