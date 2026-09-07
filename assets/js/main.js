@@ -374,13 +374,16 @@
     }
 
     const devopsLogs = [
-      { t: 300, text: "> [KERNEL] Booting Antigravity OS v4.2 · Hypervisor ACTIVE", cls: "highlight" },
-      { t: 750, text: "> [DOCKER] 14 containers verified: Overleaf, MongoDB, Redis, Fastify", cls: "success" },
-      { t: 1300, text: "> [ORBITAL_CALC] Ephemeris match: Gaia DR3 & Kepler Target Fields OK", cls: "highlight" },
-      { t: 1850, text: "> [ATMOSPHERE] Entering Mesosphere (Mach 25.4) · Plasma sheath forming", cls: "warn" },
-      { t: 2400, text: "> [TELEMETRY] Retro-thrusters firing: 21.7° S, 41.3° W // IFF Station", cls: "success" },
-      { t: 3000, text: "> [CI/CD] LaTeX Altacv Automated Build: PT/EN/ES/FR dossier READY", cls: "success" },
-      { t: 3450, text: "> [IMPACT/LANDING] Touchdown confirmed at Station LZ. Pedro Rocha ONLINE.", cls: "highlight" }
+      { t: 150, text: "> [SYS_INIT] Hypervisor online · Cluster Sync OK", cls: "highlight" },
+      { t: 450, text: "> [KERNEL] Booting Antigravity OS v4.2 · Neural Bus Active", cls: "highlight" },
+      { t: 850, text: "> [DOCKER] 14 containers verified: Overleaf, MongoDB, Redis, Fastify", cls: "success" },
+      { t: 1250, text: "> [ASTRO_NAV] Ephemeris match: Gaia DR3 & Kepler Catalogues OK", cls: "highlight" },
+      { t: 1650, text: "> [SPECTRO] GALAH DR4 stellar spectrum simulator calibrated", cls: "highlight" },
+      { t: 2050, text: "> [ATMOSPHERE] Entering Mesosphere (Mach 25.4) · Plasma sheath forming", cls: "warn" },
+      { t: 2450, text: "> [TELEMETRY] Retro-thrusters firing: 21.7° S, 41.3° W // IFF Station LZ", cls: "success" },
+      { t: 2850, text: "> [CI/CD] LaTeX Altacv Automated Build: PT/EN/ES/FR dossier READY", cls: "success" },
+      { t: 3150, text: "> [GUIDANCE] Subsonic transition · Aerobraking lock 100%", cls: "highlight" },
+      { t: 3450, text: "> [IMPACT/LANDING] Touchdown confirmed at Station LZ. Pedro Rocha ONLINE.", cls: "success" }
     ];
 
     const termLines = document.getElementById("introTerminalLines");
