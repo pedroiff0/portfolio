@@ -180,6 +180,50 @@
         }, 450);
       } catch (e) {}
     },
+    bornThisWay: () => {
+      if (!sfxEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        // Iconic Lady Gaga - "Born This Way" Synthesized Chorus / Hook:
+        // "I'm on the right track baby, I was born this way!"
+        // Key of F# Minor (F#4, A4, B4, C#5, B4, A4, F#4, E4, F#4, A4, F#4)
+        const leadNotes = [
+          { f: 369.99, d: 0.11, g: 0.045 }, // F#4 (I'm)
+          { f: 440.00, d: 0.11, g: 0.05 },  // A4 (on)
+          { f: 493.88, d: 0.13, g: 0.05 },  // B4 (the)
+          { f: 554.37, d: 0.20, g: 0.06 },  // C#5 (right)
+          { f: 493.88, d: 0.14, g: 0.05 },  // B4 (track)
+          { f: 440.00, d: 0.18, g: 0.05 },  // A4 (ba-)
+          { f: 369.99, d: 0.22, g: 0.055 }, // F#4 (-by)
+          { f: 329.63, d: 0.12, g: 0.04 },  // E4 (I)
+          { f: 369.99, d: 0.13, g: 0.05 },  // F#4 (was)
+          { f: 440.00, d: 0.16, g: 0.055 }, // A4 (born)
+          { f: 369.99, d: 0.40, g: 0.065 }  // F#4 (this way!)
+        ];
+
+        let offset = 0;
+        leadNotes.forEach((n) => {
+          setTimeout(() => {
+            if (!sfxEnabled) return;
+            // Dual-oscillator synth voice for rich dance-pop presence
+            playTone(n.f, "sawtooth", n.d, n.g);
+            playTone(n.f * 1.002, "square", n.d, n.g * 0.4);
+          }, offset * 1000);
+          offset += n.d * 0.96;
+        });
+
+        // Driving Euro-pop Synth Bassline pulse underneath
+        const bassNotes = [185.00, 185.00, 146.83, 164.81, 185.00, 185.00, 220.00, 185.00];
+        bassNotes.forEach((bf, i) => {
+          setTimeout(() => {
+            if (!sfxEnabled) return;
+            playTone(bf, "triangle", 0.16, 0.038);
+          }, i * 190);
+        });
+      } catch (e) {}
+    },
     success: () => {
       playTone(523.25, "sine", 0.08, 0.025);
       setTimeout(() => playTone(659.25, "sine", 0.1, 0.03), 60);
@@ -2035,6 +2079,10 @@
     const dest = WARP_DESTINATIONS[sectorKey] || WARP_DESTINATIONS.hub;
     isWarping = true;
 
+    // Trigger Born This Way Synth Theme & Warp Sound FX
+    sfx.bornThisWay();
+    sfx.warp();
+
     if (warpSpeedText) warpSpeedText.textContent = dest.speed;
     if (warpDestText) warpDestText.textContent = dest.coords;
 
@@ -2042,7 +2090,7 @@
     resizeWarpCanvas();
 
     const startTime = performance.now();
-    const duration = 520;
+    const duration = 1650; // Calm, cinematic 1.65-second interplanetary transition
     let arrivalFired = false;
 
     // Safety fallback timeout to ensure overlay is always dismissed
@@ -2055,11 +2103,25 @@
       if (typeof onComplete === "function") {
         try { onComplete(); } catch (e) {}
       }
-    }, duration + 150);
+    }, duration + 200);
 
     function renderWarpFrame(now) {
       const elapsed = now - startTime;
       const p = Math.min(1, Math.max(0, elapsed / duration));
+
+      // Dynamic Telemetry updates based on flight phase
+      if (warpSpeedText) {
+        if (p < 0.28) {
+          warpSpeedText.textContent = `SPOOLING WARP DRIVES // 0.${Math.floor(p * 320)}c`;
+        } else if (p < 0.72) {
+          warpSpeedText.textContent = dest.speed;
+        } else {
+          warpSpeedText.textContent = "ORBITAL INSERTION // DESACELERAÇÃO // 0.12c";
+        }
+      }
+      if (warpDestText) {
+        warpDestText.textContent = dest.coords;
+      }
 
       if (warpCtx) {
         warpCtx.clearRect(0, 0, warpW, warpH);
@@ -2067,11 +2129,11 @@
         const cx = warpW / 2;
         const cy = warpH / 2;
 
-        // 1. Star Streaks in Hyperdrive
+        // 1. Star Streaks in Hyperdrive (Smooth bell curve velocity)
         const warpSpeedFactor = Math.sin(p * Math.PI);
-        const currentSpeed = 25 + warpSpeedFactor * 180;
+        const currentSpeed = 16 + Math.pow(warpSpeedFactor, 1.35) * 165;
 
-        warpCtx.lineWidth = 1.6 * warpDpr;
+        warpCtx.lineWidth = 1.8 * warpDpr;
         for (let i = 0; i < warpStars.length; i++) {
           const s = warpStars[i];
           s.pz = s.z;
@@ -2089,9 +2151,9 @@
           const spx = cx + s.x * pk;
           const spy = cy + s.y * pk;
 
-          const alpha = Math.min(1, Math.max(0.1, (1000 - s.z) / 800));
+          const alpha = Math.min(1, Math.max(0.08, (1000 - s.z) / 800));
           warpCtx.strokeStyle = s.color;
-          warpCtx.globalAlpha = alpha * (0.3 + warpSpeedFactor * 0.7);
+          warpCtx.globalAlpha = alpha * (0.25 + warpSpeedFactor * 0.75);
 
           warpCtx.beginPath();
           warpCtx.moveTo(spx, spy);
@@ -2100,45 +2162,45 @@
         }
         warpCtx.globalAlpha = 1;
 
-        // 2. Warp Tunnel Concentric Rings
-        const ringAlpha = warpSpeedFactor * 0.35;
+        // 2. Warp Tunnel Concentric Hyperspace Rings
+        const ringAlpha = warpSpeedFactor * 0.38;
         if (ringAlpha > 0.02) {
           for (let r = 1; r <= 3; r++) {
-            const rRadius = ((p * 3 + r * 0.33) % 1) * Math.max(warpW, warpH) * 0.7;
+            const rRadius = ((p * 2.2 + r * 0.33) % 1) * Math.max(warpW, warpH) * 0.65;
             warpCtx.beginPath();
             warpCtx.arc(cx, cy, rRadius, 0, Math.PI * 2);
             warpCtx.strokeStyle = dest.colorAtmo;
             warpCtx.lineWidth = 2 * warpDpr;
-            warpCtx.globalAlpha = ringAlpha * (1 - rRadius / (Math.max(warpW, warpH) * 0.7));
+            warpCtx.globalAlpha = ringAlpha * (1 - rRadius / (Math.max(warpW, warpH) * 0.65));
             warpCtx.stroke();
           }
           warpCtx.globalAlpha = 1;
         }
 
-        // 3. Approaching Celestial Planet
-        if (p >= 0.12) {
-          const planetP = Math.min(1, (p - 0.12) / 0.72);
-          const easedScale = Math.pow(planetP, 2.2);
-          const maxPlanetRadius = Math.min(warpW, warpH) * 0.38;
+        // 3. Approaching Celestial Planet (Calm cubic easing)
+        if (p >= 0.18) {
+          const planetP = Math.min(1, (p - 0.18) / 0.70);
+          const easedScale = 1 - Math.pow(1 - planetP, 2.6);
+          const maxPlanetRadius = Math.min(warpW, warpH) * 0.36;
           const currentRadius = Math.max(2, maxPlanetRadius * easedScale);
           drawPlanet(warpCtx, dest.type, cx, cy, currentRadius, p);
         }
 
-        // 4. Atmosphere Penetration Flash (Orbital entry)
-        if (p >= 0.65) {
-          const flashP = (p - 0.65) / 0.35;
-          const flashAlpha = Math.sin(flashP * Math.PI) * 0.7;
-          const flashGrad = warpCtx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(warpW, warpH) * 0.8);
-          flashGrad.addColorStop(0, `rgba(255, 255, 255, ${flashAlpha})`);
-          flashGrad.addColorStop(0.4, dest.colorAtmo.replace(/[\d\.]+\)$/, `${flashAlpha * 0.7})`));
+        // 4. Soft Atmosphere Penetration Crossfade (Orbital entry)
+        if (p >= 0.70) {
+          const flashP = (p - 0.70) / 0.30;
+          const flashAlpha = Math.sin(flashP * Math.PI) * 0.58;
+          const flashGrad = warpCtx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(warpW, warpH) * 0.85);
+          flashGrad.addColorStop(0, `rgba(255, 255, 255, ${flashAlpha * 0.9})`);
+          flashGrad.addColorStop(0.45, dest.colorAtmo.replace(/[\d\.]+\)$/, `${flashAlpha * 0.65})`));
           flashGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
           warpCtx.fillStyle = flashGrad;
           warpCtx.fillRect(0, 0, warpW, warpH);
         }
       }
 
-      // Fire arrival at ~52% progress
-      if (p >= 0.52 && !arrivalFired) {
+      // Fire arrival at ~60% progress while hyperspace cruise comfortably masks the DOM swap
+      if (p >= 0.60 && !arrivalFired) {
         arrivalFired = true;
         if (typeof onArrival === "function") {
           try { onArrival(); } catch (e) {}
@@ -2164,8 +2226,6 @@
   function openSectorDossier(sectorName) {
     if (!sectorDossierOverlay) return;
     if (activeSector === sectorName && sectorDossierOverlay.classList.contains("active")) return;
-
-    sfx.warp();
 
     if (mainHudViewport) {
       mainHudViewport.classList.remove("warp-returning");
@@ -2220,12 +2280,11 @@
         mainHudViewport.classList.add("warp-returning");
         setTimeout(() => {
           if (mainHudViewport) mainHudViewport.classList.remove("warp-returning");
-        }, 450);
+        }, 650);
       }
       return;
     }
 
-    sfx.warp();
     sectorDossierOverlay.classList.add("dossier-departing");
 
     triggerInterplanetaryWarp("hub", {
@@ -3101,6 +3160,22 @@
         icon: "spectrum",
         tag: "HORIZON",
         act: () => triggerHorizonEasterEgg()
+      });
+    }
+
+    // Lady Gaga - Born This Way
+    if (q.includes("born this way") || q.includes("bornthisway") || q.includes("lady gaga") || q.includes("gaga") || q.includes("monster")) {
+      secretActions.push({
+        type: "secret",
+        title: "✨ LADY GAGA: Born This Way (Cosmic Synth Theme)",
+        sub: "Easter Egg // 'I'm on the right track baby, I was born this way!'",
+        icon: "star",
+        tag: "BORN THIS WAY",
+        act: () => {
+          showToast("✨ Lady Gaga: Born This Way! 🌈🎶", "star");
+          sfx.bornThisWay();
+          completeQuest("hacker");
+        }
       });
     }
 
@@ -4335,6 +4410,64 @@
           sfx.success();
           showToast("🔒 Acoplamento com a Estação Endurance travado com 100% de integridade!", "box");
         }, 4500);
+      });
+    }
+
+    // 6. Horizon Zero Dawn Focus Hologram Scanner (Setor 01 - Terra)
+    const horizonBtn = document.getElementById("horizonFocusBtn");
+    const horizonResult = document.getElementById("horizonFocusResult");
+    if (horizonBtn) {
+      horizonBtn.addEventListener("click", () => {
+        triggerHorizonEasterEgg();
+        if (horizonResult) {
+          horizonResult.style.display = "block";
+        }
+      });
+    }
+
+    // 7. God of War Spartan War Runes (Setor 01 - Terra)
+    const gowBtn = document.getElementById("gowRuneBtn");
+    if (gowBtn) {
+      gowBtn.addEventListener("click", () => {
+        triggerKratosEasterEgg();
+      });
+    }
+
+    // 8. The Sims Simoleons Galactic Vault (Setor 02 - Marte)
+    let currentSimoleons = 50000;
+    const simsVaultBtn = document.getElementById("simsVaultBtn");
+    const simsVaultBalance = document.getElementById("simsVaultBalance");
+    if (simsVaultBtn) {
+      simsVaultBtn.addEventListener("click", () => {
+        currentSimoleons += 50000;
+        if (simsVaultBalance) {
+          simsVaultBalance.textContent = `§${currentSimoleons.toLocaleString("pt-BR")}`;
+        }
+        triggerMotherloadCheat();
+      });
+    }
+
+    // 9. GTA San Andreas Orbital Pay 'n' Spray (Setor 02 - Marte)
+    const gtaHesoyamBtn = document.getElementById("gtaHesoyamBtn");
+    if (gtaHesoyamBtn) {
+      gtaHesoyamBtn.addEventListener("click", () => {
+        triggerHesoyamCheat();
+      });
+    }
+
+    // 10. Bring Me The Horizon Sempiternal Synthesizer (Setor 03 - Saturno)
+    const bmthAudioBtn = document.getElementById("bmthAudioBtn");
+    if (bmthAudioBtn) {
+      bmthAudioBtn.addEventListener("click", () => {
+        triggerBMTHEasterEgg();
+      });
+    }
+
+    // 11. GTA V Invincibility Chamber (Setor 04 - Gargântua)
+    const gtaPainkillerBtn = document.getElementById("gtaPainkillerBtn");
+    if (gtaPainkillerBtn) {
+      gtaPainkillerBtn.addEventListener("click", () => {
+        triggerPainkillerCheat();
       });
     }
   }
