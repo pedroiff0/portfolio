@@ -3738,6 +3738,9 @@
 
     sfx.questComplete();
     showToast(`🎯 Missão Cumprida: ${quest.title} (+${quest.xp} XP)`, "star");
+    // Explorer credits grow with exploration: every first-time mission pays out
+    // cash proportional to its XP (starts at $0 on a fresh visit).
+    updateExplorerCash(quest.xp * 10);
 
     if (completed.length === QUESTS.length) {
       setTimeout(() => {
@@ -4098,14 +4101,23 @@
   /* ============================================================
      PERSISTENT HUB HUD (Explorer Status: Collapsible + Cash + Minimap)
      ============================================================ */
-  let explorerCash = 250000;
+  let explorerCash = 0;
   let minimapAnimId = null;
 
   function updateExplorerCash(amountToAdd = 0) {
     explorerCash += amountToAdd;
+    try {
+      localStorage.setItem("portfolio_cash_v1", String(explorerCash));
+    } catch (e) {}
     const cashEl = document.getElementById("hudCashDisplay");
     if (cashEl) {
       cashEl.textContent = `+$${explorerCash.toLocaleString("en-US")}`;
+      if (amountToAdd > 0) {
+        cashEl.classList.remove("gta-money-pulse");
+        // Force reflow so the animation can retrigger on consecutive gains
+        void cashEl.offsetWidth;
+        cashEl.classList.add("gta-money-pulse");
+      }
     }
   }
 
@@ -4144,28 +4156,45 @@
     mctx.fill();
     mctx.restore();
 
-    // Center Hub Blip (Orbital Station)
+    // Center Hub Blip (Orbital Station) — pulses when you're at the Hub itself
+    const hubIsCurrent = !activeSector;
     mctx.beginPath();
-    mctx.arc(cx, cy, 3.5, 0, Math.PI * 2);
+    mctx.arc(cx, cy, hubIsCurrent ? 4.5 + Math.sin(now * 4) * 1 : 3.5, 0, Math.PI * 2);
     mctx.fillStyle = "#5eead4";
     mctx.shadowColor = "#5eead4";
-    mctx.shadowBlur = 6;
+    mctx.shadowBlur = hubIsCurrent ? 12 : 6;
     mctx.fill();
     mctx.shadowBlur = 0;
 
     // Sector Blips: S1 Terra (top-left), S2 Marte (top-right), S3 Saturno (bottom-left), S4 Gargântua (bottom-right)
+    // "key" ties each blip to the sector router's data-open-sector value so the
+    // radar can show exactly where you currently are in the cosmos.
     const sectors = [
-      { name: "Terra", x: cx - 26, y: cy - 20, color: "#6ea8fe" },
-      { name: "Marte", x: cx + 26, y: cy - 20, color: "#ef4444" },
-      { name: "Saturno", x: cx - 26, y: cy + 20, color: "#fbbf24" },
-      { name: "Gargântua", x: cx + 26, y: cy + 20, color: "#c084fc" }
+      { key: "sobre", name: "Terra", x: cx - 26, y: cy - 20, color: "#6ea8fe" },
+      { key: "software", name: "Marte", x: cx + 26, y: cy - 20, color: "#ef4444" },
+      { key: "pesquisa", name: "Saturno", x: cx - 26, y: cy + 20, color: "#fbbf24" },
+      { key: "contato", name: "Gargântua", x: cx + 26, y: cy + 20, color: "#c084fc" }
     ];
 
     sectors.forEach((s) => {
+      const isCurrent = activeSector === s.key;
       mctx.beginPath();
-      mctx.arc(s.x, s.y, 2.8, 0, Math.PI * 2);
+      mctx.arc(s.x, s.y, isCurrent ? 4.2 + Math.sin(now * 4) * 1 : 2.8, 0, Math.PI * 2);
       mctx.fillStyle = s.color;
+      if (isCurrent) {
+        mctx.shadowColor = s.color;
+        mctx.shadowBlur = 10;
+      }
       mctx.fill();
+      mctx.shadowBlur = 0;
+      if (isCurrent) {
+        // Ring around the current position so it's unmistakable at a glance.
+        mctx.beginPath();
+        mctx.arc(s.x, s.y, 7 + Math.sin(now * 4) * 1, 0, Math.PI * 2);
+        mctx.strokeStyle = s.color;
+        mctx.lineWidth = 1.2;
+        mctx.stroke();
+      }
     });
 
     minimapAnimId = requestAnimationFrame(renderMinimapRadar);
@@ -4174,21 +4203,28 @@
   function initPersistentHubHud() {
     let hud = document.getElementById("hubHudBar");
     if (!hud) {
+      // Restore any previously-earned cash (starts at $0 on a fresh visit).
+      try {
+        const savedCash = parseInt(localStorage.getItem("portfolio_cash_v1") || "0", 10);
+        if (Number.isFinite(savedCash) && savedCash > 0) explorerCash = savedCash;
+      } catch (e) {}
+
       hud = document.createElement("aside");
       hud.id = "hubHudBar";
       hud.className = "gta-hud-bar";
       hud.setAttribute("aria-label", "Status do Explorador");
       hud.setAttribute("role", "status");
       hud.innerHTML = `
-        <div class="gta-hud-header">
+        <div class="gta-hud-header" id="hudToggleHeader" role="button" tabindex="0" aria-expanded="false" title="Expandir/recolher status">
           <span class="gta-hud-title" data-i18n="hud.statusExplorer">STATUS EXPLORADOR</span>
+          <button class="hud-collapse-btn" id="hudCollapseBtn" aria-label="Expandir/recolher status" type="button">▸</button>
         </div>
         <div class="gta-hud-collapsible-content" id="hudCollapsibleContent">
           <div class="gta-status-line">
             <div class="gta-meter gta-health"><div class="gta-meter-fill"></div><span>❤️ 100%</span></div>
             <div class="gta-meter gta-armor"><div class="gta-meter-fill"></div><span>🛡️ 100%</span></div>
           </div>
-          <div class="gta-money-line" id="hudCashDisplay" title="Saldo de Créditos Orbitais">+$250,000</div>
+          <div class="gta-money-line" id="hudCashDisplay" title="Saldo de Créditos Orbitais">+$${explorerCash.toLocaleString("en-US")}</div>
           <div class="gta-minimap-wrap">
             <span class="gta-minimap-label" data-i18n="hud.radar">📡 RADAR ORBITAL // MINIMAP</span>
             <canvas id="hudMinimap" width="130" height="96"></canvas>
@@ -4196,7 +4232,29 @@
         </div>
       `;
       document.body.appendChild(hud);
-      
+
+      // Collapsible by default — it used to sit permanently over dossier text
+      // and the mobile CTA stack. Collapsed = just the title pill; expand on click.
+      hud.classList.add("collapsed");
+      const toggleHudCollapse = () => {
+        const collapsed = hud.classList.toggle("collapsed");
+        const header = document.getElementById("hudToggleHeader");
+        const btn = document.getElementById("hudCollapseBtn");
+        if (header) header.setAttribute("aria-expanded", collapsed ? "false" : "true");
+        if (btn) btn.textContent = collapsed ? "▸" : "▾";
+        sfx.click();
+      };
+      const hudHeader = document.getElementById("hudToggleHeader");
+      if (hudHeader) {
+        hudHeader.addEventListener("click", toggleHudCollapse);
+        hudHeader.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggleHudCollapse();
+          }
+        });
+      }
+
       if (!minimapAnimId) {
         renderMinimapRadar();
       }
@@ -4431,10 +4489,17 @@
 
     pair.forEach((egg, idx) => {
       const btn = document.createElement("button");
-      btn.className = `floating-easter-egg ${discoveredSet.has(egg.id) ? "discovered" : ""}`;
+      const alreadyDiscovered = discoveredSet.has(egg.id);
+      btn.className = `floating-easter-egg ${alreadyDiscovered ? "discovered" : ""}`;
       btn.dataset.eggId = egg.id;
-      btn.setAttribute("aria-label", "Relíquia Enigmática");
-      btn.setAttribute("title", "Sinal Misterioso // Toque para decodificar");
+
+      // Kept mysterious until discovered (no spoilers on the floating icon
+      // itself), but once found it should clearly say what it is and where
+      // it's from — it stayed anonymous even after being collected before.
+      const mysteryTitle = "Sinal Misterioso // Toque para decodificar";
+      const revealedTitle = `${egg.name} // ${egg.desc}`;
+      btn.setAttribute("aria-label", alreadyDiscovered ? `Relíquia decodificada: ${egg.name}` : "Relíquia Enigmática");
+      btn.setAttribute("title", alreadyDiscovered ? revealedTitle : mysteryTitle);
 
       const pos = positions[idx];
       if (pos.top) btn.style.top = pos.top;
@@ -4443,16 +4508,26 @@
       if (pos.right) btn.style.right = pos.right;
       btn.style.animationDelay = `${idx * -2.4}s`;
 
-      btn.innerHTML = `<span class="egg-icon">${egg.icon}</span>`;
+      btn.innerHTML = `<span class="egg-icon">${egg.icon}</span>${alreadyDiscovered ? `<span class="egg-label">${egg.name}</span>` : ""}`;
 
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
         btn.classList.add("collected-burst", "discovered");
+        btn.setAttribute("title", revealedTitle);
+        btn.setAttribute("aria-label", `Relíquia decodificada: ${egg.name}`);
+        if (!btn.querySelector(".egg-label")) {
+          const label = document.createElement("span");
+          label.className = "egg-label";
+          label.textContent = egg.name;
+          btn.appendChild(label);
+        }
 
+        const firstDiscovery = !discoveredSet.has(egg.id);
         discoveredSet.add(egg.id);
         try {
           localStorage.setItem("portfolio_discovered_eggs_v1", JSON.stringify([...discoveredSet]));
         } catch (err) {}
+        if (firstDiscovery) updateExplorerCash(50);
 
         // Reveal the corresponding easter egg widget
         const eggWidgetMap = {
@@ -5062,12 +5137,6 @@
      14. INITIALIZATION
      ============================================================ */
   function init() {
-    // Restore theme preference
-    const savedTheme = localStorage.getItem("portfolio_theme");
-    if (savedTheme) {
-      document.body.setAttribute("data-theme", savedTheme);
-    }
-
     initIntroCinematic();
     initWarpTravelEngine();
     initSectorNavigation();
@@ -5142,17 +5211,6 @@
         searchQuery = e.target.value;
         renderProjectsShowcase();
         renderAllReposGrouped();
-      });
-    }
-
-    // Theme toggle
-    const themeBtn = document.getElementById("themeToggleBtn");
-    if (themeBtn) {
-      themeBtn.addEventListener("click", () => {
-        const cur = document.body.getAttribute("data-theme");
-        const next = cur === "light" ? "dark" : "light";
-        document.body.setAttribute("data-theme", next);
-        localStorage.setItem("portfolio_theme", next);
       });
     }
 

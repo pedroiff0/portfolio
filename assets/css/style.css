@@ -524,7 +524,12 @@ body.cursor-active .cursor-glow {
   position: fixed;
   top: 14px;
   left: 50%;
-  transform: translateX(-50%) translateY(-150%);
+  /* Always visible & reachable — this used to sit translateY(-150%) off the
+     top of the screen with opacity:0, only revealing on hover. That hid the
+     language switcher and SFX toggle almost entirely (no hover on touch, and
+     an easy-to-miss hit area on desktop) — a big part of why the language
+     switcher read as "broken": most people could never find it. */
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -540,26 +545,14 @@ body.cursor-active .cursor-glow {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   z-index: 999;
   transition: all 0.4s var(--ease-out-expo);
-  opacity: 0;
-}
-
-/* Invisible hit area to trigger hover */
-.top-hud-bar::before {
-  content: "";
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  right: -20px;
-  bottom: -60px;
+  opacity: 1;
 }
 
 .top-hud-bar:hover,
 .top-hud-bar:focus-within {
-  opacity: 1;
   background: rgba(6, 10, 26, 0.96);
   border-color: var(--panel-border-hover);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.75), 0 0 20px rgba(94, 234, 212, 0.2);
-  transform: translateX(-50%) translateY(2px);
 }
 
 .hud-brand {
@@ -1031,29 +1024,12 @@ body.cursor-active .cursor-glow {
   background: rgba(6, 9, 24, 0.95);
   border-bottom: 1px solid var(--panel-border);
   z-index: 50;
-  
-  /* Collapsed by default, appear on hover */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  transform: translateY(-90%);
-  transition: transform 0.3s var(--ease-out-expo);
-}
 
-.dossier-header-bar:hover,
-.dossier-header-bar:focus-within {
-  transform: translateY(0);
-}
-
-/* Invisible hit area to trigger hover */
-.dossier-header-bar::after {
-  content: "";
-  position: absolute;
-  bottom: -20px;
-  left: 0;
-  width: 100%;
-  height: 20px;
+  /* Always visible & reachable — it used to be collapsed off-screen and only
+     reveal on hover (translateY(-90%)), which meant "Retornar ao Hub" and the
+     sector tabs were unreliable to hit (no hover on touch, easy to lose focus)
+     and effectively broke in-hub navigation. It's a normal flex item now. */
+  flex: none;
 }
 
 .dossier-nav-left {
@@ -1124,6 +1100,13 @@ body.cursor-active .cursor-glow {
 }
 
 .dossier-panel {
+  /* Explicit width, not just margin:auto centering — as a flex item (parent
+     is display:flex/column) an auto-margin-centered auto-width block shrinks
+     to fit its own in-flow content instead of stretching to the container.
+     Setor 04's only child is position:fixed (contributes zero in-flow
+     content width), so the panel collapsed to a 0×0 box centered at the
+     midpoint — clipping/misplacing everything inside it. */
+  width: 100%;
   max-width: var(--max-w);
   margin: 0 auto;
   display: none;
@@ -1134,9 +1117,17 @@ body.cursor-active .cursor-glow {
   display: block;
 }
 
+/* Opacity-only on purpose: Chromium keeps an element that has ever animated
+   `transform` (even one whose "to" keyframe is literally `none`) acting as a
+   new containing block for position:fixed descendants for as long as a
+   forwards-filled animation stays attached — it never truly clears back to
+   "none". That silently relocated Setor 04's full-screen Gargantua canvas
+   (position:fixed) to be relative to this panel instead of the viewport,
+   shifting/clipping its content. Do not add transform/translate/scale back
+   into this keyframe. */
 @keyframes panelFadeIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .section-dossier-head { margin-bottom: 32px; }
@@ -1839,10 +1830,11 @@ body.cursor-active .cursor-glow {
 .modal-proj__stack { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 24px; }
 .modal-proj__actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 
-/* Gamification Toast - Centered at Top-Middle of Screen for Desktop and Mobile */
+/* Gamification Toast - Centered at Top-Middle of Screen for Desktop and Mobile.
+   Sits below .top-hud-bar (now permanently visible) instead of on top of it. */
 .toast-container {
   position: fixed;
-  top: 18px;
+  top: 72px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 99999;
@@ -1943,6 +1935,26 @@ body.cursor-active .cursor-glow {
   filter: drop-shadow(0 0 14px rgba(253, 224, 71, 0.85)) drop-shadow(0 0 26px rgba(245, 158, 11, 0.5));
 }
 
+/* Once decoded, the relic identifies where it's from (no longer anonymous) */
+.egg-label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 4px;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: #fde68a;
+  background: rgba(6, 10, 26, 0.88);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+  pointer-events: none;
+}
+
 .floating-easter-egg.collected-burst {
   animation: eggBurstAnim 0.6s var(--ease-out-expo) forwards !important;
 }
@@ -1991,14 +2003,11 @@ body.cursor-active .cursor-glow {
   position: relative;
   z-index: 20;
   width: 100%;
-  max-width: 820px;
-  margin: 0 auto;
 }
 
 .app-footer--dossier {
   padding-bottom: 24px;
   padding-top: 24px;
-  margin-top: 60px;
   margin-top: auto;
   width: 100%;
 }
@@ -2616,6 +2625,16 @@ body.cursor-active .cursor-glow {
   letter-spacing: 2px;
 }
 
+.gta-money-line.gta-money-pulse {
+  animation: gtaMoneyPulse 0.5s var(--ease-out-expo);
+}
+
+@keyframes gtaMoneyPulse {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.22); color: #4ade80; }
+  100% { transform: scale(1); }
+}
+
 .gta-status-line {
   display: flex;
   gap: 12px;
@@ -3100,68 +3119,7 @@ body.konami-active {
   100% { transform: translateX(-50%) scale(1.04); box-shadow: 0 0 45px rgba(6, 182, 212, 0.8); }
 }
 
-/* ============================================================
-   THEME TOGGLE BUTTON
-   ============================================================ */
-.theme-toggle-btn {
-  position: fixed;
-  top: 12px;
-  right: 12px;
-  z-index: 9999;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--panel-solid);
-  border: 1.5px solid var(--panel-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  font-size: 1.2rem;
-}
-.theme-toggle-btn:hover {
-  transform: scale(1.1);
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 20px rgba(94, 234, 212, 0.3);
-}
-.theme-icon-light { display: none; }
-[data-theme="light"] .theme-icon-dark { display: none; }
-[data-theme="light"] .theme-icon-light { display: inline; }
-[data-theme="light"] {
-  --bg-space: #f8fafc;
-  --bg-space-deep: #ffffff;
-  --bg-card: rgba(255, 255, 255, 0.85);
-  --bg-card-hover: rgba(241, 245, 249, 0.95);
-  --panel: rgba(255, 255, 255, 0.9);
-  --panel-solid: #ffffff;
-  --panel-border: rgba(30, 41, 59, 0.12);
-  --panel-border-hover: rgba(59, 130, 246, 0.4);
-
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --text-dim: #94a3b8;
-
-  --accent-cyan: #0891b2;
-  --accent-blue: #2563eb;
-  --accent-purple: #7c3aed;
-  --accent-amber: #d97706;
-  --accent-rose: #e11d48;
-
-  --shadow-cosmic: 0 20px 50px rgba(0, 0, 0, 0.1), 0 0 30px rgba(37, 99, 235, 0.08);
-  --shadow-glow: 0 0 24px rgba(37, 99, 235, 0.2);
-  --shadow-glow-cyan: 0 0 24px rgba(8, 145, 178, 0.2);
-}
-
-[data-theme="light"] .interstellar-hero-banner {
-  background: radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.12), rgba(255, 255, 255, 0.9) 75%);
-  border-color: rgba(245, 158, 11, 0.3);
-}
-
-[data-theme="light"] .gargantua-bg-canvas {
-  opacity: 0.4;
-}
+/* Theme toggle removed: the site is permanently dark (see main.js/index.html). */
 
 /* ============================================================
    ACCESSIBILITY: Skip Link & Focus Styles
@@ -3316,22 +3274,30 @@ body.konami-active {
 .gta-hud-bar {
   position: fixed;
   left: 24px;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 24px;
+  width: 200px;
+  max-width: calc(100vw - 48px);
   background: rgba(6, 10, 26, 0.94);
   border: 1.5px solid rgba(94, 234, 212, 0.4);
   border-radius: var(--radius-md);
-  padding: 12px 16px;
+  padding: 10px 14px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  z-index: 10001;
+  z-index: 6000;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(94, 234, 212, 0.2);
   animation: slideInLeftHUD 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Collapsed by default (just the title pill) so it never sits on top of
+     dossier text or the mobile CTA stack — expand on demand. */
+}
+
+.gta-hud-bar.collapsed {
+  padding: 8px 12px;
+  cursor: pointer;
 }
 
 .gta-hud-bar.collapsed .gta-hud-collapsible-content {
@@ -3344,6 +3310,11 @@ body.konami-active {
   justify-content: space-between;
   width: 100%;
   gap: 10px;
+  cursor: pointer;
+}
+
+.gta-hud-header .hud-collapse-btn {
+  flex: none;
 }
 
 .gta-hud-title {
@@ -3410,21 +3381,6 @@ body.konami-active {
   display: block;
   border-radius: 4px;
   background: #030714;
-}
-
-[data-theme="light"] .gta-hud-bar {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(30, 41, 59, 0.18);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-}
-
-[data-theme="light"] .gta-minimap-wrap {
-  background: #f1f5f9;
-  border-color: rgba(30, 41, 59, 0.15);
-}
-
-[data-theme="light"] #hudMinimap {
-  background: #e2e8f0;
 }
 
 /* ============================================================
@@ -3818,13 +3774,6 @@ body.endurance-spin-active .sector-dossier-overlay {
     transform: scale(0.85);
   }
 }
-[data-theme="light"] #cosmosCanvas,
-[data-theme="light"] #introCanvas,
-[data-theme="light"] #warpTravelCanvas {
-  filter: none;
-  opacity: 0.15;
-}
-
 /* ACCESSIBILITY FOCUS RINGS */
 *:focus-visible {
   outline: 3px solid var(--accent-cyan) !important;

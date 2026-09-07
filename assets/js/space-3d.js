@@ -333,12 +333,14 @@
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, w, h);
 
-      // Basaltic Volcanic Maria
-      ctx.fillStyle = "rgba(45, 14, 7, 0.4)";
-      for (let i = 0; i < 30; i++) {
+      // Basaltic Volcanic Maria — small, soft, sparse blotches of surface
+      // texture. Too many/too large used to drown out Valles Marineris and
+      // Olympus Mons below, reading as an unrecognizable blotchy mess.
+      ctx.fillStyle = "rgba(45, 14, 7, 0.22)";
+      for (let i = 0; i < 16; i++) {
         const mx = Math.random() * w;
         const my = Math.random() * h * 0.6 + h * 0.2;
-        const mr = Math.random() * 80 + 30;
+        const mr = Math.random() * 34 + 14;
         ctx.beginPath();
         ctx.arc(mx, my, mr, 0, Math.PI * 2);
         ctx.fill();
@@ -814,7 +816,9 @@
       scene.add(satGroup);
 
       const sun = new THREE.DirectionalLight(0xffffff, 2.2);
-      sun.position.set(4, 2, 4);
+      // Angled to the side (not near the camera) so the sphere shows a real
+      // day/night terminator instead of a flat, flash-lit look.
+      sun.position.set(7, 2.5, -1.5);
       scene.add(sun);
       scene.add(new THREE.AmbientLight(0x0a1638, 0.5));
 
@@ -936,7 +940,7 @@
 
       // Key Sunlight & Space Fill
       const sun = new THREE.DirectionalLight(0xffffff, 2.6);
-      sun.position.set(6, 3, 5);
+      sun.position.set(8, 2.5, -1.5);
       scene.add(sun);
       scene.add(new THREE.AmbientLight(0x060e28, 0.38));
 
@@ -1038,7 +1042,9 @@
       let currentPlanet = null;
 
       const sun = new THREE.DirectionalLight(0xffffff, 2.4);
-      sun.position.set(5, 3, 5);
+      // Angled to the side/behind the approaching planet (not near the camera)
+      // so it reads as a lit 3D sphere with a visible terminator, not a flat disc.
+      sun.position.set(7, 2.5, -2);
       scene.add(sun);
       scene.add(new THREE.AmbientLight(0x060e28, 0.45));
 
