@@ -657,11 +657,10 @@
       scene.add(satGroup);
 
       const sun = new THREE.DirectionalLight(0xffffff, 2.2);
-      // Angled to the side (not near the camera) so the sphere shows a real
-      // day/night terminator instead of a flat, flash-lit look.
       sun.position.set(7, 2.5, -1.5);
       scene.add(sun);
-      scene.add(new THREE.AmbientLight(0x0a1638, 0.5));
+      // Bright fill so the whole sphere stays readable — no near-black side.
+      scene.add(new THREE.AmbientLight(0xffffff, 1.6));
 
       let isDragging = false;
       let prevMousePos = { x: 0, y: 0 };
@@ -783,7 +782,8 @@
       const sun = new THREE.DirectionalLight(0xffffff, 2.6);
       sun.position.set(8, 2.5, -1.5);
       scene.add(sun);
-      scene.add(new THREE.AmbientLight(0x060e28, 0.38));
+      // Bright fill so the whole sphere stays readable — no near-black side.
+      scene.add(new THREE.AmbientLight(0xffffff, 1.6));
 
       const onResize = () => {
         camera.aspect = window.innerWidth / window.innerHeight;
@@ -883,11 +883,10 @@
       let currentPlanet = null;
 
       const sun = new THREE.DirectionalLight(0xffffff, 2.4);
-      // Angled to the side/behind the approaching planet (not near the camera)
-      // so it reads as a lit 3D sphere with a visible terminator, not a flat disc.
       sun.position.set(7, 2.5, -2);
       scene.add(sun);
-      scene.add(new THREE.AmbientLight(0x060e28, 0.45));
+      // Bright fill so the whole sphere stays readable — no near-black side.
+      scene.add(new THREE.AmbientLight(0xffffff, 1.6));
 
       const onResize = () => {
         camera.aspect = window.innerWidth / window.innerHeight;
