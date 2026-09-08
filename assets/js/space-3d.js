@@ -223,70 +223,13 @@
       };
     },
 
+    // Real imagery (Solar System Scope, CC BY 4.0 — see assets/img/planets/
+    // README.md) in place of the earlier hand-drawn canvas terrain, same
+    // reasoning as Earth's textures above.
     getMarsTexture() {
       if (this._textures.marsMap) return this._textures.marsMap;
-      const w = 1024, h = 512;
-      const cv = document.createElement("canvas");
-      cv.width = w; cv.height = h;
-      const ctx = cv.getContext("2d");
-
-      // Red/Rust Terrain Base
-      const grad = ctx.createLinearGradient(0, 0, 0, h);
-      grad.addColorStop(0.0, "#85260c");
-      grad.addColorStop(0.3, "#b43d1b");
-      grad.addColorStop(0.5, "#d9531e");
-      grad.addColorStop(0.7, "#9c3214");
-      grad.addColorStop(1.0, "#85260c");
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
-
-      // Basaltic Volcanic Maria — small, soft, sparse blotches of surface
-      // texture. Too many/too large used to drown out Valles Marineris and
-      // Olympus Mons below, reading as an unrecognizable blotchy mess.
-      ctx.fillStyle = "rgba(45, 14, 7, 0.22)";
-      for (let i = 0; i < 16; i++) {
-        const mx = Math.random() * w;
-        const my = Math.random() * h * 0.6 + h * 0.2;
-        const mr = Math.random() * 34 + 14;
-        ctx.beginPath();
-        ctx.arc(mx, my, mr, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // Valles Marineris Canyon
-      ctx.strokeStyle = "rgba(30, 8, 4, 0.85)";
-      ctx.lineWidth = 12;
-      ctx.beginPath();
-      ctx.moveTo(350, 270);
-      ctx.quadraticCurveTo(460, 290, 580, 260);
-      ctx.stroke();
-
-      // Olympus Mons Caldera
-      const omGrad = ctx.createRadialGradient(280, 220, 0, 280, 220, 45);
-      omGrad.addColorStop(0, "#f97316");
-      omGrad.addColorStop(0.4, "#9a3412");
-      omGrad.addColorStop(1, "rgba(124, 45, 18, 0)");
-      ctx.fillStyle = omGrad;
-      ctx.beginPath();
-      ctx.arc(280, 220, 45, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Polar Ice Caps
-      const poleGradN = ctx.createRadialGradient(w / 2, 0, 0, w / 2, 0, 75);
-      poleGradN.addColorStop(0, "#ffffff");
-      poleGradN.addColorStop(0.7, "#e2e8f0");
-      poleGradN.addColorStop(1, "rgba(255, 255, 255, 0)");
-      ctx.fillStyle = poleGradN;
-      ctx.fillRect(0, 0, w, 80);
-
-      const poleGradS = ctx.createRadialGradient(w / 2, h, 0, w / 2, h, 65);
-      poleGradS.addColorStop(0, "#ffffff");
-      poleGradS.addColorStop(0.65, "#e2e8f0");
-      poleGradS.addColorStop(1, "rgba(255, 255, 255, 0)");
-      ctx.fillStyle = poleGradS;
-      ctx.fillRect(0, h - 70, w, 70);
-
-      this._textures.marsMap = new THREE.CanvasTexture(cv);
+      this._textures.marsMap = new THREE.TextureLoader().load("assets/img/planets/mars_2k.jpg");
+      this._textures.marsMap.wrapS = THREE.RepeatWrapping;
       return this._textures.marsMap;
     },
 
@@ -294,44 +237,10 @@
       if (this._textures.saturnMap) {
         return { map: this._textures.saturnMap, rings: this._textures.saturnRingsMap };
       }
-      const w = 1024, h = 512;
-      const cv = document.createElement("canvas");
-      cv.width = w; cv.height = h;
-      const ctx = cv.getContext("2d");
-
-      // Saturn Atmospheric Gas Belts
-      const grad = ctx.createLinearGradient(0, 0, 0, h);
-      const bands = [
-        [0.0, "#927042"], [0.1, "#c89f66"], [0.2, "#e5be88"], [0.35, "#fde68a"],
-        [0.5, "#fef3c7"], [0.65, "#e0b375"], [0.8, "#b9884e"], [0.9, "#8d6438"], [1.0, "#634423"]
-      ];
-      bands.forEach(([pos, col]) => grad.addColorStop(pos, col));
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
-
-      for (let y = 0; y < h; y += 3) {
-        ctx.fillStyle = `rgba(255, 255, 255, ${(Math.sin(y * 0.1) * 0.08 + 0.04).toFixed(3)})`;
-        ctx.fillRect(0, y, w, 1.5);
-      }
-      this._textures.saturnMap = new THREE.CanvasTexture(cv);
-
-      // Saturn Concentric Ring System (1024 x 64)
-      const rcv = document.createElement("canvas");
-      rcv.width = 1024; rcv.height = 64;
-      const rctx = rcv.getContext("2d");
-      const rgrad = rctx.createLinearGradient(0, 0, 1024, 0);
-      rgrad.addColorStop(0.0, "rgba(0, 0, 0, 0)");
-      rgrad.addColorStop(0.12, "rgba(146, 112, 66, 0.2)");   // Ring C
-      rgrad.addColorStop(0.35, "rgba(254, 243, 199, 0.95)");  // Ring B
-      rgrad.addColorStop(0.62, "rgba(253, 230, 138, 0.9)");
-      rgrad.addColorStop(0.65, "rgba(0, 0, 0, 0)");           // Cassini Division
-      rgrad.addColorStop(0.70, "rgba(217, 168, 104, 0.85)");  // Ring A
-      rgrad.addColorStop(0.95, "rgba(180, 130, 75, 0.6)");
-      rgrad.addColorStop(1.0, "rgba(0, 0, 0, 0)");
-      rctx.fillStyle = rgrad;
-      rctx.fillRect(0, 0, 1024, 64);
-
-      this._textures.saturnRingsMap = new THREE.CanvasTexture(rcv);
+      const loader = new THREE.TextureLoader();
+      this._textures.saturnMap = loader.load("assets/img/planets/saturn_2k.jpg");
+      this._textures.saturnMap.wrapS = THREE.RepeatWrapping;
+      this._textures.saturnRingsMap = loader.load("assets/img/planets/saturn_ring_alpha_2k.png");
       return { map: this._textures.saturnMap, rings: this._textures.saturnRingsMap };
     },
 

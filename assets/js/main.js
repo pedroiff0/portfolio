@@ -1543,6 +1543,7 @@
   const mainHudViewport = document.getElementById("mainHudViewport");
   const sectorDossierOverlay = document.getElementById("sectorDossierOverlay");
   const dossierActiveTitle = document.getElementById("dossierActiveTitle");
+  const topHudBarEl = document.getElementById("topHudBar");
 
   let warpCtx = null;
   let warpW = 0, warpH = 0, warpDpr = 1;
@@ -2303,6 +2304,7 @@
         if (dossierActiveTitle) {
           dossierActiveTitle.textContent = sectorTitles[sectorName] || "SETOR SELECIONADO";
         }
+        if (topHudBarEl) topHudBarEl.classList.add("in-sector");
 
         sectorDossierOverlay.classList.remove("dossier-departing");
         sectorDossierOverlay.classList.add("active", "dossier-arriving");
@@ -2326,6 +2328,7 @@
 
   function closeSectorDossier(syncHash = true) {
     activeSector = null;
+    if (topHudBarEl) topHudBarEl.classList.remove("in-sector");
 
     if (syncHash && window.location.hash && window.location.hash !== "#hub" && window.location.hash !== "#") {
       window.history.pushState(null, "", "#hub");
@@ -5041,16 +5044,20 @@
       }
     }
 
-    // Translate footer
-    const footer = document.querySelector(".rodape-frase");
-    if (footer) {
-      const val = t("footer");
-      if (val) {
-        const links = footer.querySelector(".rodape-links");
-        footer.innerHTML = val;
-        if (links) footer.appendChild(links);
-      }
-    }
+    // NOTE: there used to be footer-translation logic here
+    // (document.querySelector(".rodape-frase")) that overwrote the *first*
+    // .rodape-frase's innerHTML with the short "footer" i18n string. Two
+    // real bugs: querySelector only grabs one of the two .rodape-frase
+    // elements (hub + dossier both have one), so only the hub footer got
+    // clobbered while the dossier one didn't — which is why they stopped
+    // matching. And the "footer" i18n string ("feito com café, código e um
+    // céu estrelado.") doesn't even correspond to the current, richer footer
+    // markup (© 2026 Pedro Rocha — ..., feito com ☕ ... por ...) it was
+    // replacing — that copy isn't wired to per-language content today.
+    // Removed rather than "fixed" onto stale content; if the footer needs
+    // real i18n later, wrap the specific translatable span(s) in data-i18n
+    // like every other element on the page, applied identically to both
+    // footers, instead of a blanket single-element innerHTML swap.
 
     // Corner nodes (hub.sectorN.kicker/title/sub) are translated individually
     // via [data-i18n] above, same as the dossier kickers.

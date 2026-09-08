@@ -87,53 +87,6 @@
        2. MAIN COSMIC HUD VIEWPORT (ZERO ACCIDENTAL OVERFLOW)
        ============================================================ -->
   <div class="main-hud-viewport" id="mainHudViewport">
-    <!-- Top HUD Navigation Bar -->
-    <header class="top-hud-bar">
-      <div class="hud-brand">
-        <svg viewBox="0 0 32 32" width="28" height="28">
-          <defs>
-            <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32">
-              <stop stop-color="#b692ff" />
-              <stop offset="0.5" stop-color="#6ea8fe" />
-              <stop offset="1" stop-color="#b692ff" />
-            </linearGradient>
-          </defs>
-          <circle cx="16" cy="16" r="6" fill="url(#logoGrad)" />
-          <ellipse cx="16" cy="16" rx="14" ry="4.8" fill="none" stroke="url(#logoGrad)" stroke-width="1.6" transform="rotate(-28 16 16)" />
-        </svg>
-        <span>Pedro<strong>Rocha</strong></span>
-      </div>
-
-      <div class="hud-top-controls">
-        <!-- Mobile ESC Button -->
-        <a href="#hub" class="btn-hud-pill btn-topbar-close-dossier" id="closeDossierMobileBtn" style="display: none; background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.6); color: #fca5a5;">
-          <span data-i18n="hud.returnBtn">Retornar ao Hub [ESC]</span>
-        </a>
-        <button class="btn-hud-pill" id="replayIntroBtn" title="Reassistir Animação de Entrada">
-          <span>🚀 Intro</span>
-        </button>
-
-        <button class="btn-hud-pill" data-open-cmd aria-label="Abrir Terminal (Ctrl+K)">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <span data-i18n="hud.searchBtn">Buscar</span>
-          <span class="kbd-shortcut">⌘K</span>
-        </button>
-
-        <button class="btn-hud-pill" id="sfxToggle" aria-label="Alternar Efeitos Sonoros" title="Alternar Efeitos Sonoros">
-          <span class="sfx-icon-wrap"></span>
-          <span class="sfx-label">SFX</span>
-        </button>
-
-        <!-- Language Switcher -->
-        <div class="lang-switch-hud" role="group" aria-label="Selecionar Idioma">
-          <button class="lang-btn" data-lang="pt">PT</button>
-          <button class="lang-btn" data-lang="en">EN</button>
-          <button class="lang-btn" data-lang="es">ES</button>
-          <button class="lang-btn" data-lang="fr">FR</button>
-        </div>
-      </div>
-    </header>
-
     <!-- Central Minimalist Core Stage -->
     <main class="center-core-stage">
       <div class="core-telemetry-tag">
@@ -183,7 +136,7 @@
     </div>
 
     <!-- Top-Right: Setor 02 / Marte / Software -->
-    <div class="corner-node node-top-right" data-open-sector="software" role="button" aria-label="Abrir Setor 02: Marte (Software & Sistemas)">
+    <div class="corner-node node-top-right" data-open-sector="software" role="button" aria-label="Abrir Setor 02: Marte (Software & Sistemas)" title="Textura de Marte: Solar System Scope (CC BY 4.0)">
       <div class="corner-node__icon">🔴</div>
       <div class="corner-node__texts">
         <span class="corner-node__kicker" data-i18n="hub.sector2.kicker">SETOR 02 // MARTE</span>
@@ -193,7 +146,7 @@
     </div>
 
     <!-- Bottom-Left: Setor 03 / Saturno / Pesquisa -->
-    <div class="corner-node node-bottom-left" data-open-sector="pesquisa" role="button" aria-label="Abrir Setor 03: Saturno (Pesquisa Astrofísica)">
+    <div class="corner-node node-bottom-left" data-open-sector="pesquisa" role="button" aria-label="Abrir Setor 03: Saturno (Pesquisa Astrofísica)" title="Texturas de Saturno: Solar System Scope (CC BY 4.0)">
       <div class="corner-node__icon">🪐</div>
       <div class="corner-node__texts">
         <span class="corner-node__kicker" data-i18n="hub.sector3.kicker">SETOR 03 // SATURNO</span>
@@ -313,6 +266,76 @@
     </footer>
   </div>
 
+  <!-- Top HUD Navigation Bar — the ONE topbar used everywhere (hub and every
+       sector/"planet"). Deliberately a SIBLING of .main-hud-viewport, not
+       nested inside it: that viewport sets position:relative + z-index:10 +
+       will-change:transform, which creates its own stacking/containing
+       context — anything nested inside it (however high its own z-index)
+       stays trapped behind that z-index:10, so this bar could never actually
+       rise above .sector-dossier-overlay (z-index:5000) while nested there,
+       no matter what z-index it was given. Its sector-nav block only shows
+       once a sector is open (.top-hud-bar.in-sector, toggled in main.js). -->
+  <header class="top-hud-bar" id="topHudBar">
+    <div class="hud-brand">
+      <svg viewBox="0 0 32 32" width="28" height="28">
+        <defs>
+          <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32">
+            <stop stop-color="#b692ff" />
+            <stop offset="0.5" stop-color="#6ea8fe" />
+            <stop offset="1" stop-color="#b692ff" />
+          </linearGradient>
+        </defs>
+        <circle cx="16" cy="16" r="6" fill="url(#logoGrad)" />
+        <ellipse cx="16" cy="16" rx="14" ry="4.8" fill="none" stroke="url(#logoGrad)" stroke-width="1.6" transform="rotate(-28 16 16)" />
+      </svg>
+      <span>Pedro<strong>Rocha</strong></span>
+    </div>
+
+    <!-- Shown only while a sector/"planet" dossier is open -->
+    <div class="hud-sector-nav" id="hudSectorNav">
+      <button class="btn-return-hub" id="closeDossierBtn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+        <span data-i18n="hud.returnBtn">Retornar ao Hub [ESC]</span>
+      </button>
+      <span class="dossier-sector-title" id="dossierActiveTitle">SETOR 01 // SOBRE MIM</span>
+      <div class="dossier-sector-tabs">
+        <button class="tab-sector-btn" data-switch-sector="sobre">01 // Terra</button>
+        <button class="tab-sector-btn" data-switch-sector="software">02 // Marte</button>
+        <button class="tab-sector-btn" data-switch-sector="pesquisa">03 // Saturno</button>
+        <button class="tab-sector-btn" data-switch-sector="contato">04 // Gargântua</button>
+      </div>
+    </div>
+
+    <div class="hud-top-controls">
+      <!-- Mobile ESC Button -->
+      <a href="#hub" class="btn-hud-pill btn-topbar-close-dossier" id="closeDossierMobileBtn" style="display: none; background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.6); color: #fca5a5;">
+        <span data-i18n="hud.returnBtn">Retornar ao Hub [ESC]</span>
+      </a>
+      <button class="btn-hud-pill" id="replayIntroBtn" title="Reassistir Animação de Entrada">
+        <span>🚀 Intro</span>
+      </button>
+
+      <button class="btn-hud-pill" data-open-cmd aria-label="Abrir Terminal (Ctrl+K)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <span data-i18n="hud.searchBtn">Buscar</span>
+        <span class="kbd-shortcut">⌘K</span>
+      </button>
+
+      <button class="btn-hud-pill" id="sfxToggle" aria-label="Alternar Efeitos Sonoros" title="Alternar Efeitos Sonoros">
+        <span class="sfx-icon-wrap"></span>
+        <span class="sfx-label">SFX</span>
+      </button>
+
+      <!-- Language Switcher -->
+      <div class="lang-switch-hud" role="group" aria-label="Selecionar Idioma">
+        <button class="lang-btn" data-lang="pt">PT</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+      </div>
+    </div>
+  </header>
+
   <!-- MOBILE HUD BOTTOM DOCK (< 900px) -->
   <nav class="mobile-hud-dock" aria-label="Navegação Mobile">
     <button class="dock-btn" data-open-sector="sobre">
@@ -353,38 +376,9 @@
        3. DEDICATED SECTOR DOSSIER OVERLAYS (NO SCROLL CLUTTER)
        ============================================================ -->
   <div class="sector-dossier-overlay" id="sectorDossierOverlay" role="dialog" aria-modal="true">
-    <!-- Dossier Sticky Header Bar -->
-    <div class="dossier-header-bar">
-      <div class="dossier-nav-left">
-        <button class="btn-return-hub" id="closeDossierBtn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
-          <span data-i18n="hud.returnBtn">Retornar ao Hub [ESC]</span>
-        </button>
-        <span class="dossier-sector-title" id="dossierActiveTitle">SETOR 01 // SOBRE MIM</span>
-      </div>
-
-      <!-- Quick Switcher Tabs between Sectors -->
-      <div class="dossier-sector-tabs">
-        <button class="tab-sector-btn" data-switch-sector="sobre">01 // Terra</button>
-        <button class="tab-sector-btn" data-switch-sector="software">02 // Marte</button>
-        <button class="tab-sector-btn" data-switch-sector="pesquisa">03 // Saturno</button>
-        <button class="tab-sector-btn" data-switch-sector="contato">04 // Gargântua</button>
-      </div>
-
-      <!-- Same controls as the hub topbar, so it's the same bar everywhere -->
-      <div class="dossier-header-controls">
-        <button class="btn-hud-pill" data-open-cmd aria-label="Abrir Terminal (Ctrl+K)">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <span class="kbd-shortcut">⌘K</span>
-        </button>
-        <div class="lang-switch-hud" role="group" aria-label="Selecionar Idioma">
-          <button class="lang-btn" data-lang="pt">PT</button>
-          <button class="lang-btn" data-lang="en">EN</button>
-          <button class="lang-btn" data-lang="es">ES</button>
-          <button class="lang-btn" data-lang="fr">FR</button>
-        </div>
-      </div>
-    </div>
+    <!-- Navigation (Retornar ao Hub / sector tabs / lang switcher) now lives
+         in the single #topHudBar above — it's raised above this overlay via
+         z-index so it's reachable the same way (hover) in every sector. -->
 
     <!-- Dossier Scrollable Content Body -->
     <div class="dossier-content-body">

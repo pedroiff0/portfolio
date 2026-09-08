@@ -520,16 +520,29 @@ body.cursor-active .cursor-glow {
   100% { transform: scale(0.94); filter: blur(8px) brightness(1.2); opacity: 0; }
 }
 
+/* Always-present, fixed-size trigger strip at the very top of the viewport.
+   The bar itself now contains a variable amount of content (it grows to 2-3
+   wrapped rows once .hud-sector-nav is shown inside a sector), which made a
+   %-based translateY + fixed-pixel ::before hit-area guess wrong as soon as
+   the bar's real height changed — the hit area was sized for a short bar and
+   stopped reaching the viewport once the bar grew taller. A fixed-size zone
+   that doesn't depend on the bar's own dimensions can't have that problem;
+   main.js toggles .top-hud-bar.revealed on hover of either this zone or the
+   bar itself. */
+.top-hud-hover-zone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  z-index: 5199;
+}
+
 .top-hud-bar {
   position: fixed;
   top: 14px;
   left: 50%;
-  /* Reveal-on-hover, matching .dossier-header-bar (same bar everywhere, same
-     behavior, per feedback). The in-sector bar now carries the same terminal
-     + language-switcher controls (see .dossier-header-controls), so hiding
-     this one behind hover no longer strands the language switcher — it's
-     reachable the same way in both places. */
-  transform: translateX(-50%) translateY(-150%);
+  transform: translateX(-50%) translateY(-12px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -543,24 +556,18 @@ body.cursor-active .cursor-glow {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  /* Above .sector-dossier-overlay's 5000 so this bar stays reachable (same
+     bar, same hover) whether a sector is open or not. */
+  z-index: 5200;
   transition: all 0.4s var(--ease-out-expo);
   opacity: 0;
+  pointer-events: none;
 }
 
-/* Invisible hit area to trigger hover, same trick as .dossier-header-bar */
-.top-hud-bar::before {
-  content: "";
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  right: -20px;
-  bottom: -60px;
-}
-
-.top-hud-bar:hover,
+.top-hud-bar.revealed,
 .top-hud-bar:focus-within {
   opacity: 1;
+  pointer-events: auto;
   transform: translateX(-50%) translateY(2px);
   background: rgba(6, 10, 26, 0.96);
   border-color: var(--panel-border-hover);
@@ -1030,48 +1037,19 @@ body.cursor-active .cursor-glow {
   animation: dossierPlanetDepart 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.dossier-header-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px clamp(18px, 4vw, 48px);
-  background: rgba(6, 9, 24, 0.95);
-  border-bottom: 1px solid var(--panel-border);
-  z-index: 50;
-
-  /* Reveal-on-hover by design (restored per feedback). This is safe from the
-     "navigation gets stuck" bug a previous pass fixed here — that bug was
-     .dossier-panel's own layout collapsing (see the panelFadeIn / width:100%
-     fixes elsewhere in this file), not this bar's visibility. ESC always
-     closes the dossier regardless of hover (see the keydown handler in
-     main.js), so this control is never the only way out. */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  transform: translateY(-90%);
-  transition: transform 0.3s var(--ease-out-expo);
-}
-
-.dossier-header-bar:hover,
-.dossier-header-bar:focus-within {
-  transform: translateY(0);
-}
-
-/* Invisible hit area to trigger hover */
-.dossier-header-bar::after {
-  content: "";
-  position: absolute;
-  bottom: -20px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-}
-
-.dossier-nav-left {
-  display: flex;
+/* Shown inside #topHudBar only while a sector is open (see .in-sector below)
+   — this used to be a separate .dossier-header-bar element with its own
+   hover-reveal, duplicating (and drifting out of sync with) the hub topbar.
+   Merging them into one physical element is what makes "the same bar
+   everywhere" actually true instead of two bars kept manually in sync. */
+.hud-sector-nav {
+  display: none;
   align-items: center;
   gap: 16px;
+}
+
+.top-hud-bar.in-sector .hud-sector-nav {
+  display: flex;
 }
 
 .btn-return-hub {
@@ -1106,15 +1084,6 @@ body.cursor-active .cursor-glow {
   display: flex;
   align-items: center;
   gap: 6px;
-}
-
-/* Same controls as .top-hud-bar (terminal + language switcher) — the
-   in-sector topbar carries the same tools as the hub one instead of being a
-   stripped-down variant. */
-.dossier-header-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 .tab-sector-btn {
@@ -2031,8 +2000,11 @@ body.cursor-active .cursor-glow {
 }
 
 .app-footer--dossier {
-  padding-bottom: 24px;
-  padding-top: 24px;
+  /* Was padding-top/bottom: 24px here, overriding the shared 10px from
+     .app-footer — made this variant visibly taller/puffier than the hub
+     one for no real reason. Removed so both look identical; margin-top:auto
+     is the part that actually matters here (pins it to the bottom of the
+     scrollable dossier content). */
   margin-top: auto;
   width: 100%;
 }
@@ -2528,7 +2500,6 @@ body.cursor-active .cursor-glow {
   .contacts-grid { grid-template-columns: 1fr; gap: 12px; }
   .about__stats-grid { grid-template-columns: 1fr; }
   
-  .dossier-header-bar { padding: 10px 14px; gap: 8px; flex-wrap: wrap; }
   .btn-return-hub { padding: 6px 12px; font-size: 0.75rem; min-height: 38px; }
   .dossier-sector-title { font-size: 0.8rem; }
   .dossier-content-body { padding: 18px 14px 100px; }
@@ -3803,8 +3774,10 @@ body.endurance-spin-active .sector-dossier-overlay {
 }
 
 @media (max-width: 900px) {
-  .dossier-header-bar { display: none !important; }
-  .sector-dossier-overlay.active ~ #topHudBar.mobile-open .btn-topbar-close-dossier { display: flex !important; }
+  /* #topHudBar (with .hud-sector-nav inside it) is hidden on mobile in favor
+     of the dedicated mobile drawer + dock nav below — see .top-hud-bar's own
+     mobile rules further down. */
+  .top-hud-bar .hud-sector-nav { display: none !important; }
 }
 @media (max-width: 900px) {
   .warp-hud-telemetry {
