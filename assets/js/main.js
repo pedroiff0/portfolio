@@ -1544,6 +1544,33 @@
   const sectorDossierOverlay = document.getElementById("sectorDossierOverlay");
   const dossierActiveTitle = document.getElementById("dossierActiveTitle");
   const topHudBarEl = document.getElementById("topHudBar");
+  const topHudHoverZoneEl = document.getElementById("topHudHoverZone");
+
+  // Fixed-size hover zone (28px strip, .top-hud-hover-zone) drives the bar's
+  // reveal instead of a hit-area guessed off the bar's own dimensions — the
+  // bar grows to 2-3 wrapped rows once .hud-sector-nav shows inside a sector,
+  // which made any fixed-pixel ::before hit-area sized for the short bar stop
+  // reaching the viewport. A short hide delay lets the pointer travel from
+  // the zone down into the bar itself without the bar flickering closed.
+  if (topHudHoverZoneEl && topHudBarEl) {
+    let hudHideTimer = null;
+    const revealHudBar = () => {
+      clearTimeout(hudHideTimer);
+      topHudBarEl.classList.add("revealed");
+    };
+    const scheduleHudHide = () => {
+      clearTimeout(hudHideTimer);
+      hudHideTimer = setTimeout(() => {
+        topHudBarEl.classList.remove("revealed");
+      }, 200);
+    };
+    [topHudHoverZoneEl, topHudBarEl].forEach((el) => {
+      el.addEventListener("mouseenter", revealHudBar);
+      el.addEventListener("mouseleave", scheduleHudHide);
+    });
+    topHudBarEl.addEventListener("focusin", revealHudBar);
+    topHudBarEl.addEventListener("focusout", scheduleHudHide);
+  }
 
   let warpCtx = null;
   let warpW = 0, warpH = 0, warpDpr = 1;
