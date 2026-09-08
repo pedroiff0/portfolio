@@ -91,6 +91,31 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 ::-webkit-scrollbar-thumb:hover { background: rgba(110, 168, 254, 0.5); }
 
 /* ---------- CANVAS & COSMOS BACKGROUND ---------- */
+/* Real stars + Milky Way photo (Solar System Scope, CC BY 4.0 — see
+   assets/img/space/README.md), fixed behind #cosmosCanvas everywhere: hub
+   and every sector share this one backdrop. The procedural starfield/galaxy
+   canvas draws on top with a transparent clear, so this shows through as
+   the base layer — a dark gradient dims it enough that foreground text
+   stays readable without hiding the galactic band entirely. 2k on
+   narrow/mobile viewports, 4k above that (see media query below). */
+.milky-way-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(2, 3, 8, 0.55) 0%, rgba(2, 3, 8, 0.72) 55%, rgba(2, 3, 8, 0.88) 100%),
+    url("../img/space/milkyway_2k.jpg") center 42% / cover no-repeat;
+  background-color: var(--bg-space);
+}
+
+@media (min-width: 640px) {
+  .milky-way-bg {
+    background-image:
+      linear-gradient(180deg, rgba(2, 3, 8, 0.5) 0%, rgba(2, 3, 8, 0.68) 55%, rgba(2, 3, 8, 0.88) 100%),
+      url("../img/space/milkyway_4k.jpg");
+  }
+}
+
 #cosmosCanvas {
   position: fixed;
   inset: 0;
@@ -2468,6 +2493,14 @@ body.cursor-active .cursor-glow {
   .hud-task-tracker:not(.expanded) .task-tracker-toggle {
     display: inline-flex;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(182, 146, 255, 0.3);
+    /* Icon + count only — the full "MISSÕES" label pill was wide enough to
+       reach into the same strip as the status pill and whatever hub content
+       scrolled underneath it. */
+    padding: 8px 10px;
+  }
+  .task-tracker-toggle__label,
+  .task-tracker-toggle__chevron {
+    display: none;
   }
   .hud-task-tracker:not(.expanded) .task-tracker-card {
     display: none;
@@ -3185,9 +3218,21 @@ body.konami-active {
   .main-hud-viewport {
     width: 100vw;
     min-height: 100dvh;
+    height: auto;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    /* Was flex + space-between with .center-core-stage floating on top via
+       position:absolute — that centers fine on a short/wide desktop
+       viewport, but on a narrow phone the hero text wraps much taller than
+       the screen, so the absolute-centered stage spilled both above and
+       below the viewport with no scroll to reach it, landing its CTA row
+       right on top of the fixed HUD chrome (status/missions pills + dock
+       nav) at the bottom. Flowing top-to-bottom instead lets everything —
+       hero, footer — take the space it needs and scroll normally. */
+    display: block;
+    padding-top: 84px;
+    padding-bottom: 210px;
   }
 
   .corner-node {
@@ -3195,6 +3240,11 @@ body.konami-active {
   }
 
   .center-core-stage {
+    position: static;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 0 auto;
     padding: 0 16px;
     text-align: center;
   }
@@ -3213,17 +3263,27 @@ body.konami-active {
     display: flex !important;
   }
 
-  .panel-gargantua-wrap {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+  /* Toasts default to a fixed spot just under the topbar — on a phone that
+     lands them right on top of the hero title (which now also has to share
+     that same cramped top strip). Bottom, above the dock/status/missions
+     band, stays clear of everything currently on screen. */
+  .toast-container {
+    top: auto;
+    bottom: 190px;
   }
 
-  .gargantua-bg-canvas {
-    position: absolute;
-    width: 100% !important;
-    height: 100% !important;
+  .toast {
+    padding: 8px 16px;
+    font-size: 0.76rem;
   }
+
+  /* .panel-gargantua-wrap / .gargantua-bg-canvas no longer need a mobile
+     override: now that the wrap holds only the canvas (its scrollable
+     content moved out to a sibling — see index.html), the base fixed,
+     viewport-sized rules work correctly on every screen size. Forcing
+     position:absolute + %-based sizing here used to make the wrap resolve
+     its size against its containing block's auto height, which collapsed
+     to 0 and broke the fullscreen background on mobile. */
 }
 
 @media (min-width: 901px) {
@@ -3565,8 +3625,21 @@ body.konami-active {
     max-width: 240px;
   }
 
+  /* Icon-only collapsed pill, same reasoning as .task-tracker-toggle above:
+     the full "STATUS EXPLORADOR" label made this the widest thing in an
+     already-crowded bottom strip. */
   .gta-hud-bar.collapsed {
-    padding: 6px 10px !important;
+    padding: 8px 10px !important;
+  }
+
+  .gta-hud-bar.collapsed .gta-hud-title {
+    display: none;
+  }
+
+  .gta-hud-bar.collapsed .gta-hud-header::before {
+    content: "🧭";
+    font-size: 1rem;
+    line-height: 1;
   }
 
   .yt-mini-player {

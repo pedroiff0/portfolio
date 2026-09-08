@@ -68,6 +68,7 @@
   </div>
 
   <!-- COSMOS BACKGROUND CANVAS & AMBIENT SHADERS -->
+  <div class="milky-way-bg" aria-hidden="true" title="Textura de fundo: Solar System Scope (CC BY 4.0)"></div>
   <canvas id="cosmosCanvas" aria-hidden="true"></canvas>
   <div class="cosmic-overlay" aria-hidden="true">
     <div class="ambient-glow glow-1"></div>
@@ -165,61 +166,6 @@
       </div>
     </div>
 
-    <!-- ============================================================
-         RIGHT LATERAL HUD TASK LIST / GAMIFIED ONBOARDING TRACKER
-         ============================================================ -->
-    <aside class="hud-task-tracker minimized" id="hudTaskTracker" aria-label="Missões de Exploração e Onboarding">
-      <!-- Tracker Floating Toggle Pill -->
-      <button class="task-tracker-toggle" id="taskTrackerToggle" aria-expanded="true" title="Alternar Painel de Missões">
-        <span class="task-tracker-toggle__icon">🎯</span>
-        <span class="task-tracker-toggle__label">MISSÕES</span>
-        <span class="task-tracker-toggle__badge" id="taskBadgeCount">0/8</span>
-        <svg class="task-tracker-toggle__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-      </button>
-
-      <!-- Tracker Expanded Holographic Card -->
-      <div class="task-tracker-card" id="taskTrackerCard">
-        <div class="task-tracker-head">
-          <div class="task-tracker-rank">
-            <span class="rank-tag" id="userRankTag">CADETE // LVL 1</span>
-            <span class="rank-xp" id="userXpTotal">0 XP</span>
-          </div>
-          <div class="task-tracker-head-actions">
-            <button class="btn-tracker-icon" id="taskResetBtn" title="Reiniciar Progresso de Exploração" aria-label="Reiniciar Missões">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
-            </button>
-            <button class="btn-tracker-icon" id="taskMinimizeBtn" title="Minimizar Painel" aria-label="Minimizar">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="task-tracker-progress">
-          <div class="task-progress-text">
-            <span>Exploração da Estação</span>
-            <strong id="taskProgressPercent">0%</strong>
-          </div>
-          <div class="task-progress-bar">
-            <div class="task-progress-fill" id="taskProgressFill"></div>
-          </div>
-        </div>
-
-        <!-- Task List Items -->
-        <ul class="task-items-list" id="taskItemsList" role="list">
-          <!-- Populated dynamically by JS -->
-        </ul>
-
-        <!-- Achievement Unlocked Card -->
-        <div class="task-achievement-badge" id="taskAchievementBadge">
-          <span class="badge-icon">🎖️</span>
-          <div class="badge-info">
-            <strong>COMANDANTE CÓSMICO</strong>
-            <span>100% da Estação Explorada!</span>
-          </div>
-        </div>
-      </div>
-    </aside>
-
       <!-- Bottom Return to Hub Button -->
       <div style="display: flex; justify-content: center; margin: 40px 0;">
         <a class="btn-core btn-core--ghost" href="#hub" style="font-size: 0.85rem; padding: 12px 24px;">
@@ -265,6 +211,68 @@
       </nav>
     </footer>
   </div>
+
+  <!-- ============================================================
+       RIGHT LATERAL HUD TASK LIST / GAMIFIED ONBOARDING TRACKER
+       ============================================================ -->
+  <!-- SIBLING of .main-hud-viewport, not nested inside it — same reasoning
+       as #topHudBar just below: that viewport's will-change:transform makes
+       it the containing block for any `position:fixed` descendant, so once
+       the viewport's own box grew taller than the screen (mobile scroll
+       fix), a fixed "bottom:80px" here meant 80px from the bottom of that
+       tall box instead of the real viewport — pinning this pill hundreds of
+       pixels below the fold instead of onscreen. -->
+  <aside class="hud-task-tracker minimized" id="hudTaskTracker" aria-label="Missões de Exploração e Onboarding">
+    <!-- Tracker Floating Toggle Pill -->
+    <button class="task-tracker-toggle" id="taskTrackerToggle" aria-expanded="true" title="Alternar Painel de Missões">
+      <span class="task-tracker-toggle__icon">🎯</span>
+      <span class="task-tracker-toggle__label">MISSÕES</span>
+      <span class="task-tracker-toggle__badge" id="taskBadgeCount">0/8</span>
+      <svg class="task-tracker-toggle__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+
+    <!-- Tracker Expanded Holographic Card -->
+    <div class="task-tracker-card" id="taskTrackerCard">
+      <div class="task-tracker-head">
+        <div class="task-tracker-rank">
+          <span class="rank-tag" id="userRankTag">CADETE // LVL 1</span>
+          <span class="rank-xp" id="userXpTotal">0 XP</span>
+        </div>
+        <div class="task-tracker-head-actions">
+          <button class="btn-tracker-icon" id="taskResetBtn" title="Reiniciar Progresso de Exploração" aria-label="Reiniciar Missões">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
+          </button>
+          <button class="btn-tracker-icon" id="taskMinimizeBtn" title="Minimizar Painel" aria-label="Minimizar">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="task-tracker-progress">
+        <div class="task-progress-text">
+          <span>Exploração da Estação</span>
+          <strong id="taskProgressPercent">0%</strong>
+        </div>
+        <div class="task-progress-bar">
+          <div class="task-progress-fill" id="taskProgressFill"></div>
+        </div>
+      </div>
+
+      <!-- Task List Items -->
+      <ul class="task-items-list" id="taskItemsList" role="list">
+        <!-- Populated dynamically by JS -->
+      </ul>
+
+      <!-- Achievement Unlocked Card -->
+      <div class="task-achievement-badge" id="taskAchievementBadge">
+        <span class="badge-icon">🎖️</span>
+        <div class="badge-info">
+          <strong>COMANDANTE CÓSMICO</strong>
+          <span>100% da Estação Explorada!</span>
+        </div>
+      </div>
+    </div>
+  </aside>
 
   <!-- Top HUD Navigation Bar — the ONE topbar used everywhere (hub and every
        sector/"planet"). Deliberately a SIBLING of .main-hud-viewport, not
@@ -652,8 +660,18 @@
         <div class="panel-gargantua-wrap">
           <!-- Dynamic Gargantua Black Hole Relativistic Canvas Background -->
           <canvas id="gargantuaBgCanvas" class="gargantua-bg-canvas" aria-hidden="true"></canvas>
+        </div>
 
-          <div class="panel-gargantua-content">
+        <!-- Real scrollable content, now a SIBLING of the fixed fullscreen
+             canvas wrap above instead of nested inside it — nesting it
+             inside a position:fixed wrapper took this content out of
+             #panel-contato's normal flow entirely, collapsing the panel to
+             zero height. That left the shared "Return to Hub" button +
+             dossier footer (which render right after this panel in the DOM)
+             landing at the very top of the scroll area instead of below
+             this sector's own content, stacked directly on the (still
+             visually painted, just layout-invisible) hero title. -->
+        <div class="panel-gargantua-content">
             <!-- Christopher Nolan / Interstellar Epic Hero Banner -->
             <div class="interstellar-hero-banner">
               <span class="section-dossier-kicker" data-i18n="kickers.contato">SETOR 04 // SINGULARIDADE GARGÂNTUA · PROTOCOLO LAZARUS</span>
@@ -838,7 +856,6 @@
               </div>
             </div>
           </div>
-        </div>
       </div>
 
       <!-- Bottom Return to Hub Button -->
