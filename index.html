@@ -308,10 +308,10 @@
       </button>
       <span class="dossier-sector-title" id="dossierActiveTitle">SETOR 01 // SOBRE MIM</span>
       <div class="dossier-sector-tabs">
-        <button class="tab-sector-btn" data-switch-sector="sobre">01 // Terra</button>
-        <button class="tab-sector-btn" data-switch-sector="software">02 // Marte</button>
-        <button class="tab-sector-btn" data-switch-sector="pesquisa">03 // Saturno</button>
-        <button class="tab-sector-btn" data-switch-sector="contato">04 // Gargântua</button>
+        <button class="tab-sector-btn" data-switch-sector="sobre"><span data-i18n="sectorNav.sobre">Sobre</span></button>
+        <button class="tab-sector-btn" data-switch-sector="software"><span data-i18n="sectorNav.software">Software</span></button>
+        <button class="tab-sector-btn" data-switch-sector="pesquisa"><span data-i18n="sectorNav.pesquisa">Pesquisa</span></button>
+        <button class="tab-sector-btn" data-switch-sector="contato"><span data-i18n="sectorNav.contato">Contato</span></button>
       </div>
     </div>
 
@@ -525,7 +525,7 @@
 
           <div class="search-box">
             <svg class="search-box__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input type="text" id="projectSearch" placeholder="Filtrar por nome, tecnologia ou tag..." aria-label="Buscar projetos" />
+            <input type="text" id="projectSearch" placeholder="Filtrar por nome, tecnologia ou tag..." data-i18n-placeholder="cat.searchPlaceholder" aria-label="Buscar projetos" />
           </div>
         </div>
 
@@ -910,7 +910,7 @@
     <div class="cmd-modal">
       <div class="cmd-search-wrap">
         <svg class="cmd-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" class="cmd-input" id="cmdInput" placeholder="Buscar projetos, pesquisa, comandos, contatos..." />
+        <input type="text" class="cmd-input" id="cmdInput" placeholder="Buscar projetos, pesquisa, comandos, contatos..." data-i18n-placeholder="cmdPalette.placeholder" />
         <span class="cmd-esc-badge">ESC</span>
       </div>
       <div class="cmd-results" id="cmdResults"></div>

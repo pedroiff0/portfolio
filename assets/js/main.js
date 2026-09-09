@@ -3199,12 +3199,16 @@
     const q = filter.toLowerCase().trim();
 
     let actions = [
-      { type: "nav", title: "Abrir Setor: Sobre Mim & Formação", sub: "Setor 01", icon: "profile", act: () => openSectorDossier("sobre") },
-      { type: "nav", title: "Abrir Setor: Software & Repositórios", sub: "Setor 02", icon: "box", act: () => openSectorDossier("software") },
-      { type: "nav", title: "Abrir Setor: Pesquisa & Astrofísica", sub: "Setor 03", icon: "star", act: () => openSectorDossier("pesquisa") },
-      { type: "nav", title: "Abrir Setor: Curriculum Vitae & Contatos", sub: "Setor 04", icon: "document", act: () => openSectorDossier("contato") },
-      { type: "act", title: "Copiar ID Lattes (6818168089966785)", sub: "CNPq", icon: "copy", act: () => { navigator.clipboard.writeText("6818168089966785"); showToast("ID Lattes copiado!", "copy"); } },
-      { type: "act", title: "Copiar E-mail (pedroiff0@gmail.com)", sub: "E-mail", icon: "mail", act: () => { navigator.clipboard.writeText("pedroiff0@gmail.com"); showToast("E-mail copiado!", "mail"); } },
+      { type: "nav", title: t("cmdPalette.navSobreTitle"), sub: t("cmdPalette.navSobreSub"), icon: "profile", act: () => openSectorDossier("sobre") },
+      { type: "nav", title: t("cmdPalette.navSoftwareTitle"), sub: t("cmdPalette.navSoftwareSub"), icon: "box", act: () => openSectorDossier("software") },
+      { type: "nav", title: t("cmdPalette.navPesquisaTitle"), sub: t("cmdPalette.navPesquisaSub"), icon: "star", act: () => openSectorDossier("pesquisa") },
+      { type: "nav", title: t("cmdPalette.navContatoTitle"), sub: t("cmdPalette.navContatoSub"), icon: "document", act: () => openSectorDossier("contato") },
+      { type: "act", title: t("cmdPalette.copyLattesTitle"), sub: t("cmdPalette.copyLattesSub"), icon: "copy", act: () => { navigator.clipboard.writeText("6818168089966785"); showToast(t("cmdPalette.copyLattesToast"), "copy"); } },
+      { type: "act", title: t("cmdPalette.copyEmailTitle"), sub: t("cmdPalette.copyEmailSub"), icon: "mail", act: () => { navigator.clipboard.writeText("pedroiff0@gmail.com"); showToast(t("cmdPalette.copyEmailToast"), "mail"); } },
+      // These 4 announce the SWITCH *in the target language itself* on
+      // purpose (e.g. always "Switch language to: English", never
+      // translated to the current UI language) — not hardcoded PT left
+      // untranslated, deliberately multilingual regardless of `lang`.
       { type: "lang", title: "Mudar idioma para: Português (PT-BR)", sub: "pt", icon: "globe", act: () => applyLang("pt") },
       { type: "lang", title: "Switch language to: English (EN)", sub: "en", icon: "globe", act: () => applyLang("en") },
       { type: "lang", title: "Cambiar idioma a: Español (ES)", sub: "es", icon: "globe", act: () => applyLang("es") },
@@ -3218,8 +3222,8 @@
     if (q.includes("motherload") || q.includes("motherlord") || q.includes("motherlode") || q.includes("sims") || q.includes("simoleon") || q.includes("rosebud")) {
       secretActions.push({
         type: "secret",
-        title: "💰 MOTHERLODE (+§50.000 Simoleons)",
-        sub: "Código Secreto // 'Kaching! +§50.000 Simoleons concedidos ao saldo orbital'",
+        title: t("cmdSecrets.motherlodeTitle"),
+        sub: t("cmdSecrets.motherlodeSub"),
         icon: "cash",
         tag: "CHEAT CODE",
         act: () => triggerMotherloadCheat()
@@ -3230,8 +3234,8 @@
     if (q.includes("hesoyam") || q.includes("sanandreas") || q.includes("san andreas") || q.includes("gta sa") || q.includes("baguvix") || q.includes("aezakmi")) {
       secretActions.push({
         type: "secret",
-        title: "💵 HESOYAM (+$250.000 + Colete/Vida)",
-        sub: "Código Secreto // '+$250k, Vida 100%, Colete 100% e Reparo Imediato'",
+        title: t("cmdSecrets.hesoyamTitle"),
+        sub: t("cmdSecrets.hesoyamSub"),
         icon: "cash",
         tag: "CHEAT CODE",
         act: () => triggerHesoyamCheat()
@@ -3242,8 +3246,8 @@
     if (q.includes("painkiller") || q.includes("godmode") || q.includes("god mode") || q.includes("imortal") || q.includes("1-999-724-654-5537") || q.includes("19997246545537")) {
       secretActions.push({
         type: "secret",
-        title: "⭐ PAINKILLER (Invencibilidade 5 Minutos)",
-        sub: "Código Secreto // '1-999-724-654-5537: Escudo cósmico invulnerável por 5 minutos'",
+        title: t("cmdSecrets.painkillerTitle"),
+        sub: t("cmdSecrets.painkillerSub"),
         icon: "star",
         tag: "CHEAT CODE",
         act: () => triggerPainkillerCheat()
@@ -3254,10 +3258,10 @@
     if (q.includes("bmth") || q.includes("bring me the horizon") || q.includes("can you feel my heart") || q.includes("sempiternal") || q.includes("parasite") || q.includes("shadow moses") || q.includes("kingslayer")) {
       secretActions.push({
         type: "secret",
-        title: "🎸 CAN YOU FEEL MY HEART // SEMPITERNAL",
-        sub: "Transmissão Sonora // 'Can you hear the silence? Can you feel my heart?'",
+        title: t("cmdSecrets.bmthTitle"),
+        sub: t("cmdSecrets.bmthSub"),
         icon: "star",
-        tag: "TRANSMISSÃO",
+        tag: t("cmdSecrets.bmthTag"),
         act: () => triggerBMTHEasterEgg()
       });
     }
@@ -3266,10 +3270,10 @@
     if (q.includes("kratos") || q.includes("god of war") || q.includes("gow") || q.includes("boy") || q.includes("leviathan") || q.includes("spartan") || q.includes("ragnarok")) {
       secretActions.push({
         type: "secret",
-        title: "🪓 FÚRIA ANCESTRAL // \"BOY!\"",
-        sub: "Ressonância Antiga // 'BOY! Não tenha pena. Seja melhor.'",
+        title: t("cmdSecrets.kratosTitle"),
+        sub: t("cmdSecrets.kratosSub"),
         icon: "darkmatter",
-        tag: "ARTEFATO",
+        tag: t("cmdSecrets.kratosTag"),
         act: () => triggerKratosEasterEgg()
       });
     }
@@ -3278,8 +3282,8 @@
     if (q.includes("aloy") || q.includes("horizon") || q.includes("focus") || q.includes("hzd") || q.includes("zero dawn") || q.includes("cauldron") || q.includes("nora")) {
       secretActions.push({
         type: "secret",
-        title: "👁️ VARREDURA FOCUS // SISTEMA GAIA",
-        sub: "Interface Neural // 'Rede de Realidade Aumentada Sincronizada'",
+        title: t("cmdSecrets.horizonTitle"),
+        sub: t("cmdSecrets.horizonSub"),
         icon: "spectrum",
         tag: "OVERRIDE",
         act: () => triggerHorizonEasterEgg()
@@ -3290,10 +3294,10 @@
     if (q.includes("born this way") || q.includes("bornthisway") || q.includes("lady gaga") || q.includes("gaga") || q.includes("monster")) {
       secretActions.push({
         type: "secret",
-        title: "✨ BORN THIS WAY // SYNTH THEME",
-        sub: "Frequência Cósmica // 'I'm on the right track baby, I was born this way!'",
+        title: t("cmdSecrets.gagaTitle"),
+        sub: t("cmdSecrets.gagaSub"),
         icon: "star",
-        tag: "ÁUDIO",
+        tag: t("cmdSecrets.gagaTag"),
         act: () => {
           showToast("✨ 'I'm on the right track baby, I was born this way!' 🌈🎶", "star");
           sfx.bornThisWay();
@@ -3305,12 +3309,12 @@
     if (q.includes("matrix") || q.includes("neo")) {
       secretActions.push({
         type: "secret",
-        title: "⚡ EXECUTAR: Protocolo Matrix (Digital Rain)",
-        sub: "Easter Egg // 'There is no spoon...'",
+        title: t("cmdSecrets.matrixTitle"),
+        sub: t("cmdSecrets.matrixSub"),
         icon: "darkmatter",
         tag: "SECRET",
         act: () => {
-          showToast("🟢 Modo Matrix Ativado: Siga o coelho branco...", "star");
+          showToast(t("cmdSecrets.matrixToast"), "star");
           triggerKonamiMode();
           completeQuest("hacker");
         }
@@ -3319,12 +3323,12 @@
     if (q.includes("interstellar") || q.includes("interestelar") || q.includes("nolan")) {
       secretActions.push({
         type: "secret",
-        title: "🌌 EXECUTAR: Protocolo Lazarus / Interestelar (Christopher Nolan)",
-        sub: "Easter Egg // 'Não entre dócil nessa noite escura. A fúria contra a morte da luz.'",
+        title: t("cmdSecrets.interstellarTitle"),
+        sub: t("cmdSecrets.interstellarSub"),
         icon: "star",
         tag: "INTERSTELLAR",
         act: () => {
-          showToast("🌌 Interestelar (Nolan): 'O amor é a única coisa que transcende as dimensões do tempo e espaço.'", "star");
+          showToast(t("cmdSecrets.interstellarToast"), "star");
           openSectorDossier("contato");
           completeQuest("hacker");
         }
@@ -3333,12 +3337,12 @@
     if (q.includes("gargantua") || q.includes("blackhole") || q.includes("buraco") || q.includes("singularidade")) {
       secretActions.push({
         type: "secret",
-        title: "🕳️ EXECUTAR: Horizonte de Eventos de Gargântua",
-        sub: "Easter Egg // Buraco Negro Supermassivo (100M M☉ · Dilatação: 1h = 7 anos)",
+        title: t("cmdSecrets.gargantuaTitle"),
+        sub: t("cmdSecrets.gargantuaSub"),
         icon: "darkmatter",
         tag: "GARGÂNTUA",
         act: () => {
-          showToast("🕳️ Gargântua: Singularidade e lente gravitacional de Einstein atingidas!", "star");
+          showToast(t("cmdSecrets.gargantuaToast"), "star");
           openSectorDossier("contato");
           completeQuest("hacker");
         }
@@ -3347,8 +3351,8 @@
     if (q.includes("stay") || q.includes("murph") || q.includes("relogio") || q.includes("tesseract")) {
       secretActions.push({
         type: "secret",
-        title: "⏳ EXECUTAR: Sinal Gravitacional 5D de Cooper (S-T-A-Y)",
-        sub: "Easter Egg // 'S-T-A-Y... Foi ele o tempo todo. Meu pai era o meu fantasma.'",
+        title: t("cmdSecrets.stayTitle"),
+        sub: t("cmdSecrets.staySub"),
         icon: "satellite",
         tag: "MORSE",
         act: () => {
@@ -3362,12 +3366,12 @@
     if (q.includes("tars") || q.includes("case")) {
       secretActions.push({
         type: "secret",
-        title: "🤖 EXECUTAR: Telemetria TARS (IA Tática)",
-        sub: "Easter Egg // Honestidade: 90% · Humor: 75% · 'É necessário.'",
+        title: t("cmdSecrets.tarsTitle"),
+        sub: t("cmdSecrets.tarsSub"),
         icon: "dashboard",
         tag: "TARS",
         act: () => {
-          showToast("🤖 TARS: 'Olá Cooper. Configuração de honestidade em 90%. Pronto para o acoplamento!'", "dashboard");
+          showToast(t("cmdSecrets.tarsToast"), "dashboard");
           sfx.warp();
           completeQuest("hacker");
         }
@@ -3376,8 +3380,8 @@
     if (q.includes("endurance") || q.includes("docking") || q.includes("acoplamento") || q.includes("68")) {
       secretActions.push({
         type: "secret",
-        title: "🌀 EXECUTAR: Manobra de Acoplamento Endurance (68 RPM)",
-        sub: "Easter Egg // 'Cooper, it's not possible! — No, it's necessary.'",
+        title: t("cmdSecrets.enduranceTitle"),
+        sub: t("cmdSecrets.enduranceSub"),
         icon: "star",
         tag: "ENDURANCE",
         act: () => {
@@ -3391,12 +3395,12 @@
     if (q === "42" || q.includes("guia") || q.includes("mochileiro") || q.includes("douglas")) {
       secretActions.push({
         type: "secret",
-        title: "🌌 EXECUTAR: O Sentido da Vida, do Universo e Tudo Mais",
-        sub: "Easter Egg // Resposta: 42 (Douglas Adams)",
+        title: t("cmdSecrets.meaning42Title"),
+        sub: t("cmdSecrets.meaning42Sub"),
         icon: "star",
         tag: "SECRET",
         act: () => {
-          showToast("🌌 42: A Resposta para a Vida, o Universo e Tudo Mais. Não Entre em Pânico!", "star");
+          showToast(t("cmdSecrets.meaning42Toast"), "star");
           sfx.warp();
           completeQuest("hacker");
         }
@@ -3405,12 +3409,12 @@
     if (q.includes("apollo") || q.includes("saturn") || q.includes("nasa") || q.includes("moon")) {
       secretActions.push({
         type: "secret",
-        title: "🚀 EXECUTAR: Telemetria Apollo 11 (Saturn V)",
-        sub: "Easter Egg // 'Houston, Tranquility Base here. The Eagle has landed.'",
+        title: t("cmdSecrets.apolloTitle"),
+        sub: t("cmdSecrets.apolloSub"),
         icon: "satellite",
         tag: "SECRET",
         act: () => {
-          showToast("🚀 Apollo 11: 'Um pequeno passo para o homem, um salto gigante para a humanidade.'", "satellite");
+          showToast(t("cmdSecrets.apolloToast"), "satellite");
           sfx.warp();
           completeQuest("hacker");
         }
@@ -3419,12 +3423,12 @@
     if (q.includes("coffee") || q.includes("cafe") || q.includes("cafeina")) {
       secretActions.push({
         type: "secret",
-        title: "☕ EXECUTAR: Injeção de Cafeína DevOps",
-        sub: "Easter Egg // Recarga de 100% de Uptime",
+        title: t("cmdSecrets.coffeeTitle"),
+        sub: t("cmdSecrets.coffeeSub"),
         icon: "box",
         tag: "SECRET",
         act: () => {
-          showToast("☕ Cafeína injetada nos servidores: Uptime 100%, 0 bugs!", "box");
+          showToast(t("cmdSecrets.coffeeToast"), "box");
           sfx.success();
           completeQuest("hacker");
         }
@@ -3433,12 +3437,12 @@
     if (q.includes("sudo") || q.includes("root") || q.includes("admin")) {
       secretActions.push({
         type: "secret",
-        title: "💻 EXECUTAR: sudo su (Root Cósmico)",
-        sub: "Easter Egg // root@pedro-rocha:~#",
+        title: t("cmdSecrets.sudoTitle"),
+        sub: t("cmdSecrets.sudoSub"),
         icon: "dashboard",
         tag: "SECRET",
         act: () => {
-          showToast("💻 Acesso Root Concedido: Bem-vindo, Administrador da Galáxia.", "dashboard");
+          showToast(t("cmdSecrets.sudoToast"), "dashboard");
           sfx.success();
           completeQuest("hacker");
         }
@@ -3447,12 +3451,12 @@
     if (q.includes("gaia") || q.includes("pulsar") || q.includes("astro")) {
       secretActions.push({
         type: "secret",
-        title: "🔭 EXECUTAR: Sonda Espacial Gaia DR3 Astrometric Stream",
-        sub: "Easter Egg // 1.8 bilhão de fontes astrométricas",
+        title: t("cmdSecrets.gaiaTitle"),
+        sub: t("cmdSecrets.gaiaSub"),
         icon: "spectrum",
         tag: "SECRET",
         act: () => {
-          showToast("🔭 Gaia DR3: Sincronização astrométrica com 1.8 bilhão de estrelas concluída!", "spectrum");
+          showToast(t("cmdSecrets.gaiaToast"), "spectrum");
           openSectorDossier("pesquisa");
           completeQuest("hacker");
         }
@@ -5265,7 +5269,11 @@ window.addEventListener("hashchange", () => {
   const escBtn = document.getElementById("closeDossierMobileBtn");
   if (!escBtn) return;
   const hash = window.location.hash.replace("#", "");
-  if (["sobre", "software", "pesquisa", "contato"].includes(hash)) {
+  // Mobile-only ESC shortcut (id says so, .btn-topbar-close-dossier has no
+  // CSS of its own) — desktop already has the full "Retornar ao Hub" button
+  // plus the sector tabs right there, so showing this too just duplicated
+  // it and ate into the one-line topbar's width.
+  if (["sobre", "software", "pesquisa", "contato"].includes(hash) && window.innerWidth <= 900) {
     escBtn.style.display = "flex";
   } else {
     escBtn.style.display = "none";

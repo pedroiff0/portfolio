@@ -571,9 +571,9 @@ body.cursor-active .cursor-glow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
   width: auto;
-  max-width: 90vw;
+  max-width: 96vw;
   padding: 6px 14px;
   background: rgba(6, 10, 26, 0.75);
   border: 1px solid var(--panel-border);
@@ -602,10 +602,12 @@ body.cursor-active .cursor-glow {
 .hud-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .hud-brand strong {
@@ -618,20 +620,22 @@ body.cursor-active .cursor-glow {
 .hud-top-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
+  flex-shrink: 0;
 }
 
 .btn-hud-pill {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 6px 14px;
+  gap: 6px;
+  padding: 6px 11px;
   border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--panel-border);
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
+  white-space: nowrap;
   transition: all 0.25s ease;
   cursor: pointer;
   user-select: none;
@@ -680,6 +684,7 @@ body.cursor-active .cursor-glow {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius-full);
+  flex-shrink: 0;
 }
 
 .lang-btn {
@@ -694,6 +699,18 @@ body.cursor-active .cursor-glow {
 
 .lang-btn:hover { color: var(--text-main); }
 .lang-btn.active { color: #030612; background: var(--grad-primary); }
+
+/* Narrow desktop / tablet landscape (900-1200px): too tight for the full
+   in-sector topbar — brand + return button + sector kicker + 4 tabs + 3
+   pills + lang switcher — to stay on one line at full size. Not the mobile
+   breakpoint (that swaps to the dock nav entirely), just a squeeze: drop
+   the redundant kicker and the ⌘K hint, icon-only the less essential pills. */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .dossier-sector-title { display: none; }
+  .btn-hud-pill .kbd-shortcut { display: none; }
+  [data-open-cmd] span[data-i18n="hud.searchBtn"] { display: none; }
+  #replayIntroBtn { display: none; }
+}
 
 /* Central Minimalist Core Stage */
 .center-core-stage {
@@ -1070,7 +1087,8 @@ body.cursor-active .cursor-glow {
 .hud-sector-nav {
   display: none;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
+  min-width: 0;
 }
 
 .top-hud-bar.in-sector .hud-sector-nav {
@@ -1080,15 +1098,17 @@ body.cursor-active .cursor-glow {
 .btn-return-hub {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
+  gap: 6px;
+  padding: 7px 14px;
   border-radius: var(--radius-full);
   background: rgba(182, 146, 255, 0.1);
   border: 1px solid rgba(182, 146, 255, 0.3);
   color: var(--accent-cyan);
   font-family: var(--font-display);
-  font-size: 0.84rem;
+  font-size: 0.76rem;
   font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all 0.25s ease;
 }
 
@@ -1100,22 +1120,29 @@ body.cursor-active .cursor-glow {
 
 .dossier-sector-title {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 40px;
+  flex-shrink: 1;
 }
 
 .dossier-sector-tabs {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+  flex-shrink: 0;
 }
 
 .tab-sector-btn {
-  padding: 6px 12px;
+  padding: 5px 10px;
   border-radius: var(--radius-full);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.68rem;
+  white-space: nowrap;
   color: var(--text-muted);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--panel-border);
