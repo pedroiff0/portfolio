@@ -19,3 +19,8 @@ __pycache__/
 
 # macOS metadata
 ._*
+
+# Agentes
+.agents/
+AGENTS.md
+
