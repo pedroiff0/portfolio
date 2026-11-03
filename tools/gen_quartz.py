@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 """
+OBSOLETO desde 05/10/2026: as páginas de projeto do quartz-site passaram a vir do vault hardcore-life
+(99-meta/scripts/sync-to-quartz.py + sitesync-map.yaml, destino content/pt-br/projects/academic/<slug>) e as
+notas content/<lang>/projects/*.md que este script mantinha foram removidas do site. Rodar --write recriaria
+páginas duplicadas. Só executa com --legado.
+
 gen_quartz.py — Gera/atualiza as notas de projetos do quartz-site a partir de
 src/portfolio.md, que passa a ser a FONTE ÚNICA dos projetos.
 
@@ -236,7 +241,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true", help="aplica as mudanças")
     ap.add_argument("--check", action="store_true", help="exit 1 se dessincronizado")
+    ap.add_argument("--legado", action="store_true", help="executa mesmo obsoleto (ver docstring)")
     args = ap.parse_args()
+    if not args.legado:
+        print("gen_quartz.py está obsoleto: as páginas de projeto do quartz-site vêm do vault (sync-to-quartz.py). Nada feito.")
+        return 0
 
     # v2.2: a fonte é src/conteudo.md (pt-BR, espelho do vault) + src/traducoes.json
     if os.path.exists(os.path.join(pb.ROOT, "src", "conteudo.md")):

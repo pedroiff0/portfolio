@@ -60,6 +60,8 @@ const REPOS = [
     stack: [ "Node.js", "Express", "MongoDB", "LaTeX", "EJS" ],
     tags: [ "EdTech", "LaTeX", "Provas", "Multi-variantes" ],
     brief: "Plataforma base de provas/listas/trabalhos em PDF a partir de um banco de questões reutilizável, com geração real em LaTeX e múltiplas variantes (seleção/ordem aleatórias). Núcleo professor+admin.",
+    image: "assets/media/avaliacoes/poster.webp",
+    video: "assets/media/avaliacoes/tour.webm",
     i18n: {
       en: "Base platform for exams/lists/assignments in PDF from a reusable question bank, with real LaTeX generation and multiple variants (random selection/order). Professor+admin core.",
       es: "Plataforma base de exámenes/listas/trabajos en PDF a partir de un banco de preguntas reutilizable, con generación real en LaTeX y múltiples variantes (selección/orden aleatorios). Núcleo profesor+admin.",
@@ -75,6 +77,8 @@ const REPOS = [
     stack: [ "Node.js", "Express", "MongoDB", "LaTeX" ],
     tags: [ "EdTech", "Banco de Questões", "Colaborativo" ],
     brief: "Fork do Sistema de Avaliações com banco pessoal + banco global compartilhado (fork de questões entre professores), PDF por pool com peso e gabarito opcional.",
+    image: "assets/media/avaliacoes-professores/poster.webp",
+    video: "assets/media/avaliacoes-professores/tour.webm",
     i18n: {
       en: "Fork of the Evaluations System with a personal bank plus a shared global bank (questions forked between teachers), pool-based PDF generation with weighting and optional answer key.",
       es: "Fork del Sistema de Evaluaciones con banco personal más banco global compartido (preguntas bifurcadas entre profesores), generación de PDF por pool con peso y solucionario opcional.",
@@ -90,6 +94,8 @@ const REPOS = [
     stack: [ "Node.js", "Express", "MongoDB", "Expo", "LaTeX" ],
     tags: [ "Concursos", "Gamificação", "Mobile", "Simulados" ],
     brief: "Fork focado em concurseiros: banco de MCQ, trilhas por edital, cronograma maleável, Pomodoro, simulados em PDF e app mobile Expo com paridade total de funcionalidades.",
+    image: "assets/media/avaliacoes-concurseiro/poster.webp",
+    video: "assets/media/avaliacoes-concurseiro/tour.webm",
     i18n: {
       en: "Fork aimed at civil-service exam candidates: MCQ bank, syllabus-driven study tracks, flexible schedule, Pomodoro, PDF mock exams and an Expo mobile app with full feature parity.",
       es: "Fork enfocado en opositores: banco de preguntas de opción múltiple, itinerarios por temario, cronograma flexible, Pomodoro, simulacros en PDF y app móvil Expo con paridad total de funciones.",
@@ -105,6 +111,8 @@ const REPOS = [
     stack: [ "Python", "Flask", "Jinja2", "Scraping" ],
     tags: [ "Web App", "IFF", "Scraping", "Arquivado" ],
     brief: "Sistema web que acessava os dados acadêmicos do IFF com as credenciais oficiais — dashboard, diário, material de aula, boletim e histórico escolar — via scraping. Arquivado: a migração do IFF para o SUAP torna a abordagem original obsoleta, e o Sistema Acadêmico o sucede. A técnica de scraping fica registrada como referência técnica (possível tema de TCC).",
+    image: "assets/media/academicoweb/poster.webp",
+    video: "assets/media/academicoweb/tour.webm",
     i18n: {
       en: "Web system that pulled IFF academic data using official credentials — dashboard, diary, course material, report card and transcript — via scraping. Archived: IFF's migration to SUAP makes the original approach obsolete, and Sistema Acadêmico supersedes it. The scraping technique remains documented as a technical reference (a possible thesis topic).",
       es: "Sistema web que accedía a los datos académicos del IFF con las credenciales oficiales — dashboard, diario, material de clase, boletín e historial — mediante scraping. Archivado: la migración del IFF al SUAP vuelve obsoleto el enfoque original, y el Sistema Académico lo sucede. La técnica de scraping queda documentada como referencia técnica (posible tema de TFG).",
@@ -138,6 +146,8 @@ const REPOS = [
     stack: [ "Meta-repo", "Python", "PowerShell" ],
     tags: [ "Suíte Comercial", "ERP" ],
     brief: "Meta-repositório que agrupa Caixas, ControleEstoque, LevantamentoEstoque e Planilhador — suíte de ferramentas comerciais.",
+    image: "assets/media/verdementa/poster.webp",
+    video: "assets/media/verdementa/tour.webm",
     i18n: {
       en: "Meta-repository grouping Caixas, ControleEstoque, LevantamentoEstoque and Planilhador — a suite of retail management tools in real production use.",
       es: "Metarrepositorio que agrupa Caixas, ControleEstoque, LevantamentoEstoque y Planilhador — suite de herramientas comerciales en uso real en producción.",
@@ -153,6 +163,8 @@ const REPOS = [
     stack: [ "Python", "Flask", "SQLAlchemy", "Alembic", "Jinja2", "AdminLTE" ],
     tags: [ "Controle de Caixa", "Relatórios" ],
     brief: "Aplicação web para registrar fechamentos diários de caixa (vendas, depósitos, vales, total contado na gaveta), gerar relatórios e manter histórico imprimível. Flask + SQLAlchemy + Alembic, com endpoints REST auxiliares e migrations versionadas em CI.",
+    image: "assets/media/caixas/poster.webp",
+    video: "assets/media/caixas/tour.webm",
     i18n: {
       en: "Web app to record daily cash-register closings (sales, deposits, vouchers, counted drawer total), generate reports and keep a printable history. Flask + SQLAlchemy + Alembic, with auxiliary REST endpoints and migrations versioned in CI. In production and in real daily use.",
       es: "Aplicación web para registrar cierres diarios de caja (ventas, depósitos, vales, total contado en el cajón), generar informes y mantener un historial imprimible. Flask + SQLAlchemy + Alembic, con endpoints REST auxiliares y migraciones versionadas en CI. En producción y en uso real diario.",
@@ -168,6 +180,8 @@ const REPOS = [
     stack: [ "Python", "CI", "CSV/PDF" ],
     tags: [ "Inventário", "Estoque" ],
     brief: "Aplicação para contagem rápida de inventário, com persistência de sessão, consolidação de contagens e geração de relatórios em CSV/PDF.",
+    image: "assets/media/controle-estoque/poster.webp",
+    video: "assets/media/controle-estoque/tour.webm",
     i18n: {
       en: "App for fast inventory counting, with session persistence, consolidation of counts and CSV/PDF report generation.",
       es: "Aplicación para conteo rápido de inventario, con persistencia de sesión, consolidación de conteos y generación de informes en CSV/PDF.",
@@ -183,6 +197,8 @@ const REPOS = [
     stack: [ "Python", "CI", "PDF" ],
     tags: [ "Estoque", "Compras" ],
     brief: "Sistema de levantamento de estoque por cor/tamanho, com persistência de sessão, extração de dados de PDF e geração de relatórios — voltado a itens de compra repetida.",
+    image: "assets/media/levantamento-estoque/poster.webp",
+    video: "assets/media/levantamento-estoque/tour.webm",
     i18n: {
       en: "Stock-taking system by colour and size, with session persistence, data extraction from PDFs and report generation — aimed at repeatedly purchased items.",
       es: "Sistema de levantamiento de existencias por color y talla, con persistencia de sesión, extracción de datos desde PDF y generación de informes — orientado a artículos de compra recurrente.",
@@ -198,6 +214,8 @@ const REPOS = [
     stack: [ "Python", "CI", "XML/NFCe" ],
     tags: [ "NFCe", "Planilhas" ],
     brief: "Ferramentas para processar XMLs de NFCe e gerar relatórios/planilhas automatizados.",
+    image: "assets/media/planilhador/poster.webp",
+    video: "assets/media/planilhador/tour.webm",
     i18n: {
       en: "Tools to process NFCe (Brazilian e-invoice) XML files and generate automated reports and spreadsheets.",
       es: "Herramientas para procesar XML de NFCe (factura electrónica brasileña) y generar informes y hojas de cálculo automatizados.",
@@ -213,6 +231,8 @@ const REPOS = [
     stack: [ "Node.js 20", "Express", "MongoDB", "Mongoose", "EJS", "JWT", "Zod", "Jest", "Docker" ],
     tags: [ "Template", "Boilerplate", "Segurança", "Auth", "Open Source" ],
     brief: "Template base endurecido para iniciar qualquer aplicação web Node: autenticação JWT, papéis admin/user, registro controlado pelo admin (sem autocadastro), CSP sem inline, rate limit, CSRF guard, validação Zod e suíte Jest+Supertest desde o primeiro commit. Docker Compose com app não-root e filesystem read-only.",
+    image: "assets/media/projeto-profissional/poster.webp",
+    video: "assets/media/projeto-profissional/tour.webm",
     i18n: {
       en: "Hardened starter template for any Node web app: JWT auth (httpOnly cookie or Bearer), admin/user roles, admin-controlled registration (no self sign-up), inline-free CSP, input sanitization, rate limiting, CSRF guard, Zod validation and a Jest+Supertest suite from the first commit. Docker Compose with a non-root, read-only app container.",
       es: "Plantilla base endurecida para iniciar cualquier aplicación web Node: autenticación JWT (cookie httpOnly o Bearer), roles admin/user, registro controlado por el admin (sin autoregistro), CSP sin inline, saneamiento, rate limit, guard CSRF, validación Zod y suite Jest+Supertest desde el primer commit. Docker Compose con app no-root y sistema de archivos de solo lectura.",
@@ -228,6 +248,8 @@ const REPOS = [
     stack: [ "Markdown", "YAML", "Python", "Hermes Agent" ],
     tags: [ "IA", "Agentes", "Automação", "Open Source", "Memória Procedural" ],
     brief: "Coleção pessoal de skills (memória procedural) para o agente Hermes — 102 skills em 32 categorias, cada uma com SKILL.md (frontmatter YAML + instruções) e, opcionalmente, references/, scripts/ e templates/. Índice do README gerado por script; cobre de manutenção de sites Quartz e i18n a MLOps, LaTeX e automação de desktop.",
+    image: "assets/media/awesome-skills/poster.webp",
+    video: "assets/media/awesome-skills/tour.webm",
     i18n: {
       en: "Personal collection of skills (procedural memory) for the Hermes agent — 102 skills across 32 categories, each with SKILL.md (YAML frontmatter + instructions) plus optional references/, scripts/ and templates/. Script-generated README index; spans Quartz site maintenance and i18n, MLOps, LaTeX and desktop automation.",
       es: "Colección personal de skills (memoria procedural) para el agente Hermes — 102 skills en 32 categorías, cada una con SKILL.md (frontmatter YAML + instrucciones) y, opcionalmente, references/, scripts/ y templates/. Índice del README generado por script; abarca desde sitios Quartz e i18n hasta MLOps, LaTeX y automatización de escritorio.",
@@ -243,6 +265,8 @@ const REPOS = [
     stack: [ "Python", "YAML", "Bash", "PowerShell", "apt/dnf/pacman/zypper", "winget", "Homebrew" ],
     tags: [ "Dotfiles", "Provisionamento", "Multi-distro", "Open Source", "Idempotente" ],
     brief: "Mapa de todos os programas que uso (Linux, Windows e macOS) com instaladores automáticos e uma única fonte de verdade: packages.yaml. O instalador Linux detecta a distro (apt/dnf/pacman/zypper), é idempotente e tem cadeia de fallback (nativo → flatpak → snap → script oficial). Um gerador produz install.ps1, install.sh e o inventário; o bootstrap repopula a máquina do zero com um comando.",
+    image: "assets/media/meu-setup/poster.webp",
+    video: "assets/media/meu-setup/tour.webm",
     i18n: {
       en: "A map of every program I use (Linux, Windows and macOS) with automated installers and a single source of truth: packages.yaml. The Linux installer detects the distro (apt/dnf/pacman/zypper), is idempotent and has a fallback chain (native → flatpak → snap → official script). A generator produces install.ps1, install.sh and the inventory; the bootstrap repopulates a fresh machine with one command.",
       es: "Mapa de todos los programas que uso (Linux, Windows y macOS) con instaladores automáticos y una única fuente de verdad: packages.yaml. El instalador Linux detecta la distro (apt/dnf/pacman/zypper), es idempotente y tiene cadena de fallback (nativo → flatpak → snap → script oficial). Un generador produce install.ps1, install.sh y el inventario; el bootstrap repuebla la máquina con un comando.",
@@ -273,6 +297,8 @@ const REPOS = [
     stack: [ "Python", "FITS", "Matplotlib" ],
     tags: [ "Espectroscopia", "GALAH DR4", "Open Source" ],
     brief: "Viewer interativo de espectros GALAH DR4 (4 bandas, linhas de referência CNO/Alpha/Iron-peak, leitura de FITS, metadados Teff/log(g)/[Fe/H]).",
+    image: "assets/media/spectraviewer/poster.webp",
+    video: "assets/media/spectraviewer/tour.webm",
     live: "https://spectraviewer.streamlit.app/?embed=true",
     open: "https://spectraviewer.streamlit.app",
     i18n: {
@@ -282,20 +308,21 @@ const REPOS = [
     }
   },
   {
-    name: "research",
+    name: "Researcher Hub",
     cat: "pesquisa",
     visibility: "privado",
     icon: "book",
     repo: "https://github.com/pedroiff0/research",
-    stack: [ "Python", "arXiv API", "Pandas", "Matplotlib", "PyPDF2", "python-docx" ],
-    tags: [ "Literatura", "arXiv" ],
-    brief: "Anexos de pesquisa: busca de artigos no arXiv por assunto/keyword para compor leituras.",
+    stack: [ "Node.js", "Express", "MongoDB", "EJS", "arXiv API", "Docker" ],
+    tags: [ "Literatura", "arXiv", "Automação", "BibTeX" ],
+    brief: "Plataforma web para acompanhar a literatura científica no arXiv (research.phrandrade.com): revisão diária pública por categoria, busca por palavra-chave e autor, monitoramento de autores, biblioteca pessoal e exportação de citações em BibTeX/LaTeX e PDF. Nasceu como o arXiv Searcher, um buscador automático de artigos por assunto, e virou uma aplicação completa.",
     image: "assets/media/research/poster.webp",
     video: "assets/media/research/tour.webm",
+    open: "https://research.phrandrade.com",
     i18n: {
-      en: "Research attachments: arXiv article search by subject/keyword to compose readings.",
-      es: "Anexos de investigación: búsqueda de artículos en arXiv por tema/palabra clave para componer lecturas.",
-      fr: "Annexes de recherche : recherche d'articles arXiv par sujet/mot-clé pour composer des lectures."
+      en: "Web platform for tracking the scientific literature on arXiv (research.phrandrade.com): public daily review by category, keyword and author search, author monitoring, personal library, and citation export to BibTeX/LaTeX and PDF. It started as the arXiv Searcher, an automatic article finder by subject, and grew into a full application.",
+      es: "Plataforma web para seguir la literatura científica en arXiv (research.phrandrade.com): revisión diaria pública por categoría, búsqueda por palabra clave y autor, monitoreo de autores, biblioteca personal y exportación de citas en BibTeX/LaTeX y PDF. Nació como el arXiv Searcher, un buscador automático de artículos por tema, y se convirtió en una aplicación completa.",
+      fr: "Plateforme web pour suivre la littérature scientifique sur arXiv (research.phrandrade.com) : revue quotidienne publique par catégorie, recherche par mot-clé et par auteur, suivi d'auteurs, bibliothèque personnelle et export de citations en BibTeX/LaTeX et PDF. Elle est née comme l'arXiv Searcher, un moteur de recherche automatique d'articles par sujet, et est devenue une application complète."
     }
   },
   {
@@ -307,6 +334,8 @@ const REPOS = [
     stack: [ "LaTeX", "altacv", "Makefile", "biblatex" ],
     tags: [ "Multilíngue", "PT/EN/ES/FR" ],
     brief: "CV em LaTeX (classe altacv), multilíngue (PT/EN/ES/FR) compilado via Makefile. Inclui ORCID, Google Scholar e publicações em congressos (CONFICT, SAB, SBPC).",
+    image: "assets/media/cv/poster.webp",
+    video: "assets/media/cv/tour.webm",
     i18n: {
       en: "CV in LaTeX (altacv class), multilingual (PT/EN/ES/FR) compiled via Makefile. Includes ORCID, Google Scholar and conference publications (CONFICT, SAB, SBPC).",
       es: "CV en LaTeX (clase altacv), multilingüe (PT/EN/ES/FR) compilado vía Makefile. Incluye ORCID, Google Scholar y publicaciones en congresos (CONFICT, SAB, SBPC).",
@@ -322,6 +351,8 @@ const REPOS = [
     stack: [ "Python", "CI", "Docs", "NumPy" ],
     tags: [ "Disciplina", "Métodos Numéricos" ],
     brief: "Repositório de códigos da disciplina Cálculo Numérico 2025.2, com CI e documentação.",
+    image: "assets/media/calculo/poster.webp",
+    video: "assets/media/calculo/tour.webm",
     live: "https://pedroiff0.github.io/calculo-numerico/",
     open: "https://pedroiff0.github.io/calculo-numerico/",
     i18n: {
@@ -339,6 +370,8 @@ const REPOS = [
     stack: [ "LaTeX", "siunitx" ],
     tags: [ "Resumos", "Fórmulas" ],
     brief: "Coleção de folhas de fórmulas e resumos em LaTeX organizados por disciplina.",
+    image: "assets/media/formularios/poster.webp",
+    video: "assets/media/formularios/tour.webm",
     i18n: {
       en: "Collection of LaTeX formula sheets and summaries organized by course — mathematics and physics, typeset with siunitx.",
       es: "Colección de formularios y resúmenes en LaTeX organizados por asignatura — matemáticas y física, compuestos con siunitx.",
@@ -354,6 +387,8 @@ const REPOS = [
     stack: [ "LaTeX" ],
     tags: [ "Templates" ],
     brief: "Modelos LaTeX para uso geral.",
+    image: "assets/media/modelos/poster.webp",
+    video: "assets/media/modelos/tour.webm",
     i18n: {
       en: "LaTeX templates for general use: articles, reports, theses, slides, posters, booklets, problem sets, exams and ABNT-compliant references.",
       es: "Plantillas LaTeX de uso general: artículos, informes, tesis, diapositivas, pósteres, apuntes, listas de ejercicios, exámenes y referencias según ABNT.",
@@ -369,6 +404,8 @@ const REPOS = [
     stack: [ "Quartz", "Obsidian", "Markdown", "TypeScript", "GitHub Actions" ],
     tags: [ "Site Oficial", "Obsidian", "Multilíngue" ],
     brief: "Site pessoal/acadêmico oficial, multilíngue (PT completo; EN/ES/FR parciais), em Quartz a partir do vault Obsidian. Publicado em www.phrandrade.com. É o consolidado: pesquisa, notas de disciplinas, mídia e blog. Este portfólio é a página de boas-vindas dele.",
+    image: "assets/media/page/poster.webp",
+    video: "assets/media/page/tour.webm",
     live: "https://www.phrandrade.com/pt-br/",
     open: "https://www.phrandrade.com/pt-br/",
     i18n: {
@@ -386,6 +423,8 @@ const REPOS = [
     stack: [ "LaTeX", "Python", "Sphinx" ],
     tags: [ "Material Didático", "Cálculo", "Algoritmos", "Autoral" ],
     brief: "Material didático próprio de Cálculo, em elaboração, escrito em LaTeX — dos fundamentos a sistemas lineares. Cobre revisão de Python/Cálculo I, sistemas de bases numéricas (binária, octal, decimal, hexadecimal) e sistemas lineares (eliminação de Gauss e fatoração LU, com e sem pivotamento). Cada capítulo traz apêndice próprio de algoritmos em versão simplificada, além de exemplos autorais que complementam o livro-texto padrão. Layout já ajustado; revisão de formatação (padrão Sphinx) e dos quadros de algoritmos em andamento.",
+    image: "assets/media/livrocalculo/poster.webp",
+    video: "assets/media/livrocalculo/tour.webm",
     i18n: {
       en: "My own Calculus textbook, in progress, written in LaTeX — from fundamentals to linear systems. Covers a Python/Calculus I refresher, numeral base systems (binary, octal, decimal, hexadecimal) and linear systems (Gaussian elimination and LU factorization, with and without pivoting). Each chapter has its own appendix of algorithms in simplified form, plus original examples complementing the standard textbook. Layout is settled; formatting review (Sphinx-style) and algorithm boxes still under way.",
       es: "Material didáctico propio de Cálculo, en elaboración, escrito en LaTeX — de los fundamentos a los sistemas lineales. Cubre un repaso de Python/Cálculo I, sistemas de bases numéricas (binaria, octal, decimal, hexadecimal) y sistemas lineales (eliminación de Gauss y factorización LU, con y sin pivoteo). Cada capítulo trae su propio apéndice de algoritmos en versión simplificada, además de ejemplos de autoría propia que complementan el libro de texto estándar. Maquetación ya ajustada; revisión de formato (estilo Sphinx) y de los cuadros de algoritmos en curso.",
@@ -405,21 +444,6 @@ const REPOS = [
       en: "A planned series of my own course booklets covering the entire Computer Engineering curriculum — with theory, exercises and annotated experiments. Spans Calculus I–IV and Numerical Methods, Physics I–IV (with room for Quantum and Particle Physics), Linear Algebra, Algorithms and Data Structures, Differential Equations, Solid and Fluid Mechanics, Electricity and Electronics, Databases, Software Engineering, Compilers, Programming, Networks, Computer Architecture, Operating and Embedded Systems, Scientific Methodology and Astrophysics. Complements the course notes already published on the official site.",
       es: "Plan, en planificación, de escribir apuntes propios que cubran toda la malla de Ingeniería Informática — con teoría, ejercicios y experimentos comentados. Abarca Cálculos I–IV y Cálculo Numérico, Física I–IV (con espacio para Cuántica y de Partículas), Álgebra Lineal, Algoritmos y Estructuras de Datos, Ecuaciones Diferenciales, Mecánica de Sólidos y Fluidos, Electricidad y Electrónica, Bases de Datos, Ingeniería de Software, Compiladores, Programación, Redes, Arquitectura de Computadores, Sistemas Operativos y Embebidos, Metodología Científica y Astrofísica. Complementa los apuntes de asignaturas ya publicados en el sitio oficial.",
       fr: "Projet, en cours de planification, d'écrire mes propres fascicules couvrant tout le programme de génie informatique — avec théorie, exercices et expériences commentées. Couvre Calcul I–IV et Calcul Numérique, Physique I–IV (avec place pour la Quantique et les Particules), Algèbre Linéaire, Algorithmes et Structures de Données, Équations Différentielles, Mécanique des Solides et des Fluides, Électricité et Électronique, Bases de Données, Génie Logiciel, Compilateurs, Programmation, Réseaux, Architecture des Ordinateurs, Systèmes d'Exploitation et Embarqués, Méthodologie Scientifique et Astrophysique. Complète les notes de cours déjà publiées sur le site officiel."
-    }
-  },
-  {
-    name: "arXiv Searcher",
-    cat: "pesquisa",
-    visibility: "planejamento",
-    icon: "star",
-    repo: "",
-    stack: [ "Python", "arXiv API", "Docker", "LaTeX", "Markdown" ],
-    tags: [ "Automação", "Pesquisa", "Daemon", "BibTeX" ],
-    brief: "Ferramenta, em planejamento, para buscar e organizar automaticamente artigos do arXiv por assunto ou palavra-chave. Pensada para rodar como daemon (possivelmente dockerizado), consultando a API do arXiv periodicamente e gerando saída diária em Markdown (tabela com data, título, primeiro autor, área e link) e citações prontas em LaTeX, na mesma estrutura de referência dos meus artigos. Configuração via planilha CSV, com área de busca padrão e opção de busca avulsa por palavra-chave sem alterar essa configuração.",
-    i18n: {
-      en: "A planned tool to automatically search and organize arXiv papers by subject or keyword. Designed to run as a daemon (possibly dockerized), polling the arXiv API periodically and producing a daily Markdown digest (table with date, title, first author, field and link) plus ready-to-use LaTeX citations matching the reference structure of my own papers. Configured via a CSV sheet, with a default search field and the option of a one-off keyword search that leaves the configuration untouched.",
-      es: "Herramienta, en planificación, para buscar y organizar automáticamente artículos de arXiv por tema o palabra clave. Pensada para ejecutarse como demonio (posiblemente dockerizado), consultando la API de arXiv periódicamente y generando salida diaria en Markdown (tabla con fecha, título, primer autor, área y enlace) y citas listas en LaTeX, con la misma estructura de referencia de mis artículos. Configuración mediante hoja CSV, con área de búsqueda por defecto y opción de búsqueda suelta por palabra clave sin alterar esa configuración.",
-      fr: "Outil, en cours de planification, pour rechercher et organiser automatiquement les articles d'arXiv par sujet ou mot-clé. Conçu pour tourner en démon (éventuellement dockerisé), interrogeant périodiquement l'API arXiv et produisant une sortie quotidienne en Markdown (tableau avec date, titre, premier auteur, domaine et lien) ainsi que des citations LaTeX prêtes à l'emploi, dans la même structure de référence que mes articles. Configuration via une feuille CSV, avec un domaine de recherche par défaut et la possibilité d'une recherche ponctuelle par mot-clé sans modifier cette configuration."
     }
   },
   {
@@ -476,6 +500,8 @@ const REPOS = [
     stack: [ "Docs", "GitHub Actions", "Shell" ],
     tags: [ "Boas Práticas", "Templates", "Versionamento" ],
     brief: "Guia próprio de Git e boas práticas de versionamento — prático, não mais um manual genérico de comandos. Reúne templates, exemplos de Actions, Projects, Issues e estratégias de branching, com módulos sobre dockerização, versionamento em arquiteturas de microsserviços e padrões de documentação de repositório.",
+    image: "assets/media/guiagithub/poster.webp",
+    video: "assets/media/guiagithub/tour.webm",
     i18n: {
       en: "My own guide to Git and versioning best practices — hands-on, not yet another generic command manual. Gathers templates and examples of Actions, Projects, Issues and branching strategies, with modules on dockerization, versioning in microservice architectures and repository documentation standards.",
       es: "Guía propia de Git y buenas prácticas de versionado — práctica, no un manual genérico más de comandos. Reúne plantillas y ejemplos de Actions, Projects, Issues y estrategias de ramificación, con módulos sobre dockerización, versionado en arquitecturas de microservicios y estándares de documentación de repositorio.",
@@ -491,6 +517,8 @@ const REPOS = [
     stack: [ "Profile", "Markdown" ],
     tags: [ "README" ],
     brief: "README de perfil do GitHub (bio, Tech & Tools, projetos em destaque).",
+    image: "assets/media/perfil/poster.webp",
+    video: "assets/media/perfil/tour.webm",
     i18n: {
       en: "GitHub profile README (bio, Tech & Tools, featured projects).",
       es: "README de perfil de GitHub (bio, Tech & Tools, proyectos destacados).",
@@ -506,6 +534,8 @@ const REPOS = [
     stack: [ "HTML", "CSS", "JavaScript", "Python", "Playwright", "GitHub Pages" ],
     tags: [ "Portfólio", "Página Única", "Multilíngue", "Minimalista" ],
     brief: "Este portfólio: página única e minimalista, multilíngue (PT/EN/ES/FR), sem framework e com o visual do site oficial (tema claro e escuro, cartões com detalhes, filtro e busca de projetos). O conteúdo não vive no HTML: é escrito em Markdown (src/portfolio.md) e compilado por um script Python para JS, com verificação automática no pre-commit. Serve de página de boas-vindas para o site oficial, onde está o conteúdo completo.",
+    image: "assets/media/portfolio/poster.webp",
+    video: "assets/media/portfolio/tour.webm",
     i18n: {
       en: "This portfolio: a single minimalist page, multilingual (PT/EN/ES/FR), framework-free and styled like the official site (light and dark themes, cards with details, project filter and search). Content does not live in the HTML: it is written in Markdown (src/portfolio.md) and compiled to JS by a Python script, with automatic verification on pre-commit. It serves as the welcome page for the official site, where the full content lives.",
       es: "Este portafolio: página única y minimalista, multilingüe (PT/EN/ES/FR), sin framework y con el estilo del sitio oficial (tema claro y oscuro, tarjetas con detalles, filtro y búsqueda de proyectos). El contenido no vive en el HTML: se escribe en Markdown (src/portfolio.md) y se compila a JS con un script de Python, con verificación automática en el pre-commit. Sirve de página de bienvenida al sitio oficial, donde está el contenido completo.",
@@ -628,6 +658,31 @@ const BOLSAS = [
         desc: "Bourse PIBIC/CNPq : apprentissage automatique sur Gaia DR3 + GALAH DR4 + GCNS pour l'archéologie galactique et les populations stellaires. Co-autoria PUC Chile."
       }
     }
+  },
+  {
+    title: "Detecção de Anomalias em Estrelas da Via Láctea (Fase II)",
+    icon: "star",
+    kind: "IC · CNPq (PIBIC)",
+    period: "2026 — presente",
+    orient: "Dra. Ana Cecília Soja e Dra. Maria Luiza Linhares Dantas",
+    desc: "Continuação do projeto PIBIC/CNPq: aprendizado de máquina sobre Gaia DR3 + GALAH DR4 + GCNS para arqueologia galáctica e populações estelares. Co-autoria PUC Chile.",
+    i18n: {
+      en: {
+        title: "Anomaly Detection in Milky Way Stars (Phase II)",
+        kind: "Scientific Initiation · CNPq (PIBIC)",
+        desc: "Continuation of the PIBIC/CNPq project: machine learning on Gaia DR3 + GALAH DR4 + GCNS for galactic archaeology and stellar populations. Co-authored with PUC Chile."
+      },
+      es: {
+        title: "Detección de Anomalías en Estrellas de la Vía Láctea (Fase II)",
+        kind: "Iniciación Científica · CNPq (PIBIC)",
+        desc: "Continuación del proyecto PIBIC/CNPq: aprendizaje automático sobre Gaia DR3 + GALAH DR4 + GCNS para arqueología galáctica y poblaciones estelares. Coautoría con PUC Chile."
+      },
+      fr: {
+        title: "Détection d'anomalies dans les étoiles de la Voie lactée (Phase II)",
+        kind: "Initiation Scientifique · CNPq (PIBIC)",
+        desc: "Poursuite du projet PIBIC/CNPq : apprentissage automatique sur Gaia DR3 + GALAH DR4 + GCNS pour l'archéologie galactique et les populations stellaires. Co-auteur avec PUC Chile."
+      }
+    }
   }
 ];
 
@@ -694,19 +749,15 @@ const EXTRA = {
   instagram: "ra.pedroh",
   location: "Bom Jesus do Itabapoana, RJ",
   tagline: "Engenharia de Computação no IFF · bolsista PIBIC/CNPq · astrofísica computacional",
-  hobby: "Animações e simulações científicas para divulgação em física e astronomia.",
   i18n: {
     en: {
-      tagline: "Computer Engineering at IFF · PIBIC/CNPq scholar · computational astrophysics",
-      hobby: "Scientific animations and simulations for physics and astronomy outreach."
+      tagline: "Computer Engineering at IFF · PIBIC/CNPq scholar · computational astrophysics"
     },
     es: {
-      tagline: "Ingeniería Informática en el IFF · becario PIBIC/CNPq · astrofísica computacional",
-      hobby: "Animaciones y simulaciones científicas para divulgación en física y astronomía."
+      tagline: "Ingeniería Informática en el IFF · becario PIBIC/CNPq · astrofísica computacional"
     },
     fr: {
-      tagline: "Génie informatique à l'IFF · boursier PIBIC/CNPq · astrophysique computationnelle",
-      hobby: "Animations et simulations scientifiques pour la vulgarisation en physique et en astronomie."
+      tagline: "Génie informatique à l'IFF · boursier PIBIC/CNPq · astrophysique computationnelle"
     }
   }
 };
@@ -1680,58 +1731,179 @@ const I18N = {
   }
 };
 
-const GALLERY = [
+const EVENTS = [
   {
-    file: "sab-2025-poster",
-    caption: "SAB 2025: pôster sobre estrelas próximas do Gaia observadas pelo GALAH DR4",
-    i18n: {
-      en: "SAB 2025: poster on nearby Gaia stars observed by GALAH DR4",
-      es: "SAB 2025: póster sobre estrellas cercanas de Gaia observadas por GALAH DR4",
-      fr: "SAB 2025 : poster sur les étoiles proches de Gaia observées par GALAH DR4"
-    }
+    id: "2026-sbpc",
+    year: 2026,
+    title: "78ª SBPC",
+    url: "https://www.phrandrade.com/pt-br/media/2026/sbpc",
+    photos: [
+      "assets/media/eventos/2026-sbpc/01",
+      "assets/media/eventos/2026-sbpc/02",
+      "assets/media/eventos/2026-sbpc/03",
+      "assets/media/eventos/2026-sbpc/04",
+      "assets/media/eventos/2026-sbpc/05",
+      "assets/media/eventos/2026-sbpc/06",
+      "assets/media/eventos/2026-sbpc/07",
+      "assets/media/eventos/2026-sbpc/08"
+    ]
   },
   {
-    file: "sab-2025",
-    caption: "XLVIII Reunião Anual da SAB, Caxambu (MG)",
-    i18n: {
-      en: "48th Annual Meeting of the Brazilian Astronomical Society, Caxambu (MG)",
-      es: "XLVIII Reunión Anual de la SAB, Caxambu (MG)",
-      fr: "48e réunion annuelle de la SAB, Caxambu (MG)"
-    }
+    id: "2026-escolainverno",
+    year: 2026,
+    title: "Escola de Inverno ON",
+    url: "https://www.phrandrade.com/pt-br/media/2026/escolainverno",
+    photos: [
+      "assets/media/eventos/2026-escolainverno/01",
+      "assets/media/eventos/2026-escolainverno/02",
+      "assets/media/eventos/2026-escolainverno/03",
+      "assets/media/eventos/2026-escolainverno/04",
+      "assets/media/eventos/2026-escolainverno/05",
+      "assets/media/eventos/2026-escolainverno/06",
+      "assets/media/eventos/2026-escolainverno/07"
+    ]
   },
   {
-    file: "febic-2024-estande",
-    caption: "IX FEBIC: estande sobre o impacto de satélites em observações astronômicas",
-    i18n: {
-      en: "IX FEBIC: booth on the impact of satellites on astronomical observations",
-      es: "IX FEBIC: stand sobre el impacto de los satélites en las observaciones astronómicas",
-      fr: "IX FEBIC : stand sur l'impact des satellites sur les observations astronomiques"
-    }
+    id: "2026-conepe",
+    year: 2026,
+    title: "XIII CONEPE",
+    url: "https://www.phrandrade.com/pt-br/media/2026/conepe",
+    photos: []
   },
   {
-    file: "febic-2024",
-    caption: "IX FEBIC, 2024",
-    i18n: { en: "IX FEBIC, 2024", es: "IX FEBIC, 2024", fr: "IX FEBIC, 2024" }
+    id: "2026-mostra-iff",
+    year: 2026,
+    title: "XIV Mostra do Conhecimento",
+    url: "https://www.phrandrade.com/pt-br/media/2026/mostra-iff",
+    photos: []
   },
   {
-    file: "lncc-2022-supercomputador",
-    caption: "Supercomputador do LNCC, 2022",
-    i18n: {
-      en: "LNCC supercomputer, 2022",
-      es: "Supercomputador del LNCC, 2022",
-      fr: "Supercalculateur du LNCC, 2022"
-    }
+    id: "2026-confict",
+    year: 2026,
+    title: "XVII CONFICT",
+    url: "https://www.phrandrade.com/pt-br/media/2026/confict",
+    photos: [ "assets/media/eventos/2026-confict/01" ]
   },
   {
-    file: "lncc-2022",
-    caption: "Visita ao LNCC, Petrópolis (RJ), 2022",
-    i18n: {
-      en: "Visit to LNCC, Petrópolis (RJ), 2022",
-      es: "Visita al LNCC, Petrópolis (RJ), 2022",
-      fr: "Visite au LNCC, Petrópolis (RJ), 2022"
-    }
+    id: "2025-sab",
+    year: 2025,
+    title: "XLVIII SAB",
+    url: "https://www.phrandrade.com/pt-br/media/2025/sab",
+    photos: [
+      "assets/media/eventos/2025-sab/01",
+      "assets/media/eventos/2025-sab/02",
+      "assets/media/eventos/2025-sab/03",
+      "assets/media/eventos/2025-sab/04",
+      "assets/media/eventos/2025-sab/05",
+      "assets/media/eventos/2025-sab/06",
+      "assets/media/eventos/2025-sab/07",
+      "assets/media/eventos/2025-sab/08",
+      "assets/media/eventos/2025-sab/09"
+    ]
+  },
+  {
+    id: "2025-mctia",
+    year: 2025,
+    title: "XVI MCTIA",
+    url: "https://www.phrandrade.com/pt-br/media/2025/mctia",
+    photos: [
+      "assets/media/eventos/2025-mctia/01",
+      "assets/media/eventos/2025-mctia/02",
+      "assets/media/eventos/2025-mctia/03",
+      "assets/media/eventos/2025-mctia/04",
+      "assets/media/eventos/2025-mctia/05",
+      "assets/media/eventos/2025-mctia/06",
+      "assets/media/eventos/2025-mctia/07",
+      "assets/media/eventos/2025-mctia/08",
+      "assets/media/eventos/2025-mctia/09"
+    ]
+  },
+  {
+    id: "2024-4-sceg",
+    year: 2024,
+    title: "4ª SCEG 2024",
+    url: "https://www.phrandrade.com/pt-br/media/2024/4-sceg",
+    photos: [
+      "assets/media/eventos/2024-4-sceg/01",
+      "assets/media/eventos/2024-4-sceg/02",
+      "assets/media/eventos/2024-4-sceg/03",
+      "assets/media/eventos/2024-4-sceg/04"
+    ]
+  },
+  {
+    id: "2024-febic",
+    year: 2024,
+    title: "IX FEBIC",
+    url: "https://www.phrandrade.com/pt-br/media/2024/febic",
+    photos: [
+      "assets/media/eventos/2024-febic/01",
+      "assets/media/eventos/2024-febic/02",
+      "assets/media/eventos/2024-febic/03",
+      "assets/media/eventos/2024-febic/04",
+      "assets/media/eventos/2024-febic/05",
+      "assets/media/eventos/2024-febic/06",
+      "assets/media/eventos/2024-febic/07",
+      "assets/media/eventos/2024-febic/08",
+      "assets/media/eventos/2024-febic/09"
+    ]
+  },
+  {
+    id: "2024-e-jiniff",
+    year: 2024,
+    title: "e-JINIFF",
+    url: "https://www.phrandrade.com/pt-br/media/2024/e-jiniff",
+    photos: []
+  },
+  {
+    id: "2023-febrace",
+    year: 2023,
+    title: "21ª FEBRACE",
+    url: "https://www.phrandrade.com/pt-br/media/2023/febrace",
+    photos: [
+      "assets/media/eventos/2023-febrace/01",
+      "assets/media/eventos/2023-febrace/02",
+      "assets/media/eventos/2023-febrace/03",
+      "assets/media/eventos/2023-febrace/04",
+      "assets/media/eventos/2023-febrace/05",
+      "assets/media/eventos/2023-febrace/06",
+      "assets/media/eventos/2023-febrace/07"
+    ]
+  },
+  {
+    id: "2023-mostratec",
+    year: 2023,
+    title: "37ª MOSTRATEC",
+    url: "https://www.phrandrade.com/pt-br/media/2023/mostratec",
+    photos: [
+      "assets/media/eventos/2023-mostratec/01",
+      "assets/media/eventos/2023-mostratec/02",
+      "assets/media/eventos/2023-mostratec/03",
+      "assets/media/eventos/2023-mostratec/04",
+      "assets/media/eventos/2023-mostratec/05",
+      "assets/media/eventos/2023-mostratec/06",
+      "assets/media/eventos/2023-mostratec/07",
+      "assets/media/eventos/2023-mostratec/08",
+      "assets/media/eventos/2023-mostratec/09"
+    ]
+  },
+  {
+    id: "2022-lncc",
+    year: 2022,
+    title: "Laboratório Nacional de Computação Científica",
+    url: "https://www.phrandrade.com/pt-br/media/2022/lncc",
+    photos: [
+      "assets/media/eventos/2022-lncc/01",
+      "assets/media/eventos/2022-lncc/02",
+      "assets/media/eventos/2022-lncc/03",
+      "assets/media/eventos/2022-lncc/04",
+      "assets/media/eventos/2022-lncc/05",
+      "assets/media/eventos/2022-lncc/06",
+      "assets/media/eventos/2022-lncc/07",
+      "assets/media/eventos/2022-lncc/08",
+      "assets/media/eventos/2022-lncc/09"
+    ]
   }
 ];
 const UPDATED = "2026-11-03";
 
-window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, GALLERY, UPDATED };
+window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, EVENTS, UPDATED };

@@ -12,7 +12,9 @@ A v1 sci-fi (HUD, Three.js, canvas, quests) está arquivada no repositório priv
 - **Sobre mim** — trajetória, formação (Eng. de Computação / IFF) e atuação (PIBIC/CNPq).
 - **Destaques** e **Trabalhos** (todos os repositórios, com filtro por categoria e busca); detalhes em `<details>`.
 - **Pesquisa** e **Bolsas** (linha do tempo).
-- **Currículo**, **Lattes** e **Contato**.
+- **Participação em eventos** (fotos por evento, lightbox), gerada do vault por `tools/eventos.py`.
+- **Currículo** (6 idiomas), **Lattes** e **Contato**.
+- Topbar com relógio (UTC−3), idioma e tema como no quartz-site, modo leitura (`r`) e conquistas discretas (`n/8`).
 
 ## Estrutura
 
@@ -69,39 +71,29 @@ node tools/record_demos.js              # todos os tours de tools/demos/tours.js
 node tools/record_demos.js financas     # só um
 ```
 
-Grava com Playwright as instâncias locais (sempre com banco demo, nunca dados reais), fecha banners de cookie e gera `assets/media/<slug>/tour.webm` e `poster.webp`.
+Grava com Playwright (screencast CDP a 1,5x, cursor visível, rolagem suave) e gera `assets/media/<slug>/tour.webm` (VP9, 1280 px) e `poster.webp`. Os passos de cada tour estão documentados no topo de `tools/record_demos.js`.
 
-## Sincronizar com o quartz-site
+Origem dos dados de cada tour (nunca dados reais):
 
-`src/portfolio.md` é a **fonte única** dos projetos: as notas de
-`content/<lang>/projects/` do quartz-site são geradas a partir dele.
+- **Apps web:** instância local com o modo demo do próprio app (Finanças `/demo`, Sistema Acadêmico `/demo`, Projeto Profissional `/demo/start`) ou cópia do repositório no scratch com banco temporário e seed fictício (Caixas, Avaliações e variantes, usuário `demo@exemplo.com`). Desligar o que foi ligado para gravar.
+- **Sites e repositórios públicos:** a página pública (Cálculo Numérico, phrandrade.com, GitHub).
+- **LaTeX:** `pdf:` renderiza páginas escolhidas de um PDF compilado.
+- **Repositórios privados sem UI web:** `readme:` renderiza o README localmente.
+
+Antes de publicar, conferir uma folha de contato dos vídeos (ex.: `ffmpeg -i tour.webm -vf "fps=1/2.5,scale=400:-2,tile=4x2" -frames:v 1 folha.png`).
+
+## Eventos
 
 ```bash
-python3 tools/gen_quartz.py            # dry-run: mostra o que mudaria
-python3 tools/gen_quartz.py --write    # aplica
-python3 tools/gen_quartz.py --check    # exit 1 se dessincronizado
+python3 tools/eventos.py   # relê 03-midia/ do vault e regenera src/eventos.json e assets/media/eventos/
+python3 tools/build.py
 ```
 
-O script gera as quatro línguas (`pt-br`, `en`, `es`, `fr`) e só controla:
+## Quartz-site
 
-- os campos de frontmatter `title`, `tags`, `repo`, `status`;
-- o bloco entre `<!-- gerado por ... -->` e `<!-- fim do bloco gerado -->`.
-
-O resumo, o rótulo de repositório e o status saem traduzidos por idioma. O
-`title` e as `tags` ficam no original de propósito: o título é nome próprio do
-projeto, e as tags são usadas pelo Quartz para agrupar notas — traduzi-las
-fragmentaria cada grupo em quatro.
-
-Todo o resto — `publish`, `created`, `password`, e principalmente o corpo
-escrito à mão — é preservado. Em notas que já têm texto humano o bloco entra
-em modo reduzido (só stack e repositório), para não duplicar o resumo.
-
-O caminho do site vem de `$QUARTZ_SITE` (padrão:
-`/home/pedro/Repositorios/pessoal/quartz-site`).
-
-**Atenção:** o `content/` do quartz-site é um vault Obsidian sincronizado por
-Syncthing e vive sujo no git. O script nunca commita — rode `git status` lá e
-separe as mudanças à mão.
+`tools/gen_quartz.py` está **obsoleto** desde 05/10/2026: as páginas de projeto do
+quartz-site vêm do vault hardcore-life (`99-meta/scripts/sync-to-quartz.py` e
+`sitesync-map.yaml`). O script só roda com `--legado` e não deve ser usado.
 
 ## Rodar localmente e testar
 

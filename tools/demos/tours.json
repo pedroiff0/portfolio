@@ -1,40 +1,1309 @@
 {
-  "_doc": "Tours gravados por tools/record_demos.js. Só instâncias locais com banco demo ou páginas públicas, nunca dados reais.",
-  "financas": {
-    "name": "Finanças App",
-    "steps": [
-      { "goto": "http://127.0.0.1:6791/demo/dashboard", "wait": 1800 },
-      { "scroll": 500 }, { "wait": 1200 }, { "scroll": 600 }, { "wait": 1200 },
-      { "goto": "http://127.0.0.1:6791/demo/investments", "wait": 1800 },
-      { "scroll": 500 }, { "wait": 1200 },
-      { "goto": "http://127.0.0.1:6791/demo/vehicles", "wait": 1800 }
-    ]
+ "_doc": "Tours gravados por tools/record_demos.js. Só instâncias locais com banco demo ou páginas públicas, nunca dados reais.",
+ "financas": {
+  "name": "Finanças App",
+  "steps": [
+   {
+    "goto": "http://127.0.0.1:6791/demo/dashboard",
+    "waitFor": "body"
+   },
+   {
+    "wait": 1500,
+    "poster": true
+   },
+   {
+    "scroll": 550
+   },
+   {
+    "wait": 1100
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1100
+   },
+   {
+    "click": "#btn-busca"
+   },
+   {
+    "wait": 500
+   },
+   {
+    "press": "Escape"
+   },
+   {
+    "goto": "http://127.0.0.1:6791/demo/transactions"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 500
+   },
+   {
+    "wait": 1000
+   },
+   {
+    "goto": "http://127.0.0.1:6791/demo/budgets"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "goto": "http://127.0.0.1:6791/demo/investments"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 550
+   },
+   {
+    "wait": 1100
+   },
+   {
+    "goto": "http://127.0.0.1:6791/demo/vehicles"
+   },
+   {
+    "wait": 1600
+   }
+  ]
+ },
+ "sistema-academico": {
+  "name": "Sistema Acadêmico",
+  "steps": [
+   {
+    "goto": "http://127.0.0.1:4445/demo/aluno/stats",
+    "waitFor": "body"
+   },
+   {
+    "wait": 1500,
+    "poster": true
+   },
+   {
+    "scroll": 550
+   },
+   {
+    "wait": 1100
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1100
+   },
+   {
+    "goto": "http://127.0.0.1:4445/demo/aluno/grafo"
+   },
+   {
+    "wait": 2400
+   },
+   {
+    "goto": "http://127.0.0.1:4445/demo/aluno/boletim"
+   },
+   {
+    "wait": 1400
+   },
+   {
+    "scroll": 450
+   },
+   {
+    "wait": 1000
+   },
+   {
+    "goto": "http://127.0.0.1:4445/demo/aluno/simulacao"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "goto": "http://127.0.0.1:4445/demo/aluno/ementario"
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 450
+   },
+   {
+    "wait": 1200
+   }
+  ]
+ },
+ "research": {
+  "name": "research",
+  "steps": [
+   {
+    "goto": "http://127.0.0.1:4409/",
+    "waitFor": "body"
+   },
+   {
+    "wait": 1400
+   },
+   {
+    "click": "a[href='#recursos']"
+   },
+   {
+    "wait": 1400,
+    "poster": true
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1100
+   },
+   {
+    "click": "a[href='#exportacoes']"
+   },
+   {
+    "wait": 1400
+   },
+   {
+    "goto": "http://127.0.0.1:4409/explore"
+   },
+   {
+    "wait": 1600
+   },
+   {
+    "click": "summary:has-text('Papers to Review')"
+   },
+   {
+    "wait": 1400
+   },
+   {
+    "scroll": 500
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "goto": "http://127.0.0.1:4409/explore/arxiv"
+   },
+   {
+    "wait": 1700
+   }
+  ]
+ },
+ "relatex": {
+  "name": "ReLaTeX",
+  "steps": [
+   {
+    "goto": "http://127.0.0.1:8095/",
+    "waitFor": "body"
+   },
+   {
+    "wait": 1600,
+    "poster": true
+   },
+   {
+    "click": "a[href='#recursos']"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 500
+   },
+   {
+    "wait": 1100
+   },
+   {
+    "click": "a[href='#classes']"
+   },
+   {
+    "wait": 1600
+   },
+   {
+    "scroll": 500
+   },
+   {
+    "wait": 1100
+   },
+   {
+    "click": "a[href='#sobre']"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "goto": "http://127.0.0.1:8095/login"
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "calculo": {
+  "name": "Cálculo Numérico",
+  "steps": [
+   {
+    "goto": "https://pedroiff0.github.io/calculo-numerico/",
+    "waitFor": "body"
+   },
+   {
+    "wait": 1400
+   },
+   {
+    "click": "a.reference.internal[href='sistemas.html']"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 600,
+    "poster": true
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "click": "a.reference.internal[href='interpolacoes.html']"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1400
+   }
+  ]
+ },
+ "page": {
+  "name": "page (Quartz)",
+  "steps": [
+   {
+    "goto": "https://www.phrandrade.com/pt-br/",
+    "waitFor": "body"
+   },
+   {
+    "wait": 1800
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "goto": "https://www.phrandrade.com/pt-br/research/"
+   },
+   {
+    "wait": 1600,
+    "poster": true
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "goto": "https://www.phrandrade.com/pt-br/media/"
+   },
+   {
+    "wait": 1600
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "portfolio": {
+  "name": "Portfólio",
+  "steps": [
+   {
+    "goto": "local:index.html",
+    "waitFor": "#hero-photo"
+   },
+   {
+    "wait": 1500,
+    "poster": true
+   },
+   {
+    "click": "#lang button[data-lang='en']"
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "click": "#lang button[data-lang='pt']"
+   },
+   {
+    "wait": 600
+   },
+   {
+    "scrollTo": "#projetos"
+   },
+   {
+    "wait": 1000
+   },
+   {
+    "click": "#cat-tabs button:nth-child(3)"
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scrollTo": "#eventos"
+   },
+   {
+    "wait": 1000
+   },
+   {
+    "click": ".events__thumb"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "press": "ArrowRight"
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "press": "Escape"
+   },
+   {
+    "wait": 500
+   },
+   {
+    "click": "#theme"
+   },
+   {
+    "wait": 1400
+   },
+   {
+    "click": "#reader"
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "cv": {
+  "name": "Currículo (CV)",
+  "pdf": {
+   "file": [
+    "/tmp/claude-1000/-home-pedro-hardcore-life/870c11a0-384b-4557-ad1d-3a4eaa8e87c3/scratchpad/cv/cv-academico-pt.pdf",
+    "/tmp/claude-1000/-home-pedro-hardcore-life/870c11a0-384b-4557-ad1d-3a4eaa8e87c3/scratchpad/cv/cv-profissional-en.pdf"
+   ],
+   "pages": 2,
+   "title": "Currículo — acadêmico (PT) e profissional (EN)"
   },
-  "sistema-academico": {
-    "name": "Sistema Acadêmico",
-    "steps": [
-      { "goto": "http://127.0.0.1:4445/demo/aluno/stats", "wait": 1800 },
-      { "scroll": 500 }, { "wait": 1000 },
-      { "goto": "http://127.0.0.1:4445/demo/aluno/ementario", "wait": 1800 },
-      { "scroll": 400 }, { "wait": 800 },
-      { "goto": "http://127.0.0.1:4445/demo/aluno/grafo", "wait": 2500 },
-      { "goto": "http://127.0.0.1:4445/demo/aluno/boletim", "wait": 1800 }
-    ]
+  "steps": [
+   {
+    "goto": "pdf:cv",
+    "waitFor": "#p1"
+   },
+   {
+    "wait": 1800,
+    "poster": true
+   },
+   {
+    "scroll": 650
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 750
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 750
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1800
+   }
+  ]
+ },
+ "formularios": {
+  "name": "Formulários",
+  "pdf": {
+   "file": "~/Repositorios/academicos/formularios/main.pdf",
+   "pages": 6,
+   "title": "Formulários — main.pdf"
   },
-  "research": {
-    "name": "research",
-    "steps": [
-      { "goto": "http://127.0.0.1:4409/", "wait": 1800 },
-      { "scroll": 600 }, { "wait": 1000 }, { "scroll": 700 }, { "wait": 1000 },
-      { "goto": "http://127.0.0.1:4409/explorar", "wait": 2500 },
-      { "scroll": 500 }, { "wait": 1200 }
-    ]
+  "steps": [
+   {
+    "goto": "pdf:formularios",
+    "waitFor": "#p1"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 800
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 900,
+    "poster": true
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 900
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 900
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 900
+   },
+   {
+    "wait": 1400
+   }
+  ]
+ },
+ "modelos": {
+  "name": "Modelos LaTeX",
+  "pdf": {
+   "file": [
+    "~/Repositorios/academicos/modelos/modelo-artigo/main.pdf",
+    "~/Repositorios/academicos/modelos/modelo-slides/main.pdf",
+    "~/Repositorios/academicos/modelos/modelo-banner/main.pdf"
+   ],
+   "pages": 3,
+   "title": "Modelos LaTeX — artigo, slides e banner"
   },
-  "relatex": {
-    "name": "ReLaTeX",
-    "steps": [
-      { "goto": "http://127.0.0.1:8095/", "wait": 1800 },
-      { "scroll": 600 }, { "wait": 1200 }, { "scroll": 700 }, { "wait": 1200 }, { "scroll": 700 }, { "wait": 1200 }
+  "steps": [
+   {
+    "goto": "pdf:modelos",
+    "waitFor": "#p1"
+   },
+   {
+    "wait": 1500,
+    "poster": true
+   },
+   {
+    "scroll": 900
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 900
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 900
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 900
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 900
+   },
+   {
+    "wait": 1400
+   }
+  ]
+ },
+ "livrocalculo": {
+  "name": "Livro-Texto de Cálculo",
+  "pdf": {
+   "file": "~/Repositorios/latex/academico/apostilas/calculo-numerico/PedroH_5EC.pdf",
+   "list": [
+    1,
+    6,
+    7,
+    11,
+    12,
+    14,
+    16,
+    17
+   ],
+   "title": "Apostila de Cálculo Numérico (em elaboração)"
+  },
+  "steps": [
+   {
+    "goto": "pdf:livrocalculo",
+    "waitFor": "#p1"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 1100
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 1100,
+    "poster": true
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 1100
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 1100
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 1100
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 1100
+   },
+   {
+    "wait": 1400
+   }
+  ]
+ },
+ "awesome-skills": {
+  "name": "awesome-skills",
+  "steps": [
+   {
+    "goto": "https://github.com/pedroiff0/awesome-skills",
+    "waitFor": "article.markdown-body"
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scrollTo": "article.markdown-body"
+   },
+   {
+    "wait": 1400
+   },
+   {
+    "scroll": 600,
+    "poster": true
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1400
+   }
+  ]
+ },
+ "meu-setup": {
+  "name": "meu-setup",
+  "steps": [
+   {
+    "goto": "https://github.com/pedroiff0/meu-setup",
+    "waitFor": "article.markdown-body"
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scrollTo": "article.markdown-body"
+   },
+   {
+    "wait": 1400
+   },
+   {
+    "scroll": 600,
+    "poster": true
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1400
+   }
+  ]
+ },
+ "guiagithub": {
+  "name": "guia-github",
+  "steps": [
+   {
+    "goto": "https://github.com/pedroiff0/guia-github",
+    "waitFor": "article.markdown-body"
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scrollTo": "article.markdown-body"
+   },
+   {
+    "wait": 1400
+   },
+   {
+    "scroll": 600,
+    "poster": true
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1400
+   }
+  ]
+ },
+ "perfil": {
+  "name": "Perfil GitHub",
+  "steps": [
+   {
+    "goto": "https://github.com/pedroiff0",
+    "waitFor": "article.markdown-body"
+   },
+   {
+    "wait": 1600,
+    "poster": true
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "caixas": {
+  "name": "Caixas",
+  "_dados": "seed fictício do próprio repo (app/utils/dev.py) em SQLite temporário",
+  "routes": {
+   "**/static/vendor/adminlte/css/adminlte.min.css": "https://cdn.jsdelivr.net/npm/admin-lte@3.2.0/dist/css/adminlte.min.css",
+   "**/static/vendor/adminlte/js/adminlte.min.js": "https://cdn.jsdelivr.net/npm/admin-lte@3.2.0/dist/js/adminlte.min.js"
+  },
+  "steps": [
+   {
+    "goto": "http://127.0.0.1:4471/",
+    "waitFor": "body"
+   },
+   {
+    "wait": 1600
+   },
+   {
+    "scroll": 500
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "goto": "http://127.0.0.1:4471/historico"
+   },
+   {
+    "wait": 1600,
+    "poster": true
+   },
+   {
+    "scroll": 500
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "goto": "http://127.0.0.1:4471/balanco"
+   },
+   {
+    "wait": 1700
+   },
+   {
+    "scroll": 500
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "goto": "http://127.0.0.1:4471/despesas"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "wait": 1800
+   }
+  ]
+ },
+ "avaliacoes": {
+  "name": "Sistema de Avaliações",
+  "_dados": "instância local a partir de cópia do repo, Mongo temporário, usuário fictício demo@exemplo.com e questões de exemplo do seed",
+  "steps": [
+   {
+    "goto": "http://127.0.0.1:4481/login",
+    "waitFor": "#login-identifier"
+   },
+   {
+    "wait": 500
+   },
+   {
+    "type": [
+     "#login-identifier",
+     "demo@exemplo.com"
     ]
-  }
+   },
+   {
+    "type": [
+     "#login-password",
+     "demo-local-123"
+    ]
+   },
+   {
+    "click": "form button[type=submit]"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "goto": "http://127.0.0.1:4481/professor/questions"
+   },
+   {
+    "wait": 900
+   },
+   {
+    "click": "text=Banco global"
+   },
+   {
+    "wait": 1500,
+    "poster": true
+   },
+   {
+    "scroll": 500
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "goto": "http://127.0.0.1:4481/professor/questions/new"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "click": "text=2. Alternativas/Subitens"
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "avaliacoes-professores": {
+  "name": "Avaliações Professores",
+  "_dados": "instância local a partir de cópia do repo, Mongo temporário, usuário fictício demo@exemplo.com e questões de exemplo do seed",
+  "steps": [
+   {
+    "goto": "http://127.0.0.1:4482/login",
+    "waitFor": "#login-identifier"
+   },
+   {
+    "wait": 500
+   },
+   {
+    "type": [
+     "#login-identifier",
+     "demo@exemplo.com"
+    ]
+   },
+   {
+    "type": [
+     "#login-password",
+     "demo-local-123"
+    ]
+   },
+   {
+    "click": "form button[type=submit]"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "goto": "http://127.0.0.1:4482/professor/examsets/new"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "type": [
+     "input[placeholder^='ex: Cálculo I']",
+     "Física II - A1 - 2026/2"
+    ]
+   },
+   {
+    "wait": 800
+   },
+   {
+    "scroll": 500
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "goto": "http://127.0.0.1:4482/professor/questions"
+   },
+   {
+    "wait": 900
+   },
+   {
+    "click": "text=Banco global"
+   },
+   {
+    "wait": 1500,
+    "poster": true
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1400
+   }
+  ]
+ },
+ "avaliacoes-concurseiro": {
+  "name": "Avaliações Concurseiro",
+  "_dados": "instância local a partir de cópia do repo, Mongo temporário, usuário fictício demo@exemplo.com e questões de exemplo do seed",
+  "steps": [
+   {
+    "goto": "http://127.0.0.1:4483/login",
+    "waitFor": "#login-identifier"
+   },
+   {
+    "wait": 500
+   },
+   {
+    "type": [
+     "#login-identifier",
+     "demo@exemplo.com"
+    ]
+   },
+   {
+    "type": [
+     "#login-password",
+     "demo-local-123"
+    ]
+   },
+   {
+    "click": "form button[type=submit]"
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "goto": "http://127.0.0.1:4483/concurseiro/simulado"
+   },
+   {
+    "wait": 1000
+   },
+   {
+    "click": "text=Iniciar simulado"
+   },
+   {
+    "wait": 1800,
+    "poster": true
+   },
+   {
+    "scroll": 500
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "goto": "http://127.0.0.1:4483/concurseiro/editais"
+   },
+   {
+    "wait": 1400
+   },
+   {
+    "goto": "http://127.0.0.1:4483/concurseiro/gamificacao"
+   },
+   {
+    "wait": 1600
+   }
+  ]
+ },
+ "projeto-profissional": {
+  "name": "Projeto Profissional (template)",
+  "_dados": "modo demo embutido (/demo/start, demoService) em cópia local com Mongo temporário",
+  "steps": [
+   {
+    "goto": "http://127.0.0.1:4484/demo/start",
+    "waitFor": "body"
+   },
+   {
+    "wait": 1700,
+    "poster": true
+   },
+   {
+    "click": "text=Filtros"
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 500
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "goto": "http://127.0.0.1:4484/demo/painel"
+   },
+   {
+    "wait": 1700
+   },
+   {
+    "goto": "http://127.0.0.1:4484/demo/projetos"
+   },
+   {
+    "wait": 900
+   },
+   {
+    "scroll": 650
+   },
+   {
+    "wait": 1400
+   },
+   {
+    "goto": "http://127.0.0.1:4484/demo/profissionais"
+   },
+   {
+    "wait": 900
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "academicoweb": {
+  "name": "academicoWeb",
+  "_dados": "README do repositório privado renderizado localmente",
+  "readme": {
+   "file": "~/Repositorios/academicos/academico-web/README.md",
+   "title": "academicoWeb"
+  },
+  "steps": [
+   {
+    "goto": "readme:academicoweb",
+    "waitFor": "article"
+   },
+   {
+    "wait": 1600,
+    "poster": true
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "verdementa": {
+  "name": "verdementa",
+  "_dados": "README do repositório privado renderizado localmente",
+  "readme": {
+   "file": "~/Repositorios/profissional/verdementa/README.md",
+   "title": "verdementa"
+  },
+  "steps": [
+   {
+    "goto": "readme:verdementa",
+    "waitFor": "article"
+   },
+   {
+    "wait": 1600,
+    "poster": true
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "controle-estoque": {
+  "name": "controle-estoque",
+  "_dados": "README do repositório privado renderizado localmente",
+  "readme": {
+   "file": "~/Repositorios/pessoal/controle-estoque/README.md",
+   "title": "controle-estoque"
+  },
+  "steps": [
+   {
+    "goto": "readme:controle-estoque",
+    "waitFor": "article"
+   },
+   {
+    "wait": 1600,
+    "poster": true
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "levantamento-estoque": {
+  "name": "levantamento-estoque",
+  "_dados": "README do repositório privado renderizado localmente",
+  "readme": {
+   "file": "~/Repositorios/pessoal/levantamento-estoque/README.md",
+   "title": "levantamento-estoque"
+  },
+  "steps": [
+   {
+    "goto": "readme:levantamento-estoque",
+    "waitFor": "article"
+   },
+   {
+    "wait": 1600,
+    "poster": true
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "planilhador": {
+  "name": "planilhador",
+  "_dados": "README do repositório privado renderizado localmente",
+  "readme": {
+   "file": "~/Repositorios/pessoal/planilhador/README.md",
+   "title": "planilhador"
+  },
+  "steps": [
+   {
+    "goto": "readme:planilhador",
+    "waitFor": "article"
+   },
+   {
+    "wait": 1600,
+    "poster": true
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "spectraviewer": {
+  "name": "SpectraViewer",
+  "_dados": "página pública do repositório (o app no Streamlit Cloud está com erro de dependência)",
+  "steps": [
+   {
+    "goto": "https://github.com/pedroiff0/spectraviewer",
+    "waitFor": "article.markdown-body"
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scrollTo": "article.markdown-body"
+   },
+   {
+    "wait": 1400,
+    "poster": true
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1200
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1400
+   }
+  ]
+ }
 }

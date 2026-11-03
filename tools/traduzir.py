@@ -75,8 +75,15 @@ def main():
             antes = T.get(k, {}).get("pt")
             print(f"  {k}\n    pt: {B[k][:140]}" + (f"\n    antes: {antes[:140]}" if antes else "  (novo)"))
     if dry or not pend:
-        if orfaos:
+        if orfaos and dry:
             print(f"órfãos em traducoes.json (trecho removido da fonte): {', '.join(orfaos)}")
+        elif orfaos:
+            for k in orfaos:
+                T.pop(k, None)
+            fonte.gravar_traducoes(T)
+            print(f"removidos {len(orfaos)} órfão(s) de traducoes.json")
+        if not dry:
+            desmarcar()
         return
     for i in range(0, len(pend), 15):
         lote = {k: B[k] for k in pend[i:i + 15]}
