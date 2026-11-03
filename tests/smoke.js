@@ -39,11 +39,12 @@ const VIEWS = [
       if (name === "desktop-claro") {
         const heros = new Set();
         for (const l of ["pt", "en", "es", "fr"]) {
-          await page.selectOption("#lang", l);
+          await page.click(`#lang button[data-lang="${l}"]`);
           heros.add(await page.textContent("#hero-sub"));
         }
         check(heros.size === 4, "os 4 idiomas não trocam o texto do hero");
-        await page.selectOption("#lang", "pt");
+        await page.click('#lang button[data-lang="pt"]');
+        check(await page.locator("#trophy-count").textContent() !== "0/8", "conquista de idioma não contou");
         await page.click("#cat-tabs button:nth-child(2)");
         const cats = await page.evaluate(() => new Set([...document.querySelectorAll("#repos .card")].map((c) => c.dataset.cat)).size);
         check(cats === 1, "filtro de categoria não filtra");
@@ -67,7 +68,29 @@ const VIEWS = [
         check(await page.locator("#live-frame iframe").count() === 0, "iframe não é descarregado ao fechar");
         check(await page.locator("#spectrum-canvas").count() === 1, "canvas do espectro ausente");
         check((await page.textContent("#spectrum-info")).includes("Å"), "espectro sem leitura");
-        check(await page.locator("#gallery img").count() === 6, "galeria incompleta");
+        const nEv = await page.evaluate(() => window.PORTFOLIO_DATA.EVENTS.length);
+        check(await page.locator("#events .event").count() === nEv, "eventos incompletos");
+        await page.locator(".events__thumb").first().click();
+        check(await page.isVisible("#lightbox"), "lightbox não abriu");
+        const src1 = await page.getAttribute("#lb-img", "src");
+        await page.keyboard.press("ArrowRight");
+        check(src1 !== await page.getAttribute("#lb-img", "src"), "lightbox não navega");
+        await page.keyboard.press("Escape");
+        check(!(await page.isVisible("#lightbox")), "lightbox não fecha");
+        check(await page.locator("#cv-grid a").count() === 12, "CV sem os 6 idiomas");
+        const t1 = await page.textContent("#clock-time");
+        check(/^\d{2}:\d{2}:\d{2}$/.test(t1), "relógio fora do formato");
+        await page.waitForTimeout(1100);
+        check(t1 !== await page.textContent("#clock-time"), "relógio parado");
+        await page.click("#reader");
+        await page.waitForTimeout(450);
+        check(await page.evaluate(() => getComputedStyle(document.querySelector(".sidebar")).opacity) === "0", "modo leitura não recolhe a sidebar");
+        await page.reload({ waitUntil: "networkidle" });
+        check(await page.evaluate(() => document.documentElement.getAttribute("reader-mode")) === "on", "modo leitura não persiste");
+        await page.click("#reader-exit");
+        check(await page.evaluate(() => document.documentElement.getAttribute("reader-mode")) === "off", "botão flutuante não sai do modo leitura");
+        const semVideo = await page.evaluate(() => window.PORTFOLIO_DATA.REPOS.filter((r) => !r.video && !["dashboard-life", "hardcore-life", "anomaly_detection", "HardCoreLife (plataforma)", "Arquivo de Apostilas"].includes(r.name)).map((r) => r.name));
+        if (process.env.EXIGIR_VIDEOS) check(semVideo.length === 0, "projetos sem vídeo: " + semVideo.join(", "));
         check(await page.locator("#stats li").count() === 4, "faixa de números incompleta");
       }
       check(await page.locator("#sky").count() === 1, `${name}: canvas do céu ausente`);
@@ -89,6 +112,14 @@ const VIEWS = [
         check(!(await page.evaluate(() => document.querySelector("#menu").open)), `${name}: menu não fecha ao navegar`);
       }
       await ctx.close();
+    }
+    for (const w of [1600, 1920]) {
+      const wctx = await browser.newContext({ viewport: { width: w, height: 900 } });
+      const wp = await wctx.newPage();
+      await wp.goto(URL, { waitUntil: "networkidle" });
+      const g = await wp.evaluate(() => { const b = (s) => document.querySelector(s).getBoundingClientRect(); const n = document.querySelector("#nav"); return { l: b("#nav").left - b(".brand").right, r: b(".controls").left - b("#nav").right, o: n.scrollWidth - n.clientWidth }; });
+      check(g.l >= 8 && g.r >= 8 && g.o <= 0, `${w}px: topbar sobreposta (${JSON.stringify(g)})`);
+      await wctx.close();
     }
     const rctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, reducedMotion: "reduce" });
     const rp = await rctx.newPage();

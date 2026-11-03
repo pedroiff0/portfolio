@@ -58,7 +58,7 @@ Uso:
   python3 tools/build.py            # gera a partir de src/portfolio.md
   python3 tools/build.py --check    # gera + valida deep-equal (pre-commit)
 """
-import sys, os, re, ast
+import sys, os, re, ast, json
 import yaml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -491,18 +491,16 @@ def data_v22():
     extra = {k: A[k] for k in ("nickname", "grade") if A.get(k)}
     extra["instagram"] = F["meta"].get("instagram", "")
     extra["location"] = P["location"]
-    tag, hob = tr("perfil:tagline", P["tagline"]), tr("alem:hobby", A.get("hobby", ""))
-    extra["tagline"], extra["hobby"] = tag["pt"], hob["pt"]
-    extra["i18n"] = {l: {"tagline": tag[l], "hobby": hob[l]} for l in LANGS if l != "pt"}
-    gallery = []
-    for g in F["galeria"]:
-        c = tr(f"alem:galeria:{g['file']}", g["caption"])
-        gallery.append({"file": g["file"], "caption": c["pt"], "i18n": {l: c[l] for l in LANGS if l != "pt"}})
+    tag = tr("perfil:tagline", P["tagline"])
+    extra["tagline"] = tag["pt"]
+    extra["i18n"] = {l: {"tagline": tag[l]} for l in LANGS if l != "pt"}
+    ev_json = os.path.join(ROOT, "src", "eventos.json")
+    events = json.load(open(ev_json, encoding="utf-8")) if os.path.exists(ev_json) else []
     data = {"full_name": F["meta"].get("full_name", ""), "orcid": F["meta"].get("orcid", ""),
             "instagram": F["meta"].get("instagram", ""),
             "featured": [s.strip() for s in F["meta"].get("featured", "").split(",") if s.strip()],
             "repos": repos, "bolsas": bolsas, "contatos": F["contatos"], "extra": extra, "i18n": i18n,
-            "gallery": gallery}
+            "events": events}
     return data, pend
 
 
@@ -519,12 +517,12 @@ def main():
     else:
         md, i18n = load()
         data = parse_source(md, i18n)
-        data["gallery"] = []
+        data["events"] = []
     generated = build(data).replace(
         "window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N };",
-        "const GALLERY = " + py_to_js(data.get("gallery", []), 0) + ";\n"
+        "const EVENTS = " + py_to_js(data.get("events", []), 0) + ";\n"
         + f"const UPDATED = {py_to_js(datetime.date.today().isoformat())};\n\n"
-        + "window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, GALLERY, UPDATED };")
+        + "window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, EVENTS, UPDATED };")
     if check:
         with open(OUT, "w", encoding="utf-8") as f:
             f.write(generated)

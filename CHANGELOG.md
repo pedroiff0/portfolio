@@ -9,6 +9,25 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+## [2.3.0] - 2026-11-03
+### Added
+- Seção **Participação em eventos** (substitui "Além do código"): linha do tempo por ano com as fotos de cada evento e lightbox (setas, Esc). `tools/eventos.py` lê as notas `03-midia/<ano>/` publicadas do vault, gera WebP sem EXIF (1200 px e miniatura de 480 px) e `src/eventos.json`.
+- Controles iguais aos do quartz-site: pílulas de idioma com bandeira, botão sol/lua do plugin darkmode (MIT) e relógio em tempo real (UTC−3).
+- Modo leitura (botão na topbar, atalho `r`, botão flutuante para sair): recolhe a sidebar e centraliza o conteúdo; estado salvo no navegador.
+- Conquistas discretas (`assets/js/conquistas.js`): 8 marcos de exploração, contador `n/8` com popover e aviso de 3 s, sem XP, ranks ou som.
+- Currículo em 6 idiomas (acadêmico e profissional, PDFs do phrandrade.com) no lugar dos botões únicos.
+- Bolsa "Detecção de Anomalias em Estrelas da Via Láctea (Fase II)", PIBIC/CNPq, 2026 — presente.
+- Tour em vídeo para 26 dos 31 projetos. Ficam sem vídeo: dashboard-life e hardcore-life (dados pessoais), anomaly_detection (projeto protegido) e HardCoreLife (plataforma) e Arquivo de Apostilas (ainda sem artefato).
+
+### Changed
+- `tools/record_demos.js` reescrito: screencast CDP em 1440x900 a 1,5x (JPEG q90) montado com ffmpeg em VP9 1280 px, cursor visível com destaque no clique, rolagem suave, corte do início em branco e poster escolhido no roteiro. Novos passos: `click`, `hover`, `type`, `press`, `scrollTo`, `waitFor`, `poster`; fontes `pdf:` (páginas renderizadas com pdftoppm) e `readme:` (README de repositório privado renderizado localmente); `routes` para servir recursos ausentes da instância local a partir de um CDN.
+- "arXiv Searcher" e "research" unificados em **Researcher Hub**.
+- Estética: contador de seção no título, elevação leve nos cartões, badges de visibilidade coloridos; a topbar ocupa a largura toda quando o menu completo aparece.
+
+### Deprecated
+- `tools/gen_quartz.py`: as páginas de projeto do quartz-site vêm do vault desde 05/10/2026; o script só roda com `--legado` e saiu do pre-commit.
+
+
 ## [2.2.0] - 2026-11-03
 ### Added
 - Topbar com menu móvel, sidebar fixa de perfil e contato (foto, tagline, local, links com ícone e texto, botão de CV) e rodapé com ícones sociais, colunas de links e data de atualização. Sprite `assets/icons.svg` (Simple Icons, CC0, mais ícones próprios).

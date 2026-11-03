@@ -28,13 +28,8 @@ python3 tools/build.py
 # PORTFOLIO_DATA: FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N)
 node tools/verify.js
 
-# Sync generated project notes into the sibling quartz-site vault (source of truth stays portfolio.md)
-python3 tools/gen_quartz.py            # dry-run
-python3 tools/gen_quartz.py --write    # apply
-python3 tools/gen_quartz.py --check    # exit 1 if out of sync (used as a non-blocking pre-commit warning)
-# Vault path comes from $QUARTZ_SITE, default /home/pedro/Repositorios/pessoal/quartz-site.
-# That content/ dir is an Obsidian vault synced by Syncthing and lives dirty in git — gen_quartz.py never
-# commits there; review changes manually with `git status` in that repo.
+# tools/gen_quartz.py is OBSOLETE (since 2026-10-05): quartz-site project pages now come from the hardcore-life
+# vault (99-meta/scripts/sync-to-quartz.py + sitesync-map.yaml). It refuses to run without --legado; do not use.
 
 # Serve locally
 python3 -m http.server 8000   # http://localhost:8000
@@ -62,9 +57,16 @@ make lint                      # node --check main.js + build.py --check
   canvases allowed. Media per project comes from optional `image`/`video`/`live`/`open` fields in `src/portfolio.md`;
   videos and iframes load only on click (`playTour`, `openLive` in `main.js`).
 - Demo tours are recorded with `node tools/record_demos.js [slug]` from `tools/demos/tours.json`, only against local
-  instances with fake/demo data (never real personal data); output goes to `assets/media/<slug>/`.
+  instances with fake/demo data, public pages, rendered PDFs (`pdf:`) or rendered READMEs (`readme:`) — never real
+  personal data; output goes to `assets/media/<slug>/`. Step vocabulary is documented at the top of the script.
+  Review a contact sheet of the videos before publishing. dashboard-life, hardcore-life and anomaly_detection stay
+  without video.
+- Events section: `tools/eventos.py` reads published `03-midia/<year>/` notes from the vault and writes
+  `src/eventos.json` + stripped WebP photos in `assets/media/eventos/`; `build.py` embeds them as `EVENTS`.
+- `assets/js/conquistas.js` (`window.Conquistas.hit(id)`): 8 discreet achievements, localStorage only.
+- Reader mode: `html[reader-mode="on"]`, key `r`, stored in localStorage key `reader`.
 
-Keep it minimal: no 3D, no sound, no intro, no HUD, no gamification.
+Keep it minimal: no 3D, no sound, no intro, no HUD; gamification only in the discreet form above.
 
 `assets/js/projects.js` (generated) sets `window.PORTFOLIO_DATA`, which `main.js` reads to render project
 cards, research cards, the bolsas timeline, contacts, and the `I18N` dictionary. I18N keys used only by v1

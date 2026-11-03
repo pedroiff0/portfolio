@@ -1,53 +1,4 @@
 {
- "alem:galeria:febic-2024": {
-  "pt_hash": "9b61b9b08292",
-  "pt": "IX FEBIC, 2024",
-  "en": "IX FEBIC, 2024",
-  "es": "IX FEBIC, 2024",
-  "fr": "IX FEBIC, 2024"
- },
- "alem:galeria:febic-2024-estande": {
-  "pt_hash": "c3a6567cbab2",
-  "pt": "IX FEBIC: estande sobre o impacto de satélites em observações astronômicas",
-  "en": "IX FEBIC: booth on the impact of satellites on astronomical observations",
-  "es": "IX FEBIC: stand sobre el impacto de los satélites en las observaciones astronómicas",
-  "fr": "IX FEBIC : stand sur l'impact des satellites sur les observations astronomiques"
- },
- "alem:galeria:lncc-2022": {
-  "pt_hash": "f1a53aeca3f7",
-  "pt": "Visita ao LNCC, Petrópolis (RJ), 2022",
-  "en": "Visit to LNCC, Petrópolis (RJ), 2022",
-  "es": "Visita al LNCC, Petrópolis (RJ), 2022",
-  "fr": "Visite au LNCC, Petrópolis (RJ), 2022"
- },
- "alem:galeria:lncc-2022-supercomputador": {
-  "pt_hash": "a0052a25bcd0",
-  "pt": "Supercomputador do LNCC, 2022",
-  "en": "LNCC supercomputer, 2022",
-  "es": "Supercomputador del LNCC, 2022",
-  "fr": "Supercalculateur du LNCC, 2022"
- },
- "alem:galeria:sab-2025": {
-  "pt_hash": "9dde25bac5ee",
-  "pt": "XLVIII Reunião Anual da SAB, Caxambu (MG)",
-  "en": "48th Annual Meeting of the Brazilian Astronomical Society, Caxambu (MG)",
-  "es": "XLVIII Reunión Anual de la SAB, Caxambu (MG)",
-  "fr": "48e réunion annuelle de la SAB, Caxambu (MG)"
- },
- "alem:galeria:sab-2025-poster": {
-  "pt_hash": "c44f4208a801",
-  "pt": "SAB 2025: pôster sobre estrelas próximas do Gaia observadas pelo GALAH DR4",
-  "en": "SAB 2025: poster on nearby Gaia stars observed by GALAH DR4",
-  "es": "SAB 2025: póster sobre estrellas cercanas de Gaia observadas por GALAH DR4",
-  "fr": "SAB 2025 : poster sur les étoiles proches de Gaia observées par GALAH DR4"
- },
- "alem:hobby": {
-  "pt_hash": "3e8917b25ff1",
-  "pt": "Animações e simulações científicas para divulgação em física e astronomia.",
-  "en": "Scientific animations and simulations for physics and astronomy outreach.",
-  "es": "Animaciones y simulaciones científicas para divulgación en física y astronomía.",
-  "fr": "Animations et simulations scientifiques pour la vulgarisation en physique et en astronomie."
- },
  "bolsa:0:desc": {
   "pt_hash": "34a9de8f4015",
   "pt": "Iniciação Científica Júnior sobre matéria escura e choques extragalácticos.",
@@ -131,6 +82,27 @@
   "en": "Anomaly Detection in Stars of the Milky Way (Gaia + Surveys + ML)",
   "es": "Detección de Anomalias en Estrellas de la Vía Láctea (Gaia + Surveys + ML)",
   "fr": "Détection d'Anomalies chez les Étoiles de la Voie Lactée (Gaia + Surveys + ML)"
+ },
+ "bolsa:4:desc": {
+  "pt_hash": "6dcf52b65bcb",
+  "pt": "Continuação do projeto PIBIC/CNPq: aprendizado de máquina sobre Gaia DR3 + GALAH DR4 + GCNS para arqueologia galáctica e populações estelares. Co-autoria PUC Chile.",
+  "en": "Continuation of the PIBIC/CNPq project: machine learning on Gaia DR3 + GALAH DR4 + GCNS for galactic archaeology and stellar populations. Co-authored with PUC Chile.",
+  "es": "Continuación del proyecto PIBIC/CNPq: aprendizaje automático sobre Gaia DR3 + GALAH DR4 + GCNS para arqueología galáctica y poblaciones estelares. Coautoría con PUC Chile.",
+  "fr": "Poursuite du projet PIBIC/CNPq : apprentissage automatique sur Gaia DR3 + GALAH DR4 + GCNS pour l'archéologie galactique et les populations stellaires. Co-auteur avec PUC Chile."
+ },
+ "bolsa:4:tipo": {
+  "pt_hash": "99827078cf27",
+  "pt": "IC · CNPq (PIBIC)",
+  "en": "Scientific Initiation · CNPq (PIBIC)",
+  "es": "Iniciación Científica · CNPq (PIBIC)",
+  "fr": "Initiation Scientifique · CNPq (PIBIC)"
+ },
+ "bolsa:4:titulo": {
+  "pt_hash": "3cbadd26f499",
+  "pt": "Detecção de Anomalias em Estrelas da Via Láctea (Fase II)",
+  "en": "Anomaly Detection in Milky Way Stars (Phase II)",
+  "es": "Detección de Anomalías en Estrellas de la Vía Láctea (Fase II)",
+  "fr": "Détection d'anomalies dans les étoiles de la Voie lactée (Phase II)"
  },
  "perfil:chips": {
   "pt_hash": "5eec5cf9fbf5",
@@ -314,6 +286,13 @@
   "es": "Fork de Overleaf Community Edition con identidad del IFF: clases oficiales (ifftese/iffposter), tema azul, página de inicio propia y 10 botones extra en el editor. Self-hosted vía Docker (web+mongo+redis).",
   "fr": "Fork d'Overleaf Community Edition avec l'identité de l'IFF : classes officielles (ifftese/iffposter), thème bleu, page d'accueil propre et 10 boutons supplémentaires à l'éditeur. Auto-hébergé via Docker (web+mongo+redis)."
  },
+ "projeto:Researcher Hub": {
+  "pt_hash": "5a13fa986ec1",
+  "pt": "Plataforma web para acompanhar a literatura científica no arXiv (research.phrandrade.com): revisão diária pública por categoria, busca por palavra-chave e autor, monitoramento de autores, biblioteca pessoal e exportação de citações em BibTeX/LaTeX e PDF. Nasceu como o arXiv Searcher, um buscador automático de artigos por assunto, e virou uma aplicação completa.",
+  "en": "Web platform for tracking the scientific literature on arXiv (research.phrandrade.com): public daily review by category, keyword and author search, author monitoring, personal library, and citation export to BibTeX/LaTeX and PDF. It started as the arXiv Searcher, an automatic article finder by subject, and grew into a full application.",
+  "es": "Plataforma web para seguir la literatura científica en arXiv (research.phrandrade.com): revisión diaria pública por categoría, búsqueda por palabra clave y autor, monitoreo de autores, biblioteca personal y exportación de citas en BibTeX/LaTeX y PDF. Nació como el arXiv Searcher, un buscador automático de artículos por tema, y se convirtió en una aplicación completa.",
+  "fr": "Plateforme web pour suivre la littérature scientifique sur arXiv (research.phrandrade.com) : revue quotidienne publique par catégorie, recherche par mot-clé et par auteur, suivi d'auteurs, bibliothèque personnelle et export de citations en BibTeX/LaTeX et PDF. Elle est née comme l'arXiv Searcher, un moteur de recherche automatique d'articles par sujet, et est devenue une application complète."
+ },
  "projeto:Sistema Acadêmico": {
   "pt_hash": "bd9efa5303e2",
   "pt": "Web exclusivo para alunos do IFF acompanharem grade curricular (PPC), diário, notas, frequência, boletim/CR e planejamento. Multi-curso: Engenharia de Computação (Bom Jesus do Itabapoana) e Sistemas de Informação (Itaperuna). Fork do padrão de avaliações, com diário, ementário, grafo de dependências e API de ingestão por bot (Telegram). Deploy via Docker Compose + systemd.",
@@ -348,13 +327,6 @@
   "en": "Analysis of stellar properties and chemical composition of nearby stars from GCNS observed by GALAH DR4 (Gaia DR3 + GALAH DR4). PIBIC/CNPq scholarship; co-authorship PUC Chile (Dr. M. L. L. Dantas, Dr. A. C. Soja).",
   "es": "Análisis de las propiedades estelares y composición química de estrellas cercanas del GCNS observadas por GALAH DR4 (Gaia DR3 + GALAH DR4). Beca PIBIC/CNPq; coautoría PUC Chile (Dra. M. L. L. Dantas, Dra. A. C. Soja).",
   "fr": "Analyse des propriétés stellaires et de la composition chimique des étoiles proches du GCNS observées par GALAH DR4 (Gaia DR3 + GALAH DR4). Bourse PIBIC/CNPq ; co-autoria PUC Chile (Mme M. L. L. Dantas, Mme A. C. Soja)."
- },
- "projeto:arXiv Searcher": {
-  "pt_hash": "e465787fb0af",
-  "pt": "Ferramenta, em planejamento, para buscar e organizar automaticamente artigos do arXiv por assunto ou palavra-chave. Pensada para rodar como daemon (possivelmente dockerizado), consultando a API do arXiv periodicamente e gerando saída diária em Markdown (tabela com data, título, primeiro autor, área e link) e citações prontas em LaTeX, na mesma estrutura de referência dos meus artigos. Configuração via planilha CSV, com área de busca padrão e opção de busca avulsa por palavra-chave sem alterar essa configuração.",
-  "en": "A planned tool to automatically search and organize arXiv papers by subject or keyword. Designed to run as a daemon (possibly dockerized), polling the arXiv API periodically and producing a daily Markdown digest (table with date, title, first author, field and link) plus ready-to-use LaTeX citations matching the reference structure of my own papers. Configured via a CSV sheet, with a default search field and the option of a one-off keyword search that leaves the configuration untouched.",
-  "es": "Herramienta, en planificación, para buscar y organizar automáticamente artículos de arXiv por tema o palabra clave. Pensada para ejecutarse como demonio (posiblemente dockerizado), consultando la API de arXiv periódicamente y generando salida diaria en Markdown (tabla con fecha, título, primer autor, área y enlace) y citas listas en LaTeX, con la misma estructura de referencia de mis artículos. Configuración mediante hoja CSV, con área de búsqueda por defecto y opción de búsqueda suelta por palabra clave sin alterar esa configuración.",
-  "fr": "Outil, en cours de planification, pour rechercher et organiser automatiquement les articles d'arXiv par sujet ou mot-clé. Conçu pour tourner en démon (éventuellement dockerisé), interrogeant périodiquement l'API arXiv et produisant une sortie quotidienne en Markdown (tableau avec date, titre, premier auteur, domaine et lien) ainsi que des citations LaTeX prêtes à l'emploi, dans la même structure de référence que mes articles. Configuration via une feuille CSV, avec un domaine de recherche par défaut et la possibilité d'une recherche ponctuelle par mot-clé sans modifier cette configuration."
  },
  "projeto:awesome-skills": {
   "pt_hash": "fe39165dea45",
@@ -397,12 +369,5 @@
   "en": "Official personal/academic site, multilingual (full PT; partial EN/ES/FR), built with Quartz from an Obsidian vault. Published at www.phrandrade.com. It is the consolidated hub: research, course notes, media and blog. This portfolio is its welcome page.",
   "es": "Sitio personal/académico oficial, multilingüe (PT completo; EN/ES/FR parciales), en Quartz a partir del vault de Obsidian. Publicado en www.phrandrade.com. Es el consolidado: investigación, apuntes de asignaturas, medios y blog. Este portafolio es su página de bienvenida.",
   "fr": "Site personnel/académique officiel, multilingue (PT complet ; EN/ES/FR partiels), en Quartz à partir du vault Obsidian. Publié sur www.phrandrade.com. C'est le hub consolidé : recherche, notes de cours, médias et blog. Ce portfolio en est la page d'accueil."
- },
- "projeto:research": {
-  "pt_hash": "1a7454af76ea",
-  "pt": "Anexos de pesquisa: busca de artigos no arXiv por assunto/keyword para compor leituras.",
-  "en": "Research attachments: arXiv article search by subject/keyword to compose readings.",
-  "es": "Anexos de investigación: búsqueda de artículos en arXiv por tema/palabra clave para componer lecturas.",
-  "fr": "Annexes de recherche : recherche d'articles arXiv par sujet/mot-clé pour composer des lectures."
  }
 }

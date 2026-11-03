@@ -3,7 +3,7 @@ publish: false
 title: Portfólio (conteúdo em pt-BR)
 type: esboco
 created: '2026-11-03T15:28:39-03:00'
-modified: 2026-11-03T15:28:39-03:00
+modified: 2026-11-03T16:47:04-03:00
 published: '2026-11-03T15:28:39-03:00'
 tags:
   - projeto
@@ -88,6 +88,8 @@ tags: EdTech, LaTeX, Provas, Multi-variantes
 cat: software
 visibility: privado
 icon: quiz
+image: assets/media/avaliacoes/poster.webp
+video: assets/media/avaliacoes/tour.webm
 
 Plataforma base de provas/listas/trabalhos em PDF a partir de um banco de questões reutilizável, com geração real em LaTeX e múltiplas variantes (seleção/ordem aleatórias). Núcleo professor+admin.
 
@@ -98,6 +100,8 @@ tags: EdTech, Banco de Questões, Colaborativo
 cat: software
 visibility: privado
 icon: teacher
+image: assets/media/avaliacoes-professores/poster.webp
+video: assets/media/avaliacoes-professores/tour.webm
 
 Fork do Sistema de Avaliações com banco pessoal + banco global compartilhado (fork de questões entre professores), PDF por pool com peso e gabarito opcional.
 
@@ -108,6 +112,8 @@ tags: Concursos, Gamificação, Mobile, Simulados
 cat: software
 visibility: privado
 icon: exam
+image: assets/media/avaliacoes-concurseiro/poster.webp
+video: assets/media/avaliacoes-concurseiro/tour.webm
 
 Fork focado em concurseiros: banco de MCQ, trilhas por edital, cronograma maleável, Pomodoro, simulados em PDF e app mobile Expo com paridade total de funcionalidades.
 
@@ -119,6 +125,8 @@ tags: Web App, IFF, Scraping, Arquivado
 cat: software
 visibility: privado
 icon: web
+image: assets/media/academicoweb/poster.webp
+video: assets/media/academicoweb/tour.webm
 
 Sistema web que acessava os dados acadêmicos do IFF com as credenciais oficiais — dashboard, diário, material de aula, boletim e histórico escolar — via scraping. Arquivado: a migração do IFF para o SUAP torna a abordagem original obsoleta, e o Sistema Acadêmico o sucede. A técnica de scraping fica registrada como referência técnica (possível tema de TCC).
 
@@ -142,6 +150,8 @@ tags: Suíte Comercial, ERP
 cat: software
 visibility: privado
 icon: leaf
+image: assets/media/verdementa/poster.webp
+video: assets/media/verdementa/tour.webm
 
 Meta-repositório que agrupa Caixas, ControleEstoque, LevantamentoEstoque e Planilhador — suíte de ferramentas comerciais.
 
@@ -152,6 +162,8 @@ tags: Controle de Caixa, Relatórios
 cat: software
 visibility: privado
 icon: cash
+image: assets/media/caixas/poster.webp
+video: assets/media/caixas/tour.webm
 
 Aplicação web para registrar fechamentos diários de caixa (vendas, depósitos, vales, total contado na gaveta), gerar relatórios e manter histórico imprimível. Flask + SQLAlchemy + Alembic, com endpoints REST auxiliares e migrations versionadas em CI.
 
@@ -162,6 +174,8 @@ tags: Inventário, Estoque
 cat: software
 visibility: privado
 icon: box
+image: assets/media/controle-estoque/poster.webp
+video: assets/media/controle-estoque/tour.webm
 
 Aplicação para contagem rápida de inventário, com persistência de sessão, consolidação de contagens e geração de relatórios em CSV/PDF.
 
@@ -172,6 +186,8 @@ tags: Estoque, Compras
 cat: software
 visibility: privado
 icon: box
+image: assets/media/levantamento-estoque/poster.webp
+video: assets/media/levantamento-estoque/tour.webm
 
 Sistema de levantamento de estoque por cor/tamanho, com persistência de sessão, extração de dados de PDF e geração de relatórios — voltado a itens de compra repetida.
 
@@ -182,6 +198,8 @@ tags: NFCe, Planilhas
 cat: software
 visibility: privado
 icon: table
+image: assets/media/planilhador/poster.webp
+video: assets/media/planilhador/tour.webm
 
 Ferramentas para processar XMLs de NFCe e gerar relatórios/planilhas automatizados.
 
@@ -193,6 +211,8 @@ tags: Template, Boilerplate, Segurança, Auth, Open Source
 cat: software
 visibility: público
 icon: web
+image: assets/media/projeto-profissional/poster.webp
+video: assets/media/projeto-profissional/tour.webm
 
 Template base endurecido para iniciar qualquer aplicação web Node: autenticação JWT, papéis admin/user, registro controlado pelo admin (sem autocadastro), CSP sem inline, rate limit, CSRF guard, validação Zod e suíte Jest+Supertest desde o primeiro commit. Docker Compose com app não-root e filesystem read-only.
 
@@ -203,6 +223,8 @@ tags: IA, Agentes, Automação, Open Source, Memória Procedural
 cat: software
 visibility: público
 icon: book
+image: assets/media/awesome-skills/poster.webp
+video: assets/media/awesome-skills/tour.webm
 
 Coleção pessoal de skills (memória procedural) para o agente Hermes — 102 skills em 32 categorias, cada uma com SKILL.md (frontmatter YAML + instruções) e, opcionalmente, references/, scripts/ e templates/. Índice do README gerado por script; cobre de manutenção de sites Quartz e i18n a MLOps, LaTeX e automação de desktop.
 
@@ -213,6 +235,8 @@ tags: Dotfiles, Provisionamento, Multi-distro, Open Source, Idempotente
 cat: software
 visibility: público
 icon: box
+image: assets/media/meu-setup/poster.webp
+video: assets/media/meu-setup/tour.webm
 
 Mapa de todos os programas que uso (Linux, Windows e macOS) com instaladores automáticos e uma única fonte de verdade: packages.yaml. O instalador Linux detecta a distro (apt/dnf/pacman/zypper), é idempotente e tem cadeia de fallback (nativo → flatpak → snap → script oficial). Um gerador produz install.ps1, install.sh e o inventário; o bootstrap repopula a máquina do zero com um comando.
 
@@ -235,20 +259,23 @@ visibility: público
 icon: spectrum
 live: https://spectraviewer.streamlit.app/?embed=true
 open: https://spectraviewer.streamlit.app
+image: assets/media/spectraviewer/poster.webp
+video: assets/media/spectraviewer/tour.webm
 
 Viewer interativo de espectros GALAH DR4 (4 bandas, linhas de referência CNO/Alpha/Iron-peak, leitura de FITS, metadados Teff/log(g)/[Fe/H]).
 
-### research
+### Researcher Hub
 repo: https://github.com/pedroiff0/research
-stack: Python, arXiv API, Pandas, Matplotlib, PyPDF2, python-docx
-tags: Literatura, arXiv
+stack: Node.js, Express, MongoDB, EJS, arXiv API, Docker
+tags: Literatura, arXiv, Automação, BibTeX
 cat: pesquisa
 visibility: privado
 icon: book
 image: assets/media/research/poster.webp
 video: assets/media/research/tour.webm
+open: https://research.phrandrade.com
 
-Anexos de pesquisa: busca de artigos no arXiv por assunto/keyword para compor leituras.
+Plataforma web para acompanhar a literatura científica no arXiv (research.phrandrade.com): revisão diária pública por categoria, busca por palavra-chave e autor, monitoramento de autores, biblioteca pessoal e exportação de citações em BibTeX/LaTeX e PDF. Nasceu como o arXiv Searcher, um buscador automático de artigos por assunto, e virou uma aplicação completa.
 
 ### Currículo (CV)
 repo: https://github.com/pedroiff0/cv
@@ -257,6 +284,8 @@ tags: Multilíngue, PT/EN/ES/FR
 cat: academico
 visibility: público
 icon: document
+image: assets/media/cv/poster.webp
+video: assets/media/cv/tour.webm
 
 CV em LaTeX (classe altacv), multilíngue (PT/EN/ES/FR) compilado via Makefile. Inclui ORCID, Google Scholar e publicações em congressos (CONFICT, SAB, SBPC).
 
@@ -269,6 +298,8 @@ visibility: público
 icon: function
 live: https://pedroiff0.github.io/calculo-numerico/
 open: https://pedroiff0.github.io/calculo-numerico/
+image: assets/media/calculo/poster.webp
+video: assets/media/calculo/tour.webm
 
 Repositório de códigos da disciplina Cálculo Numérico 2025.2, com CI e documentação.
 
@@ -279,6 +310,8 @@ tags: Resumos, Fórmulas
 cat: academico
 visibility: público
 icon: formula
+image: assets/media/formularios/poster.webp
+video: assets/media/formularios/tour.webm
 
 Coleção de folhas de fórmulas e resumos em LaTeX organizados por disciplina.
 
@@ -289,6 +322,8 @@ tags: Templates
 cat: academico
 visibility: privado
 icon: latex
+image: assets/media/modelos/poster.webp
+video: assets/media/modelos/tour.webm
 
 Modelos LaTeX para uso geral.
 
@@ -302,6 +337,8 @@ visibility: público
 icon: globe
 live: https://www.phrandrade.com/pt-br/
 open: https://www.phrandrade.com/pt-br/
+image: assets/media/page/poster.webp
+video: assets/media/page/tour.webm
 
 Site pessoal/acadêmico oficial, multilíngue (PT completo; EN/ES/FR parciais), em Quartz a partir do vault Obsidian. Publicado em www.phrandrade.com. É o consolidado: pesquisa, notas de disciplinas, mídia e blog. Este portfólio é a página de boas-vindas dele.
 
@@ -312,6 +349,8 @@ tags: Material Didático, Cálculo, Algoritmos, Autoral
 cat: academico
 visibility: elaboracao
 icon: function
+image: assets/media/livrocalculo/poster.webp
+video: assets/media/livrocalculo/tour.webm
 
 Material didático próprio de Cálculo, em elaboração, escrito em LaTeX — dos fundamentos a sistemas lineares. Cobre revisão de Python/Cálculo I, sistemas de bases numéricas (binária, octal, decimal, hexadecimal) e sistemas lineares (eliminação de Gauss e fatoração LU, com e sem pivotamento). Cada capítulo traz apêndice próprio de algoritmos em versão simplificada, além de exemplos autorais que complementam o livro-texto padrão. Layout já ajustado; revisão de formatação (padrão Sphinx) e dos quadros de algoritmos em andamento.
 
@@ -325,15 +364,6 @@ icon: formula
 
 Plano, em planejamento, de escrever apostilas próprias cobrindo toda a grade de Engenharia de Computação — com teoria, exercícios e experimentos comentados. Abrange Cálculos I–IV e Cálculo Numérico, Física I–IV (com espaço para Quântica e de Partículas), Álgebra Linear, Algoritmos e Estruturas de Dados, Equações Diferenciais, Mecânica dos Sólidos e Fluidos, Eletricidade e Eletrônica, Banco de Dados, Engenharia de Software, Compiladores, Programação, Redes, Arquitetura de Computadores, Sistemas Operacionais e Embarcados, Metodologia Científica e Astrofísica. Complementa as notas de disciplinas já publicadas no site oficial.
 
-### arXiv Searcher
-slug: searcher
-stack: Python, arXiv API, Docker, LaTeX, Markdown
-tags: Automação, Pesquisa, Daemon, BibTeX
-cat: pesquisa
-visibility: planejamento
-icon: star
-
-Ferramenta, em planejamento, para buscar e organizar automaticamente artigos do arXiv por assunto ou palavra-chave. Pensada para rodar como daemon (possivelmente dockerizado), consultando a API do arXiv periodicamente e gerando saída diária em Markdown (tabela com data, título, primeiro autor, área e link) e citações prontas em LaTeX, na mesma estrutura de referência dos meus artigos. Configuração via planilha CSV, com área de busca padrão e opção de busca avulsa por palavra-chave sem alterar essa configuração.
 
 ### hardcore-life
 repo: https://github.com/pedroiff0/hardcore-life
@@ -373,6 +403,8 @@ tags: Boas Práticas, Templates, Versionamento
 cat: pessoal
 visibility: público
 icon: github
+image: assets/media/guiagithub/poster.webp
+video: assets/media/guiagithub/tour.webm
 
 Guia próprio de Git e boas práticas de versionamento — prático, não mais um manual genérico de comandos. Reúne templates, exemplos de Actions, Projects, Issues e estratégias de branching, com módulos sobre dockerização, versionamento em arquiteturas de microsserviços e padrões de documentação de repositório.
 
@@ -383,6 +415,8 @@ tags: README
 cat: pessoal
 visibility: público
 icon: profile
+image: assets/media/perfil/poster.webp
+video: assets/media/perfil/tour.webm
 
 README de perfil do GitHub (bio, Tech & Tools, projetos em destaque).
 
@@ -394,6 +428,8 @@ tags: Portfólio, Página Única, Multilíngue, Minimalista
 cat: pessoal
 visibility: público
 icon: globe
+image: assets/media/portfolio/poster.webp
+video: assets/media/portfolio/tour.webm
 
 Este portfólio: página única e minimalista, multilíngue (PT/EN/ES/FR), sem framework e com o visual do site oficial (tema claro e escuro, cartões com detalhes, filtro e busca de projetos). O conteúdo não vive no HTML: é escrito em Markdown (src/portfolio.md) e compilado por um script Python para JS, com verificação automática no pre-commit. Serve de página de boas-vindas para o site oficial, onde está o conteúdo completo.
 
@@ -427,6 +463,13 @@ period: Out. 2025 — presente
 orient: Dra. Ana Cecília Soja e Dra. Maria Luiza Linhares Dantas
 desc: Bolsa PIBIC/CNPq: aprendizado de máquina sobre Gaia DR3 + GALAH DR4 + GCNS para arqueologia galáctica e populações estelares. Co-autoria PUC Chile.
 
+### Detecção de Anomalias em Estrelas da Via Láctea (Fase II)
+icon: star
+kind: IC · CNPq (PIBIC)
+period: 2026 — presente
+orient: Dra. Ana Cecília Soja e Dra. Maria Luiza Linhares Dantas
+desc: Continuação do projeto PIBIC/CNPq: aprendizado de máquina sobre Gaia DR3 + GALAH DR4 + GCNS para arqueologia galáctica e populações estelares. Co-autoria PUC Chile.
+
 ## Contatos
 - icon: mail | labelKey: email | value: pedroiff0@gmail.com | href: mailto:pedroiff0@gmail.com
 - icon: github | labelKey: github | value: @pedroiff0 | href: https://github.com/pedroiff0
@@ -439,14 +482,6 @@ desc: Bolsa PIBIC/CNPq: aprendizado de máquina sobre Gaia DR3 + GALAH DR4 + GCN
 - icon: pin | labelKey: location | value: Bom Jesus do Itabapoana, RJ — Brasil
 
 ## Além do código
+> Eventos (fotos e relatos) vêm sozinhos das notas de 03-midia (publish: true) via tools/eventos.py; não é preciso listar aqui.
 nickname: cinzento
-hobby: Animações e simulações científicas para divulgação em física e astronomia.
 grade: 90 disciplinas mapeadas no Sistema Acadêmico (grade IFF Eng. de Computação, 1º→10º período).
-
-### Galeria
-- sab-2025-poster: SAB 2025: pôster sobre estrelas próximas do Gaia observadas pelo GALAH DR4
-- sab-2025: XLVIII Reunião Anual da SAB, Caxambu (MG)
-- febic-2024-estande: IX FEBIC: estande sobre o impacto de satélites em observações astronômicas
-- febic-2024: IX FEBIC, 2024
-- lncc-2022-supercomputador: Supercomputador do LNCC, 2022
-- lncc-2022: Visita ao LNCC, Petrópolis (RJ), 2022

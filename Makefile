@@ -12,7 +12,7 @@ test: ## Executa testes de interface Playwright
 
 lint: ## Valida presença de arquivos e sintaxe JS
 	@test -f index.html && echo "index.html presente."
-	node --check assets/js/main.js assets/js/sky.js assets/js/spectrum.js tools/record_demos.js
+	node --check assets/js/main.js assets/js/sky.js assets/js/spectrum.js assets/js/conquistas.js tools/record_demos.js
 	python3 -m py_compile tools/fonte.py tools/traduzir.py tools/migrar_fonte.py
 	python3 tools/build.py --check
 	@echo "Validações de sintaxe concluídas com sucesso."
