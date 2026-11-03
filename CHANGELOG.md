@@ -9,6 +9,15 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+## [2.2.0] - 2026-11-03
+### Added
+- Topbar com menu móvel, sidebar fixa de perfil e contato (foto, tagline, local, links com ícone e texto, botão de CV) e rodapé com ícones sociais, colunas de links e data de atualização. Sprite `assets/icons.svg` (Simple Icons, CC0, mais ícones próprios).
+- Fonte única em pt-BR numa nota do vault hardcore-life + `src/traducoes.json`; `tools/traduzir.py` traduz por IA só os trechos alterados (marcação `traduzir: true`, disparada pelo watcher do vault). `tools/fonte.py` e `tools/migrar_fonte.py` (migração única, sem perda de traduções).
+
+### Changed
+- Largura útil de 1320px, grade de cartões em 3 colunas em telas largas; seção Contato em cartões com ícone.
+- `tools/build.py` e `tools/gen_quartz.py` leem a fonte nova; `src/portfolio.md` virou `src/portfolio-legado-v2.1.md`.
+
 ## [2.1.0] - 2026-11-03
 ### Added
 - Hero com foto e céu estrelado discreto (`assets/js/sky.js`, pausa fora da tela, com aba oculta e com `prefers-reduced-motion`).

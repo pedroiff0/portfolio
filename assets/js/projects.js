@@ -1,5 +1,5 @@
 // Dados do portfólio — Pedro Henrique Rocha de Andrade (pedroiff0)
-// Gerado a partir de src/portfolio.md (não editar à mão).
+// Gerado por tools/build.py a partir de src/conteudo.md + src/traducoes.json (não editar à mão).
 
 const FULL_NAME = "Pedro Henrique Rocha de Andrade";
 const ORCID = "0009-0003-6724-4640";
@@ -689,10 +689,26 @@ const CONTACTS = [
 ];
 
 const EXTRA = {
-  instagram: "ra.pedroh",
-  hobby: "Animações e simulações científicas (divulgação científica em física/astronomia).",
+  nickname: "cinzento",
   grade: "90 disciplinas mapeadas no Sistema Acadêmico (grade IFF Eng. de Computação, 1º→10º período).",
-  nickname: "cinzento"
+  instagram: "ra.pedroh",
+  location: "Bom Jesus do Itabapoana, RJ",
+  tagline: "Engenharia de Computação no IFF · bolsista PIBIC/CNPq · astrofísica computacional",
+  hobby: "Animações e simulações científicas para divulgação em física e astronomia.",
+  i18n: {
+    en: {
+      tagline: "Computer Engineering at IFF · PIBIC/CNPq scholar · computational astrophysics",
+      hobby: "Scientific animations and simulations for physics and astronomy outreach."
+    },
+    es: {
+      tagline: "Ingeniería Informática en el IFF · becario PIBIC/CNPq · astrofísica computacional",
+      hobby: "Animaciones y simulaciones científicas para divulgación en física y astronomía."
+    },
+    fr: {
+      tagline: "Génie informatique à l'IFF · boursier PIBIC/CNPq · astrophysique computationnelle",
+      hobby: "Animations et simulations scientifiques pour la vulgarisation en physique et en astronomie."
+    }
+  }
 };
 
 // Dicionário de interface (PT-BR padrão).
@@ -703,14 +719,14 @@ const I18N = {
       eyebrow: "Engenharia de Computação · Instituto Federal Fluminense",
       sub: "Construo software para a academia e uso computação para entender o cosmos. Estudante de Engenharia de Computação, bolsista de Iniciação Científica (PIBIC/CNPq), na interseção entre métodos computacionais e astrofísica.",
       badges: [
-        "🛰️ PIBIC / CNPq",
-        "🏆 IAAC 2024 & 2025",
-        "📡 CCNA · CyberOps · IoT",
-        "🐧 Linux & Servidores",
-        "🔭 Astrofísica Computacional",
-        "🤖 Machine Learning",
-        "🪐 Gaia · GALAH",
-        "📄 ORCID · Scholar"
+        "PIBIC / CNPq",
+        "IAAC 2024 & 2025",
+        "CCNA · CyberOps · IoT",
+        "Linux & Servidores",
+        "Astrofísica Computacional",
+        "Machine Learning",
+        "Gaia · GALAH",
+        "ORCID · Scholar"
       ],
       hobbyLabel: "Hobby: "
     },
@@ -941,14 +957,14 @@ const I18N = {
       eyebrow: "Computer Engineering · Fluminense Federal Institute",
       sub: "I build software for academia and use computation to understand the cosmos. Computer Engineering student, Scientific Initiation Scholar (PIBIC/CNPq), at the intersection of computational methods and astrophysics.",
       badges: [
-        "🛰️ PIBIC / CNPq",
-        "🏆 IAAC 2024 & 2025",
-        "📡 CCNA · CyberOps · IoT",
-        "🐧 Linux & Servers",
-        "🔭 Computational Astrophysics",
-        "🤖 Machine Learning",
-        "🪐 Gaia · GALAH",
-        "📄 ORCID · Scholar"
+        "PIBIC / CNPq",
+        "IAAC 2024 & 2025",
+        "CCNA · CyberOps · IoT",
+        "Linux & Servers",
+        "Computational Astrophysics",
+        "Machine Learning",
+        "Gaia · GALAH",
+        "ORCID · Scholar"
       ],
       hobbyLabel: "Hobby: "
     },
@@ -1184,14 +1200,14 @@ const I18N = {
       eyebrow: "Ingeniería Informática · Instituto Federal Fluminense",
       sub: "Construyo software para la academia y uso la computación para entender el cosmos. Estudiante de Ingeniería Informática, becario de Iniciación Científica (PIBIC/CNPq), en la intersección entre métodos computacionales y astrofísica.",
       badges: [
-        "🛰️ PIBIC / CNPq",
-        "🏆 IAAC 2024 y 2025",
-        "📡 CCNA · CyberOps · IoT",
-        "🐧 Linux y Servidores",
-        "🔭 Astrofísica Computacional",
-        "🤖 Aprendizaje Automático",
-        "🪐 Gaia · GALAH",
-        "📄 ORCID · Scholar"
+        "PIBIC / CNPq",
+        "IAAC 2024 y 2025",
+        "CCNA · CyberOps · IoT",
+        "Linux y Servidores",
+        "Astrofísica Computacional",
+        "Aprendizaje Automático",
+        "Gaia · GALAH",
+        "ORCID · Scholar"
       ],
       hobbyLabel: "Pasatiempo: "
     },
@@ -1426,14 +1442,14 @@ const I18N = {
       eyebrow: "Génie Informatique · Institut Fédéral Fluminense",
       sub: "Je développe des logiciels pour l'académie et utilise l'informatique pour comprendre le cosmos. Étudiant en génie informatique, boursier d'Initiation Scientifique (PIBIC/CNPq), à l'intersection des méthodes computationnelles et de l'astrophysique.",
       badges: [
-        "🛰️ PIBIC / CNPq",
-        "🏆 IAAC 2024 et 2025",
-        "📡 CCNA · CyberOps · IoT",
-        "🐧 Linux et Serveurs",
-        "🔭 Astrophysique Computationnelle",
-        "🤖 Apprentissage Automatique",
-        "🪐 Gaia · GALAH",
-        "📄 ORCID · Scholar"
+        "PIBIC / CNPq",
+        "IAAC 2024 et 2025",
+        "CCNA · CyberOps · IoT",
+        "Linux et Serveurs",
+        "Astrophysique Computationnelle",
+        "Apprentissage Automatique",
+        "Gaia · GALAH",
+        "ORCID · Scholar"
       ],
       hobbyLabel: "Loisir : "
     },
@@ -1664,4 +1680,58 @@ const I18N = {
   }
 };
 
-window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N };
+const GALLERY = [
+  {
+    file: "sab-2025-poster",
+    caption: "SAB 2025: pôster sobre estrelas próximas do Gaia observadas pelo GALAH DR4",
+    i18n: {
+      en: "SAB 2025: poster on nearby Gaia stars observed by GALAH DR4",
+      es: "SAB 2025: póster sobre estrellas cercanas de Gaia observadas por GALAH DR4",
+      fr: "SAB 2025 : poster sur les étoiles proches de Gaia observées par GALAH DR4"
+    }
+  },
+  {
+    file: "sab-2025",
+    caption: "XLVIII Reunião Anual da SAB, Caxambu (MG)",
+    i18n: {
+      en: "48th Annual Meeting of the Brazilian Astronomical Society, Caxambu (MG)",
+      es: "XLVIII Reunión Anual de la SAB, Caxambu (MG)",
+      fr: "48e réunion annuelle de la SAB, Caxambu (MG)"
+    }
+  },
+  {
+    file: "febic-2024-estande",
+    caption: "IX FEBIC: estande sobre o impacto de satélites em observações astronômicas",
+    i18n: {
+      en: "IX FEBIC: booth on the impact of satellites on astronomical observations",
+      es: "IX FEBIC: stand sobre el impacto de los satélites en las observaciones astronómicas",
+      fr: "IX FEBIC : stand sur l'impact des satellites sur les observations astronomiques"
+    }
+  },
+  {
+    file: "febic-2024",
+    caption: "IX FEBIC, 2024",
+    i18n: { en: "IX FEBIC, 2024", es: "IX FEBIC, 2024", fr: "IX FEBIC, 2024" }
+  },
+  {
+    file: "lncc-2022-supercomputador",
+    caption: "Supercomputador do LNCC, 2022",
+    i18n: {
+      en: "LNCC supercomputer, 2022",
+      es: "Supercomputador del LNCC, 2022",
+      fr: "Supercalculateur du LNCC, 2022"
+    }
+  },
+  {
+    file: "lncc-2022",
+    caption: "Visita ao LNCC, Petrópolis (RJ), 2022",
+    i18n: {
+      en: "Visit to LNCC, Petrópolis (RJ), 2022",
+      es: "Visita al LNCC, Petrópolis (RJ), 2022",
+      fr: "Visite au LNCC, Petrópolis (RJ), 2022"
+    }
+  }
+];
+const UPDATED = "2026-11-03";
+
+window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, GALLERY, UPDATED };

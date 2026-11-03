@@ -238,8 +238,12 @@ def main():
     ap.add_argument("--check", action="store_true", help="exit 1 se dessincronizado")
     args = ap.parse_args()
 
-    md, i18n = pb.load()
-    data = pb.parse_source(md, i18n)
+    # v2.2: a fonte é src/conteudo.md (pt-BR, espelho do vault) + src/traducoes.json
+    if os.path.exists(os.path.join(pb.ROOT, "src", "conteudo.md")):
+        data, _ = pb.data_v22()
+    else:
+        md, i18n = pb.load()
+        data = pb.parse_source(md, i18n)
     projects = data["repos"]
 
     changed, created = [], []

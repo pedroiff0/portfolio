@@ -418,7 +418,7 @@ def build(data):
 
     out = []
     out.append("// Dados do portfólio — Pedro Henrique Rocha de Andrade (pedroiff0)")
-    out.append("// Gerado a partir de src/portfolio.md (não editar à mão).")
+    out.append("// Gerado por tools/build.py a partir de src/conteudo.md + src/traducoes.json (não editar à mão).")
     out.append("")
     out.append(f"const FULL_NAME = {py_to_js(FULL_NAME)};")
     out.append(f"const ORCID = {py_to_js(ORCID)};")
@@ -450,11 +450,81 @@ def build(data):
     return "\n".join(out) + "\n"
 
 
+def md_inline(t):
+    """**negrito** e *itálico* da fonte viram <strong>/<em> (o site renderiza o Sobre como HTML)."""
+    t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
+    return re.sub(r"(?<!\*)\*(?!\s)(.+?)(?<!\s)\*(?!\*)", r"<em>\1</em>", t)
+
+
+def data_v22():
+    """Fonte pt-BR (src/conteudo.md, espelho do vault) + src/traducoes.json -> mesmo dict de parse_source()."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import fonte
+    F = fonte.ler_fonte()
+    T = fonte.ler_traducoes()
+    B = fonte.blocos(F)
+    pend = fonte.pendentes(B, T)
+    tr = lambda id_, pt: {l: fonte.traduzido(id_, pt, T, l) for l in LANGS}
+
+    with open(I18N, encoding="utf-8") as f:
+        i18n = yaml.safe_load(f) or {}
+    P = F["perfil"]
+    eyebrow, frase = tr("perfil:eyebrow", P["eyebrow"]), tr("perfil:frase", P["frase"])
+    chips = tr("perfil:chips", "\n".join(P["chips"]))
+    hero = i18n.setdefault("hero", {})
+    for l in LANGS:
+        hero.setdefault(l, {})
+        hero[l].update({"eyebrow": eyebrow[l], "sub": frase[l], "badges": [c for c in chips[l].split("\n") if c.strip()]})
+    i18n["about"] = {l: [md_inline(tr(f"perfil:sobre:{i}", par)[l]) for i, par in enumerate(P["sobre"])] for l in LANGS}
+
+    repos = []
+    for pr in F["projetos"]:
+        r = {k: v for k, v in pr.items() if k != "texto"}
+        r["brief"] = tr(f"projeto:{pr['name']}", pr["texto"])
+        repos.append(r)
+    bolsas = []
+    for i, b in enumerate(F["bolsas"]):
+        bolsas.append({"title": tr(f"bolsa:{i}:titulo", b["titulo"]), "icon": b["icon"],
+                       "kind": tr(f"bolsa:{i}:tipo", b["tipo"]), "period": b["period"], "orient": b["orient"],
+                       "desc": tr(f"bolsa:{i}:desc", b["desc"])})
+    A = F["alem"]
+    extra = {k: A[k] for k in ("nickname", "grade") if A.get(k)}
+    extra["instagram"] = F["meta"].get("instagram", "")
+    extra["location"] = P["location"]
+    tag, hob = tr("perfil:tagline", P["tagline"]), tr("alem:hobby", A.get("hobby", ""))
+    extra["tagline"], extra["hobby"] = tag["pt"], hob["pt"]
+    extra["i18n"] = {l: {"tagline": tag[l], "hobby": hob[l]} for l in LANGS if l != "pt"}
+    gallery = []
+    for g in F["galeria"]:
+        c = tr(f"alem:galeria:{g['file']}", g["caption"])
+        gallery.append({"file": g["file"], "caption": c["pt"], "i18n": {l: c[l] for l in LANGS if l != "pt"}})
+    data = {"full_name": F["meta"].get("full_name", ""), "orcid": F["meta"].get("orcid", ""),
+            "instagram": F["meta"].get("instagram", ""),
+            "featured": [s.strip() for s in F["meta"].get("featured", "").split(",") if s.strip()],
+            "repos": repos, "bolsas": bolsas, "contatos": F["contatos"], "extra": extra, "i18n": i18n,
+            "gallery": gallery}
+    return data, pend
+
+
 def main():
     check = "--check" in sys.argv
-    md, i18n = load()
-    data = parse_source(md, i18n)
-    generated = build(data)
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import fonte, datetime
+    if fonte.sincronizar_do_vault():
+        print(f"fonte atualizada a partir do vault: {fonte.VAULT_FONTE}")
+    if os.path.exists(fonte.CONTEUDO):
+        data, pend = data_v22()
+        if pend:
+            print(f"aviso: {len(pend)} trecho(s) sem tradução atual (usando pt): " + ", ".join(pend[:8]) + (" ..." if len(pend) > 8 else ""))
+    else:
+        md, i18n = load()
+        data = parse_source(md, i18n)
+        data["gallery"] = []
+    generated = build(data).replace(
+        "window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N };",
+        "const GALLERY = " + py_to_js(data.get("gallery", []), 0) + ";\n"
+        + f"const UPDATED = {py_to_js(datetime.date.today().isoformat())};\n\n"
+        + "window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, GALLERY, UPDATED };")
     if check:
         with open(OUT, "w", encoding="utf-8") as f:
             f.write(generated)
@@ -465,5 +535,5 @@ def main():
     print(f"Gerado: {OUT} ({len(generated)} bytes)")
 
 
-if "__main__" == "__main__":
+if __name__ == "__main__":
     main()

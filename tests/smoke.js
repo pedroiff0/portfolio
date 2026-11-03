@@ -71,6 +71,23 @@ const VIEWS = [
         check(await page.locator("#stats li").count() === 4, "faixa de números incompleta");
       }
       check(await page.locator("#sky").count() === 1, `${name}: canvas do céu ausente`);
+      const nSocial = await page.evaluate(() => window.PORTFOLIO_DATA.CONTACTS.filter((c) => c.href).length);
+      check(await page.locator("#side-links a[aria-label][href]").count() === nSocial, `${name}: links da sidebar sem href/aria-label`);
+      check(await page.locator("#footer-social a[aria-label] svg use").count() === nSocial, `${name}: ícones do rodapé ausentes`);
+      check(/\d{2}\/\d{2}\/\d{4}/.test(await page.textContent("#footer-updated")), `${name}: data de atualização ausente`);
+      if (name.startsWith("desktop")) {
+        await page.evaluate(() => window.scrollTo(0, 2500));
+        await page.waitForTimeout(100);
+        const top = await page.evaluate(() => document.querySelector(".sidebar").getBoundingClientRect().top);
+        check(top >= 0 && top < 120, `${name}: sidebar não fica fixa ao rolar (top=${top})`);
+        await page.evaluate(() => window.scrollTo(0, 0));
+      } else {
+        check(await page.isVisible("#menu summary") && !(await page.isVisible("#nav")), `${name}: menu móvel ausente`);
+        await page.click("#menu summary");
+        check(await page.isVisible("#nav-mobile a"), `${name}: menu móvel não abre`);
+        await page.click("#nav-mobile a >> nth=1");
+        check(!(await page.evaluate(() => document.querySelector("#menu").open)), `${name}: menu não fecha ao navegar`);
+      }
       await ctx.close();
     }
     const rctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, reducedMotion: "reduce" });

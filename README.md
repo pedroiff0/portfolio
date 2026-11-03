@@ -26,23 +26,21 @@ tests/smoke.js          # teste Playwright (npm test)
 
 ## Como editar
 
-**A fonte é o Markdown, não o JS.** Nunca edite `assets/js/projects.js` à mão:
-ele é compilado e sobrescrito pelo pre-commit.
+**A fonte é uma nota do vault hardcore-life, em pt-BR:**
+`01-projetos/pessoal/portfolio/esboco-portfolio-conteudo.md` (caminho em `PORTFOLIO_FONTE`).
 
-- Projetos, bolsas e contatos: `src/portfolio.md`
-- Textos de interface (nav, hero, rótulos, i18n): `src/interface.yaml`
-- Cores e tipografia: `assets/css/style.css` (tokens no `:root`)
+1. Edite só em português no Obsidian (perfil, frase, chips, sobre, projetos, bolsas, contatos, além do código).
+2. Marque a propriedade `traduzir` e salve. O watcher do vault (`watch-vault.py`, depois de 3 min sem mudança) roda `tools/traduzir.py`, que traduz por IA (`claude -p`) apenas os trechos que mudaram para en/es/fr, grava `src/traducoes.json`, desmarca `traduzir` e regera `assets/js/projects.js`.
+3. Revise e publique (commit e push), que continua manual.
 
-Depois de editar:
+Sem o watcher: `make traduzir` ou `make publicar-local` (traduz se marcado, gera e testa).
 
-```bash
-python3 tools/build.py     # regenera assets/js/projects.js
-node tools/verify.js       # confere contra o snapshot .orig
-```
+- `src/conteudo.md` é o espelho da nota no repositório (copiado a cada build; não edite).
+- `src/traducoes.json` guarda, por trecho, o hash do pt e as traduções. Trecho sem tradução atual aparece em pt nos outros idiomas e o build avisa.
+- Rótulos de interface (menu, títulos de seção): `src/interface.yaml`.
+- `src/portfolio-legado-v2.1.md` é o formato antigo (bandeiras por idioma), mantido só como referência.
 
-O hook `pre-commit` já roda o build e faz `git add` do JS gerado.
-
-### Formato de um projeto
+### Formato de um projeto (na nota do vault)
 
 ```
 ### Nome do Projeto
@@ -58,13 +56,9 @@ video: assets/media/foo/tour.webm     (opcional, botão "Ver tour")
 live: https://...                     (opcional, iframe; o site precisa permitir embed)
 open: https://...                     (opcional, link em nova aba)
 
-🇧🇷 texto em português
-🇺🇸 english text
-🇪🇸 texto en español
-🇫🇷 texte en français
+Texto do projeto em português, em parágrafo(s).
 ```
 
-Idioma faltando herda o 🇧🇷. O campo `slug:` é opcional e só serve para casar
 com a nota já existente no quartz-site (ver abaixo); sem ele, o slug é
 derivado do nome.
 

@@ -25,8 +25,8 @@
   <a class="skip" href="#sobre">Pular para o conteúdo</a>
 
   <header class="topbar">
-    <div class="wrap topbar__inner">
-      <a class="brand" href="#top">Pedro H. R. de Andrade</a>
+    <div class="shell topbar__inner">
+      <a class="brand" href="#top">phrandrade<span>.portfolio</span></a>
       <nav class="nav" id="nav" aria-label="Seções"></nav>
       <div class="controls">
         <select id="lang" aria-label="Idioma">
@@ -38,98 +38,115 @@
         <button id="theme" type="button" aria-label="Alternar tema">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
         </button>
+        <details class="menu" id="menu">
+          <summary aria-label="Menu">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary>
+          <nav class="menu__nav" id="nav-mobile" aria-label="Seções"></nav>
+        </details>
       </div>
     </div>
   </header>
 
-  <div class="hero-band" id="top">
-    <canvas id="sky" aria-hidden="true"></canvas>
-    <section class="hero wrap">
-      <div class="hero__text">
-        <p class="eyebrow" id="hero-eyebrow"></p>
-        <h1 id="hero-name"></h1>
-        <p class="lead" id="hero-sub"></p>
-        <ul class="chips" id="hero-badges"></ul>
+  <div class="shell layout" id="top">
+    <aside class="sidebar" aria-label="Perfil e contato">
+      <img class="side__photo" id="hero-photo" src="assets/media/pedro.webp" width="320" height="320" alt="Foto de Pedro Henrique Rocha de Andrade">
+      <div class="side__id">
+        <p class="side__name" id="side-name"></p>
+        <p class="side__tagline" id="side-tagline"></p>
+        <p class="side__loc"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#pin"/></svg><span id="side-loc"></span></p>
       </div>
-      <img class="hero__photo" id="hero-photo" src="assets/media/pedro.webp" width="320" height="320" alt="Foto de Pedro Henrique Rocha de Andrade">
-    </section>
+      <ul class="side__links" id="side-links"></ul>
+      <a class="btn btn--primary side__cv" href="https://raw.githubusercontent.com/pedroiff0/cv/main/portugueseCV.pdf" target="_blank" rel="noopener" id="side-cv">
+        <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#file"/></svg><span data-ui="cvDownload"></span>
+      </a>
+    </aside>
+
+    <main class="content">
+      <div class="hero-band">
+        <canvas id="sky" aria-hidden="true"></canvas>
+        <section class="hero">
+          <p class="eyebrow" id="hero-eyebrow"></p>
+          <h1 id="hero-name"></h1>
+          <p class="lead" id="hero-sub"></p>
+          <ul class="chips" id="hero-badges"></ul>
+        </section>
+      </div>
+
+      <ul class="stats" id="stats" aria-label="Números"></ul>
+
+      <section id="sobre" class="block">
+        <h2 data-sec="sobre"></h2>
+        <div class="prose" id="about"></div>
+      </section>
+
+      <section id="projetos" class="block">
+        <h2 data-sec="projetos"></h2>
+        <p class="sec-lead" data-lead="projetos"></p>
+        <div class="grid" id="featured"></div>
+      </section>
+
+      <section id="trabalhos" class="block">
+        <h2 data-sec="trabalhos"></h2>
+        <p class="sec-lead" data-lead="trabalhos"></p>
+        <div class="filters">
+          <div class="tabs" id="cat-tabs" role="tablist"></div>
+          <input type="search" id="search">
+        </div>
+        <div class="grid" id="repos"></div>
+        <p class="empty" id="repos-empty" hidden>—</p>
+      </section>
+
+      <section id="pesquisa" class="block">
+        <h2 data-sec="pesquisa"></h2>
+        <p class="sec-lead" data-lead="pesquisa"></p>
+        <figure class="spectrum">
+          <canvas id="spectrum-canvas" aria-hidden="true"></canvas>
+          <input type="range" id="spectrum-slider" min="3800" max="8600" step="1" value="6563">
+          <figcaption><span id="spectrum-info" class="mono" aria-live="polite"></span><span id="spectrum-hint"></span></figcaption>
+        </figure>
+        <div class="grid" id="research"></div>
+      </section>
+
+      <section id="bolsas" class="block">
+        <h2 data-sec="bolsas"></h2>
+        <p class="sec-lead" data-lead="bolsas"></p>
+        <ol class="timeline" id="grants"></ol>
+      </section>
+
+      <section id="alem" class="block">
+        <h2 data-ui="alemTitle"></h2>
+        <p class="sec-lead" data-ui="alemLead"></p>
+        <dl class="facts" id="facts"></dl>
+        <div class="gallery" id="gallery"></div>
+      </section>
+
+      <section id="curriculo" class="block">
+        <h2 data-sec="curriculo"></h2>
+        <p id="cv-text"></p>
+        <div class="actions">
+          <a class="btn btn--primary" href="https://github.com/pedroiff0/cv" target="_blank" rel="noopener" data-ui="cvRepo"></a>
+          <a class="btn" href="https://raw.githubusercontent.com/pedroiff0/cv/main/portugueseCV.pdf" target="_blank" rel="noopener">PDF (PT)</a>
+          <a class="btn" href="https://raw.githubusercontent.com/pedroiff0/cv/main/englishCV.pdf" target="_blank" rel="noopener">PDF (EN)</a>
+        </div>
+      </section>
+
+      <section id="lattes" class="block">
+        <h2 data-sec="lattes"></h2>
+        <p id="lattes-text"></p>
+        <p class="mono">ID Lattes: <code>6818168089966785</code></p>
+        <div class="actions">
+          <a class="btn btn--primary" href="http://lattes.cnpq.br/6818168089966785" target="_blank" rel="noopener" data-ui="lattesOpen"></a>
+        </div>
+      </section>
+
+      <section id="contato" class="block">
+        <h2 data-sec="contato"></h2>
+        <p class="sec-lead" data-lead="contato"></p>
+        <div class="contacts" id="contacts"></div>
+      </section>
+    </main>
   </div>
-
-  <main class="wrap">
-    <ul class="stats" id="stats" aria-label="Números"></ul>
-
-    <section id="sobre" class="block">
-      <h2 data-sec="sobre"></h2>
-      <div class="prose" id="about"></div>
-    </section>
-
-    <section id="projetos" class="block">
-      <h2 data-sec="projetos"></h2>
-      <p class="sec-lead" data-lead="projetos"></p>
-      <div class="grid" id="featured"></div>
-    </section>
-
-    <section id="trabalhos" class="block">
-      <h2 data-sec="trabalhos"></h2>
-      <p class="sec-lead" data-lead="trabalhos"></p>
-      <div class="filters">
-        <div class="tabs" id="cat-tabs" role="tablist"></div>
-        <input type="search" id="search">
-      </div>
-      <div class="grid" id="repos"></div>
-      <p class="empty" id="repos-empty" hidden>—</p>
-    </section>
-
-    <section id="pesquisa" class="block">
-      <h2 data-sec="pesquisa"></h2>
-      <p class="sec-lead" data-lead="pesquisa"></p>
-      <figure class="spectrum">
-        <canvas id="spectrum-canvas" aria-hidden="true"></canvas>
-        <input type="range" id="spectrum-slider" min="3800" max="8600" step="1" value="6563">
-        <figcaption><span id="spectrum-info" class="mono" aria-live="polite"></span><span id="spectrum-hint"></span></figcaption>
-      </figure>
-      <div class="grid" id="research"></div>
-    </section>
-
-    <section id="bolsas" class="block">
-      <h2 data-sec="bolsas"></h2>
-      <p class="sec-lead" data-lead="bolsas"></p>
-      <ol class="timeline" id="grants"></ol>
-    </section>
-
-    <section id="alem" class="block">
-      <h2 data-ui="alemTitle"></h2>
-      <p class="sec-lead" data-ui="alemLead"></p>
-      <dl class="facts" id="facts"></dl>
-      <div class="gallery" id="gallery"></div>
-      <div class="actions"><a class="btn" href="https://instagram.com/ra.pedroh" target="_blank" rel="noopener">Instagram @ra.pedroh</a></div>
-    </section>
-
-    <section id="curriculo" class="block">
-      <h2 data-sec="curriculo"></h2>
-      <p id="cv-text"></p>
-      <div class="actions">
-        <a class="btn btn--primary" href="https://github.com/pedroiff0/cv" target="_blank" rel="noopener" data-ui="cvRepo"></a>
-        <a class="btn" href="https://raw.githubusercontent.com/pedroiff0/cv/main/portugueseCV.pdf" target="_blank" rel="noopener">PDF (PT)</a>
-        <a class="btn" href="https://raw.githubusercontent.com/pedroiff0/cv/main/englishCV.pdf" target="_blank" rel="noopener">PDF (EN)</a>
-      </div>
-    </section>
-
-    <section id="lattes" class="block">
-      <h2 data-sec="lattes"></h2>
-      <p id="lattes-text"></p>
-      <p class="mono">ID Lattes: <code>6818168089966785</code></p>
-      <div class="actions">
-        <a class="btn btn--primary" href="http://lattes.cnpq.br/6818168089966785" target="_blank" rel="noopener" data-ui="lattesOpen"></a>
-      </div>
-    </section>
-
-    <section id="contato" class="block">
-      <h2 data-sec="contato"></h2>
-      <p class="sec-lead" data-lead="contato"></p>
-      <dl class="contacts" id="contacts"></dl>
-    </section>
-  </main>
 
   <dialog id="live" class="live" aria-labelledby="live-title">
     <div class="live__bar">
@@ -141,10 +158,37 @@
   </dialog>
 
   <footer class="footer">
-    <div class="wrap footer__inner">
-      <span id="footer-name"></span>
-      <span id="footer-text"></span>
-      <a href="https://www.phrandrade.com/pt-br/">phrandrade.com</a>
+    <div class="shell">
+      <ul class="footer__social" id="footer-social" aria-label="Redes"></ul>
+      <div class="footer__cols">
+        <div>
+          <p class="footer__title" data-ui="fSections"></p>
+          <ul id="footer-sections"></ul>
+        </div>
+        <div>
+          <p class="footer__title" data-ui="fSites"></p>
+          <ul>
+            <li><a href="https://www.phrandrade.com/pt-br/">phrandrade.com</a></li>
+            <li><a href="https://research.phrandrade.com">Researcher Hub</a></li>
+            <li><a href="https://relatex.phrandrade.com">ReLaTeX</a></li>
+            <li><a href="https://github.com/pedroiff0">GitHub @pedroiff0</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__title" data-ui="fDocs"></p>
+          <ul>
+            <li><a href="https://raw.githubusercontent.com/pedroiff0/cv/main/portugueseCV.pdf">CV (PT)</a></li>
+            <li><a href="https://raw.githubusercontent.com/pedroiff0/cv/main/englishCV.pdf">CV (EN)</a></li>
+            <li><a href="http://lattes.cnpq.br/6818168089966785">Lattes</a></li>
+            <li><a href="https://orcid.org/0009-0003-6724-4640">ORCID</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span id="footer-name"></span>
+        <span id="footer-text"></span>
+        <span id="footer-updated"></span>
+      </div>
     </div>
   </footer>
 
