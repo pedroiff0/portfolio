@@ -51,9 +51,34 @@ const VIEWS = [
         check(await page.isVisible("#repos-empty"), "busca sem resultado não mostra aviso");
         await page.click("#theme");
         check(await page.evaluate(() => document.documentElement.dataset.theme) === "dark", "botão de tema não alterna");
+
+        await page.fill("#search", "");
+        await page.click("#cat-tabs button:nth-child(1)");
+        check(await page.evaluate(() => { const i = document.querySelector("#hero-photo"); return i.complete && i.naturalWidth > 0; }), "foto do hero não carregou");
+        const withImage = await page.evaluate(() => window.PORTFOLIO_DATA.REPOS.filter((r) => r.image).length);
+        check(await page.locator("#repos .card__media img").count() === withImage, "posters dos projetos ausentes");
+        const tourBtn = page.locator("#repos .card", { has: page.locator(".card__media") }).first().getByRole("button").first();
+        await tourBtn.click();
+        check(await page.locator("#repos video").count() === 1, "ver tour não cria o vídeo");
+        await page.locator('#repos [data-live="SpectraViewer"]').click();
+        check(await page.isVisible("#live"), "dialog ao vivo não abriu");
+        check((await page.getAttribute("#live-frame iframe", "src") || "").includes("spectraviewer"), "iframe ao vivo sem src");
+        await page.click("#live-close");
+        check(await page.locator("#live-frame iframe").count() === 0, "iframe não é descarregado ao fechar");
+        check(await page.locator("#spectrum-canvas").count() === 1, "canvas do espectro ausente");
+        check((await page.textContent("#spectrum-info")).includes("Å"), "espectro sem leitura");
+        check(await page.locator("#gallery img").count() === 6, "galeria incompleta");
+        check(await page.locator("#stats li").count() === 4, "faixa de números incompleta");
       }
+      check(await page.locator("#sky").count() === 1, `${name}: canvas do céu ausente`);
       await ctx.close();
     }
+    const rctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, reducedMotion: "reduce" });
+    const rp = await rctx.newPage();
+    await rp.goto(URL, { waitUntil: "networkidle" });
+    await rp.waitForTimeout(200);
+    check(await rp.getAttribute("#sky", "data-animated") === "false", "céu anima mesmo com prefers-reduced-motion");
+    await rctx.close();
   } finally {
     await browser.close();
     srv.kill();

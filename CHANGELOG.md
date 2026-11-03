@@ -9,6 +9,13 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-11-03
+### Added
+- Hero com foto e céu estrelado discreto (`assets/js/sky.js`, pausa fora da tela, com aba oculta e com `prefers-reduced-motion`).
+- Faixa de números, seção "Além do código" (apelido, hobby, galeria de 6 fotos de eventos sem EXIF) e widget de espectro estelar portado da v1 (`assets/js/spectrum.js`).
+- Campos opcionais por projeto em `src/portfolio.md`: `image`, `video`, `live` e `open`. Tours em vídeo (WebM) e posters para Finanças, Sistema Acadêmico, research e ReLaTeX; demo ao vivo em `<dialog>` com iframe carregado só no clique (SpectraViewer, Cálculo Numérico, site oficial).
+- `tools/record_demos.js` e `tools/demos/tours.json`: gravação reprodutível dos tours a partir das instâncias locais com dados fictícios.
+
 ## [2.0.0] - 2026-11-03
 ### Changed
 - Refatoração clean: página única minimalista com os tokens visuais do quartz-site (phrandrade.com), tema claro e escuro, mesmos dados e quatro idiomas.

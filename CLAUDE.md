@@ -63,7 +63,13 @@ make lint                      # node --check main.js + build.py --check
   scroll-spy on the nav. Emojis from the data are stripped at render time; the data is left untouched.
   A few strings not present in `interface.yaml` (CV/Lattes text) live in the `UI` dict in `main.js`.
 
-Keep it minimal: no canvas, no 3D, no sound, no intro, no gamification.
+- `assets/js/sky.js` (hero starfield) and `assets/js/spectrum.js` (`window.Spectrum.mount`, stellar spectrum widget) are the only
+  canvases allowed. Media per project comes from optional `image`/`video`/`live`/`open` fields in `src/portfolio.md`;
+  videos and iframes load only on click (`playTour`, `openLive` in `main.js`).
+- Demo tours are recorded with `node tools/record_demos.js [slug]` from `tools/demos/tours.json`, only against local
+  instances with fake/demo data (never real personal data); output goes to `assets/media/<slug>/`.
+
+Keep it minimal: no 3D, no sound, no intro, no HUD, no gamification.
 
 `assets/js/projects.js` (generated) sets `window.PORTFOLIO_DATA`, which `main.js` reads to render project
 cards, research cards, the bolsas timeline, contacts, and the `I18N` dictionary. I18N keys used only by v1

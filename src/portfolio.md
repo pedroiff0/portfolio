@@ -42,6 +42,8 @@ tags: Finanças, Full-stack, Web App, Orçamento, Investimentos
 cat: software
 visibility: privado
 icon: cash
+image: assets/media/financas/poster.webp
+video: assets/media/financas/tour.webm
 
 🇧🇷 Aplicação web de controle financeiro pessoal com três módulos independentes (ligados/desligados por flag): Finanças (contas, categorias, lançamentos, recorrências, orçamentos por envelope, metas), Investimentos (carteira multi-corretora, preço médio ponderado, proventos, resultado realizado/não realizado) e Moto (manutenções, abastecimentos com km/l, gastos, custo por km, alertas de revisão). Backend Node/Express + MongoDB, frontend EJS SSR, autenticação JWT, validação Zod e boas práticas de segurança (Helmet, rate-limit, CSP). Deploy via Docker Compose.
 🇺🇸 Personal finance web app with three independent, flag-toggled modules: Finances (accounts, categories, entries, recurrences, envelope budgets, goals), Investments (multi-broker portfolio, weighted average price, dividends, realized/unrealized results) and Motorcycle (maintenance, refuels with km/l, expenses, cost per km, service alerts). Node/Express + MongoDB backend, EJS SSR frontend, JWT auth, Zod validation and security hardening (Helmet, rate-limit, CSP). Deployed via Docker Compose.
@@ -55,6 +57,9 @@ tags: Full-stack, Web App, Academia, CR/Boletim, Multi-curso, API Bot
 cat: software
 visibility: privado
 icon: academic
+image: assets/media/sistema-academico/poster.webp
+video: assets/media/sistema-academico/tour.webm
+open: https://academico.phrandrade.com
 
 🇧🇷 Web exclusivo para alunos do IFF acompanharem grade curricular (PPC), diário, notas, frequência, boletim/CR e planejamento. Multi-curso: Engenharia de Computação (Bom Jesus do Itabapoana) e Sistemas de Informação (Itaperuna). Fork do padrão de avaliações, com diário, ementário, grafo de dependências e API de ingestão por bot (Telegram). Deploy via Docker Compose + systemd.
 🇺🇸 Exclusive web app for IFF students to track the curriculum (PPC), diary, grades, attendance, GPA/report card and planning. Multi-course: Computer Engineering (Bom Jesus do Itabapoana) and Information Systems (Itaperuna). Fork of the evaluations standard, with diary, ementa, dependency graph and a Telegram-bot ingestion API. Deployed via Docker Compose + systemd.
@@ -122,6 +127,9 @@ tags: Overleaf Fork, Self-hosted, IFF, LaTeX
 cat: software
 visibility: privado
 icon: latex
+image: assets/media/relatex/poster.webp
+video: assets/media/relatex/tour.webm
+open: https://relatex.phrandrade.com
 
 🇧🇷 Fork do Overleaf Community Edition com identidade do IFF: classes oficiais embutidas (ifftese/iffposter), tema azul, landing própria e 10 botões extras no editor. Self-hosted via Docker (web+mongo+redis).
 🇺🇸 Fork of Overleaf Community Edition with IFF identity: official document classes (ifftese/iffposter), blue theme, custom landing page and 10 extra editor buttons. Self-hosted via Docker (web+mongo+redis).
@@ -253,6 +261,8 @@ tags: Espectroscopia, GALAH DR4, Open Source
 cat: pesquisa
 visibility: público
 icon: spectrum
+live: https://spectraviewer.streamlit.app/?embed=true
+open: https://spectraviewer.streamlit.app
 
 🇧🇷 Viewer interativo de espectros GALAH DR4 (4 bandas, linhas de referência CNO/Alpha/Iron-peak, leitura de FITS, metadados Teff/log(g)/[Fe/H]).
 🇺🇸 Interactive viewer for GALAH DR4 spectra (4 bands, CNO/Alpha/Iron-peak reference lines, FITS reading, Teff/log(g)/[Fe/H] metadata).
@@ -266,6 +276,8 @@ tags: Literatura, arXiv
 cat: pesquisa
 visibility: privado
 icon: book
+image: assets/media/research/poster.webp
+video: assets/media/research/tour.webm
 
 🇧🇷 Anexos de pesquisa: busca de artigos no arXiv por assunto/keyword para compor leituras.
 🇺🇸 Research attachments: arXiv article search by subject/keyword to compose readings.
@@ -292,6 +304,8 @@ tags: Disciplina, Métodos Numéricos
 cat: academico
 visibility: público
 icon: function
+live: https://pedroiff0.github.io/calculo-numerico/
+open: https://pedroiff0.github.io/calculo-numerico/
 
 🇧🇷 Repositório de códigos da disciplina Cálculo Numérico 2025.2, com CI e documentação.
 🇺🇸 Code repository for the Numerical Methods course (2025.2), with CI and documentation — implementations of root finding, interpolation, numerical integration and linear systems.
@@ -332,6 +346,8 @@ tags: Site Oficial, Obsidian, Multilíngue
 cat: pessoal
 visibility: público
 icon: globe
+live: https://www.phrandrade.com/pt-br/
+open: https://www.phrandrade.com/pt-br/
 
 🇧🇷 Site pessoal/acadêmico oficial, multilíngue (PT completo; EN/ES/FR parciais), em Quartz a partir do vault Obsidian. Publicado em www.phrandrade.com. É o consolidado: pesquisa, notas de disciplinas, mídia e blog. Este portfólio é a página de boas-vindas dele.
 🇺🇸 Official personal/academic site, multilingual (full PT; partial EN/ES/FR), built with Quartz from an Obsidian vault. Published at www.phrandrade.com. It is the consolidated hub: research, course notes, media and blog. This portfolio is its welcome page.

@@ -25,6 +25,8 @@ const REPOS = [
     ],
     tags: [ "Finanças", "Full-stack", "Web App", "Orçamento", "Investimentos" ],
     brief: "Aplicação web de controle financeiro pessoal com três módulos independentes (ligados/desligados por flag): Finanças (contas, categorias, lançamentos, recorrências, orçamentos por envelope, metas), Investimentos (carteira multi-corretora, preço médio ponderado, proventos, resultado realizado/não realizado) e Moto (manutenções, abastecimentos com km/l, gastos, custo por km, alertas de revisão). Backend Node/Express + MongoDB, frontend EJS SSR, autenticação JWT, validação Zod e boas práticas de segurança (Helmet, rate-limit, CSP). Deploy via Docker Compose.",
+    image: "assets/media/financas/poster.webp",
+    video: "assets/media/financas/tour.webm",
     i18n: {
       en: "Personal finance web app with three independent, flag-toggled modules: Finances (accounts, categories, entries, recurrences, envelope budgets, goals), Investments (multi-broker portfolio, weighted average price, dividends, realized/unrealized results) and Motorcycle (maintenance, refuels with km/l, expenses, cost per km, service alerts). Node/Express + MongoDB backend, EJS SSR frontend, JWT auth, Zod validation and security hardening (Helmet, rate-limit, CSP). Deployed via Docker Compose.",
       es: "Aplicación web de control financiero personal con tres módulos independientes (activables por flag): Finanzas (cuentas, categorías, movimientos, recurrencias, presupuestos por sobre, metas), Inversiones (cartera multicorredora, precio medio ponderado, dividendos, resultado realizado/no realizado) y Moto (mantenimientos, repostajes con km/l, gastos, costo por km, alertas de revisión). Backend Node/Express + MongoDB, frontend EJS SSR, autenticación JWT, validación Zod y endurecimiento de seguridad (Helmet, rate-limit, CSP). Despliegue vía Docker Compose.",
@@ -40,6 +42,9 @@ const REPOS = [
     stack: [ "Node.js", "Express", "MongoDB", "Mongoose", "EJS", "JWT", "Docker", "vis-network" ],
     tags: [ "Full-stack", "Web App", "Academia", "CR/Boletim", "Multi-curso", "API Bot" ],
     brief: "Web exclusivo para alunos do IFF acompanharem grade curricular (PPC), diário, notas, frequência, boletim/CR e planejamento. Multi-curso: Engenharia de Computação (Bom Jesus do Itabapoana) e Sistemas de Informação (Itaperuna). Fork do padrão de avaliações, com diário, ementário, grafo de dependências e API de ingestão por bot (Telegram). Deploy via Docker Compose + systemd.",
+    image: "assets/media/sistema-academico/poster.webp",
+    video: "assets/media/sistema-academico/tour.webm",
+    open: "https://academico.phrandrade.com",
     i18n: {
       en: "Exclusive web app for IFF students to track the curriculum (PPC), diary, grades, attendance, GPA/report card and planning. Multi-course: Computer Engineering (Bom Jesus do Itabapoana) and Information Systems (Itaperuna). Fork of the evaluations standard, with diary, ementa, dependency graph and a Telegram-bot ingestion API. Deployed via Docker Compose + systemd.",
       es: "Aplicación web exclusiva para alumnos del IFF para seguir la malla (PPC), diario, notas, asistencia, CR/boletín y planificación. Multicurso: Ingeniería Informática (Bom Jesus do Itabapoana) y Sistemas de Información (Itaperuna). Fork del estándar de evaluaciones, con diario, ementario, grafo de dependencias y API de ingesta por bot de Telegram. Despliegue vía Docker Compose + systemd.",
@@ -115,6 +120,9 @@ const REPOS = [
     stack: [ "Docker", "Node.js", "MongoDB", "Redis", "Pug", "LaTeX" ],
     tags: [ "Overleaf Fork", "Self-hosted", "IFF", "LaTeX" ],
     brief: "Fork do Overleaf Community Edition com identidade do IFF: classes oficiais embutidas (ifftese/iffposter), tema azul, landing própria e 10 botões extras no editor. Self-hosted via Docker (web+mongo+redis).",
+    image: "assets/media/relatex/poster.webp",
+    video: "assets/media/relatex/tour.webm",
+    open: "https://relatex.phrandrade.com",
     i18n: {
       en: "Fork of Overleaf Community Edition with IFF identity: official document classes (ifftese/iffposter), blue theme, custom landing page and 10 extra editor buttons. Self-hosted via Docker (web+mongo+redis).",
       es: "Fork de Overleaf Community Edition con identidad del IFF: clases oficiales (ifftese/iffposter), tema azul, página de inicio propia y 10 botones extra en el editor. Self-hosted vía Docker (web+mongo+redis).",
@@ -265,6 +273,8 @@ const REPOS = [
     stack: [ "Python", "FITS", "Matplotlib" ],
     tags: [ "Espectroscopia", "GALAH DR4", "Open Source" ],
     brief: "Viewer interativo de espectros GALAH DR4 (4 bandas, linhas de referência CNO/Alpha/Iron-peak, leitura de FITS, metadados Teff/log(g)/[Fe/H]).",
+    live: "https://spectraviewer.streamlit.app/?embed=true",
+    open: "https://spectraviewer.streamlit.app",
     i18n: {
       en: "Interactive viewer for GALAH DR4 spectra (4 bands, CNO/Alpha/Iron-peak reference lines, FITS reading, Teff/log(g)/[Fe/H] metadata).",
       es: "Visor interactivo de espectros GALAH DR4 (4 bandas, líneas de referencia CNO/Alpha/Iron-peak, lectura de FITS, metadatos Teff/log(g)/[Fe/H]).",
@@ -280,6 +290,8 @@ const REPOS = [
     stack: [ "Python", "arXiv API", "Pandas", "Matplotlib", "PyPDF2", "python-docx" ],
     tags: [ "Literatura", "arXiv" ],
     brief: "Anexos de pesquisa: busca de artigos no arXiv por assunto/keyword para compor leituras.",
+    image: "assets/media/research/poster.webp",
+    video: "assets/media/research/tour.webm",
     i18n: {
       en: "Research attachments: arXiv article search by subject/keyword to compose readings.",
       es: "Anexos de investigación: búsqueda de artículos en arXiv por tema/palabra clave para componer lecturas.",
@@ -310,6 +322,8 @@ const REPOS = [
     stack: [ "Python", "CI", "Docs", "NumPy" ],
     tags: [ "Disciplina", "Métodos Numéricos" ],
     brief: "Repositório de códigos da disciplina Cálculo Numérico 2025.2, com CI e documentação.",
+    live: "https://pedroiff0.github.io/calculo-numerico/",
+    open: "https://pedroiff0.github.io/calculo-numerico/",
     i18n: {
       en: "Code repository for the Numerical Methods course (2025.2), with CI and documentation — implementations of root finding, interpolation, numerical integration and linear systems.",
       es: "Repositorio de códigos de la asignatura Cálculo Numérico 2025.2, con CI y documentación — implementaciones de búsqueda de raíces, interpolación, integración numérica y sistemas lineales.",
@@ -355,6 +369,8 @@ const REPOS = [
     stack: [ "Quartz", "Obsidian", "Markdown", "TypeScript", "GitHub Actions" ],
     tags: [ "Site Oficial", "Obsidian", "Multilíngue" ],
     brief: "Site pessoal/acadêmico oficial, multilíngue (PT completo; EN/ES/FR parciais), em Quartz a partir do vault Obsidian. Publicado em www.phrandrade.com. É o consolidado: pesquisa, notas de disciplinas, mídia e blog. Este portfólio é a página de boas-vindas dele.",
+    live: "https://www.phrandrade.com/pt-br/",
+    open: "https://www.phrandrade.com/pt-br/",
     i18n: {
       en: "Official personal/academic site, multilingual (full PT; partial EN/ES/FR), built with Quartz from an Obsidian vault. Published at www.phrandrade.com. It is the consolidated hub: research, course notes, media and blog. This portfolio is its welcome page.",
       es: "Sitio personal/académico oficial, multilingüe (PT completo; EN/ES/FR parciales), en Quartz a partir del vault de Obsidian. Publicado en www.phrandrade.com. Es el consolidado: investigación, apuntes de asignaturas, medios y blog. Este portafolio es su página de bienvenida.",

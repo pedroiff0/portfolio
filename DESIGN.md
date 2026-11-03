@@ -17,4 +17,6 @@ graph TD
 2. **Conteúdo primeiro:** uma coluna de 960px, seções lineares, sem efeitos além de hover e rolagem suave.
 3. **Sem dependências em produção:** HTML, CSS e JS puros; só Google Fonts de fora.
 4. **Acessível:** HTML semântico, `<details>` nativo, foco visível, `prefers-reduced-motion`, sem rolagem horizontal em 375px.
-5. **Proibido reintroduzir:** canvas, 3D, som, intro, HUD, gamificação. A v1 com isso está em `pedroiff0/portfolio-v1-scifi`.
+5. **Charme permitido (v2.1):** céu estrelado só atrás do hero e widget de espectro na Pesquisa, ambos leves e respeitando `prefers-reduced-motion`; foto, números e galeria pessoal.
+6. **Mídia sob demanda:** vídeo e iframe só carregam no clique; a página inicial não baixa nenhum dos dois.
+7. **Proibido reintroduzir:** 3D, som, intro, HUD, gamificação. A v1 com isso está em `pedroiff0/portfolio-v1-scifi`.

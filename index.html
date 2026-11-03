@@ -9,6 +9,7 @@
   <meta property="og:title" content="Pedro Henrique Rocha de Andrade">
   <meta property="og:description" content="Engenharia de Computação (IFF) · software para a academia e astrofísica computacional.">
   <meta property="og:url" content="https://portfolio.phrandrade.com/">
+  <meta property="og:image" content="https://portfolio.phrandrade.com/assets/media/pedro.webp">
   <meta property="og:type" content="profile">
   <link rel="canonical" href="https://portfolio.phrandrade.com/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -41,13 +42,21 @@
     </div>
   </header>
 
-  <main id="top" class="wrap">
-    <section class="hero">
-      <p class="eyebrow" id="hero-eyebrow"></p>
-      <h1 id="hero-name"></h1>
-      <p class="lead" id="hero-sub"></p>
-      <ul class="chips" id="hero-badges"></ul>
+  <div class="hero-band" id="top">
+    <canvas id="sky" aria-hidden="true"></canvas>
+    <section class="hero wrap">
+      <div class="hero__text">
+        <p class="eyebrow" id="hero-eyebrow"></p>
+        <h1 id="hero-name"></h1>
+        <p class="lead" id="hero-sub"></p>
+        <ul class="chips" id="hero-badges"></ul>
+      </div>
+      <img class="hero__photo" id="hero-photo" src="assets/media/pedro.webp" width="320" height="320" alt="Foto de Pedro Henrique Rocha de Andrade">
     </section>
+  </div>
+
+  <main class="wrap">
+    <ul class="stats" id="stats" aria-label="Números"></ul>
 
     <section id="sobre" class="block">
       <h2 data-sec="sobre"></h2>
@@ -74,6 +83,11 @@
     <section id="pesquisa" class="block">
       <h2 data-sec="pesquisa"></h2>
       <p class="sec-lead" data-lead="pesquisa"></p>
+      <figure class="spectrum">
+        <canvas id="spectrum-canvas" aria-hidden="true"></canvas>
+        <input type="range" id="spectrum-slider" min="3800" max="8600" step="1" value="6563">
+        <figcaption><span id="spectrum-info" class="mono" aria-live="polite"></span><span id="spectrum-hint"></span></figcaption>
+      </figure>
       <div class="grid" id="research"></div>
     </section>
 
@@ -81,6 +95,14 @@
       <h2 data-sec="bolsas"></h2>
       <p class="sec-lead" data-lead="bolsas"></p>
       <ol class="timeline" id="grants"></ol>
+    </section>
+
+    <section id="alem" class="block">
+      <h2 data-ui="alemTitle"></h2>
+      <p class="sec-lead" data-ui="alemLead"></p>
+      <dl class="facts" id="facts"></dl>
+      <div class="gallery" id="gallery"></div>
+      <div class="actions"><a class="btn" href="https://instagram.com/ra.pedroh" target="_blank" rel="noopener">Instagram @ra.pedroh</a></div>
     </section>
 
     <section id="curriculo" class="block">
@@ -109,6 +131,15 @@
     </section>
   </main>
 
+  <dialog id="live" class="live" aria-labelledby="live-title">
+    <div class="live__bar">
+      <strong id="live-title"></strong>
+      <a id="live-open" target="_blank" rel="noopener"></a>
+      <button type="button" id="live-close" class="live__close" aria-label="Fechar">&times;</button>
+    </div>
+    <div class="live__frame" id="live-frame"></div>
+  </dialog>
+
   <footer class="footer">
     <div class="wrap footer__inner">
       <span id="footer-name"></span>
@@ -118,6 +149,8 @@
   </footer>
 
   <script src="assets/js/projects.js"></script>
+  <script src="assets/js/spectrum.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/sky.js" defer></script>
 </body>
 </html>

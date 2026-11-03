@@ -53,6 +53,10 @@ tags: Full-stack, Web App
 cat: software | academico | pesquisa | pessoal
 visibility: público | privado | planejamento | elaboracao
 icon: cash
+image: assets/media/foo/poster.webp   (opcional)
+video: assets/media/foo/tour.webm     (opcional, botão "Ver tour")
+live: https://...                     (opcional, iframe; o site precisa permitir embed)
+open: https://...                     (opcional, link em nova aba)
 
 🇧🇷 texto em português
 🇺🇸 english text
@@ -63,6 +67,15 @@ icon: cash
 Idioma faltando herda o 🇧🇷. O campo `slug:` é opcional e só serve para casar
 com a nota já existente no quartz-site (ver abaixo); sem ele, o slug é
 derivado do nome.
+
+## Gravar os tours dos projetos
+
+```bash
+node tools/record_demos.js              # todos os tours de tools/demos/tours.json
+node tools/record_demos.js financas     # só um
+```
+
+Grava com Playwright as instâncias locais (sempre com banco demo, nunca dados reais), fecha banners de cookie e gera `assets/media/<slug>/tour.webm` e `poster.webp`.
 
 ## Sincronizar com o quartz-site
 

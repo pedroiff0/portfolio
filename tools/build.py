@@ -21,6 +21,10 @@ Formato da fonte (Markdown LIMPO, fácil de editar no Obsidian):
   cat: software
   visibility: privado
   icon: cash
+  image: assets/media/<slug>/poster.webp   (opcional)
+  video: assets/media/<slug>/tour.webm     (opcional)
+  live: https://... (opcional; precisa aceitar iframe)
+  open: https://... (opcional; abre em nova aba)
 
   🇧🇷 texto em português
   🇺🇸 english text
@@ -204,6 +208,9 @@ def split_field_flagged(text):
     return out
 
 
+MEDIA_KEYS = ("image", "video", "live", "open")
+
+
 def parse_projetos(block):
     parts = re.split(r'^###\s+(.+)$', block, flags=re.M)
     repos = []
@@ -239,6 +246,10 @@ def parse_projetos(block):
         # já existente no quartz-site. Não vai para o JS do site.
         if kv.get("slug"):
             repo["slug"] = kv["slug"].strip()
+        # mídia opcional (v2.1): poster, tour em vídeo, iframe ao vivo e link aberto
+        for k in MEDIA_KEYS:
+            if kv.get(k):
+                repo[k] = kv[k].strip()
         repos.append(repo)
     return repos
 
@@ -339,6 +350,9 @@ def norm_repo(r):
         "tags": r.get("tags", []) or [],
         "brief": brief.get("pt", ""),
     }
+    for k in MEDIA_KEYS:
+        if r.get(k):
+            obj[k] = r[k]
     i18n = {}
     for l in LANGS:
         if l == "pt":
