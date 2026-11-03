@@ -1,23 +1,27 @@
 # Portfolio — Pedro Rocha
 
-Página de portfólio estática (GitHub Pages) — tema astronomia, design profissional,
-animações e conteúdo em uma única página com navegação por *anchors* e seções
-reveláveis (conteúdo "invisível" que aparece ao clicar).
+Página de portfólio estática (GitHub Pages, `portfolio.phrandrade.com`), v2 clean:
+uma página só, minimalista, com o mesmo visual do site oficial (phrandrade.com),
+tema claro e escuro e quatro idiomas (PT/EN/ES/FR).
+
+A v1 sci-fi (HUD, Three.js, canvas, quests) está arquivada no repositório privado
+`pedroiff0/portfolio-v1-scifi` e na tag `v1-scifi` deste repositório.
 
 ## Conteúdo
 
 - **Sobre mim** — trajetória, formação (Eng. de Computação / IFF) e atuação (PIBIC/CNPq).
-- **Projetos** (cartões clicáveis): ReLaTeX, Sistema Acadêmico, Sistema de Avaliações e Currículo (LaTeX).
-- **Pesquisa** (accordion): arqueologia galáctica, anomaly_detection (GAIA×GALAH), simulações de aglomerados e SpectraViewer.
+- **Destaques** e **Trabalhos** (todos os repositórios, com filtro por categoria e busca); detalhes em `<details>`.
+- **Pesquisa** e **Bolsas** (linha do tempo).
 - **Currículo**, **Lattes** e **Contato**.
 
 ## Estrutura
 
 ```
-index.html              # página única (single-page, anchors)
-assets/css/style.css    # tema deep-space, glassmorphism, animações
-assets/js/projects.js   # dados dos projetos e da pesquisa
-assets/js/main.js       # starfield canvas, scroll reveal, accordions, nav
+index.html              # esqueleto semântico, uma <section> por área
+assets/css/style.css    # tokens do quartz-site, claro/escuro
+assets/js/projects.js   # dados (gerado por tools/build.py, não editar)
+assets/js/main.js       # render, idioma, tema, filtro/busca, nav
+tests/smoke.js          # teste Playwright (npm test)
 ```
 
 ## Como editar
@@ -27,7 +31,7 @@ ele é compilado e sobrescrito pelo pre-commit.
 
 - Projetos, bolsas e contatos: `src/portfolio.md`
 - Textos de interface (nav, hero, rótulos, i18n): `src/interface.yaml`
-- Cores/tipografia/animações: `assets/css/style.css`
+- Cores e tipografia: `assets/css/style.css` (tokens no `:root`)
 
 Depois de editar:
 
@@ -92,12 +96,12 @@ O caminho do site vem de `$QUARTZ_SITE` (padrão:
 Syncthing e vive sujo no git. O script nunca commita — rode `git status` lá e
 separe as mudanças à mão.
 
-## Rodar localmente
+## Rodar localmente e testar
 
 ```bash
-cd portfolio
-python3 -m http.server 8000
-# abra http://localhost:8000
+make dev        # http://localhost:8080
+npm test        # smoke test Playwright (SHOTS_DIR=<pasta> salva screenshots)
+make lint
 ```
 
 ## Publicar no GitHub Pages

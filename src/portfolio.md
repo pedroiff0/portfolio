@@ -447,16 +447,16 @@ icon: profile
 ### Portfólio (este site)
 slug: portfolio
 repo: https://github.com/pedroiff0/portfolio
-stack: HTML, CSS, JavaScript, Canvas, Python, GitHub Pages
-tags: Portfólio, Página Única, Multilíngue, Sem Framework
+stack: HTML, CSS, JavaScript, Python, Playwright, GitHub Pages
+tags: Portfólio, Página Única, Multilíngue, Minimalista
 cat: pessoal
 visibility: público
 icon: globe
 
-🇧🇷 Este portfólio: página única animada, multilíngue (PT/EN/ES/FR), sem framework — canvas de estrelas com repulsão ao mouse, cartões expansíveis e seletor de idioma persistido. O conteúdo não vive no HTML: é escrito em Markdown (src/portfolio.md) e compilado por um script Python para JS, com verificação automática no pre-commit. Serve de página de boas-vindas para o site oficial, onde está o conteúdo completo.
-🇺🇸 This portfolio: a single animated page, multilingual (PT/EN/ES/FR), framework-free — star canvas with mouse repulsion, expandable cards and a persisted language switcher. Content does not live in the HTML: it is written in Markdown (src/portfolio.md) and compiled to JS by a Python script, with automatic verification on pre-commit. It serves as the welcome page for the official site, where the full content lives.
-🇪🇸 Este portafolio: página única animada, multilingüe (PT/EN/ES/FR), sin framework — canvas de estrellas con repulsión al ratón, tarjetas expandibles y selector de idioma persistido. El contenido no vive en el HTML: se escribe en Markdown (src/portfolio.md) y se compila a JS con un script de Python, con verificación automática en el pre-commit. Sirve de página de bienvenida al sitio oficial, donde está el contenido completo.
-🇫🇷 Ce portfolio : page unique animée, multilingue (PT/EN/ES/FR), sans framework — canvas d'étoiles avec répulsion à la souris, cartes dépliables et sélecteur de langue persistant. Le contenu ne vit pas dans le HTML : il est écrit en Markdown (src/portfolio.md) et compilé en JS par un script Python, avec vérification automatique au pre-commit. Il sert de page d'accueil au site officiel, où se trouve le contenu complet.
+🇧🇷 Este portfólio: página única e minimalista, multilíngue (PT/EN/ES/FR), sem framework e com o visual do site oficial (tema claro e escuro, cartões com detalhes, filtro e busca de projetos). O conteúdo não vive no HTML: é escrito em Markdown (src/portfolio.md) e compilado por um script Python para JS, com verificação automática no pre-commit. Serve de página de boas-vindas para o site oficial, onde está o conteúdo completo.
+🇺🇸 This portfolio: a single minimalist page, multilingual (PT/EN/ES/FR), framework-free and styled like the official site (light and dark themes, cards with details, project filter and search). Content does not live in the HTML: it is written in Markdown (src/portfolio.md) and compiled to JS by a Python script, with automatic verification on pre-commit. It serves as the welcome page for the official site, where the full content lives.
+🇪🇸 Este portafolio: página única y minimalista, multilingüe (PT/EN/ES/FR), sin framework y con el estilo del sitio oficial (tema claro y oscuro, tarjetas con detalles, filtro y búsqueda de proyectos). El contenido no vive en el HTML: se escribe en Markdown (src/portfolio.md) y se compila a JS con un script de Python, con verificación automática en el pre-commit. Sirve de página de bienvenida al sitio oficial, donde está el contenido completo.
+🇫🇷 Ce portfolio : page unique et minimaliste, multilingue (PT/EN/ES/FR), sans framework et au style du site officiel (thèmes clair et sombre, cartes avec détails, filtre et recherche de projets). Le contenu ne vit pas dans le HTML : il est écrit en Markdown (src/portfolio.md) et compilé en JS par un script Python, avec vérification automatique au pre-commit. Il sert de page d'accueil au site officiel, où se trouve le contenu complet.
 
 
 ## Bolsas

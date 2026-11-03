@@ -4,9 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Pedro Rocha's static portfolio site (GitHub Pages, custom domain via `CNAME`) — a single-page astronomy-themed
-"mission hub" with a cinematic intro, warp-travel section transitions, a persistent HUD, a quest/XP tracker,
-and numerous easter eggs. No build step for the site itself: plain HTML/CSS/JS served directly.
+Pedro Rocha's static portfolio site (GitHub Pages, custom domain via `CNAME`) — v2 "clean": one minimalist page
+with the same visual tokens as the quartz-site (phrandrade.com), light/dark theme, 4 languages. No build step
+for the site itself: plain HTML/CSS/JS served directly. The previous sci-fi v1 (HUD, Three.js, canvases, quests)
+is archived in the private repo `pedroiff0/portfolio-v1-scifi` (tag `v1-scifi` here) — do not bring it back.
 
 ## Critical rule: Markdown is the source, JS is compiled
 
@@ -45,42 +46,28 @@ python3 tools/gen_quartz.py --check    # exit 1 if out of sync (used as a non-bl
 # Serve locally
 python3 -m http.server 8000   # http://localhost:8000
 
-# Browser checks (Playwright, ad hoc — see tests/pw_check.js / tests/pw_errors.js for examples)
-node tests/pw_check.js         # requires a local server already running (defaults to :8085 in the sample script)
+# Smoke test (Playwright): starts its own server, checks console errors, card counts, 4 languages,
+# filter/search, theme toggle and no horizontal scroll at 375px. SHOTS_DIR=<dir> also saves screenshots.
+npm test
+make lint                      # node --check main.js + build.py --check
 ```
-
-There is no npm test/lint/build script — `package.json` only declares the `playwright` dependency used by the
-scripts under `tests/`.
 
 ## Architecture
 
-Everything client-side lives in one big IIFE in `assets/js/main.js` (~5200 lines), organized into numbered
-sections (search for `N. SECTION NAME` comments to jump around):
+- `index.html` — semantic skeleton, one `<section id>` per area (sobre, projetos, trabalhos, pesquisa, bolsas,
+  curriculo, lattes, contato); content is filled by JS.
+- `assets/css/style.css` — design tokens on `:root` copied from `quartz-site/quartz.config.yaml` (Schibsted
+  Grotesk / Source Sans 3 / IBM Plex Mono; purple accent), dark mode via `prefers-color-scheme` and `data-theme`.
+- `assets/js/main.js` (~250 lines, one IIFE) — renders every section from `window.PORTFOLIO_DATA`, language
+  switch (saved in localStorage, default from `navigator.language`), theme toggle, category filter + search,
+  scroll-spy on the nav. Emojis from the data are stripped at render time; the data is left untouched.
+  A few strings not present in `interface.yaml` (CV/Lattes text) live in the `UI` dict in `main.js`.
 
-0. SVG icon repository
-1. Procedural sound synthesizer (Web Audio API) — all SFX are generated, no audio files for UI sounds
-2. Toast notification system
-3. Cinematic intro (atmospheric re-entry / "DevOps" boot sequence) shown on first load
-4. Interplanetary warp-travel engine + sector dossier router — section navigation is framed as flying between
-   "sectors"; `[data-open-sector]` / `[data-switch-sector]` elements drive it, synced to `location.hash`
-5. Interactive cosmos canvas (starfield, galaxy, constellations, meteors) — the persistent background
-6. Cursor/spotlight engine (custom cursor glow + card spotlight-on-hover)
-7. Dossier content rendering — turns `window.PORTFOLIO_DATA` (from `projects.js`) into DOM for each sector panel
-8. Project details modal
-9. Astronomical spectrum simulator (GALAH DR4 / Gaia-flavored interactive spectrum widget)
-10. Command palette (Cmd/Ctrl+K) and secret easter-egg triggers (Konami code, GTA-style cheats, BMTH/Kratos/
-    Interstellar/Nolan references, etc.)
-11. Animated stat counters
-12. Gamified onboarding / exploration quest tracker (XP, ranks, `localStorage`-persisted progress)
-13. Persistent HUD bar + floating easter-egg widgets, Gargantua (black hole) canvas background
-14. `init()` — wires everything on `DOMContentLoaded`
-
-`assets/js/space-3d.js` is a separate optional 3D layer (Three.js, vendored at `assets/js/vendor/three.min.js`)
-rendering photorealistic Earth/Mars/Saturn/Gargantua; it no-ops with a console warning if `window.THREE` isn't
-loaded.
+Keep it minimal: no canvas, no 3D, no sound, no intro, no gamification.
 
 `assets/js/projects.js` (generated) sets `window.PORTFOLIO_DATA`, which `main.js` reads to render project
-cards, research accordion, bolsas grid, contacts, and the `I18N` dictionary. `assets/js/projects.js.orig` is
+cards, research cards, the bolsas timeline, contacts, and the `I18N` dictionary. I18N keys used only by v1
+(`hud`, `sectorNav`, `hub`, `kickers`, `cmdPalette`, `cmdSecrets`, `quests`) are ignored. `assets/js/projects.js.orig` is
 the frozen baseline `tools/verify.js` diffs against — don't delete it.
 
 ### Content pipeline (`tools/`)
@@ -94,10 +81,4 @@ pre-existing `projects.js` — not part of the regular workflow.
 
 Four languages throughout: `pt` (default/fallback), `en`, `es`, `fr`, keyed by flag emoji in the Markdown
 source and by language code in `I18N`/`interface.yaml`. `applyI18n()`/`applyLang()` in `main.js` handle runtime
-switching via `data-i18n` attributes.
-
-## Miscellaneous
-
-- `fix_hud.js`, `fix_canvases.js`, `main_diff.patch` at the repo root are one-off Node scripts/patches used to
-  make specific past fixes to `main.js` (see recent commit history) — not part of any ongoing pipeline, safe to
-  ignore unless investigating that history.
+switching is `render()` in `main.js`, which re-renders everything for the selected language.

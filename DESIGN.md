@@ -1,22 +1,20 @@
-# DESIGN — Portfolio Architecture & Design Rules
+# DESIGN — Portfolio v2 (clean)
 
-## 1. Arquitetura da Interface
+## 1. Arquitetura
 
 ```mermaid
 graph TD
-    User["Visitante Web"] --> Index["index.html (Single Page Application)"]
-    Index --> Canvas["assets/js & src/ (Partículas & Efeitos Visuais)"]
-    Index --> Sections["Seções (Sobre, Projetos, Skills, Contato)"]
-    Index --> CNAME["CNAME (pedroiff.com / Domínio Próprio)"]
-    Tests["tests/ (Validação Visual Playwright)"] --> Index
+    MD["src/portfolio.md + src/interface.yaml"] --> Build["tools/build.py"]
+    Build --> Data["assets/js/projects.js (window.PORTFOLIO_DATA)"]
+    Data --> Main["assets/js/main.js (render)"]
+    Main --> Index["index.html (seções)"]
+    Tests["tests/smoke.js (Playwright)"] --> Index
 ```
 
----
+## 2. Princípios
 
-## 2. Princípios de Design
-
-1. **Estética Sci-Fi & Minimalismo:**
-   - Paleta de cores dark mode com acentos em ciano, roxo e verde neon.
-   - Efeitos de HUD cibernético e animações de canvas interativas sem comprometer 60fps.
-2. **Zero Dependências Pesadas em Produção:**
-   - Vanilla JS e CSS otimizado para carregamento instantâneo.
+1. **Mesmo visual do site oficial:** tokens copiados de `quartz-site/quartz.config.yaml` (Schibsted Grotesk, Source Sans 3, IBM Plex Mono; acento roxo `#6d28d9` / `#c084fc`). Mudou lá, muda aqui.
+2. **Conteúdo primeiro:** uma coluna de 960px, seções lineares, sem efeitos além de hover e rolagem suave.
+3. **Sem dependências em produção:** HTML, CSS e JS puros; só Google Fonts de fora.
+4. **Acessível:** HTML semântico, `<details>` nativo, foco visível, `prefers-reduced-motion`, sem rolagem horizontal em 375px.
+5. **Proibido reintroduzir:** canvas, 3D, som, intro, HUD, gamificação. A v1 com isso está em `pedroiff0/portfolio-v1-scifi`.

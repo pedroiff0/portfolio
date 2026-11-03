@@ -12,7 +12,8 @@ test: ## Executa testes de interface Playwright
 
 lint: ## Valida presença de arquivos e sintaxe JS
 	@test -f index.html && echo "index.html presente."
-	node --check fix_hud.js fix_canvases.js
+	node --check assets/js/main.js
+	python3 tools/build.py --check
 	@echo "Validações de sintaxe concluídas com sucesso."
 
 clean: ## Limpa relatórios temporários de teste
