@@ -51,7 +51,7 @@
 
   const UI_MORE = {
     pt: {
-      cvDownload: "Baixar CV", fSections: "Seções", fSites: "Sites", fDocs: "Documentos", updated: "Atualizado em", menu: "Menu",
+      cvDownload: "Baixar CV", footTag: "— computação e astrofísica, feito com", footAnd: "e", footBy: "por", toTop: "Voltar ao topo ↑", icoCafe: "café", icoCodigo: "código", icoCometa: "cometas", updated: "Atualizado em", menu: "Menu",
       nav: "Eventos", alemTitle: "Participação em eventos", alemLead: "Feiras, congressos e visitas técnicas em que apresentei trabalhos ou aprendi algo, com fotos de cada um.",
       nickname: "Apelido", base: "Base", baseText: "Bom Jesus do Itabapoana, RJ", photos: "fotos", report: "Ler relato", noPhotos: "Relato sem fotos", prev: "Anterior", next: "Próxima",
       reader: "Modo leitura", readerExit: "Sair do modo leitura", cvAcad: "Acadêmico", cvProf: "Profissional", cvLangsTitle: "Currículo em 6 idiomas (PDF)",
@@ -62,7 +62,7 @@
       sliderLabel: "Comprimento de onda em ångströms",
     },
     en: {
-      cvDownload: "Download CV", fSections: "Sections", fSites: "Sites", fDocs: "Documents", updated: "Updated on", menu: "Menu",
+      cvDownload: "Download CV", footTag: "— computing and astrophysics, made with", footAnd: "and", footBy: "by", toTop: "Back to top ↑", icoCafe: "coffee", icoCodigo: "code", icoCometa: "comets", updated: "Updated on", menu: "Menu",
       nav: "Events", alemTitle: "Events", alemLead: "Fairs, conferences and technical visits where I presented work or learned something, with photos of each.",
       nickname: "Nickname", base: "Based in", baseText: "Bom Jesus do Itabapoana, RJ, Brazil", photos: "photos", report: "Read the story", noPhotos: "Story without photos", prev: "Previous", next: "Next",
       reader: "Reading mode", readerExit: "Exit reading mode", cvAcad: "Academic", cvProf: "Professional", cvLangsTitle: "Resume in 6 languages (PDF)",
@@ -73,7 +73,7 @@
       sliderLabel: "Wavelength in ångströms",
     },
     es: {
-      cvDownload: "Descargar CV", fSections: "Secciones", fSites: "Sitios", fDocs: "Documentos", updated: "Actualizado el", menu: "Menú",
+      cvDownload: "Descargar CV", footTag: "— computación y astrofísica, hecho con", footAnd: "y", footBy: "por", toTop: "Volver arriba ↑", icoCafe: "café", icoCodigo: "código", icoCometa: "cometas", updated: "Actualizado el", menu: "Menú",
       nav: "Eventos", alemTitle: "Participación en eventos", alemLead: "Ferias, congresos y visitas técnicas en las que presenté trabajos o aprendí algo, con fotos de cada uno.",
       nickname: "Apodo", base: "Base", baseText: "Bom Jesus do Itabapoana, RJ, Brasil", photos: "fotos", report: "Leer el relato", noPhotos: "Relato sin fotos", prev: "Anterior", next: "Siguiente",
       reader: "Modo lectura", readerExit: "Salir del modo lectura", cvAcad: "Académico", cvProf: "Profesional", cvLangsTitle: "Currículum en 6 idiomas (PDF)",
@@ -84,7 +84,7 @@
       sliderLabel: "Longitud de onda en ångströms",
     },
     fr: {
-      cvDownload: "Télécharger le CV", fSections: "Sections", fSites: "Sites", fDocs: "Documents", updated: "Mis à jour le", menu: "Menu",
+      cvDownload: "Télécharger le CV", footTag: "— informatique et astrophysique, fait avec", footAnd: "et", footBy: "par", toTop: "Retour en haut ↑", icoCafe: "café", icoCodigo: "code", icoCometa: "comètes", updated: "Mis à jour le", menu: "Menu",
       nav: "Événements", alemTitle: "Participation à des événements", alemLead: "Salons, congrès et visites techniques où j'ai présenté des travaux ou appris quelque chose, avec les photos de chacun.",
       nickname: "Surnom", base: "Basé à", baseText: "Bom Jesus do Itabapoana, RJ, Brésil", photos: "photos", report: "Lire le récit", noPhotos: "Récit sans photos", prev: "Précédente", next: "Suivante",
       reader: "Mode lecture", readerExit: "Quitter le mode lecture", cvAcad: "Académique", cvProf: "Professionnel", cvLangsTitle: "CV en 6 langues (PDF)",
@@ -230,7 +230,6 @@
     const navLinks = () => NAV.map((id) => el("a", { href: "#" + id, text: id in NAV_I18N ? (nav[NAV_I18N[id]] || id) : UI[lang].nav }));
     $("#nav").replaceChildren(...navLinks());
     $("#nav-mobile").replaceChildren(...navLinks());
-    $("#footer-sections").replaceChildren(...navLinks().map((a) => el("li", {}, a)));
     $$("[data-sec]").forEach((n) => { n.textContent = noEmoji(S[n.dataset.sec]?.title || ""); });
     $$("[data-lead]").forEach((n) => { n.textContent = noEmoji(S[n.dataset.lead]?.lead || ""); });
     const about = T().about || D.I18N.pt.about || [];
@@ -413,8 +412,13 @@
     $$("[data-ui]").forEach((n) => { n.textContent = U[n.dataset.ui]; });
     $(".skip").textContent = U.skip;
     $("#theme").setAttribute("aria-label", U.theme);
-    $("#footer-name").textContent = `© ${new Date().getFullYear()} ${D.FULL_NAME}`;
-    $("#footer-text").textContent = noEmoji(T().footer || "");
+    $("#footer-name").textContent = `© ${new Date().getFullYear()}`;
+    $("#footer-text").textContent = U.footTag;
+    $("#footer-and").textContent = U.footAnd;
+    $("#footer-by").textContent = U.footBy;
+    $("#footer-author").textContent = D.FULL_NAME;
+    $("#footer-top").textContent = U.toTop;
+    [["#ico-cafe", U.icoCafe], ["#ico-codigo", U.icoCodigo], ["#ico-cometa", U.icoCometa]].forEach(([q, t]) => { $(q).title = t; $(q).setAttribute("aria-label", t); });
     if (D.UPDATED) {
       const [y, m, d] = D.UPDATED.split("-");
       $("#footer-updated").textContent = `${U.updated} ${d}/${m}/${y}`;
@@ -488,6 +492,49 @@
   $("#lb-close").addEventListener("click", () => $("#lightbox").close());
   $("#lightbox").addEventListener("click", (e) => { if (e.target.id === "lightbox") $("#lightbox").close(); });
   $("#spectrum-slider").addEventListener("input", (e) => { if (Math.abs(Number(e.target.value) - 6563) < 45 && window.Conquistas) window.Conquistas.hit("halpha"); });
+  // Rolagem por seção (desktop): um giro leva à seção seguinte/anterior. Seção mais alta que a tela rola
+  // normalmente até o fim dela e só então o próximo giro muda de seção.
+  (function sectionPaging() {
+    const BAR = 72;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+    let busy = false;
+    const stops = () => [".hero-band", ...[...$$("main section.block")].map((s) => "#" + s.id), "#rodape"]
+      .map((q) => $(q)).filter(Boolean).map((el) => Math.max(0, Math.round(el.getBoundingClientRect().top + scrollY - BAR)));
+    const go = (top) => {
+      busy = true;
+      const done = () => { clearTimeout(t); busy = false; removeEventListener("scrollend", done); };
+      const t = setTimeout(done, 900);
+      addEventListener("scrollend", done);
+      window.scrollTo({ top, behavior: reduce.matches ? "auto" : "smooth" });
+    };
+    addEventListener("wheel", (e) => {
+      if (innerWidth <= 900 || e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+      if (document.querySelector("dialog[open]") || e.target.closest(".trophy__pop, .menu__nav, .live")) return;
+      if (busy) { e.preventDefault(); return; }
+      if (Math.abs(e.deltaY) < 4) return;
+      const S = stops(), y = Math.round(scrollY), vh = innerHeight - BAR, max = document.documentElement.scrollHeight - innerHeight;
+      let i = 0;
+      for (let k = 0; k < S.length; k++) if (S[k] <= y + 2) i = k;
+      if (e.deltaY > 0) {
+        if (y >= max - 1) return;
+        const next = S[i + 1] ?? max;
+        const left = next - (y + vh);
+        if (left > 2) {
+          if (Math.abs(e.deltaY) < left) return;
+          e.preventDefault(); go(y + left); return;
+        }
+        e.preventDefault(); go(Math.min(next, max));
+      } else {
+        if (y <= 0) return;
+        const inside = y - S[i];
+        if (inside > 2) {
+          if (Math.abs(e.deltaY) < inside) return;
+          e.preventDefault(); go(S[i]); return;
+        }
+        e.preventDefault(); go(Math.max(S[i - 1] ?? 0, S[i] - vh));
+      }
+    }, { passive: false });
+  })();
   (function clock() {
     const fmt = new Intl.DateTimeFormat("pt-BR", { timeZone: "America/Sao_Paulo", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
     const tick = () => { $("#clock-time").textContent = fmt.format(new Date()); };

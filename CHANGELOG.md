@@ -9,6 +9,13 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+## [2.4.0] - 2026-11-03
+### Changed
+- Topbar mostra as seções a partir de 1024 px (antes só a partir de 1561 px); idioma vira só bandeiras e o relógio some em telas menores para caber.
+- Rolagem por seção no desktop: cada giro da roda leva à seção seguinte ou anterior; seções mais altas que a tela rolam normalmente até o fim antes de mudar de seção. Desligada abaixo de 900 px e com diálogos abertos; respeita `prefers-reduced-motion`.
+- Sidebar mais estreita (240 px), com tamanhos ajustados à altura da janela e sem barra de rolagem visível; em telas baixas os contatos viram uma linha de ícones.
+- Rodapé no padrão do Researcher Hub: uma barra com a frase (café, código e cometa), ícones sociais em caixinha, data de atualização e "voltar ao topo".
+
 ## [2.3.0] - 2026-11-03
 ### Added
 - Seção **Participação em eventos** (substitui "Além do código"): linha do tempo por ano com as fotos de cada evento e lightbox (setas, Esc). `tools/eventos.py` lê as notas `03-midia/<ano>/` publicadas do vault, gera WebP sem EXIF (1200 px e miniatura de 480 px) e `src/eventos.json`.
