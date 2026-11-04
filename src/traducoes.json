@@ -323,6 +323,15 @@
   "it": "Modelli LaTeX per uso generale.",
   "zh": "通用 LaTeX 模板。"
  },
+ "projeto:Passador": {
+  "pt_hash": "6317fd3ed9bb",
+  "pt": "Controle remoto de apresentações pelo iPhone, via Tailscale, no estilo do clicker Logitech Spotlight, sem instalar nada no celular. Funciona com qualquer aplicativo (PowerPoint, Keynote, leitores de PDF) ou abre o PDF no navegador com transições, notas do apresentador, passos dentro do slide e prévia do próximo slide. Laser, foco com desfoque ajustável, caneta, marca-texto, zoom, cronômetro e \"Ir para\" por número. Licença MIT.",
+  "en": "Remote control for presentations from an iPhone, over Tailscale, in the style of the Logitech Spotlight clicker, with nothing to install on the phone. It works with any application (PowerPoint, Keynote, PDF readers) or opens the PDF in the browser with transitions, speaker notes, steps within a slide and a preview of the next slide. Laser, focus with adjustable blur, pen, highlighter, zoom, timer and \"Go to\" by number. MIT license.",
+  "es": "Control remoto de presentaciones desde el iPhone, a través de Tailscale, al estilo del clicker Logitech Spotlight, sin instalar nada en el móvil. Funciona con cualquier aplicación (PowerPoint, Keynote, lectores de PDF) o abre el PDF en el navegador con transiciones, notas del presentador, pasos dentro de la diapositiva y vista previa de la siguiente diapositiva. Láser, foco con desenfoque ajustable, lápiz, marcador de texto, zoom, cronómetro e \"Ir a\" por número. Licencia MIT.",
+  "fr": "Télécommande de présentations depuis l'iPhone, via Tailscale, dans le style du clicker Logitech Spotlight, sans rien installer sur le téléphone. Fonctionne avec n'importe quelle application (PowerPoint, Keynote, lecteurs de PDF) ou ouvre le PDF dans le navigateur avec transitions, notes du présentateur, étapes au sein de la diapositive et aperçu de la diapositive suivante. Laser, focus avec flou réglable, stylo, surligneur, zoom, chronomètre et « Aller à » par numéro. Licence MIT.",
+  "it": "Telecomando per presentazioni dall'iPhone, tramite Tailscale, nello stile del clicker Logitech Spotlight, senza installare nulla sul telefono. Funziona con qualsiasi applicazione (PowerPoint, Keynote, lettori PDF) oppure apre il PDF nel browser con transizioni, note del relatore, passaggi all'interno della slide e anteprima della slide successiva. Laser, focus con sfocatura regolabile, penna, evidenziatore, zoom, cronometro e \"Vai a\" per numero. Licenza MIT.",
+  "zh": "通过 Tailscale 用 iPhone 远程控制演示文稿,类似 Logitech Spotlight 翻页笔,无需在手机上安装任何东西。可配合任何应用(PowerPoint、Keynote、PDF 阅读器)使用,也可在浏览器中打开 PDF,支持切换效果、演讲者备注、幻灯片内的分步动画以及下一张幻灯片预览。具备激光笔、可调模糊度的聚焦、画笔、荧光笔、缩放、计时器,以及按编号“跳转”功能。MIT 许可证。"
+ },
  "projeto:Perfil GitHub": {
   "pt_hash": "2f4f87717ce9",
   "pt": "README de perfil do GitHub (bio, Tech & Tools, projetos em destaque).",

@@ -422,6 +422,17 @@ icon: profile
 
 Bot do Telegram que liga o celular ao vault hardcore-life e aos agentes de IA (Claude Code e AGY): brief diário, lembretes, check-ins de rotina com botões, consultas somente leitura ao vault e aos repositórios, controle de sessões tmux, transcrição de áudio com Whisper e integração com o ReLaTeX. Regras de segurança bloqueiam arquivos sensíveis e notas protegidas.
 
+### Passador
+slug: passador
+repo: https://github.com/pedroiff0/passador
+stack: Python 3, Swift/AppKit, pdf.js, Tailscale, PWA
+tags: Apresentações, Controle Remoto, macOS, Código Aberto
+cat: pessoal
+visibility: público
+icon: document
+
+Controle remoto de apresentações pelo iPhone, via Tailscale, no estilo do clicker Logitech Spotlight, sem instalar nada no celular. Funciona com qualquer aplicativo (PowerPoint, Keynote, leitores de PDF) ou abre o PDF no navegador com transições, notas do apresentador, passos dentro do slide e prévia do próximo slide. Laser, foco com desfoque ajustável, caneta, marca-texto, zoom, cronômetro e "Ir para" por número. Licença MIT.
+
 ### guia-github
 slug: guiagithub
 repo: https://github.com/pedroiff0/guia-github
