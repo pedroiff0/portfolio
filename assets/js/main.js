@@ -136,6 +136,15 @@
     },
   };
   // v2.5: tour em zoom, busca e prévia do CV
+  const UI_QR = {
+    pt: { qrKicker: "SAB 2026 · Natal, RN · 25/10 a 30/10/2026", qrTitle: "Veio pelo QR code do banner? Comece por aqui.", qrSab: "SAB 2026: o evento e o que apresentei", qrSabSub: "O evento e o meu pôster", qrPesq: "Pesquisa: detecção de anomalias", qrPesqSub: "A pesquisa por trás do pôster, 2025 a 2026", qrPainel: "Painel interativo do mapa t-SNE", qrPainelSub: "Deixe seu nome na lista de quem passou pelo pôster", qrSobre: "Sobre mim", qrSobreSub: "Quem sou e o que faço", qrJardim: "Jardim digital", qrJardimSub: "Notas, projetos e eventos no site completo", qrNote: "O painel interativo é temporário e será desativado após a SAB. Dúvidas: pedroiff0@gmail.com." },
+    en: { qrKicker: "SAB 2026 · Natal, Brazil · Oct 25-30, 2026", qrTitle: "Came from the poster QR code? Start here.", qrSab: "SAB 2026: the event and my poster", qrSabSub: "The event and what I presented", qrPesq: "Research: anomaly detection", qrPesqSub: "The research behind the poster, 2025-2026", qrPainel: "Interactive t-SNE map", qrPainelSub: "Leave your name on the poster visitors list", qrSobre: "About me", qrSobreSub: "Who I am and what I do", qrJardim: "Digital garden", qrJardimSub: "Notes, projects and events on the full site", qrNote: "The interactive panel is temporary and will be shut down after SAB. Questions: pedroiff0@gmail.com." },
+    es: { qrKicker: "SAB 2026 · Natal, Brasil · 25 a 30/10/2026", qrTitle: "¿Llegaste por el código QR del póster? Empieza aquí.", qrSab: "SAB 2026: el evento y mi póster", qrSabSub: "El evento y lo que presenté", qrPesq: "Investigación: detección de anomalías", qrPesqSub: "La investigación detrás del póster, 2025-2026", qrPainel: "Panel interactivo del mapa t-SNE", qrPainelSub: "Deja tu nombre en la lista de visitantes del póster", qrSobre: "Sobre mí", qrSobreSub: "Quién soy y qué hago", qrJardim: "Jardín digital", qrJardimSub: "Notas, proyectos y eventos en el sitio completo", qrNote: "El panel interactivo es temporal y se desactivará después de la SAB. Dudas: pedroiff0@gmail.com." },
+    fr: { qrKicker: "SAB 2026 · Natal, Brésil · 25 au 30/10/2026", qrTitle: "Vous venez du QR code du poster ? Commencez ici.", qrSab: "SAB 2026 : l'événement et mon poster", qrSabSub: "L'événement et ce que j'ai présenté", qrPesq: "Recherche : détection d'anomalies", qrPesqSub: "La recherche derrière le poster, 2025-2026", qrPainel: "Panneau interactif de la carte t-SNE", qrPainelSub: "Laissez votre nom sur la liste des visiteurs du poster", qrSobre: "À propos de moi", qrSobreSub: "Qui je suis et ce que je fais", qrJardim: "Jardin numérique", qrJardimSub: "Notes, projets et événements sur le site complet", qrNote: "Le panneau interactif est temporaire et sera désactivé après la SAB. Questions : pedroiff0@gmail.com." },
+    it: { qrKicker: "SAB 2026 · Natal, Brasile · 25-30/10/2026", qrTitle: "Vieni dal QR code del poster? Parti da qui.", qrSab: "SAB 2026: l'evento e il mio poster", qrSabSub: "L'evento e cio che ho presentato", qrPesq: "Ricerca: rilevamento di anomalie", qrPesqSub: "La ricerca dietro il poster, 2025-2026", qrPainel: "Pannello interattivo della mappa t-SNE", qrPainelSub: "Lascia il tuo nome nella lista dei visitatori del poster", qrSobre: "Chi sono", qrSobreSub: "Chi sono e cosa faccio", qrJardim: "Giardino digitale", qrJardimSub: "Note, progetti ed eventi nel sito completo", qrNote: "Il pannello interattivo e temporaneo e sara disattivato dopo la SAB. Domande: pedroiff0@gmail.com." },
+    zh: { qrKicker: "SAB 2026 · 巴西纳塔尔 · 2026年10月25日至30日", qrTitle: "从海报二维码来的？从这里开始。", qrSab: "SAB 2026：会议与我的海报", qrSabSub: "会议以及我展示的内容", qrPesq: "研究：异常检测", qrPesqSub: "海报背后的研究，2025-2026", qrPainel: "t-SNE 交互式地图", qrPainelSub: "在海报访客名单上留下你的名字", qrSobre: "关于我", qrSobreSub: "我是谁，我做什么", qrJardim: "数字花园", qrJardimSub: "完整网站上的笔记、项目和活动", qrNote: "交互式面板是临时的，SAB 之后将关闭。问题请联系：pedroiff0@gmail.com。" },
+  };
+
   const UI_V25 = {
     pt: { play: "Reproduzir", pause: "Pausar", fullscreen: "Tela cheia", repo: "Repositório", seek: "Posição do vídeo", search: "Buscar", searchPh: "Buscar projetos, pesquisa, eventos… (# para tags)", searchEmpty: "Nada encontrado para", kinds: { projeto: "Projeto", pesquisa: "Pesquisa", bolsa: "Bolsa", evento: "Evento", secao: "Seção" }, cvPreview: "Prévia no idioma da página", status: { beta: "em beta", ajustes: "precisa de ajustes" }, cvOpen: "Abrir PDF" },
     en: { play: "Play", pause: "Pause", fullscreen: "Full screen", repo: "Repository", seek: "Video position", search: "Search", searchPh: "Search projects, research, events… (# for tags)", searchEmpty: "Nothing found for", kinds: { projeto: "Project", pesquisa: "Research", bolsa: "Grant", evento: "Event", secao: "Section" }, cvPreview: "Preview in the page language", status: { beta: "beta", ajustes: "needs adjustments" }, cvOpen: "Open PDF" },
@@ -144,7 +153,7 @@
     it: { play: "Riproduci", pause: "Pausa", fullscreen: "Schermo intero", repo: "Repository", seek: "Posizione del video", search: "Cerca", searchPh: "Cerca progetti, ricerca, eventi… (# per i tag)", searchEmpty: "Nessun risultato per", kinds: { projeto: "Progetto", pesquisa: "Ricerca", bolsa: "Borsa", evento: "Evento", secao: "Sezione" }, cvPreview: "Anteprima nella lingua della pagina", status: { beta: "in beta", ajustes: "da sistemare" }, cvOpen: "Apri il PDF" },
     zh: { play: "播放", pause: "暂停", fullscreen: "全屏", repo: "仓库", seek: "视频进度", search: "搜索", searchPh: "搜索项目、研究、活动…（# 搜索标签）", searchEmpty: "未找到", kinds: { projeto: "项目", pesquisa: "研究", bolsa: "资助", evento: "活动", secao: "栏目" }, cvPreview: "页面语言的预览", status: { beta: "测试版", ajustes: "待完善" }, cvOpen: "打开 PDF" },
   };
-  for (const l of LANGS) Object.assign(UI[l], UI_MORE[l], UI_V25[l]);
+  for (const l of LANGS) Object.assign(UI[l], UI_MORE[l], UI_V25[l], UI_QR[l]);
 
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => document.querySelectorAll(s);
@@ -293,6 +302,24 @@
     const dlg = $("#live");
     $("#live-frame").replaceChildren();
     if (dlg.open) dlg.close ? dlg.close() : dlg.removeAttribute("open");
+  }
+
+  function renderQr() {
+    const U = UI[lang];
+    const en = ["en", "it", "zh"].includes(lang), q = en ? "en" : "pt-br", own = ["es", "fr"].includes(lang) ? lang : q;
+    const B = "https://www.phrandrade.com";
+    const items = [
+      [`${B}/${q}/media/2026/sab/`, U.qrSab, U.qrSabSub, true],
+      [`${B}/${q}/research/deteccao-de-anomalias-iff-2025`, U.qrPesq, U.qrPesqSub],
+      ["https://anomaly.phrandrade.com", U.qrPainel, U.qrPainelSub],
+      [`${B}/${own}/about-me/`, U.qrSobre, U.qrSobreSub],
+      [`${B}/${q}/`, U.qrJardim, U.qrJardimSub],
+    ];
+    $("#qr-links").replaceChildren(...items.map(([href, t, sub, primary]) =>
+      el("a", { class: "qr__card" + (primary ? " is-primary" : ""), href, target: "_blank", rel: "noopener" },
+        el("strong", { text: t }), el("small", { text: sub }))));
+    $("#qr-note").textContent = U.qrNote;
+    $("#qr-close").setAttribute("aria-label", U.close);
   }
 
   function renderHero() {
@@ -546,7 +573,7 @@
     document.documentElement.lang = { pt: "pt-BR", en: "en", es: "es", fr: "fr", it: "it", zh: "zh-CN" }[lang];
     $$("#lang button, #lang-m button").forEach((b) => { const on = b.dataset.lang === lang; b.classList.toggle("is-active", on); b.setAttribute("aria-pressed", String(on)); });
     if (window.Conquistas) window.Conquistas.setLang(lang);
-    renderHero(); renderSections(); renderFeatured(); renderTabs(); renderRepos();
+    renderQr(); renderHero(); renderSections(); renderFeatured(); renderTabs(); renderRepos();
     renderResearch(); renderGrants(); renderContacts(); renderStatic();
     renderStats(); renderEvents(); renderCV(); renderSpectrum(); renderSidebar();
     $("#reader").setAttribute("aria-label", UI[lang].reader);
@@ -688,4 +715,14 @@
   initTheme();
   render();
   initSpy();
+})();
+
+(function () {
+  const d = document.getElementById("qr");
+  if (!d || !d.showModal) return;
+  document.getElementById("qr-close").addEventListener("click", () => d.close());
+  d.addEventListener("click", (e) => { if (e.target === d) d.close(); });
+  d.addEventListener("close", () => { try { sessionStorage.setItem("qr-seen", "1"); } catch (e) {} });
+  let seen = false; try { seen = sessionStorage.getItem("qr-seen") === "1"; } catch (e) {}
+  if (!seen && !navigator.webdriver) window.addEventListener("load", () => setTimeout(() => d.showModal(), 300));
 })();

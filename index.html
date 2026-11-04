@@ -165,6 +165,19 @@
   <button type="button" class="reader-exit" id="reader-exit" aria-label="Sair do modo leitura"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#reader"/></svg></button>
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
+  <dialog id="qr" class="qr" aria-labelledby="qr-title">
+    <button type="button" class="qr__close" id="qr-close" aria-label="Fechar">&times;</button>
+    <div class="qr__head">
+      <img class="qr__img" src="assets/media/qrcode.png" alt="QR code www.phrandrade.com" width="120" height="120">
+      <div>
+        <p class="qr__kicker" data-ui="qrKicker"></p>
+        <h2 class="qr__title" id="qr-title" data-ui="qrTitle"></h2>
+      </div>
+    </div>
+    <div class="qr__grid" id="qr-links"></div>
+    <p class="qr__note" id="qr-note"></p>
+  </dialog>
+
   <dialog id="lightbox" class="lightbox" aria-label="Fotos">
     <button type="button" class="lightbox__close" id="lb-close" aria-label="Fechar">&times;</button>
     <button type="button" class="lightbox__nav lightbox__prev" id="lb-prev" aria-label="Anterior">&#8249;</button>
