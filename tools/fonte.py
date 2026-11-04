@@ -19,7 +19,7 @@ VAULT_FONTE = os.environ.get(
     "PORTFOLIO_FONTE",
     "/home/pedro/hardcore-life/01-projetos/pessoal/portfolio/esboco-portfolio-conteudo.md",
 )
-OUTROS = ["en", "es", "fr"]
+OUTROS = ["en", "es", "fr", "it", "zh"]
 MEDIA_KEYS = ("image", "video", "live", "open")
 KV = re.compile(r'^\s*([A-Za-z_][A-Za-z0-9_]*)\s*:\s*(.*)$')
 CHAVES = {"full_name", "orcid", "instagram", "featured", "eyebrow", "tagline", "location", "slug", "repo", "stack",
@@ -170,7 +170,16 @@ def gravar_traducoes(T):
 
 
 def pendentes(B, T):
-    return [k for k, v in B.items() if T.get(k, {}).get("pt_hash") != h(v)]
+    """Trechos com pt alterado ou sem algum dos idiomas de OUTROS (ex.: idioma novo)."""
+    return [k for k, v in B.items() if T.get(k, {}).get("pt_hash") != h(v) or not all(T[k].get(l) for l in OUTROS)]
+
+
+def faltando(k, pt, T):
+    """Idiomas a pedir para o trecho k: todos se o pt mudou; senão só os ausentes."""
+    t = T.get(k, {})
+    if t.get("pt_hash") != h(pt):
+        return list(OUTROS)
+    return [l for l in OUTROS if not t.get(l)]
 
 
 def traduzido(id_, pt, T, lang):

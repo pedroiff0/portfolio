@@ -3,7 +3,7 @@
   "use strict";
 
   const D = window.PORTFOLIO_DATA;
-  const LANGS = ["pt", "en", "es", "fr"];
+  const LANGS = ["pt", "en", "es", "fr", "it", "zh"];
   const SECTIONS = ["sobre", "projetos", "trabalhos", "pesquisa", "bolsas", "eventos", "curriculo", "lattes", "contato"];
   const NAV = ["sobre", "projetos", "trabalhos", "pesquisa", "eventos", "curriculo", "lattes", "contato"];
   const NAV_I18N = { sobre: 0, projetos: 1, trabalhos: 2, pesquisa: 3, curriculo: 4, lattes: 5, contato: 6 }; // índice em I18N.*.nav
@@ -12,7 +12,7 @@
 
   const UI = {
     pt: {
-      cvText: "Currículo mantido em LaTeX (classe altacv), com versões sincronizadas em português, inglês, espanhol e francês.",
+      cvText: "Currículo mantido em LaTeX (classe altacv), com versões sincronizadas em seis idiomas: português, inglês, espanhol, francês, italiano e mandarim.",
       cvRepo: "Repositório do CV",
       lattesText: "Estudante de Engenharia de Computação no IFF (Bom Jesus do Itabapoana, RJ), bolsista de Iniciação Científica (PIBIC/CNPq), com pesquisa em arqueologia galáctica, populações estelares e estrutura da Via Láctea.",
       lattesOpen: "Abrir currículo Lattes",
@@ -21,7 +21,7 @@
       theme: "Alternar tema",
     },
     en: {
-      cvText: "Resume maintained in LaTeX (altacv class), with synchronized versions in Portuguese, English, Spanish and French.",
+      cvText: "Resume maintained in LaTeX (altacv class), with synchronized versions in six languages: Portuguese, English, Spanish, French, Italian and Mandarin.",
       cvRepo: "Resume repository",
       lattesText: "Computer Engineering student at IFF (Bom Jesus do Itabapoana, RJ), Scientific Initiation scholar (PIBIC/CNPq), researching galactic archaeology, stellar populations and the structure of the Milky Way.",
       lattesOpen: "Open Lattes CV",
@@ -30,7 +30,7 @@
       theme: "Toggle theme",
     },
     es: {
-      cvText: "Currículum mantenido en LaTeX (clase altacv), con versiones sincronizadas en portugués, inglés, español y francés.",
+      cvText: "Currículum mantenido en LaTeX (clase altacv), con versiones sincronizadas en seis idiomas: portugués, inglés, español, francés, italiano y mandarín.",
       cvRepo: "Repositorio del CV",
       lattesText: "Estudiante de Ingeniería Informática en el IFF (Bom Jesus do Itabapoana, RJ), becario de Iniciación Científica (PIBIC/CNPq), con investigación en arqueología galáctica, poblaciones estelares y estructura de la Vía Láctea.",
       lattesOpen: "Abrir currículum Lattes",
@@ -39,13 +39,31 @@
       theme: "Cambiar tema",
     },
     fr: {
-      cvText: "CV maintenu en LaTeX (classe altacv), avec des versions synchronisées en portugais, anglais, espagnol et français.",
+      cvText: "CV maintenu en LaTeX (classe altacv), avec des versions synchronisées en six langues : portugais, anglais, espagnol, français, italien et mandarin.",
       cvRepo: "Dépôt du CV",
       lattesText: "Étudiant en génie informatique à l'IFF (Bom Jesus do Itabapoana, RJ), boursier d'Initiation Scientifique (PIBIC/CNPq), avec des recherches en archéologie galactique, populations stellaires et structure de la Voie lactée.",
       lattesOpen: "Ouvrir le CV Lattes",
       empty: "Aucun projet trouvé.",
       skip: "Aller au contenu",
       theme: "Changer de thème",
+    },
+    it: {
+      cvText: "Curriculum mantenuto in LaTeX (classe altacv), con versioni sincronizzate in sei lingue: portoghese, inglese, spagnolo, francese, italiano e mandarino.",
+      cvRepo: "Repository del CV",
+      lattesText: "Studente di Ingegneria Informatica all'IFF (Bom Jesus do Itabapoana, RJ), borsista di Iniziazione Scientifica (PIBIC/CNPq), con ricerca in archeologia galattica, popolazioni stellari e struttura della Via Lattea.",
+      lattesOpen: "Apri il curriculum Lattes",
+      empty: "Nessun progetto trovato.",
+      skip: "Vai al contenuto",
+      theme: "Cambia tema",
+    },
+    zh: {
+      cvText: "简历使用 LaTeX（altacv 类）维护，提供六种语言的同步版本：葡萄牙语、英语、西班牙语、法语、意大利语和中文。",
+      cvRepo: "简历仓库",
+      lattesText: "巴西弗卢米嫩塞联邦学院（IFF，里约州 Bom Jesus do Itabapoana）计算机工程专业学生，科研启蒙计划（PIBIC/CNPq）奖学金获得者，研究方向为银河考古学、恒星星族与银河系结构。",
+      lattesOpen: "打开 Lattes 简历",
+      empty: "未找到项目。",
+      skip: "跳到内容",
+      theme: "切换主题",
     },
   };
 
@@ -94,8 +112,39 @@
       continuum: "continuum stellaire", el: { h: "hydrogène (Balmer)", ca2: "calcium ionisé", mg: "magnésium neutre", fe: "fer neutre", na: "sodium neutre" },
       sliderLabel: "Longueur d'onde en ångströms",
     },
+    it: {
+      cvDownload: "Scarica il CV", footTag: "— informatica e astrofisica, fatto con", footAnd: "e", footBy: "da", toTop: "Torna su ↑", icoCafe: "caffè", icoCodigo: "codice", icoCometa: "comete", updated: "Aggiornato il", menu: "Menu",
+      nav: "Eventi", alemTitle: "Partecipazione a eventi", alemLead: "Fiere, congressi e visite tecniche in cui ho presentato lavori o imparato qualcosa, con le foto di ciascuno.",
+      nickname: "Soprannome", base: "Sede", baseText: "Bom Jesus do Itabapoana, RJ, Brasile", photos: "foto", report: "Leggi il resoconto", noPhotos: "Resoconto senza foto", prev: "Precedente", next: "Successiva",
+      reader: "Modalità lettura", readerExit: "Esci dalla modalità lettura", cvAcad: "Accademico", cvProf: "Professionale", cvLangsTitle: "Curriculum in 6 lingue (PDF)",
+      tour: "Guarda il tour", live: "Esplora dal vivo", openNew: "Apri in una nuova scheda", close: "Chiudi",
+      stats: ["repository", "progetti di iniziazione scientifica", "partecipazioni all'IAAC (2024 e 2025)", "materie mappate nel Sistema Accademico"],
+      spectrumHint: "Trascina per percorrere lo spettro di una stella e trovare le righe di assorbimento che uso in GALAH DR4.",
+      continuum: "continuo stellare", el: { h: "idrogeno (Balmer)", ca2: "calcio ionizzato", mg: "magnesio neutro", fe: "ferro neutro", na: "sodio neutro" },
+      sliderLabel: "Lunghezza d'onda in ångström",
+    },
+    zh: {
+      cvDownload: "下载简历", footTag: "— 计算机与天体物理，用", footAnd: "和", footBy: "制作，作者", toTop: "回到顶部 ↑", icoCafe: "咖啡", icoCodigo: "代码", icoCometa: "彗星", updated: "更新于", menu: "菜单",
+      nav: "活动", alemTitle: "参加的活动", alemLead: "我展示作品或学习的展会、会议和技术参观，每项都附有照片。",
+      nickname: "昵称", base: "所在地", baseText: "巴西里约州 Bom Jesus do Itabapoana", photos: "张照片", report: "阅读记录", noPhotos: "无照片记录", prev: "上一张", next: "下一张",
+      reader: "阅读模式", readerExit: "退出阅读模式", cvAcad: "学术版", cvProf: "职业版", cvLangsTitle: "六种语言的简历（PDF）",
+      tour: "观看演示", live: "在线体验", openNew: "在新标签页打开", close: "关闭",
+      stats: ["个仓库", "个科研启蒙项目", "次参加 IAAC（2024 与 2025）", "门课程已录入学术系统"],
+      spectrumHint: "拖动滑块浏览恒星光谱，找到我在 GALAH DR4 中使用的吸收线。",
+      continuum: "恒星连续谱", el: { h: "氢（巴尔末系）", ca2: "电离钙", mg: "中性镁", fe: "中性铁", na: "中性钠" },
+      sliderLabel: "波长（埃）",
+    },
   };
-  for (const l of LANGS) Object.assign(UI[l], UI_MORE[l]);
+  // v2.5: tour em zoom, busca e prévia do CV
+  const UI_V25 = {
+    pt: { play: "Reproduzir", pause: "Pausar", fullscreen: "Tela cheia", repo: "Repositório", seek: "Posição do vídeo", search: "Buscar", searchPh: "Buscar projetos, pesquisa, eventos… (# para tags)", searchEmpty: "Nada encontrado para", kinds: { projeto: "Projeto", pesquisa: "Pesquisa", bolsa: "Bolsa", evento: "Evento", secao: "Seção" }, cvPreview: "Prévia no idioma da página", cvOpen: "Abrir PDF" },
+    en: { play: "Play", pause: "Pause", fullscreen: "Full screen", repo: "Repository", seek: "Video position", search: "Search", searchPh: "Search projects, research, events… (# for tags)", searchEmpty: "Nothing found for", kinds: { projeto: "Project", pesquisa: "Research", bolsa: "Grant", evento: "Event", secao: "Section" }, cvPreview: "Preview in the page language", cvOpen: "Open PDF" },
+    es: { play: "Reproducir", pause: "Pausar", fullscreen: "Pantalla completa", repo: "Repositorio", seek: "Posición del video", search: "Buscar", searchPh: "Buscar proyectos, investigación, eventos… (# para etiquetas)", searchEmpty: "Nada encontrado para", kinds: { projeto: "Proyecto", pesquisa: "Investigación", bolsa: "Beca", evento: "Evento", secao: "Sección" }, cvPreview: "Vista previa en el idioma de la página", cvOpen: "Abrir PDF" },
+    fr: { play: "Lire", pause: "Pause", fullscreen: "Plein écran", repo: "Dépôt", seek: "Position de la vidéo", search: "Rechercher", searchPh: "Rechercher projets, recherche, événements… (# pour les tags)", searchEmpty: "Aucun résultat pour", kinds: { projeto: "Projet", pesquisa: "Recherche", bolsa: "Bourse", evento: "Événement", secao: "Section" }, cvPreview: "Aperçu dans la langue de la page", cvOpen: "Ouvrir le PDF" },
+    it: { play: "Riproduci", pause: "Pausa", fullscreen: "Schermo intero", repo: "Repository", seek: "Posizione del video", search: "Cerca", searchPh: "Cerca progetti, ricerca, eventi… (# per i tag)", searchEmpty: "Nessun risultato per", kinds: { projeto: "Progetto", pesquisa: "Ricerca", bolsa: "Borsa", evento: "Evento", secao: "Sezione" }, cvPreview: "Anteprima nella lingua della pagina", cvOpen: "Apri il PDF" },
+    zh: { play: "播放", pause: "暂停", fullscreen: "全屏", repo: "仓库", seek: "视频进度", search: "搜索", searchPh: "搜索项目、研究、活动…（# 搜索标签）", searchEmpty: "未找到", kinds: { projeto: "项目", pesquisa: "研究", bolsa: "资助", evento: "活动", secao: "栏目" }, cvPreview: "页面语言的预览", cvOpen: "打开 PDF" },
+  };
+  for (const l of LANGS) Object.assign(UI[l], UI_MORE[l], UI_V25[l]);
 
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => document.querySelectorAll(s);
@@ -130,8 +179,11 @@
   function pickLang() {
     const saved = store.get("lang");
     if (LANGS.includes(saved)) return saved;
-    const nav = (navigator.language || "pt").slice(0, 2).toLowerCase();
-    return LANGS.includes(nav) ? nav : "pt";
+    for (const l of navigator.languages || [navigator.language || "pt"]) {
+      const c = String(l).slice(0, 2).toLowerCase();
+      if (LANGS.includes(c)) return c;
+    }
+    return "pt";
   }
 
   const T = () => D.I18N[lang] || D.I18N.pt;
@@ -154,7 +206,7 @@
       p.repo && p.visibility === "público"
         ? el("a", { href: p.repo, target: "_blank", rel: "noopener", text: noArrow(L.viewRepo || "GitHub") })
         : el("p", { class: "card__meta", text: L.noRepo || "" }));
-    return el("article", { class: "card", "data-cat": p.cat, "data-vis": p.visibility },
+    return el("article", { class: "card", "data-cat": p.cat, "data-vis": p.visibility, "data-sid": `p:${p.name}` },
       mediaFigure(p),
       el("div", { class: "card__head" }, el("h3", { text: p.name }), el("span", { class: "card__meta", text: visLabel(p.visibility) })),
       el("p", { class: "clamp", text: brief }),
@@ -163,8 +215,12 @@
 
   function mediaFigure(p) {
     if (!p.image) return null;
-    return el("figure", { class: "card__media" },
-      el("img", { src: p.image, alt: p.name, loading: "lazy", decoding: "async", width: "640", height: "400" }));
+    const img = el("img", { src: p.image, alt: p.name, loading: "lazy", decoding: "async", width: "640", height: "400" });
+    if (!p.video) return el("figure", { class: "card__media" }, img);
+    const b = el("button", { type: "button", class: "card__play", "aria-label": `${UI[lang].tour}: ${p.name}` }, img,
+      el("span", { class: "card__play-ico", "aria-hidden": "true" }, icon("play")));
+    b.addEventListener("click", () => openTour(p));
+    return el("figure", { class: "card__media" }, b);
   }
 
   function mediaActions(p) {
@@ -172,7 +228,7 @@
     const btns = [];
     if (p.video) {
       const b = el("button", { type: "button", class: "btn btn--sm", text: U.tour });
-      b.addEventListener("click", () => playTour(b.closest(".card"), p));
+      b.addEventListener("click", () => openTour(p));
       btns.push(b);
     }
     if (p.live) {
@@ -184,13 +240,34 @@
     return btns.length ? el("div", { class: "card__actions" }, btns) : null;
   }
 
-  function playTour(card, p) {
-    let fig = card.querySelector(".card__media");
-    if (!fig) { fig = el("figure", { class: "card__media" }); card.prepend(fig); }
-    const v = el("video", { src: p.video, poster: p.image || null, controls: "", muted: "", playsinline: "", autoplay: "", loop: "", preload: "auto", "aria-label": p.name });
+  // Tour em zoom: diálogo com o vídeo grande e painel mínimo (play, progresso, tempo, tela cheia, links, fechar).
+  const fmtT = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+  function openTour(p) {
+    const U = UI[lang], dlg = $("#tour"), v = $("#tour-video");
+    $("#tour-title").textContent = p.name;
+    v.poster = p.image || "";
+    v.src = p.video;
     v.muted = true;
-    fig.replaceChildren(v);
+    v.setAttribute("aria-label", `${U.tour}: ${p.name}`);
+    const link = (q, href, text) => { const a = $(q); a.hidden = !href; if (href) { a.href = href; a.textContent = text; } };
+    link("#tour-open", p.open || p.live, U.openNew);
+    link("#tour-repo", p.repo && p.visibility === "público" ? p.repo : "", U.repo);
+    $("#tour-close").setAttribute("aria-label", U.close);
+    $("#tour-fs").setAttribute("aria-label", U.fullscreen);
+    $("#tour-seek").setAttribute("aria-label", U.seek);
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+    v.play().catch(() => {});
     if (window.Conquistas) window.Conquistas.hit("tour");
+  }
+  function tourSync() {
+    const v = $("#tour-video"), U = UI[lang];
+    const d = v.duration || 0;
+    $("#tour-seek").value = d ? String(Math.round((v.currentTime / d) * 1000)) : "0";
+    $("#tour-seek").style.setProperty("--p", d ? `${(v.currentTime / d) * 100}%` : "0%");
+    $("#tour-time").textContent = `${fmtT(v.currentTime || 0)} / ${fmtT(d)}`;
+    const play = $("#tour-play");
+    play.setAttribute("aria-label", v.paused ? U.play : U.pause);
+    play.querySelector("use").setAttribute("href", `assets/icons.svg#${v.paused ? "play" : "pause"}`);
   }
 
   function openLive(p) {
@@ -266,9 +343,9 @@
 
   function renderResearch() {
     const L = T().labels || {};
-    $("#research").replaceChildren(...D.RESEARCH.map((r) => {
+    $("#research").replaceChildren(...D.RESEARCH.map((r, i) => {
       const url = ((r.details || "").match(/https?:\/\/\S+/) || [])[0];
-      return el("article", { class: "card" },
+      return el("article", { class: "card", "data-sid": `r:${i}` },
         el("div", { class: "card__head" }, el("h3", { text: r.title }), el("span", { class: "card__meta", text: r.badge })),
         el("p", { text: tr(r, "summary") }),
         url && r.badge !== "Privado" ? el("a", { href: url, target: "_blank", rel: "noopener", text: noArrow(L.viewRepo || "GitHub") }) : null);
@@ -277,7 +354,7 @@
 
   function renderGrants() {
     const B = T().bolsas || {};
-    $("#grants").replaceChildren(...D.BOLSAS.map((b) => el("li", {},
+    $("#grants").replaceChildren(...D.BOLSAS.map((b, i) => el("li", { "data-sid": `b:${i}` },
       el("span", { class: "when", text: `${b.period} · ${tr(b, "kind")}` }),
       el("h3", { text: tr(b, "title") }),
       el("p", { text: tr(b, "desc") }),
@@ -343,7 +420,7 @@
           b.addEventListener("click", () => openLightbox(ev, i));
           return b;
         });
-        return el("article", { class: "event" },
+        return el("article", { class: "event", "data-sid": `e:${ev.id}` },
           el("div", { class: "event__head" },
             el("h3", { text: ev.title }),
             el("span", { class: "card__meta" }, icon("camera"), ev.photos.length ? ` ${ev.photos.length} ${U.photos}` : ` ${U.noPhotos}`)),
@@ -381,6 +458,10 @@
     const row = (tipo, label) => el("div", { class: "cv-row" }, el("span", { class: "cv-row__label", text: label }),
       el("div", { class: "cv-row__langs" }, CV_LANGS.map(([l, nome]) => el("a", { class: "btn btn--sm", href: `${CV_BASE}/cv-${tipo}-${l}.pdf`, target: "_blank", rel: "noopener", title: nome, text: l.toUpperCase() }))));
     $("#cv-grid").replaceChildren(el("p", { class: "cv-grid__title", text: U.cvLangsTitle }), row("academico", U.cvAcad), row("profissional", U.cvProf));
+    const prev = (tipo, label) => el("a", { class: "cv-prev", href: `${CV_BASE}/cv-${tipo}-${lang}.pdf`, target: "_blank", rel: "noopener", "data-cv": `${tipo}-${lang}` },
+      el("img", { src: `assets/media/cv/${tipo}-${lang}-t.webp`, srcset: `assets/media/cv/${tipo}-${lang}-t.webp 360w, assets/media/cv/${tipo}-${lang}.webp 720w`, sizes: "(max-width: 640px) 90vw, 360px", width: "360", height: "509", loading: "lazy", alt: `${label} (${lang.toUpperCase()})` }),
+      el("span", { class: "cv-prev__cap" }, el("strong", { text: label }), el("span", { text: `${U.cvOpen} · ${lang.toUpperCase()}` })));
+    $("#cv-preview").replaceChildren(el("p", { class: "cv-grid__title", text: U.cvPreview }), el("div", { class: "cv-prev__row" }, prev("academico", U.cvAcad), prev("profissional", U.cvProf)));
   }
 
   function renderSidebar() {
@@ -425,8 +506,42 @@
     }
   }
 
+  // Documentos da busca, no idioma atual.
+  function searchDocs() {
+    const U = UI[lang], K = U.kinds, S = T().sections || {}, C = T().cat || {};
+    const strip = (h) => { const d = document.createElement("div"); d.innerHTML = h; return d.textContent; };
+    const docs = D.REPOS.map((p) => ({ sid: `p:${p.name}`, kind: "projeto", kindLabel: `${K.projeto} · ${C[p.cat] || p.cat}`, title: p.name,
+      tags: [...(p.tags || []), ...(p.stack || [])], text: noEmoji(tr(p, "brief")) }));
+    D.RESEARCH.forEach((r, i) => docs.push({ sid: `r:${i}`, kind: "pesquisa", kindLabel: K.pesquisa, title: r.title, tags: [r.badge].filter(Boolean), text: noEmoji(tr(r, "summary")) }));
+    D.BOLSAS.forEach((b, i) => docs.push({ sid: `b:${i}`, kind: "bolsa", kindLabel: `${K.bolsa} · ${b.period}`, title: tr(b, "title"), tags: [tr(b, "kind"), b.orient].filter(Boolean), text: tr(b, "desc") }));
+    (D.EVENTS || []).forEach((ev) => docs.push({ sid: `e:${ev.id}`, kind: "evento", kindLabel: `${K.evento} · ${ev.year}`, title: ev.title, tags: [String(ev.year)], text: `${ev.title} ${ev.year}` }));
+    const about = [].concat(T().about || []).map(strip).join(" ");
+    docs.push({ sid: "s:sobre", kind: "secao", kindLabel: K.secao, title: noEmoji(S.sobre?.title || "Sobre"), tags: [], text: about });
+    docs.push({ sid: "s:curriculo", kind: "secao", kindLabel: K.secao, title: noEmoji(S.curriculo?.title || "CV"), tags: ["CV", "PDF"], text: U.cvText });
+    docs.push({ sid: "s:lattes", kind: "secao", kindLabel: K.secao, title: noEmoji(S.lattes?.title || "Lattes"), tags: ["Lattes", "CNPq"], text: U.lattesText });
+    docs.push({ sid: "s:eventos", kind: "secao", kindLabel: K.secao, title: U.alemTitle, tags: [], text: U.alemLead });
+    return docs;
+  }
+  function goTo(d) {
+    let target;
+    if (d.kind === "secao") target = document.getElementById(d.sid.slice(2));
+    else {
+      if (d.kind === "projeto") {
+        cat = "all"; query = ""; $("#search").value = "";
+        renderTabs(); renderRepos();
+        target = $(`#repos [data-sid="${CSS.escape(d.sid)}"]`);
+      } else target = $(`[data-sid="${CSS.escape(d.sid)}"]`);
+    }
+    if (!target) return;
+    target.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: d.kind === "secao" ? "start" : "center" });
+    const det = target.querySelector("details");
+    if (det) det.open = true;
+    target.classList.add("is-flash");
+    setTimeout(() => target.classList.remove("is-flash"), 1600);
+  }
+
   function render() {
-    document.documentElement.lang = { pt: "pt-BR", en: "en", es: "es", fr: "fr" }[lang];
+    document.documentElement.lang = { pt: "pt-BR", en: "en", es: "es", fr: "fr", it: "it", zh: "zh-CN" }[lang];
     $$("#lang button, #lang-m button").forEach((b) => { const on = b.dataset.lang === lang; b.classList.toggle("is-active", on); b.setAttribute("aria-pressed", String(on)); });
     if (window.Conquistas) window.Conquistas.setLang(lang);
     renderHero(); renderSections(); renderFeatured(); renderTabs(); renderRepos();
@@ -434,6 +549,9 @@
     renderStats(); renderEvents(); renderCV(); renderSpectrum(); renderSidebar();
     $("#reader").setAttribute("aria-label", UI[lang].reader);
     $("#reader-exit").setAttribute("aria-label", UI[lang].readerExit);
+    $("#search-label").textContent = UI[lang].search;
+    $("#search-btn").setAttribute("aria-label", `${UI[lang].search} (Ctrl K)`);
+    if (window.Busca) window.Busca.setDocs(searchDocs(), UI[lang]);
   }
 
   function initTheme() {
@@ -543,6 +661,24 @@
   })();
   $("#search").addEventListener("input", (e) => { query = e.target.value.trim(); renderRepos(); });
   $("#nav-mobile").addEventListener("click", (e) => { if (e.target.closest("a")) $("#menu").open = false; });
+  if (window.Busca) window.Busca.onGo(goTo);
+  (function tourControls() {
+    const dlg = $("#tour"), v = $("#tour-video");
+    ["timeupdate", "play", "pause", "loadedmetadata"].forEach((ev) => v.addEventListener(ev, tourSync));
+    $("#tour-play").addEventListener("click", () => (v.paused ? v.play() : v.pause()));
+    v.addEventListener("click", () => (v.paused ? v.play() : v.pause()));
+    $("#tour-seek").addEventListener("input", (e) => { if (v.duration) v.currentTime = (Number(e.target.value) / 1000) * v.duration; });
+    $("#tour-fs").addEventListener("click", () => { const f = $("#tour-stage"); if (document.fullscreenElement) document.exitFullscreen(); else if (f.requestFullscreen) f.requestFullscreen(); });
+    $("#tour-close").addEventListener("click", () => dlg.close());
+    dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener("close", () => { v.pause(); v.removeAttribute("src"); v.load(); });
+    dlg.addEventListener("keydown", (e) => {
+      if (e.target.id === "tour-seek") return;
+      if (e.key === " ") { e.preventDefault(); v.paused ? v.play() : v.pause(); }
+      if (e.key === "ArrowRight") v.currentTime = Math.min(v.duration || 0, v.currentTime + 5);
+      if (e.key === "ArrowLeft") v.currentTime = Math.max(0, v.currentTime - 5);
+    });
+  })();
   $("#live-close").addEventListener("click", closeLive);
   $("#live").addEventListener("close", () => $("#live-frame").replaceChildren());
   $("#live").addEventListener("click", (e) => { if (e.target.id === "live") closeLive(); });

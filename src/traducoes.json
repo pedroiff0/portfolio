@@ -4,370 +4,476 @@
   "pt": "Iniciação Científica Júnior sobre matéria escura e choques extragalácticos.",
   "en": "Junior Scientific Initiation on dark matter and extragalactic shocks.",
   "es": "Iniciación Científica Júnior sobre materia oscura y choques extragalácticos.",
-  "fr": "Initiation Scientifique Junior sur la matière noire et les chocs extragalactiques."
+  "fr": "Initiation Scientifique Junior sur la matière noire et les chocs extragalactiques.",
+  "it": "Iniziazione Scientifica Junior sulla materia oscura e sugli shock extragalattici.",
+  "zh": "关于暗物质和星系外激波的初级科研启蒙计划。"
  },
  "bolsa:0:tipo": {
   "pt_hash": "f9301b8d61cb",
   "pt": "IC Júnior · CNPq",
   "en": "Junior SI · CNPq",
   "es": "IC Júnior · CNPq",
-  "fr": "SI Junior · CNPq"
+  "fr": "SI Junior · CNPq",
+  "it": "IC Junior · CNPq",
+  "zh": "初级科研启蒙计划 · CNPq"
  },
  "bolsa:0:titulo": {
   "pt_hash": "5cebddc6bcd4",
   "pt": "Entendendo a Matéria Escura a partir de Choques ExtraGalácticos",
   "en": "Understanding Dark Matter from ExtraGalactic Shocks",
   "es": "Entendiendo la Materia Oscura a partir de Choques ExtraGalácticos",
-  "fr": "Comprendre la Matière Noire à partir de Chocs ExtraGalactiques"
+  "fr": "Comprendre la Matière Noire à partir de Chocs ExtraGalactiques",
+  "it": "Comprendere la Materia Oscura a partire dagli Shock Extragalattici",
+  "zh": "从星系外激波理解暗物质"
  },
  "bolsa:1:desc": {
   "pt_hash": "df98cb06dbc4",
   "pt": "Projeto de Iniciação Científica do IFF (computação em névoa / edge).",
   "en": "IFF Scientific Initiation project (fog/edge computing).",
   "es": "Proyecto de Iniciación Científica del IFF (computación en niebla/edge).",
-  "fr": "Projet d'Initiation Scientifique de l'IFF (informatique en brouillard/edge)."
+  "fr": "Projet d'Initiation Scientifique de l'IFF (informatique en brouillard/edge).",
+  "it": "Progetto di Iniziazione Scientifica dell'IFF (fog computing / edge).",
+  "zh": "IFF 科研启蒙计划项目(雾计算 / 边缘计算)。"
  },
  "bolsa:1:tipo": {
   "pt_hash": "8b9a1b0df539",
   "pt": "IC · IFF",
   "en": "SI · IFF",
   "es": "IC · IFF",
-  "fr": "SI · IFF"
+  "fr": "SI · IFF",
+  "it": "IC · IFF",
+  "zh": "科研启蒙计划 · IFF"
  },
  "bolsa:1:titulo": {
   "pt_hash": "7c19187cab9b",
   "pt": "MobFog no IFFMaker",
   "en": "MobFog at IFFMaker",
   "es": "MobFog en IFFMaker",
-  "fr": "MobFog à l'IFFMaker"
+  "fr": "MobFog à l'IFFMaker",
+  "it": "MobFog in IFFMaker",
+  "zh": "IFFMaker 中的 MobFog"
  },
  "bolsa:2:desc": {
   "pt_hash": "6f7a0d82c628",
   "pt": "Simulação do impacto de rastros de satélites em imagens astronômicas.",
   "en": "Simulation of satellite-trail impact on astronomical images.",
   "es": "Simulación del impacto de rastros de satélites en imágenes astronómicas.",
-  "fr": "Simulation de l'impact des traînées de satellites sur les images astronomiques."
+  "fr": "Simulation de l'impact des traînées de satellites sur les images astronomiques.",
+  "it": "Simulazione dell'impatto delle scie dei satelliti sulle immagini astronomiche.",
+  "zh": "模拟卫星轨迹对天文图像的影响。"
  },
  "bolsa:2:tipo": {
   "pt_hash": "87514625767e",
   "pt": "Voluntário · CNPq",
   "en": "Volunteer · CNPq",
   "es": "Voluntario · CNPq",
-  "fr": "Bénévole · CNPq"
+  "fr": "Bénévole · CNPq",
+  "it": "Volontario · CNPq",
+  "zh": "志愿者 · CNPq"
  },
  "bolsa:2:titulo": {
   "pt_hash": "133fc9927583",
   "pt": "Simulando o Impacto de Satélites em Observações Astronômicas",
   "en": "Simulating the Impact of Satellites on Astronomical Observations",
   "es": "Simulando el Impacto de Satélites en Observaciones Astronómicas",
-  "fr": "Simuler l'Impact des Satellites sur les Observations Astronomiques"
+  "fr": "Simuler l'Impact des Satellites sur les Observations Astronomiques",
+  "it": "Simulare l'Impatto dei Satelliti sulle Osservazioni Astronomiche",
+  "zh": "模拟卫星对天文观测的影响"
  },
  "bolsa:3:desc": {
   "pt_hash": "20b386894adc",
   "pt": "Bolsa PIBIC/CNPq: aprendizado de máquina sobre Gaia DR3 + GALAH DR4 + GCNS para arqueologia galáctica e populações estelares. Co-autoria PUC Chile.",
   "en": "PIBIC/CNPq scholarship: machine learning on Gaia DR3 + GALAH DR4 + GCNS for galactic archaeology and stellar populations. Co-authorship PUC Chile.",
   "es": "Beca PIBIC/CNPq: aprendizaje de máquina sobre Gaia DR3 + GALAH DR4 + GCNS para arqueología galáctica y poblaciones estelares. Coautoría PUC Chile.",
-  "fr": "Bourse PIBIC/CNPq : apprentissage automatique sur Gaia DR3 + GALAH DR4 + GCNS pour l'archéologie galactique et les populations stellaires. Co-autoria PUC Chile."
+  "fr": "Bourse PIBIC/CNPq : apprentissage automatique sur Gaia DR3 + GALAH DR4 + GCNS pour l'archéologie galactique et les populations stellaires. Co-autoria PUC Chile.",
+  "it": "Borsa PIBIC/CNPq: apprendimento automatico su Gaia DR3 + GALAH DR4 + GCNS per l'archeologia galattica e le popolazioni stellari. Co-autori della PUC Chile.",
+  "zh": "PIBIC/CNPq 奖学金:基于 Gaia DR3 + GALAH DR4 + GCNS 的机器学习,用于银河考古学和恒星星族研究。与 PUC Chile 合作撰写。"
  },
  "bolsa:3:tipo": {
   "pt_hash": "99827078cf27",
   "pt": "IC · CNPq (PIBIC)",
   "en": "SI · CNPq (PIBIC)",
   "es": "IC · CNPq (PIBIC)",
-  "fr": "SI · CNPq (PIBIC)"
+  "fr": "SI · CNPq (PIBIC)",
+  "it": "IC · CNPq (PIBIC)",
+  "zh": "IC · CNPq (PIBIC)"
  },
  "bolsa:3:titulo": {
   "pt_hash": "4c0dd143a1f7",
   "pt": "Detecção de Anomalias em Estrelas da Via Láctea (Gaia + Surveys + ML)",
   "en": "Anomaly Detection in Stars of the Milky Way (Gaia + Surveys + ML)",
   "es": "Detección de Anomalias en Estrellas de la Vía Láctea (Gaia + Surveys + ML)",
-  "fr": "Détection d'Anomalies chez les Étoiles de la Voie Lactée (Gaia + Surveys + ML)"
+  "fr": "Détection d'Anomalies chez les Étoiles de la Voie Lactée (Gaia + Surveys + ML)",
+  "it": "Rilevamento di anomalie nelle stelle della Via Lattea (Gaia + Surveys + ML)",
+  "zh": "银河系恒星异常检测(Gaia + Surveys + ML)"
  },
  "bolsa:4:desc": {
   "pt_hash": "6dcf52b65bcb",
   "pt": "Continuação do projeto PIBIC/CNPq: aprendizado de máquina sobre Gaia DR3 + GALAH DR4 + GCNS para arqueologia galáctica e populações estelares. Co-autoria PUC Chile.",
   "en": "Continuation of the PIBIC/CNPq project: machine learning on Gaia DR3 + GALAH DR4 + GCNS for galactic archaeology and stellar populations. Co-authored with PUC Chile.",
   "es": "Continuación del proyecto PIBIC/CNPq: aprendizaje automático sobre Gaia DR3 + GALAH DR4 + GCNS para arqueología galáctica y poblaciones estelares. Coautoría con PUC Chile.",
-  "fr": "Poursuite du projet PIBIC/CNPq : apprentissage automatique sur Gaia DR3 + GALAH DR4 + GCNS pour l'archéologie galactique et les populations stellaires. Co-auteur avec PUC Chile."
+  "fr": "Poursuite du projet PIBIC/CNPq : apprentissage automatique sur Gaia DR3 + GALAH DR4 + GCNS pour l'archéologie galactique et les populations stellaires. Co-auteur avec PUC Chile.",
+  "it": "Prosecuzione del progetto PIBIC/CNPq: apprendimento automatico su Gaia DR3 + GALAH DR4 + GCNS per l'archeologia galattica e le popolazioni stellari. Co-autori della PUC Chile.",
+  "zh": "PIBIC/CNPq 项目的延续:基于 Gaia DR3 + GALAH DR4 + GCNS 的机器学习,用于银河考古学和恒星星族研究。与 PUC Chile 合作撰写。"
  },
  "bolsa:4:tipo": {
   "pt_hash": "99827078cf27",
   "pt": "IC · CNPq (PIBIC)",
   "en": "Scientific Initiation · CNPq (PIBIC)",
   "es": "Iniciación Científica · CNPq (PIBIC)",
-  "fr": "Initiation Scientifique · CNPq (PIBIC)"
+  "fr": "Initiation Scientifique · CNPq (PIBIC)",
+  "it": "IC · CNPq (PIBIC)",
+  "zh": "IC · CNPq (PIBIC)"
  },
  "bolsa:4:titulo": {
   "pt_hash": "3cbadd26f499",
   "pt": "Detecção de Anomalias em Estrelas da Via Láctea (Fase II)",
   "en": "Anomaly Detection in Milky Way Stars (Phase II)",
   "es": "Detección de Anomalías en Estrellas de la Vía Láctea (Fase II)",
-  "fr": "Détection d'anomalies dans les étoiles de la Voie lactée (Phase II)"
+  "fr": "Détection d'anomalies dans les étoiles de la Voie lactée (Phase II)",
+  "it": "Rilevamento di anomalie nelle stelle della Via Lattea (Fase II)",
+  "zh": "银河系恒星异常检测(第二阶段)"
  },
  "perfil:chips": {
   "pt_hash": "5eec5cf9fbf5",
   "pt": "PIBIC / CNPq\nIAAC 2024 & 2025\nCCNA · CyberOps · IoT\nLinux & Servidores\nAstrofísica Computacional\nMachine Learning\nGaia · GALAH\nORCID · Scholar",
   "en": "PIBIC / CNPq\nIAAC 2024 & 2025\nCCNA · CyberOps · IoT\nLinux & Servers\nComputational Astrophysics\nMachine Learning\nGaia · GALAH\nORCID · Scholar",
   "es": "PIBIC / CNPq\nIAAC 2024 y 2025\nCCNA · CyberOps · IoT\nLinux y Servidores\nAstrofísica Computacional\nAprendizaje Automático\nGaia · GALAH\nORCID · Scholar",
-  "fr": "PIBIC / CNPq\nIAAC 2024 et 2025\nCCNA · CyberOps · IoT\nLinux et Serveurs\nAstrophysique Computationnelle\nApprentissage Automatique\nGaia · GALAH\nORCID · Scholar"
+  "fr": "PIBIC / CNPq\nIAAC 2024 et 2025\nCCNA · CyberOps · IoT\nLinux et Serveurs\nAstrophysique Computationnelle\nApprentissage Automatique\nGaia · GALAH\nORCID · Scholar",
+  "it": "PIBIC / CNPq\nIAAC 2024 & 2025\nCCNA · CyberOps · IoT\nLinux e server\nAstrofisica computazionale\nMachine Learning\nGaia · GALAH\nORCID · Scholar",
+  "zh": "PIBIC / CNPq\nIAAC 2024 & 2025\nCCNA · CyberOps · IoT\nLinux 与服务器\n计算天体物理学\nMachine Learning\nGaia · GALAH\nORCID · Scholar"
  },
  "perfil:eyebrow": {
   "pt_hash": "c9f30efbaac0",
   "pt": "Engenharia de Computação · Instituto Federal Fluminense",
   "en": "Computer Engineering · Fluminense Federal Institute",
   "es": "Ingeniería Informática · Instituto Federal Fluminense",
-  "fr": "Génie Informatique · Institut Fédéral Fluminense"
+  "fr": "Génie Informatique · Institut Fédéral Fluminense",
+  "it": "Ingegneria Informatica · Instituto Federal Fluminense",
+  "zh": "计算机工程 · Instituto Federal Fluminense"
  },
  "perfil:frase": {
   "pt_hash": "f323ae07e2d7",
   "pt": "Construo software para a academia e uso computação para entender o cosmos. Estudante de Engenharia de Computação, bolsista de Iniciação Científica (PIBIC/CNPq), na interseção entre métodos computacionais e astrofísica.",
   "en": "I build software for academia and use computation to understand the cosmos. Computer Engineering student, Scientific Initiation Scholar (PIBIC/CNPq), at the intersection of computational methods and astrophysics.",
   "es": "Construyo software para la academia y uso la computación para entender el cosmos. Estudiante de Ingeniería Informática, becario de Iniciación Científica (PIBIC/CNPq), en la intersección entre métodos computacionales y astrofísica.",
-  "fr": "Je développe des logiciels pour l'académie et utilise l'informatique pour comprendre le cosmos. Étudiant en génie informatique, boursier d'Initiation Scientifique (PIBIC/CNPq), à l'intersection des méthodes computationnelles et de l'astrophysique."
+  "fr": "Je développe des logiciels pour l'académie et utilise l'informatique pour comprendre le cosmos. Étudiant en génie informatique, boursier d'Initiation Scientifique (PIBIC/CNPq), à l'intersection des méthodes computationnelles et de l'astrophysique.",
+  "it": "Costruisco software per il mondo accademico e uso il calcolo per comprendere il cosmo. Studente di Ingegneria Informatica, borsista di Iniziazione Scientifica (PIBIC/CNPq), all'intersezione tra metodi computazionali e astrofisica.",
+  "zh": "我为学术界开发软件,并利用计算来理解宇宙。我是计算机工程专业的学生,也是科研启蒙计划(PIBIC/CNPq)的奖学金获得者,研究方向位于计算方法与天体物理学的交叉领域。"
  },
  "perfil:sobre:0": {
   "pt_hash": "ec748fb0de6a",
   "pt": "Sou estudante de **Engenharia de Computação** no **Instituto Federal Fluminense (IFF)**, campus Bom Jesus do Itabapoana — RJ, e bolsista de Iniciação Científica (**PIBIC/CNPq**). Minha pesquisa fica na fronteira entre computação e astronomia: arqueologia galáctica, populações estelares e estrutura da Via Láctea, com aprendizado de máquina aplicado a dados do *Gaia* e de surveys complementares.",
   "en": "I am an undergraduate **Computer Engineering** student at the **Fluminense Federal Institute (IFF)**, campus Bom Jesus do Itabapoana — RJ, and a Scientific Initiation Scholar (**PIBIC/CNPq**). My research lies at the frontier of computing and astronomy: galactic archaeology, stellar populations and the structure of the Milky Way, with machine learning applied to *Gaia* and complementary survey data.",
   "es": "Soy estudiante de **Ingeniería Informática** en el **Instituto Federal Fluminense (IFF)**, campus Bom Jesus do Itabapoana — RJ, y becario de Iniciación Científica (**PIBIC/CNPq**). Mi investigación está en la frontera entre computación y astronomía: arqueología galáctica, poblaciones estelares y estructura de la Vía Láctea, con aprendizaje automático aplicado a datos del *Gaia* y de relevamientos complementarios.",
-  "fr": "Je suis étudiant en **génie informatique** à l'**Institut Fédéral Fluminense (IFF)**, campus Bom Jesus do Itabapoana — RJ, et boursier d'Initiation Scientifique (**PIBIC/CNPq**). Ma recherche se situe à la frontière de l'informatique et de l'astronomie : archéologie galactique, populations stellaires et structure de la Voie lactée, avec apprentissage automatique appliqué aux données du *Gaia* et de relevés complémentaires."
+  "fr": "Je suis étudiant en **génie informatique** à l'**Institut Fédéral Fluminense (IFF)**, campus Bom Jesus do Itabapoana — RJ, et boursier d'Initiation Scientifique (**PIBIC/CNPq**). Ma recherche se situe à la frontière de l'informatique et de l'astronomie : archéologie galactique, populations stellaires et structure de la Voie lactée, avec apprentissage automatique appliqué aux données du *Gaia* et de relevés complémentaires.",
+  "it": "Sono studente di **Ingegneria Informatica** presso l'**Instituto Federal Fluminense (IFF)**, campus Bom Jesus do Itabapoana — RJ, e borsista di Iniziazione Scientifica (**PIBIC/CNPq**). La mia ricerca si colloca al confine tra informatica e astronomia: archeologia galattica, popolazioni stellari e struttura della Via Lattea, con il machine learning applicato ai dati di *Gaia* e di survey complementari.",
+  "zh": "我是 **Instituto Federal Fluminense (IFF)** 位于 Bom Jesus do Itabapoana — RJ 校区的**计算机工程**专业学生,也是科研启蒙计划(**PIBIC/CNPq**)的奖学金获得者。我的研究处于计算机与天文学的交界处:星系考古学、恒星星族和银河系结构,并将机器学习应用于 *Gaia* 及其他互补巡天项目的数据。"
  },
  "perfil:sobre:1": {
   "pt_hash": "5718929d9287",
   "pt": "Do lado de engenharia, domino **Python** e **C**, redes de computadores (certificações **Cisco CCNA, CyberOps e IoT**), administração de servidores Linux e desenvolvimento de software full-stack. Participo da **International Astronomy and Astrophysics Competition** (IAAC 2024 e 2025) e apresentei trabalhos em eventos como FEBRACE, Mostratec, CONFICT e na Feira Brasileira de Iniciação Científica.",
   "en": "On the engineering side, I master **Python** and **C**, computer networks (Cisco **CCNA, CyberOps and IoT** certifications), Linux server administration and full-stack software development. I take part in the **International Astronomy and Astrophysics Competition** (IAAC 2024 and 2025) and presented work at events such as FEBRACE, Mostratec, CONFICT and the Brazilian Science Fair.",
   "es": "Del lado de la ingeniería, domino **Python** y **C**, redes de computadoras (certificaciones **Cisco CCNA, CyberOps e IoT**), administración de servidores Linux y desarrollo de software full-stack. Participo de la **International Astronomy and Astrophysics Competition** (IAAC 2024 y 2025) y presenté trabajos en eventos como FEBRACE, Mostratec, CONFICT y la Feria Brasileña de Iniciación Científica.",
-  "fr": "Côté ingénierie, je maîtrise **Python** et **C**, les réseaux informatiques (certifications **Cisco CCNA, CyberOps et IoT**), l'administration de serveurs Linux et le développement logiciel full-stack. Je participe à l'**International Astronomy and Astrophysics Competition** (IAAC 2024 et 2025) et ai présenté des travaux lors d'événements comme FEBRACE, Mostratec, CONFICT et la Foire Brésilienne d'Initiation Scientifique."
+  "fr": "Côté ingénierie, je maîtrise **Python** et **C**, les réseaux informatiques (certifications **Cisco CCNA, CyberOps et IoT**), l'administration de serveurs Linux et le développement logiciel full-stack. Je participe à l'**International Astronomy and Astrophysics Competition** (IAAC 2024 et 2025) et ai présenté des travaux lors d'événements comme FEBRACE, Mostratec, CONFICT et la Foire Brésilienne d'Initiation Scientifique.",
+  "it": "Dal lato ingegneristico, padroneggio **Python** e **C**, le reti di computer (certificazioni **Cisco CCNA, CyberOps e IoT**), l'amministrazione di server Linux e lo sviluppo software full-stack. Partecipo alla **International Astronomy and Astrophysics Competition** (IAAC 2024 e 2025) e ho presentato lavori in eventi come FEBRACE, Mostratec, CONFICT e alla Feira Brasileira de Iniciação Científica.",
+  "zh": "在工程方面,我精通 **Python** 和 **C**、计算机网络(**Cisco CCNA、CyberOps 和 IoT** 认证)、Linux 服务器管理以及全栈软件开发。我参加了 **International Astronomy and Astrophysics Competition**(IAAC 2024 和 2025),并在 FEBRACE、Mostratec、CONFICT 以及 Feira Brasileira de Iniciação Científica 等活动中展示过研究成果。"
  },
  "perfil:sobre:2": {
   "pt_hash": "896bfa1575f6",
   "pt": "Sou Técnico em Informática pelo IFF (2020–2022), membro do Centro de Representação Estudantil e um dos organizadores da Semana de Computação, Engenharia e Gestão do IFF.",
   "en": "I hold a Technical degree in Computer Science from IFF (2020–2022), am a member of the Student Representation Center and one of the organizers of the IFF Computing, Engineering and Management Week.",
   "es": "Soy Técnico en Informática por el IFF (2020–2022), miembro del Centro de Representación Estudiantil y uno de los organizadores de la Semana de Computación, Ingeniería y Gestión del IFF.",
-  "fr": "Je suis titulaire d'un diplôme technique en informatique de l'IFF (2020–2022), membre du Centre de Représentation Étudiante et l'un des organisateurs de la Semaine Informatique, Ingénierie et Gestion de l'IFF."
+  "fr": "Je suis titulaire d'un diplôme technique en informatique de l'IFF (2020–2022), membre du Centre de Représentation Étudiante et l'un des organisateurs de la Semaine Informatique, Ingénierie et Gestion de l'IFF.",
+  "it": "Sono Tecnico Informatico diplomato all'IFF (2020–2022), membro del Centro de Representação Estudantil e uno degli organizzatori della Semana de Computação, Engenharia e Gestão dell'IFF.",
+  "zh": "我毕业于 IFF 信息技术中专专业(2020–2022),是 Centro de Representação Estudantil 的成员,也是 IFF 计算机、工程与管理周(Semana de Computação, Engenharia e Gestão)的组织者之一。"
  },
  "perfil:tagline": {
   "pt_hash": "7ff46cd009c2",
   "pt": "Engenharia de Computação no IFF · bolsista PIBIC/CNPq · astrofísica computacional",
   "en": "Computer Engineering at IFF · PIBIC/CNPq scholar · computational astrophysics",
   "es": "Ingeniería Informática en el IFF · becario PIBIC/CNPq · astrofísica computacional",
-  "fr": "Génie informatique à l'IFF · boursier PIBIC/CNPq · astrophysique computationnelle"
+  "fr": "Génie informatique à l'IFF · boursier PIBIC/CNPq · astrophysique computationnelle",
+  "it": "Ingegneria Informatica all'IFF · borsista PIBIC/CNPq · astrofisica computazionale",
+  "zh": "IFF 计算机工程 · PIBIC/CNPq 奖学金获得者 · 计算天体物理学"
  },
  "projeto:Arquivo de Apostilas": {
   "pt_hash": "b71fe85ac44b",
   "pt": "Plano, em planejamento, de escrever apostilas próprias cobrindo toda a grade de Engenharia de Computação — com teoria, exercícios e experimentos comentados. Abrange Cálculos I–IV e Cálculo Numérico, Física I–IV (com espaço para Quântica e de Partículas), Álgebra Linear, Algoritmos e Estruturas de Dados, Equações Diferenciais, Mecânica dos Sólidos e Fluidos, Eletricidade e Eletrônica, Banco de Dados, Engenharia de Software, Compiladores, Programação, Redes, Arquitetura de Computadores, Sistemas Operacionais e Embarcados, Metodologia Científica e Astrofísica. Complementa as notas de disciplinas já publicadas no site oficial.",
   "en": "A planned series of my own course booklets covering the entire Computer Engineering curriculum — with theory, exercises and annotated experiments. Spans Calculus I–IV and Numerical Methods, Physics I–IV (with room for Quantum and Particle Physics), Linear Algebra, Algorithms and Data Structures, Differential Equations, Solid and Fluid Mechanics, Electricity and Electronics, Databases, Software Engineering, Compilers, Programming, Networks, Computer Architecture, Operating and Embedded Systems, Scientific Methodology and Astrophysics. Complements the course notes already published on the official site.",
   "es": "Plan, en planificación, de escribir apuntes propios que cubran toda la malla de Ingeniería Informática — con teoría, ejercicios y experimentos comentados. Abarca Cálculos I–IV y Cálculo Numérico, Física I–IV (con espacio para Cuántica y de Partículas), Álgebra Lineal, Algoritmos y Estructuras de Datos, Ecuaciones Diferenciales, Mecánica de Sólidos y Fluidos, Electricidad y Electrónica, Bases de Datos, Ingeniería de Software, Compiladores, Programación, Redes, Arquitectura de Computadores, Sistemas Operativos y Embebidos, Metodología Científica y Astrofísica. Complementa los apuntes de asignaturas ya publicados en el sitio oficial.",
-  "fr": "Projet, en cours de planification, d'écrire mes propres fascicules couvrant tout le programme de génie informatique — avec théorie, exercices et expériences commentées. Couvre Calcul I–IV et Calcul Numérique, Physique I–IV (avec place pour la Quantique et les Particules), Algèbre Linéaire, Algorithmes et Structures de Données, Équations Différentielles, Mécanique des Solides et des Fluides, Électricité et Électronique, Bases de Données, Génie Logiciel, Compilateurs, Programmation, Réseaux, Architecture des Ordinateurs, Systèmes d'Exploitation et Embarqués, Méthodologie Scientifique et Astrophysique. Complète les notes de cours déjà publiées sur le site officiel."
+  "fr": "Projet, en cours de planification, d'écrire mes propres fascicules couvrant tout le programme de génie informatique — avec théorie, exercices et expériences commentées. Couvre Calcul I–IV et Calcul Numérique, Physique I–IV (avec place pour la Quantique et les Particules), Algèbre Linéaire, Algorithmes et Structures de Données, Équations Différentielles, Mécanique des Solides et des Fluides, Électricité et Électronique, Bases de Données, Génie Logiciel, Compilateurs, Programmation, Réseaux, Architecture des Ordinateurs, Systèmes d'Exploitation et Embarqués, Méthodologie Scientifique et Astrophysique. Complète les notes de cours déjà publiées sur le site officiel.",
+  "it": "Piano, in fase di pianificazione, per scrivere dispense proprie che coprano l'intero piano di studi di Ingegneria Informatica — con teoria, esercizi ed esperimenti commentati. Comprende Calcolo I–IV e Calcolo Numerico, Fisica I–IV (con spazio per Fisica Quantistica e delle Particelle), Algebra Lineare, Algoritmi e Strutture Dati, Equazioni Differenziali, Meccanica dei Solidi e dei Fluidi, Elettricità ed Elettronica, Basi di Dati, Ingegneria del Software, Compilatori, Programmazione, Reti, Architettura dei Calcolatori, Sistemi Operativi ed Embedded, Metodologia Scientifica e Astrofisica. Integra gli appunti delle discipline già pubblicati sul sito ufficiale.",
+  "zh": "计划中的项目:编写自己的讲义,覆盖计算机工程专业的全部课程——包含理论、习题和带注释的实验。涵盖微积分 I–IV 和数值计算、物理 I–IV(并为量子物理和粒子物理预留空间)、线性代数、算法与数据结构、微分方程、固体与流体力学、电学与电子学、数据库、软件工程、编译器、编程、网络、计算机体系结构、操作系统与嵌入式系统、科学方法论以及天体物理学。是对官方网站上已发布的课程笔记的补充。"
  },
  "projeto:Avaliações Concurseiro": {
   "pt_hash": "8cec6de9d69a",
   "pt": "Fork focado em concurseiros: banco de MCQ, trilhas por edital, cronograma maleável, Pomodoro, simulados em PDF e app mobile Expo com paridade total de funcionalidades.",
   "en": "Fork aimed at civil-service exam candidates: MCQ bank, syllabus-driven study tracks, flexible schedule, Pomodoro, PDF mock exams and an Expo mobile app with full feature parity.",
   "es": "Fork enfocado en opositores: banco de preguntas de opción múltiple, itinerarios por temario, cronograma flexible, Pomodoro, simulacros en PDF y app móvil Expo con paridad total de funciones.",
-  "fr": "Fork destiné aux candidats aux concours : banque de QCM, parcours par programme officiel, planning souple, Pomodoro, examens blancs en PDF et application mobile Expo à parité fonctionnelle complète."
+  "fr": "Fork destiné aux candidats aux concours : banque de QCM, parcours par programme officiel, planning souple, Pomodoro, examens blancs en PDF et application mobile Expo à parité fonctionnelle complète.",
+  "it": "Fork orientato ai candidati ai concorsi pubblici: banca di quesiti a risposta multipla, percorsi per bando, cronoprogramma flessibile, Pomodoro, simulazioni in PDF e app mobile Expo con piena parità di funzionalità.",
+  "zh": "面向公务员考试备考者的分叉版本:包含单选题题库、按招考公告划分的学习路线、灵活的学习计划、番茄钟、PDF 模拟考试,以及功能完全对等的 Expo 移动应用。"
  },
  "projeto:Avaliações Professores": {
   "pt_hash": "79486998dba9",
   "pt": "Fork do Sistema de Avaliações com banco pessoal + banco global compartilhado (fork de questões entre professores), PDF por pool com peso e gabarito opcional.",
   "en": "Fork of the Evaluations System with a personal bank plus a shared global bank (questions forked between teachers), pool-based PDF generation with weighting and optional answer key.",
   "es": "Fork del Sistema de Evaluaciones con banco personal más banco global compartido (preguntas bifurcadas entre profesores), generación de PDF por pool con peso y solucionario opcional.",
-  "fr": "Fork du Système d'Évaluations avec une banque personnelle et une banque globale partagée (questions forkées entre enseignants), génération de PDF par pool avec pondération et corrigé optionnel."
+  "fr": "Fork du Système d'Évaluations avec une banque personnelle et une banque globale partagée (questions forkées entre enseignants), génération de PDF par pool avec pondération et corrigé optionnel.",
+  "it": "Fork del Sistema de Avaliações con banca personale + banca globale condivisa (fork dei quesiti tra docenti), PDF per pool con peso e griglia di risposte facoltativa.",
+  "zh": "Sistema de Avaliações 的分叉版本,包含个人题库和共享的全局题库(教师之间可分叉题目),按题池生成 PDF,支持设置权重和可选的答案页。"
  },
  "projeto:Caixas": {
   "pt_hash": "fb7f5c12b237",
   "pt": "Aplicação web para registrar fechamentos diários de caixa (vendas, depósitos, vales, total contado na gaveta), gerar relatórios e manter histórico imprimível. Flask + SQLAlchemy + Alembic, com endpoints REST auxiliares e migrations versionadas em CI.",
   "en": "Web app to record daily cash-register closings (sales, deposits, vouchers, counted drawer total), generate reports and keep a printable history. Flask + SQLAlchemy + Alembic, with auxiliary REST endpoints and migrations versioned in CI. In production and in real daily use.",
   "es": "Aplicación web para registrar cierres diarios de caja (ventas, depósitos, vales, total contado en el cajón), generar informes y mantener un historial imprimible. Flask + SQLAlchemy + Alembic, con endpoints REST auxiliares y migraciones versionadas en CI. En producción y en uso real diario.",
-  "fr": "Application web pour enregistrer les clôtures de caisse quotidiennes (ventes, dépôts, bons, total compté en caisse), générer des rapports et conserver un historique imprimable. Flask + SQLAlchemy + Alembic, avec endpoints REST auxiliaires et migrations versionnées en CI. En production et en usage quotidien réel."
+  "fr": "Application web pour enregistrer les clôtures de caisse quotidiennes (ventes, dépôts, bons, total compté en caisse), générer des rapports et conserver un historique imprimable. Flask + SQLAlchemy + Alembic, avec endpoints REST auxiliaires et migrations versionnées en CI. En production et en usage quotidien réel.",
+  "it": "Applicazione web per registrare le chiusure giornaliere di cassa (vendite, depositi, buoni, totale contato nel cassetto), generare report e mantenere uno storico stampabile. Flask + SQLAlchemy + Alembic, con endpoint REST ausiliari e migrations versionate in CI.",
+  "zh": "用于记录每日收银结账(销售额、存款、代金券、抽屉内清点总额)、生成报表并保留可打印历史记录的 Web 应用。采用 Flask + SQLAlchemy + Alembic,配有辅助 REST 端点,并在 CI 中对 migrations 进行版本管理。"
  },
  "projeto:ControleEstoque": {
   "pt_hash": "4d0fb2efb365",
   "pt": "Aplicação para contagem rápida de inventário, com persistência de sessão, consolidação de contagens e geração de relatórios em CSV/PDF.",
   "en": "App for fast inventory counting, with session persistence, consolidation of counts and CSV/PDF report generation.",
   "es": "Aplicación para conteo rápido de inventario, con persistencia de sesión, consolidación de conteos y generación de informes en CSV/PDF.",
-  "fr": "Application de comptage rapide d'inventaire, avec persistance de session, consolidation des comptages et génération de rapports en CSV/PDF."
+  "fr": "Application de comptage rapide d'inventaire, avec persistance de session, consolidation des comptages et génération de rapports en CSV/PDF.",
+  "it": "Applicazione per il conteggio rapido dell'inventario, con persistenza della sessione, consolidamento dei conteggi e generazione di report in CSV/PDF.",
+  "zh": "用于快速盘点库存的应用,支持会话持久化、盘点结果合并,并可生成 CSV/PDF 报表。"
  },
  "projeto:Currículo (CV)": {
   "pt_hash": "ba5297012cbc",
   "pt": "CV em LaTeX (classe altacv), multilíngue (PT/EN/ES/FR) compilado via Makefile. Inclui ORCID, Google Scholar e publicações em congressos (CONFICT, SAB, SBPC).",
   "en": "CV in LaTeX (altacv class), multilingual (PT/EN/ES/FR) compiled via Makefile. Includes ORCID, Google Scholar and conference publications (CONFICT, SAB, SBPC).",
   "es": "CV en LaTeX (clase altacv), multilingüe (PT/EN/ES/FR) compilado vía Makefile. Incluye ORCID, Google Scholar y publicaciones en congresos (CONFICT, SAB, SBPC).",
-  "fr": "CV en LaTeX (classe altacv), multilingue (PT/EN/ES/FR) compilé via Makefile. Inclut ORCID, Google Scholar et publications en conférence (CONFICT, SAB, SBPC)."
+  "fr": "CV en LaTeX (classe altacv), multilingue (PT/EN/ES/FR) compilé via Makefile. Inclut ORCID, Google Scholar et publications en conférence (CONFICT, SAB, SBPC).",
+  "it": "CV in LaTeX (classe altacv), multilingue (PT/EN/ES/FR) compilato tramite Makefile. Include ORCID, Google Scholar e pubblicazioni in congressi (CONFICT, SAB, SBPC).",
+  "zh": "使用 LaTeX(altacv 类)编写的多语言(PT/EN/ES/FR)简历,通过 Makefile 编译。包含 ORCID、Google Scholar 以及会议发表论文(CONFICT、SAB、SBPC)。"
  },
  "projeto:Cálculo Numérico": {
   "pt_hash": "d1e6fa31c36b",
   "pt": "Repositório de códigos da disciplina Cálculo Numérico 2025.2, com CI e documentação.",
   "en": "Code repository for the Numerical Methods course (2025.2), with CI and documentation — implementations of root finding, interpolation, numerical integration and linear systems.",
   "es": "Repositorio de códigos de la asignatura Cálculo Numérico 2025.2, con CI y documentación — implementaciones de búsqueda de raíces, interpolación, integración numérica y sistemas lineales.",
-  "fr": "Dépôt de codes du cours de Calcul Numérique 2025.2, avec CI et documentation — implémentations de recherche de racines, interpolation, intégration numérique et systèmes linéaires."
+  "fr": "Dépôt de codes du cours de Calcul Numérique 2025.2, avec CI et documentation — implémentations de recherche de racines, interpolation, intégration numérique et systèmes linéaires.",
+  "it": "Repository dei codici del corso di Cálculo Numérico 2025.2, con CI e documentazione.",
+  "zh": "Cálculo Numérico 2025.2 课程的代码仓库,包含 CI 和文档。"
  },
  "projeto:Finanças App": {
   "pt_hash": "2b5090213f26",
   "pt": "Aplicação web de controle financeiro pessoal com três módulos independentes (ligados/desligados por flag): Finanças (contas, categorias, lançamentos, recorrências, orçamentos por envelope, metas), Investimentos (carteira multi-corretora, preço médio ponderado, proventos, resultado realizado/não realizado) e Moto (manutenções, abastecimentos com km/l, gastos, custo por km, alertas de revisão). Backend Node/Express + MongoDB, frontend EJS SSR, autenticação JWT, validação Zod e boas práticas de segurança (Helmet, rate-limit, CSP). Deploy via Docker Compose.",
   "en": "Personal finance web app with three independent, flag-toggled modules: Finances (accounts, categories, entries, recurrences, envelope budgets, goals), Investments (multi-broker portfolio, weighted average price, dividends, realized/unrealized results) and Motorcycle (maintenance, refuels with km/l, expenses, cost per km, service alerts). Node/Express + MongoDB backend, EJS SSR frontend, JWT auth, Zod validation and security hardening (Helmet, rate-limit, CSP). Deployed via Docker Compose.",
   "es": "Aplicación web de control financiero personal con tres módulos independientes (activables por flag): Finanzas (cuentas, categorías, movimientos, recurrencias, presupuestos por sobre, metas), Inversiones (cartera multicorredora, precio medio ponderado, dividendos, resultado realizado/no realizado) y Moto (mantenimientos, repostajes con km/l, gastos, costo por km, alertas de revisión). Backend Node/Express + MongoDB, frontend EJS SSR, autenticación JWT, validación Zod y endurecimiento de seguridad (Helmet, rate-limit, CSP). Despliegue vía Docker Compose.",
-  "fr": "Application web de gestion financière personnelle avec trois modules indépendants (activables par flag) : Finances (comptes, catégories, écritures, récurrences, budgets par enveloppe, objectifs), Investissements (portefeuille multi-courtiers, prix moyen pondéré, dividendes, résultat réalisé/latent) et Moto (entretiens, pleins avec km/l, dépenses, coût au km, alertes de révision). Backend Node/Express + MongoDB, frontend EJS SSR, auth JWT, validation Zod et durcissement sécurité (Helmet, rate-limit, CSP). Déploiement via Docker Compose."
+  "fr": "Application web de gestion financière personnelle avec trois modules indépendants (activables par flag) : Finances (comptes, catégories, écritures, récurrences, budgets par enveloppe, objectifs), Investissements (portefeuille multi-courtiers, prix moyen pondéré, dividendes, résultat réalisé/latent) et Moto (entretiens, pleins avec km/l, dépenses, coût au km, alertes de révision). Backend Node/Express + MongoDB, frontend EJS SSR, auth JWT, validation Zod et durcissement sécurité (Helmet, rate-limit, CSP). Déploiement via Docker Compose.",
+  "it": "Applicazione web di gestione delle finanze personali con tre moduli indipendenti (attivabili/disattivabili tramite flag): Finanze (conti, categorie, movimenti, ricorrenze, budget a buste, obiettivi), Investimenti (portafoglio multi-broker, prezzo medio ponderato, proventi, risultato realizzato/non realizzato) e Moto (manutenzioni, rifornimenti con km/l, spese, costo per km, avvisi di revisione). Backend Node/Express + MongoDB, frontend EJS SSR, autenticazione JWT, validazione Zod e buone pratiche di sicurezza (Helmet, rate-limit, CSP). Deploy tramite Docker Compose.",
+  "zh": "个人财务管理 Web 应用,包含三个相互独立的模块(可通过标志开关启用/停用):财务(账户、分类、流水、周期性交易、信封预算、目标)、投资(多券商投资组合、加权平均价格、收益分红、已实现/未实现收益)和摩托车(保养、含 km/l 的加油记录、支出、每公里成本、保养提醒)。后端采用 Node/Express + MongoDB,前端使用 EJS SSR,采用 JWT 认证、Zod 校验以及安全最佳实践(Helmet、rate-limit、CSP)。通过 Docker Compose 部署。"
  },
  "projeto:Formulários": {
   "pt_hash": "abe173c8d56b",
   "pt": "Coleção de folhas de fórmulas e resumos em LaTeX organizados por disciplina.",
   "en": "Collection of LaTeX formula sheets and summaries organized by course — mathematics and physics, typeset with siunitx.",
   "es": "Colección de formularios y resúmenes en LaTeX organizados por asignatura — matemáticas y física, compuestos con siunitx.",
-  "fr": "Collection de formulaires et résumés en LaTeX organisés par matière — mathématiques et physique, composés avec siunitx."
+  "fr": "Collection de formulaires et résumés en LaTeX organisés par matière — mathématiques et physique, composés avec siunitx.",
+  "it": "Raccolta di formulari e riassunti in LaTeX organizzati per disciplina.",
+  "zh": "按学科整理的 LaTeX 公式表和总结合集。"
  },
  "projeto:HardCoreLife (plataforma)": {
   "pt_hash": "4eb8d7abf168",
   "pt": "Plataforma pessoal modular, em planejamento, para reunir num só sistema o que hoje vive espalhado em planilhas e apps soltos. Um núcleo, vários módulos integrados: Controle Financeiro, Investimentos, Automotivo, Tarefas, Streamings (assinaturas) e Compartilhamento Familiar com acesso restrito por convite. Acesso pensado em duas camadas: web (aberta ou restrita conforme o módulo) e área privada.",
   "en": "A planned modular personal platform to bring into one system what today lives scattered across spreadsheets and standalone apps. One core, several integrated modules: Finances, Investments, Vehicles, Tasks, Streaming subscriptions and Family Sharing with invite-only access. Access designed in two layers: web (open or restricted depending on the module) and a private area.",
   "es": "Plataforma personal modular, en planificación, para reunir en un solo sistema lo que hoy vive disperso en hojas de cálculo y apps sueltas. Un núcleo, varios módulos integrados: Control Financiero, Inversiones, Automotriz, Tareas, Streamings (suscripciones) y Compartición Familiar con acceso restringido por invitación. Acceso pensado en dos capas: web (abierta o restringida según el módulo) y área privada.",
-  "fr": "Plateforme personnelle modulaire, en cours de planification, pour réunir dans un seul système ce qui vit aujourd'hui éparpillé entre tableurs et applications isolées. Un noyau, plusieurs modules intégrés : Finances, Investissements, Automobile, Tâches, Abonnements streaming et Partage Familial sur invitation. Accès pensé en deux couches : web (ouverte ou restreinte selon le module) et espace privé."
+  "fr": "Plateforme personnelle modulaire, en cours de planification, pour réunir dans un seul système ce qui vit aujourd'hui éparpillé entre tableurs et applications isolées. Un noyau, plusieurs modules intégrés : Finances, Investissements, Automobile, Tâches, Abonnements streaming et Partage Familial sur invitation. Accès pensé en deux couches : web (ouverte ou restreinte selon le module) et espace privé.",
+  "it": "Piattaforma personale modulare, in fase di pianificazione, per riunire in un unico sistema ciò che oggi è sparso tra fogli di calcolo e app isolate. Un nucleo, più moduli integrati: Controllo Finanziario, Investimenti, Automotive, Attività, Streaming (abbonamenti) e Condivisione Familiare con accesso limitato su invito. Accesso pensato su due livelli: web (aperto o riservato a seconda del modulo) e area privata.",
+  "zh": "计划中的模块化个人平台,旨在把目前分散在各种电子表格和零散应用中的内容整合到一个系统里。一个核心,多个集成模块:财务管理、投资、汽车、任务、流媒体(订阅)以及仅限受邀访问的家庭共享。访问方式设计为两层:网页端(按模块开放或受限)和私人区域。"
  },
  "projeto:LevantamentoEstoque": {
   "pt_hash": "0bd856342388",
   "pt": "Sistema de levantamento de estoque por cor/tamanho, com persistência de sessão, extração de dados de PDF e geração de relatórios — voltado a itens de compra repetida.",
   "en": "Stock-taking system by colour and size, with session persistence, data extraction from PDFs and report generation — aimed at repeatedly purchased items.",
   "es": "Sistema de levantamiento de existencias por color y talla, con persistencia de sesión, extracción de datos desde PDF y generación de informes — orientado a artículos de compra recurrente.",
-  "fr": "Système d'inventaire par couleur et taille, avec persistance de session, extraction de données depuis des PDF et génération de rapports — destiné aux articles achetés de façon récurrente."
+  "fr": "Système d'inventaire par couleur et taille, avec persistance de session, extraction de données depuis des PDF et génération de rapports — destiné aux articles achetés de façon récurrente.",
+  "it": "Sistema di rilevazione delle scorte per colore/taglia, con persistenza della sessione, estrazione di dati da PDF e generazione di report — pensato per articoli di acquisto ripetuto.",
+  "zh": "按颜色/尺码进行库存盘点的系统,支持会话持久化、从 PDF 中提取数据并生成报表——面向重复采购的商品。"
  },
  "projeto:Livro-Texto de Cálculo": {
   "pt_hash": "1bc9d6053cef",
   "pt": "Material didático próprio de Cálculo, em elaboração, escrito em LaTeX — dos fundamentos a sistemas lineares. Cobre revisão de Python/Cálculo I, sistemas de bases numéricas (binária, octal, decimal, hexadecimal) e sistemas lineares (eliminação de Gauss e fatoração LU, com e sem pivotamento). Cada capítulo traz apêndice próprio de algoritmos em versão simplificada, além de exemplos autorais que complementam o livro-texto padrão. Layout já ajustado; revisão de formatação (padrão Sphinx) e dos quadros de algoritmos em andamento.",
   "en": "My own Calculus textbook, in progress, written in LaTeX — from fundamentals to linear systems. Covers a Python/Calculus I refresher, numeral base systems (binary, octal, decimal, hexadecimal) and linear systems (Gaussian elimination and LU factorization, with and without pivoting). Each chapter has its own appendix of algorithms in simplified form, plus original examples complementing the standard textbook. Layout is settled; formatting review (Sphinx-style) and algorithm boxes still under way.",
   "es": "Material didáctico propio de Cálculo, en elaboración, escrito en LaTeX — de los fundamentos a los sistemas lineales. Cubre un repaso de Python/Cálculo I, sistemas de bases numéricas (binaria, octal, decimal, hexadecimal) y sistemas lineales (eliminación de Gauss y factorización LU, con y sin pivoteo). Cada capítulo trae su propio apéndice de algoritmos en versión simplificada, además de ejemplos de autoría propia que complementan el libro de texto estándar. Maquetación ya ajustada; revisión de formato (estilo Sphinx) y de los cuadros de algoritmos en curso.",
-  "fr": "Manuel de Calcul de ma propre plume, en cours de rédaction, écrit en LaTeX — des fondements aux systèmes linéaires. Couvre une révision Python/Calcul I, les systèmes de bases numériques (binaire, octal, décimal, hexadécimal) et les systèmes linéaires (élimination de Gauss et factorisation LU, avec et sans pivotage). Chaque chapitre possède son propre annexe d'algorithmes en version simplifiée, ainsi que des exemples originaux complétant le manuel de référence. Mise en page arrêtée ; révision du formatage (style Sphinx) et des encadrés d'algorithmes en cours."
+  "fr": "Manuel de Calcul de ma propre plume, en cours de rédaction, écrit en LaTeX — des fondements aux systèmes linéaires. Couvre une révision Python/Calcul I, les systèmes de bases numériques (binaire, octal, décimal, hexadécimal) et les systèmes linéaires (élimination de Gauss et factorisation LU, avec et sans pivotage). Chaque chapitre possède son propre annexe d'algorithmes en version simplifiée, ainsi que des exemples originaux complétant le manuel de référence. Mise en page arrêtée ; révision du formatage (style Sphinx) et des encadrés d'algorithmes en cours.",
+  "it": "Materiale didattico proprio di Calcolo, in fase di elaborazione, scritto in LaTeX — dai fondamenti ai sistemi lineari. Copre un ripasso di Python/Calcolo I, i sistemi di basi numeriche (binaria, ottale, decimale, esadecimale) e i sistemi lineari (eliminazione di Gauss e fattorizzazione LU, con e senza pivoting). Ogni capitolo include un'appendice propria di algoritmi in versione semplificata, oltre a esempi originali che integrano il libro di testo standard. Layout già definito; revisione della formattazione (standard Sphinx) e dei riquadri degli algoritmi in corso.",
+  "zh": "自编微积分教材,编写中,使用 LaTeX 撰写——从基础知识到线性方程组。内容涵盖 Python/微积分 I 复习、数制系统(二进制、八进制、十进制、十六进制)以及线性方程组(高斯消元法和 LU 分解,含选主元与不选主元两种情形)。每章都附有简化版算法的专属附录,并配有原创示例,作为标准教材的补充。版面已调整完毕;格式审校(Sphinx 标准)和算法框的检查正在进行中。"
  },
  "projeto:Modelos LaTeX": {
   "pt_hash": "b745cba8f911",
   "pt": "Modelos LaTeX para uso geral.",
   "en": "LaTeX templates for general use: articles, reports, theses, slides, posters, booklets, problem sets, exams and ABNT-compliant references.",
   "es": "Plantillas LaTeX de uso general: artículos, informes, tesis, diapositivas, pósteres, apuntes, listas de ejercicios, exámenes y referencias según ABNT.",
-  "fr": "Modèles LaTeX à usage général : articles, rapports, mémoires, diapositives, affiches, fascicules, séries d'exercices, examens et références ABNT."
+  "fr": "Modèles LaTeX à usage général : articles, rapports, mémoires, diapositives, affiches, fascicules, séries d'exercices, examens et références ABNT.",
+  "it": "Modelli LaTeX per uso generale.",
+  "zh": "通用 LaTeX 模板。"
  },
  "projeto:Perfil GitHub": {
   "pt_hash": "2f4f87717ce9",
   "pt": "README de perfil do GitHub (bio, Tech & Tools, projetos em destaque).",
   "en": "GitHub profile README (bio, Tech & Tools, featured projects).",
   "es": "README de perfil de GitHub (bio, Tech & Tools, proyectos destacados).",
-  "fr": "README de profil GitHub (bio, Tech & Tools, projets en vedette)."
+  "fr": "README de profil GitHub (bio, Tech & Tools, projets en vedette).",
+  "it": "README del profilo GitHub (bio, Tech & Tools, progetti in evidenza).",
+  "zh": "GitHub 个人主页 README(简介、Tech & Tools、精选项目)。"
  },
  "projeto:Planilhador": {
   "pt_hash": "07273b6b9e96",
   "pt": "Ferramentas para processar XMLs de NFCe e gerar relatórios/planilhas automatizados.",
   "en": "Tools to process NFCe (Brazilian e-invoice) XML files and generate automated reports and spreadsheets.",
   "es": "Herramientas para procesar XML de NFCe (factura electrónica brasileña) y generar informes y hojas de cálculo automatizados.",
-  "fr": "Outils pour traiter les XML de NFCe (facture électronique brésilienne) et générer rapports et tableurs automatisés."
+  "fr": "Outils pour traiter les XML de NFCe (facture électronique brésilienne) et générer rapports et tableurs automatisés.",
+  "it": "Strumenti per elaborare XML di NFCe e generare report/fogli di calcolo automatizzati.",
+  "zh": "用于处理 NFCe 的 XML 并自动生成报表/电子表格的工具。"
  },
  "projeto:Portal Acadêmico IFF (academicoWeb)": {
   "pt_hash": "8f1b0fcd5993",
   "pt": "Sistema web que acessava os dados acadêmicos do IFF com as credenciais oficiais — dashboard, diário, material de aula, boletim e histórico escolar — via scraping. Arquivado: a migração do IFF para o SUAP torna a abordagem original obsoleta, e o Sistema Acadêmico o sucede. A técnica de scraping fica registrada como referência técnica (possível tema de TCC).",
   "en": "Web system that pulled IFF academic data using official credentials — dashboard, diary, course material, report card and transcript — via scraping. Archived: IFF's migration to SUAP makes the original approach obsolete, and Sistema Acadêmico supersedes it. The scraping technique remains documented as a technical reference (a possible thesis topic).",
   "es": "Sistema web que accedía a los datos académicos del IFF con las credenciales oficiales — dashboard, diario, material de clase, boletín e historial — mediante scraping. Archivado: la migración del IFF al SUAP vuelve obsoleto el enfoque original, y el Sistema Académico lo sucede. La técnica de scraping queda documentada como referencia técnica (posible tema de TFG).",
-  "fr": "Système web qui accédait aux données académiques de l'IFF avec les identifiants officiels — tableau de bord, journal, supports de cours, bulletin et relevé — par scraping. Archivé : la migration de l'IFF vers SUAP rend l'approche initiale obsolète, et le Sistema Acadêmico lui succède. La technique de scraping reste documentée comme référence technique (sujet de mémoire possible)."
+  "fr": "Système web qui accédait aux données académiques de l'IFF avec les identifiants officiels — tableau de bord, journal, supports de cours, bulletin et relevé — par scraping. Archivé : la migration de l'IFF vers SUAP rend l'approche initiale obsolète, et le Sistema Acadêmico lui succède. La technique de scraping reste documentée comme référence technique (sujet de mémoire possible).",
+  "it": "Sistema web che accedeva ai dati accademici dell'IFF con le credenziali ufficiali — dashboard, registro, materiale didattico, pagella e storico scolastico — tramite scraping. Archiviato: la migrazione dell'IFF al SUAP rende obsoleto l'approccio originale, e il Sistema Acadêmico ne è il successore. La tecnica di scraping resta documentata come riferimento tecnico (possibile tema di TCC).",
+  "zh": "一个 Web 系统,使用官方凭据通过网页抓取(scraping)访问 IFF 的学业数据——包括仪表盘、课堂日志、课程资料、成绩单和学业记录。已归档:IFF 迁移到 SUAP 后,原有方式已经过时,由 Sistema Acadêmico 接替。抓取技术作为技术参考保留(可作为毕业论文 TCC 的潜在主题)。"
  },
  "projeto:Portfólio (este site)": {
   "pt_hash": "6fed0bfb848e",
   "pt": "Este portfólio: página única e minimalista, multilíngue (PT/EN/ES/FR), sem framework e com o visual do site oficial (tema claro e escuro, cartões com detalhes, filtro e busca de projetos). O conteúdo não vive no HTML: é escrito em Markdown (src/portfolio.md) e compilado por um script Python para JS, com verificação automática no pre-commit. Serve de página de boas-vindas para o site oficial, onde está o conteúdo completo.",
   "en": "This portfolio: a single minimalist page, multilingual (PT/EN/ES/FR), framework-free and styled like the official site (light and dark themes, cards with details, project filter and search). Content does not live in the HTML: it is written in Markdown (src/portfolio.md) and compiled to JS by a Python script, with automatic verification on pre-commit. It serves as the welcome page for the official site, where the full content lives.",
   "es": "Este portafolio: página única y minimalista, multilingüe (PT/EN/ES/FR), sin framework y con el estilo del sitio oficial (tema claro y oscuro, tarjetas con detalles, filtro y búsqueda de proyectos). El contenido no vive en el HTML: se escribe en Markdown (src/portfolio.md) y se compila a JS con un script de Python, con verificación automática en el pre-commit. Sirve de página de bienvenida al sitio oficial, donde está el contenido completo.",
-  "fr": "Ce portfolio : page unique et minimaliste, multilingue (PT/EN/ES/FR), sans framework et au style du site officiel (thèmes clair et sombre, cartes avec détails, filtre et recherche de projets). Le contenu ne vit pas dans le HTML : il est écrit en Markdown (src/portfolio.md) et compilé en JS par un script Python, avec vérification automatique au pre-commit. Il sert de page d'accueil au site officiel, où se trouve le contenu complet."
+  "fr": "Ce portfolio : page unique et minimaliste, multilingue (PT/EN/ES/FR), sans framework et au style du site officiel (thèmes clair et sombre, cartes avec détails, filtre et recherche de projets). Le contenu ne vit pas dans le HTML : il est écrit en Markdown (src/portfolio.md) et compilé en JS par un script Python, avec vérification automatique au pre-commit. Il sert de page d'accueil au site officiel, où se trouve le contenu complet.",
+  "it": "Questo portfolio: pagina unica e minimalista, multilingue (PT/EN/ES/FR), senza framework e con l'aspetto del sito ufficiale (tema chiaro e scuro, schede con dettagli, filtro e ricerca dei progetti). Il contenuto non vive nell'HTML: è scritto in Markdown (src/portfolio.md) e compilato da uno script Python in JS, con verifica automatica nel pre-commit. Funge da pagina di benvenuto per il sito ufficiale, dove si trova il contenuto completo.",
+  "zh": "这是我的作品集:单页、极简、多语言(PT/EN/ES/FR),不使用框架,采用官方网站的视觉风格(明暗主题、带详情的卡片、项目筛选与搜索)。内容并不写在 HTML 中,而是用 Markdown(src/portfolio.md)编写,再由 Python 脚本编译为 JS,并在 pre-commit 中自动校验。它作为官方网站的欢迎页,完整内容请见官方网站。"
  },
  "projeto:Projeto Profissional (template)": {
   "pt_hash": "afa6686d3968",
   "pt": "Template base endurecido para iniciar qualquer aplicação web Node: autenticação JWT, papéis admin/user, registro controlado pelo admin (sem autocadastro), CSP sem inline, rate limit, CSRF guard, validação Zod e suíte Jest+Supertest desde o primeiro commit. Docker Compose com app não-root e filesystem read-only.",
   "en": "Hardened starter template for any Node web app: JWT auth (httpOnly cookie or Bearer), admin/user roles, admin-controlled registration (no self sign-up), inline-free CSP, input sanitization, rate limiting, CSRF guard, Zod validation and a Jest+Supertest suite from the first commit. Docker Compose with a non-root, read-only app container.",
   "es": "Plantilla base endurecida para iniciar cualquier aplicación web Node: autenticación JWT (cookie httpOnly o Bearer), roles admin/user, registro controlado por el admin (sin autoregistro), CSP sin inline, saneamiento, rate limit, guard CSRF, validación Zod y suite Jest+Supertest desde el primer commit. Docker Compose con app no-root y sistema de archivos de solo lectura.",
-  "fr": "Modèle de base durci pour démarrer toute application web Node : authentification JWT (cookie httpOnly ou Bearer), rôles admin/user, inscription contrôlée par l'admin (pas d'auto-inscription), CSP sans inline, assainissement, rate limit, garde CSRF, validation Zod et suite Jest+Supertest dès le premier commit. Docker Compose avec app non-root en lecture seule."
+  "fr": "Modèle de base durci pour démarrer toute application web Node : authentification JWT (cookie httpOnly ou Bearer), rôles admin/user, inscription contrôlée par l'admin (pas d'auto-inscription), CSP sans inline, assainissement, rate limit, garde CSRF, validation Zod et suite Jest+Supertest dès le premier commit. Docker Compose avec app non-root en lecture seule.",
+  "it": "Template di base rafforzato per avviare qualsiasi applicazione web Node: autenticazione JWT, ruoli admin/user, registrazione controllata dall'admin (senza auto-registrazione), CSP senza inline, rate limit, CSRF guard, validazione Zod e suite Jest+Supertest fin dal primo commit. Docker Compose con app non-root e filesystem read-only.",
+  "zh": "用于启动任何 Node Web 应用的加固型基础模板:JWT 认证、admin/user 角色、由管理员控制的注册(无自助注册)、无内联的 CSP、rate limit、CSRF guard、Zod 校验,以及从第一次提交起就具备的 Jest+Supertest 测试套件。Docker Compose 以非 root 方式运行应用,并使用只读文件系统。"
  },
  "projeto:ReLaTeX": {
   "pt_hash": "f7c4ade40961",
   "pt": "Fork do Overleaf Community Edition com identidade do IFF: classes oficiais embutidas (ifftese/iffposter), tema azul, landing própria e 10 botões extras no editor. Self-hosted via Docker (web+mongo+redis).",
   "en": "Fork of Overleaf Community Edition with IFF identity: official document classes (ifftese/iffposter), blue theme, custom landing page and 10 extra editor buttons. Self-hosted via Docker (web+mongo+redis).",
   "es": "Fork de Overleaf Community Edition con identidad del IFF: clases oficiales (ifftese/iffposter), tema azul, página de inicio propia y 10 botones extra en el editor. Self-hosted vía Docker (web+mongo+redis).",
-  "fr": "Fork d'Overleaf Community Edition avec l'identité de l'IFF : classes officielles (ifftese/iffposter), thème bleu, page d'accueil propre et 10 boutons supplémentaires à l'éditeur. Auto-hébergé via Docker (web+mongo+redis)."
+  "fr": "Fork d'Overleaf Community Edition avec l'identité de l'IFF : classes officielles (ifftese/iffposter), thème bleu, page d'accueil propre et 10 boutons supplémentaires à l'éditeur. Auto-hébergé via Docker (web+mongo+redis).",
+  "it": "Fork di Overleaf Community Edition con l'identità dell'IFF: classi ufficiali integrate (ifftese/iffposter), tema blu, landing page dedicata e 10 pulsanti extra nell'editor. Self-hosted tramite Docker (web+mongo+redis).",
+  "zh": "Overleaf Community Edition 的分叉版本,采用 IFF 的品牌标识:内置官方文档类(ifftese/iffposter)、蓝色主题、专属落地页以及编辑器中的 10 个额外按钮。通过 Docker 自托管(web+mongo+redis)。"
  },
  "projeto:Researcher Hub": {
   "pt_hash": "5a13fa986ec1",
   "pt": "Plataforma web para acompanhar a literatura científica no arXiv (research.phrandrade.com): revisão diária pública por categoria, busca por palavra-chave e autor, monitoramento de autores, biblioteca pessoal e exportação de citações em BibTeX/LaTeX e PDF. Nasceu como o arXiv Searcher, um buscador automático de artigos por assunto, e virou uma aplicação completa.",
   "en": "Web platform for tracking the scientific literature on arXiv (research.phrandrade.com): public daily review by category, keyword and author search, author monitoring, personal library, and citation export to BibTeX/LaTeX and PDF. It started as the arXiv Searcher, an automatic article finder by subject, and grew into a full application.",
   "es": "Plataforma web para seguir la literatura científica en arXiv (research.phrandrade.com): revisión diaria pública por categoría, búsqueda por palabra clave y autor, monitoreo de autores, biblioteca personal y exportación de citas en BibTeX/LaTeX y PDF. Nació como el arXiv Searcher, un buscador automático de artículos por tema, y se convirtió en una aplicación completa.",
-  "fr": "Plateforme web pour suivre la littérature scientifique sur arXiv (research.phrandrade.com) : revue quotidienne publique par catégorie, recherche par mot-clé et par auteur, suivi d'auteurs, bibliothèque personnelle et export de citations en BibTeX/LaTeX et PDF. Elle est née comme l'arXiv Searcher, un moteur de recherche automatique d'articles par sujet, et est devenue une application complète."
+  "fr": "Plateforme web pour suivre la littérature scientifique sur arXiv (research.phrandrade.com) : revue quotidienne publique par catégorie, recherche par mot-clé et par auteur, suivi d'auteurs, bibliothèque personnelle et export de citations en BibTeX/LaTeX et PDF. Elle est née comme l'arXiv Searcher, un moteur de recherche automatique d'articles par sujet, et est devenue une application complète.",
+  "it": "Piattaforma web per seguire la letteratura scientifica su arXiv (research.phrandrade.com): revisione giornaliera pubblica per categoria, ricerca per parola chiave e autore, monitoraggio degli autori, biblioteca personale ed esportazione di citazioni in BibTeX/LaTeX e PDF. Nata come arXiv Searcher, un motore di ricerca automatico di articoli per argomento, è diventata un'applicazione completa.",
+  "zh": "用于跟踪 arXiv 科学文献的 Web 平台(research.phrandrade.com):按类别提供公开的每日综述、按关键词和作者搜索、作者监测、个人文库,以及以 BibTeX/LaTeX 和 PDF 导出引用。它最初是 arXiv Searcher,一个按主题自动检索论文的搜索工具,后来发展成为一个完整的应用。"
  },
  "projeto:Sistema Acadêmico": {
   "pt_hash": "bd9efa5303e2",
   "pt": "Web exclusivo para alunos do IFF acompanharem grade curricular (PPC), diário, notas, frequência, boletim/CR e planejamento. Multi-curso: Engenharia de Computação (Bom Jesus do Itabapoana) e Sistemas de Informação (Itaperuna). Fork do padrão de avaliações, com diário, ementário, grafo de dependências e API de ingestão por bot (Telegram). Deploy via Docker Compose + systemd.",
   "en": "Exclusive web app for IFF students to track the curriculum (PPC), diary, grades, attendance, GPA/report card and planning. Multi-course: Computer Engineering (Bom Jesus do Itabapoana) and Information Systems (Itaperuna). Fork of the evaluations standard, with diary, ementa, dependency graph and a Telegram-bot ingestion API. Deployed via Docker Compose + systemd.",
   "es": "Aplicación web exclusiva para alumnos del IFF para seguir la malla (PPC), diario, notas, asistencia, CR/boletín y planificación. Multicurso: Ingeniería Informática (Bom Jesus do Itabapoana) y Sistemas de Información (Itaperuna). Fork del estándar de evaluaciones, con diario, ementario, grafo de dependencias y API de ingesta por bot de Telegram. Despliegue vía Docker Compose + systemd.",
-  "fr": "Application web exclusive pour les étudiants de l'IFF afin de suivre le programme (PPC), le journal, les notes, la fréquentation, la moyenne/bulletin et la planification. Multi-filière : génie informatique (Bom Jesus do Itabapoana) et systèmes d'information (Itaperuna). Fork de la norme d'évaluations, avec journal, ementa, graphe de dépendances et API d'ingestion par bot Telegram. Déploiement via Docker Compose + systemd."
+  "fr": "Application web exclusive pour les étudiants de l'IFF afin de suivre le programme (PPC), le journal, les notes, la fréquentation, la moyenne/bulletin et la planification. Multi-filière : génie informatique (Bom Jesus do Itabapoana) et systèmes d'information (Itaperuna). Fork de la norme d'évaluations, avec journal, ementa, graphe de dépendances et API d'ingestion par bot Telegram. Déploiement via Docker Compose + systemd.",
+  "it": "Web app riservata agli studenti dell'IFF per seguire piano di studi (PPC), registro, voti, frequenza, pagella/CR e pianificazione. Multi-corso: Ingegneria Informatica (Bom Jesus do Itabapoana) e Sistemi Informativi (Itaperuna). Fork del modello di Valutazioni, con registro, programmi degli insegnamenti, grafo delle dipendenze e API di ingestione tramite bot (Telegram). Deploy tramite Docker Compose + systemd.",
+  "zh": "专供 IFF 学生使用的 Web 应用,可查看课程设置(PPC)、课堂日志、成绩、出勤、成绩单/CR 和学习规划。支持多专业:计算机工程(Bom Jesus do Itabapoana)和信息系统(Itaperuna)。基于评估系统的模式分叉而来,包含课堂日志、课程大纲、依赖关系图以及通过机器人(Telegram)进行数据导入的 API。通过 Docker Compose + systemd 部署。"
  },
  "projeto:Sistema de Avaliações": {
   "pt_hash": "fd7ac7e710f3",
   "pt": "Plataforma base de provas/listas/trabalhos em PDF a partir de um banco de questões reutilizável, com geração real em LaTeX e múltiplas variantes (seleção/ordem aleatórias). Núcleo professor+admin.",
   "en": "Base platform for exams/lists/assignments in PDF from a reusable question bank, with real LaTeX generation and multiple variants (random selection/order). Professor+admin core.",
   "es": "Plataforma base de exámenes/listas/trabajos en PDF a partir de un banco de preguntas reutilizable, con generación real en LaTeX y múltiples variantes (selección/orden aleatorios). Núcleo profesor+admin.",
-  "fr": "Plateforme de base pour examens/listes/devoirs en PDF à partir d'un banc de questions réutilisable, avec génération réelle en LaTeX et plusieurs variantes (sélection/ordre aléatoires). Cœur professeur+admin."
+  "fr": "Plateforme de base pour examens/listes/devoirs en PDF à partir d'un banc de questions réutilisable, avec génération réelle en LaTeX et plusieurs variantes (sélection/ordre aléatoires). Cœur professeur+admin.",
+  "it": "Piattaforma di base per generare prove/liste/lavori in PDF a partire da una banca di quesiti riutilizzabile, con generazione reale in LaTeX e più varianti (selezione/ordine casuali). Nucleo docente + amministratore.",
+  "zh": "基础平台,可根据可复用的题库生成 PDF 格式的试卷/习题集/作业,通过真实的 LaTeX 生成,并支持多个变体(随机选题/随机排序)。核心角色为教师和管理员。"
  },
  "projeto:SpectraViewer": {
   "pt_hash": "a96057b75e4e",
   "pt": "Viewer interativo de espectros GALAH DR4 (4 bandas, linhas de referência CNO/Alpha/Iron-peak, leitura de FITS, metadados Teff/log(g)/[Fe/H]).",
   "en": "Interactive viewer for GALAH DR4 spectra (4 bands, CNO/Alpha/Iron-peak reference lines, FITS reading, Teff/log(g)/[Fe/H] metadata).",
   "es": "Visor interactivo de espectros GALAH DR4 (4 bandas, líneas de referencia CNO/Alpha/Iron-peak, lectura de FITS, metadatos Teff/log(g)/[Fe/H]).",
-  "fr": "Visionneuse interactive des spectres GALAH DR4 (4 bandes, lignes de référence CNO/Alpha/Iron-peak, lecture FITS, métadonnées Teff/log(g)/[Fe/H])."
+  "fr": "Visionneuse interactive des spectres GALAH DR4 (4 bandes, lignes de référence CNO/Alpha/Iron-peak, lecture FITS, métadonnées Teff/log(g)/[Fe/H]).",
+  "it": "Viewer interattivo di spettri GALAH DR4 (4 bande, linee di riferimento CNO/Alpha/Iron-peak, lettura di FITS, metadati Teff/log(g)/[Fe/H]).",
+  "zh": "GALAH DR4 光谱交互式查看器(4 个波段、CNO/Alpha/Iron-peak 参考谱线、FITS 读取、Teff/log(g)/[Fe/H] 元数据)。"
  },
  "projeto:Verdementa": {
   "pt_hash": "750ef7140364",
   "pt": "Meta-repositório que agrupa Caixas, ControleEstoque, LevantamentoEstoque e Planilhador — suíte de ferramentas comerciais.",
   "en": "Meta-repository grouping Caixas, ControleEstoque, LevantamentoEstoque and Planilhador — a suite of retail management tools in real production use.",
   "es": "Metarrepositorio que agrupa Caixas, ControleEstoque, LevantamentoEstoque y Planilhador — suite de herramientas comerciales en uso real en producción.",
-  "fr": "Méta-dépôt regroupant Caixas, ControleEstoque, LevantamentoEstoque et Planilhador — une suite d'outils commerciaux en usage réel en production."
+  "fr": "Méta-dépôt regroupant Caixas, ControleEstoque, LevantamentoEstoque et Planilhador — une suite d'outils commerciaux en usage réel en production.",
+  "it": "Meta-repository che raggruppa Caixas, ControleEstoque, LevantamentoEstoque e Planilhador — una suite di strumenti commerciali.",
+  "zh": "元仓库,汇集了 Caixas、ControleEstoque、LevantamentoEstoque 和 Planilhador——一套商业工具套件。"
  },
  "projeto:anomaly_detection": {
   "pt_hash": "62ff55ba6f98",
   "pt": "Análise das propriedades estelares e composição química das estrelas próximas do GCNS observadas pelo GALAH DR4 (Gaia DR3 + GALAH DR4). Bolsa PIBIC/CNPq; co-autoria PUC Chile (Dra. M. L. L. Dantas, Dra. A. C. Soja).",
   "en": "Analysis of stellar properties and chemical composition of nearby stars from GCNS observed by GALAH DR4 (Gaia DR3 + GALAH DR4). PIBIC/CNPq scholarship; co-authorship PUC Chile (Dr. M. L. L. Dantas, Dr. A. C. Soja).",
   "es": "Análisis de las propiedades estelares y composición química de estrellas cercanas del GCNS observadas por GALAH DR4 (Gaia DR3 + GALAH DR4). Beca PIBIC/CNPq; coautoría PUC Chile (Dra. M. L. L. Dantas, Dra. A. C. Soja).",
-  "fr": "Analyse des propriétés stellaires et de la composition chimique des étoiles proches du GCNS observées par GALAH DR4 (Gaia DR3 + GALAH DR4). Bourse PIBIC/CNPq ; co-autoria PUC Chile (Mme M. L. L. Dantas, Mme A. C. Soja)."
+  "fr": "Analyse des propriétés stellaires et de la composition chimique des étoiles proches du GCNS observées par GALAH DR4 (Gaia DR3 + GALAH DR4). Bourse PIBIC/CNPq ; co-autoria PUC Chile (Mme M. L. L. Dantas, Mme A. C. Soja).",
+  "it": "Analisi delle proprietà stellari e della composizione chimica delle stelle vicine del GCNS osservate da GALAH DR4 (Gaia DR3 + GALAH DR4). Borsa PIBIC/CNPq; co-autorato PUC Chile (Dra. M. L. L. Dantas, Dra. A. C. Soja).",
+  "zh": "对 GALAH DR4 观测到的 GCNS 近邻恒星的恒星性质和化学成分进行分析(Gaia DR3 + GALAH DR4)。PIBIC/CNPq 奖学金;与 PUC Chile 共同署名(Dra. M. L. L. Dantas、Dra. A. C. Soja)。"
  },
  "projeto:awesome-skills": {
   "pt_hash": "fe39165dea45",
   "pt": "Coleção pessoal de skills (memória procedural) para o agente Hermes — 102 skills em 32 categorias, cada uma com SKILL.md (frontmatter YAML + instruções) e, opcionalmente, references/, scripts/ e templates/. Índice do README gerado por script; cobre de manutenção de sites Quartz e i18n a MLOps, LaTeX e automação de desktop.",
   "en": "Personal collection of skills (procedural memory) for the Hermes agent — 102 skills across 32 categories, each with SKILL.md (YAML frontmatter + instructions) plus optional references/, scripts/ and templates/. Script-generated README index; spans Quartz site maintenance and i18n, MLOps, LaTeX and desktop automation.",
   "es": "Colección personal de skills (memoria procedural) para el agente Hermes — 102 skills en 32 categorías, cada una con SKILL.md (frontmatter YAML + instrucciones) y, opcionalmente, references/, scripts/ y templates/. Índice del README generado por script; abarca desde sitios Quartz e i18n hasta MLOps, LaTeX y automatización de escritorio.",
-  "fr": "Collection personnelle de skills (mémoire procédurale) pour l'agent Hermes — 102 skills en 32 catégories, chacune avec SKILL.md (frontmatter YAML + instructions) et, en option, references/, scripts/ et templates/. Index du README généré par script ; du site Quartz et de l'i18n au MLOps, LaTeX et à l'automatisation du bureau."
+  "fr": "Collection personnelle de skills (mémoire procédurale) pour l'agent Hermes — 102 skills en 32 catégories, chacune avec SKILL.md (frontmatter YAML + instructions) et, en option, references/, scripts/ et templates/. Index du README généré par script ; du site Quartz et de l'i18n au MLOps, LaTeX et à l'automatisation du bureau.",
+  "it": "Raccolta personale di skill (memoria procedurale) per l'agente Hermes — 102 skill in 32 categorie, ciascuna con SKILL.md (frontmatter YAML + istruzioni) e, facoltativamente, references/, scripts/ e templates/. Indice del README generato da script; copre dalla manutenzione di siti Quartz e i18n a MLOps, LaTeX e automazione del desktop.",
+  "zh": "为 Hermes 智能体整理的个人 skill 合集(程序性记忆)——共 102 个 skill,分属 32 个类别,每个都包含 SKILL.md(YAML frontmatter + 说明),并可选包含 references/、scripts/ 和 templates/。README 索引由脚本生成;涵盖从 Quartz 站点维护和 i18n,到 MLOps、LaTeX 和桌面自动化等内容。"
  },
  "projeto:dashboard-life": {
   "pt_hash": "39081e8b5915",
   "pt": "Dashboard pessoal de hábitos e métricas de vida, derivado do vault hardcore-life e primeiro passo concreto rumo à plataforma HardCoreLife. Node + Express + MongoDB, deploy via Docker. Em desenvolvimento.",
   "en": "Personal dashboard for habits and life metrics, derived from the hardcore-life vault and the first concrete step towards the HardCoreLife platform. Node + Express + MongoDB, deployed via Docker. Under development.",
   "es": "Dashboard personal de hábitos y métricas de vida, derivado del vault hardcore-life y primer paso concreto hacia la plataforma HardCoreLife. Node + Express + MongoDB, despliegue vía Docker. En desarrollo.",
-  "fr": "Tableau de bord personnel d'habitudes et de métriques de vie, dérivé du vault hardcore-life et première étape concrète vers la plateforme HardCoreLife. Node + Express + MongoDB, déploiement via Docker. En développement."
+  "fr": "Tableau de bord personnel d'habitudes et de métriques de vie, dérivé du vault hardcore-life et première étape concrète vers la plateforme HardCoreLife. Node + Express + MongoDB, déploiement via Docker. En développement.",
+  "it": "Dashboard personale di abitudini e metriche di vita, derivata dal vault hardcore-life e primo passo concreto verso la piattaforma HardCoreLife. Node + Express + MongoDB, deploy tramite Docker. In sviluppo.",
+  "zh": "个人习惯与生活指标仪表盘,源自 hardcore-life 知识库,是迈向 HardCoreLife 平台的第一步。Node + Express + MongoDB,通过 Docker 部署。开发中。"
  },
  "projeto:guia-github": {
   "pt_hash": "8e193c49a48f",
   "pt": "Guia próprio de Git e boas práticas de versionamento — prático, não mais um manual genérico de comandos. Reúne templates, exemplos de Actions, Projects, Issues e estratégias de branching, com módulos sobre dockerização, versionamento em arquiteturas de microsserviços e padrões de documentação de repositório.",
   "en": "My own guide to Git and versioning best practices — hands-on, not yet another generic command manual. Gathers templates and examples of Actions, Projects, Issues and branching strategies, with modules on dockerization, versioning in microservice architectures and repository documentation standards.",
   "es": "Guía propia de Git y buenas prácticas de versionado — práctica, no un manual genérico más de comandos. Reúne plantillas y ejemplos de Actions, Projects, Issues y estrategias de ramificación, con módulos sobre dockerización, versionado en arquitecturas de microservicios y estándares de documentación de repositorio.",
-  "fr": "Mon propre guide de Git et des bonnes pratiques de versionnage — pratique, et non un énième manuel générique de commandes. Rassemble modèles et exemples d'Actions, Projects, Issues et stratégies de branches, avec des modules sur la dockerisation, le versionnage en architecture microservices et les standards de documentation de dépôt."
+  "fr": "Mon propre guide de Git et des bonnes pratiques de versionnage — pratique, et non un énième manuel générique de commandes. Rassemble modèles et exemples d'Actions, Projects, Issues et stratégies de branches, avec des modules sur la dockerisation, le versionnage en architecture microservices et les standards de documentation de dépôt.",
+  "it": "Guida propria a Git e alle buone pratiche di versionamento — pratica, non l'ennesimo manuale generico di comandi. Raccoglie template, esempi di Actions, Projects, Issues e strategie di branching, con moduli su dockerizzazione, versionamento in architetture a microservizi e standard di documentazione dei repository.",
+  "zh": "自编的 Git 与版本管理最佳实践指南——注重实用,而不是又一本泛泛的命令手册。汇集了模板、Actions、Projects、Issues 示例以及分支策略,并包含容器化(Docker)、微服务架构中的版本管理和仓库文档规范等模块。"
  },
  "projeto:hardcore-life": {
   "pt_hash": "b7bf60e1bc69",
   "pt": "Vault Obsidian de gestão de vida pelo método PARA (projetos, áreas, recursos, arquivos), com mais de 4000 arquivos — a base de conhecimento pessoal de onde saem notas, planejamento e diário.",
   "en": "Obsidian vault for life management using the PARA method (projects, areas, resources, archives), with over 4000 files — the personal knowledge base behind my notes, planning and journal.",
   "es": "Vault de Obsidian para gestión de vida con el método PARA (proyectos, áreas, recursos, archivos), con más de 4000 archivos — la base de conocimiento personal de la que salen notas, planificación y diario.",
-  "fr": "Vault Obsidian de gestion de vie selon la méthode PARA (projets, domaines, ressources, archives), avec plus de 4000 fichiers — la base de connaissances personnelle d'où sortent notes, planification et journal."
+  "fr": "Vault Obsidian de gestion de vie selon la méthode PARA (projets, domaines, ressources, archives), avec plus de 4000 fichiers — la base de connaissances personnelle d'où sortent notes, planification et journal.",
+  "it": "Vault Obsidian per la gestione della vita secondo il metodo PARA (progetti, aree, risorse, archivi), con più di 4000 file — la base di conoscenza personale da cui nascono note, pianificazione e diario.",
+  "zh": "采用 PARA 方法(项目、领域、资源、归档)管理生活的 Obsidian 知识库,包含 4000 多个文件——是笔记、规划和日记的个人知识库来源。"
  },
  "projeto:meu-setup": {
   "pt_hash": "0e850c274aab",
   "pt": "Mapa de todos os programas que uso (Linux, Windows e macOS) com instaladores automáticos e uma única fonte de verdade: packages.yaml. O instalador Linux detecta a distro (apt/dnf/pacman/zypper), é idempotente e tem cadeia de fallback (nativo → flatpak → snap → script oficial). Um gerador produz install.ps1, install.sh e o inventário; o bootstrap repopula a máquina do zero com um comando.",
   "en": "A map of every program I use (Linux, Windows and macOS) with automated installers and a single source of truth: packages.yaml. The Linux installer detects the distro (apt/dnf/pacman/zypper), is idempotent and has a fallback chain (native → flatpak → snap → official script). A generator produces install.ps1, install.sh and the inventory; the bootstrap repopulates a fresh machine with one command.",
   "es": "Mapa de todos los programas que uso (Linux, Windows y macOS) con instaladores automáticos y una única fuente de verdad: packages.yaml. El instalador Linux detecta la distro (apt/dnf/pacman/zypper), es idempotente y tiene cadena de fallback (nativo → flatpak → snap → script oficial). Un generador produce install.ps1, install.sh y el inventario; el bootstrap repuebla la máquina con un comando.",
-  "fr": "Carte de tous les programmes que j'utilise (Linux, Windows et macOS) avec des installateurs automatiques et une source unique de vérité : packages.yaml. L'installateur Linux détecte la distro (apt/dnf/pacman/zypper), est idempotent et dispose d'une chaîne de repli (natif → flatpak → snap → script officiel). Un générateur produit install.ps1, install.sh et l'inventaire ; le bootstrap repeuple la machine en une commande."
+  "fr": "Carte de tous les programmes que j'utilise (Linux, Windows et macOS) avec des installateurs automatiques et une source unique de vérité : packages.yaml. L'installateur Linux détecte la distro (apt/dnf/pacman/zypper), est idempotent et dispose d'une chaîne de repli (natif → flatpak → snap → script officiel). Un générateur produit install.ps1, install.sh et l'inventaire ; le bootstrap repeuple la machine en une commande.",
+  "it": "Mappa di tutti i programmi che uso (Linux, Windows e macOS) con installer automatici e un'unica fonte di verità: packages.yaml. L'installer Linux rileva la distro (apt/dnf/pacman/zypper), è idempotente e ha una catena di fallback (nativo → flatpak → snap → script ufficiale). Un generatore produce install.ps1, install.sh e l'inventario; il bootstrap ripopola la macchina da zero con un solo comando.",
+  "zh": "我所使用的全部程序(Linux、Windows 和 macOS)的清单,配有自动安装程序,并以 packages.yaml 作为唯一事实来源。Linux 安装程序会检测发行版(apt/dnf/pacman/zypper),具有幂等性,并带有回退链(原生 → flatpak → snap → 官方脚本)。生成器会产出 install.ps1、install.sh 和清单;bootstrap 只需一条命令即可从零重新配置整台机器。"
  },
  "projeto:page (Quartz)": {
   "pt_hash": "3738b1b4c2ca",
   "pt": "Site pessoal/acadêmico oficial, multilíngue (PT completo; EN/ES/FR parciais), em Quartz a partir do vault Obsidian. Publicado em www.phrandrade.com. É o consolidado: pesquisa, notas de disciplinas, mídia e blog. Este portfólio é a página de boas-vindas dele.",
   "en": "Official personal/academic site, multilingual (full PT; partial EN/ES/FR), built with Quartz from an Obsidian vault. Published at www.phrandrade.com. It is the consolidated hub: research, course notes, media and blog. This portfolio is its welcome page.",
   "es": "Sitio personal/académico oficial, multilingüe (PT completo; EN/ES/FR parciales), en Quartz a partir del vault de Obsidian. Publicado en www.phrandrade.com. Es el consolidado: investigación, apuntes de asignaturas, medios y blog. Este portafolio es su página de bienvenida.",
-  "fr": "Site personnel/académique officiel, multilingue (PT complet ; EN/ES/FR partiels), en Quartz à partir du vault Obsidian. Publié sur www.phrandrade.com. C'est le hub consolidé : recherche, notes de cours, médias et blog. Ce portfolio en est la page d'accueil."
+  "fr": "Site personnel/académique officiel, multilingue (PT complet ; EN/ES/FR partiels), en Quartz à partir du vault Obsidian. Publié sur www.phrandrade.com. C'est le hub consolidé : recherche, notes de cours, médias et blog. Ce portfolio en est la page d'accueil.",
+  "it": "Sito personale/accademico ufficiale, multilingue (PT completo; EN/ES/FR parziali), in Quartz a partire dal vault Obsidian. Pubblicato su www.phrandrade.com. È il consolidato: ricerca, appunti dei corsi, media e blog. Questo portfolio è la sua pagina di benvenuto.",
+  "zh": "官方个人/学术网站,多语言(PT 完整;EN/ES/FR 部分),基于 Obsidian vault 使用 Quartz 构建。发布于 www.phrandrade.com。它是汇总站点:研究、课程笔记、媒体和博客。本作品集是其欢迎页面。"
  }
 }

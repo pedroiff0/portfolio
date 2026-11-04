@@ -65,6 +65,11 @@ make lint                      # node --check main.js + build.py --check
   `src/eventos.json` + stripped WebP photos in `assets/media/eventos/`; `build.py` embeds them as `EVENTS`.
 - `assets/js/conquistas.js` (`window.Conquistas.hit(id)`): 8 discreet achievements, localStorage only.
 - Reader mode: `html[reader-mode="on"]`, key `r`, stored in localStorage key `reader`.
+- Languages: pt, en, es, fr, it, zh (`LANGS` in `build.py`/`main.js`, `OUTROS` in `fonte.py`). `traduzir.py` asks the AI only for
+  the languages missing per block (`fonte.faltando`). Interface strings live in `src/interface.yaml` (nav, sections, labels,
+  cat, vis, bolsas, contactLabels) and in the `UI`/`UI_MORE`/`UI_V25` dicts in `main.js`.
+- Search: `assets/js/busca.js` (`window.Busca.setDocs/open/onGo`); docs are built by `searchDocs()` in `main.js` and targets
+  carry `data-sid` (`p:`, `r:`, `b:`, `e:`, `s:`). Tour dialog: `openTour()` + `#tour`. CV previews: `tools/cv_previews.py`.
 
 Keep it minimal: no 3D, no sound, no intro, no HUD; gamification only in the discreet form above.
 

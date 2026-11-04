@@ -26,4 +26,5 @@ graph TD
 7. **Gamificação só discreta (v2.3):** um contador `n/8` na topbar, popover com a lista e aviso de 3 s, uma vez por conquista. Sem XP, ranks, barras, som ou HUD.
 8. **Controles do quartz-site:** idioma em pílulas com bandeira, tema sol/lua, relógio UTC−3 e modo leitura com o mesmo comportamento do site oficial.
 9. **Navegação por seção (v2.4):** no desktop a roda do mouse pagina entre seções (`sectionPaging` em `main.js`); seção maior que a tela rola por dentro até o fim. Rodapé no padrão do Researcher Hub.
-10. **Proibido reintroduzir:** 3D, som, intro, HUD. A v1 com isso está em `pedroiff0/portfolio-v1-scifi`.
+10. **Busca e tour (v2.5):** a busca segue o comportamento do quartz-site (atalho, prévia, `#` para tags) sem biblioteca; o tour abre em zoom com painel de uma linha. Idiomas: PT/EN/ES/FR/IT/ZH.
+11. **Proibido reintroduzir:** 3D, som, intro, HUD. A v1 com isso está em `pedroiff0/portfolio-v1-scifi`.

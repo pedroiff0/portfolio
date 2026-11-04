@@ -2,7 +2,7 @@
 
 Página de portfólio estática (GitHub Pages, `portfolio.phrandrade.com`), v2 clean:
 uma página só, minimalista, com o mesmo visual do site oficial (phrandrade.com),
-tema claro e escuro e quatro idiomas (PT/EN/ES/FR).
+tema claro e escuro e seis idiomas (PT/EN/ES/FR/IT/ZH).
 
 A v1 sci-fi (HUD, Three.js, canvas, quests) está arquivada no repositório privado
 `pedroiff0/portfolio-v1-scifi` e na tag `v1-scifi` deste repositório.
@@ -14,7 +14,9 @@ A v1 sci-fi (HUD, Three.js, canvas, quests) está arquivada no repositório priv
 - **Pesquisa** e **Bolsas** (linha do tempo).
 - **Participação em eventos** (fotos por evento, lightbox), gerada do vault por `tools/eventos.py`.
 - **Currículo** (6 idiomas), **Lattes** e **Contato**.
-- Topbar com relógio (UTC−3), idioma e tema como no quartz-site, modo leitura (`r`) e conquistas discretas (`n/8`).
+- Topbar com busca (Ctrl/⌘+K, como no quartz-site), relógio (UTC−3), idioma (6: PT/EN/ES/FR/IT/ZH) e tema, modo leitura (`r`) e conquistas discretas (`n/8`).
+- Tours em vídeo abrem em zoom, com painel mínimo.
+- Currículo com prévia da 1ª página no idioma da página (`python3 tools/cv_previews.py` ou `make cv` quando o CV mudar).
 
 ## Estrutura
 
