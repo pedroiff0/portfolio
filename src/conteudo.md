@@ -3,7 +3,7 @@ publish: false
 title: Portfólio (conteúdo em pt-BR)
 type: esboco
 created: '2026-11-03T15:28:39-03:00'
-modified: 2026-11-03T21:15:40-03:00
+modified: 2026-11-04T19:50:30-03:00
 published: '2026-11-03T15:28:39-03:00'
 tags:
   - projeto
@@ -422,9 +422,9 @@ icon: profile
 
 Bot do Telegram que liga o celular ao vault hardcore-life e aos agentes de IA (Claude Code e AGY): brief diário, lembretes, check-ins de rotina com botões, consultas somente leitura ao vault e aos repositórios, controle de sessões tmux, transcrição de áudio com Whisper e integração com o ReLaTeX. Regras de segurança bloqueiam arquivos sensíveis e notas protegidas.
 
-### Passador
-slug: passador
-repo: https://github.com/pedroiff0/passador
+### Baton
+slug: baton
+repo: https://github.com/pedroiff0/baton
 stack: Python 3, Swift/AppKit, pdf.js, Tailscale, PWA
 tags: Apresentações, Controle Remoto, macOS, Código Aberto
 cat: pessoal
