@@ -20,7 +20,7 @@ VAULT_FONTE = os.environ.get(
     "/home/pedro/hardcore-life/01-projetos/pessoal/portfolio/esboco-portfolio-conteudo.md",
 )
 OUTROS = ["en", "es", "fr", "it", "zh"]
-MEDIA_KEYS = ("image", "video", "live", "open")
+MEDIA_KEYS = ("image", "video", "live", "open", "status")
 KV = re.compile(r'^\s*([A-Za-z_][A-Za-z0-9_]*)\s*:\s*(.*)$')
 CHAVES = {"full_name", "orcid", "instagram", "featured", "eyebrow", "tagline", "location", "slug", "repo", "stack",
           "tags", "cat", "visibility", "icon", "kind", "period", "orient", "desc", "nickname", "hobby", "grade", *MEDIA_KEYS}

@@ -3,7 +3,7 @@ publish: false
 title: Portfólio (conteúdo em pt-BR)
 type: esboco
 created: '2026-11-03T15:28:39-03:00'
-modified: 2026-11-03T16:47:04-03:00
+modified: 2026-11-03T21:15:40-03:00
 published: '2026-11-03T15:28:39-03:00'
 tags:
   - projeto
@@ -25,7 +25,7 @@ traduzir: false
 full_name: Pedro Henrique Rocha de Andrade
 orcid: 0009-0003-6724-4640
 instagram: ra.pedroh
-featured: ReLaTeX, Sistema Acadêmico, Projeto Profissional (template), awesome-skills, meu-setup
+featured: Researcher Hub, Sistema Acadêmico, ReLaTeX, Sistema de Avaliações, SpectraViewer, Anomaly Detection Viewer
 
 ## Perfil
 eyebrow: Engenharia de Computação · Instituto Federal Fluminense
@@ -90,6 +90,7 @@ visibility: privado
 icon: quiz
 image: assets/media/avaliacoes/poster.webp
 video: assets/media/avaliacoes/tour.webm
+status: beta
 
 Plataforma base de provas/listas/trabalhos em PDF a partir de um banco de questões reutilizável, com geração real em LaTeX e múltiplas variantes (seleção/ordem aleatórias). Núcleo professor+admin.
 
@@ -250,6 +251,20 @@ icon: star
 
 Análise das propriedades estelares e composição química das estrelas próximas do GCNS observadas pelo GALAH DR4 (Gaia DR3 + GALAH DR4). Bolsa PIBIC/CNPq; co-autoria PUC Chile (Dra. M. L. L. Dantas, Dra. A. C. Soja).
 
+### Anomaly Detection Viewer
+slug: anomalyviewer
+stack: Python, Streamlit, Plotly, t-SNE, UMAP, HDBSCAN
+tags: Gaia, GALAH, SAB 2026, Visualização
+cat: pesquisa
+visibility: público
+icon: star
+live: https://anomaly.phrandrade.com/?embed=true
+open: https://anomaly.phrandrade.com
+image: assets/media/anomalyviewer/poster.webp
+video: assets/media/anomalyviewer/tour.webm
+
+Visualizador público dos resultados da pesquisa de detecção de anomalias em estrelas da vizinhança solar (GCNS + GALAH DR4, até 100 pc). Mostra o mapa t-SNE do espectro inteiro, pixel a pixel, com as cores dos parâmetros do catálogo, as flags de emissão e binárias espectroscópicas e os clusters HDBSCAN, além das análises do SAB 2025. Tudo pré-calculado; acompanha o banner do SAB 2026.
+
 ### SpectraViewer
 repo: https://github.com/pedroiff0/spectraviewer
 stack: Python, FITS, Matplotlib
@@ -261,6 +276,7 @@ live: https://spectraviewer.streamlit.app/?embed=true
 open: https://spectraviewer.streamlit.app
 image: assets/media/spectraviewer/poster.webp
 video: assets/media/spectraviewer/tour.webm
+status: ajustes
 
 Viewer interativo de espectros GALAH DR4 (4 bandas, linhas de referência CNO/Alpha/Iron-peak, leitura de FITS, metadados Teff/log(g)/[Fe/H]).
 
@@ -394,6 +410,17 @@ visibility: privado
 icon: dashboard
 
 Dashboard pessoal de hábitos e métricas de vida, derivado do vault hardcore-life e primeiro passo concreto rumo à plataforma HardCoreLife. Node + Express + MongoDB, deploy via Docker. Em desenvolvimento.
+
+### tg-agent-bridge
+slug: tgagentbridge
+repo: https://github.com/pedroiff0/tg-agent-bridge
+stack: Python 3.12, python-telegram-bot, httpx, faster-whisper, SQLite, tmux
+tags: Telegram, Agentes de IA, Automação, Obsidian
+cat: pessoal
+visibility: privado
+icon: profile
+
+Bot do Telegram que liga o celular ao vault hardcore-life e aos agentes de IA (Claude Code e AGY): brief diário, lembretes, check-ins de rotina com botões, consultas somente leitura ao vault e aos repositórios, controle de sessões tmux, transcrição de áudio com Whisper e integração com o ReLaTeX. Regras de segurança bloqueiam arquivos sensíveis e notas protegidas.
 
 ### guia-github
 slug: guiagithub

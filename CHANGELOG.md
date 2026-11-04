@@ -9,6 +9,16 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+## [2.6.0] - 2026-11-03
+### Changed
+- Destaques (seção 02) só com os projetos principais: Researcher Hub, Sistema Acadêmico, ReLaTeX, Sistema de Avaliações (em beta), SpectraViewer (precisa de ajustes) e Anomaly Detection Viewer. awesome-skills, meu-setup e Projeto Profissional seguem na lista completa.
+- Número de repositórios conta só os projetos com repositório.
+- Texto da seção Sobre ocupa a largura toda da coluna (justificado, com hifenização).
+
+### Added
+- Campo `status` por projeto (`beta`, `ajustes`) com badge traduzido nos 6 idiomas.
+- Anomaly Detection Viewer (anomaly.phrandrade.com, ao vivo e com tour da página pública) e tg-agent-bridge (sem vídeo: dados pessoais).
+
 ## [2.5.0] - 2026-11-03
 ### Added
 - Italiano e mandarim (chinês simplificado): 6 idiomas na página. Conteúdo traduzido por `tools/traduzir.py`, que agora pede só os idiomas que faltam em cada trecho; interface em `src/interface.yaml`, `main.js` e `conquistas.js`. Bandeiras `flag-it.svg` e `flag-cn.svg`; fontes CJK do sistema.
