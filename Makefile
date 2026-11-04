@@ -12,13 +12,16 @@ test: ## Executa testes de interface Playwright
 
 lint: ## Valida presença de arquivos e sintaxe JS
 	@test -f index.html && echo "index.html presente."
-	node --check assets/js/main.js assets/js/sky.js assets/js/spectrum.js assets/js/conquistas.js tools/record_demos.js
+	node --check assets/js/main.js assets/js/sky.js assets/js/spectrum.js assets/js/conquistas.js assets/js/busca.js tools/record_demos.js
 	python3 -m py_compile tools/fonte.py tools/traduzir.py tools/migrar_fonte.py
 	python3 tools/build.py --check
 	@echo "Validações de sintaxe concluídas com sucesso."
 
 clean: ## Limpa relatórios temporários de teste
 	rm -rf test-results/ playwright-report/
+
+cv: ## Regera as prévias da 1ª página dos CVs (6 idiomas) a partir de phrandrade.com
+	python3 tools/cv_previews.py
 
 traduzir: ## Traduz por IA só os trechos pt-BR que mudaram (nota do vault -> src/traducoes.json)
 	python3 tools/traduzir.py

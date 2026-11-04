@@ -9,6 +9,17 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+## [2.5.0] - 2026-11-03
+### Added
+- Italiano e mandarim (chinês simplificado): 6 idiomas na página. Conteúdo traduzido por `tools/traduzir.py`, que agora pede só os idiomas que faltam em cada trecho; interface em `src/interface.yaml`, `main.js` e `conquistas.js`. Bandeiras `flag-it.svg` e `flag-cn.svg`; fontes CJK do sistema.
+- Busca no estilo do quartz-site (`assets/js/busca.js`): Ctrl/⌘+K ou `/`, prefixo sem acento, título > tags > conteúdo, `#` para tags, CJK por caractere, destaque, prévia ao lado, ↑/↓/Tab e Enter leva ao item e abre os detalhes.
+- Tour em zoom: o poster do cartão e "Ver tour" abrem um diálogo grande com painel mínimo (play/pausa, barra de progresso, tempo, links, tela cheia, fechar); atalhos espaço, ←/→ e Esc; o vídeo é descarregado ao fechar.
+- Prévia da 1ª página dos currículos acadêmico e profissional no idioma da página (`tools/cv_previews.py`, `make cv`).
+
+### Changed
+- O idioma inicial segue a lista de idiomas do navegador (`navigator.languages`), inclusive `it-*` e `zh-*`.
+- Abaixo de 1366 px o seletor de idioma mostra só a bandeira ativa e abre as demais ao passar o mouse ou focar.
+
 ## [2.4.0] - 2026-11-03
 ### Changed
 - Topbar mostra as seções a partir de 1024 px (antes só a partir de 1561 px); idioma vira só bandeiras e o relógio some em telas menores para caber.

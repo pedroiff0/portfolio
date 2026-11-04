@@ -38,11 +38,13 @@ const VIEWS = [
       if (SHOTS) await page.screenshot({ path: path.join(SHOTS, `${name}.png`), fullPage: name.startsWith("desktop") });
       if (name === "desktop-claro") {
         const heros = new Set();
-        for (const l of ["pt", "en", "es", "fr"]) {
+        for (const l of ["pt", "en", "es", "fr", "it", "zh"]) {
           await page.click(`#lang button[data-lang="${l}"]`);
           heros.add(await page.textContent("#hero-sub"));
         }
-        check(heros.size === 4, "os 4 idiomas não trocam o texto do hero");
+        check(heros.size === 6, "os 6 idiomas não trocam o texto do hero");
+        check(await page.evaluate(() => document.documentElement.lang) === "zh-CN", "lang do html não vira zh-CN");
+        check((await page.getAttribute(".cv-prev img", "src") || "").includes("-zh-"), "prévia do CV não segue o idioma (zh)");
         await page.click('#lang button[data-lang="pt"]');
         check(await page.locator("#trophy-count").textContent() !== "0/8", "conquista de idioma não contou");
         await page.click("#cat-tabs button:nth-child(2)");
@@ -58,9 +60,29 @@ const VIEWS = [
         check(await page.evaluate(() => { const i = document.querySelector("#hero-photo"); return i.complete && i.naturalWidth > 0; }), "foto do hero não carregou");
         const withImage = await page.evaluate(() => window.PORTFOLIO_DATA.REPOS.filter((r) => r.image).length);
         check(await page.locator("#repos .card__media img").count() === withImage, "posters dos projetos ausentes");
-        const tourBtn = page.locator("#repos .card", { has: page.locator(".card__media") }).first().getByRole("button").first();
-        await tourBtn.click();
-        check(await page.locator("#repos video").count() === 1, "ver tour não cria o vídeo");
+        await page.locator("#repos .card__play").first().click();
+        check(await page.isVisible("#tour"), "ver tour não abre o diálogo em zoom");
+        check(!!(await page.getAttribute("#tour-video", "src")), "tour sem vídeo carregado");
+        await page.waitForTimeout(800);
+        check(/^\d+:\d{2} \/ \d+:\d{2}$/.test(await page.textContent("#tour-time")), "painel do tour sem tempo");
+        await page.keyboard.press("Escape");
+        await page.waitForTimeout(250);
+        check(!(await page.isVisible("#tour")) && !(await page.getAttribute("#tour-video", "src")), "fechar o tour não descarrega o vídeo");
+        await page.keyboard.press("Control+k");
+        check(await page.isVisible("#busca-input"), "Ctrl+K não abre a busca");
+        await page.keyboard.type("relatex");
+        check((await page.locator(".busca__card strong").first().textContent()) === "ReLaTeX", "busca não retorna o ReLaTeX em primeiro");
+        await page.keyboard.press("Enter");
+        await page.waitForTimeout(900);
+        check(!(await page.isVisible("#busca-input")), "Enter não fecha a busca");
+        check(await page.evaluate(() => { const c = document.querySelector('#repos [data-sid="p:ReLaTeX"]'); const r = c.getBoundingClientRect(); return r.top >= 0 && r.top < innerHeight && c.querySelector("details").open; }), "Enter não leva ao cartão nem abre os detalhes");
+        await page.keyboard.press("Control+k");
+        await page.fill("#busca-input", "#latex");
+        const nTag = await page.locator(".busca__card").count();
+        check(nTag > 1 && nTag <= 8, `busca por #tag inesperada (${nTag})`);
+        await page.keyboard.press("Escape");
+        check((await page.getAttribute(".cv-prev img", "src") || "").includes("-pt-"), "prévia do CV não segue o idioma (pt)");
+        check(await page.evaluate(() => { const i = document.querySelector(".cv-prev img"); i.loading = "eager"; return i.decode().then(() => i.naturalWidth > 0).catch(() => false); }), "imagem da prévia do CV não carrega");
         await page.locator('#repos [data-live="SpectraViewer"]').click();
         check(await page.isVisible("#live"), "dialog ao vivo não abriu");
         check((await page.getAttribute("#live-frame iframe", "src") || "").includes("spectraviewer"), "iframe ao vivo sem src");
@@ -113,7 +135,7 @@ const VIEWS = [
       }
       await ctx.close();
     }
-    for (const w of [1600, 1920]) {
+    for (const w of [1024, 1280, 1366, 1600, 1920]) {
       const wctx = await browser.newContext({ viewport: { width: w, height: 900 } });
       const wp = await wctx.newPage();
       await wp.goto(URL, { waitUntil: "networkidle" });
@@ -121,6 +143,11 @@ const VIEWS = [
       check(g.l >= 8 && g.r >= 8 && g.o <= 0, `${w}px: topbar sobreposta (${JSON.stringify(g)})`);
       await wctx.close();
     }
+    const ictx = await browser.newContext({ viewport: { width: 1280, height: 800 }, locale: "it-IT" });
+    const ip = await ictx.newPage();
+    await ip.goto(URL, { waitUntil: "networkidle" });
+    check(await ip.evaluate(() => document.documentElement.lang) === "it", "não abre em italiano com o sistema em it-IT");
+    await ictx.close();
     const rctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, reducedMotion: "reduce" });
     const rp = await rctx.newPage();
     await rp.goto(URL, { waitUntil: "networkidle" });

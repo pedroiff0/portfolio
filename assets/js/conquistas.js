@@ -23,6 +23,16 @@
       live: ["En direct", "Ouvrez une démo en direct"], halpha: ["Raie Hα", "Trouvez Hα dans le spectre"],
       idioma: ["Polyglotte", "Changez de langue"], tema: ["Nuit et jour", "Changez de thème"],
       leitura: ["Concentration", "Utilisez le mode lecture"], evento: ["Coulisses", "Ouvrez les photos d'un événement"] } },
+    it: { title: "Traguardi di esplorazione", unlocked: "Traguardo", items: {
+      secoes: ["Esploratore", "Visita tutte le sezioni"], tour: ["Pubblico", "Guarda il tour di un progetto"],
+      live: ["Dal vivo", "Apri una demo dal vivo"], halpha: ["Riga Hα", "Trova Hα nello spettro"],
+      idioma: ["Poliglotta", "Cambia lingua"], tema: ["Notte e giorno", "Cambia tema"],
+      leitura: ["Concentrazione", "Usa la modalità lettura"], evento: ["Dietro le quinte", "Apri le foto di un evento"] } },
+    zh: { title: "探索成就", unlocked: "成就", items: {
+      secoes: ["探索者", "浏览所有栏目"], tour: ["观众", "观看一个项目演示"],
+      live: ["在线", "打开一个在线演示"], halpha: ["Hα 谱线", "在光谱中找到 Hα"],
+      idioma: ["多语者", "切换语言"], tema: ["昼与夜", "切换主题"],
+      leitura: ["专注", "使用阅读模式"], evento: ["幕后", "打开某个活动的照片"] } },
   };
   const KEY = "conquistas";
   let lang = "pt";

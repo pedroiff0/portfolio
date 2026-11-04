@@ -483,5 +483,4 @@ desc: Continuação do projeto PIBIC/CNPq: aprendizado de máquina sobre Gaia DR
 
 ## Além do código
 > Eventos (fotos e relatos) vêm sozinhos das notas de 03-midia (publish: true) via tools/eventos.py; não é preciso listar aqui.
-nickname: cinzento
 grade: 90 disciplinas mapeadas no Sistema Acadêmico (grade IFF Eng. de Computação, 1º→10º período).

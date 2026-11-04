@@ -67,7 +67,7 @@ I18N = os.path.join(ROOT, "src", "interface.yaml")
 OUT = os.path.join(ROOT, "assets", "js", "projects.js")
 ORIG = os.path.join(ROOT, "assets", "js", "projects.js.orig")
 
-LANGS = ["pt", "en", "es", "fr"]
+LANGS = ["pt", "en", "es", "fr", "it", "zh"]
 FLAG = {"🇧🇷": "pt", "🇺🇸": "en", "🇪🇸": "es", "🇫🇷": "fr"}
 
 

@@ -9,6 +9,22 @@ nav:
     [ "Sobre mí", "Proyectos", "Trabajos", "Investigación", "Currículum", "Lattes", "Contacto" ]
   fr:
     [ "À propos", "Projets", "Travaux", "Recherche", "CV", "Lattes", "Contact" ]
+  it:
+  - Chi sono
+  - Progetti
+  - Lavori
+  - Ricerca
+  - Curriculum
+  - Lattes
+  - Contatti
+  zh:
+  - 关于
+  - 项目
+  - 作品
+  - 研究
+  - 简历
+  - Lattes
+  - 联系
 hero:
   pt:
     eyebrow: "Engenharia de Computação · Instituto Federal Fluminense"
@@ -143,6 +159,60 @@ sections:
       lead: "Joignez-moi par le canal de votre choix."
     contatoHero:
       title: "Horizon des Événements · Où le Code Transcende l'Espace-Temps"
+  it:
+    sobre:
+      title: Un percorso tra codice e stelle
+      lead: ''
+    projetos:
+      title: Cosa costruisco
+      lead: Fai clic su una scheda per vedere i dettagli tecnici.
+    trabalhos:
+      title: Tutto ciò che faccio su GitHub
+      lead: Elenco completo dei miei repository, pubblici e privati, con una breve descrizione di ciascuno. Fai clic su una scheda per i dettagli.
+    pesquisa:
+      title: Astronomia computazionale
+      lead: Progetti di ricerca in astrofisica computazionale. Fai clic per espandere.
+    bolsas:
+      title: Iniziazione Scientifica e Ricerca
+      lead: Progetti con borsa e volontari in astrofisica computazionale (dal mio CV).
+    curriculo:
+      title: Curriculum e materiale
+      lead: ''
+    lattes:
+      title: Piattaforma Lattes (CNPq)
+      lead: ''
+    contato:
+      title: Restiamo in contatto
+      lead: Scrivimi dal canale che preferisci.
+    contatoHero:
+      title: Orizzonte degli eventi
+  zh:
+    sobre:
+      title: 在代码与星辰之间
+      lead: ''
+    projetos:
+      title: 我的作品
+      lead: 点击任意卡片查看技术细节。
+    trabalhos:
+      title: 我在 GitHub 上的全部工作
+      lead: 我的全部仓库（公开与私有），附简要说明。点击卡片查看详情。
+    pesquisa:
+      title: 计算天文学
+      lead: 计算天体物理学研究项目。点击展开。
+    bolsas:
+      title: 科研启蒙与研究
+      lead: 计算天体物理学方向的资助与志愿项目（摘自简历）。
+    curriculo:
+      title: 简历与资料
+      lead: ''
+    lattes:
+      title: Lattes 平台（CNPq）
+      lead: ''
+    contato:
+      title: 保持联系
+      lead: 通过你喜欢的方式联系我。
+    contatoHero:
+      title: 事件视界
 about:
   pt:
     - "Sou estudante de <strong>Engenharia de Computação</strong> no <strong>Instituto Federal Fluminense (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, e bolsista de Iniciação Científica (<strong>PIBIC/CNPq</strong>). Minha pesquisa fica na fronteira entre computação e astronomia: arqueologia galáctica, populações estelares e estrutura da Via Láctea, com aprendizado de máquina aplicado a dados do <em>Gaia</em> e de surveys complementares."
@@ -181,6 +251,16 @@ vis:
     privado: "Privé"
     planejamento: "En projet"
     elaboracao: "En cours"
+  it:
+    público: Pubblico
+    privado: Privato
+    planejamento: Pianificato
+    elaboracao: In corso
+  zh:
+    público: 公开
+    privado: 私有
+    planejamento: 计划中
+    elaboracao: 进行中
 labels:
   pt:
     details: "Detalhes"
@@ -198,6 +278,14 @@ labels:
     details: "Détails"
     viewRepo: "↗ Voir le dépôt sur GitHub"
     noRepo: "Pas encore de dépôt public"
+  it:
+    details: Dettagli
+    viewRepo: ↗ Vedi il repository su GitHub
+    noRepo: Nessun repository pubblico per ora
+  zh:
+    details: 详情
+    viewRepo: ↗ 在 GitHub 上查看仓库
+    noRepo: 暂无公开仓库
 cat:
   pt:
     all: "Todos"
@@ -231,6 +319,22 @@ cat:
     pessoal: "Personnel"
     searchPlaceholder: "Filtrer par nom, technologie ou tag..."
     searchAria: "Rechercher des projets"
+  it:
+    all: Tutti
+    software: Software
+    pesquisa: Ricerca
+    academico: Accademico
+    pessoal: Personale
+    searchPlaceholder: Filtra per nome, tecnologia o tag...
+    searchAria: Cerca progetti
+  zh:
+    all: 全部
+    software: 软件
+    pesquisa: 研究
+    academico: 学术
+    pessoal: 个人
+    searchPlaceholder: 按名称、技术或标签筛选...
+    searchAria: 搜索项目
 contactLabels:
   pt:
     email: "Email"
@@ -272,6 +376,26 @@ contactLabels:
     instagram: "Instagram"
     site: "Site officiel"
     location: "Localisation"
+  it:
+    email: Email
+    github: GitHub
+    linkedin: LinkedIn
+    scholar: Google Scholar
+    orcid: ORCID
+    lattes: Lattes
+    instagram: Instagram
+    site: Sito ufficiale
+    location: Luogo
+  zh:
+    email: 邮箱
+    github: GitHub
+    linkedin: LinkedIn
+    scholar: Google 学术
+    orcid: ORCID
+    lattes: Lattes
+    instagram: Instagram
+    site: 官方网站
+    location: 所在地
 bolsas:
   pt:
     orientLabel: "Orientação"
@@ -285,6 +409,12 @@ bolsas:
   fr:
     orientLabel: "Encadrant"
     periodLabel: "Période"
+  it:
+    orientLabel: Supervisore
+    periodLabel: Periodo
+  zh:
+    orientLabel: 导师
+    periodLabel: 时间
 footer:
   pt: "feito com café, código e um céu estrelado."
   en: "made with coffee, code and a starry sky."

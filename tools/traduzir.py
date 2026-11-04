@@ -19,11 +19,12 @@ import fonte
 
 MARCA = re.compile(r"^traduzir:\s*true\s*$", re.M)
 GLOSSARIO = """Regras:
-- Traduza do português do Brasil para inglês (en), espanhol (es) e francês (fr), em tom profissional e direto.
+- Traduza do português do Brasil para os idiomas pedidos, em tom profissional e direto: inglês (en), espanhol (es), francês (fr), italiano (it) e chinês simplificado (zh, Mandarim, caracteres simplificados).
 - Não traduza nomes próprios de projetos, ferramentas, instituições e siglas: IFF, CNPq, PIBIC, LNCC, SAB, FEBIC, IAAC, Gaia, GALAH, APOGEE, ReLaTeX, Overleaf, Quartz, Obsidian, Docker, Node.js, MongoDB e similares.
 - Preserve marcação Markdown (**negrito**, *itálico*), URLs, números, datas e quebras de linha (cada linha de entrada vira uma linha de saída).
-- "Iniciação Científica" = "Scientific Initiation" (en), "Iniciación Científica" (es), "Initiation Scientifique" (fr).
-- Responda SOMENTE com um objeto JSON: {"<id>": {"en": "...", "es": "...", "fr": "..."}, ...}, sem texto antes ou depois."""
+- "Iniciação Científica" = "Scientific Initiation" (en), "Iniciación Científica" (es), "Initiation Scientifique" (fr), "Iniziazione Scientifica" (it), "科研启蒙计划" (zh).
+- Em zh, mantenha em alfabeto latino nomes próprios, siglas, nomes de projetos e tecnologias.
+- Responda SOMENTE com um objeto JSON: {"<id>": {"<idioma>": "...", ...}, ...} com exatamente os idiomas pedidos, sem texto antes ou depois."""
 
 
 def nota_marcada():
@@ -45,8 +46,8 @@ def desmarcar():
         fonte.sincronizar_do_vault()
 
 
-def pedir_ia(lote):
-    prompt = GLOSSARIO + "\n\nTrechos (JSON id -> texto pt-BR):\n" + json.dumps(lote, ensure_ascii=False, indent=1)
+def pedir_ia(lote, langs):
+    prompt = GLOSSARIO + f"\n\nIdiomas pedidos: {', '.join(langs)}.\nTrechos (JSON id -> texto pt-BR):\n" + json.dumps(lote, ensure_ascii=False, indent=1)
     r = subprocess.run(["claude", "-p", "--model", os.environ.get("PORTFOLIO_MODELO", "sonnet"), prompt],
                        capture_output=True, text=True, timeout=600)
     if r.returncode != 0:
@@ -85,16 +86,22 @@ def main():
         if not dry:
             desmarcar()
         return
-    for i in range(0, len(pend), 15):
-        lote = {k: B[k] for k in pend[i:i + 15]}
-        resp = pedir_ia(lote)
-        for k, pt in lote.items():
-            t = resp.get(k) or {}
-            if not all(t.get(l) for l in fonte.OUTROS):
-                print(f"  aviso: tradução incompleta para {k}; fica pendente")
-                continue
-            T[k] = {"pt_hash": fonte.h(pt), "pt": pt, **{l: t[l].strip() for l in fonte.OUTROS}}
-            print(f"  ok {k}\n    en: {T[k]['en'][:140]}")
+    grupos = {}
+    for k in pend:
+        grupos.setdefault(tuple(fonte.faltando(k, B[k], T)), []).append(k)
+    for langs, ks in grupos.items():
+        for i in range(0, len(ks), 15):
+            lote = {k: B[k] for k in ks[i:i + 15]}
+            resp = pedir_ia(lote, list(langs))
+            for k, pt in lote.items():
+                t = resp.get(k) or {}
+                if not all(t.get(l) for l in langs):
+                    print(f"  aviso: tradução incompleta para {k}; fica pendente")
+                    continue
+                base = T.get(k, {}) if fonte.h(pt) == T.get(k, {}).get("pt_hash") else {}
+                T[k] = {**base, "pt_hash": fonte.h(pt), "pt": pt, **{l: t[l].strip() for l in langs}}
+                print(f"  ok {k} [{', '.join(langs)}]")
+            fonte.gravar_traducoes(T)
     for k in orfaos:
         T.pop(k, None)
     fonte.gravar_traducoes(T)
