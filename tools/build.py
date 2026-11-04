@@ -208,7 +208,7 @@ def split_field_flagged(text):
     return out
 
 
-MEDIA_KEYS = ("image", "video", "live", "open")
+MEDIA_KEYS = ("image", "video", "live", "open", "status")
 
 
 def parse_projetos(block):

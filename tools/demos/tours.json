@@ -1305,5 +1305,61 @@
     "wait": 1400
    }
   ]
+ },
+ "anomalyviewer": {
+  "name": "Anomaly Detection Viewer",
+  "_dados": "página pública do viewer (anomaly.phrandrade.com), resultados já publicados no banner do SAB 2026",
+  "steps": [
+   {
+    "goto": "https://anomaly.phrandrade.com/",
+    "waitFor": "[data-testid='stAppViewContainer']"
+   },
+   {
+    "wait": 9000
+   },
+   {
+    "start": true
+   },
+   {
+    "wait": 1500,
+    "poster": true
+   },
+   {
+    "scrollIn": [
+     "[data-testid='stMain']",
+     600
+    ]
+   },
+   {
+    "wait": 1600
+   },
+   {
+    "scrollIn": [
+     "[data-testid='stMain']",
+     700
+    ]
+   },
+   {
+    "wait": 1600
+   },
+   {
+    "scrollIn": [
+     "[data-testid='stMain']",
+     700
+    ]
+   },
+   {
+    "wait": 1600
+   },
+   {
+    "scrollIn": [
+     "[data-testid='stMain']",
+     700
+    ]
+   },
+   {
+    "wait": 1800
+   }
+  ]
  }
 }

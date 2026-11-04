@@ -66,6 +66,7 @@ const REPOS = [
     brief: "Plataforma base de provas/listas/trabalhos em PDF a partir de um banco de questões reutilizável, com geração real em LaTeX e múltiplas variantes (seleção/ordem aleatórias). Núcleo professor+admin.",
     image: "assets/media/avaliacoes/poster.webp",
     video: "assets/media/avaliacoes/tour.webm",
+    status: "beta",
     i18n: {
       en: "Base platform for exams/lists/assignments in PDF from a reusable question bank, with real LaTeX generation and multiple variants (random selection/order). Professor+admin core.",
       es: "Plataforma base de exámenes/listas/trabajos en PDF a partir de un banco de preguntas reutilizable, con generación real en LaTeX y múltiples variantes (selección/orden aleatorios). Núcleo profesor+admin.",
@@ -321,6 +322,27 @@ const REPOS = [
     }
   },
   {
+    name: "Anomaly Detection Viewer",
+    cat: "pesquisa",
+    visibility: "público",
+    icon: "star",
+    repo: "",
+    stack: [ "Python", "Streamlit", "Plotly", "t-SNE", "UMAP", "HDBSCAN" ],
+    tags: [ "Gaia", "GALAH", "SAB 2026", "Visualização" ],
+    brief: "Visualizador público dos resultados da pesquisa de detecção de anomalias em estrelas da vizinhança solar (GCNS + GALAH DR4, até 100 pc). Mostra o mapa t-SNE do espectro inteiro, pixel a pixel, com as cores dos parâmetros do catálogo, as flags de emissão e binárias espectroscópicas e os clusters HDBSCAN, além das análises do SAB 2025. Tudo pré-calculado; acompanha o banner do SAB 2026.",
+    image: "assets/media/anomalyviewer/poster.webp",
+    video: "assets/media/anomalyviewer/tour.webm",
+    live: "https://anomaly.phrandrade.com/?embed=true",
+    open: "https://anomaly.phrandrade.com",
+    i18n: {
+      en: "Public viewer for the results of the anomaly detection research on stars in the solar neighborhood (GCNS + GALAH DR4, up to 100 pc). It shows the t-SNE map of the entire spectrum, pixel by pixel, with the colors of the catalog parameters, the emission and spectroscopic binary flags, and the HDBSCAN clusters, along with the SAB 2025 analyses. Everything is precomputed; it comes with the SAB 2026 banner.",
+      es: "Visor público de los resultados de la investigación de detección de anomalías en estrellas de la vecindad solar (GCNS + GALAH DR4, hasta 100 pc). Muestra el mapa t-SNE del espectro completo, píxel a píxel, con los colores de los parámetros del catálogo, las flags de emisión y de binarias espectroscópicas y los clusters HDBSCAN, además de los análisis del SAB 2025. Todo está precalculado; incluye el banner del SAB 2026.",
+      fr: "Visualiseur public des résultats de la recherche sur la détection d'anomalies chez les étoiles du voisinage solaire (GCNS + GALAH DR4, jusqu'à 100 pc). Il affiche la carte t-SNE du spectre entier, pixel par pixel, avec les couleurs des paramètres du catalogue, les flags d'émission et de binaires spectroscopiques et les clusters HDBSCAN, ainsi que les analyses du SAB 2025. Tout est précalculé ; il est accompagné de la bannière du SAB 2026.",
+      it: "Visualizzatore pubblico dei risultati della ricerca sul rilevamento di anomalie nelle stelle del vicinato solare (GCNS + GALAH DR4, fino a 100 pc). Mostra la mappa t-SNE dello spettro intero, pixel per pixel, con i colori dei parametri del catalogo, i flag di emissione e di binarie spettroscopiche e i cluster HDBSCAN, oltre alle analisi del SAB 2025. Tutto è precalcolato; include il banner del SAB 2026.",
+      zh: "面向公众的恒星异常检测研究结果查看器,研究对象为太阳邻域恒星(GCNS + GALAH DR4,距离不超过 100 pc)。它展示整条光谱逐像素的 t-SNE 图,并配有星表参数的颜色、发射线和分光双星的 flag,以及 HDBSCAN 聚类,此外还包括 SAB 2025 的分析。所有内容均已预先计算;并附有 SAB 2026 的横幅。"
+    }
+  },
+  {
     name: "SpectraViewer",
     cat: "pesquisa",
     visibility: "público",
@@ -333,6 +355,7 @@ const REPOS = [
     video: "assets/media/spectraviewer/tour.webm",
     live: "https://spectraviewer.streamlit.app/?embed=true",
     open: "https://spectraviewer.streamlit.app",
+    status: "ajustes",
     i18n: {
       en: "Interactive viewer for GALAH DR4 spectra (4 bands, CNO/Alpha/Iron-peak reference lines, FITS reading, Teff/log(g)/[Fe/H] metadata).",
       es: "Visor interactivo de espectros GALAH DR4 (4 bandas, líneas de referencia CNO/Alpha/Iron-peak, lectura de FITS, metadatos Teff/log(g)/[Fe/H]).",
@@ -548,6 +571,23 @@ const REPOS = [
     }
   },
   {
+    name: "tg-agent-bridge",
+    cat: "pessoal",
+    visibility: "privado",
+    icon: "profile",
+    repo: "https://github.com/pedroiff0/tg-agent-bridge",
+    stack: [ "Python 3.12", "python-telegram-bot", "httpx", "faster-whisper", "SQLite", "tmux" ],
+    tags: [ "Telegram", "Agentes de IA", "Automação", "Obsidian" ],
+    brief: "Bot do Telegram que liga o celular ao vault hardcore-life e aos agentes de IA (Claude Code e AGY): brief diário, lembretes, check-ins de rotina com botões, consultas somente leitura ao vault e aos repositórios, controle de sessões tmux, transcrição de áudio com Whisper e integração com o ReLaTeX. Regras de segurança bloqueiam arquivos sensíveis e notas protegidas.",
+    i18n: {
+      en: "Telegram bot that connects the phone to the hardcore-life vault and to AI agents (Claude Code and AGY): daily brief, reminders, routine check-ins with buttons, read-only queries to the vault and repositories, tmux session control, audio transcription with Whisper, and integration with ReLaTeX. Security rules block sensitive files and protected notes.",
+      es: "Bot de Telegram que conecta el celular con el vault hardcore-life y con los agentes de IA (Claude Code y AGY): brief diario, recordatorios, check-ins de rutina con botones, consultas de solo lectura al vault y a los repositorios, control de sesiones tmux, transcripción de audio con Whisper e integración con ReLaTeX. Las reglas de seguridad bloquean archivos sensibles y notas protegidas.",
+      fr: "Bot Telegram qui relie le téléphone au vault hardcore-life et aux agents d'IA (Claude Code et AGY) : brief quotidien, rappels, check-ins de routine avec boutons, requêtes en lecture seule sur le vault et les dépôts, contrôle des sessions tmux, transcription audio avec Whisper et intégration avec ReLaTeX. Des règles de sécurité bloquent les fichiers sensibles et les notes protégées.",
+      it: "Bot di Telegram che collega il cellulare al vault hardcore-life e agli agenti di IA (Claude Code e AGY): brief giornaliero, promemoria, check-in di routine con pulsanti, consultazioni in sola lettura al vault e ai repository, controllo delle sessioni tmux, trascrizione audio con Whisper e integrazione con ReLaTeX. Regole di sicurezza bloccano i file sensibili e le note protette.",
+      zh: "Telegram 机器人,将手机与 hardcore-life vault 以及 AI 智能体(Claude Code 和 AGY)连接起来:每日简报、提醒、带按钮的日常打卡、对 vault 和代码仓库的只读查询、tmux 会话控制、使用 Whisper 的语音转录,以及与 ReLaTeX 的集成。安全规则会拦截敏感文件和受保护的笔记。"
+    }
+  },
+  {
     name: "guia-github",
     cat: "pessoal",
     visibility: "público",
@@ -607,11 +647,12 @@ const REPOS = [
 ];
 
 const FEATURED = [
-  REPOS.find(r => r.name === "ReLaTeX"),
+  REPOS.find(r => r.name === "Researcher Hub"),
   REPOS.find(r => r.name === "Sistema Acadêmico"),
-  REPOS.find(r => r.name === "Projeto Profissional (template)"),
-  REPOS.find(r => r.name === "awesome-skills"),
-  REPOS.find(r => r.name === "meu-setup")
+  REPOS.find(r => r.name === "ReLaTeX"),
+  REPOS.find(r => r.name === "Sistema de Avaliações"),
+  REPOS.find(r => r.name === "SpectraViewer"),
+  REPOS.find(r => r.name === "Anomaly Detection Viewer")
 ];
 
 const RESEARCH = REPOS.filter(r => r.cat === "pesquisa").map(r => ({

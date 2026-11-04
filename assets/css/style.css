@@ -217,7 +217,7 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
 .block { padding: 2.5rem 0; border-top: 1px solid var(--border); }
 .sec-lead { color: var(--muted); margin-bottom: 1.5rem; }
 .sec-lead:empty { display: none; }
-.prose p { max-width: 82ch; }
+.prose p { max-width: none; text-align: justify; hyphens: auto; }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
 
@@ -227,6 +227,7 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
 }
 .card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
 .card__head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; }
+.card__head h3 { flex: 1; min-width: 0; }
 .card__meta { font: 400 0.75rem var(--font-mono); color: var(--muted); white-space: nowrap; }
 .card p { font-size: 0.97rem; margin: 0; }
 .card .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
@@ -430,6 +431,11 @@ a.contact:hover { border-color: var(--accent); color: var(--accent); }
 .lightbox__close { position: absolute; top: -8px; right: -8px; z-index: 1; }
 .lightbox__nav:hover, .lightbox__close:hover { border-color: #c084fc; }
 
+.badge { flex: none; padding: 0.1rem 0.5rem; border-radius: 999px; font: 600 0.7rem var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+.badge--beta { color: #1d4ed8; background: color-mix(in srgb, #3b82f6 16%, transparent); }
+.badge--ajustes { color: #b45309; background: color-mix(in srgb, #f59e0b 18%, transparent); }
+:root[data-theme="dark"] .badge--beta { color: #93c5fd; } :root[data-theme="dark"] .badge--ajustes { color: #fcd34d; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .badge--beta { color: #93c5fd; } :root:not([data-theme="light"]) .badge--ajustes { color: #fcd34d; } }
 /* Busca (padrão do quartz-site) */
 .search-btn { display: inline-flex; align-items: center; gap: 0.45rem; height: 32px; padding: 0 0.55rem 0 0.65rem; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--muted); font: inherit; font-size: 0.88rem; cursor: pointer; white-space: nowrap; }
 .search-btn:hover { color: var(--accent); border-color: var(--accent); }

@@ -111,7 +111,7 @@ const VIEWS = [
         check(await page.evaluate(() => document.documentElement.getAttribute("reader-mode")) === "on", "modo leitura não persiste");
         await page.click("#reader-exit");
         check(await page.evaluate(() => document.documentElement.getAttribute("reader-mode")) === "off", "botão flutuante não sai do modo leitura");
-        const semVideo = await page.evaluate(() => window.PORTFOLIO_DATA.REPOS.filter((r) => !r.video && !["dashboard-life", "hardcore-life", "anomaly_detection", "HardCoreLife (plataforma)", "Arquivo de Apostilas"].includes(r.name)).map((r) => r.name));
+        const semVideo = await page.evaluate(() => window.PORTFOLIO_DATA.REPOS.filter((r) => !r.video && !["dashboard-life", "hardcore-life", "anomaly_detection", "HardCoreLife (plataforma)", "Arquivo de Apostilas", "tg-agent-bridge"].includes(r.name)).map((r) => r.name));
         if (process.env.EXIGIR_VIDEOS) check(semVideo.length === 0, "projetos sem vídeo: " + semVideo.join(", "));
         check(await page.locator("#stats li").count() === 4, "faixa de números incompleta");
       }
