@@ -3,7 +3,7 @@ publish: false
 title: Portfólio (conteúdo em pt-BR)
 type: esboco
 created: '2026-11-03T15:28:39-03:00'
-modified: 2026-11-05T13:55:34-03:00
+modified: 2026-11-05T15:14:42-03:00
 published: '2026-11-03T15:28:39-03:00'
 tags:
   - projeto
@@ -547,6 +547,7 @@ resumo: Campanha sobre o descarte de baterias e e-lixo em Bom Jesus do Itabapoan
 cat: academico
 visibility: elaboracao
 icon: document
+image: assets/media/elixo/poster.webp
 
 Pra onde vai a bateria que morreu? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.
 

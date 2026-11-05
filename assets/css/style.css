@@ -184,6 +184,20 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
 :root[side-collapsed] .side__photo { width: 44px; height: 44px; box-shadow: 0 0 0 3px var(--highlight); margin-top: 2.2rem; align-self: center; }
 .side__resize { position: absolute; top: 72px; bottom: 0; left: calc(var(--side-w, var(--side)) + var(--gap) / 2 - 5px); width: 10px; z-index: 3; cursor: col-resize; touch-action: none; }
 :root[side-collapsed] .side__resize { display: none; }
+/* Recolhida: ao passar o mouse a barra aparece por cima do conteúdo (sem mudar o layout) e some ao sair. */
+@media (hover: hover) and (min-width: 901px) {
+  :root[side-collapsed] .sidebar { z-index: 5; }
+  :root[side-collapsed] .sidebar:hover, :root[side-collapsed] .sidebar:focus-within {
+    width: var(--side-w, var(--side)); padding: 1.1rem 1rem 1rem; margin: -0.2rem 0 0 -0.2rem;
+    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 14px 36px rgba(18, 9, 36, 0.22);
+  }
+  :root[side-collapsed] .sidebar:hover .side__id, :root[side-collapsed] .sidebar:focus-within .side__id { display: block; }
+  :root[side-collapsed] .sidebar:hover .side__links, :root[side-collapsed] .sidebar:focus-within .side__links { display: flex; }
+  :root[side-collapsed] .sidebar:hover .side__nick, :root[side-collapsed] .sidebar:focus-within .side__nick,
+  :root[side-collapsed] .sidebar:hover .side__cv, :root[side-collapsed] .sidebar:focus-within .side__cv { display: revert; }
+  :root[side-collapsed] .sidebar:hover .side__photo, :root[side-collapsed] .sidebar:focus-within .side__photo { width: clamp(80px, 17vh, 160px); height: clamp(80px, 17vh, 160px); margin-top: 0.4rem; align-self: flex-start; box-shadow: 0 0 0 7px var(--highlight); }
+  :root[side-collapsed] .sidebar:hover .side__toggle, :root[side-collapsed] .sidebar:focus-within .side__toggle { right: 0.6rem; top: 0.6rem; }
+}
 .side__resize::after { content: ""; position: absolute; left: 4px; top: 0; bottom: 0; width: 2px; border-radius: 2px; background: transparent; transition: background 0.15s; }
 .side__resize:hover::after, .side__resize:focus-visible::after, .side__resize.is-drag::after { background: var(--accent); }
 :root.is-resizing, :root.is-resizing * { cursor: col-resize !important; user-select: none; }

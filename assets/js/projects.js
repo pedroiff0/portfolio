@@ -1277,6 +1277,7 @@ const REPOS = [
     stack: [ "Eletrônica", "Ciência do Ambiente", "LaTeX" ],
     tags: [ "E-waste", "Sustainability", "Outreach" ],
     brief: "Pra onde vai a bateria que morreu? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.",
+    image: "assets/media/elixo/poster.webp",
     status: "camp",
     resumo: "Campanha sobre o descarte de baterias e e-lixo em Bom Jesus do Itabapoana.",
     i18n: {
