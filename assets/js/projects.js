@@ -1168,30 +1168,32 @@ const REPOS = [
     visibility: "privado",
     icon: "cash",
     repo: "https://github.com/pedroiff0/custos-app",
-    stack: [ "Node.js", "JavaScript", "Docker" ],
-    tags: [ "Costs", "Management" ],
-    brief: "Aplicação de rastreio de custos operacionais e despesas categorizadas, empacotada em Docker. Parte da linha de ferramentas profissionais de gestão, ao lado de Caixas, Controle de Estoque e Planilhador.",
-    resumo: "Rastreio de custos operacionais e despesas categorizadas.",
+    stack: [ "Node.js", "Express", "MongoDB", "Mongoose", "EJS", "Zod", "Jest", "Docker" ],
+    tags: [ "FinOps", "SaaS", "Cloud Costs" ],
+    brief: "Zenith FinOps & Custos: aplicação SaaS para gestão de custos de infraestrutura cloud (VPS, Hetzner, AWS, DigitalOcean) e de assinaturas de deploy (Vercel, Supabase, Cloudflare). Inventário de servidores com câmbio automático, amortização de planos anuais, rateio de custos por cliente, DRE e margem de lucro por cliente com alertas, e simulador de precificação (infraestrutura, horas de trabalho, margem-alvo e impostos). Tem API REST com chaves para integrar ao Zênite, plano Pro com período de teste e central de avisos. Node/Express, MongoDB, telas em EJS, validação Zod e testes com Jest.",
+    image: "assets/media/custosapp/poster.webp",
+    video: "assets/media/custosapp/tour.webm",
+    resumo: "SaaS de FinOps: custos de servidores e assinaturas, rateio por cliente e margem de lucro.",
     i18n: {
       en: {
-        brief: "Application for tracking operational costs and categorized expenses, packaged in Docker. Part of the line of professional management tools, alongside Caixas, Controle de Estoque and Planilhador.",
-        resumo: "Tracking of operational costs and categorized expenses."
+        brief: "Zenith FinOps & Custos: a SaaS application for managing cloud infrastructure costs (VPS, Hetzner, AWS, DigitalOcean) and deployment subscriptions (Vercel, Supabase, Cloudflare). Server inventory with automatic currency conversion, amortization of annual plans, per-client cost allocation, P&L statements and profit margin per client with alerts, and a pricing simulator (infrastructure, working hours, target margin and taxes). It has a REST API with keys for integrating with Zênite, a Pro plan with a trial period, and a notification center. Node/Express, MongoDB, EJS views, Zod validation and Jest tests.",
+        resumo: "FinOps SaaS: server and subscription costs, per-client allocation and profit margin."
       },
       es: {
-        brief: "Aplicación de seguimiento de costos operativos y gastos categorizados, empaquetada en Docker. Parte de la línea de herramientas profesionales de gestión, junto a Caixas, Controle de Estoque y Planilhador.",
-        resumo: "Seguimiento de costos operativos y gastos categorizados."
+        brief: "Zenith FinOps & Custos: aplicación SaaS para la gestión de costos de infraestructura cloud (VPS, Hetzner, AWS, DigitalOcean) y de suscripciones de despliegue (Vercel, Supabase, Cloudflare). Inventario de servidores con cambio de divisas automático, amortización de planes anuales, prorrateo de costos por cliente, estado de resultados (DRE) y margen de beneficio por cliente con alertas, y simulador de precios (infraestructura, horas de trabajo, margen objetivo e impuestos). Cuenta con API REST con claves para integrarse con Zênite, plan Pro con período de prueba y centro de avisos. Node/Express, MongoDB, vistas en EJS, validación con Zod y pruebas con Jest.",
+        resumo: "SaaS de FinOps: costos de servidores y suscripciones, prorrateo por cliente y margen de beneficio."
       },
       fr: {
-        brief: "Application de suivi des coûts opérationnels et des dépenses catégorisées, packagée dans Docker. Elle fait partie de la gamme d'outils professionnels de gestion, aux côtés de Caixas, Controle de Estoque et Planilhador.",
-        resumo: "Suivi des coûts opérationnels et des dépenses catégorisées."
+        brief: "Zenith FinOps & Custos : application SaaS pour la gestion des coûts d'infrastructure cloud (VPS, Hetzner, AWS, DigitalOcean) et des abonnements de déploiement (Vercel, Supabase, Cloudflare). Inventaire des serveurs avec conversion de devises automatique, amortissement des forfaits annuels, répartition des coûts par client, compte de résultat (DRE) et marge bénéficiaire par client avec alertes, et simulateur de tarification (infrastructure, heures de travail, marge cible et impôts). Elle dispose d'une API REST avec clés pour s'intégrer à Zênite, d'un forfait Pro avec période d'essai et d'un centre de notifications. Node/Express, MongoDB, vues en EJS, validation avec Zod et tests avec Jest.",
+        resumo: "SaaS de FinOps : coûts des serveurs et des abonnements, répartition par client et marge bénéficiaire."
       },
       it: {
-        brief: "Applicazione per il monitoraggio dei costi operativi e delle spese categorizzate, impacchettata in Docker. Fa parte della linea di strumenti professionali di gestione, insieme a Caixas, Controle de Estoque e Planilhador.",
-        resumo: "Monitoraggio dei costi operativi e delle spese categorizzate."
+        brief: "Zenith FinOps & Custos: applicazione SaaS per la gestione dei costi dell'infrastruttura cloud (VPS, Hetzner, AWS, DigitalOcean) e degli abbonamenti di deploy (Vercel, Supabase, Cloudflare). Inventario dei server con cambio valuta automatico, ammortamento dei piani annuali, ripartizione dei costi per cliente, conto economico (DRE) e margine di profitto per cliente con avvisi, e simulatore di prezzi (infrastruttura, ore di lavoro, margine obiettivo e imposte). Dispone di API REST con chiavi per l'integrazione con Zênite, piano Pro con periodo di prova e centro avvisi. Node/Express, MongoDB, viste in EJS, validazione con Zod e test con Jest.",
+        resumo: "SaaS di FinOps: costi di server e abbonamenti, ripartizione per cliente e margine di profitto."
       },
       zh: {
-        brief: "用于跟踪运营成本和分类支出的应用,使用 Docker 打包。属于专业管理工具系列,与 Caixas、Controle de Estoque 和 Planilhador 并列。",
-        resumo: "跟踪运营成本和分类支出。"
+        brief: "Zenith FinOps & Custos：用于管理云基础设施成本（VPS、Hetzner、AWS、DigitalOcean）和部署订阅（Vercel、Supabase、Cloudflare）的 SaaS 应用。具备自动汇率换算的服务器清单、年度套餐摊销、按客户分摊成本、DRE（利润表）以及带预警的客户利润率，并提供定价模拟器（基础设施、工时、目标利润率和税费）。提供带密钥的 REST API 以便与 Zênite 集成，设有带试用期的 Pro 套餐和通知中心。技术栈：Node/Express、MongoDB、EJS 视图、Zod 校验和 Jest 测试。",
+        resumo: "FinOps SaaS：服务器与订阅成本、按客户分摊及利润率。"
       }
     }
   },
@@ -1204,6 +1206,8 @@ const REPOS = [
     stack: [ "Node.js", "Express", "MongoDB" ],
     tags: [ "Travel", "Collaborative", "Full-stack" ],
     brief: "Rumo, em desenvolvimento: planejamento de viagens em grupo que resolve os dois pontos em que viagem em grupo trava, ninguém saber o roteiro combinado e ninguém saber quem pagou o quê. Roteiro compartilhado, reservas reunidas num só lugar e divisão de despesas entre os viajantes, com interface bilíngue (PT/EN). Node.js, Express e MongoDB.",
+    image: "assets/media/viagemapp/poster.webp",
+    video: "assets/media/viagemapp/tour.webm",
     status: "dev",
     resumo: "Viagens em grupo: roteiro compartilhado, reservas e divisão de despesas.",
     i18n: {
@@ -1235,30 +1239,32 @@ const REPOS = [
     visibility: "privado",
     icon: "document",
     repo: "https://github.com/pedroiff0/manga-reader",
-    stack: [ "TypeScript", "Node.js" ],
-    tags: [ "Web App", "Media" ],
-    brief: "Leitor de mangás web privado e sem anúncios, com auto-cadastro, painel administrativo para aprovação de contas, histórico de último login, progresso de leitura por usuário e busca agregada em várias fontes. Uso restrito a poucos usuários.",
-    resumo: "Leitor de mangás privado, sem anúncios, com contas aprovadas por administrador.",
+    stack: [ "Docker", "Suwayomi", "Caddy", "Tailscale" ],
+    tags: [ "Self-hosted", "Tailscale", "Media" ],
+    brief: "Servidor pessoal de mangás baseado no Suwayomi-Server, em Docker, acessível apenas pela minha rede Tailscale (celular e iPad) e instalável como PWA. Um proxy Caddy fica na frente do servidor, com login próprio para cada amigo e biblioteca e progresso compartilhados. Não é exposto à internet.",
+    image: "assets/media/mangareader/poster.webp",
+    video: "assets/media/mangareader/tour.webm",
+    resumo: "Servidor pessoal de mangás (Suwayomi), acessível só pela tailnet.",
     i18n: {
       en: {
-        brief: "Private, ad-free web manga reader, with self-registration, an admin panel for approving accounts, last-login history, per-user reading progress and aggregated search across several sources. Restricted to a few users.",
-        resumo: "Private, ad-free manga reader with admin-approved accounts."
+        brief: "Personal manga server based on Suwayomi-Server, running in Docker, accessible only through my Tailscale network (phone and iPad) and installable as a PWA. A Caddy proxy sits in front of the server, with a separate login for each friend and a shared library and progress. It is not exposed to the internet.",
+        resumo: "Personal manga server (Suwayomi), accessible only through the tailnet."
       },
       es: {
-        brief: "Lector de manga web privado y sin anuncios, con autorregistro, panel administrativo para aprobar cuentas, historial de último inicio de sesión, progreso de lectura por usuario y búsqueda agregada en varias fuentes. Uso restringido a pocos usuarios.",
-        resumo: "Lector de manga privado, sin anuncios, con cuentas aprobadas por un administrador."
+        brief: "Servidor personal de manga basado en Suwayomi-Server, en Docker, accesible solo a través de mi red Tailscale (celular e iPad) e instalable como PWA. Un proxy Caddy se sitúa delante del servidor, con inicio de sesión propio para cada amigo y biblioteca y progreso compartidos. No está expuesto a internet.",
+        resumo: "Servidor personal de manga (Suwayomi), accesible solo a través de la tailnet."
       },
       fr: {
-        brief: "Lecteur de mangas web privé et sans publicité, avec auto-inscription, panneau d'administration pour l'approbation des comptes, historique de dernière connexion, progression de lecture par utilisateur et recherche agrégée sur plusieurs sources. Usage restreint à quelques utilisateurs.",
-        resumo: "Lecteur de mangas privé, sans publicité, avec comptes approuvés par un administrateur."
+        brief: "Serveur personnel de mangas basé sur Suwayomi-Server, sous Docker, accessible uniquement via mon réseau Tailscale (téléphone et iPad) et installable en tant que PWA. Un proxy Caddy se place devant le serveur, avec une connexion propre à chaque ami et une bibliothèque et une progression partagées. Il n'est pas exposé à Internet.",
+        resumo: "Serveur personnel de mangas (Suwayomi), accessible uniquement via le tailnet."
       },
       it: {
-        brief: "Lettore di manga web privato e senza pubblicità, con auto-registrazione, pannello amministrativo per l'approvazione degli account, cronologia dell'ultimo accesso, progresso di lettura per utente e ricerca aggregata su più fonti. Uso limitato a pochi utenti.",
-        resumo: "Lettore di manga privato, senza pubblicità, con account approvati da un amministratore."
+        brief: "Server personale di manga basato su Suwayomi-Server, in Docker, accessibile solo tramite la mia rete Tailscale (cellulare e iPad) e installabile come PWA. Un proxy Caddy si trova davanti al server, con login separato per ogni amico e libreria e progressi condivisi. Non è esposto a Internet.",
+        resumo: "Server personale di manga (Suwayomi), accessibile solo tramite la tailnet."
       },
       zh: {
-        brief: "私有、无广告的网页漫画阅读器,支持自助注册、用于审批账号的管理后台、最近登录记录、按用户记录阅读进度,以及跨多个来源的聚合搜索。仅限少数用户使用。",
-        resumo: "私有、无广告的漫画阅读器,账号需经管理员批准。"
+        brief: "基于 Suwayomi-Server 的个人漫画服务器，运行在 Docker 中，仅可通过我的 Tailscale 网络（手机和 iPad）访问，并可作为 PWA 安装。服务器前方部署了 Caddy 代理，每位朋友拥有独立登录账号，并共享书库和阅读进度。该服务器不对互联网开放。",
+        resumo: "个人漫画服务器（Suwayomi），仅可通过 tailnet 访问。"
       }
     }
   },
@@ -1305,6 +1311,8 @@ const REPOS = [
     stack: [ "JavaScript", "Three.js", "Canvas" ],
     tags: [ "Three.js", "Portfolio" ],
     brief: "Primeira versão do portfólio, com visual sci-fi (HUD, Three.js e canvas), preservada antes da refatoração para a versão clean atual.",
+    image: "assets/media/portfolio-v1/poster.webp",
+    video: "assets/media/portfolio-v1/tour.webm",
     resumo: "Primeira versão do portfólio, com visual sci-fi, preservada.",
     i18n: {
       en: {

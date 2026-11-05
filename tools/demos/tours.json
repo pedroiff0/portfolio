@@ -1361,5 +1361,163 @@
     "wait": 1800
    }
   ]
+ },
+ "custosapp": {
+  "name": "Custos App",
+  "_dados": "README do repositório privado renderizado localmente",
+  "readme": {
+   "file": "~/Repositorios/pessoal/custos-app/README.md",
+   "title": "Custos App"
+  },
+  "steps": [
+   {
+    "goto": "readme:custosapp",
+    "waitFor": "article"
+   },
+   {
+    "wait": 1600,
+    "poster": true
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "viagemapp": {
+  "name": "Rumo",
+  "_dados": "README do repositório privado renderizado localmente",
+  "readme": {
+   "file": "~/Repositorios/pessoal/viagem-app/README.md",
+   "title": "Rumo"
+  },
+  "steps": [
+   {
+    "goto": "readme:viagemapp",
+    "waitFor": "article"
+   },
+   {
+    "wait": 1600,
+    "poster": true
+   },
+   {
+    "scroll": 600
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1300
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "mangareader": {
+  "name": "Manga Reader",
+  "_dados": "README do repositório privado renderizado localmente",
+  "readme": {
+   "file": "~/Repositorios/pessoal/manga-reader/README.md",
+   "title": "manga-reader"
+  },
+  "steps": [
+   {
+    "goto": "readme:mangareader",
+    "waitFor": "article"
+   },
+   {
+    "wait": 1800,
+    "poster": true
+   },
+   {
+    "scroll": 300
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 300
+   },
+   {
+    "wait": 1500
+   }
+  ]
+ },
+ "portfolio-v1": {
+  "name": "Portfólio v1 (sci-fi)",
+  "_dados": "clone local do repositório privado portfolio-v1-scifi servido em 127.0.0.1:4590 (conteúdo público do portfólio antigo)",
+  "steps": [
+   {
+    "goto": "http://127.0.0.1:4590/",
+    "waitFor": "body"
+   },
+   {
+    "wait": 2800,
+    "poster": true
+   },
+   {
+    "press": "Escape"
+   },
+   {
+    "wait": 2800
+   },
+   {
+    "scroll": 700
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 800
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 800
+   },
+   {
+    "wait": 1500
+   },
+   {
+    "scroll": 800
+   },
+   {
+    "wait": 1500
+   }
+  ]
  }
 }

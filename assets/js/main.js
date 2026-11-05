@@ -72,7 +72,7 @@
       cvDownload: "Baixar CV", footTag: "— computação e astrofísica, feito com", footAnd: "e", footBy: "por", toTop: "Voltar ao topo ↑", icoCafe: "café", icoCodigo: "código", icoCometa: "cometas", updated: "Atualizado em", menu: "Menu",
       nav: "Eventos", alemTitle: "Participação em eventos", alemLead: "Feiras, congressos e visitas técnicas em que apresentei trabalhos ou aprendi algo, com fotos de cada um.",
       nickname: "Apelido", base: "Base", baseText: "Bom Jesus do Itabapoana, RJ", photos: "fotos", report: "Ler relato", noPhotos: "Relato sem fotos", prev: "Anterior", next: "Próxima",
-      reader: "Modo leitura", readerExit: "Sair do modo leitura", cvAcad: "Acadêmico", cvProf: "Profissional", cvLangsTitle: "Currículo em 6 idiomas (PDF)",
+      reader: "Modo leitura", readerExit: "Sair do modo leitura", sideCollapse: "Recolher barra lateral", sideExpand: "Expandir barra lateral", cvAcad: "Acadêmico", cvProf: "Profissional", cvLangsTitle: "Currículo em 6 idiomas (PDF)",
       tour: "Ver tour", live: "Explorar ao vivo", openNew: "Abrir em nova aba", close: "Fechar",
       stats: ["repositórios", "projetos de iniciação científica", "participações na IAAC (2024 e 2025)", "disciplinas mapeadas no Sistema Acadêmico"],
       spectrumHint: "Arraste para percorrer o espectro de uma estrela e encontrar as linhas de absorção que uso no GALAH DR4.",
@@ -83,7 +83,7 @@
       cvDownload: "Download CV", footTag: "— computing and astrophysics, made with", footAnd: "and", footBy: "by", toTop: "Back to top ↑", icoCafe: "coffee", icoCodigo: "code", icoCometa: "comets", updated: "Updated on", menu: "Menu",
       nav: "Events", alemTitle: "Events", alemLead: "Fairs, conferences and technical visits where I presented work or learned something, with photos of each.",
       nickname: "Nickname", base: "Based in", baseText: "Bom Jesus do Itabapoana, RJ, Brazil", photos: "photos", report: "Read the story", noPhotos: "Story without photos", prev: "Previous", next: "Next",
-      reader: "Reading mode", readerExit: "Exit reading mode", cvAcad: "Academic", cvProf: "Professional", cvLangsTitle: "Resume in 6 languages (PDF)",
+      reader: "Reading mode", readerExit: "Exit reading mode", sideCollapse: "Collapse sidebar", sideExpand: "Expand sidebar", cvAcad: "Academic", cvProf: "Professional", cvLangsTitle: "Resume in 6 languages (PDF)",
       tour: "Watch tour", live: "Explore live", openNew: "Open in new tab", close: "Close",
       stats: ["repositories", "scientific initiation projects", "IAAC participations (2024 and 2025)", "courses mapped in the Academic System"],
       spectrumHint: "Drag to sweep a star's spectrum and find the absorption lines I work with in GALAH DR4.",
@@ -94,7 +94,7 @@
       cvDownload: "Descargar CV", footTag: "— computación y astrofísica, hecho con", footAnd: "y", footBy: "por", toTop: "Volver arriba ↑", icoCafe: "café", icoCodigo: "código", icoCometa: "cometas", updated: "Actualizado el", menu: "Menú",
       nav: "Eventos", alemTitle: "Participación en eventos", alemLead: "Ferias, congresos y visitas técnicas en las que presenté trabajos o aprendí algo, con fotos de cada uno.",
       nickname: "Apodo", base: "Base", baseText: "Bom Jesus do Itabapoana, RJ, Brasil", photos: "fotos", report: "Leer el relato", noPhotos: "Relato sin fotos", prev: "Anterior", next: "Siguiente",
-      reader: "Modo lectura", readerExit: "Salir del modo lectura", cvAcad: "Académico", cvProf: "Profesional", cvLangsTitle: "Currículum en 6 idiomas (PDF)",
+      reader: "Modo lectura", readerExit: "Salir del modo lectura", sideCollapse: "Contraer barra lateral", sideExpand: "Expandir barra lateral", cvAcad: "Académico", cvProf: "Profesional", cvLangsTitle: "Currículum en 6 idiomas (PDF)",
       tour: "Ver recorrido", live: "Explorar en vivo", openNew: "Abrir en nueva pestaña", close: "Cerrar",
       stats: ["repositorios", "proyectos de iniciación científica", "participaciones en la IAAC (2024 y 2025)", "asignaturas mapeadas en el Sistema Académico"],
       spectrumHint: "Arrastra para recorrer el espectro de una estrella y encontrar las líneas de absorción que uso en GALAH DR4.",
@@ -105,7 +105,7 @@
       cvDownload: "Télécharger le CV", footTag: "— informatique et astrophysique, fait avec", footAnd: "et", footBy: "par", toTop: "Retour en haut ↑", icoCafe: "café", icoCodigo: "code", icoCometa: "comètes", updated: "Mis à jour le", menu: "Menu",
       nav: "Événements", alemTitle: "Participation à des événements", alemLead: "Salons, congrès et visites techniques où j'ai présenté des travaux ou appris quelque chose, avec les photos de chacun.",
       nickname: "Surnom", base: "Basé à", baseText: "Bom Jesus do Itabapoana, RJ, Brésil", photos: "photos", report: "Lire le récit", noPhotos: "Récit sans photos", prev: "Précédente", next: "Suivante",
-      reader: "Mode lecture", readerExit: "Quitter le mode lecture", cvAcad: "Académique", cvProf: "Professionnel", cvLangsTitle: "CV en 6 langues (PDF)",
+      reader: "Mode lecture", readerExit: "Quitter le mode lecture", sideCollapse: "Réduire la barre latérale", sideExpand: "Développer la barre latérale", cvAcad: "Académique", cvProf: "Professionnel", cvLangsTitle: "CV en 6 langues (PDF)",
       tour: "Voir la visite", live: "Explorer en direct", openNew: "Ouvrir dans un nouvel onglet", close: "Fermer",
       stats: ["dépôts", "projets d'initiation scientifique", "participations à l'IAAC (2024 et 2025)", "matières cartographiées dans le Système Académique"],
       spectrumHint: "Faites glisser pour parcourir le spectre d'une étoile et trouver les raies d'absorption que j'utilise dans GALAH DR4.",
@@ -116,7 +116,7 @@
       cvDownload: "Scarica il CV", footTag: "— informatica e astrofisica, fatto con", footAnd: "e", footBy: "da", toTop: "Torna su ↑", icoCafe: "caffè", icoCodigo: "codice", icoCometa: "comete", updated: "Aggiornato il", menu: "Menu",
       nav: "Eventi", alemTitle: "Partecipazione a eventi", alemLead: "Fiere, congressi e visite tecniche in cui ho presentato lavori o imparato qualcosa, con le foto di ciascuno.",
       nickname: "Soprannome", base: "Sede", baseText: "Bom Jesus do Itabapoana, RJ, Brasile", photos: "foto", report: "Leggi il resoconto", noPhotos: "Resoconto senza foto", prev: "Precedente", next: "Successiva",
-      reader: "Modalità lettura", readerExit: "Esci dalla modalità lettura", cvAcad: "Accademico", cvProf: "Professionale", cvLangsTitle: "Curriculum in 6 lingue (PDF)",
+      reader: "Modalità lettura", readerExit: "Esci dalla modalità lettura", sideCollapse: "Comprimi barra laterale", sideExpand: "Espandi barra laterale", cvAcad: "Accademico", cvProf: "Professionale", cvLangsTitle: "Curriculum in 6 lingue (PDF)",
       tour: "Guarda il tour", live: "Esplora dal vivo", openNew: "Apri in una nuova scheda", close: "Chiudi",
       stats: ["repository", "progetti di iniziazione scientifica", "partecipazioni all'IAAC (2024 e 2025)", "materie mappate nel Sistema Accademico"],
       spectrumHint: "Trascina per percorrere lo spettro di una stella e trovare le righe di assorbimento che uso in GALAH DR4.",
@@ -127,7 +127,7 @@
       cvDownload: "下载简历", footTag: "— 计算机与天体物理，用", footAnd: "和", footBy: "制作，作者", toTop: "回到顶部 ↑", icoCafe: "咖啡", icoCodigo: "代码", icoCometa: "彗星", updated: "更新于", menu: "菜单",
       nav: "活动", alemTitle: "参加的活动", alemLead: "我展示作品或学习的展会、会议和技术参观，每项都附有照片。",
       nickname: "昵称", base: "所在地", baseText: "巴西里约州 Bom Jesus do Itabapoana", photos: "张照片", report: "阅读记录", noPhotos: "无照片记录", prev: "上一张", next: "下一张",
-      reader: "阅读模式", readerExit: "退出阅读模式", cvAcad: "学术版", cvProf: "职业版", cvLangsTitle: "六种语言的简历（PDF）",
+      reader: "阅读模式", readerExit: "退出阅读模式", sideCollapse: "收起侧栏", sideExpand: "展开侧栏", cvAcad: "学术版", cvProf: "职业版", cvLangsTitle: "六种语言的简历（PDF）",
       tour: "观看演示", live: "在线体验", openNew: "在新标签页打开", close: "关闭",
       stats: ["个仓库", "个科研启蒙项目", "次参加 IAAC（2024 与 2025）", "门课程已录入学术系统"],
       spectrumHint: "拖动滑块浏览恒星光谱，找到我在 GALAH DR4 中使用的吸收线。",
@@ -586,6 +586,7 @@
     renderStats(); renderEvents(); renderCV(); renderSpectrum(); renderSidebar();
     $("#reader").setAttribute("aria-label", UI[lang].reader);
     $("#reader-exit").setAttribute("aria-label", UI[lang].readerExit);
+    syncSideLabel();
     $("#search-label").textContent = UI[lang].search;
     $("#search-btn").setAttribute("aria-label", `${UI[lang].search} (Ctrl K)`);
     if (window.Busca) window.Busca.setDocs(searchDocs(), UI[lang]);
@@ -623,6 +624,43 @@
     lang = b.dataset.lang; store.set("lang", lang); render();
     if (window.Conquistas) window.Conquistas.hit("idioma");
   });
+  // Barra lateral: recolher e ajustar a largura (persistido); o conteúdo é a coluna 1fr e acompanha.
+  const SIDE_MIN = 180, SIDE_MAX = 420, root = document.documentElement;
+  const sideW = () => parseInt(getComputedStyle(root).getPropertyValue("--side-w")) || $(".sidebar").getBoundingClientRect().width;
+  function setSideW(w, save) {
+    w = Math.max(SIDE_MIN, Math.min(SIDE_MAX, Math.round(w)));
+    root.style.setProperty("--side-w", w + "px");
+    $("#side-resize").setAttribute("aria-valuenow", String(w));
+    if (save) store.set("side-w", String(w));
+  }
+  function syncSideLabel() {
+    const col = root.hasAttribute("side-collapsed"), t = col ? UI[lang].sideExpand : UI[lang].sideCollapse;
+    const b = $("#side-toggle");
+    b.setAttribute("aria-label", t); b.setAttribute("title", t); b.setAttribute("aria-expanded", String(!col));
+  }
+  function setSideCollapsed(col) {
+    root.toggleAttribute("side-collapsed", col);
+    store.set("side-collapsed", col ? "1" : "0");
+    syncSideLabel();
+  }
+  (function initSide() {
+    const w = parseInt(store.get("side-w"), 10);
+    if (w) setSideW(w, false);
+    if (store.get("side-collapsed") === "1") root.setAttribute("side-collapsed", "");
+    $("#side-toggle").addEventListener("click", () => setSideCollapsed(!root.hasAttribute("side-collapsed")));
+    const h = $("#side-resize");
+    h.addEventListener("pointerdown", (e) => {
+      const x0 = e.clientX, w0 = $(".sidebar").getBoundingClientRect().width;
+      h.setPointerCapture(e.pointerId); h.classList.add("is-drag"); root.classList.add("is-resizing");
+      const move = (ev) => setSideW(w0 + ev.clientX - x0, false);
+      const up = () => { h.classList.remove("is-drag"); root.classList.remove("is-resizing"); h.removeEventListener("pointermove", move); h.removeEventListener("pointerup", up); h.removeEventListener("pointercancel", up); store.set("side-w", String(Math.round(sideW()))); };
+      h.addEventListener("pointermove", move); h.addEventListener("pointerup", up); h.addEventListener("pointercancel", up);
+    });
+    h.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft" || e.key === "ArrowRight") { e.preventDefault(); setSideW(sideW() + (e.key === "ArrowRight" ? 16 : -16), true); }
+    });
+    h.addEventListener("dblclick", () => { root.style.removeProperty("--side-w"); store.set("side-w", ""); });
+  })();
   function setReader(on) {
     document.documentElement.setAttribute("reader-mode", on ? "on" : "off");
     $("#reader").setAttribute("aria-pressed", String(on));

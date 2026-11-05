@@ -3,7 +3,7 @@ publish: false
 title: Portfólio (conteúdo em pt-BR)
 type: esboco
 created: '2026-11-03T15:28:39-03:00'
-modified: 2026-11-05T13:52:27-03:00
+modified: 2026-11-05T13:55:34-03:00
 published: '2026-11-03T15:28:39-03:00'
 tags:
   - projeto
@@ -496,15 +496,18 @@ video: assets/media/perfil/tour.webm
 README de perfil do GitHub: bio, links, Tech & Tools, constelação de projetos em destaque (repositórios públicos, com os privados apenas citados) e linha do tempo de bolsas.
 
 ### Custos App
+slug: custosapp
 repo: https://github.com/pedroiff0/custos-app
-stack: Node.js, JavaScript, Docker
-tags: Costs, Management
-resumo: Rastreio de custos operacionais e despesas categorizadas.
+stack: Node.js, Express, MongoDB, Mongoose, EJS, Zod, Jest, Docker
+tags: FinOps, SaaS, Cloud Costs
+resumo: SaaS de FinOps: custos de servidores e assinaturas, rateio por cliente e margem de lucro.
 cat: software
 visibility: privado
 icon: cash
+image: assets/media/custosapp/poster.webp
+video: assets/media/custosapp/tour.webm
 
-Aplicação de rastreio de custos operacionais e despesas categorizadas, empacotada em Docker. Parte da linha de ferramentas profissionais de gestão, ao lado de Caixas, Controle de Estoque e Planilhador.
+Zenith FinOps & Custos: aplicação SaaS para gestão de custos de infraestrutura cloud (VPS, Hetzner, AWS, DigitalOcean) e de assinaturas de deploy (Vercel, Supabase, Cloudflare). Inventário de servidores com câmbio automático, amortização de planos anuais, rateio de custos por cliente, DRE e margem de lucro por cliente com alertas, e simulador de precificação (infraestrutura, horas de trabalho, margem-alvo e impostos). Tem API REST com chaves para integrar ao Zênite, plano Pro com período de teste e central de avisos. Node/Express, MongoDB, telas em EJS, validação Zod e testes com Jest.
 
 ### Rumo
 status: dev
@@ -516,19 +519,24 @@ resumo: Viagens em grupo: roteiro compartilhado, reservas e divisão de despesas
 cat: software
 visibility: privado
 icon: globe
+image: assets/media/viagemapp/poster.webp
+video: assets/media/viagemapp/tour.webm
 
 Rumo, em desenvolvimento: planejamento de viagens em grupo que resolve os dois pontos em que viagem em grupo trava, ninguém saber o roteiro combinado e ninguém saber quem pagou o quê. Roteiro compartilhado, reservas reunidas num só lugar e divisão de despesas entre os viajantes, com interface bilíngue (PT/EN). Node.js, Express e MongoDB.
 
 ### Manga Reader
+slug: mangareader
 repo: https://github.com/pedroiff0/manga-reader
-stack: TypeScript, Node.js
-tags: Web App, Media
-resumo: Leitor de mangás privado, sem anúncios, com contas aprovadas por administrador.
+stack: Docker, Suwayomi, Caddy, Tailscale
+tags: Self-hosted, Tailscale, Media
+resumo: Servidor pessoal de mangás (Suwayomi), acessível só pela tailnet.
 cat: pessoal
 visibility: privado
 icon: document
+image: assets/media/mangareader/poster.webp
+video: assets/media/mangareader/tour.webm
 
-Leitor de mangás web privado e sem anúncios, com auto-cadastro, painel administrativo para aprovação de contas, histórico de último login, progresso de leitura por usuário e busca agregada em várias fontes. Uso restrito a poucos usuários.
+Servidor pessoal de mangás baseado no Suwayomi-Server, em Docker, acessível apenas pela minha rede Tailscale (celular e iPad) e instalável como PWA. Um proxy Caddy fica na frente do servidor, com login próprio para cada amigo e biblioteca e progresso compartilhados. Não é exposto à internet.
 
 ### E-lixo
 status: camp
@@ -543,6 +551,7 @@ icon: document
 Pra onde vai a bateria que morreu? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.
 
 ### Portfólio v1 (sci-fi)
+slug: portfolio-v1
 repo: https://github.com/pedroiff0/portfolio-v1-scifi
 stack: JavaScript, Three.js, Canvas
 tags: Three.js, Portfolio
@@ -550,6 +559,8 @@ resumo: Primeira versão do portfólio, com visual sci-fi, preservada.
 cat: pessoal
 visibility: privado
 icon: globe
+image: assets/media/portfolio-v1/poster.webp
+video: assets/media/portfolio-v1/tour.webm
 
 Primeira versão do portfólio, com visual sci-fi (HUD, Three.js e canvas), preservada antes da refatoração para a versão clean atual.
 

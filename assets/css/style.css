@@ -173,7 +173,22 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
 .menu__nav a:hover { background: var(--highlight); color: var(--accent); }
 
 /* Layout: sidebar + conteúdo */
-.layout { display: grid; grid-template-columns: var(--side) minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 3.5rem); align-items: start; }
+.layout { --gap: clamp(1.5rem, 3vw, 3.5rem); position: relative; display: grid; grid-template-columns: var(--side-w, var(--side)) minmax(0, 1fr); gap: var(--gap); align-items: start; }
+:root[side-collapsed] .layout { grid-template-columns: 56px minmax(0, 1fr); }
+.side__toggle { position: absolute; top: 0.4rem; right: 0; z-index: 2; display: grid; place-items: center; width: 26px; height: 26px; padding: 0; border: 1px solid var(--border); border-radius: 50%; background: var(--surface); color: var(--muted); cursor: pointer; }
+.side__toggle:hover { color: var(--accent); border-color: var(--accent); }
+.side__toggle svg { transition: transform 0.25s ease; }
+:root[side-collapsed] .side__toggle { right: 15px; }
+:root[side-collapsed] .side__toggle svg { transform: rotate(180deg); }
+:root[side-collapsed] .side__id, :root[side-collapsed] .side__links, :root[side-collapsed] .side__nick, :root[side-collapsed] .side__cv { display: none; }
+:root[side-collapsed] .side__photo { width: 44px; height: 44px; box-shadow: 0 0 0 3px var(--highlight); margin-top: 2.2rem; align-self: center; }
+.side__resize { position: absolute; top: 72px; bottom: 0; left: calc(var(--side-w, var(--side)) + var(--gap) / 2 - 5px); width: 10px; z-index: 3; cursor: col-resize; touch-action: none; }
+:root[side-collapsed] .side__resize { display: none; }
+.side__resize::after { content: ""; position: absolute; left: 4px; top: 0; bottom: 0; width: 2px; border-radius: 2px; background: transparent; transition: background 0.15s; }
+.side__resize:hover::after, .side__resize:focus-visible::after, .side__resize.is-drag::after { background: var(--accent); }
+:root.is-resizing, :root.is-resizing * { cursor: col-resize !important; user-select: none; }
+:root.is-resizing .layout { transition: none; }
+:root[reader-mode="on"] .side__resize, :root[reader-mode="on"] .side__toggle { display: none; }
 .sidebar { position: sticky; top: 72px; max-height: calc(100vh - 72px); overflow-y: auto; scrollbar-width: none; padding: clamp(0.75rem, 2.5vh, 2rem) 0 0.75rem; display: flex; flex-direction: column; gap: clamp(0.45rem, 1.6vh, 1rem); }
 .sidebar::-webkit-scrollbar { display: none; }
 .side__photo { width: clamp(80px, 17vh, 160px); height: clamp(80px, 17vh, 160px); flex: none; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); box-shadow: 0 0 0 7px var(--highlight); }
@@ -226,8 +241,9 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
   padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.6rem; min-width: 0;
 }
 .card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
-.card__head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; }
-.card__head h3 { flex: 1; min-width: 0; }
+.card__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 0.75rem; }
+.card__head h3 { flex: 1 1 9rem; min-width: 0; overflow-wrap: anywhere; }
+.card__head .badge, .card__head .card__meta { flex: none; }
 .card__meta { font: 400 0.75rem var(--font-mono); color: var(--muted); white-space: nowrap; }
 .card p { font-size: 0.97rem; margin: 0; }
 .card .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
@@ -366,7 +382,10 @@ a.contact:hover { border-color: var(--accent); color: var(--accent); }
 
 @media (max-width: 900px) {
   .shell { padding: 0 14px; }
-  .layout { grid-template-columns: 1fr; gap: 0; }
+  .layout, :root[side-collapsed] .layout { grid-template-columns: 1fr; gap: 0; }
+  .side__resize, .side__toggle { display: none; }
+  :root[side-collapsed] .side__id, :root[side-collapsed] .side__links, :root[side-collapsed] .side__nick, :root[side-collapsed] .side__cv { display: revert; }
+  :root[side-collapsed] .side__photo { width: 96px; height: 96px; margin-top: 0; }
   .sidebar { position: static; padding: 1.5rem 0 0; display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1.25rem; align-items: center; }
   .side__photo { width: 96px; height: 96px; box-shadow: 0 0 0 5px var(--highlight); }
   .side__links { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; gap: 0.35rem; border-top: 0; padding: 0.5rem 0 0; }
