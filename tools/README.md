@@ -1,4 +1,13 @@
-# Pipeline: Markdown → site estático (render idêntico)
+# Pipeline: nota do vault → site estático
+
+**Fluxo atual (v2.3):** toda a página é controlada pela nota `01-projetos/pessoal/portfolio/esboco-portfolio-conteudo.md` do vault
+(perfil, projetos, bolsas, contatos, `## Página` com ordem/visibilidade de seções e menu, `## Interface` com todos os textos fixos).
+Marcar `traduzir: true` e salvar: o watcher roda `tools/traduzir.py`, que traduz só o que mudou (en/es/fr/it/zh), roda
+`eventos.py` + `build.py` + `make lint` e, se passar, commita e dá push. Log em `/tmp/portfolio-traduzir.log`.
+Fora da nota ficam só código (HTML/CSS/JS), vídeos/pôsteres (`tools/record_demos.js`) e as fotos de eventos (notas de `03-midia`).
+O texto abaixo descreve o fluxo antigo (v1, `src/portfolio.md`) e fica como histórico.
+
+## (histórico) Markdown → site estático
 
 O site é HTML/CSS/JS estático. Todo o CONTEÚDO editável vive em
 `assets/js/projects.js` via `window.PORTFOLIO_DATA`, que o `main.js` consome
