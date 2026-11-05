@@ -3,7 +3,7 @@ publish: false
 title: Portfólio (conteúdo em pt-BR)
 type: esboco
 created: '2026-11-03T15:28:39-03:00'
-modified: 2026-11-04T19:50:30-03:00
+modified: 2026-11-05T11:47:42-03:00
 published: '2026-11-03T15:28:39-03:00'
 tags:
   - projeto
@@ -120,7 +120,7 @@ Fork focado em concurseiros: banco de MCQ, trilhas por edital, cronograma maleá
 
 ### Portal Acadêmico IFF (academicoWeb)
 slug: academicoweb
-repo: https://github.com/pedroiff0/academicoWeb
+repo: https://github.com/pedroiff0/academico-web
 stack: Python, Flask, Jinja2, Scraping
 tags: Web App, IFF, Scraping, Arquivado
 cat: software
@@ -241,8 +241,8 @@ video: assets/media/meu-setup/tour.webm
 
 Mapa de todos os programas que uso (Linux, Windows e macOS) com instaladores automáticos e uma única fonte de verdade: packages.yaml. O instalador Linux detecta a distro (apt/dnf/pacman/zypper), é idempotente e tem cadeia de fallback (nativo → flatpak → snap → script oficial). Um gerador produz install.ps1, install.sh e o inventário; o bootstrap repopula a máquina do zero com um comando.
 
-### anomaly_detection
-repo: https://github.com/pedroiff0/anomaly_detection
+### anomaly-detection
+repo: https://github.com/pedroiff0/anomaly-detection
 stack: Python, Astropy, NumPy, Pandas, ML, Jupyter
 tags: PIBIC/CNPq, Gaia, GALAH, Astroquímica
 cat: pesquisa
@@ -306,7 +306,7 @@ video: assets/media/cv/tour.webm
 CV em LaTeX (classe altacv), multilíngue (PT/EN/ES/FR) compilado via Makefile. Inclui ORCID, Google Scholar e publicações em congressos (CONFICT, SAB, SBPC).
 
 ### Cálculo Numérico
-repo: https://github.com/pedroiff0/CalculoNumerico
+repo: https://github.com/pedroiff0/calculo-numerico
 stack: Python, CI, Docs, NumPy
 tags: Disciplina, Métodos Numéricos
 cat: academico
@@ -433,10 +433,10 @@ icon: document
 
 Controle remoto de apresentações pelo iPhone, via Tailscale, no estilo do clicker Logitech Spotlight, sem instalar nada no celular. Funciona com qualquer aplicativo (PowerPoint, Keynote, leitores de PDF) ou abre o PDF no navegador com transições, notas do apresentador, passos dentro do slide e prévia do próximo slide. Laser, foco com desfoque ajustável, caneta, marca-texto, zoom, cronômetro e "Ir para" por número. Licença MIT.
 
-### guia-github
+### devops-guide
 slug: guiagithub
-repo: https://github.com/pedroiff0/guia-github
-stack: Docs, GitHub Actions, Shell
+repo: https://github.com/pedroiff0/devops-guide
+stack: Docs, TypeScript, GitHub Actions
 tags: Boas Práticas, Templates, Versionamento
 cat: pessoal
 visibility: público
@@ -444,7 +444,7 @@ icon: github
 image: assets/media/guiagithub/poster.webp
 video: assets/media/guiagithub/tour.webm
 
-Guia próprio de Git e boas práticas de versionamento — prático, não mais um manual genérico de comandos. Reúne templates, exemplos de Actions, Projects, Issues e estratégias de branching, com módulos sobre dockerização, versionamento em arquiteturas de microsserviços e padrões de documentação de repositório.
+Segundo cérebro de documentações reexplicadas e hub DevOps (devops.phrandrade.com): guia próprio de Git e boas práticas de versionamento, prático e sem ser mais um manual genérico de comandos. Reúne templates, exemplos de Actions, Projects, Issues e estratégias de branching, com módulos sobre dockerização, versionamento em arquiteturas de microsserviços e padrões de documentação de repositório.
 
 ### Perfil GitHub
 repo: https://github.com/pedroiff0/pedroiff0
@@ -456,7 +456,47 @@ icon: profile
 image: assets/media/perfil/poster.webp
 video: assets/media/perfil/tour.webm
 
-README de perfil do GitHub (bio, Tech & Tools, projetos em destaque).
+README de perfil do GitHub: bio, links, Tech & Tools, constelação de projetos em destaque (repositórios públicos, com os privados apenas citados) e linha do tempo de bolsas.
+
+### Custos App
+repo: https://github.com/pedroiff0/custos-app
+stack: Node.js, JavaScript, Docker
+tags: Custos, Despesas, Gestão
+cat: software
+visibility: privado
+icon: cash
+
+Aplicação de rastreio de custos operacionais e despesas categorizadas, empacotada em Docker. Parte da linha de ferramentas profissionais de gestão, ao lado de Caixas, Controle de Estoque e Planilhador.
+
+### Viagem App
+repo: https://github.com/pedroiff0/viagem-app
+stack: Node.js, Express, MongoDB
+tags: Viagens, Planejamento, Colaborativo
+cat: software
+visibility: privado
+icon: globe
+
+Planejamento de viagens em grupo: roteiro compartilhado, reservas reunidas num só lugar e divisão de despesas entre os viajantes. Node.js, Express e MongoDB.
+
+### Manga Reader
+repo: https://github.com/pedroiff0/manga-reader
+stack: TypeScript, Node.js
+tags: Leitor Web, Mídia, Privado
+cat: pessoal
+visibility: privado
+icon: document
+
+Leitor de mangás web privado e sem anúncios, com auto-cadastro, painel administrativo para aprovação de contas, histórico de último login, progresso de leitura por usuário e busca agregada em várias fontes. Uso restrito a poucos usuários.
+
+### Portfólio v1 (sci-fi)
+repo: https://github.com/pedroiff0/portfolio-v1-scifi
+stack: JavaScript, Three.js, Canvas
+tags: Portfólio, Three.js, Arquivo
+cat: pessoal
+visibility: privado
+icon: globe
+
+Primeira versão do portfólio, com visual sci-fi (HUD, Three.js e canvas), preservada antes da refatoração para a versão clean atual.
 
 ### Portfólio (este site)
 slug: portfolio
@@ -469,7 +509,7 @@ icon: globe
 image: assets/media/portfolio/poster.webp
 video: assets/media/portfolio/tour.webm
 
-Este portfólio: página única e minimalista, multilíngue (PT/EN/ES/FR), sem framework e com o visual do site oficial (tema claro e escuro, cartões com detalhes, filtro e busca de projetos). O conteúdo não vive no HTML: é escrito em Markdown (src/portfolio.md) e compilado por um script Python para JS, com verificação automática no pre-commit. Serve de página de boas-vindas para o site oficial, onde está o conteúdo completo.
+Este portfólio: página única e minimalista, multilíngue (PT/EN/ES/FR), sem framework e com o visual do site oficial (tema claro e escuro, cartões com detalhes, filtro e busca de projetos). O conteúdo não vive no HTML: é escrito em português numa nota do vault Obsidian, traduzida por IA para EN/ES/FR e compilada por um script Python para JS, com verificação automática no pre-commit. Serve de página de boas-vindas para o site oficial, onde está o conteúdo completo.
 
 ## Bolsas
 

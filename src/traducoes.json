@@ -269,6 +269,15 @@
   "it": "CV in LaTeX (classe altacv), multilingue (PT/EN/ES/FR) compilato tramite Makefile. Include ORCID, Google Scholar e pubblicazioni in congressi (CONFICT, SAB, SBPC).",
   "zh": "使用 LaTeX(altacv 类)编写的多语言(PT/EN/ES/FR)简历,通过 Makefile 编译。包含 ORCID、Google Scholar 以及会议发表论文(CONFICT、SAB、SBPC)。"
  },
+ "projeto:Custos App": {
+  "pt_hash": "0948d2c3b121",
+  "pt": "Aplicação de rastreio de custos operacionais e despesas categorizadas, empacotada em Docker. Parte da linha de ferramentas profissionais de gestão, ao lado de Caixas, Controle de Estoque e Planilhador.",
+  "en": "Application for tracking operating costs and categorized expenses, packaged in Docker. Part of the line of professional management tools, alongside Caixas, Controle de Estoque and Planilhador.",
+  "es": "Aplicación de seguimiento de costos operativos y gastos categorizados, empaquetada en Docker. Parte de la línea de herramientas profesionales de gestión, junto a Caixas, Controle de Estoque y Planilhador.",
+  "fr": "Application de suivi des coûts opérationnels et des dépenses catégorisées, conditionnée dans Docker. Fait partie de la gamme d'outils professionnels de gestion, aux côtés de Caixas, Controle de Estoque et Planilhador.",
+  "it": "Applicazione per il monitoraggio dei costi operativi e delle spese categorizzate, impacchettata in Docker. Fa parte della linea di strumenti professionali di gestione, insieme a Caixas, Controle de Estoque e Planilhador.",
+  "zh": "用于跟踪运营成本和分类支出的应用,使用 Docker 打包。属于专业管理工具系列,与 Caixas、Controle de Estoque 和 Planilhador 并列。"
+ },
  "projeto:Cálculo Numérico": {
   "pt_hash": "d1e6fa31c36b",
   "pt": "Repositório de códigos da disciplina Cálculo Numérico 2025.2, com CI e documentação.",
@@ -323,6 +332,15 @@
   "it": "Materiale didattico proprio di Calcolo, in fase di elaborazione, scritto in LaTeX — dai fondamenti ai sistemi lineari. Copre un ripasso di Python/Calcolo I, i sistemi di basi numeriche (binaria, ottale, decimale, esadecimale) e i sistemi lineari (eliminazione di Gauss e fattorizzazione LU, con e senza pivoting). Ogni capitolo include un'appendice propria di algoritmi in versione semplificata, oltre a esempi originali che integrano il libro di testo standard. Layout già definito; revisione della formattazione (standard Sphinx) e dei riquadri degli algoritmi in corso.",
   "zh": "自编微积分教材,编写中,使用 LaTeX 撰写——从基础知识到线性方程组。内容涵盖 Python/微积分 I 复习、数制系统(二进制、八进制、十进制、十六进制)以及线性方程组(高斯消元法和 LU 分解,含选主元与不选主元两种情形)。每章都附有简化版算法的专属附录,并配有原创示例,作为标准教材的补充。版面已调整完毕;格式审校(Sphinx 标准)和算法框的检查正在进行中。"
  },
+ "projeto:Manga Reader": {
+  "pt_hash": "5cea13411012",
+  "pt": "Leitor de mangás web privado e sem anúncios, com auto-cadastro, painel administrativo para aprovação de contas, histórico de último login, progresso de leitura por usuário e busca agregada em várias fontes. Uso restrito a poucos usuários.",
+  "en": "Private, ad-free web manga reader with self-registration, an admin panel for account approval, last-login history, per-user reading progress and aggregated search across multiple sources. Restricted to a few users.",
+  "es": "Lector de mangas web privado y sin anuncios, con autorregistro, panel administrativo para aprobar cuentas, historial de último inicio de sesión, progreso de lectura por usuario y búsqueda agregada en varias fuentes. Uso restringido a pocos usuarios.",
+  "fr": "Lecteur de mangas web privé et sans publicité, avec auto-inscription, panneau d'administration pour l'approbation des comptes, historique de dernière connexion, progression de lecture par utilisateur et recherche agrégée sur plusieurs sources. Usage limité à quelques utilisateurs.",
+  "it": "Lettore di manga web privato e senza pubblicità, con auto-registrazione, pannello di amministrazione per l'approvazione degli account, cronologia dell'ultimo accesso, progresso di lettura per utente e ricerca aggregata su più fonti. Uso limitato a pochi utenti.",
+  "zh": "私有、无广告的网页漫画阅读器,支持自助注册、用于审批账号的管理面板、上次登录记录、按用户记录的阅读进度,以及跨多个来源的聚合搜索。仅限少数用户使用。"
+ },
  "projeto:Modelos LaTeX": {
   "pt_hash": "b745cba8f911",
   "pt": "Modelos LaTeX para uso geral.",
@@ -333,13 +351,13 @@
   "zh": "通用 LaTeX 模板。"
  },
  "projeto:Perfil GitHub": {
-  "pt_hash": "2f4f87717ce9",
-  "pt": "README de perfil do GitHub (bio, Tech & Tools, projetos em destaque).",
-  "en": "GitHub profile README (bio, Tech & Tools, featured projects).",
-  "es": "README de perfil de GitHub (bio, Tech & Tools, proyectos destacados).",
-  "fr": "README de profil GitHub (bio, Tech & Tools, projets en vedette).",
-  "it": "README del profilo GitHub (bio, Tech & Tools, progetti in evidenza).",
-  "zh": "GitHub 个人主页 README(简介、Tech & Tools、精选项目)。"
+  "pt_hash": "83218cf63230",
+  "pt": "README de perfil do GitHub: bio, links, Tech & Tools, constelação de projetos em destaque (repositórios públicos, com os privados apenas citados) e linha do tempo de bolsas.",
+  "en": "GitHub profile README: bio, links, Tech & Tools, a constellation of featured projects (public repositories, with private ones only mentioned) and a scholarship timeline.",
+  "es": "README de perfil de GitHub: bio, enlaces, Tech & Tools, constelación de proyectos destacados (repositorios públicos, con los privados solo mencionados) y línea de tiempo de becas.",
+  "fr": "README de profil GitHub : bio, liens, Tech & Tools, constellation de projets en vedette (dépôts publics, les privés étant seulement mentionnés) et frise chronologique des bourses.",
+  "it": "README del profilo GitHub: bio, link, Tech & Tools, costellazione di progetti in evidenza (repository pubblici, con quelli privati solo citati) e linea del tempo delle borse di studio.",
+  "zh": "GitHub 个人主页 README:简介、链接、Tech & Tools、精选项目星座(公开仓库,私有仓库仅作提及)以及奖学金时间线。"
  },
  "projeto:Planilhador": {
   "pt_hash": "07273b6b9e96",
@@ -360,13 +378,22 @@
   "zh": "一个 Web 系统,使用官方凭据通过网页抓取(scraping)访问 IFF 的学业数据——包括仪表盘、课堂日志、课程资料、成绩单和学业记录。已归档:IFF 迁移到 SUAP 后,原有方式已经过时,由 Sistema Acadêmico 接替。抓取技术作为技术参考保留(可作为毕业论文 TCC 的潜在主题)。"
  },
  "projeto:Portfólio (este site)": {
-  "pt_hash": "6fed0bfb848e",
-  "pt": "Este portfólio: página única e minimalista, multilíngue (PT/EN/ES/FR), sem framework e com o visual do site oficial (tema claro e escuro, cartões com detalhes, filtro e busca de projetos). O conteúdo não vive no HTML: é escrito em Markdown (src/portfolio.md) e compilado por um script Python para JS, com verificação automática no pre-commit. Serve de página de boas-vindas para o site oficial, onde está o conteúdo completo.",
-  "en": "This portfolio: a single minimalist page, multilingual (PT/EN/ES/FR), framework-free and styled like the official site (light and dark themes, cards with details, project filter and search). Content does not live in the HTML: it is written in Markdown (src/portfolio.md) and compiled to JS by a Python script, with automatic verification on pre-commit. It serves as the welcome page for the official site, where the full content lives.",
-  "es": "Este portafolio: página única y minimalista, multilingüe (PT/EN/ES/FR), sin framework y con el estilo del sitio oficial (tema claro y oscuro, tarjetas con detalles, filtro y búsqueda de proyectos). El contenido no vive en el HTML: se escribe en Markdown (src/portfolio.md) y se compila a JS con un script de Python, con verificación automática en el pre-commit. Sirve de página de bienvenida al sitio oficial, donde está el contenido completo.",
-  "fr": "Ce portfolio : page unique et minimaliste, multilingue (PT/EN/ES/FR), sans framework et au style du site officiel (thèmes clair et sombre, cartes avec détails, filtre et recherche de projets). Le contenu ne vit pas dans le HTML : il est écrit en Markdown (src/portfolio.md) et compilé en JS par un script Python, avec vérification automatique au pre-commit. Il sert de page d'accueil au site officiel, où se trouve le contenu complet.",
-  "it": "Questo portfolio: pagina unica e minimalista, multilingue (PT/EN/ES/FR), senza framework e con l'aspetto del sito ufficiale (tema chiaro e scuro, schede con dettagli, filtro e ricerca dei progetti). Il contenuto non vive nell'HTML: è scritto in Markdown (src/portfolio.md) e compilato da uno script Python in JS, con verifica automatica nel pre-commit. Funge da pagina di benvenuto per il sito ufficiale, dove si trova il contenuto completo.",
-  "zh": "这是我的作品集:单页、极简、多语言(PT/EN/ES/FR),不使用框架,采用官方网站的视觉风格(明暗主题、带详情的卡片、项目筛选与搜索)。内容并不写在 HTML 中,而是用 Markdown(src/portfolio.md)编写,再由 Python 脚本编译为 JS,并在 pre-commit 中自动校验。它作为官方网站的欢迎页,完整内容请见官方网站。"
+  "pt_hash": "9fa2af7c5f48",
+  "pt": "Este portfólio: página única e minimalista, multilíngue (PT/EN/ES/FR), sem framework e com o visual do site oficial (tema claro e escuro, cartões com detalhes, filtro e busca de projetos). O conteúdo não vive no HTML: é escrito em português numa nota do vault Obsidian, traduzida por IA para EN/ES/FR e compilada por um script Python para JS, com verificação automática no pre-commit. Serve de página de boas-vindas para o site oficial, onde está o conteúdo completo.",
+  "en": "This portfolio: a single, minimalist, multilingual page (PT/EN/ES/FR), with no framework and with the look of the official site (light and dark theme, cards with details, project filter and search). The content does not live in the HTML: it is written in Portuguese in a note in the Obsidian vault, translated by AI into EN/ES/FR and compiled by a Python script into JS, with automatic verification at pre-commit. It serves as a welcome page for the official site, where the full content is.",
+  "es": "Este portafolio: página única y minimalista, multilingüe (PT/EN/ES/FR), sin framework y con el aspecto del sitio oficial (tema claro y oscuro, tarjetas con detalles, filtro y búsqueda de proyectos). El contenido no vive en el HTML: se escribe en portugués en una nota del vault de Obsidian, se traduce con IA a EN/ES/FR y un script de Python lo compila a JS, con verificación automática en el pre-commit. Sirve como página de bienvenida al sitio oficial, donde está el contenido completo.",
+  "fr": "Ce portfolio : page unique et minimaliste, multilingue (PT/EN/ES/FR), sans framework et avec l'apparence du site officiel (thème clair et sombre, cartes avec détails, filtre et recherche de projets). Le contenu ne vit pas dans le HTML : il est écrit en portugais dans une note du vault Obsidian, traduit par IA en EN/ES/FR et compilé en JS par un script Python, avec vérification automatique au pre-commit. Il sert de page d'accueil pour le site officiel, où se trouve le contenu complet.",
+  "it": "Questo portfolio: pagina unica e minimalista, multilingue (PT/EN/ES/FR), senza framework e con l'aspetto del sito ufficiale (tema chiaro e scuro, schede con dettagli, filtro e ricerca dei progetti). Il contenuto non vive nell'HTML: è scritto in portoghese in una nota del vault Obsidian, tradotto dall'IA in EN/ES/FR e compilato in JS da uno script Python, con verifica automatica nel pre-commit. Funge da pagina di benvenuto per il sito ufficiale, dove si trova il contenuto completo.",
+  "zh": "这个作品集:单页、极简、多语言(PT/EN/ES/FR),不使用框架,并采用官方网站的视觉风格(浅色与深色主题、带详情的卡片、项目筛选与搜索)。内容并不存放在 HTML 中:它以葡萄牙语写在 Obsidian vault 的一篇笔记里,由 AI 翻译成 EN/ES/FR,再由 Python 脚本编译为 JS,并在 pre-commit 时自动验证。它作为官方网站的欢迎页,完整内容都在官方网站上。"
+ },
+ "projeto:Portfólio v1 (sci-fi)": {
+  "pt_hash": "7f38e9272e6c",
+  "pt": "Primeira versão do portfólio, com visual sci-fi (HUD, Three.js e canvas), preservada antes da refatoração para a versão clean atual.",
+  "en": "First version of the portfolio, with a sci-fi look (HUD, Three.js and canvas), preserved before the refactor to the current clean version.",
+  "es": "Primera versión del portafolio, con estética sci-fi (HUD, Three.js y canvas), preservada antes de la refactorización a la versión clean actual.",
+  "fr": "Première version du portfolio, avec un style sci-fi (HUD, Three.js et canvas), conservée avant la refonte vers la version clean actuelle.",
+  "it": "Prima versione del portfolio, con aspetto sci-fi (HUD, Three.js e canvas), conservata prima del refactoring verso l'attuale versione clean.",
+  "zh": "作品集的第一个版本,采用科幻风格(HUD、Three.js 和 canvas),在重构为当前简洁版本之前予以保留。"
  },
  "projeto:Projeto Profissional (template)": {
   "pt_hash": "afa6686d3968",
@@ -431,14 +458,23 @@
   "it": "Meta-repository che raggruppa Caixas, ControleEstoque, LevantamentoEstoque e Planilhador — una suite di strumenti commerciali.",
   "zh": "元仓库,汇集了 Caixas、ControleEstoque、LevantamentoEstoque 和 Planilhador——一套商业工具套件。"
  },
- "projeto:anomaly_detection": {
+ "projeto:Viagem App": {
+  "pt_hash": "e15c725468d6",
+  "pt": "Planejamento de viagens em grupo: roteiro compartilhado, reservas reunidas num só lugar e divisão de despesas entre os viajantes. Node.js, Express e MongoDB.",
+  "en": "Group trip planning: shared itinerary, bookings gathered in one place and expense splitting among travelers. Node.js, Express and MongoDB.",
+  "es": "Planificación de viajes en grupo: itinerario compartido, reservas reunidas en un solo lugar y división de gastos entre los viajeros. Node.js, Express y MongoDB.",
+  "fr": "Planification de voyages en groupe : itinéraire partagé, réservations rassemblées en un seul endroit et partage des dépenses entre les voyageurs. Node.js, Express et MongoDB.",
+  "it": "Pianificazione di viaggi di gruppo: itinerario condiviso, prenotazioni riunite in un unico posto e divisione delle spese tra i viaggiatori. Node.js, Express e MongoDB.",
+  "zh": "团体旅行规划:共享行程、集中管理预订,并在旅行者之间分摊费用。Node.js、Express 和 MongoDB。"
+ },
+ "projeto:anomaly-detection": {
   "pt_hash": "62ff55ba6f98",
   "pt": "Análise das propriedades estelares e composição química das estrelas próximas do GCNS observadas pelo GALAH DR4 (Gaia DR3 + GALAH DR4). Bolsa PIBIC/CNPq; co-autoria PUC Chile (Dra. M. L. L. Dantas, Dra. A. C. Soja).",
-  "en": "Analysis of stellar properties and chemical composition of nearby stars from GCNS observed by GALAH DR4 (Gaia DR3 + GALAH DR4). PIBIC/CNPq scholarship; co-authorship PUC Chile (Dr. M. L. L. Dantas, Dr. A. C. Soja).",
-  "es": "Análisis de las propiedades estelares y composición química de estrellas cercanas del GCNS observadas por GALAH DR4 (Gaia DR3 + GALAH DR4). Beca PIBIC/CNPq; coautoría PUC Chile (Dra. M. L. L. Dantas, Dra. A. C. Soja).",
-  "fr": "Analyse des propriétés stellaires et de la composition chimique des étoiles proches du GCNS observées par GALAH DR4 (Gaia DR3 + GALAH DR4). Bourse PIBIC/CNPq ; co-autoria PUC Chile (Mme M. L. L. Dantas, Mme A. C. Soja).",
-  "it": "Analisi delle proprietà stellari e della composizione chimica delle stelle vicine del GCNS osservate da GALAH DR4 (Gaia DR3 + GALAH DR4). Borsa PIBIC/CNPq; co-autorato PUC Chile (Dra. M. L. L. Dantas, Dra. A. C. Soja).",
-  "zh": "对 GALAH DR4 观测到的 GCNS 近邻恒星的恒星性质和化学成分进行分析(Gaia DR3 + GALAH DR4)。PIBIC/CNPq 奖学金;与 PUC Chile 共同署名(Dra. M. L. L. Dantas、Dra. A. C. Soja)。"
+  "en": "Analysis of the stellar properties and chemical composition of stars near the GCNS observed by GALAH DR4 (Gaia DR3 + GALAH DR4). PIBIC/CNPq scholarship; co-authored with PUC Chile (Dr. M. L. L. Dantas, Dr. A. C. Soja).",
+  "es": "Análisis de las propiedades estelares y la composición química de las estrellas cercanas del GCNS observadas por GALAH DR4 (Gaia DR3 + GALAH DR4). Beca PIBIC/CNPq; coautoría con la PUC Chile (Dra. M. L. L. Dantas, Dra. A. C. Soja).",
+  "fr": "Analyse des propriétés stellaires et de la composition chimique des étoiles proches du GCNS observées par GALAH DR4 (Gaia DR3 + GALAH DR4). Bourse PIBIC/CNPq ; co-autorat avec la PUC Chile (Dre M. L. L. Dantas, Dre A. C. Soja).",
+  "it": "Analisi delle proprietà stellari e della composizione chimica delle stelle vicine del GCNS osservate da GALAH DR4 (Gaia DR3 + GALAH DR4). Borsa PIBIC/CNPq; co-autoraggio con la PUC Chile (Dott.ssa M. L. L. Dantas, Dott.ssa A. C. Soja).",
+  "zh": "分析 GALAH DR4 观测到的 GCNS 附近恒星的恒星性质与化学组成(Gaia DR3 + GALAH DR4)。PIBIC/CNPq 奖学金;与 PUC Chile 合作署名(M. L. L. Dantas 博士、A. C. Soja 博士)。"
  },
  "projeto:awesome-skills": {
   "pt_hash": "fe39165dea45",
@@ -458,14 +494,14 @@
   "it": "Dashboard personale di abitudini e metriche di vita, derivata dal vault hardcore-life e primo passo concreto verso la piattaforma HardCoreLife. Node + Express + MongoDB, deploy tramite Docker. In sviluppo.",
   "zh": "个人习惯与生活指标仪表盘,源自 hardcore-life 知识库,是迈向 HardCoreLife 平台的第一步。Node + Express + MongoDB,通过 Docker 部署。开发中。"
  },
- "projeto:guia-github": {
-  "pt_hash": "8e193c49a48f",
-  "pt": "Guia próprio de Git e boas práticas de versionamento — prático, não mais um manual genérico de comandos. Reúne templates, exemplos de Actions, Projects, Issues e estratégias de branching, com módulos sobre dockerização, versionamento em arquiteturas de microsserviços e padrões de documentação de repositório.",
-  "en": "My own guide to Git and versioning best practices — hands-on, not yet another generic command manual. Gathers templates and examples of Actions, Projects, Issues and branching strategies, with modules on dockerization, versioning in microservice architectures and repository documentation standards.",
-  "es": "Guía propia de Git y buenas prácticas de versionado — práctica, no un manual genérico más de comandos. Reúne plantillas y ejemplos de Actions, Projects, Issues y estrategias de ramificación, con módulos sobre dockerización, versionado en arquitecturas de microservicios y estándares de documentación de repositorio.",
-  "fr": "Mon propre guide de Git et des bonnes pratiques de versionnage — pratique, et non un énième manuel générique de commandes. Rassemble modèles et exemples d'Actions, Projects, Issues et stratégies de branches, avec des modules sur la dockerisation, le versionnage en architecture microservices et les standards de documentation de dépôt.",
-  "it": "Guida propria a Git e alle buone pratiche di versionamento — pratica, non l'ennesimo manuale generico di comandi. Raccoglie template, esempi di Actions, Projects, Issues e strategie di branching, con moduli su dockerizzazione, versionamento in architetture a microservizi e standard di documentazione dei repository.",
-  "zh": "自编的 Git 与版本管理最佳实践指南——注重实用,而不是又一本泛泛的命令手册。汇集了模板、Actions、Projects、Issues 示例以及分支策略,并包含容器化(Docker)、微服务架构中的版本管理和仓库文档规范等模块。"
+ "projeto:devops-guide": {
+  "pt_hash": "5121e5e5f64a",
+  "pt": "Segundo cérebro de documentações reexplicadas e hub DevOps (devops.phrandrade.com): guia próprio de Git e boas práticas de versionamento, prático e sem ser mais um manual genérico de comandos. Reúne templates, exemplos de Actions, Projects, Issues e estratégias de branching, com módulos sobre dockerização, versionamento em arquiteturas de microsserviços e padrões de documentação de repositório.",
+  "en": "A second brain of re-explained documentation and DevOps hub (devops.phrandrade.com): a custom guide to Git and versioning best practices, practical and not just another generic command manual. It gathers templates, examples of Actions, Projects, Issues and branching strategies, with modules on dockerization, versioning in microservices architectures and repository documentation standards.",
+  "es": "Segundo cerebro de documentaciones reexplicadas y hub DevOps (devops.phrandrade.com): guía propia de Git y buenas prácticas de versionado, práctica y sin ser un manual genérico de comandos más. Reúne plantillas, ejemplos de Actions, Projects, Issues y estrategias de branching, con módulos sobre dockerización, versionado en arquitecturas de microservicios y estándares de documentación de repositorios.",
+  "fr": "Second cerveau de documentations réexpliquées et hub DevOps (devops.phrandrade.com) : guide personnel de Git et des bonnes pratiques de versionnement, pratique et sans être un énième manuel générique de commandes. Il réunit des modèles, des exemples d'Actions, Projects, Issues et des stratégies de branching, avec des modules sur la dockerisation, le versionnement dans les architectures de microservices et les standards de documentation de dépôt.",
+  "it": "Secondo cervello di documentazioni rispiegate e hub DevOps (devops.phrandrade.com): guida personale a Git e alle buone pratiche di versionamento, pratica e non l'ennesimo manuale generico di comandi. Raccoglie template, esempi di Actions, Projects, Issues e strategie di branching, con moduli su dockerizzazione, versionamento in architetture a microservizi e standard di documentazione dei repository.",
+  "zh": "重新讲解文档的“第二大脑”与 DevOps 中心(devops.phrandrade.com):自编的 Git 与版本管理最佳实践指南,注重实用,不是又一本泛泛的命令手册。汇集了模板、Actions、Projects、Issues 示例和分支策略,并包含 Docker 容器化、微服务架构中的版本管理以及仓库文档规范等模块。"
  },
  "projeto:hardcore-life": {
   "pt_hash": "b7bf60e1bc69",
