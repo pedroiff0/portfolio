@@ -125,8 +125,20 @@ def ler_fonte(caminho=CONTEUDO):
         arq, _, legenda = item.partition(":")
         galeria.append({"file": arq.strip(), "caption": legenda.strip()})
 
+    interface = []
+    for item in lista(S.get("Interface", "")):
+        chave, sep, valor = item.partition(":")
+        if sep and chave.strip():
+            interface.append((chave.strip(), valor.strip()))
+    pagina = {}
+    for linha in S.get("Página", "").splitlines():
+        m = KV.match(linha)
+        if m:
+            pagina[m.group(1)] = [x.strip() for x in m.group(2).split(",") if x.strip()]
+
     return {"meta": meta, "perfil": perfil, "projetos": projetos, "bolsas": bolsas,
-            "contatos": contatos, "alem": alem_kv, "galeria": galeria}
+            "contatos": contatos, "alem": alem_kv, "galeria": galeria,
+            "interface": interface, "pagina": pagina}
 
 
 def blocos(F):
@@ -155,7 +167,23 @@ def blocos(F):
         B["alem:hobby"] = F["alem"]["hobby"]
     for g in F["galeria"]:
         B[f"alem:galeria:{g['file']}"] = g["caption"]
+    for chave, valor in F.get("interface", []):
+        if valor:
+            B[f"ui:{chave}"] = valor
     return B
+
+
+def overrides(F, T):
+    """Textos de interface da nota (## Interface) por idioma: {"ui": {lang: {caminho: valor}}, "i": {...}}.
+    Chaves `ui.<caminho>` sobrescrevem o dicionário UI do main.js; `i.<caminho>`, o I18N do interface.yaml."""
+    O = {"ui": {}, "i": {}}
+    for chave, pt in F.get("interface", []):
+        alvo, _, caminho = chave.partition(".")
+        if alvo not in O or not caminho or not pt:
+            continue
+        for lang in ["pt", *OUTROS]:
+            O[alvo].setdefault(lang, {})[caminho] = traduzido(f"ui:{chave}", pt, T, lang)
+    return O
 
 
 def ler_traducoes():

@@ -898,5 +898,1184 @@
   "fr": "Bot Telegram qui relie le téléphone au vault et aux agents d'IA.",
   "it": "Bot Telegram che collega il telefono al vault e agli agenti di IA.",
   "zh": "将手机与 vault 和 AI 智能体连接起来的 Telegram 机器人。"
+ },
+ "ui:i.bolsas.orientLabel": {
+  "pt_hash": "e7254157e83c",
+  "pt": "Orientação",
+  "en": "Supervisor",
+  "es": "Supervisor",
+  "fr": "Encadrant",
+  "it": "Supervisore",
+  "zh": "导师"
+ },
+ "ui:i.bolsas.periodLabel": {
+  "pt_hash": "9d2b2bb804bd",
+  "pt": "Período",
+  "en": "Period",
+  "es": "Período",
+  "fr": "Période",
+  "it": "Periodo",
+  "zh": "时间"
+ },
+ "ui:i.cat.academico": {
+  "pt_hash": "9dc26cddc67a",
+  "pt": "Acadêmico",
+  "en": "Academic",
+  "es": "Académico",
+  "fr": "Académique",
+  "it": "Accademico",
+  "zh": "学术"
+ },
+ "ui:i.cat.all": {
+  "pt_hash": "a4114a83f4c6",
+  "pt": "Todos",
+  "en": "All",
+  "es": "Todos",
+  "fr": "Tous",
+  "it": "Tutti",
+  "zh": "全部"
+ },
+ "ui:i.cat.pesquisa": {
+  "pt_hash": "804429e0a065",
+  "pt": "Pesquisa",
+  "en": "Research",
+  "es": "Investigación",
+  "fr": "Recherche",
+  "it": "Ricerca",
+  "zh": "研究"
+ },
+ "ui:i.cat.pessoal": {
+  "pt_hash": "ac82b6bff330",
+  "pt": "Pessoal",
+  "en": "Personal",
+  "es": "Personal",
+  "fr": "Personnel",
+  "it": "Personale",
+  "zh": "个人"
+ },
+ "ui:i.cat.searchAria": {
+  "pt_hash": "6edafab701ed",
+  "pt": "Buscar projetos",
+  "en": "Search projects",
+  "es": "Buscar proyectos",
+  "fr": "Rechercher des projets",
+  "it": "Cerca progetti",
+  "zh": "搜索项目"
+ },
+ "ui:i.cat.searchPlaceholder": {
+  "pt_hash": "aa082fe284fd",
+  "pt": "Filtrar por nome, tecnologia ou tag...",
+  "en": "Filter by name, technology or tag...",
+  "es": "Filtrar por nombre, tecnología o etiqueta...",
+  "fr": "Filtrer par nom, technologie ou tag...",
+  "it": "Filtra per nome, tecnologia o tag...",
+  "zh": "按名称、技术或标签筛选..."
+ },
+ "ui:i.cat.software": {
+  "pt_hash": "9ad052271e01",
+  "pt": "Software",
+  "en": "Software",
+  "es": "Software",
+  "fr": "Logiciel",
+  "it": "Software",
+  "zh": "软件"
+ },
+ "ui:i.contactLabels.email": {
+  "pt_hash": "84add5b29527",
+  "pt": "Email",
+  "en": "Email",
+  "es": "Correo",
+  "fr": "Courriel",
+  "it": "Email",
+  "zh": "邮箱"
+ },
+ "ui:i.contactLabels.github": {
+  "pt_hash": "5442e2b64fa0",
+  "pt": "GitHub",
+  "en": "GitHub",
+  "es": "GitHub",
+  "fr": "GitHub",
+  "it": "GitHub",
+  "zh": "GitHub"
+ },
+ "ui:i.contactLabels.instagram": {
+  "pt_hash": "5721bbef40b2",
+  "pt": "Instagram",
+  "en": "Instagram",
+  "es": "Instagram",
+  "fr": "Instagram",
+  "it": "Instagram",
+  "zh": "Instagram"
+ },
+ "ui:i.contactLabels.lattes": {
+  "pt_hash": "a45d571d77d3",
+  "pt": "Lattes",
+  "en": "Lattes",
+  "es": "Lattes",
+  "fr": "Lattes",
+  "it": "Lattes",
+  "zh": "Lattes"
+ },
+ "ui:i.contactLabels.linkedin": {
+  "pt_hash": "6b6390a44161",
+  "pt": "LinkedIn",
+  "en": "LinkedIn",
+  "es": "LinkedIn",
+  "fr": "LinkedIn",
+  "it": "LinkedIn",
+  "zh": "LinkedIn"
+ },
+ "ui:i.contactLabels.location": {
+  "pt_hash": "3ccce010c520",
+  "pt": "Localização",
+  "en": "Location",
+  "es": "Ubicación",
+  "fr": "Localisation",
+  "it": "Luogo",
+  "zh": "所在地"
+ },
+ "ui:i.contactLabels.orcid": {
+  "pt_hash": "7fced9588f5d",
+  "pt": "ORCID",
+  "en": "ORCID",
+  "es": "ORCID",
+  "fr": "ORCID",
+  "it": "ORCID",
+  "zh": "ORCID"
+ },
+ "ui:i.contactLabels.scholar": {
+  "pt_hash": "ad7572e1227a",
+  "pt": "Google Scholar",
+  "en": "Google Scholar",
+  "es": "Google Scholar",
+  "fr": "Google Scholar",
+  "it": "Google Scholar",
+  "zh": "Google 学术"
+ },
+ "ui:i.contactLabels.site": {
+  "pt_hash": "a7127ff62f98",
+  "pt": "Site oficial",
+  "en": "Official site",
+  "es": "Sitio oficial",
+  "fr": "Site officiel",
+  "it": "Sito ufficiale",
+  "zh": "官方网站"
+ },
+ "ui:i.footer": {
+  "pt_hash": "aca8a5debf36",
+  "pt": "feito com café, código e um céu estrelado.",
+  "en": "made with coffee, code and a starry sky.",
+  "es": "hecho con café, código y un cielo estrellado.",
+  "fr": "fait avec du café, du code et un ciel étoilé.",
+  "it": "fatto con caffè, codice e un cielo stellato.",
+  "zh": "用咖啡、代码和满天繁星制作而成。"
+ },
+ "ui:i.labels.details": {
+  "pt_hash": "6dd94e23a8f9",
+  "pt": "Detalhes",
+  "en": "Details",
+  "es": "Detalles",
+  "fr": "Détails",
+  "it": "Dettagli",
+  "zh": "详情"
+ },
+ "ui:i.labels.noRepo": {
+  "pt_hash": "55655e154914",
+  "pt": "Sem repositório público ainda",
+  "en": "No public repository yet",
+  "es": "Aún sin repositorio público",
+  "fr": "Pas encore de dépôt public",
+  "it": "Nessun repository pubblico per ora",
+  "zh": "暂无公开仓库"
+ },
+ "ui:i.labels.viewRepo": {
+  "pt_hash": "12e98650007c",
+  "pt": "↗ Ver repositório no GitHub",
+  "en": "↗ View repository on GitHub",
+  "es": "↗ Ver repositorio en GitHub",
+  "fr": "↗ Voir le dépôt sur GitHub",
+  "it": "↗ Vedi il repository su GitHub",
+  "zh": "↗ 在 GitHub 上查看仓库"
+ },
+ "ui:i.nav.0": {
+  "pt_hash": "23930282a19c",
+  "pt": "Sobre",
+  "en": "About",
+  "es": "Sobre mí",
+  "fr": "À propos",
+  "it": "Chi sono",
+  "zh": "关于"
+ },
+ "ui:i.nav.1": {
+  "pt_hash": "2ae76d4e12e2",
+  "pt": "Projetos",
+  "en": "Projects",
+  "es": "Proyectos",
+  "fr": "Projets",
+  "it": "Progetti",
+  "zh": "项目"
+ },
+ "ui:i.nav.2": {
+  "pt_hash": "e77d92db69e1",
+  "pt": "Trabalhos",
+  "en": "Work",
+  "es": "Trabajos",
+  "fr": "Travaux",
+  "it": "Lavori",
+  "zh": "作品"
+ },
+ "ui:i.nav.3": {
+  "pt_hash": "804429e0a065",
+  "pt": "Pesquisa",
+  "en": "Research",
+  "es": "Investigación",
+  "fr": "Recherche",
+  "it": "Ricerca",
+  "zh": "研究"
+ },
+ "ui:i.nav.4": {
+  "pt_hash": "6a1f78d09849",
+  "pt": "Currículo",
+  "en": "Resume",
+  "es": "Currículum",
+  "fr": "CV",
+  "it": "Curriculum",
+  "zh": "简历"
+ },
+ "ui:i.nav.5": {
+  "pt_hash": "a45d571d77d3",
+  "pt": "Lattes",
+  "en": "Lattes",
+  "es": "Lattes",
+  "fr": "Lattes",
+  "it": "Lattes",
+  "zh": "Lattes"
+ },
+ "ui:i.nav.6": {
+  "pt_hash": "56661c07cf29",
+  "pt": "Contato",
+  "en": "Contact",
+  "es": "Contacto",
+  "fr": "Contact",
+  "it": "Contatti",
+  "zh": "联系"
+ },
+ "ui:i.sections.bolsas.lead": {
+  "pt_hash": "dcbc2c2645a2",
+  "pt": "Projetos de bolsa e voluntariado em astrofísica computacional (extraídos do meu CV).",
+  "en": "Scholarship and volunteer projects in computational astrophysics (from my CV).",
+  "es": "Proyectos de beca y voluntariado en astrofísica computacional (de mi CV).",
+  "fr": "Projets de bourse et bénévoles en astrophysique computationnelle (issus de mon CV).",
+  "it": "Progetti con borsa e volontari in astrofisica computazionale (dal mio CV).",
+  "zh": "计算天体物理学方向的资助与志愿项目（摘自简历）。"
+ },
+ "ui:i.sections.bolsas.title": {
+  "pt_hash": "9280c73dec36",
+  "pt": "Iniciação Científica & Pesquisa",
+  "en": "Scientific Initiation & Research",
+  "es": "Iniciación Científica e Investigación",
+  "fr": "Initiation Scientifique et Recherche",
+  "it": "Iniziazione Scientifica e Ricerca",
+  "zh": "科研启蒙与研究"
+ },
+ "ui:i.sections.contato.lead": {
+  "pt_hash": "339bb9fb042a",
+  "pt": "Fale comigo pelo canal que preferir.",
+  "en": "Reach me through your preferred channel.",
+  "es": "Contáctame por el canal que prefieras.",
+  "fr": "Joignez-moi par le canal de votre choix.",
+  "it": "Scrivimi dal canale che preferisci.",
+  "zh": "通过你喜欢的方式联系我。"
+ },
+ "ui:i.sections.contato.title": {
+  "pt_hash": "b725533bb017",
+  "pt": "Vamos nos conectar",
+  "en": "Let's connect",
+  "es": "Conectemos",
+  "fr": "Restons en contact",
+  "it": "Restiamo in contatto",
+  "zh": "保持联系"
+ },
+ "ui:i.sections.contatoHero.title": {
+  "pt_hash": "615c4560c313",
+  "pt": "Horizonte de Eventos · Onde o Código Transcende o Espaço-Tempo",
+  "en": "Event Horizon · Where Code Transcends Spacetime",
+  "es": "Horizonte de Sucesos · Donde el Código Trasciende el Espacio-Tiempo",
+  "fr": "Horizon des Événements · Où le Code Transcende l'Espace-Temps",
+  "it": "Orizzonte degli eventi",
+  "zh": "事件视界"
+ },
+ "ui:i.sections.curriculo.title": {
+  "pt_hash": "5ea91f67bd67",
+  "pt": "Currículo & Material",
+  "en": "Resume & Material",
+  "es": "Currículum y Material",
+  "fr": "CV et Matériel",
+  "it": "Curriculum e materiale",
+  "zh": "简历与资料"
+ },
+ "ui:i.sections.lattes.title": {
+  "pt_hash": "2764df1031d7",
+  "pt": "Plataforma Lattes (CNPq)",
+  "en": "Lattes Platform (CNPq)",
+  "es": "Plataforma Lattes (CNPq)",
+  "fr": "Plateforme Lattes (CNPq)",
+  "it": "Piattaforma Lattes (CNPq)",
+  "zh": "Lattes 平台（CNPq）"
+ },
+ "ui:i.sections.pesquisa.lead": {
+  "pt_hash": "94b2379358c4",
+  "pt": "Projetos de pesquisa em astrofísica computacional. Clique para expandir.",
+  "en": "Computational astrophysics research projects. Click to expand.",
+  "es": "Proyectos de investigación en astrofísica computacional. Haz clic para expandir.",
+  "fr": "Projets de recherche en astrophysique computationnelle. Cliquez pour déployer.",
+  "it": "Progetti di ricerca in astrofisica computazionale. Fai clic per espandere.",
+  "zh": "计算天体物理学研究项目。点击展开。"
+ },
+ "ui:i.sections.pesquisa.title": {
+  "pt_hash": "623a443c9431",
+  "pt": "Astronomia computacional",
+  "en": "Computational astronomy",
+  "es": "Astronomía computacional",
+  "fr": "Astronomie computationnelle",
+  "it": "Astronomia computazionale",
+  "zh": "计算天文学"
+ },
+ "ui:i.sections.projetos.lead": {
+  "pt_hash": "3fb91e274fdb",
+  "pt": "Clique em qualquer cartão para revelar os detalhes técnicos.",
+  "en": "Click any card to reveal the technical details.",
+  "es": "Haz clic en cualquier tarjeta para ver los detalles técnicos.",
+  "fr": "Cliquez sur une carte pour révéler les détails techniques.",
+  "it": "Fai clic su una scheda per vedere i dettagli tecnici.",
+  "zh": "点击任意卡片查看技术细节。"
+ },
+ "ui:i.sections.projetos.title": {
+  "pt_hash": "6d84e86baa12",
+  "pt": "O que eu construo",
+  "en": "What I build",
+  "es": "Lo que construyo",
+  "fr": "Ce que je construis",
+  "it": "Cosa costruisco",
+  "zh": "我的作品"
+ },
+ "ui:i.sections.sobre.title": {
+  "pt_hash": "f4459e31b13e",
+  "pt": "Trajetória entre código e estrelas",
+  "en": "Journey between code and stars",
+  "es": "Trayectoria entre código y estrellas",
+  "fr": "Parcours entre code et étoiles",
+  "it": "Un percorso tra codice e stelle",
+  "zh": "在代码与星辰之间"
+ },
+ "ui:i.sections.trabalhos.lead": {
+  "pt_hash": "981497bba5e3",
+  "pt": "Lista completa dos meus repositórios, públicos e privados. Cada cartão traz um resumo; abra \"Detalhes\" para ver o texto completo, a stack e o link.",
+  "en": "A complete list of my repositories, both public and private. Each card includes a summary; open \"Details\" to see the full text, the stack and the link.",
+  "es": "Lista completa de mis repositorios, públicos y privados. Cada tarjeta incluye un resumen; abre \"Detalles\" para ver el texto completo, el stack y el enlace.",
+  "fr": "Liste complète de mes dépôts, publics et privés. Chaque carte contient un résumé ; ouvrez « Détails » pour voir le texte complet, la stack et le lien.",
+  "it": "Elenco completo dei miei repository, pubblici e privati. Ogni scheda riporta un riepilogo; apri \"Dettagli\" per vedere il testo completo, lo stack e il link.",
+  "zh": "我的全部代码仓库列表,包括公开和私有仓库。每张卡片都附有摘要;打开“详情”即可查看完整说明、技术栈和链接。"
+ },
+ "ui:i.sections.trabalhos.title": {
+  "pt_hash": "0a0b0af67234",
+  "pt": "Tudo o que eu faço no GitHub",
+  "en": "Everything I do on GitHub",
+  "es": "Todo lo que hago en GitHub",
+  "fr": "Tout ce que je fais sur GitHub",
+  "it": "Tutto ciò che faccio su GitHub",
+  "zh": "我在 GitHub 上的全部工作"
+ },
+ "ui:i.vis.elaboracao": {
+  "pt_hash": "3b5e3167f709",
+  "pt": "Em elaboração",
+  "en": "In progress",
+  "es": "En elaboración",
+  "fr": "En cours",
+  "it": "In corso",
+  "zh": "进行中"
+ },
+ "ui:i.vis.planejamento": {
+  "pt_hash": "0455f894d90b",
+  "pt": "Em planejamento",
+  "en": "Planned",
+  "es": "En planificación",
+  "fr": "En projet",
+  "it": "Pianificato",
+  "zh": "计划中"
+ },
+ "ui:i.vis.privado": {
+  "pt_hash": "e78c6174dbcc",
+  "pt": "Privado",
+  "en": "Private",
+  "es": "Privado",
+  "fr": "Privé",
+  "it": "Privato",
+  "zh": "私有"
+ },
+ "ui:i.vis.público": {
+  "pt_hash": "ff2e5e62f8bf",
+  "pt": "Público",
+  "en": "Public",
+  "es": "Público",
+  "fr": "Public",
+  "it": "Pubblico",
+  "zh": "公开"
+ },
+ "ui:ui.alemLead": {
+  "pt_hash": "112e49e5b2d6",
+  "pt": "Feiras, congressos e visitas técnicas em que apresentei trabalhos ou aprendi algo, com fotos de cada um.",
+  "en": "Fairs, conferences and technical visits where I presented work or learned something, with photos of each.",
+  "es": "Ferias, congresos y visitas técnicas en las que presenté trabajos o aprendí algo, con fotos de cada uno.",
+  "fr": "Salons, congrès et visites techniques où j'ai présenté des travaux ou appris quelque chose, avec les photos de chacun.",
+  "it": "Fiere, congressi e visite tecniche in cui ho presentato lavori o imparato qualcosa, con le foto di ciascuno.",
+  "zh": "我展示作品或学习的展会、会议和技术参观，每项都附有照片。"
+ },
+ "ui:ui.alemTitle": {
+  "pt_hash": "775dc55c02a5",
+  "pt": "Participação em eventos",
+  "en": "Events",
+  "es": "Participación en eventos",
+  "fr": "Participation à des événements",
+  "it": "Partecipazione a eventi",
+  "zh": "参加的活动"
+ },
+ "ui:ui.base": {
+  "pt_hash": "077fe9c54ed5",
+  "pt": "Base",
+  "en": "Based in",
+  "es": "Base",
+  "fr": "Basé à",
+  "it": "Sede",
+  "zh": "所在地"
+ },
+ "ui:ui.baseText": {
+  "pt_hash": "df794296393d",
+  "pt": "Bom Jesus do Itabapoana, RJ",
+  "en": "Bom Jesus do Itabapoana, RJ, Brazil",
+  "es": "Bom Jesus do Itabapoana, RJ, Brasil",
+  "fr": "Bom Jesus do Itabapoana, RJ, Brésil",
+  "it": "Bom Jesus do Itabapoana, RJ, Brasile",
+  "zh": "巴西里约州 Bom Jesus do Itabapoana"
+ },
+ "ui:ui.close": {
+  "pt_hash": "7b2006fd7af8",
+  "pt": "Fechar",
+  "en": "Close",
+  "es": "Cerrar",
+  "fr": "Fermer",
+  "it": "Chiudi",
+  "zh": "关闭"
+ },
+ "ui:ui.continuum": {
+  "pt_hash": "649802ae040f",
+  "pt": "contínuo estelar",
+  "en": "stellar continuum",
+  "es": "continuo estelar",
+  "fr": "continuum stellaire",
+  "it": "continuo stellare",
+  "zh": "恒星连续谱"
+ },
+ "ui:ui.cvAcad": {
+  "pt_hash": "9dc26cddc67a",
+  "pt": "Acadêmico",
+  "en": "Academic",
+  "es": "Académico",
+  "fr": "Académique",
+  "it": "Accademico",
+  "zh": "学术版"
+ },
+ "ui:ui.cvDownload": {
+  "pt_hash": "7209f37cfc2b",
+  "pt": "Baixar CV",
+  "en": "Download CV",
+  "es": "Descargar CV",
+  "fr": "Télécharger le CV",
+  "it": "Scarica il CV",
+  "zh": "下载简历"
+ },
+ "ui:ui.cvLangsTitle": {
+  "pt_hash": "712c4616b6dd",
+  "pt": "Currículo em 6 idiomas (PDF)",
+  "en": "Resume in 6 languages (PDF)",
+  "es": "Currículum en 6 idiomas (PDF)",
+  "fr": "CV en 6 langues (PDF)",
+  "it": "Curriculum in 6 lingue (PDF)",
+  "zh": "六种语言的简历（PDF）"
+ },
+ "ui:ui.cvOpen": {
+  "pt_hash": "0ccdb7a06d05",
+  "pt": "Abrir PDF",
+  "en": "Open PDF",
+  "es": "Abrir PDF",
+  "fr": "Ouvrir le PDF",
+  "it": "Apri il PDF",
+  "zh": "打开 PDF"
+ },
+ "ui:ui.cvPreview": {
+  "pt_hash": "b215b22323ec",
+  "pt": "Prévia no idioma da página",
+  "en": "Preview in the page language",
+  "es": "Vista previa en el idioma de la página",
+  "fr": "Aperçu dans la langue de la page",
+  "it": "Anteprima nella lingua della pagina",
+  "zh": "页面语言的预览"
+ },
+ "ui:ui.cvProf": {
+  "pt_hash": "b5e489aa12f1",
+  "pt": "Profissional",
+  "en": "Professional",
+  "es": "Profesional",
+  "fr": "Professionnel",
+  "it": "Professionale",
+  "zh": "职业版"
+ },
+ "ui:ui.cvRepo": {
+  "pt_hash": "a2f3da80e686",
+  "pt": "Repositório do CV",
+  "en": "Resume repository",
+  "es": "Repositorio del CV",
+  "fr": "Dépôt du CV",
+  "it": "Repository del CV",
+  "zh": "简历仓库"
+ },
+ "ui:ui.cvText": {
+  "pt_hash": "896f2376f37d",
+  "pt": "Currículo mantido em LaTeX (classe altacv), com versões sincronizadas em seis idiomas: português, inglês, espanhol, francês, italiano e mandarim.",
+  "en": "Resume maintained in LaTeX (altacv class), with synchronized versions in six languages: Portuguese, English, Spanish, French, Italian and Mandarin.",
+  "es": "Currículum mantenido en LaTeX (clase altacv), con versiones sincronizadas en seis idiomas: portugués, inglés, español, francés, italiano y mandarín.",
+  "fr": "CV maintenu en LaTeX (classe altacv), avec des versions synchronisées en six langues : portugais, anglais, espagnol, français, italien et mandarin.",
+  "it": "Curriculum mantenuto in LaTeX (classe altacv), con versioni sincronizzate in sei lingue: portoghese, inglese, spagnolo, francese, italiano e mandarino.",
+  "zh": "简历使用 LaTeX（altacv 类）维护，提供六种语言的同步版本：葡萄牙语、英语、西班牙语、法语、意大利语和中文。"
+ },
+ "ui:ui.el.ca2": {
+  "pt_hash": "c118f374b946",
+  "pt": "cálcio ionizado",
+  "en": "ionized calcium",
+  "es": "calcio ionizado",
+  "fr": "calcium ionisé",
+  "it": "calcio ionizzato",
+  "zh": "电离钙"
+ },
+ "ui:ui.el.fe": {
+  "pt_hash": "1ae8b9f7390b",
+  "pt": "ferro neutro",
+  "en": "neutral iron",
+  "es": "hierro neutro",
+  "fr": "fer neutre",
+  "it": "ferro neutro",
+  "zh": "中性铁"
+ },
+ "ui:ui.el.h": {
+  "pt_hash": "49e6be8823fc",
+  "pt": "hidrogênio (Balmer)",
+  "en": "hydrogen (Balmer)",
+  "es": "hidrógeno (Balmer)",
+  "fr": "hydrogène (Balmer)",
+  "it": "idrogeno (Balmer)",
+  "zh": "氢（巴尔末系）"
+ },
+ "ui:ui.el.mg": {
+  "pt_hash": "fcc6e376b327",
+  "pt": "magnésio neutro",
+  "en": "neutral magnesium",
+  "es": "magnesio neutro",
+  "fr": "magnésium neutre",
+  "it": "magnesio neutro",
+  "zh": "中性镁"
+ },
+ "ui:ui.el.na": {
+  "pt_hash": "9de3f56b0b9a",
+  "pt": "sódio neutro",
+  "en": "neutral sodium",
+  "es": "sodio neutro",
+  "fr": "sodium neutre",
+  "it": "sodio neutro",
+  "zh": "中性钠"
+ },
+ "ui:ui.empty": {
+  "pt_hash": "4156e4d01a12",
+  "pt": "Nenhum projeto encontrado.",
+  "en": "No projects found.",
+  "es": "Ningún proyecto encontrado.",
+  "fr": "Aucun projet trouvé.",
+  "it": "Nessun progetto trovato.",
+  "zh": "未找到项目。"
+ },
+ "ui:ui.footAnd": {
+  "pt_hash": "58e6b3a414a1",
+  "pt": "e",
+  "en": "and",
+  "es": "y",
+  "fr": "et",
+  "it": "e",
+  "zh": "和"
+ },
+ "ui:ui.footBy": {
+  "pt_hash": "0e4434960c63",
+  "pt": "por",
+  "en": "by",
+  "es": "por",
+  "fr": "par",
+  "it": "da",
+  "zh": "制作，作者"
+ },
+ "ui:ui.footTag": {
+  "pt_hash": "74af412bc4ac",
+  "pt": "— computação e astrofísica, feito com",
+  "en": "— computing and astrophysics, made with",
+  "es": "— computación y astrofísica, hecho con",
+  "fr": "— informatique et astrophysique, fait avec",
+  "it": "— informatica e astrofisica, fatto con",
+  "zh": "— 计算机与天体物理，用"
+ },
+ "ui:ui.fullscreen": {
+  "pt_hash": "e8011276d020",
+  "pt": "Tela cheia",
+  "en": "Full screen",
+  "es": "Pantalla completa",
+  "fr": "Plein écran",
+  "it": "Schermo intero",
+  "zh": "全屏"
+ },
+ "ui:ui.icoCafe": {
+  "pt_hash": "f424452a9673",
+  "pt": "café",
+  "en": "coffee",
+  "es": "café",
+  "fr": "café",
+  "it": "caffè",
+  "zh": "咖啡"
+ },
+ "ui:ui.icoCodigo": {
+  "pt_hash": "94690ec41810",
+  "pt": "código",
+  "en": "code",
+  "es": "código",
+  "fr": "code",
+  "it": "codice",
+  "zh": "代码"
+ },
+ "ui:ui.icoCometa": {
+  "pt_hash": "9aa0727c4759",
+  "pt": "cometas",
+  "en": "comets",
+  "es": "cometas",
+  "fr": "comètes",
+  "it": "comete",
+  "zh": "彗星"
+ },
+ "ui:ui.kinds.bolsa": {
+  "pt_hash": "6af7d1456b74",
+  "pt": "Bolsa",
+  "en": "Grant",
+  "es": "Beca",
+  "fr": "Bourse",
+  "it": "Borsa",
+  "zh": "资助"
+ },
+ "ui:ui.kinds.evento": {
+  "pt_hash": "9383be4ba104",
+  "pt": "Evento",
+  "en": "Event",
+  "es": "Evento",
+  "fr": "Événement",
+  "it": "Evento",
+  "zh": "活动"
+ },
+ "ui:ui.kinds.pesquisa": {
+  "pt_hash": "804429e0a065",
+  "pt": "Pesquisa",
+  "en": "Research",
+  "es": "Investigación",
+  "fr": "Recherche",
+  "it": "Ricerca",
+  "zh": "研究"
+ },
+ "ui:ui.kinds.projeto": {
+  "pt_hash": "a29580282264",
+  "pt": "Projeto",
+  "en": "Project",
+  "es": "Proyecto",
+  "fr": "Projet",
+  "it": "Progetto",
+  "zh": "项目"
+ },
+ "ui:ui.kinds.secao": {
+  "pt_hash": "d1d7e5af047d",
+  "pt": "Seção",
+  "en": "Section",
+  "es": "Sección",
+  "fr": "Section",
+  "it": "Sezione",
+  "zh": "栏目"
+ },
+ "ui:ui.lattesOpen": {
+  "pt_hash": "d4b548c874f0",
+  "pt": "Abrir currículo Lattes",
+  "en": "Open Lattes CV",
+  "es": "Abrir currículum Lattes",
+  "fr": "Ouvrir le CV Lattes",
+  "it": "Apri il curriculum Lattes",
+  "zh": "打开 Lattes 简历"
+ },
+ "ui:ui.lattesText": {
+  "pt_hash": "76c58c954cfc",
+  "pt": "Estudante de Engenharia de Computação no IFF (Bom Jesus do Itabapoana, RJ), bolsista de Iniciação Científica (PIBIC/CNPq), com pesquisa em arqueologia galáctica, populações estelares e estrutura da Via Láctea.",
+  "en": "Computer Engineering student at IFF (Bom Jesus do Itabapoana, RJ), Scientific Initiation scholar (PIBIC/CNPq), researching galactic archaeology, stellar populations and the structure of the Milky Way.",
+  "es": "Estudiante de Ingeniería Informática en el IFF (Bom Jesus do Itabapoana, RJ), becario de Iniciación Científica (PIBIC/CNPq), con investigación en arqueología galáctica, poblaciones estelares y estructura de la Vía Láctea.",
+  "fr": "Étudiant en génie informatique à l'IFF (Bom Jesus do Itabapoana, RJ), boursier d'Initiation Scientifique (PIBIC/CNPq), avec des recherches en archéologie galactique, populations stellaires et structure de la Voie lactée.",
+  "it": "Studente di Ingegneria Informatica all'IFF (Bom Jesus do Itabapoana, RJ), borsista di Iniziazione Scientifica (PIBIC/CNPq), con ricerca in archeologia galattica, popolazioni stellari e struttura della Via Lattea.",
+  "zh": "巴西弗卢米嫩塞联邦学院（IFF，里约州 Bom Jesus do Itabapoana）计算机工程专业学生，科研启蒙计划（PIBIC/CNPq）奖学金获得者，研究方向为银河考古学、恒星星族与银河系结构。"
+ },
+ "ui:ui.live": {
+  "pt_hash": "2660251ab785",
+  "pt": "Explorar ao vivo",
+  "en": "Explore live",
+  "es": "Explorar en vivo",
+  "fr": "Explorer en direct",
+  "it": "Esplora dal vivo",
+  "zh": "在线体验"
+ },
+ "ui:ui.menu": {
+  "pt_hash": "57f5f5efbc59",
+  "pt": "Menu",
+  "en": "Menu",
+  "es": "Menú",
+  "fr": "Menu",
+  "it": "Menu",
+  "zh": "菜单"
+ },
+ "ui:ui.nav": {
+  "pt_hash": "c7b33878f639",
+  "pt": "Eventos",
+  "en": "Events",
+  "es": "Eventos",
+  "fr": "Événements",
+  "it": "Eventi",
+  "zh": "活动"
+ },
+ "ui:ui.next": {
+  "pt_hash": "e5f52d40e3a5",
+  "pt": "Próxima",
+  "en": "Next",
+  "es": "Siguiente",
+  "fr": "Suivante",
+  "it": "Successiva",
+  "zh": "下一张"
+ },
+ "ui:ui.nickname": {
+  "pt_hash": "e790b461b8ac",
+  "pt": "Apelido",
+  "en": "Nickname",
+  "es": "Apodo",
+  "fr": "Surnom",
+  "it": "Soprannome",
+  "zh": "昵称"
+ },
+ "ui:ui.noPhotos": {
+  "pt_hash": "b64e8f11375d",
+  "pt": "Relato sem fotos",
+  "en": "Story without photos",
+  "es": "Relato sin fotos",
+  "fr": "Récit sans photos",
+  "it": "Resoconto senza foto",
+  "zh": "无照片记录"
+ },
+ "ui:ui.openNew": {
+  "pt_hash": "f689fcf70999",
+  "pt": "Abrir em nova aba",
+  "en": "Open in new tab",
+  "es": "Abrir en nueva pestaña",
+  "fr": "Ouvrir dans un nouvel onglet",
+  "it": "Apri in una nuova scheda",
+  "zh": "在新标签页打开"
+ },
+ "ui:ui.pause": {
+  "pt_hash": "8e0f5ed9908b",
+  "pt": "Pausar",
+  "en": "Pause",
+  "es": "Pausar",
+  "fr": "Pause",
+  "it": "Pausa",
+  "zh": "暂停"
+ },
+ "ui:ui.photos": {
+  "pt_hash": "eaacf214c9fd",
+  "pt": "fotos",
+  "en": "photos",
+  "es": "fotos",
+  "fr": "photos",
+  "it": "foto",
+  "zh": "张照片"
+ },
+ "ui:ui.play": {
+  "pt_hash": "158b9b641928",
+  "pt": "Reproduzir",
+  "en": "Play",
+  "es": "Reproducir",
+  "fr": "Lire",
+  "it": "Riproduci",
+  "zh": "播放"
+ },
+ "ui:ui.prev": {
+  "pt_hash": "d97f1097b8f3",
+  "pt": "Anterior",
+  "en": "Previous",
+  "es": "Anterior",
+  "fr": "Précédente",
+  "it": "Precedente",
+  "zh": "上一张"
+ },
+ "ui:ui.qrJardim": {
+  "pt_hash": "c819de3729a6",
+  "pt": "Jardim digital",
+  "en": "Digital garden",
+  "es": "Jardín digital",
+  "fr": "Jardin numérique",
+  "it": "Giardino digitale",
+  "zh": "数字花园"
+ },
+ "ui:ui.qrJardimSub": {
+  "pt_hash": "7baf52acc976",
+  "pt": "Notas, projetos e eventos no site completo",
+  "en": "Notes, projects and events on the full site",
+  "es": "Notas, proyectos y eventos en el sitio completo",
+  "fr": "Notes, projets et événements sur le site complet",
+  "it": "Note, progetti ed eventi nel sito completo",
+  "zh": "完整网站上的笔记、项目和活动"
+ },
+ "ui:ui.qrKicker": {
+  "pt_hash": "88e5c07d6288",
+  "pt": "SAB 2026 · Natal, RN · 25/10 a 30/10/2026",
+  "en": "SAB 2026 · Natal, Brazil · Oct 25-30, 2026",
+  "es": "SAB 2026 · Natal, Brasil · 25 a 30/10/2026",
+  "fr": "SAB 2026 · Natal, Brésil · 25 au 30/10/2026",
+  "it": "SAB 2026 · Natal, Brasile · 25-30/10/2026",
+  "zh": "SAB 2026 · 巴西纳塔尔 · 2026年10月25日至30日"
+ },
+ "ui:ui.qrNote": {
+  "pt_hash": "c3e7f04f8e40",
+  "pt": "O painel interativo é temporário e será desativado após a SAB. Dúvidas: pedroiff0@gmail.com.",
+  "en": "The interactive panel is temporary and will be shut down after SAB. Questions: pedroiff0@gmail.com.",
+  "es": "El panel interactivo es temporal y se desactivará después de la SAB. Dudas: pedroiff0@gmail.com.",
+  "fr": "Le panneau interactif est temporaire et sera désactivé après la SAB. Questions : pedroiff0@gmail.com.",
+  "it": "Il pannello interattivo e temporaneo e sara disattivato dopo la SAB. Domande: pedroiff0@gmail.com.",
+  "zh": "交互式面板是临时的，SAB 之后将关闭。问题请联系：pedroiff0@gmail.com。"
+ },
+ "ui:ui.qrPainel": {
+  "pt_hash": "a333b421d92c",
+  "pt": "Painel interativo do mapa t-SNE",
+  "en": "Interactive t-SNE map",
+  "es": "Panel interactivo del mapa t-SNE",
+  "fr": "Panneau interactif de la carte t-SNE",
+  "it": "Pannello interattivo della mappa t-SNE",
+  "zh": "t-SNE 交互式地图"
+ },
+ "ui:ui.qrPainelSub": {
+  "pt_hash": "745db96646bb",
+  "pt": "Deixe seu nome na lista de quem passou pelo pôster",
+  "en": "Leave your name on the poster visitors list",
+  "es": "Deja tu nombre en la lista de visitantes del póster",
+  "fr": "Laissez votre nom sur la liste des visiteurs du poster",
+  "it": "Lascia il tuo nome nella lista dei visitatori del poster",
+  "zh": "在海报访客名单上留下你的名字"
+ },
+ "ui:ui.qrPesq": {
+  "pt_hash": "dd9007e18439",
+  "pt": "Pesquisa: detecção de anomalias",
+  "en": "Research: anomaly detection",
+  "es": "Investigación: detección de anomalías",
+  "fr": "Recherche : détection d'anomalies",
+  "it": "Ricerca: rilevamento di anomalie",
+  "zh": "研究：异常检测"
+ },
+ "ui:ui.qrPesqSub": {
+  "pt_hash": "a92115a27b07",
+  "pt": "A pesquisa por trás do pôster, 2025 a 2026",
+  "en": "The research behind the poster, 2025-2026",
+  "es": "La investigación detrás del póster, 2025-2026",
+  "fr": "La recherche derrière le poster, 2025-2026",
+  "it": "La ricerca dietro il poster, 2025-2026",
+  "zh": "海报背后的研究，2025-2026"
+ },
+ "ui:ui.qrSab": {
+  "pt_hash": "23339938470a",
+  "pt": "SAB 2026: o evento e o que apresentei",
+  "en": "SAB 2026: the event and my poster",
+  "es": "SAB 2026: el evento y mi póster",
+  "fr": "SAB 2026 : l'événement et mon poster",
+  "it": "SAB 2026: l'evento e il mio poster",
+  "zh": "SAB 2026：会议与我的海报"
+ },
+ "ui:ui.qrSabSub": {
+  "pt_hash": "e55ef74e761c",
+  "pt": "O evento e o meu pôster",
+  "en": "The event and what I presented",
+  "es": "El evento y lo que presenté",
+  "fr": "L'événement et ce que j'ai présenté",
+  "it": "L'evento e cio che ho presentato",
+  "zh": "会议以及我展示的内容"
+ },
+ "ui:ui.qrSobre": {
+  "pt_hash": "d7713dc9e8db",
+  "pt": "Sobre mim",
+  "en": "About me",
+  "es": "Sobre mí",
+  "fr": "À propos de moi",
+  "it": "Chi sono",
+  "zh": "关于我"
+ },
+ "ui:ui.qrSobreSub": {
+  "pt_hash": "fe2948d9703d",
+  "pt": "Quem sou e o que faço",
+  "en": "Who I am and what I do",
+  "es": "Quién soy y qué hago",
+  "fr": "Qui je suis et ce que je fais",
+  "it": "Chi sono e cosa faccio",
+  "zh": "我是谁，我做什么"
+ },
+ "ui:ui.qrTitle": {
+  "pt_hash": "804f838d88a6",
+  "pt": "Veio pelo QR code do banner? Comece por aqui.",
+  "en": "Came from the poster QR code? Start here.",
+  "es": "¿Llegaste por el código QR del póster? Empieza aquí.",
+  "fr": "Vous venez du QR code du poster ? Commencez ici.",
+  "it": "Vieni dal QR code del poster? Parti da qui.",
+  "zh": "从海报二维码来的？从这里开始。"
+ },
+ "ui:ui.reader": {
+  "pt_hash": "090aee91a933",
+  "pt": "Modo leitura",
+  "en": "Reading mode",
+  "es": "Modo lectura",
+  "fr": "Mode lecture",
+  "it": "Modalità lettura",
+  "zh": "阅读模式"
+ },
+ "ui:ui.readerExit": {
+  "pt_hash": "d16bd4845e12",
+  "pt": "Sair do modo leitura",
+  "en": "Exit reading mode",
+  "es": "Salir del modo lectura",
+  "fr": "Quitter le mode lecture",
+  "it": "Esci dalla modalità lettura",
+  "zh": "退出阅读模式"
+ },
+ "ui:ui.repo": {
+  "pt_hash": "074421630e50",
+  "pt": "Repositório",
+  "en": "Repository",
+  "es": "Repositorio",
+  "fr": "Dépôt",
+  "it": "Repository",
+  "zh": "仓库"
+ },
+ "ui:ui.report": {
+  "pt_hash": "0c8e0a328af3",
+  "pt": "Ler relato",
+  "en": "Read the story",
+  "es": "Leer el relato",
+  "fr": "Lire le récit",
+  "it": "Leggi il resoconto",
+  "zh": "阅读记录"
+ },
+ "ui:ui.search": {
+  "pt_hash": "a62405e2cefb",
+  "pt": "Buscar",
+  "en": "Search",
+  "es": "Buscar",
+  "fr": "Rechercher",
+  "it": "Cerca",
+  "zh": "搜索"
+ },
+ "ui:ui.searchEmpty": {
+  "pt_hash": "5343be234bc2",
+  "pt": "Nada encontrado para",
+  "en": "Nothing found for",
+  "es": "Nada encontrado para",
+  "fr": "Aucun résultat pour",
+  "it": "Nessun risultato per",
+  "zh": "未找到"
+ },
+ "ui:ui.searchPh": {
+  "pt_hash": "b8be8134ad29",
+  "pt": "Buscar projetos, pesquisa, eventos… (# para tags)",
+  "en": "Search projects, research, events… (# for tags)",
+  "es": "Buscar proyectos, investigación, eventos… (# para etiquetas)",
+  "fr": "Rechercher projets, recherche, événements… (# pour les tags)",
+  "it": "Cerca progetti, ricerca, eventi… (# per i tag)",
+  "zh": "搜索项目、研究、活动…（# 搜索标签）"
+ },
+ "ui:ui.seek": {
+  "pt_hash": "78916ffa8d03",
+  "pt": "Posição do vídeo",
+  "en": "Video position",
+  "es": "Posición del video",
+  "fr": "Position de la vidéo",
+  "it": "Posizione del video",
+  "zh": "视频进度"
+ },
+ "ui:ui.sideCollapse": {
+  "pt_hash": "43ae0b56ace5",
+  "pt": "Recolher barra lateral",
+  "en": "Collapse sidebar",
+  "es": "Contraer barra lateral",
+  "fr": "Réduire la barre latérale",
+  "it": "Comprimi barra laterale",
+  "zh": "收起侧栏"
+ },
+ "ui:ui.sideExpand": {
+  "pt_hash": "d443ef8f8294",
+  "pt": "Expandir barra lateral",
+  "en": "Expand sidebar",
+  "es": "Expandir barra lateral",
+  "fr": "Développer la barre latérale",
+  "it": "Espandi barra laterale",
+  "zh": "展开侧栏"
+ },
+ "ui:ui.skip": {
+  "pt_hash": "8f33fd93c540",
+  "pt": "Pular para o conteúdo",
+  "en": "Skip to content",
+  "es": "Saltar al contenido",
+  "fr": "Aller au contenu",
+  "it": "Vai al contenuto",
+  "zh": "跳到内容"
+ },
+ "ui:ui.sliderLabel": {
+  "pt_hash": "5f965cd33d16",
+  "pt": "Comprimento de onda em ångströms",
+  "en": "Wavelength in ångströms",
+  "es": "Longitud de onda en ångströms",
+  "fr": "Longueur d'onde en ångströms",
+  "it": "Lunghezza d'onda in ångström",
+  "zh": "波长（埃）"
+ },
+ "ui:ui.spectrumHint": {
+  "pt_hash": "f5a1d7296a8f",
+  "pt": "Arraste para percorrer o espectro de uma estrela e encontrar as linhas de absorção que uso no GALAH DR4.",
+  "en": "Drag to sweep a star's spectrum and find the absorption lines I work with in GALAH DR4.",
+  "es": "Arrastra para recorrer el espectro de una estrella y encontrar las líneas de absorción que uso en GALAH DR4.",
+  "fr": "Faites glisser pour parcourir le spectre d'une étoile et trouver les raies d'absorption que j'utilise dans GALAH DR4.",
+  "it": "Trascina per percorrere lo spettro di una stella e trovare le righe di assorbimento che uso in GALAH DR4.",
+  "zh": "拖动滑块浏览恒星光谱，找到我在 GALAH DR4 中使用的吸收线。"
+ },
+ "ui:ui.stats.0": {
+  "pt_hash": "65f7b8e15d2b",
+  "pt": "repositórios",
+  "en": "repositories",
+  "es": "repositorios",
+  "fr": "dépôts",
+  "it": "repository",
+  "zh": "个仓库"
+ },
+ "ui:ui.stats.1": {
+  "pt_hash": "63c1614f3efc",
+  "pt": "projetos de iniciação científica",
+  "en": "scientific initiation projects",
+  "es": "proyectos de iniciación científica",
+  "fr": "projets d'initiation scientifique",
+  "it": "progetti di iniziazione scientifica",
+  "zh": "个科研启蒙项目"
+ },
+ "ui:ui.stats.2": {
+  "pt_hash": "2be882531d17",
+  "pt": "participações na IAAC (2024 e 2025)",
+  "en": "IAAC participations (2024 and 2025)",
+  "es": "participaciones en la IAAC (2024 y 2025)",
+  "fr": "participations à l'IAAC (2024 et 2025)",
+  "it": "partecipazioni all'IAAC (2024 e 2025)",
+  "zh": "次参加 IAAC（2024 与 2025）"
+ },
+ "ui:ui.stats.3": {
+  "pt_hash": "c5f35c1c3c57",
+  "pt": "disciplinas mapeadas no Sistema Acadêmico",
+  "en": "courses mapped in the Academic System",
+  "es": "asignaturas mapeadas en el Sistema Académico",
+  "fr": "matières cartographiées dans le Système Académique",
+  "it": "materie mappate nel Sistema Accademico",
+  "zh": "门课程已录入学术系统"
+ },
+ "ui:ui.status.ajustes": {
+  "pt_hash": "b6bb94e3f93b",
+  "pt": "precisa de ajustes",
+  "en": "needs adjustments",
+  "es": "necesita ajustes",
+  "fr": "ajustements à faire",
+  "it": "da sistemare",
+  "zh": "待完善"
+ },
+ "ui:ui.status.beta": {
+  "pt_hash": "064b2e5986b5",
+  "pt": "em beta",
+  "en": "beta",
+  "es": "en beta",
+  "fr": "en bêta",
+  "it": "in beta",
+  "zh": "测试版"
+ },
+ "ui:ui.status.camp": {
+  "pt_hash": "6d100689ae78",
+  "pt": "campanha",
+  "en": "campaign",
+  "es": "campaña",
+  "fr": "campagne",
+  "it": "campagna",
+  "zh": "倡议"
+ },
+ "ui:ui.status.dev": {
+  "pt_hash": "41e9cfbdafcf",
+  "pt": "em desenvolvimento",
+  "en": "in development",
+  "es": "en desarrollo",
+  "fr": "en développement",
+  "it": "in sviluppo",
+  "zh": "开发中"
+ },
+ "ui:ui.status.ext": {
+  "pt_hash": "9d47852b5cec",
+  "pt": "extensão",
+  "en": "outreach project",
+  "es": "proyecto de extensión",
+  "fr": "projet d'extension",
+  "it": "progetto di estensione",
+  "zh": "推广项目"
+ },
+ "ui:ui.theme": {
+  "pt_hash": "c014b5aea056",
+  "pt": "Alternar tema",
+  "en": "Toggle theme",
+  "es": "Cambiar tema",
+  "fr": "Changer de thème",
+  "it": "Cambia tema",
+  "zh": "切换主题"
+ },
+ "ui:ui.toTop": {
+  "pt_hash": "d94bb43131aa",
+  "pt": "Voltar ao topo ↑",
+  "en": "Back to top ↑",
+  "es": "Volver arriba ↑",
+  "fr": "Retour en haut ↑",
+  "it": "Torna su ↑",
+  "zh": "回到顶部 ↑"
+ },
+ "ui:ui.tour": {
+  "pt_hash": "8b71d72d42cb",
+  "pt": "Ver tour",
+  "en": "Watch tour",
+  "es": "Ver recorrido",
+  "fr": "Voir la visite",
+  "it": "Guarda il tour",
+  "zh": "观看演示"
+ },
+ "ui:ui.updated": {
+  "pt_hash": "56d53d7bca09",
+  "pt": "Atualizado em",
+  "en": "Updated on",
+  "es": "Actualizado el",
+  "fr": "Mis à jour le",
+  "it": "Aggiornato il",
+  "zh": "更新于"
  }
 }

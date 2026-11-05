@@ -422,6 +422,8 @@ def build(data):
     contacts = [norm_contact(c) for c in data.get("contatos", [])]
     extra = data.get("extra", {}) or {}
     I18N = i18n_transpose(data.get("i18n", {}) or {})
+    OVERRIDES = data.get("overrides", {"ui": {}, "i": {}})
+    LAYOUT = data.get("layout", {}) or {}
 
     out = []
     out.append("// Dados do portfólio — Pedro Henrique Rocha de Andrade (pedroiff0)")
@@ -452,7 +454,11 @@ def build(data):
     out.append("// Dicionário de interface (PT-BR padrão).")
     out.append("const I18N = " + py_to_js(I18N, 0) + ";")
     out.append("")
-    out.append("window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N };")
+    out.append("// Textos de interface e layout vindos da nota do vault (## Interface e ## Página).")
+    out.append("const OVERRIDES = " + py_to_js(OVERRIDES, 0) + ";")
+    out.append("const LAYOUT = " + py_to_js(LAYOUT, 0) + ";")
+    out.append("")
+    out.append("window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, OVERRIDES, LAYOUT };")
     return "\n".join(out) + "\n"
 
 
@@ -504,7 +510,8 @@ def data_v22():
     extra["i18n"] = {l: {"tagline": tag[l]} for l in LANGS if l != "pt"}
     ev_json = os.path.join(ROOT, "src", "eventos.json")
     events = json.load(open(ev_json, encoding="utf-8")) if os.path.exists(ev_json) else []
-    data = {"full_name": F["meta"].get("full_name", ""), "orcid": F["meta"].get("orcid", ""),
+    ov = fonte.overrides(F, T)
+    data = {"overrides": ov, "layout": F.get("pagina", {}), "full_name": F["meta"].get("full_name", ""), "orcid": F["meta"].get("orcid", ""),
             "instagram": F["meta"].get("instagram", ""),
             "featured": [s.strip() for s in F["meta"].get("featured", "").split(",") if s.strip()],
             "repos": repos, "bolsas": bolsas, "contatos": F["contatos"], "extra": extra, "i18n": i18n,

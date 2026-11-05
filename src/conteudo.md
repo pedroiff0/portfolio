@@ -3,7 +3,7 @@ publish: false
 title: Portfólio (conteúdo em pt-BR)
 type: esboco
 created: '2026-11-03T15:28:39-03:00'
-modified: 2026-11-05T15:14:42-03:00
+modified: 2026-11-05T15:22:30-03:00
 published: '2026-11-03T15:28:39-03:00'
 tags:
   - projeto
@@ -630,3 +630,186 @@ desc: Continuação do projeto PIBIC/CNPq: aprendizado de máquina sobre Gaia DR
 ## Além do código
 > Eventos (fotos e relatos) vêm sozinhos das notas de 03-midia (publish: true) via tools/eventos.py; não é preciso listar aqui.
 grade: 90 disciplinas mapeadas no Sistema Acadêmico (grade IFF Eng. de Computação, 1º→10º período).
+
+## Página
+
+> Ordem e visibilidade das seções e do menu (ids: sobre, projetos, trabalhos, pesquisa, bolsas, eventos, curriculo, lattes, contato). Seção fora de `secoes` fica oculta; `nav` define os links do topo.
+secoes: sobre, projetos, trabalhos, pesquisa, bolsas, eventos, curriculo, lattes, contato
+nav: sobre, projetos, trabalhos, pesquisa, eventos, curriculo, lattes, contato
+
+## Interface
+
+> Textos fixos da página (menu, títulos e subtítulos de seção, rótulos, botões, banner do QR code). Escreva em português; o `traduzir` gera os outros 5 idiomas. Formato `- chave: texto`. `ui.*` vem do main.js e `i.*` do interface.yaml; use o texto com `%`/HTML apenas como está.
+
+### Textos gerais (ui.*)
+
+- ui.cvText: Currículo mantido em LaTeX (classe altacv), com versões sincronizadas em seis idiomas: português, inglês, espanhol, francês, italiano e mandarim.
+- ui.cvRepo: Repositório do CV
+- ui.lattesText: Estudante de Engenharia de Computação no IFF (Bom Jesus do Itabapoana, RJ), bolsista de Iniciação Científica (PIBIC/CNPq), com pesquisa em arqueologia galáctica, populações estelares e estrutura da Via Láctea.
+- ui.lattesOpen: Abrir currículo Lattes
+- ui.empty: Nenhum projeto encontrado.
+- ui.skip: Pular para o conteúdo
+- ui.theme: Alternar tema
+- ui.cvDownload: Baixar CV
+- ui.footTag: — computação e astrofísica, feito com
+- ui.footAnd: e
+- ui.footBy: por
+- ui.toTop: Voltar ao topo ↑
+- ui.icoCafe: café
+- ui.icoCodigo: código
+- ui.icoCometa: cometas
+- ui.updated: Atualizado em
+- ui.menu: Menu
+- ui.nav: Eventos
+- ui.alemTitle: Participação em eventos
+- ui.alemLead: Feiras, congressos e visitas técnicas em que apresentei trabalhos ou aprendi algo, com fotos de cada um.
+- ui.nickname: Apelido
+- ui.base: Base
+- ui.baseText: Bom Jesus do Itabapoana, RJ
+- ui.photos: fotos
+- ui.report: Ler relato
+- ui.noPhotos: Relato sem fotos
+- ui.prev: Anterior
+- ui.next: Próxima
+- ui.reader: Modo leitura
+- ui.readerExit: Sair do modo leitura
+- ui.sideCollapse: Recolher barra lateral
+- ui.sideExpand: Expandir barra lateral
+- ui.cvAcad: Acadêmico
+- ui.cvProf: Profissional
+- ui.cvLangsTitle: Currículo em 6 idiomas (PDF)
+- ui.tour: Ver tour
+- ui.live: Explorar ao vivo
+- ui.openNew: Abrir em nova aba
+- ui.close: Fechar
+- ui.spectrumHint: Arraste para percorrer o espectro de uma estrela e encontrar as linhas de absorção que uso no GALAH DR4.
+- ui.continuum: contínuo estelar
+- ui.sliderLabel: Comprimento de onda em ångströms
+- ui.play: Reproduzir
+- ui.pause: Pausar
+- ui.fullscreen: Tela cheia
+- ui.repo: Repositório
+- ui.seek: Posição do vídeo
+- ui.search: Buscar
+- ui.searchPh: Buscar projetos, pesquisa, eventos… (# para tags)
+- ui.searchEmpty: Nada encontrado para
+- ui.cvPreview: Prévia no idioma da página
+- ui.cvOpen: Abrir PDF
+
+### ui.stats
+
+- ui.stats.0: repositórios
+- ui.stats.1: projetos de iniciação científica
+- ui.stats.2: participações na IAAC (2024 e 2025)
+- ui.stats.3: disciplinas mapeadas no Sistema Acadêmico
+
+### ui.el
+
+- ui.el.h: hidrogênio (Balmer)
+- ui.el.ca2: cálcio ionizado
+- ui.el.mg: magnésio neutro
+- ui.el.fe: ferro neutro
+- ui.el.na: sódio neutro
+
+### ui.kinds
+
+- ui.kinds.projeto: Projeto
+- ui.kinds.pesquisa: Pesquisa
+- ui.kinds.bolsa: Bolsa
+- ui.kinds.evento: Evento
+- ui.kinds.secao: Seção
+
+### ui.status
+
+- ui.status.dev: em desenvolvimento
+- ui.status.ext: extensão
+- ui.status.camp: campanha
+- ui.status.beta: em beta
+- ui.status.ajustes: precisa de ajustes
+
+### Banner do QR code (ui.qr*)
+
+- ui.qrKicker: SAB 2026 · Natal, RN · 25/10 a 30/10/2026
+- ui.qrTitle: Veio pelo QR code do banner? Comece por aqui.
+- ui.qrSab: SAB 2026: o evento e o que apresentei
+- ui.qrSabSub: O evento e o meu pôster
+- ui.qrPesq: Pesquisa: detecção de anomalias
+- ui.qrPesqSub: A pesquisa por trás do pôster, 2025 a 2026
+- ui.qrPainel: Painel interativo do mapa t-SNE
+- ui.qrPainelSub: Deixe seu nome na lista de quem passou pelo pôster
+- ui.qrSobre: Sobre mim
+- ui.qrSobreSub: Quem sou e o que faço
+- ui.qrJardim: Jardim digital
+- ui.qrJardimSub: Notas, projetos e eventos no site completo
+- ui.qrNote: O painel interativo é temporário e será desativado após a SAB. Dúvidas: pedroiff0@gmail.com.
+
+### i.nav
+
+- i.nav.0: Sobre
+- i.nav.1: Projetos
+- i.nav.2: Trabalhos
+- i.nav.3: Pesquisa
+- i.nav.4: Currículo
+- i.nav.5: Lattes
+- i.nav.6: Contato
+
+### i.sections
+
+- i.sections.sobre.title: Trajetória entre código e estrelas
+- i.sections.projetos.title: O que eu construo
+- i.sections.projetos.lead: Clique em qualquer cartão para revelar os detalhes técnicos.
+- i.sections.trabalhos.title: Tudo o que eu faço no GitHub
+- i.sections.trabalhos.lead: Lista completa dos meus repositórios, públicos e privados. Cada cartão traz um resumo; abra "Detalhes" para ver o texto completo, a stack e o link.
+- i.sections.pesquisa.title: Astronomia computacional
+- i.sections.pesquisa.lead: Projetos de pesquisa em astrofísica computacional. Clique para expandir.
+- i.sections.bolsas.title: Iniciação Científica & Pesquisa
+- i.sections.bolsas.lead: Projetos de bolsa e voluntariado em astrofísica computacional (extraídos do meu CV).
+- i.sections.curriculo.title: Currículo & Material
+- i.sections.lattes.title: Plataforma Lattes (CNPq)
+- i.sections.contato.title: Vamos nos conectar
+- i.sections.contato.lead: Fale comigo pelo canal que preferir.
+- i.sections.contatoHero.title: Horizonte de Eventos · Onde o Código Transcende o Espaço-Tempo
+
+### i.cat
+
+- i.cat.all: Todos
+- i.cat.software: Software
+- i.cat.pesquisa: Pesquisa
+- i.cat.academico: Acadêmico
+- i.cat.pessoal: Pessoal
+- i.cat.searchPlaceholder: Filtrar por nome, tecnologia ou tag...
+- i.cat.searchAria: Buscar projetos
+
+### i.vis
+
+- i.vis.público: Público
+- i.vis.privado: Privado
+- i.vis.planejamento: Em planejamento
+- i.vis.elaboracao: Em elaboração
+
+### i.labels
+
+- i.labels.details: Detalhes
+- i.labels.viewRepo: ↗ Ver repositório no GitHub
+- i.labels.noRepo: Sem repositório público ainda
+
+### i.bolsas
+
+- i.bolsas.orientLabel: Orientação
+- i.bolsas.periodLabel: Período
+
+### i.contactLabels
+
+- i.contactLabels.email: Email
+- i.contactLabels.github: GitHub
+- i.contactLabels.linkedin: LinkedIn
+- i.contactLabels.scholar: Google Scholar
+- i.contactLabels.orcid: ORCID
+- i.contactLabels.lattes: Lattes
+- i.contactLabels.instagram: Instagram
+- i.contactLabels.site: Site oficial
+- i.contactLabels.location: Localização
+
+### i.footer
+
+- i.footer: feito com café, código e um céu estrelado.

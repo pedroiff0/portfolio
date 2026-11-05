@@ -5,12 +5,15 @@ traduzir.py — traduz por IA só os trechos pt-BR que mudaram desde a última t
 Fluxo: o Pedro edita a nota do vault (PORTFOLIO_FONTE) em pt-BR e marca `traduzir: true`.
 Este script sincroniza a nota para src/conteudo.md, acha os blocos cujo hash pt mudou,
 pede en/es/fr ao Claude Code em modo não interativo (`claude -p`), grava src/traducoes.json,
-desmarca `traduzir` na nota e regera assets/js/projects.js. Não commita nada.
+desmarca `traduzir` na nota, regera assets/js/projects.js e PUBLICA: roda eventos.py, valida (make lint),
+commita e dá push neste repo (autorizado pelo Pedro em 05/11/2026 só para o repo do portfólio; com --sem-push não commita).
+Marcar `traduzir: true` na nota = "traduzir o que mudou e publicar a página".
 
 Uso:
   python3 tools/traduzir.py               # traduz o que estiver pendente
   python3 tools/traduzir.py --se-marcado  # só age se a nota tiver traduzir: true (watcher/make)
   python3 tools/traduzir.py --dry-run     # lista os pendentes, sem chamar a IA
+  python3 tools/traduzir.py --sem-push    # traduz e gera o JS, mas não commita nem dá push
 """
 import json, os, re, subprocess, sys
 
@@ -58,10 +61,50 @@ def pedir_ia(lote, langs):
     return json.loads(m.group(0))
 
 
+def sh(cmd, **kw):
+    return subprocess.run(cmd, cwd=fonte.ROOT, text=True, capture_output=True, **kw)
+
+
+def publicar():
+    """eventos.py + build + lint; se tudo passar, commit e push (um commit só, se houver mudança)."""
+    py = sys.executable
+    r = sh([py, "tools/eventos.py"])
+    print("eventos:", (r.stdout or r.stderr).strip().splitlines()[-1:] or "ok")
+    r = sh([py, "tools/build.py"])
+    if r.returncode:
+        sys.exit(f"build falhou, nada publicado:\n{r.stderr[-600:]}")
+    r = sh(["make", "lint"])
+    if r.returncode:
+        sys.exit(f"lint falhou, nada publicado:\n{(r.stdout + r.stderr)[-600:]}")
+    if "--sem-push" in sys.argv:
+        print("build ok (--sem-push: sem commit)")
+        return
+    if not sh(["git", "status", "--porcelain"]).stdout.strip():
+        print("sem mudanças para publicar")
+        return
+    sh(["git", "add", "-A"])
+    r = sh(["git", "commit", "-m", "chore(auto): conteúdo do portfólio atualizado a partir do vault"])
+    if r.returncode:
+        sys.exit(f"commit falhou:\n{(r.stdout + r.stderr)[-600:]}")
+    r = sh(["git", "push"])
+    if r.returncode:
+        sys.exit(f"push falhou (commit local feito):\n{r.stderr[-600:]}")
+    print("publicado:", sh(["git", "log", "--oneline", "-1"]).stdout.strip())
+
+
 def main():
     dry = "--dry-run" in sys.argv
     if "--se-marcado" in sys.argv and not nota_marcada():
         return
+    if not dry:
+        import fcntl
+        global _LOCK
+        _LOCK = open("/tmp/portfolio-traduzir.lock", "w")
+        try:
+            fcntl.flock(_LOCK, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError:
+            print("outra execução em andamento")
+            return
     fonte.sincronizar_do_vault()
     F = fonte.ler_fonte()
     B = fonte.blocos(F)
@@ -85,6 +128,7 @@ def main():
             print(f"removidos {len(orfaos)} órfão(s) de traducoes.json")
         if not dry:
             desmarcar()
+            publicar()
         return
     grupos = {}
     for k in pend:
@@ -106,7 +150,7 @@ def main():
         T.pop(k, None)
     fonte.gravar_traducoes(T)
     desmarcar()
-    subprocess.run([sys.executable, os.path.join(fonte.ROOT, "tools", "build.py")], check=True)
+    publicar()
 
 
 if __name__ == "__main__":

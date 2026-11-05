@@ -4,8 +4,11 @@
 
   const D = window.PORTFOLIO_DATA;
   const LANGS = ["pt", "en", "es", "fr", "it", "zh"];
-  const SECTIONS = ["sobre", "projetos", "trabalhos", "pesquisa", "bolsas", "eventos", "curriculo", "lattes", "contato"];
-  const NAV = ["sobre", "projetos", "trabalhos", "pesquisa", "eventos", "curriculo", "lattes", "contato"];
+  const LAYOUT = D.LAYOUT || {};
+  const ALL_SECTIONS = ["sobre", "projetos", "trabalhos", "pesquisa", "bolsas", "eventos", "curriculo", "lattes", "contato"];
+  // Seções (ordem e visibilidade) e menu vêm da nota (## Página); o que não estiver lá fica oculto.
+  const SECTIONS = (LAYOUT.secoes || ALL_SECTIONS).filter((id) => ALL_SECTIONS.includes(id));
+  const NAV = (LAYOUT.nav || ["sobre", "projetos", "trabalhos", "pesquisa", "eventos", "curriculo", "lattes", "contato"]).filter((id) => SECTIONS.includes(id));
   const NAV_I18N = { sobre: 0, projetos: 1, trabalhos: 2, pesquisa: 3, curriculo: 4, lattes: 5, contato: 6 }; // índice em I18N.*.nav
   const CV_BASE = "https://www.phrandrade.com/resource/areas/profissional/curriculo";
   const CV_LANGS = [["pt", "Português"], ["en", "English"], ["es", "Español"], ["fr", "Français"], ["it", "Italiano"], ["zh", "中文"]];
@@ -154,6 +157,18 @@
     zh: { play: "播放", pause: "暂停", fullscreen: "全屏", repo: "仓库", seek: "视频进度", search: "搜索", searchPh: "搜索项目、研究、活动…（# 搜索标签）", searchEmpty: "未找到", kinds: { projeto: "项目", pesquisa: "研究", bolsa: "资助", evento: "活动", secao: "栏目" }, cvPreview: "页面语言的预览", status: { dev: "开发中", ext: "推广项目", camp: "倡议", beta: "测试版", ajustes: "待完善" }, cvOpen: "打开 PDF" },
   };
   for (const l of LANGS) Object.assign(UI[l], UI_MORE[l], UI_V25[l], UI_QR[l]);
+
+  // Textos editados na nota do vault (## Interface) sobrescrevem os padrões acima e o I18N do interface.yaml.
+  function deepSet(obj, path, val) {
+    const ks = path.split("."); let o = obj;
+    for (let i = 0; i < ks.length - 1; i++) { if (o[ks[i]] == null || typeof o[ks[i]] !== "object") o[ks[i]] = /^\d+$/.test(ks[i + 1]) ? [] : {}; o = o[ks[i]]; }
+    o[ks[ks.length - 1]] = val;
+  }
+  const OV = D.OVERRIDES || {};
+  for (const l of LANGS) {
+    for (const [p, v] of Object.entries((OV.ui || {})[l] || {})) deepSet(UI[l], p, v);
+    for (const [p, v] of Object.entries((OV.i || {})[l] || {})) deepSet(D.I18N[l] || (D.I18N[l] = {}), p, v);
+  }
 
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => document.querySelectorAll(s);
@@ -321,6 +336,12 @@
         el("strong", { text: t }), el("small", { text: sub }))));
     $("#qr-note").textContent = U.qrNote;
     $("#qr-close").setAttribute("aria-label", U.close);
+  }
+
+  function applyLayout() {
+    const main = document.querySelector("main.content");
+    ALL_SECTIONS.forEach((id) => { const s = document.getElementById(id); if (s) s.hidden = !SECTIONS.includes(id); });
+    SECTIONS.forEach((id) => { const s = document.getElementById(id); if (s) main.appendChild(s); });
   }
 
   function renderHero() {
@@ -581,6 +602,7 @@
     document.documentElement.lang = { pt: "pt-BR", en: "en", es: "es", fr: "fr", it: "it", zh: "zh-CN" }[lang];
     $$("#lang button, #lang-m button").forEach((b) => { const on = b.dataset.lang === lang; b.classList.toggle("is-active", on); b.setAttribute("aria-pressed", String(on)); });
     if (window.Conquistas) window.Conquistas.setLang(lang);
+    applyLayout();
     renderQr(); renderHero(); renderSections(); renderFeatured(); renderTabs(); renderRepos();
     renderResearch(); renderGrants(); renderContacts(); renderStatic();
     renderStats(); renderEvents(); renderCV(); renderSpectrum(); renderSidebar();
