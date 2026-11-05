@@ -353,12 +353,19 @@ def norm_repo(r):
     for k in MEDIA_KEYS:
         if r.get(k):
             obj[k] = r[k]
+    resumo = r.get("resumo", {}) or {}
+    if resumo.get("pt"):
+        obj["resumo"] = resumo["pt"]
     i18n = {}
     for l in LANGS:
         if l == "pt":
             continue
-        if l in brief and brief[l] and brief[l] != brief.get("pt", ""):
-            i18n[l] = brief[l]
+        b = brief.get(l) if brief.get(l) and brief.get(l) != brief.get("pt", "") else None
+        s = resumo.get(l) if resumo.get(l) and resumo.get(l) != resumo.get("pt", "") else None
+        if s:
+            i18n[l] = {"brief": b or brief.get("pt", ""), "resumo": s}
+        elif b:
+            i18n[l] = b
     if i18n:
         obj["i18n"] = i18n
     return obj
@@ -432,9 +439,8 @@ def build(data):
     out.append("];")
     out.append("")
     out.append("const RESEARCH = REPOS.filter(r => r.cat === \"pesquisa\").map(r => ({\n"
-               "  title: r.name, icon: r.icon, badge: r.visibility === \"público\" ? \"Público\" : \"Privado\",\n"
-               "  summary: r.brief, details: r.brief + \"  Repositório: \" + r.repo,\n"
-               "  i18n: r.i18n\n"
+               "  ...r, title: r.name, badge: r.visibility === \"público\" ? \"Público\" : \"Privado\",\n"
+               "  summary: r.brief, details: r.brief + \"  Repositório: \" + r.repo\n"
                "}));")
     out.append("")
     out.append("const BOLSAS = " + py_to_js(bolsas, 0) + ";")
@@ -479,8 +485,10 @@ def data_v22():
 
     repos = []
     for pr in F["projetos"]:
-        r = {k: v for k, v in pr.items() if k != "texto"}
+        r = {k: v for k, v in pr.items() if k not in ("texto", "resumo")}
         r["brief"] = tr(f"projeto:{pr['name']}", pr["texto"])
+        if pr.get("resumo"):
+            r["resumo"] = tr(f"resumo:{pr['name']}", pr["resumo"])
         repos.append(r)
     bolsas = []
     for i, b in enumerate(F["bolsas"]):

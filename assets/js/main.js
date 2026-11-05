@@ -146,12 +146,12 @@
   };
 
   const UI_V25 = {
-    pt: { play: "Reproduzir", pause: "Pausar", fullscreen: "Tela cheia", repo: "Repositório", seek: "Posição do vídeo", search: "Buscar", searchPh: "Buscar projetos, pesquisa, eventos… (# para tags)", searchEmpty: "Nada encontrado para", kinds: { projeto: "Projeto", pesquisa: "Pesquisa", bolsa: "Bolsa", evento: "Evento", secao: "Seção" }, cvPreview: "Prévia no idioma da página", status: { beta: "em beta", ajustes: "precisa de ajustes" }, cvOpen: "Abrir PDF" },
-    en: { play: "Play", pause: "Pause", fullscreen: "Full screen", repo: "Repository", seek: "Video position", search: "Search", searchPh: "Search projects, research, events… (# for tags)", searchEmpty: "Nothing found for", kinds: { projeto: "Project", pesquisa: "Research", bolsa: "Grant", evento: "Event", secao: "Section" }, cvPreview: "Preview in the page language", status: { beta: "beta", ajustes: "needs adjustments" }, cvOpen: "Open PDF" },
-    es: { play: "Reproducir", pause: "Pausar", fullscreen: "Pantalla completa", repo: "Repositorio", seek: "Posición del video", search: "Buscar", searchPh: "Buscar proyectos, investigación, eventos… (# para etiquetas)", searchEmpty: "Nada encontrado para", kinds: { projeto: "Proyecto", pesquisa: "Investigación", bolsa: "Beca", evento: "Evento", secao: "Sección" }, cvPreview: "Vista previa en el idioma de la página", status: { beta: "en beta", ajustes: "necesita ajustes" }, cvOpen: "Abrir PDF" },
-    fr: { play: "Lire", pause: "Pause", fullscreen: "Plein écran", repo: "Dépôt", seek: "Position de la vidéo", search: "Rechercher", searchPh: "Rechercher projets, recherche, événements… (# pour les tags)", searchEmpty: "Aucun résultat pour", kinds: { projeto: "Projet", pesquisa: "Recherche", bolsa: "Bourse", evento: "Événement", secao: "Section" }, cvPreview: "Aperçu dans la langue de la page", status: { beta: "en bêta", ajustes: "ajustements à faire" }, cvOpen: "Ouvrir le PDF" },
-    it: { play: "Riproduci", pause: "Pausa", fullscreen: "Schermo intero", repo: "Repository", seek: "Posizione del video", search: "Cerca", searchPh: "Cerca progetti, ricerca, eventi… (# per i tag)", searchEmpty: "Nessun risultato per", kinds: { projeto: "Progetto", pesquisa: "Ricerca", bolsa: "Borsa", evento: "Evento", secao: "Sezione" }, cvPreview: "Anteprima nella lingua della pagina", status: { beta: "in beta", ajustes: "da sistemare" }, cvOpen: "Apri il PDF" },
-    zh: { play: "播放", pause: "暂停", fullscreen: "全屏", repo: "仓库", seek: "视频进度", search: "搜索", searchPh: "搜索项目、研究、活动…（# 搜索标签）", searchEmpty: "未找到", kinds: { projeto: "项目", pesquisa: "研究", bolsa: "资助", evento: "活动", secao: "栏目" }, cvPreview: "页面语言的预览", status: { beta: "测试版", ajustes: "待完善" }, cvOpen: "打开 PDF" },
+    pt: { play: "Reproduzir", pause: "Pausar", fullscreen: "Tela cheia", repo: "Repositório", seek: "Posição do vídeo", search: "Buscar", searchPh: "Buscar projetos, pesquisa, eventos… (# para tags)", searchEmpty: "Nada encontrado para", kinds: { projeto: "Projeto", pesquisa: "Pesquisa", bolsa: "Bolsa", evento: "Evento", secao: "Seção" }, cvPreview: "Prévia no idioma da página", status: { dev: "em desenvolvimento", ext: "extensão", camp: "campanha", beta: "em beta", ajustes: "precisa de ajustes" }, cvOpen: "Abrir PDF" },
+    en: { play: "Play", pause: "Pause", fullscreen: "Full screen", repo: "Repository", seek: "Video position", search: "Search", searchPh: "Search projects, research, events… (# for tags)", searchEmpty: "Nothing found for", kinds: { projeto: "Project", pesquisa: "Research", bolsa: "Grant", evento: "Event", secao: "Section" }, cvPreview: "Preview in the page language", status: { dev: "in development", ext: "outreach project", camp: "campaign", beta: "beta", ajustes: "needs adjustments" }, cvOpen: "Open PDF" },
+    es: { play: "Reproducir", pause: "Pausar", fullscreen: "Pantalla completa", repo: "Repositorio", seek: "Posición del video", search: "Buscar", searchPh: "Buscar proyectos, investigación, eventos… (# para etiquetas)", searchEmpty: "Nada encontrado para", kinds: { projeto: "Proyecto", pesquisa: "Investigación", bolsa: "Beca", evento: "Evento", secao: "Sección" }, cvPreview: "Vista previa en el idioma de la página", status: { dev: "en desarrollo", ext: "proyecto de extensión", camp: "campaña", beta: "en beta", ajustes: "necesita ajustes" }, cvOpen: "Abrir PDF" },
+    fr: { play: "Lire", pause: "Pause", fullscreen: "Plein écran", repo: "Dépôt", seek: "Position de la vidéo", search: "Rechercher", searchPh: "Rechercher projets, recherche, événements… (# pour les tags)", searchEmpty: "Aucun résultat pour", kinds: { projeto: "Projet", pesquisa: "Recherche", bolsa: "Bourse", evento: "Événement", secao: "Section" }, cvPreview: "Aperçu dans la langue de la page", status: { dev: "en développement", ext: "projet d'extension", camp: "campagne", beta: "en bêta", ajustes: "ajustements à faire" }, cvOpen: "Ouvrir le PDF" },
+    it: { play: "Riproduci", pause: "Pausa", fullscreen: "Schermo intero", repo: "Repository", seek: "Posizione del video", search: "Cerca", searchPh: "Cerca progetti, ricerca, eventi… (# per i tag)", searchEmpty: "Nessun risultato per", kinds: { projeto: "Progetto", pesquisa: "Ricerca", bolsa: "Borsa", evento: "Evento", secao: "Sezione" }, cvPreview: "Anteprima nella lingua della pagina", status: { dev: "in sviluppo", ext: "progetto di estensione", camp: "campagna", beta: "in beta", ajustes: "da sistemare" }, cvOpen: "Apri il PDF" },
+    zh: { play: "播放", pause: "暂停", fullscreen: "全屏", repo: "仓库", seek: "视频进度", search: "搜索", searchPh: "搜索项目、研究、活动…（# 搜索标签）", searchEmpty: "未找到", kinds: { projeto: "项目", pesquisa: "研究", bolsa: "资助", evento: "活动", secao: "栏目" }, cvPreview: "页面语言的预览", status: { dev: "开发中", ext: "推广项目", camp: "倡议", beta: "测试版", ajustes: "待完善" }, cvOpen: "打开 PDF" },
   };
   for (const l of LANGS) Object.assign(UI[l], UI_MORE[l], UI_V25[l], UI_QR[l]);
 
@@ -199,18 +199,19 @@
   const tr = (item, field) => {
     if (lang === "pt" || !item.i18n || !item.i18n[lang]) return item[field];
     const v = item.i18n[lang];
-    return typeof v === "string" ? (field === "brief" || field === "summary" || field === "details" ? v : item[field]) : (v[field] || item[field]);
+    if (typeof v === "string") return field === "brief" || field === "summary" || field === "details" ? v : item[field];
+    return v[field] || ((field === "summary" || field === "details") && v.brief) || item[field];
   };
 
   function visLabel(v) { return (T().vis || {})[v] || v; }
 
   function projectCard(p) {
     const L = T().labels || {};
-    const brief = tr(p, "brief");
+    const brief = tr(p, "brief"), resumo = tr(p, "resumo") || brief;
     const tags = el("div", { class: "tags" }, (p.tags || []).slice(0, 4).map((t) => el("span", { class: "tag", text: t })));
     const more = el("details", {},
       el("summary", { text: L.details || "Detalhes" }),
-      el("p", { text: brief }),
+      resumo !== brief ? el("p", { text: brief }) : null,
       el("p", { class: "mono", text: (p.stack || []).join(" · ") }),
       p.repo && p.visibility === "público"
         ? el("a", { href: p.repo, target: "_blank", rel: "noopener", text: noArrow(L.viewRepo || "GitHub") })
@@ -220,7 +221,7 @@
       el("div", { class: "card__head" }, el("h3", { text: p.name }),
         p.status ? el("span", { class: `badge badge--${p.status}`, text: UI[lang].status[p.status] || p.status }) : null,
         el("span", { class: "card__meta", text: visLabel(p.visibility) })),
-      el("p", { class: "clamp", text: brief }),
+      el("p", { class: "clamp", text: resumo }),
       tags, mediaActions(p), more);
   }
 
@@ -374,9 +375,16 @@
     const L = T().labels || {};
     $("#research").replaceChildren(...D.RESEARCH.map((r, i) => {
       const url = ((r.details || "").match(/https?:\/\/\S+/) || [])[0];
+      const resumo = tr(r, "resumo"), full = tr(r, "summary");
+      const more = resumo && resumo !== full ? el("details", {}, el("summary", { text: L.details || "Detalhes" }), el("p", { text: full })) : null;
       return el("article", { class: "card", "data-sid": `r:${i}` },
-        el("div", { class: "card__head" }, el("h3", { text: r.title }), el("span", { class: "card__meta", text: r.badge })),
-        el("p", { text: tr(r, "summary") }),
+        mediaFigure(r),
+        el("div", { class: "card__head" }, el("h3", { text: r.title }),
+          r.status ? el("span", { class: `badge badge--${r.status}`, text: UI[lang].status[r.status] || r.status }) : null,
+          el("span", { class: "card__meta", text: r.badge })),
+        el("p", { text: resumo || full }),
+        mediaActions(r),
+        more,
         url && r.badge !== "Privado" ? el("a", { href: url, target: "_blank", rel: "noopener", text: noArrow(L.viewRepo || "GitHub") }) : null);
     }));
   }

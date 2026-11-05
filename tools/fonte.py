@@ -23,7 +23,7 @@ OUTROS = ["en", "es", "fr", "it", "zh"]
 MEDIA_KEYS = ("image", "video", "live", "open", "status")
 KV = re.compile(r'^\s*([A-Za-z_][A-Za-z0-9_]*)\s*:\s*(.*)$')
 CHAVES = {"full_name", "orcid", "instagram", "featured", "eyebrow", "tagline", "location", "slug", "repo", "stack",
-          "tags", "cat", "visibility", "icon", "kind", "period", "orient", "desc", "nickname", "hobby", "grade", *MEDIA_KEYS}
+          "tags", "cat", "visibility", "icon", "kind", "period", "orient", "desc", "nickname", "hobby", "grade", "resumo", *MEDIA_KEYS}
 
 
 def h(texto):
@@ -93,7 +93,7 @@ def ler_fonte(caminho=CONTEUDO):
              "icon": kv.get("icon", "star"), "repo": kv.get("repo", ""),
              "stack": [s.strip() for s in kv.get("stack", "").split(",") if s.strip()],
              "tags": [s.strip() for s in kv.get("tags", "").split(",") if s.strip()],
-             "texto": " ".join(paras)}
+             "texto": " ".join(paras), "resumo": kv.get("resumo", "")}
         if kv.get("slug"):
             p["slug"] = kv["slug"]
         for k in MEDIA_KEYS:
@@ -143,6 +143,8 @@ def blocos(F):
     for pr in F["projetos"]:
         if pr["texto"]:
             B[f"projeto:{pr['name']}"] = pr["texto"]
+        if pr.get("resumo"):
+            B[f"resumo:{pr['name']}"] = pr["resumo"]
     for i, b in enumerate(F["bolsas"]):
         B[f"bolsa:{i}:titulo"] = b["titulo"]
         if b["tipo"]:

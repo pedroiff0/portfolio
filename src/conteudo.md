@@ -3,7 +3,7 @@ publish: false
 title: Portfólio (conteúdo em pt-BR)
 type: esboco
 created: '2026-11-03T15:28:39-03:00'
-modified: 2026-11-05T11:47:42-03:00
+modified: 2026-11-05T13:52:27-03:00
 published: '2026-11-03T15:28:39-03:00'
 tags:
   - projeto
@@ -25,7 +25,7 @@ traduzir: false
 full_name: Pedro Henrique Rocha de Andrade
 orcid: 0009-0003-6724-4640
 instagram: ra.pedroh
-featured: Researcher Hub, Sistema Acadêmico, ReLaTeX, Sistema de Avaliações, SpectraViewer, Anomaly Detection Viewer
+featured: Sistema Acadêmico, Researcher Hub, Rumo, Zênite, ReLaTeX, E-lixo
 
 ## Perfil
 eyebrow: Engenharia de Computação · Instituto Federal Fluminense
@@ -50,27 +50,30 @@ Sou estudante de **Engenharia de Computação** no **Instituto Federal Fluminens
 
 Do lado de engenharia, domino **Python** e **C**, redes de computadores (certificações **Cisco CCNA, CyberOps e IoT**), administração de servidores Linux e desenvolvimento de software full-stack. Participo da **International Astronomy and Astrophysics Competition** (IAAC 2024 e 2025) e apresentei trabalhos em eventos como FEBRACE, Mostratec, CONFICT e na Feira Brasileira de Iniciação Científica.
 
-Sou Técnico em Informática pelo IFF (2020–2022), membro do Centro de Representação Estudantil e um dos organizadores da Semana de Computação, Engenharia e Gestão do IFF.
+Sou Técnico em Informática pelo IFF (2020–2022) e um dos organizadores da Semana de Computação, Engenharia e Gestão do IFF.
 
 ## Projetos
 
-### Finanças App
+### Zênite
+status: dev
 slug: financas
 repo: https://github.com/pedroiff0/financas-app
 stack: Node.js 20, Express, MongoDB, Mongoose, EJS, JWT, Zod, Jest, Docker, Helmet
-tags: Finanças, Full-stack, Web App, Orçamento, Investimentos
+tags: Finance, Full-stack, Investments
+resumo: Finanças pessoais, investimentos e gestão de veículos em três módulos independentes.
 cat: software
 visibility: privado
 icon: cash
 image: assets/media/financas/poster.webp
 video: assets/media/financas/tour.webm
 
-Aplicação web de controle financeiro pessoal com três módulos independentes (ligados/desligados por flag): Finanças (contas, categorias, lançamentos, recorrências, orçamentos por envelope, metas), Investimentos (carteira multi-corretora, preço médio ponderado, proventos, resultado realizado/não realizado) e Moto (manutenções, abastecimentos com km/l, gastos, custo por km, alertas de revisão). Backend Node/Express + MongoDB, frontend EJS SSR, autenticação JWT, validação Zod e boas práticas de segurança (Helmet, rate-limit, CSP). Deploy via Docker Compose.
+Zênite (antes Finanças App), em desenvolvimento: aplicação web de controle financeiro pessoal com três módulos independentes (ligados/desligados por flag): Finanças (contas, categorias, lançamentos, recorrências, orçamentos por envelope, metas), Investimentos (carteira multi-corretora, preço médio ponderado, proventos, resultado realizado/não realizado) e Moto (manutenções, abastecimentos com km/l, gastos, custo por km, alertas de revisão). Backend Node/Express + MongoDB, frontend EJS SSR, autenticação JWT, validação Zod e boas práticas de segurança (Helmet, rate-limit, CSP). Deploy via Docker Compose.
 
 ### Sistema Acadêmico
 repo: https://github.com/pedroiff0/sistema-academico
 stack: Node.js, Express, MongoDB, Mongoose, EJS, JWT, Docker, vis-network
-tags: Full-stack, Web App, Academia, CR/Boletim, Multi-curso, API Bot
+tags: Full-stack, Education, IFF
+resumo: Diário, notas, frequência, boletim/CR e planejamento para alunos do IFF, em vários cursos.
 cat: software
 visibility: privado
 icon: academic
@@ -84,7 +87,8 @@ Web exclusivo para alunos do IFF acompanharem grade curricular (PPC), diário, n
 slug: avaliacoes
 repo: https://github.com/pedroiff0/avaliacoes
 stack: Node.js, Express, MongoDB, LaTeX, EJS
-tags: EdTech, LaTeX, Provas, Multi-variantes
+tags: EdTech, LaTeX, Exams
+resumo: Provas, listas e trabalhos em PDF (LaTeX) a partir de um banco de questões reutilizável.
 cat: software
 visibility: privado
 icon: quiz
@@ -97,7 +101,8 @@ Plataforma base de provas/listas/trabalhos em PDF a partir de um banco de quest�
 ### Avaliações Professores
 repo: https://github.com/pedroiff0/avaliacoes-professores
 stack: Node.js, Express, MongoDB, LaTeX
-tags: EdTech, Banco de Questões, Colaborativo
+tags: EdTech, Question Bank, Collaborative
+resumo: Versão para professores, com banco pessoal e global e compartilhamento de questões.
 cat: software
 visibility: privado
 icon: teacher
@@ -109,7 +114,8 @@ Fork do Sistema de Avaliações com banco pessoal + banco global compartilhado (
 ### Avaliações Concurseiro
 repo: https://github.com/pedroiff0/avaliacoes-concurseiro
 stack: Node.js, Express, MongoDB, Expo, LaTeX
-tags: Concursos, Gamificação, Mobile, Simulados
+tags: EdTech, Mobile, Gamification
+resumo: Versão para concursos: trilhas por edital, simulados, Pomodoro e app mobile.
 cat: software
 visibility: privado
 icon: exam
@@ -122,7 +128,8 @@ Fork focado em concurseiros: banco de MCQ, trilhas por edital, cronograma maleá
 slug: academicoweb
 repo: https://github.com/pedroiff0/academico-web
 stack: Python, Flask, Jinja2, Scraping
-tags: Web App, IFF, Scraping, Arquivado
+tags: Web App, IFF, Scraping
+resumo: Portal que lia os dados do IFF por scraping; arquivado e sucedido pelo Sistema Acadêmico.
 cat: software
 visibility: privado
 icon: web
@@ -132,9 +139,11 @@ video: assets/media/academicoweb/tour.webm
 Sistema web que acessava os dados acadêmicos do IFF com as credenciais oficiais — dashboard, diário, material de aula, boletim e histórico escolar — via scraping. Arquivado: a migração do IFF para o SUAP torna a abordagem original obsoleta, e o Sistema Acadêmico o sucede. A técnica de scraping fica registrada como referência técnica (possível tema de TCC).
 
 ### ReLaTeX
+status: ext
 repo: https://github.com/pedroiff0/relatex
 stack: Docker, Node.js, MongoDB, Redis, Pug, LaTeX
-tags: Overleaf Fork, Self-hosted, IFF, LaTeX
+tags: LaTeX, Self-hosted, IFF
+resumo: Overleaf self-hosted com as classes oficiais do IFF; projeto de extensão para a comunidade acadêmica.
 cat: software
 visibility: privado
 icon: latex
@@ -142,12 +151,13 @@ image: assets/media/relatex/poster.webp
 video: assets/media/relatex/tour.webm
 open: https://relatex.phrandrade.com
 
-Fork do Overleaf Community Edition com identidade do IFF: classes oficiais embutidas (ifftese/iffposter), tema azul, landing própria e 10 botões extras no editor. Self-hosted via Docker (web+mongo+redis).
+Fork do Overleaf Community Edition com identidade do IFF: classes oficiais embutidas (ifftese/iffposter), tema azul, landing própria e 10 botões extras no editor. Self-hosted via Docker (web+mongo+redis). É também um projeto de extensão: leva à comunidade do IFF um ambiente LaTeX pronto, com as classes institucionais (ifftese, iffartigo, iffposter, iffslides) que automatizam as normas da ABNT e do IBGE, apresentado no CONEPE 2026 (XIII Congresso de Ensino, Pesquisa e Extensão).
 
 ### Verdementa
 repo: https://github.com/pedroiff0/verdementa
 stack: Meta-repo, Python, PowerShell
-tags: Suíte Comercial, ERP
+tags: Business, ERP
+resumo: Suíte de ferramentas comerciais: caixa, estoque e planilhas.
 cat: software
 visibility: privado
 icon: leaf
@@ -159,7 +169,8 @@ Meta-repositório que agrupa Caixas, ControleEstoque, LevantamentoEstoque e Plan
 ### Caixas
 repo: https://github.com/pedroiff0/caixas
 stack: Python, Flask, SQLAlchemy, Alembic, Jinja2, AdminLTE
-tags: Controle de Caixa, Relatórios
+tags: Cash Flow, Reports
+resumo: Fechamentos diários de caixa, relatórios e histórico imprimível.
 cat: software
 visibility: privado
 icon: cash
@@ -171,7 +182,8 @@ Aplicação web para registrar fechamentos diários de caixa (vendas, depósitos
 ### ControleEstoque
 repo: https://github.com/pedroiff0/controle-estoque
 stack: Python, CI, CSV/PDF
-tags: Inventário, Estoque
+tags: Inventory, Reports
+resumo: Contagem rápida de inventário com relatórios em CSV e PDF.
 cat: software
 visibility: privado
 icon: box
@@ -183,7 +195,8 @@ Aplicação para contagem rápida de inventário, com persistência de sessão, 
 ### LevantamentoEstoque
 repo: https://github.com/pedroiff0/levantamento-estoque
 stack: Python, CI, PDF
-tags: Estoque, Compras
+tags: Inventory, PDF
+resumo: Levantamento de estoque por cor e tamanho, com extração de dados de PDF.
 cat: software
 visibility: privado
 icon: box
@@ -195,7 +208,8 @@ Sistema de levantamento de estoque por cor/tamanho, com persistência de sessão
 ### Planilhador
 repo: https://github.com/pedroiff0/planilhador
 stack: Python, CI, XML/NFCe
-tags: NFCe, Planilhas
+tags: NFC-e, Spreadsheets
+resumo: Processa XMLs de NFC-e e gera planilhas e relatórios automáticos.
 cat: software
 visibility: privado
 icon: table
@@ -208,7 +222,8 @@ Ferramentas para processar XMLs de NFCe e gerar relatórios/planilhas automatiza
 slug: projeto-profissional
 repo: https://github.com/pedroiff0/projeto-profissional
 stack: Node.js 20, Express, MongoDB, Mongoose, EJS, JWT, Zod, Jest, Docker
-tags: Template, Boilerplate, Segurança, Auth, Open Source
+tags: Template, Security, Open Source
+resumo: Template Node/Express + MongoDB com autenticação, papéis e segurança desde o primeiro commit.
 cat: software
 visibility: público
 icon: web
@@ -220,7 +235,8 @@ Template base endurecido para iniciar qualquer aplicação web Node: autenticaç
 ### awesome-skills
 repo: https://github.com/pedroiff0/awesome-skills
 stack: Markdown, YAML, Python, Hermes Agent
-tags: IA, Agentes, Automação, Open Source, Memória Procedural
+tags: AI, Agents, Open Source
+resumo: Biblioteca de skills, agentes e plugins reutilizáveis para agentes de IA.
 cat: software
 visibility: público
 icon: book
@@ -232,7 +248,8 @@ Coleção pessoal de skills (memória procedural) para o agente Hermes — 102 s
 ### meu-setup
 repo: https://github.com/pedroiff0/meu-setup
 stack: Python, YAML, Bash, PowerShell, apt/dnf/pacman/zypper, winget, Homebrew
-tags: Dotfiles, Provisionamento, Multi-distro, Open Source, Idempotente
+tags: Dotfiles, Linux, Open Source
+resumo: Mapa dos programas que uso e instalador automático para repopular a máquina.
 cat: software
 visibility: público
 icon: box
@@ -242,9 +259,12 @@ video: assets/media/meu-setup/tour.webm
 Mapa de todos os programas que uso (Linux, Windows e macOS) com instaladores automáticos e uma única fonte de verdade: packages.yaml. O instalador Linux detecta a distro (apt/dnf/pacman/zypper), é idempotente e tem cadeia de fallback (nativo → flatpak → snap → script oficial). Um gerador produz install.ps1, install.sh e o inventário; o bootstrap repopula a máquina do zero com um comando.
 
 ### anomaly-detection
+image: assets/media/anomalyviewer/poster.webp
+video: assets/media/anomalyviewer/tour.webm
 repo: https://github.com/pedroiff0/anomaly-detection
 stack: Python, Astropy, NumPy, Pandas, ML, Jupyter
-tags: PIBIC/CNPq, Gaia, GALAH, Astroquímica
+tags: PIBIC/CNPq, Gaia, Machine Learning
+resumo: Aprendizado de máquina para achar estrelas anômalas no GALAH DR4 + Gaia DR3 (PIBIC/CNPq).
 cat: pesquisa
 visibility: privado
 icon: star
@@ -254,7 +274,8 @@ Análise das propriedades estelares e composição química das estrelas próxim
 ### Anomaly Detection Viewer
 slug: anomalyviewer
 stack: Python, Streamlit, Plotly, t-SNE, UMAP, HDBSCAN
-tags: Gaia, GALAH, SAB 2026, Visualização
+tags: Gaia, Data Viz, Machine Learning
+resumo: Painel público do mapa t-SNE dos espectros GALAH DR4, com clusters e flags.
 cat: pesquisa
 visibility: público
 icon: star
@@ -268,7 +289,8 @@ Visualizador público dos resultados da pesquisa de detecção de anomalias em e
 ### SpectraViewer
 repo: https://github.com/pedroiff0/spectraviewer
 stack: Python, FITS, Matplotlib
-tags: Espectroscopia, GALAH DR4, Open Source
+tags: Spectroscopy, GALAH, Open Source
+resumo: Visualizador interativo de espectros GALAH DR4 com linhas de referência.
 cat: pesquisa
 visibility: público
 icon: spectrum
@@ -283,7 +305,8 @@ Viewer interativo de espectros GALAH DR4 (4 bandas, linhas de referência CNO/Al
 ### Researcher Hub
 repo: https://github.com/pedroiff0/research
 stack: Node.js, Express, MongoDB, EJS, arXiv API, Docker
-tags: Literatura, arXiv, Automação, BibTeX
+tags: arXiv, Literature, Automation
+resumo: Acompanha o arXiv: revisão diária, busca, autores monitorados e biblioteca pessoal.
 cat: pesquisa
 visibility: privado
 icon: book
@@ -296,7 +319,8 @@ Plataforma web para acompanhar a literatura científica no arXiv (research.phran
 ### Currículo (CV)
 repo: https://github.com/pedroiff0/cv
 stack: LaTeX, altacv, Makefile, biblatex
-tags: Multilíngue, PT/EN/ES/FR
+tags: LaTeX, Multilingual, Open Source
+resumo: Currículo em LaTeX (altacv), em PT, EN, ES e FR.
 cat: academico
 visibility: público
 icon: document
@@ -308,7 +332,8 @@ CV em LaTeX (classe altacv), multilíngue (PT/EN/ES/FR) compilado via Makefile. 
 ### Cálculo Numérico
 repo: https://github.com/pedroiff0/calculo-numerico
 stack: Python, CI, Docs, NumPy
-tags: Disciplina, Métodos Numéricos
+tags: Numerical Methods, Python, Open Source
+resumo: Códigos e documentação da disciplina de Cálculo Numérico 2025.2.
 cat: academico
 visibility: público
 icon: function
@@ -322,7 +347,8 @@ Repositório de códigos da disciplina Cálculo Numérico 2025.2, com CI e docum
 ### Formulários
 repo: https://github.com/pedroiff0/formularios
 stack: LaTeX, siunitx
-tags: Resumos, Fórmulas
+tags: LaTeX, Study Notes, Open Source
+resumo: Folhas de fórmulas e resumos em LaTeX por disciplina.
 cat: academico
 visibility: público
 icon: formula
@@ -334,20 +360,22 @@ Coleção de folhas de fórmulas e resumos em LaTeX organizados por disciplina.
 ### Modelos LaTeX
 repo: https://github.com/pedroiff0/modelos
 stack: LaTeX
-tags: Templates
+tags: LaTeX, Templates
+resumo: Modelos LaTeX de uso geral, reaproveitados nos trabalhos acadêmicos.
 cat: academico
 visibility: privado
 icon: latex
 image: assets/media/modelos/poster.webp
 video: assets/media/modelos/tour.webm
 
-Modelos LaTeX para uso geral.
+Coleção de modelos LaTeX de uso geral, reaproveitados como base nos trabalhos acadêmicos.
 
 ### page (Quartz)
 slug: page
 repo: https://github.com/pedroiff0/quartz-site
 stack: Quartz, Obsidian, Markdown, TypeScript, GitHub Actions
-tags: Site Oficial, Obsidian, Multilíngue
+tags: Obsidian, Quartz, Multilingual
+resumo: Site oficial: pesquisa, notas de aula, mídia e blog, em Quartz a partir do Obsidian.
 cat: pessoal
 visibility: público
 icon: globe
@@ -361,7 +389,8 @@ Site pessoal/acadêmico oficial, multilíngue (PT completo; EN/ES/FR parciais), 
 ### Livro-Texto de Cálculo
 slug: livrocalculo
 stack: LaTeX, Python, Sphinx
-tags: Material Didático, Cálculo, Algoritmos, Autoral
+tags: LaTeX, Teaching, Calculus
+resumo: Livro-texto próprio de Cálculo em LaTeX, em elaboração.
 cat: academico
 visibility: elaboracao
 icon: function
@@ -373,7 +402,8 @@ Material didático próprio de Cálculo, em elaboração, escrito em LaTeX — d
 ### Arquivo de Apostilas
 slug: apostilas
 stack: LaTeX
-tags: Material Didático, Engenharia de Computação, Autoral
+tags: LaTeX, Teaching, Engineering
+resumo: Plano de apostilas próprias para toda a grade de Engenharia de Computação.
 cat: academico
 visibility: planejamento
 icon: formula
@@ -384,7 +414,8 @@ Plano, em planejamento, de escrever apostilas próprias cobrindo toda a grade de
 ### hardcore-life
 repo: https://github.com/pedroiff0/hardcore-life
 stack: Obsidian, PARA, Markdown
-tags: Produtividade, Second Brain, PARA
+tags: Obsidian, PARA, Productivity
+resumo: Vault Obsidian (PARA) que concentra projetos, áreas, notas e diário.
 cat: pessoal
 visibility: privado
 icon: life
@@ -394,7 +425,8 @@ Vault Obsidian de gestão de vida pelo método PARA (projetos, áreas, recursos,
 ### HardCoreLife (plataforma)
 slug: hardcorelife
 stack: Node.js, Express, MongoDB, Docker
-tags: Life OS, Modular, Multi-módulo, Família
+tags: Life OS, Modular
+resumo: Plataforma modular de vida (finanças, tarefas, família), em planejamento.
 cat: pessoal
 visibility: planejamento
 icon: dashboard
@@ -404,7 +436,8 @@ Plataforma pessoal modular, em planejamento, para reunir num só sistema o que h
 ### dashboard-life
 repo: https://github.com/pedroiff0/dashboard-life
 stack: Node.js, Express, MongoDB, Docker
-tags: Life OS, Hábitos, Métricas
+tags: Life OS, Habits, Metrics
+resumo: Painel de hábitos e métricas de vida, primeiro passo da plataforma HardCoreLife.
 cat: pessoal
 visibility: privado
 icon: dashboard
@@ -415,7 +448,8 @@ Dashboard pessoal de hábitos e métricas de vida, derivado do vault hardcore-li
 slug: tgagentbridge
 repo: https://github.com/pedroiff0/tg-agent-bridge
 stack: Python 3.12, python-telegram-bot, httpx, faster-whisper, SQLite, tmux
-tags: Telegram, Agentes de IA, Automação, Obsidian
+tags: Telegram, AI, Automation
+resumo: Bot do Telegram que liga o celular ao vault e aos agentes de IA.
 cat: pessoal
 visibility: privado
 icon: profile
@@ -426,7 +460,8 @@ Bot do Telegram que liga o celular ao vault hardcore-life e aos agentes de IA (C
 slug: baton
 repo: https://github.com/pedroiff0/baton
 stack: Python 3, Swift/AppKit, pdf.js, Tailscale, PWA
-tags: Apresentações, Controle Remoto, macOS, Código Aberto
+tags: Presentations, macOS, Open Source
+resumo: Celular como passador de slides via Tailscale, com laser, caneta e cronômetro.
 cat: pessoal
 visibility: público
 icon: document
@@ -437,7 +472,8 @@ Controle remoto de apresentações pelo iPhone, via Tailscale, no estilo do clic
 slug: guiagithub
 repo: https://github.com/pedroiff0/devops-guide
 stack: Docs, TypeScript, GitHub Actions
-tags: Boas Práticas, Templates, Versionamento
+tags: DevOps, Git, Open Source
+resumo: Segundo cérebro de DevOps e Git, com templates e exemplos de Actions.
 cat: pessoal
 visibility: público
 icon: github
@@ -449,7 +485,8 @@ Segundo cérebro de documentações reexplicadas e hub DevOps (devops.phrandrade
 ### Perfil GitHub
 repo: https://github.com/pedroiff0/pedroiff0
 stack: Profile, Markdown
-tags: README
+tags: GitHub, Markdown
+resumo: README do perfil do GitHub com projetos e linha do tempo de bolsas.
 cat: pessoal
 visibility: público
 icon: profile
@@ -461,37 +498,55 @@ README de perfil do GitHub: bio, links, Tech & Tools, constelação de projetos 
 ### Custos App
 repo: https://github.com/pedroiff0/custos-app
 stack: Node.js, JavaScript, Docker
-tags: Custos, Despesas, Gestão
+tags: Costs, Management
+resumo: Rastreio de custos operacionais e despesas categorizadas.
 cat: software
 visibility: privado
 icon: cash
 
 Aplicação de rastreio de custos operacionais e despesas categorizadas, empacotada em Docker. Parte da linha de ferramentas profissionais de gestão, ao lado de Caixas, Controle de Estoque e Planilhador.
 
-### Viagem App
+### Rumo
+status: dev
+slug: viagemapp
 repo: https://github.com/pedroiff0/viagem-app
 stack: Node.js, Express, MongoDB
-tags: Viagens, Planejamento, Colaborativo
+tags: Travel, Collaborative, Full-stack
+resumo: Viagens em grupo: roteiro compartilhado, reservas e divisão de despesas.
 cat: software
 visibility: privado
 icon: globe
 
-Planejamento de viagens em grupo: roteiro compartilhado, reservas reunidas num só lugar e divisão de despesas entre os viajantes. Node.js, Express e MongoDB.
+Rumo, em desenvolvimento: planejamento de viagens em grupo que resolve os dois pontos em que viagem em grupo trava, ninguém saber o roteiro combinado e ninguém saber quem pagou o quê. Roteiro compartilhado, reservas reunidas num só lugar e divisão de despesas entre os viajantes, com interface bilíngue (PT/EN). Node.js, Express e MongoDB.
 
 ### Manga Reader
 repo: https://github.com/pedroiff0/manga-reader
 stack: TypeScript, Node.js
-tags: Leitor Web, Mídia, Privado
+tags: Web App, Media
+resumo: Leitor de mangás privado, sem anúncios, com contas aprovadas por administrador.
 cat: pessoal
 visibility: privado
 icon: document
 
 Leitor de mangás web privado e sem anúncios, com auto-cadastro, painel administrativo para aprovação de contas, histórico de último login, progresso de leitura por usuário e busca agregada em várias fontes. Uso restrito a poucos usuários.
 
+### E-lixo
+status: camp
+slug: elixo
+stack: Eletrônica, Ciência do Ambiente, LaTeX
+tags: E-waste, Sustainability, Outreach
+resumo: Campanha sobre o descarte de baterias e e-lixo em Bom Jesus do Itabapoana.
+cat: academico
+visibility: elaboracao
+icon: document
+
+Pra onde vai a bateria que morreu? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.
+
 ### Portfólio v1 (sci-fi)
 repo: https://github.com/pedroiff0/portfolio-v1-scifi
 stack: JavaScript, Three.js, Canvas
-tags: Portfólio, Three.js, Arquivo
+tags: Three.js, Portfolio
+resumo: Primeira versão do portfólio, com visual sci-fi, preservada.
 cat: pessoal
 visibility: privado
 icon: globe
@@ -502,7 +557,8 @@ Primeira versão do portfólio, com visual sci-fi (HUD, Three.js e canvas), pres
 slug: portfolio
 repo: https://github.com/pedroiff0/portfolio
 stack: HTML, CSS, JavaScript, Python, Playwright, GitHub Pages
-tags: Portfólio, Página Única, Multilíngue, Minimalista
+tags: Portfolio, Multilingual, Static Site
+resumo: Esta página: portfólio único e multilíngue, gerado a partir de Markdown.
 cat: pessoal
 visibility: público
 icon: globe
@@ -537,14 +593,14 @@ desc: Simulação do impacto de rastros de satélites em imagens astronômicas.
 ### Detecção de Anomalias em Estrelas da Via Láctea (Gaia + Surveys + ML)
 icon: star
 kind: IC · CNPq (PIBIC)
-period: Out. 2025 — presente
+period: Out. 2025 — Set. 2026
 orient: Dra. Ana Cecília Soja e Dra. Maria Luiza Linhares Dantas
 desc: Bolsa PIBIC/CNPq: aprendizado de máquina sobre Gaia DR3 + GALAH DR4 + GCNS para arqueologia galáctica e populações estelares. Co-autoria PUC Chile.
 
 ### Detecção de Anomalias em Estrelas da Via Láctea (Fase II)
 icon: star
 kind: IC · CNPq (PIBIC)
-period: 2026 — presente
+period: Out. 2026 — Set. 2027
 orient: Dra. Ana Cecília Soja e Dra. Maria Luiza Linhares Dantas
 desc: Continuação do projeto PIBIC/CNPq: aprendizado de máquina sobre Gaia DR3 + GALAH DR4 + GCNS para arqueologia galáctica e populações estelares. Co-autoria PUC Chile.
 

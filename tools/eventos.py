@@ -20,6 +20,7 @@ FOTOS = VAULT / "04-recursos" / "03-midia"
 OUT = ROOT / "assets" / "media" / "eventos"
 JSON = ROOT / "src" / "eventos.json"
 SITE = "https://www.phrandrade.com/pt-br/media"
+QUARTZ_MEDIA = Path(os.environ.get("QUARTZ_SITE", Path.home() / "Repositorios/pessoal/quartz-site")) / "content/pt-br/media"
 EXT = {".jpg", ".jpeg", ".png", ".webp"}
 
 
@@ -74,6 +75,23 @@ def main():
                 salvar(f, destino / f"{nome}-t.webp", 480)
                 ev["photos"].append(f"assets/media/eventos/{ev['id']}/{nome}")
         eventos.append(ev)
+    # eventos que o site oficial publica mas cuja nota do vault não tem publish: true (ex.: SAB 2026)
+    ids = {e["id"] for e in eventos}
+    if QUARTZ_MEDIA.is_dir():
+        for ad in sorted(QUARTZ_MEDIA.iterdir()):
+            if not (ad.is_dir() and ad.name.isdigit()):
+                continue
+            for pg in sorted(ad.iterdir()):
+                arq = pg / "index.md" if pg.is_dir() else pg
+                stem = pg.name if pg.is_dir() else pg.stem
+                if stem == "index" or stem.endswith("-en") or arq.suffix != ".md" or not arq.is_file():
+                    continue
+                fm = frontmatter(arq.read_text(encoding="utf-8"))
+                eid = f"{ad.name}-{stem}"
+                if fm.get("publish") != "true" or eid in ids:
+                    continue
+                eventos.append({"id": eid, "year": int(ad.name), "title": fm.get("title", stem),
+                                "url": f"{SITE}/{ad.name}/{stem}", "photos": []})
     eventos.sort(key=lambda e: (-e["year"], e["title"]))
     JSON.write_text(json.dumps(eventos, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     n = sum(len(e["photos"]) for e in eventos)

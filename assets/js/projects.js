@@ -6,7 +6,7 @@ const ORCID = "0009-0003-6724-4640";
 
 const REPOS = [
   {
-    name: "Finanças App",
+    name: "Zênite",
     cat: "software",
     visibility: "privado",
     icon: "cash",
@@ -23,16 +23,33 @@ const REPOS = [
       "Docker",
       "Helmet"
     ],
-    tags: [ "Finanças", "Full-stack", "Web App", "Orçamento", "Investimentos" ],
-    brief: "Aplicação web de controle financeiro pessoal com três módulos independentes (ligados/desligados por flag): Finanças (contas, categorias, lançamentos, recorrências, orçamentos por envelope, metas), Investimentos (carteira multi-corretora, preço médio ponderado, proventos, resultado realizado/não realizado) e Moto (manutenções, abastecimentos com km/l, gastos, custo por km, alertas de revisão). Backend Node/Express + MongoDB, frontend EJS SSR, autenticação JWT, validação Zod e boas práticas de segurança (Helmet, rate-limit, CSP). Deploy via Docker Compose.",
+    tags: [ "Finance", "Full-stack", "Investments" ],
+    brief: "Zênite (antes Finanças App), em desenvolvimento: aplicação web de controle financeiro pessoal com três módulos independentes (ligados/desligados por flag): Finanças (contas, categorias, lançamentos, recorrências, orçamentos por envelope, metas), Investimentos (carteira multi-corretora, preço médio ponderado, proventos, resultado realizado/não realizado) e Moto (manutenções, abastecimentos com km/l, gastos, custo por km, alertas de revisão). Backend Node/Express + MongoDB, frontend EJS SSR, autenticação JWT, validação Zod e boas práticas de segurança (Helmet, rate-limit, CSP). Deploy via Docker Compose.",
     image: "assets/media/financas/poster.webp",
     video: "assets/media/financas/tour.webm",
+    status: "dev",
+    resumo: "Finanças pessoais, investimentos e gestão de veículos em três módulos independentes.",
     i18n: {
-      en: "Personal finance web app with three independent, flag-toggled modules: Finances (accounts, categories, entries, recurrences, envelope budgets, goals), Investments (multi-broker portfolio, weighted average price, dividends, realized/unrealized results) and Motorcycle (maintenance, refuels with km/l, expenses, cost per km, service alerts). Node/Express + MongoDB backend, EJS SSR frontend, JWT auth, Zod validation and security hardening (Helmet, rate-limit, CSP). Deployed via Docker Compose.",
-      es: "Aplicación web de control financiero personal con tres módulos independientes (activables por flag): Finanzas (cuentas, categorías, movimientos, recurrencias, presupuestos por sobre, metas), Inversiones (cartera multicorredora, precio medio ponderado, dividendos, resultado realizado/no realizado) y Moto (mantenimientos, repostajes con km/l, gastos, costo por km, alertas de revisión). Backend Node/Express + MongoDB, frontend EJS SSR, autenticación JWT, validación Zod y endurecimiento de seguridad (Helmet, rate-limit, CSP). Despliegue vía Docker Compose.",
-      fr: "Application web de gestion financière personnelle avec trois modules indépendants (activables par flag) : Finances (comptes, catégories, écritures, récurrences, budgets par enveloppe, objectifs), Investissements (portefeuille multi-courtiers, prix moyen pondéré, dividendes, résultat réalisé/latent) et Moto (entretiens, pleins avec km/l, dépenses, coût au km, alertes de révision). Backend Node/Express + MongoDB, frontend EJS SSR, auth JWT, validation Zod et durcissement sécurité (Helmet, rate-limit, CSP). Déploiement via Docker Compose.",
-      it: "Applicazione web di gestione delle finanze personali con tre moduli indipendenti (attivabili/disattivabili tramite flag): Finanze (conti, categorie, movimenti, ricorrenze, budget a buste, obiettivi), Investimenti (portafoglio multi-broker, prezzo medio ponderato, proventi, risultato realizzato/non realizzato) e Moto (manutenzioni, rifornimenti con km/l, spese, costo per km, avvisi di revisione). Backend Node/Express + MongoDB, frontend EJS SSR, autenticazione JWT, validazione Zod e buone pratiche di sicurezza (Helmet, rate-limit, CSP). Deploy tramite Docker Compose.",
-      zh: "个人财务管理 Web 应用,包含三个相互独立的模块(可通过标志开关启用/停用):财务(账户、分类、流水、周期性交易、信封预算、目标)、投资(多券商投资组合、加权平均价格、收益分红、已实现/未实现收益)和摩托车(保养、含 km/l 的加油记录、支出、每公里成本、保养提醒)。后端采用 Node/Express + MongoDB,前端使用 EJS SSR,采用 JWT 认证、Zod 校验以及安全最佳实践(Helmet、rate-limit、CSP)。通过 Docker Compose 部署。"
+      en: {
+        brief: "Zênite (formerly Finanças App), in development: a personal finance web application with three independent modules (toggled on/off by flag): Finanças (accounts, categories, transactions, recurrences, envelope budgets, goals), Investimentos (multi-broker portfolio, weighted average price, dividends, realized/unrealized results) and Moto (maintenance, refueling with km/l, expenses, cost per km, service alerts). Node/Express + MongoDB backend, EJS SSR frontend, JWT authentication, Zod validation and security best practices (Helmet, rate-limit, CSP). Deployed via Docker Compose.",
+        resumo: "Personal finance, investments and vehicle management in three independent modules."
+      },
+      es: {
+        brief: "Zênite (antes Finanças App), en desarrollo: aplicación web de control financiero personal con tres módulos independientes (activados/desactivados por flag): Finanças (cuentas, categorías, movimientos, recurrencias, presupuestos por sobre, metas), Investimentos (cartera multicorredor, precio medio ponderado, proventos, resultado realizado/no realizado) y Moto (mantenimientos, repostajes con km/l, gastos, costo por km, alertas de revisión). Backend Node/Express + MongoDB, frontend EJS SSR, autenticación JWT, validación Zod y buenas prácticas de seguridad (Helmet, rate-limit, CSP). Despliegue con Docker Compose.",
+        resumo: "Finanzas personales, inversiones y gestión de vehículos en tres módulos independientes."
+      },
+      fr: {
+        brief: "Zênite (anciennement Finanças App), en développement : application web de gestion financière personnelle avec trois modules indépendants (activés/désactivés par flag) : Finanças (comptes, catégories, écritures, récurrences, budgets par enveloppe, objectifs), Investimentos (portefeuille multi-courtiers, prix moyen pondéré, revenus distribués, résultat réalisé/non réalisé) et Moto (entretiens, pleins avec km/l, dépenses, coût par km, alertes de révision). Backend Node/Express + MongoDB, frontend EJS SSR, authentification JWT, validation Zod et bonnes pratiques de sécurité (Helmet, rate-limit, CSP). Déploiement via Docker Compose.",
+        resumo: "Finances personnelles, investissements et gestion de véhicules en trois modules indépendants."
+      },
+      it: {
+        brief: "Zênite (in precedenza Finanças App), in sviluppo: applicazione web di gestione finanziaria personale con tre moduli indipendenti (attivati/disattivati tramite flag): Finanças (conti, categorie, movimenti, ricorrenze, budget a buste, obiettivi), Investimentos (portafoglio multi-broker, prezzo medio ponderato, proventi, risultato realizzato/non realizzato) e Moto (manutenzioni, rifornimenti con km/l, spese, costo per km, avvisi di revisione). Backend Node/Express + MongoDB, frontend EJS SSR, autenticazione JWT, validazione Zod e buone pratiche di sicurezza (Helmet, rate-limit, CSP). Deploy tramite Docker Compose.",
+        resumo: "Finanze personali, investimenti e gestione dei veicoli in tre moduli indipendenti."
+      },
+      zh: {
+        brief: "Zênite（原 Finanças App），开发中：个人财务管理 Web 应用，包含三个相互独立的模块（通过 flag 开启/关闭）：Finanças（账户、分类、流水、周期性交易、信封预算、目标）、Investimentos（多券商投资组合、加权平均价格、分红收益、已实现/未实现收益）和 Moto（保养、含 km/l 的加油记录、支出、每公里成本、保养提醒）。后端采用 Node/Express + MongoDB，前端为 EJS SSR，使用 JWT 认证、Zod 校验以及安全最佳实践（Helmet、rate-limit、CSP）。通过 Docker Compose 部署。",
+        resumo: "个人财务、投资和车辆管理，分为三个相互独立的模块。"
+      }
     }
   },
   {
@@ -42,17 +59,33 @@ const REPOS = [
     icon: "academic",
     repo: "https://github.com/pedroiff0/sistema-academico",
     stack: [ "Node.js", "Express", "MongoDB", "Mongoose", "EJS", "JWT", "Docker", "vis-network" ],
-    tags: [ "Full-stack", "Web App", "Academia", "CR/Boletim", "Multi-curso", "API Bot" ],
+    tags: [ "Full-stack", "Education", "IFF" ],
     brief: "Web exclusivo para alunos do IFF acompanharem grade curricular (PPC), diário, notas, frequência, boletim/CR e planejamento. Multi-curso: Engenharia de Computação (Bom Jesus do Itabapoana) e Sistemas de Informação (Itaperuna). Fork do padrão de avaliações, com diário, ementário, grafo de dependências e API de ingestão por bot (Telegram). Deploy via Docker Compose + systemd.",
     image: "assets/media/sistema-academico/poster.webp",
     video: "assets/media/sistema-academico/tour.webm",
     open: "https://academico.phrandrade.com",
+    resumo: "Diário, notas, frequência, boletim/CR e planejamento para alunos do IFF, em vários cursos.",
     i18n: {
-      en: "Exclusive web app for IFF students to track the curriculum (PPC), diary, grades, attendance, GPA/report card and planning. Multi-course: Computer Engineering (Bom Jesus do Itabapoana) and Information Systems (Itaperuna). Fork of the evaluations standard, with diary, ementa, dependency graph and a Telegram-bot ingestion API. Deployed via Docker Compose + systemd.",
-      es: "Aplicación web exclusiva para alumnos del IFF para seguir la malla (PPC), diario, notas, asistencia, CR/boletín y planificación. Multicurso: Ingeniería Informática (Bom Jesus do Itabapoana) y Sistemas de Información (Itaperuna). Fork del estándar de evaluaciones, con diario, ementario, grafo de dependencias y API de ingesta por bot de Telegram. Despliegue vía Docker Compose + systemd.",
-      fr: "Application web exclusive pour les étudiants de l'IFF afin de suivre le programme (PPC), le journal, les notes, la fréquentation, la moyenne/bulletin et la planification. Multi-filière : génie informatique (Bom Jesus do Itabapoana) et systèmes d'information (Itaperuna). Fork de la norme d'évaluations, avec journal, ementa, graphe de dépendances et API d'ingestion par bot Telegram. Déploiement via Docker Compose + systemd.",
-      it: "Web app riservata agli studenti dell'IFF per seguire piano di studi (PPC), registro, voti, frequenza, pagella/CR e pianificazione. Multi-corso: Ingegneria Informatica (Bom Jesus do Itabapoana) e Sistemi Informativi (Itaperuna). Fork del modello di Valutazioni, con registro, programmi degli insegnamenti, grafo delle dipendenze e API di ingestione tramite bot (Telegram). Deploy tramite Docker Compose + systemd.",
-      zh: "专供 IFF 学生使用的 Web 应用,可查看课程设置(PPC)、课堂日志、成绩、出勤、成绩单/CR 和学习规划。支持多专业:计算机工程(Bom Jesus do Itabapoana)和信息系统(Itaperuna)。基于评估系统的模式分叉而来,包含课堂日志、课程大纲、依赖关系图以及通过机器人(Telegram)进行数据导入的 API。通过 Docker Compose + systemd 部署。"
+      en: {
+        brief: "Web system exclusively for IFF students to track their curriculum (PPC), class diary, grades, attendance, report card/CR and planning. Multi-course: Computer Engineering (Bom Jesus do Itabapoana) and Information Systems (Itaperuna). Fork of the Avaliações pattern, with diary, syllabus, dependency graph and a bot ingestion API (Telegram). Deployed via Docker Compose + systemd.",
+        resumo: "Diary, grades, attendance, report card/CR and planning for IFF students, across multiple courses."
+      },
+      es: {
+        brief: "Sistema web exclusivo para estudiantes del IFF para seguir el plan de estudios (PPC), diario, notas, asistencia, boletín/CR y planificación. Multicurso: Ingeniería de Computación (Bom Jesus do Itabapoana) y Sistemas de Información (Itaperuna). Fork del patrón de Avaliações, con diario, temario, grafo de dependencias y API de ingesta por bot (Telegram). Despliegue con Docker Compose + systemd.",
+        resumo: "Diario, notas, asistencia, boletín/CR y planificación para estudiantes del IFF, en varios cursos."
+      },
+      fr: {
+        brief: "Système web réservé aux étudiants de l'IFF pour suivre la grille curriculaire (PPC), le journal de classe, les notes, l'assiduité, le bulletin/CR et la planification. Multi-cursus : Ingénierie informatique (Bom Jesus do Itabapoana) et Systèmes d'information (Itaperuna). Fork du modèle Avaliações, avec journal, programme des cours, graphe de dépendances et API d'ingestion par bot (Telegram). Déploiement via Docker Compose + systemd.",
+        resumo: "Journal, notes, assiduité, bulletin/CR et planification pour les étudiants de l'IFF, dans plusieurs cursus."
+      },
+      it: {
+        brief: "Sistema web riservato agli studenti dell'IFF per seguire il piano di studi (PPC), il diario, i voti, la frequenza, la pagella/CR e la pianificazione. Multi-corso: Ingegneria Informatica (Bom Jesus do Itabapoana) e Sistemi Informativi (Itaperuna). Fork del modello Avaliações, con diario, programmi degli insegnamenti, grafo delle dipendenze e API di ingestione tramite bot (Telegram). Deploy tramite Docker Compose + systemd.",
+        resumo: "Diario, voti, frequenza, pagella/CR e pianificazione per gli studenti dell'IFF, in più corsi."
+      },
+      zh: {
+        brief: "专为 IFF 学生打造的 Web 系统，用于跟踪课程体系（PPC）、课堂日志、成绩、出勤、成绩单/CR 以及学习规划。支持多专业：计算机工程（Bom Jesus do Itabapoana）和信息系统（Itaperuna）。基于 Avaliações 模式的 fork，包含课堂日志、课程大纲、依赖关系图和机器人（Telegram）数据导入 API。通过 Docker Compose + systemd 部署。",
+        resumo: "面向 IFF 学生的日志、成绩、出勤、成绩单/CR 和学习规划，支持多个专业。"
+      }
     }
   },
   {
@@ -62,17 +95,33 @@ const REPOS = [
     icon: "quiz",
     repo: "https://github.com/pedroiff0/avaliacoes",
     stack: [ "Node.js", "Express", "MongoDB", "LaTeX", "EJS" ],
-    tags: [ "EdTech", "LaTeX", "Provas", "Multi-variantes" ],
+    tags: [ "EdTech", "LaTeX", "Exams" ],
     brief: "Plataforma base de provas/listas/trabalhos em PDF a partir de um banco de questões reutilizável, com geração real em LaTeX e múltiplas variantes (seleção/ordem aleatórias). Núcleo professor+admin.",
     image: "assets/media/avaliacoes/poster.webp",
     video: "assets/media/avaliacoes/tour.webm",
     status: "beta",
+    resumo: "Provas, listas e trabalhos em PDF (LaTeX) a partir de um banco de questões reutilizável.",
     i18n: {
-      en: "Base platform for exams/lists/assignments in PDF from a reusable question bank, with real LaTeX generation and multiple variants (random selection/order). Professor+admin core.",
-      es: "Plataforma base de exámenes/listas/trabajos en PDF a partir de un banco de preguntas reutilizable, con generación real en LaTeX y múltiples variantes (selección/orden aleatorios). Núcleo profesor+admin.",
-      fr: "Plateforme de base pour examens/listes/devoirs en PDF à partir d'un banc de questions réutilisable, avec génération réelle en LaTeX et plusieurs variantes (sélection/ordre aléatoires). Cœur professeur+admin.",
-      it: "Piattaforma di base per generare prove/liste/lavori in PDF a partire da una banca di quesiti riutilizzabile, con generazione reale in LaTeX e più varianti (selezione/ordine casuali). Nucleo docente + amministratore.",
-      zh: "基础平台,可根据可复用的题库生成 PDF 格式的试卷/习题集/作业,通过真实的 LaTeX 生成,并支持多个变体(随机选题/随机排序)。核心角色为教师和管理员。"
+      en: {
+        brief: "Base platform for exams/problem sets/assignments in PDF generated from a reusable question bank, with real LaTeX generation and multiple variants (random selection/order). Professor + admin core.",
+        resumo: "Exams, problem sets and assignments in PDF (LaTeX) from a reusable question bank."
+      },
+      es: {
+        brief: "Plataforma base de exámenes/listas/trabajos en PDF a partir de un banco de preguntas reutilizable, con generación real en LaTeX y múltiples variantes (selección/orden aleatorios). Núcleo profesor+admin.",
+        resumo: "Exámenes, listas y trabajos en PDF (LaTeX) a partir de un banco de preguntas reutilizable."
+      },
+      fr: {
+        brief: "Plateforme de base pour générer des examens/listes d'exercices/travaux en PDF à partir d'une banque de questions réutilisable, avec génération réelle en LaTeX et plusieurs variantes (sélection/ordre aléatoires). Noyau professeur+admin.",
+        resumo: "Examens, listes d'exercices et travaux en PDF (LaTeX) à partir d'une banque de questions réutilisable."
+      },
+      it: {
+        brief: "Piattaforma di base per generare prove/liste di esercizi/elaborati in PDF a partire da una banca di domande riutilizzabile, con generazione reale in LaTeX e più varianti (selezione/ordine casuali). Nucleo docente+admin.",
+        resumo: "Prove, liste di esercizi ed elaborati in PDF (LaTeX) a partire da una banca di domande riutilizzabile."
+      },
+      zh: {
+        brief: "基于可复用题库生成 PDF 试卷/习题集/作业的基础平台，采用真正的 LaTeX 生成，并支持多种变体（随机选题/随机排序）。核心为教师+管理员角色。",
+        resumo: "基于可复用题库生成 PDF（LaTeX）试卷、习题集和作业。"
+      }
     }
   },
   {
@@ -82,16 +131,32 @@ const REPOS = [
     icon: "teacher",
     repo: "https://github.com/pedroiff0/avaliacoes-professores",
     stack: [ "Node.js", "Express", "MongoDB", "LaTeX" ],
-    tags: [ "EdTech", "Banco de Questões", "Colaborativo" ],
+    tags: [ "EdTech", "Question Bank", "Collaborative" ],
     brief: "Fork do Sistema de Avaliações com banco pessoal + banco global compartilhado (fork de questões entre professores), PDF por pool com peso e gabarito opcional.",
     image: "assets/media/avaliacoes-professores/poster.webp",
     video: "assets/media/avaliacoes-professores/tour.webm",
+    resumo: "Versão para professores, com banco pessoal e global e compartilhamento de questões.",
     i18n: {
-      en: "Fork of the Evaluations System with a personal bank plus a shared global bank (questions forked between teachers), pool-based PDF generation with weighting and optional answer key.",
-      es: "Fork del Sistema de Evaluaciones con banco personal más banco global compartido (preguntas bifurcadas entre profesores), generación de PDF por pool con peso y solucionario opcional.",
-      fr: "Fork du Système d'Évaluations avec une banque personnelle et une banque globale partagée (questions forkées entre enseignants), génération de PDF par pool avec pondération et corrigé optionnel.",
-      it: "Fork del Sistema de Avaliações con banca personale + banca globale condivisa (fork dei quesiti tra docenti), PDF per pool con peso e griglia di risposte facoltativa.",
-      zh: "Sistema de Avaliações 的分叉版本,包含个人题库和共享的全局题库(教师之间可分叉题目),按题池生成 PDF,支持设置权重和可选的答案页。"
+      en: {
+        brief: "Fork of Sistema de Avaliações with a personal question bank + a shared global bank (question forking between professors), PDF per pool with weights and optional answer key.",
+        resumo: "Version for professors, with a personal and a global bank and question sharing."
+      },
+      es: {
+        brief: "Fork del Sistema de Avaliações con banco personal + banco global compartido (fork de preguntas entre profesores), PDF por pool con peso y clave de respuestas opcional.",
+        resumo: "Versión para profesores, con banco personal y global y compartición de preguntas."
+      },
+      fr: {
+        brief: "Fork du Sistema de Avaliações avec banque personnelle + banque globale partagée (fork de questions entre professeurs), PDF par pool avec pondération et corrigé optionnel.",
+        resumo: "Version pour les professeurs, avec banque personnelle et globale et partage de questions."
+      },
+      it: {
+        brief: "Fork del Sistema de Avaliações con banca personale + banca globale condivisa (fork delle domande tra docenti), PDF per pool con peso e griglia di correzione opzionale.",
+        resumo: "Versione per i docenti, con banca personale e globale e condivisione delle domande."
+      },
+      zh: {
+        brief: "Sistema de Avaliações 的 fork，包含个人题库 + 共享全局题库（教师之间可 fork 题目），按题池生成带权重的 PDF，并可选附带参考答案。",
+        resumo: "面向教师的版本，提供个人题库和全局题库，并支持题目共享。"
+      }
     }
   },
   {
@@ -101,16 +166,32 @@ const REPOS = [
     icon: "exam",
     repo: "https://github.com/pedroiff0/avaliacoes-concurseiro",
     stack: [ "Node.js", "Express", "MongoDB", "Expo", "LaTeX" ],
-    tags: [ "Concursos", "Gamificação", "Mobile", "Simulados" ],
+    tags: [ "EdTech", "Mobile", "Gamification" ],
     brief: "Fork focado em concurseiros: banco de MCQ, trilhas por edital, cronograma maleável, Pomodoro, simulados em PDF e app mobile Expo com paridade total de funcionalidades.",
     image: "assets/media/avaliacoes-concurseiro/poster.webp",
     video: "assets/media/avaliacoes-concurseiro/tour.webm",
+    resumo: "Versão para concursos: trilhas por edital, simulados, Pomodoro e app mobile.",
     i18n: {
-      en: "Fork aimed at civil-service exam candidates: MCQ bank, syllabus-driven study tracks, flexible schedule, Pomodoro, PDF mock exams and an Expo mobile app with full feature parity.",
-      es: "Fork enfocado en opositores: banco de preguntas de opción múltiple, itinerarios por temario, cronograma flexible, Pomodoro, simulacros en PDF y app móvil Expo con paridad total de funciones.",
-      fr: "Fork destiné aux candidats aux concours : banque de QCM, parcours par programme officiel, planning souple, Pomodoro, examens blancs en PDF et application mobile Expo à parité fonctionnelle complète.",
-      it: "Fork orientato ai candidati ai concorsi pubblici: banca di quesiti a risposta multipla, percorsi per bando, cronoprogramma flessibile, Pomodoro, simulazioni in PDF e app mobile Expo con piena parità di funzionalità.",
-      zh: "面向公务员考试备考者的分叉版本:包含单选题题库、按招考公告划分的学习路线、灵活的学习计划、番茄钟、PDF 模拟考试,以及功能完全对等的 Expo 移动应用。"
+      en: {
+        brief: "Fork focused on civil-service exam candidates (concurseiros): MCQ bank, tracks by exam notice, flexible schedule, Pomodoro, PDF mock exams and an Expo mobile app with full feature parity.",
+        resumo: "Version for civil-service exams: tracks by exam notice, mock exams, Pomodoro and mobile app."
+      },
+      es: {
+        brief: "Fork enfocado en opositores (concurseiros): banco de MCQ, rutas por convocatoria, cronograma flexible, Pomodoro, simulacros en PDF y app móvil Expo con paridad total de funcionalidades.",
+        resumo: "Versión para oposiciones: rutas por convocatoria, simulacros, Pomodoro y app móvil."
+      },
+      fr: {
+        brief: "Fork axé sur les candidats aux concours (concurseiros) : banque de QCM, parcours par appel à candidatures, planning flexible, Pomodoro, examens blancs en PDF et application mobile Expo avec parité fonctionnelle totale.",
+        resumo: "Version pour les concours : parcours par appel à candidatures, examens blancs, Pomodoro et application mobile."
+      },
+      it: {
+        brief: "Fork orientato ai candidati ai concorsi pubblici (concurseiros): banca di quiz a risposta multipla, percorsi per bando, cronoprogramma flessibile, Pomodoro, simulazioni in PDF e app mobile Expo con piena parità di funzionalità.",
+        resumo: "Versione per i concorsi pubblici: percorsi per bando, simulazioni, Pomodoro e app mobile."
+      },
+      zh: {
+        brief: "面向公务员考试备考者（concurseiros）的 fork：选择题题库、按考试公告划分的学习路径、灵活的日程安排、Pomodoro、PDF 模拟考试，以及功能完全对等的 Expo 移动应用。",
+        resumo: "面向公务员考试的版本：按考试公告划分的学习路径、模拟考试、Pomodoro 和移动应用。"
+      }
     }
   },
   {
@@ -120,16 +201,32 @@ const REPOS = [
     icon: "web",
     repo: "https://github.com/pedroiff0/academico-web",
     stack: [ "Python", "Flask", "Jinja2", "Scraping" ],
-    tags: [ "Web App", "IFF", "Scraping", "Arquivado" ],
+    tags: [ "Web App", "IFF", "Scraping" ],
     brief: "Sistema web que acessava os dados acadêmicos do IFF com as credenciais oficiais — dashboard, diário, material de aula, boletim e histórico escolar — via scraping. Arquivado: a migração do IFF para o SUAP torna a abordagem original obsoleta, e o Sistema Acadêmico o sucede. A técnica de scraping fica registrada como referência técnica (possível tema de TCC).",
     image: "assets/media/academicoweb/poster.webp",
     video: "assets/media/academicoweb/tour.webm",
+    resumo: "Portal que lia os dados do IFF por scraping; arquivado e sucedido pelo Sistema Acadêmico.",
     i18n: {
-      en: "Web system that pulled IFF academic data using official credentials — dashboard, diary, course material, report card and transcript — via scraping. Archived: IFF's migration to SUAP makes the original approach obsolete, and Sistema Acadêmico supersedes it. The scraping technique remains documented as a technical reference (a possible thesis topic).",
-      es: "Sistema web que accedía a los datos académicos del IFF con las credenciales oficiales — dashboard, diario, material de clase, boletín e historial — mediante scraping. Archivado: la migración del IFF al SUAP vuelve obsoleto el enfoque original, y el Sistema Académico lo sucede. La técnica de scraping queda documentada como referencia técnica (posible tema de TFG).",
-      fr: "Système web qui accédait aux données académiques de l'IFF avec les identifiants officiels — tableau de bord, journal, supports de cours, bulletin et relevé — par scraping. Archivé : la migration de l'IFF vers SUAP rend l'approche initiale obsolète, et le Sistema Acadêmico lui succède. La technique de scraping reste documentée comme référence technique (sujet de mémoire possible).",
-      it: "Sistema web che accedeva ai dati accademici dell'IFF con le credenziali ufficiali — dashboard, registro, materiale didattico, pagella e storico scolastico — tramite scraping. Archiviato: la migrazione dell'IFF al SUAP rende obsoleto l'approccio originale, e il Sistema Acadêmico ne è il successore. La tecnica di scraping resta documentata come riferimento tecnico (possibile tema di TCC).",
-      zh: "一个 Web 系统,使用官方凭据通过网页抓取(scraping)访问 IFF 的学业数据——包括仪表盘、课堂日志、课程资料、成绩单和学业记录。已归档:IFF 迁移到 SUAP 后,原有方式已经过时,由 Sistema Acadêmico 接替。抓取技术作为技术参考保留(可作为毕业论文 TCC 的潜在主题)。"
+      en: {
+        brief: "Web system that accessed IFF academic data with the official credentials — dashboard, class diary, course materials, report card and academic transcript — via scraping. Archived: the IFF's migration to SUAP makes the original approach obsolete, and Sistema Acadêmico succeeds it. The scraping technique is kept on record as a technical reference (possible undergraduate thesis topic).",
+        resumo: "Portal that read IFF data via scraping; archived and succeeded by Sistema Acadêmico."
+      },
+      es: {
+        brief: "Sistema web que accedía a los datos académicos del IFF con las credenciales oficiales — panel, diario, material de clase, boletín e historial académico — mediante scraping. Archivado: la migración del IFF a SUAP vuelve obsoleto el enfoque original, y el Sistema Acadêmico lo sucede. La técnica de scraping queda registrada como referencia técnica (posible tema de TCC).",
+        resumo: "Portal que leía los datos del IFF mediante scraping; archivado y sucedido por el Sistema Acadêmico."
+      },
+      fr: {
+        brief: "Système web qui accédait aux données académiques de l'IFF avec les identifiants officiels — tableau de bord, journal de classe, supports de cours, bulletin et relevé de notes — par scraping. Archivé : la migration de l'IFF vers SUAP rend l'approche d'origine obsolète, et le Sistema Acadêmico lui succède. La technique de scraping est conservée comme référence technique (sujet possible de mémoire de fin d'études).",
+        resumo: "Portail qui lisait les données de l'IFF par scraping ; archivé et remplacé par le Sistema Acadêmico."
+      },
+      it: {
+        brief: "Sistema web che accedeva ai dati accademici dell'IFF con le credenziali ufficiali — dashboard, diario, materiale didattico, pagella e storico degli studi — tramite scraping. Archiviato: la migrazione dell'IFF a SUAP rende obsoleto l'approccio originale, e il Sistema Acadêmico ne è il successore. La tecnica di scraping resta documentata come riferimento tecnico (possibile tema per la tesi di laurea).",
+        resumo: "Portale che leggeva i dati dell'IFF tramite scraping; archiviato e sostituito dal Sistema Acadêmico."
+      },
+      zh: {
+        brief: "通过官方凭据以网页抓取（scraping）方式访问 IFF 学业数据的 Web 系统——包括仪表盘、课堂日志、课程资料、成绩单和学业历史记录。已归档：IFF 迁移到 SUAP 使原有方案过时，由 Sistema Acadêmico 接替。抓取技术作为技术参考保留（可能成为毕业论文选题）。",
+        resumo: "通过网页抓取读取 IFF 数据的门户；已归档，由 Sistema Acadêmico 接替。"
+      }
     }
   },
   {
@@ -139,17 +236,34 @@ const REPOS = [
     icon: "latex",
     repo: "https://github.com/pedroiff0/relatex",
     stack: [ "Docker", "Node.js", "MongoDB", "Redis", "Pug", "LaTeX" ],
-    tags: [ "Overleaf Fork", "Self-hosted", "IFF", "LaTeX" ],
-    brief: "Fork do Overleaf Community Edition com identidade do IFF: classes oficiais embutidas (ifftese/iffposter), tema azul, landing própria e 10 botões extras no editor. Self-hosted via Docker (web+mongo+redis).",
+    tags: [ "LaTeX", "Self-hosted", "IFF" ],
+    brief: "Fork do Overleaf Community Edition com identidade do IFF: classes oficiais embutidas (ifftese/iffposter), tema azul, landing própria e 10 botões extras no editor. Self-hosted via Docker (web+mongo+redis). É também um projeto de extensão: leva à comunidade do IFF um ambiente LaTeX pronto, com as classes institucionais (ifftese, iffartigo, iffposter, iffslides) que automatizam as normas da ABNT e do IBGE, apresentado no CONEPE 2026 (XIII Congresso de Ensino, Pesquisa e Extensão).",
     image: "assets/media/relatex/poster.webp",
     video: "assets/media/relatex/tour.webm",
     open: "https://relatex.phrandrade.com",
+    status: "ext",
+    resumo: "Overleaf self-hosted com as classes oficiais do IFF; projeto de extensão para a comunidade acadêmica.",
     i18n: {
-      en: "Fork of Overleaf Community Edition with IFF identity: official document classes (ifftese/iffposter), blue theme, custom landing page and 10 extra editor buttons. Self-hosted via Docker (web+mongo+redis).",
-      es: "Fork de Overleaf Community Edition con identidad del IFF: clases oficiales (ifftese/iffposter), tema azul, página de inicio propia y 10 botones extra en el editor. Self-hosted vía Docker (web+mongo+redis).",
-      fr: "Fork d'Overleaf Community Edition avec l'identité de l'IFF : classes officielles (ifftese/iffposter), thème bleu, page d'accueil propre et 10 boutons supplémentaires à l'éditeur. Auto-hébergé via Docker (web+mongo+redis).",
-      it: "Fork di Overleaf Community Edition con l'identità dell'IFF: classi ufficiali integrate (ifftese/iffposter), tema blu, landing page dedicata e 10 pulsanti extra nell'editor. Self-hosted tramite Docker (web+mongo+redis).",
-      zh: "Overleaf Community Edition 的分叉版本,采用 IFF 的品牌标识:内置官方文档类(ifftese/iffposter)、蓝色主题、专属落地页以及编辑器中的 10 个额外按钮。通过 Docker 自托管(web+mongo+redis)。"
+      en: {
+        brief: "Fork of Overleaf Community Edition with IFF branding: built-in official classes (ifftese/iffposter), blue theme, custom landing page and 10 extra buttons in the editor. Self-hosted via Docker (web+mongo+redis). It is also an outreach project: it brings the IFF community a ready-to-use LaTeX environment, with the institutional classes (ifftese, iffartigo, iffposter, iffslides) that automate ABNT and IBGE standards, presented at CONEPE 2026 (XIII Congress of Teaching, Research and Extension).",
+        resumo: "Self-hosted Overleaf with the official IFF classes; an outreach project for the academic community."
+      },
+      es: {
+        brief: "Fork de Overleaf Community Edition con identidad del IFF: clases oficiales integradas (ifftese/iffposter), tema azul, landing propia y 10 botones adicionales en el editor. Autoalojado con Docker (web+mongo+redis). Es también un proyecto de extensión: lleva a la comunidad del IFF un entorno LaTeX listo para usar, con las clases institucionales (ifftese, iffartigo, iffposter, iffslides) que automatizan las normas de la ABNT y del IBGE, presentado en el CONEPE 2026 (XIII Congreso de Enseñanza, Investigación y Extensión).",
+        resumo: "Overleaf autoalojado con las clases oficiales del IFF; proyecto de extensión para la comunidad académica."
+      },
+      fr: {
+        brief: "Fork d'Overleaf Community Edition aux couleurs de l'IFF : classes officielles intégrées (ifftese/iffposter), thème bleu, page d'accueil dédiée et 10 boutons supplémentaires dans l'éditeur. Auto-hébergé via Docker (web+mongo+redis). C'est aussi un projet d'extension : il met à disposition de la communauté de l'IFF un environnement LaTeX prêt à l'emploi, avec les classes institutionnelles (ifftese, iffartigo, iffposter, iffslides) qui automatisent les normes de l'ABNT et de l'IBGE, présenté au CONEPE 2026 (XIII Congrès d'Enseignement, de Recherche et d'Extension).",
+        resumo: "Overleaf auto-hébergé avec les classes officielles de l'IFF ; projet d'extension pour la communauté académique."
+      },
+      it: {
+        brief: "Fork di Overleaf Community Edition con l'identità dell'IFF: classi ufficiali integrate (ifftese/iffposter), tema blu, landing dedicata e 10 pulsanti extra nell'editor. Self-hosted tramite Docker (web+mongo+redis). È anche un progetto di extension: porta alla comunità dell'IFF un ambiente LaTeX pronto all'uso, con le classi istituzionali (ifftese, iffartigo, iffposter, iffslides) che automatizzano le norme ABNT e IBGE, presentato al CONEPE 2026 (XIII Congresso di Insegnamento, Ricerca ed Estensione).",
+        resumo: "Overleaf self-hosted con le classi ufficiali dell'IFF; progetto di extension per la comunità accademica."
+      },
+      zh: {
+        brief: "Overleaf Community Edition 的 fork，采用 IFF 品牌标识：内置官方文档类（ifftese/iffposter）、蓝色主题、专属落地页以及编辑器中的 10 个额外按钮。通过 Docker 自托管（web+mongo+redis）。它同时也是一个推广服务项目：为 IFF 社区提供开箱即用的 LaTeX 环境，内置可自动遵循 ABNT 和 IBGE 规范的机构文档类（ifftese、iffartigo、iffposter、iffslides），并在 CONEPE 2026（第十三届教学、科研与推广大会）上展示。",
+        resumo: "自托管的 Overleaf，内置 IFF 官方文档类；面向学术社区的推广服务项目。"
+      }
     }
   },
   {
@@ -159,16 +273,32 @@ const REPOS = [
     icon: "leaf",
     repo: "https://github.com/pedroiff0/verdementa",
     stack: [ "Meta-repo", "Python", "PowerShell" ],
-    tags: [ "Suíte Comercial", "ERP" ],
+    tags: [ "Business", "ERP" ],
     brief: "Meta-repositório que agrupa Caixas, ControleEstoque, LevantamentoEstoque e Planilhador — suíte de ferramentas comerciais.",
     image: "assets/media/verdementa/poster.webp",
     video: "assets/media/verdementa/tour.webm",
+    resumo: "Suíte de ferramentas comerciais: caixa, estoque e planilhas.",
     i18n: {
-      en: "Meta-repository grouping Caixas, ControleEstoque, LevantamentoEstoque and Planilhador — a suite of retail management tools in real production use.",
-      es: "Metarrepositorio que agrupa Caixas, ControleEstoque, LevantamentoEstoque y Planilhador — suite de herramientas comerciales en uso real en producción.",
-      fr: "Méta-dépôt regroupant Caixas, ControleEstoque, LevantamentoEstoque et Planilhador — une suite d'outils commerciaux en usage réel en production.",
-      it: "Meta-repository che raggruppa Caixas, ControleEstoque, LevantamentoEstoque e Planilhador — una suite di strumenti commerciali.",
-      zh: "元仓库,汇集了 Caixas、ControleEstoque、LevantamentoEstoque 和 Planilhador——一套商业工具套件。"
+      en: {
+        brief: "Meta-repository that groups Caixas, ControleEstoque, LevantamentoEstoque and Planilhador — a suite of commercial tools.",
+        resumo: "A suite of business tools: cash register, inventory and spreadsheets."
+      },
+      es: {
+        brief: "Metarrepositorio que agrupa Caixas, ControleEstoque, LevantamentoEstoque y Planilhador: una suite de herramientas comerciales.",
+        resumo: "Suite de herramientas comerciales: caja, inventario y hojas de cálculo."
+      },
+      fr: {
+        brief: "Méta-dépôt qui regroupe Caixas, ControleEstoque, LevantamentoEstoque et Planilhador — une suite d'outils commerciaux.",
+        resumo: "Suite d'outils commerciaux : caisse, stock et feuilles de calcul."
+      },
+      it: {
+        brief: "Meta-repository che raggruppa Caixas, ControleEstoque, LevantamentoEstoque e Planilhador: una suite di strumenti commerciali.",
+        resumo: "Suite di strumenti commerciali: cassa, magazzino e fogli di calcolo."
+      },
+      zh: {
+        brief: "元仓库，汇集 Caixas、ControleEstoque、LevantamentoEstoque 和 Planilhador——一套商业工具套件。",
+        resumo: "商业工具套件:收银、库存和电子表格。"
+      }
     }
   },
   {
@@ -178,16 +308,32 @@ const REPOS = [
     icon: "cash",
     repo: "https://github.com/pedroiff0/caixas",
     stack: [ "Python", "Flask", "SQLAlchemy", "Alembic", "Jinja2", "AdminLTE" ],
-    tags: [ "Controle de Caixa", "Relatórios" ],
+    tags: [ "Cash Flow", "Reports" ],
     brief: "Aplicação web para registrar fechamentos diários de caixa (vendas, depósitos, vales, total contado na gaveta), gerar relatórios e manter histórico imprimível. Flask + SQLAlchemy + Alembic, com endpoints REST auxiliares e migrations versionadas em CI.",
     image: "assets/media/caixas/poster.webp",
     video: "assets/media/caixas/tour.webm",
+    resumo: "Fechamentos diários de caixa, relatórios e histórico imprimível.",
     i18n: {
-      en: "Web app to record daily cash-register closings (sales, deposits, vouchers, counted drawer total), generate reports and keep a printable history. Flask + SQLAlchemy + Alembic, with auxiliary REST endpoints and migrations versioned in CI. In production and in real daily use.",
-      es: "Aplicación web para registrar cierres diarios de caja (ventas, depósitos, vales, total contado en el cajón), generar informes y mantener un historial imprimible. Flask + SQLAlchemy + Alembic, con endpoints REST auxiliares y migraciones versionadas en CI. En producción y en uso real diario.",
-      fr: "Application web pour enregistrer les clôtures de caisse quotidiennes (ventes, dépôts, bons, total compté en caisse), générer des rapports et conserver un historique imprimable. Flask + SQLAlchemy + Alembic, avec endpoints REST auxiliaires et migrations versionnées en CI. En production et en usage quotidien réel.",
-      it: "Applicazione web per registrare le chiusure giornaliere di cassa (vendite, depositi, buoni, totale contato nel cassetto), generare report e mantenere uno storico stampabile. Flask + SQLAlchemy + Alembic, con endpoint REST ausiliari e migrations versionate in CI.",
-      zh: "用于记录每日收银结账(销售额、存款、代金券、抽屉内清点总额)、生成报表并保留可打印历史记录的 Web 应用。采用 Flask + SQLAlchemy + Alembic,配有辅助 REST 端点,并在 CI 中对 migrations 进行版本管理。"
+      en: {
+        brief: "Web application for recording daily cash register closings (sales, deposits, vouchers, total counted in the drawer), generating reports and keeping a printable history. Flask + SQLAlchemy + Alembic, with auxiliary REST endpoints and versioned migrations in CI.",
+        resumo: "Daily cash register closings, reports and printable history."
+      },
+      es: {
+        brief: "Aplicación web para registrar los cierres diarios de caja (ventas, depósitos, vales, total contado en el cajón), generar informes y mantener un historial imprimible. Flask + SQLAlchemy + Alembic, con endpoints REST auxiliares y migraciones versionadas en CI.",
+        resumo: "Cierres diarios de caja, informes e historial imprimible."
+      },
+      fr: {
+        brief: "Application web pour enregistrer les clôtures de caisse quotidiennes (ventes, dépôts, bons, total compté dans le tiroir), générer des rapports et conserver un historique imprimable. Flask + SQLAlchemy + Alembic, avec des endpoints REST auxiliaires et des migrations versionnées en CI.",
+        resumo: "Clôtures de caisse quotidiennes, rapports et historique imprimable."
+      },
+      it: {
+        brief: "Applicazione web per registrare le chiusure giornaliere di cassa (vendite, versamenti, buoni, totale contato nel cassetto), generare report e mantenere uno storico stampabile. Flask + SQLAlchemy + Alembic, con endpoint REST ausiliari e migrazioni versionate in CI.",
+        resumo: "Chiusure giornaliere di cassa, report e storico stampabile."
+      },
+      zh: {
+        brief: "用于记录每日收银结账(销售、存款、代金券、抽屉中清点的总额)、生成报表并保留可打印历史记录的 Web 应用。Flask + SQLAlchemy + Alembic,配有辅助 REST endpoints,并在 CI 中进行版本化 migrations。",
+        resumo: "每日收银结账、报表和可打印的历史记录。"
+      }
     }
   },
   {
@@ -197,16 +343,29 @@ const REPOS = [
     icon: "box",
     repo: "https://github.com/pedroiff0/controle-estoque",
     stack: [ "Python", "CI", "CSV/PDF" ],
-    tags: [ "Inventário", "Estoque" ],
+    tags: [ "Inventory", "Reports" ],
     brief: "Aplicação para contagem rápida de inventário, com persistência de sessão, consolidação de contagens e geração de relatórios em CSV/PDF.",
     image: "assets/media/controle-estoque/poster.webp",
     video: "assets/media/controle-estoque/tour.webm",
+    resumo: "Contagem rápida de inventário com relatórios em CSV e PDF.",
     i18n: {
-      en: "App for fast inventory counting, with session persistence, consolidation of counts and CSV/PDF report generation.",
-      es: "Aplicación para conteo rápido de inventario, con persistencia de sesión, consolidación de conteos y generación de informes en CSV/PDF.",
-      fr: "Application de comptage rapide d'inventaire, avec persistance de session, consolidation des comptages et génération de rapports en CSV/PDF.",
-      it: "Applicazione per il conteggio rapido dell'inventario, con persistenza della sessione, consolidamento dei conteggi e generazione di report in CSV/PDF.",
-      zh: "用于快速盘点库存的应用,支持会话持久化、盘点结果合并,并可生成 CSV/PDF 报表。"
+      en: {
+        brief: "Application for quick inventory counting, with session persistence, consolidation of counts and generation of CSV/PDF reports.",
+        resumo: "Quick inventory counting with CSV and PDF reports."
+      },
+      es: {
+        brief: "Aplicación para el conteo rápido de inventario, con persistencia de sesión, consolidación de conteos y generación de informes en CSV/PDF.",
+        resumo: "Conteo rápido de inventario con informes en CSV y PDF."
+      },
+      fr: {
+        brief: "Application de comptage rapide d'inventaire, avec persistance de session, consolidation des comptages et génération de rapports CSV/PDF.",
+        resumo: "Comptage rapide d'inventaire avec rapports CSV et PDF."
+      },
+      it: {
+        brief: "Applicazione per il conteggio rapido dell'inventario, con persistenza di sessione, consolidamento dei conteggi e generazione di report in CSV/PDF.",
+        resumo: "Conteggio rapido dell'inventario con report in CSV e PDF."
+      },
+      zh: { brief: "用于快速盘点库存的应用,支持会话持久化、盘点结果合并以及生成 CSV/PDF 报表。", resumo: "快速库存盘点,提供 CSV 和 PDF 报表。" }
     }
   },
   {
@@ -216,16 +375,32 @@ const REPOS = [
     icon: "box",
     repo: "https://github.com/pedroiff0/levantamento-estoque",
     stack: [ "Python", "CI", "PDF" ],
-    tags: [ "Estoque", "Compras" ],
+    tags: [ "Inventory", "PDF" ],
     brief: "Sistema de levantamento de estoque por cor/tamanho, com persistência de sessão, extração de dados de PDF e geração de relatórios — voltado a itens de compra repetida.",
     image: "assets/media/levantamento-estoque/poster.webp",
     video: "assets/media/levantamento-estoque/tour.webm",
+    resumo: "Levantamento de estoque por cor e tamanho, com extração de dados de PDF.",
     i18n: {
-      en: "Stock-taking system by colour and size, with session persistence, data extraction from PDFs and report generation — aimed at repeatedly purchased items.",
-      es: "Sistema de levantamiento de existencias por color y talla, con persistencia de sesión, extracción de datos desde PDF y generación de informes — orientado a artículos de compra recurrente.",
-      fr: "Système d'inventaire par couleur et taille, avec persistance de session, extraction de données depuis des PDF et génération de rapports — destiné aux articles achetés de façon récurrente.",
-      it: "Sistema di rilevazione delle scorte per colore/taglia, con persistenza della sessione, estrazione di dati da PDF e generazione di report — pensato per articoli di acquisto ripetuto.",
-      zh: "按颜色/尺码进行库存盘点的系统,支持会话持久化、从 PDF 中提取数据并生成报表——面向重复采购的商品。"
+      en: {
+        brief: "Stock survey system by color/size, with session persistence, PDF data extraction and report generation — aimed at repeat-purchase items.",
+        resumo: "Stock survey by color and size, with PDF data extraction."
+      },
+      es: {
+        brief: "Sistema de levantamiento de inventario por color/talla, con persistencia de sesión, extracción de datos de PDF y generación de informes — orientado a artículos de compra recurrente.",
+        resumo: "Levantamiento de inventario por color y talla, con extracción de datos de PDF."
+      },
+      fr: {
+        brief: "Système de relevé de stock par couleur/taille, avec persistance de session, extraction de données depuis des PDF et génération de rapports — destiné aux articles d'achat répété.",
+        resumo: "Relevé de stock par couleur et taille, avec extraction de données depuis des PDF."
+      },
+      it: {
+        brief: "Sistema di rilevamento delle scorte per colore/taglia, con persistenza di sessione, estrazione di dati da PDF e generazione di report — pensato per articoli di acquisto ricorrente.",
+        resumo: "Rilevamento delle scorte per colore e taglia, con estrazione di dati da PDF."
+      },
+      zh: {
+        brief: "按颜色/尺码进行库存盘点的系统,支持会话持久化、从 PDF 中提取数据以及生成报表——面向重复采购的商品。",
+        resumo: "按颜色和尺码进行库存盘点,支持从 PDF 中提取数据。"
+      }
     }
   },
   {
@@ -235,16 +410,29 @@ const REPOS = [
     icon: "table",
     repo: "https://github.com/pedroiff0/planilhador",
     stack: [ "Python", "CI", "XML/NFCe" ],
-    tags: [ "NFCe", "Planilhas" ],
+    tags: [ "NFC-e", "Spreadsheets" ],
     brief: "Ferramentas para processar XMLs de NFCe e gerar relatórios/planilhas automatizados.",
     image: "assets/media/planilhador/poster.webp",
     video: "assets/media/planilhador/tour.webm",
+    resumo: "Processa XMLs de NFC-e e gera planilhas e relatórios automáticos.",
     i18n: {
-      en: "Tools to process NFCe (Brazilian e-invoice) XML files and generate automated reports and spreadsheets.",
-      es: "Herramientas para procesar XML de NFCe (factura electrónica brasileña) y generar informes y hojas de cálculo automatizados.",
-      fr: "Outils pour traiter les XML de NFCe (facture électronique brésilienne) et générer rapports et tableurs automatisés.",
-      it: "Strumenti per elaborare XML di NFCe e generare report/fogli di calcolo automatizzati.",
-      zh: "用于处理 NFCe 的 XML 并自动生成报表/电子表格的工具。"
+      en: {
+        brief: "Tools for processing NFCe XMLs and generating automated reports/spreadsheets.",
+        resumo: "Processes NFC-e XMLs and generates spreadsheets and reports automatically."
+      },
+      es: {
+        brief: "Herramientas para procesar XML de NFCe y generar informes/hojas de cálculo automatizados.",
+        resumo: "Procesa XML de NFC-e y genera hojas de cálculo e informes automáticamente."
+      },
+      fr: {
+        brief: "Outils de traitement des XML de NFCe et de génération automatisée de rapports/feuilles de calcul.",
+        resumo: "Traite les XML de NFC-e et génère automatiquement des feuilles de calcul et des rapports."
+      },
+      it: {
+        brief: "Strumenti per elaborare gli XML delle NFCe e generare report/fogli di calcolo automatizzati.",
+        resumo: "Elabora gli XML delle NFC-e e genera automaticamente fogli di calcolo e report."
+      },
+      zh: { brief: "用于处理 NFCe XML 并自动生成报表/电子表格的工具。", resumo: "处理 NFC-e XML,并自动生成电子表格和报表。" }
     }
   },
   {
@@ -254,16 +442,32 @@ const REPOS = [
     icon: "web",
     repo: "https://github.com/pedroiff0/projeto-profissional",
     stack: [ "Node.js 20", "Express", "MongoDB", "Mongoose", "EJS", "JWT", "Zod", "Jest", "Docker" ],
-    tags: [ "Template", "Boilerplate", "Segurança", "Auth", "Open Source" ],
+    tags: [ "Template", "Security", "Open Source" ],
     brief: "Template base endurecido para iniciar qualquer aplicação web Node: autenticação JWT, papéis admin/user, registro controlado pelo admin (sem autocadastro), CSP sem inline, rate limit, CSRF guard, validação Zod e suíte Jest+Supertest desde o primeiro commit. Docker Compose com app não-root e filesystem read-only.",
     image: "assets/media/projeto-profissional/poster.webp",
     video: "assets/media/projeto-profissional/tour.webm",
+    resumo: "Template Node/Express + MongoDB com autenticação, papéis e segurança desde o primeiro commit.",
     i18n: {
-      en: "Hardened starter template for any Node web app: JWT auth (httpOnly cookie or Bearer), admin/user roles, admin-controlled registration (no self sign-up), inline-free CSP, input sanitization, rate limiting, CSRF guard, Zod validation and a Jest+Supertest suite from the first commit. Docker Compose with a non-root, read-only app container.",
-      es: "Plantilla base endurecida para iniciar cualquier aplicación web Node: autenticación JWT (cookie httpOnly o Bearer), roles admin/user, registro controlado por el admin (sin autoregistro), CSP sin inline, saneamiento, rate limit, guard CSRF, validación Zod y suite Jest+Supertest desde el primer commit. Docker Compose con app no-root y sistema de archivos de solo lectura.",
-      fr: "Modèle de base durci pour démarrer toute application web Node : authentification JWT (cookie httpOnly ou Bearer), rôles admin/user, inscription contrôlée par l'admin (pas d'auto-inscription), CSP sans inline, assainissement, rate limit, garde CSRF, validation Zod et suite Jest+Supertest dès le premier commit. Docker Compose avec app non-root en lecture seule.",
-      it: "Template di base rafforzato per avviare qualsiasi applicazione web Node: autenticazione JWT, ruoli admin/user, registrazione controllata dall'admin (senza auto-registrazione), CSP senza inline, rate limit, CSRF guard, validazione Zod e suite Jest+Supertest fin dal primo commit. Docker Compose con app non-root e filesystem read-only.",
-      zh: "用于启动任何 Node Web 应用的加固型基础模板:JWT 认证、admin/user 角色、由管理员控制的注册(无自助注册)、无内联的 CSP、rate limit、CSRF guard、Zod 校验,以及从第一次提交起就具备的 Jest+Supertest 测试套件。Docker Compose 以非 root 方式运行应用,并使用只读文件系统。"
+      en: {
+        brief: "Hardened base template for starting any Node web application: JWT authentication, admin/user roles, admin-controlled registration (no self-signup), CSP without inline, rate limiting, CSRF guard, Zod validation and a Jest+Supertest suite from the very first commit. Docker Compose with a non-root app and read-only filesystem.",
+        resumo: "Node/Express + MongoDB template with authentication, roles and security from the first commit."
+      },
+      es: {
+        brief: "Plantilla base reforzada para iniciar cualquier aplicación web Node: autenticación JWT, roles admin/user, registro controlado por el admin (sin autorregistro), CSP sin inline, rate limit, CSRF guard, validación Zod y suite Jest+Supertest desde el primer commit. Docker Compose con la app sin privilegios de root y sistema de archivos de solo lectura.",
+        resumo: "Plantilla Node/Express + MongoDB con autenticación, roles y seguridad desde el primer commit."
+      },
+      fr: {
+        brief: "Modèle de base durci pour démarrer toute application web Node : authentification JWT, rôles admin/user, inscription contrôlée par l'admin (pas d'auto-inscription), CSP sans inline, rate limit, CSRF guard, validation Zod et suite Jest+Supertest dès le premier commit. Docker Compose avec une application non-root et un système de fichiers en lecture seule.",
+        resumo: "Modèle Node/Express + MongoDB avec authentification, rôles et sécurité dès le premier commit."
+      },
+      it: {
+        brief: "Template di base rafforzato per avviare qualsiasi applicazione web Node: autenticazione JWT, ruoli admin/user, registrazione controllata dall'admin (senza auto-registrazione), CSP senza inline, rate limit, CSRF guard, validazione Zod e suite Jest+Supertest fin dal primo commit. Docker Compose con app non-root e filesystem in sola lettura.",
+        resumo: "Template Node/Express + MongoDB con autenticazione, ruoli e sicurezza fin dal primo commit."
+      },
+      zh: {
+        brief: "用于启动任何 Node Web 应用的加固型基础模板:JWT 认证、admin/user 角色、由管理员控制的注册(不支持自助注册)、无 inline 的 CSP、rate limit、CSRF guard、Zod 校验,以及从第一次 commit 起就具备的 Jest+Supertest 测试套件。Docker Compose 以非 root 用户运行应用,并使用只读文件系统。",
+        resumo: "Node/Express + MongoDB 模板,从第一次 commit 起就具备认证、角色和安全机制。"
+      }
     }
   },
   {
@@ -273,16 +477,32 @@ const REPOS = [
     icon: "book",
     repo: "https://github.com/pedroiff0/awesome-skills",
     stack: [ "Markdown", "YAML", "Python", "Hermes Agent" ],
-    tags: [ "IA", "Agentes", "Automação", "Open Source", "Memória Procedural" ],
+    tags: [ "AI", "Agents", "Open Source" ],
     brief: "Coleção pessoal de skills (memória procedural) para o agente Hermes — 102 skills em 32 categorias, cada uma com SKILL.md (frontmatter YAML + instruções) e, opcionalmente, references/, scripts/ e templates/. Índice do README gerado por script; cobre de manutenção de sites Quartz e i18n a MLOps, LaTeX e automação de desktop.",
     image: "assets/media/awesome-skills/poster.webp",
     video: "assets/media/awesome-skills/tour.webm",
+    resumo: "Biblioteca de skills, agentes e plugins reutilizáveis para agentes de IA.",
     i18n: {
-      en: "Personal collection of skills (procedural memory) for the Hermes agent — 102 skills across 32 categories, each with SKILL.md (YAML frontmatter + instructions) plus optional references/, scripts/ and templates/. Script-generated README index; spans Quartz site maintenance and i18n, MLOps, LaTeX and desktop automation.",
-      es: "Colección personal de skills (memoria procedural) para el agente Hermes — 102 skills en 32 categorías, cada una con SKILL.md (frontmatter YAML + instrucciones) y, opcionalmente, references/, scripts/ y templates/. Índice del README generado por script; abarca desde sitios Quartz e i18n hasta MLOps, LaTeX y automatización de escritorio.",
-      fr: "Collection personnelle de skills (mémoire procédurale) pour l'agent Hermes — 102 skills en 32 catégories, chacune avec SKILL.md (frontmatter YAML + instructions) et, en option, references/, scripts/ et templates/. Index du README généré par script ; du site Quartz et de l'i18n au MLOps, LaTeX et à l'automatisation du bureau.",
-      it: "Raccolta personale di skill (memoria procedurale) per l'agente Hermes — 102 skill in 32 categorie, ciascuna con SKILL.md (frontmatter YAML + istruzioni) e, facoltativamente, references/, scripts/ e templates/. Indice del README generato da script; copre dalla manutenzione di siti Quartz e i18n a MLOps, LaTeX e automazione del desktop.",
-      zh: "为 Hermes 智能体整理的个人 skill 合集(程序性记忆)——共 102 个 skill,分属 32 个类别,每个都包含 SKILL.md(YAML frontmatter + 说明),并可选包含 references/、scripts/ 和 templates/。README 索引由脚本生成;涵盖从 Quartz 站点维护和 i18n,到 MLOps、LaTeX 和桌面自动化等内容。"
+      en: {
+        brief: "Personal collection of skills (procedural memory) for the Hermes agent — 102 skills in 32 categories, each with SKILL.md (YAML frontmatter + instructions) and, optionally, references/, scripts/ and templates/. README index generated by script; covers everything from Quartz site maintenance and i18n to MLOps, LaTeX and desktop automation.",
+        resumo: "Library of reusable skills, agents and plugins for AI agents."
+      },
+      es: {
+        brief: "Colección personal de skills (memoria procedimental) para el agente Hermes — 102 skills en 32 categorías, cada una con SKILL.md (frontmatter YAML + instrucciones) y, opcionalmente, references/, scripts/ y templates/. Índice del README generado por script; abarca desde el mantenimiento de sitios Quartz e i18n hasta MLOps, LaTeX y automatización de escritorio.",
+        resumo: "Biblioteca de skills, agentes y plugins reutilizables para agentes de IA."
+      },
+      fr: {
+        brief: "Collection personnelle de skills (mémoire procédurale) pour l'agent Hermes — 102 skills répartis en 32 catégories, chacun avec un SKILL.md (frontmatter YAML + instructions) et, éventuellement, references/, scripts/ et templates/. Index du README généré par script ; couvre de la maintenance de sites Quartz et de l'i18n au MLOps, au LaTeX et à l'automatisation du bureau.",
+        resumo: "Bibliothèque de skills, d'agents et de plugins réutilisables pour agents d'IA."
+      },
+      it: {
+        brief: "Raccolta personale di skill (memoria procedurale) per l'agente Hermes — 102 skill in 32 categorie, ciascuna con SKILL.md (frontmatter YAML + istruzioni) e, facoltativamente, references/, scripts/ e templates/. Indice del README generato tramite script; copre dalla manutenzione di siti Quartz e i18n a MLOps, LaTeX e automazione del desktop.",
+        resumo: "Libreria di skill, agenti e plugin riutilizzabili per agenti di IA."
+      },
+      zh: {
+        brief: "为 Hermes 智能体打造的个人 skills(程序性记忆)合集——32 个类别共 102 个 skills,每个都包含 SKILL.md(YAML frontmatter + 说明),并可选包含 references/、scripts/ 和 templates/。README 索引由脚本生成;涵盖从 Quartz 站点维护和 i18n,到 MLOps、LaTeX 和桌面自动化等内容。",
+        resumo: "面向 AI 智能体的可复用 skills、智能体和插件库。"
+      }
     }
   },
   {
@@ -292,16 +512,32 @@ const REPOS = [
     icon: "box",
     repo: "https://github.com/pedroiff0/meu-setup",
     stack: [ "Python", "YAML", "Bash", "PowerShell", "apt/dnf/pacman/zypper", "winget", "Homebrew" ],
-    tags: [ "Dotfiles", "Provisionamento", "Multi-distro", "Open Source", "Idempotente" ],
+    tags: [ "Dotfiles", "Linux", "Open Source" ],
     brief: "Mapa de todos os programas que uso (Linux, Windows e macOS) com instaladores automáticos e uma única fonte de verdade: packages.yaml. O instalador Linux detecta a distro (apt/dnf/pacman/zypper), é idempotente e tem cadeia de fallback (nativo → flatpak → snap → script oficial). Um gerador produz install.ps1, install.sh e o inventário; o bootstrap repopula a máquina do zero com um comando.",
     image: "assets/media/meu-setup/poster.webp",
     video: "assets/media/meu-setup/tour.webm",
+    resumo: "Mapa dos programas que uso e instalador automático para repopular a máquina.",
     i18n: {
-      en: "A map of every program I use (Linux, Windows and macOS) with automated installers and a single source of truth: packages.yaml. The Linux installer detects the distro (apt/dnf/pacman/zypper), is idempotent and has a fallback chain (native → flatpak → snap → official script). A generator produces install.ps1, install.sh and the inventory; the bootstrap repopulates a fresh machine with one command.",
-      es: "Mapa de todos los programas que uso (Linux, Windows y macOS) con instaladores automáticos y una única fuente de verdad: packages.yaml. El instalador Linux detecta la distro (apt/dnf/pacman/zypper), es idempotente y tiene cadena de fallback (nativo → flatpak → snap → script oficial). Un generador produce install.ps1, install.sh y el inventario; el bootstrap repuebla la máquina con un comando.",
-      fr: "Carte de tous les programmes que j'utilise (Linux, Windows et macOS) avec des installateurs automatiques et une source unique de vérité : packages.yaml. L'installateur Linux détecte la distro (apt/dnf/pacman/zypper), est idempotent et dispose d'une chaîne de repli (natif → flatpak → snap → script officiel). Un générateur produit install.ps1, install.sh et l'inventaire ; le bootstrap repeuple la machine en une commande.",
-      it: "Mappa di tutti i programmi che uso (Linux, Windows e macOS) con installer automatici e un'unica fonte di verità: packages.yaml. L'installer Linux rileva la distro (apt/dnf/pacman/zypper), è idempotente e ha una catena di fallback (nativo → flatpak → snap → script ufficiale). Un generatore produce install.ps1, install.sh e l'inventario; il bootstrap ripopola la macchina da zero con un solo comando.",
-      zh: "我所使用的全部程序(Linux、Windows 和 macOS)的清单,配有自动安装程序,并以 packages.yaml 作为唯一事实来源。Linux 安装程序会检测发行版(apt/dnf/pacman/zypper),具有幂等性,并带有回退链(原生 → flatpak → snap → 官方脚本)。生成器会产出 install.ps1、install.sh 和清单;bootstrap 只需一条命令即可从零重新配置整台机器。"
+      en: {
+        brief: "Map of all the programs I use (Linux, Windows and macOS) with automatic installers and a single source of truth: packages.yaml. The Linux installer detects the distro (apt/dnf/pacman/zypper), is idempotent and has a fallback chain (native → flatpak → snap → official script). A generator produces install.ps1, install.sh and the inventory; the bootstrap repopulates the machine from scratch with a single command.",
+        resumo: "Map of the programs I use and an automatic installer to repopulate the machine."
+      },
+      es: {
+        brief: "Mapa de todos los programas que uso (Linux, Windows y macOS) con instaladores automáticos y una única fuente de verdad: packages.yaml. El instalador de Linux detecta la distro (apt/dnf/pacman/zypper), es idempotente y tiene una cadena de fallback (nativo → flatpak → snap → script oficial). Un generador produce install.ps1, install.sh y el inventario; el bootstrap repuebla la máquina desde cero con un solo comando.",
+        resumo: "Mapa de los programas que uso e instalador automático para repoblar la máquina."
+      },
+      fr: {
+        brief: "Cartographie de tous les programmes que j'utilise (Linux, Windows et macOS) avec des installateurs automatiques et une source de vérité unique : packages.yaml. L'installateur Linux détecte la distribution (apt/dnf/pacman/zypper), est idempotent et dispose d'une chaîne de repli (natif → flatpak → snap → script officiel). Un générateur produit install.ps1, install.sh et l'inventaire ; le bootstrap repeuple la machine de zéro en une seule commande.",
+        resumo: "Cartographie des programmes que j'utilise et installateur automatique pour repeupler la machine."
+      },
+      it: {
+        brief: "Mappa di tutti i programmi che uso (Linux, Windows e macOS) con installer automatici e un'unica fonte di verità: packages.yaml. L'installer Linux rileva la distro (apt/dnf/pacman/zypper), è idempotente e ha una catena di fallback (nativo → flatpak → snap → script ufficiale). Un generatore produce install.ps1, install.sh e l'inventario; il bootstrap ripopola la macchina da zero con un solo comando.",
+        resumo: "Mappa dei programmi che uso e installer automatico per ripopolare la macchina."
+      },
+      zh: {
+        brief: "我使用的所有程序(Linux、Windows 和 macOS)的清单,配有自动安装程序和唯一的事实来源:packages.yaml。Linux 安装程序可检测发行版(apt/dnf/pacman/zypper),具备幂等性,并带有回退链(原生 → flatpak → snap → 官方脚本)。生成器会产出 install.ps1、install.sh 和清单;bootstrap 只需一条命令即可从零重新配置整台机器。",
+        resumo: "我所使用程序的清单,以及用于重新配置整台机器的自动安装程序。"
+      }
     }
   },
   {
@@ -311,14 +547,32 @@ const REPOS = [
     icon: "star",
     repo: "https://github.com/pedroiff0/anomaly-detection",
     stack: [ "Python", "Astropy", "NumPy", "Pandas", "ML", "Jupyter" ],
-    tags: [ "PIBIC/CNPq", "Gaia", "GALAH", "Astroquímica" ],
+    tags: [ "PIBIC/CNPq", "Gaia", "Machine Learning" ],
     brief: "Análise das propriedades estelares e composição química das estrelas próximas do GCNS observadas pelo GALAH DR4 (Gaia DR3 + GALAH DR4). Bolsa PIBIC/CNPq; co-autoria PUC Chile (Dra. M. L. L. Dantas, Dra. A. C. Soja).",
+    image: "assets/media/anomalyviewer/poster.webp",
+    video: "assets/media/anomalyviewer/tour.webm",
+    resumo: "Aprendizado de máquina para achar estrelas anômalas no GALAH DR4 + Gaia DR3 (PIBIC/CNPq).",
     i18n: {
-      en: "Analysis of the stellar properties and chemical composition of stars near the GCNS observed by GALAH DR4 (Gaia DR3 + GALAH DR4). PIBIC/CNPq scholarship; co-authored with PUC Chile (Dr. M. L. L. Dantas, Dr. A. C. Soja).",
-      es: "Análisis de las propiedades estelares y la composición química de las estrellas cercanas del GCNS observadas por GALAH DR4 (Gaia DR3 + GALAH DR4). Beca PIBIC/CNPq; coautoría con la PUC Chile (Dra. M. L. L. Dantas, Dra. A. C. Soja).",
-      fr: "Analyse des propriétés stellaires et de la composition chimique des étoiles proches du GCNS observées par GALAH DR4 (Gaia DR3 + GALAH DR4). Bourse PIBIC/CNPq ; co-autorat avec la PUC Chile (Dre M. L. L. Dantas, Dre A. C. Soja).",
-      it: "Analisi delle proprietà stellari e della composizione chimica delle stelle vicine del GCNS osservate da GALAH DR4 (Gaia DR3 + GALAH DR4). Borsa PIBIC/CNPq; co-autoraggio con la PUC Chile (Dott.ssa M. L. L. Dantas, Dott.ssa A. C. Soja).",
-      zh: "分析 GALAH DR4 观测到的 GCNS 附近恒星的恒星性质与化学组成(Gaia DR3 + GALAH DR4)。PIBIC/CNPq 奖学金;与 PUC Chile 合作署名(M. L. L. Dantas 博士、A. C. Soja 博士)。"
+      en: {
+        brief: "Analysis of the stellar properties and chemical composition of stars in the GCNS observed by GALAH DR4 (Gaia DR3 + GALAH DR4). PIBIC/CNPq scholarship; co-authored with PUC Chile (Dr. M. L. L. Dantas, Dr. A. C. Soja).",
+        resumo: "Machine learning to find anomalous stars in GALAH DR4 + Gaia DR3 (PIBIC/CNPq)."
+      },
+      es: {
+        brief: "Análisis de las propiedades estelares y la composición química de las estrellas cercanas del GCNS observadas por GALAH DR4 (Gaia DR3 + GALAH DR4). Beca PIBIC/CNPq; coautoría con la PUC Chile (Dra. M. L. L. Dantas, Dra. A. C. Soja).",
+        resumo: "Aprendizaje automático para encontrar estrellas anómalas en GALAH DR4 + Gaia DR3 (PIBIC/CNPq)."
+      },
+      fr: {
+        brief: "Analyse des propriétés stellaires et de la composition chimique des étoiles proches du GCNS observées par GALAH DR4 (Gaia DR3 + GALAH DR4). Bourse PIBIC/CNPq ; co-autorat avec la PUC Chile (Dre M. L. L. Dantas, Dre A. C. Soja).",
+        resumo: "Apprentissage automatique pour repérer des étoiles anormales dans GALAH DR4 + Gaia DR3 (PIBIC/CNPq)."
+      },
+      it: {
+        brief: "Analisi delle proprietà stellari e della composizione chimica delle stelle vicine del GCNS osservate da GALAH DR4 (Gaia DR3 + GALAH DR4). Borsa PIBIC/CNPq; co-autori della PUC Chile (Dott.ssa M. L. L. Dantas, Dott.ssa A. C. Soja).",
+        resumo: "Apprendimento automatico per individuare stelle anomale in GALAH DR4 + Gaia DR3 (PIBIC/CNPq)."
+      },
+      zh: {
+        brief: "分析 GALAH DR4 观测的 GCNS 近邻恒星的恒星性质与化学组成(Gaia DR3 + GALAH DR4)。PIBIC/CNPq 奖学金;与 PUC Chile 合作署名(M. L. L. Dantas 博士、A. C. Soja 博士)。",
+        resumo: "利用机器学习在 GALAH DR4 + Gaia DR3 中寻找异常恒星(PIBIC/CNPq)。"
+      }
     }
   },
   {
@@ -328,18 +582,34 @@ const REPOS = [
     icon: "star",
     repo: "",
     stack: [ "Python", "Streamlit", "Plotly", "t-SNE", "UMAP", "HDBSCAN" ],
-    tags: [ "Gaia", "GALAH", "SAB 2026", "Visualização" ],
+    tags: [ "Gaia", "Data Viz", "Machine Learning" ],
     brief: "Visualizador público dos resultados da pesquisa de detecção de anomalias em estrelas da vizinhança solar (GCNS + GALAH DR4, até 100 pc). Mostra o mapa t-SNE do espectro inteiro, pixel a pixel, com as cores dos parâmetros do catálogo, as flags de emissão e binárias espectroscópicas e os clusters HDBSCAN, além das análises do SAB 2025. Tudo pré-calculado; acompanha o banner do SAB 2026.",
     image: "assets/media/anomalyviewer/poster.webp",
     video: "assets/media/anomalyviewer/tour.webm",
     live: "https://anomaly.phrandrade.com/?embed=true",
     open: "https://anomaly.phrandrade.com",
+    resumo: "Painel público do mapa t-SNE dos espectros GALAH DR4, com clusters e flags.",
     i18n: {
-      en: "Public viewer for the results of the anomaly detection research on stars in the solar neighborhood (GCNS + GALAH DR4, up to 100 pc). It shows the t-SNE map of the entire spectrum, pixel by pixel, with the colors of the catalog parameters, the emission and spectroscopic binary flags, and the HDBSCAN clusters, along with the SAB 2025 analyses. Everything is precomputed; it comes with the SAB 2026 banner.",
-      es: "Visor público de los resultados de la investigación de detección de anomalías en estrellas de la vecindad solar (GCNS + GALAH DR4, hasta 100 pc). Muestra el mapa t-SNE del espectro completo, píxel a píxel, con los colores de los parámetros del catálogo, las flags de emisión y de binarias espectroscópicas y los clusters HDBSCAN, además de los análisis del SAB 2025. Todo está precalculado; incluye el banner del SAB 2026.",
-      fr: "Visualiseur public des résultats de la recherche sur la détection d'anomalies chez les étoiles du voisinage solaire (GCNS + GALAH DR4, jusqu'à 100 pc). Il affiche la carte t-SNE du spectre entier, pixel par pixel, avec les couleurs des paramètres du catalogue, les flags d'émission et de binaires spectroscopiques et les clusters HDBSCAN, ainsi que les analyses du SAB 2025. Tout est précalculé ; il est accompagné de la bannière du SAB 2026.",
-      it: "Visualizzatore pubblico dei risultati della ricerca sul rilevamento di anomalie nelle stelle del vicinato solare (GCNS + GALAH DR4, fino a 100 pc). Mostra la mappa t-SNE dello spettro intero, pixel per pixel, con i colori dei parametri del catalogo, i flag di emissione e di binarie spettroscopiche e i cluster HDBSCAN, oltre alle analisi del SAB 2025. Tutto è precalcolato; include il banner del SAB 2026.",
-      zh: "面向公众的恒星异常检测研究结果查看器,研究对象为太阳邻域恒星(GCNS + GALAH DR4,距离不超过 100 pc)。它展示整条光谱逐像素的 t-SNE 图,并配有星表参数的颜色、发射线和分光双星的 flag,以及 HDBSCAN 聚类,此外还包括 SAB 2025 的分析。所有内容均已预先计算;并附有 SAB 2026 的横幅。"
+      en: {
+        brief: "Public viewer for the results of the research on anomaly detection in stars of the solar neighborhood (GCNS + GALAH DR4, up to 100 pc). It shows the t-SNE map of the full spectrum, pixel by pixel, colored by catalog parameters, emission and spectroscopic binary flags, and HDBSCAN clusters, along with the SAB 2025 analyses. Everything is precomputed; it accompanies the SAB 2026 banner.",
+        resumo: "Public dashboard of the t-SNE map of GALAH DR4 spectra, with clusters and flags."
+      },
+      es: {
+        brief: "Visualizador público de los resultados de la investigación sobre detección de anomalías en estrellas de la vecindad solar (GCNS + GALAH DR4, hasta 100 pc). Muestra el mapa t-SNE del espectro completo, píxel a píxel, con los colores de los parámetros del catálogo, las flags de emisión y de binarias espectroscópicas y los clústeres HDBSCAN, además de los análisis del SAB 2025. Todo está precalculado; acompaña el banner del SAB 2026.",
+        resumo: "Panel público del mapa t-SNE de los espectros GALAH DR4, con clústeres y flags."
+      },
+      fr: {
+        brief: "Visualiseur public des résultats de la recherche sur la détection d'anomalies dans les étoiles du voisinage solaire (GCNS + GALAH DR4, jusqu'à 100 pc). Il présente la carte t-SNE du spectre entier, pixel par pixel, avec les couleurs des paramètres du catalogue, les flags d'émission et de binaires spectroscopiques et les clusters HDBSCAN, ainsi que les analyses du SAB 2025. Tout est précalculé ; il accompagne la bannière du SAB 2026.",
+        resumo: "Tableau de bord public de la carte t-SNE des spectres GALAH DR4, avec clusters et flags."
+      },
+      it: {
+        brief: "Visualizzatore pubblico dei risultati della ricerca sul rilevamento di anomalie nelle stelle del vicinato solare (GCNS + GALAH DR4, fino a 100 pc). Mostra la mappa t-SNE dell'intero spettro, pixel per pixel, con i colori dei parametri del catalogo, i flag di emissione e di binarie spettroscopiche e i cluster HDBSCAN, oltre alle analisi del SAB 2025. Tutto è precalcolato; accompagna il banner del SAB 2026.",
+        resumo: "Dashboard pubblica della mappa t-SNE degli spettri GALAH DR4, con cluster e flag."
+      },
+      zh: {
+        brief: "面向公众的可视化工具,展示太阳邻近区域恒星异常检测研究的结果(GCNS + GALAH DR4,100 pc 以内)。它呈现完整光谱逐像素的 t-SNE 图,可按星表参数着色,并显示发射线和分光双星标记以及 HDBSCAN 聚类,还包含 SAB 2025 的分析。所有内容均已预先计算;配合 SAB 2026 的海报使用。",
+        resumo: "GALAH DR4 光谱 t-SNE 图的公开面板,含聚类和标记。"
+      }
     }
   },
   {
@@ -349,19 +619,35 @@ const REPOS = [
     icon: "spectrum",
     repo: "https://github.com/pedroiff0/spectraviewer",
     stack: [ "Python", "FITS", "Matplotlib" ],
-    tags: [ "Espectroscopia", "GALAH DR4", "Open Source" ],
+    tags: [ "Spectroscopy", "GALAH", "Open Source" ],
     brief: "Viewer interativo de espectros GALAH DR4 (4 bandas, linhas de referência CNO/Alpha/Iron-peak, leitura de FITS, metadados Teff/log(g)/[Fe/H]).",
     image: "assets/media/spectraviewer/poster.webp",
     video: "assets/media/spectraviewer/tour.webm",
     live: "https://spectraviewer.streamlit.app/?embed=true",
     open: "https://spectraviewer.streamlit.app",
     status: "ajustes",
+    resumo: "Visualizador interativo de espectros GALAH DR4 com linhas de referência.",
     i18n: {
-      en: "Interactive viewer for GALAH DR4 spectra (4 bands, CNO/Alpha/Iron-peak reference lines, FITS reading, Teff/log(g)/[Fe/H] metadata).",
-      es: "Visor interactivo de espectros GALAH DR4 (4 bandas, líneas de referencia CNO/Alpha/Iron-peak, lectura de FITS, metadatos Teff/log(g)/[Fe/H]).",
-      fr: "Visionneuse interactive des spectres GALAH DR4 (4 bandes, lignes de référence CNO/Alpha/Iron-peak, lecture FITS, métadonnées Teff/log(g)/[Fe/H]).",
-      it: "Viewer interattivo di spettri GALAH DR4 (4 bande, linee di riferimento CNO/Alpha/Iron-peak, lettura di FITS, metadati Teff/log(g)/[Fe/H]).",
-      zh: "GALAH DR4 光谱交互式查看器(4 个波段、CNO/Alpha/Iron-peak 参考谱线、FITS 读取、Teff/log(g)/[Fe/H] 元数据)。"
+      en: {
+        brief: "Interactive viewer for GALAH DR4 spectra (4 bands, CNO/Alpha/Iron-peak reference lines, FITS reading, Teff/log(g)/[Fe/H] metadata).",
+        resumo: "Interactive viewer of GALAH DR4 spectra with reference lines."
+      },
+      es: {
+        brief: "Visor interactivo de espectros GALAH DR4 (4 bandas, líneas de referencia CNO/Alpha/Iron-peak, lectura de FITS, metadatos Teff/log(g)/[Fe/H]).",
+        resumo: "Visor interactivo de espectros GALAH DR4 con líneas de referencia."
+      },
+      fr: {
+        brief: "Visualiseur interactif de spectres GALAH DR4 (4 bandes, raies de référence CNO/Alpha/Iron-peak, lecture de FITS, métadonnées Teff/log(g)/[Fe/H]).",
+        resumo: "Visualiseur interactif de spectres GALAH DR4 avec raies de référence."
+      },
+      it: {
+        brief: "Visualizzatore interattivo di spettri GALAH DR4 (4 bande, linee di riferimento CNO/Alpha/Iron-peak, lettura di FITS, metadati Teff/log(g)/[Fe/H]).",
+        resumo: "Visualizzatore interattivo di spettri GALAH DR4 con linee di riferimento."
+      },
+      zh: {
+        brief: "GALAH DR4 光谱交互式查看器(4 个波段,CNO/Alpha/Iron-peak 参考谱线,支持读取 FITS,含 Teff/log(g)/[Fe/H] 元数据)。",
+        resumo: "带参考谱线的 GALAH DR4 光谱交互式查看器。"
+      }
     }
   },
   {
@@ -371,17 +657,33 @@ const REPOS = [
     icon: "book",
     repo: "https://github.com/pedroiff0/research",
     stack: [ "Node.js", "Express", "MongoDB", "EJS", "arXiv API", "Docker" ],
-    tags: [ "Literatura", "arXiv", "Automação", "BibTeX" ],
+    tags: [ "arXiv", "Literature", "Automation" ],
     brief: "Plataforma web para acompanhar a literatura científica no arXiv (research.phrandrade.com): revisão diária pública por categoria, busca por palavra-chave e autor, monitoramento de autores, biblioteca pessoal e exportação de citações em BibTeX/LaTeX e PDF. Nasceu como o arXiv Searcher, um buscador automático de artigos por assunto, e virou uma aplicação completa.",
     image: "assets/media/research/poster.webp",
     video: "assets/media/research/tour.webm",
     open: "https://research.phrandrade.com",
+    resumo: "Acompanha o arXiv: revisão diária, busca, autores monitorados e biblioteca pessoal.",
     i18n: {
-      en: "Web platform for tracking the scientific literature on arXiv (research.phrandrade.com): public daily review by category, keyword and author search, author monitoring, personal library, and citation export to BibTeX/LaTeX and PDF. It started as the arXiv Searcher, an automatic article finder by subject, and grew into a full application.",
-      es: "Plataforma web para seguir la literatura científica en arXiv (research.phrandrade.com): revisión diaria pública por categoría, búsqueda por palabra clave y autor, monitoreo de autores, biblioteca personal y exportación de citas en BibTeX/LaTeX y PDF. Nació como el arXiv Searcher, un buscador automático de artículos por tema, y se convirtió en una aplicación completa.",
-      fr: "Plateforme web pour suivre la littérature scientifique sur arXiv (research.phrandrade.com) : revue quotidienne publique par catégorie, recherche par mot-clé et par auteur, suivi d'auteurs, bibliothèque personnelle et export de citations en BibTeX/LaTeX et PDF. Elle est née comme l'arXiv Searcher, un moteur de recherche automatique d'articles par sujet, et est devenue une application complète.",
-      it: "Piattaforma web per seguire la letteratura scientifica su arXiv (research.phrandrade.com): revisione giornaliera pubblica per categoria, ricerca per parola chiave e autore, monitoraggio degli autori, biblioteca personale ed esportazione di citazioni in BibTeX/LaTeX e PDF. Nata come arXiv Searcher, un motore di ricerca automatico di articoli per argomento, è diventata un'applicazione completa.",
-      zh: "用于跟踪 arXiv 科学文献的 Web 平台(research.phrandrade.com):按类别提供公开的每日综述、按关键词和作者搜索、作者监测、个人文库,以及以 BibTeX/LaTeX 和 PDF 导出引用。它最初是 arXiv Searcher,一个按主题自动检索论文的搜索工具,后来发展成为一个完整的应用。"
+      en: {
+        brief: "Web platform for following the scientific literature on arXiv (research.phrandrade.com): public daily review by category, keyword and author search, author monitoring, personal library, and citation export in BibTeX/LaTeX and PDF. It started as arXiv Searcher, an automatic article finder by subject, and grew into a full application.",
+        resumo: "Follows arXiv: daily review, search, monitored authors and personal library."
+      },
+      es: {
+        brief: "Plataforma web para seguir la literatura científica en arXiv (research.phrandrade.com): revisión diaria pública por categoría, búsqueda por palabra clave y autor, seguimiento de autores, biblioteca personal y exportación de citas en BibTeX/LaTeX y PDF. Nació como arXiv Searcher, un buscador automático de artículos por tema, y se convirtió en una aplicación completa.",
+        resumo: "Sigue arXiv: revisión diaria, búsqueda, autores monitoreados y biblioteca personal."
+      },
+      fr: {
+        brief: "Plateforme web pour suivre la littérature scientifique sur arXiv (research.phrandrade.com) : revue quotidienne publique par catégorie, recherche par mot-clé et par auteur, suivi d'auteurs, bibliothèque personnelle et export de citations en BibTeX/LaTeX et PDF. Elle est née comme arXiv Searcher, un moteur de recherche automatique d'articles par sujet, et est devenue une application complète.",
+        resumo: "Suit arXiv : revue quotidienne, recherche, auteurs suivis et bibliothèque personnelle."
+      },
+      it: {
+        brief: "Piattaforma web per seguire la letteratura scientifica su arXiv (research.phrandrade.com): rassegna giornaliera pubblica per categoria, ricerca per parola chiave e autore, monitoraggio degli autori, biblioteca personale ed esportazione di citazioni in BibTeX/LaTeX e PDF. Nata come arXiv Searcher, un ricercatore automatico di articoli per argomento, è diventata un'applicazione completa.",
+        resumo: "Segue arXiv: rassegna giornaliera, ricerca, autori monitorati e biblioteca personale."
+      },
+      zh: {
+        brief: "用于跟踪 arXiv 科学文献的网络平台(research.phrandrade.com):按类别提供公开的每日综述,支持关键词和作者检索、作者监测、个人文库,以及以 BibTeX/LaTeX 和 PDF 导出引文。它最初是 arXiv Searcher,一个按主题自动检索文章的工具,后来发展为完整的应用。",
+        resumo: "跟踪 arXiv:每日综述、检索、受监测的作者和个人文库。"
+      }
     }
   },
   {
@@ -391,16 +693,32 @@ const REPOS = [
     icon: "document",
     repo: "https://github.com/pedroiff0/cv",
     stack: [ "LaTeX", "altacv", "Makefile", "biblatex" ],
-    tags: [ "Multilíngue", "PT/EN/ES/FR" ],
+    tags: [ "LaTeX", "Multilingual", "Open Source" ],
     brief: "CV em LaTeX (classe altacv), multilíngue (PT/EN/ES/FR) compilado via Makefile. Inclui ORCID, Google Scholar e publicações em congressos (CONFICT, SAB, SBPC).",
     image: "assets/media/cv/poster.webp",
     video: "assets/media/cv/tour.webm",
+    resumo: "Currículo em LaTeX (altacv), em PT, EN, ES e FR.",
     i18n: {
-      en: "CV in LaTeX (altacv class), multilingual (PT/EN/ES/FR) compiled via Makefile. Includes ORCID, Google Scholar and conference publications (CONFICT, SAB, SBPC).",
-      es: "CV en LaTeX (clase altacv), multilingüe (PT/EN/ES/FR) compilado vía Makefile. Incluye ORCID, Google Scholar y publicaciones en congresos (CONFICT, SAB, SBPC).",
-      fr: "CV en LaTeX (classe altacv), multilingue (PT/EN/ES/FR) compilé via Makefile. Inclut ORCID, Google Scholar et publications en conférence (CONFICT, SAB, SBPC).",
-      it: "CV in LaTeX (classe altacv), multilingue (PT/EN/ES/FR) compilato tramite Makefile. Include ORCID, Google Scholar e pubblicazioni in congressi (CONFICT, SAB, SBPC).",
-      zh: "使用 LaTeX(altacv 类)编写的多语言(PT/EN/ES/FR)简历,通过 Makefile 编译。包含 ORCID、Google Scholar 以及会议发表论文(CONFICT、SAB、SBPC)。"
+      en: {
+        brief: "LaTeX CV (altacv class), multilingual (PT/EN/ES/FR), compiled via Makefile. Includes ORCID, Google Scholar and conference publications (CONFICT, SAB, SBPC).",
+        resumo: "LaTeX CV (altacv), in PT, EN, ES and FR."
+      },
+      es: {
+        brief: "CV en LaTeX (clase altacv), multilingüe (PT/EN/ES/FR), compilado mediante Makefile. Incluye ORCID, Google Scholar y publicaciones en congresos (CONFICT, SAB, SBPC).",
+        resumo: "CV en LaTeX (altacv), en PT, EN, ES y FR."
+      },
+      fr: {
+        brief: "CV en LaTeX (classe altacv), multilingue (PT/EN/ES/FR), compilé via Makefile. Inclut ORCID, Google Scholar et des publications en congrès (CONFICT, SAB, SBPC).",
+        resumo: "CV en LaTeX (altacv), en PT, EN, ES et FR."
+      },
+      it: {
+        brief: "CV in LaTeX (classe altacv), multilingue (PT/EN/ES/FR), compilato tramite Makefile. Include ORCID, Google Scholar e pubblicazioni a congressi (CONFICT, SAB, SBPC).",
+        resumo: "CV in LaTeX (altacv), in PT, EN, ES e FR."
+      },
+      zh: {
+        brief: "使用 LaTeX(altacv 类)编写的多语言(PT/EN/ES/FR)简历,通过 Makefile 编译。包含 ORCID、Google Scholar 以及会议发表(CONFICT、SAB、SBPC)。",
+        resumo: "LaTeX 简历(altacv),提供 PT、EN、ES 和 FR 版本。"
+      }
     }
   },
   {
@@ -410,18 +728,34 @@ const REPOS = [
     icon: "function",
     repo: "https://github.com/pedroiff0/calculo-numerico",
     stack: [ "Python", "CI", "Docs", "NumPy" ],
-    tags: [ "Disciplina", "Métodos Numéricos" ],
+    tags: [ "Numerical Methods", "Python", "Open Source" ],
     brief: "Repositório de códigos da disciplina Cálculo Numérico 2025.2, com CI e documentação.",
     image: "assets/media/calculo/poster.webp",
     video: "assets/media/calculo/tour.webm",
     live: "https://pedroiff0.github.io/calculo-numerico/",
     open: "https://pedroiff0.github.io/calculo-numerico/",
+    resumo: "Códigos e documentação da disciplina de Cálculo Numérico 2025.2.",
     i18n: {
-      en: "Code repository for the Numerical Methods course (2025.2), with CI and documentation — implementations of root finding, interpolation, numerical integration and linear systems.",
-      es: "Repositorio de códigos de la asignatura Cálculo Numérico 2025.2, con CI y documentación — implementaciones de búsqueda de raíces, interpolación, integración numérica y sistemas lineales.",
-      fr: "Dépôt de codes du cours de Calcul Numérique 2025.2, avec CI et documentation — implémentations de recherche de racines, interpolation, intégration numérique et systèmes linéaires.",
-      it: "Repository dei codici del corso di Cálculo Numérico 2025.2, con CI e documentazione.",
-      zh: "Cálculo Numérico 2025.2 课程的代码仓库,包含 CI 和文档。"
+      en: {
+        brief: "Code repository for the Numerical Calculus 2025.2 course, with CI and documentation.",
+        resumo: "Code and documentation for the Numerical Calculus 2025.2 course."
+      },
+      es: {
+        brief: "Repositorio de códigos de la asignatura Cálculo Numérico 2025.2, con CI y documentación.",
+        resumo: "Códigos y documentación de la asignatura Cálculo Numérico 2025.2."
+      },
+      fr: {
+        brief: "Dépôt de code du cours de Calcul Numérique 2025.2, avec CI et documentation.",
+        resumo: "Code et documentation du cours de Calcul Numérique 2025.2."
+      },
+      it: {
+        brief: "Repository di codice del corso di Calcolo Numerico 2025.2, con CI e documentazione.",
+        resumo: "Codice e documentazione del corso di Calcolo Numerico 2025.2."
+      },
+      zh: {
+        brief: "数值计算(Cálculo Numérico)2025.2 课程的代码仓库,含 CI 和文档。",
+        resumo: "数值计算(Cálculo Numérico)2025.2 课程的代码和文档。"
+      }
     }
   },
   {
@@ -431,16 +765,29 @@ const REPOS = [
     icon: "formula",
     repo: "https://github.com/pedroiff0/formularios",
     stack: [ "LaTeX", "siunitx" ],
-    tags: [ "Resumos", "Fórmulas" ],
+    tags: [ "LaTeX", "Study Notes", "Open Source" ],
     brief: "Coleção de folhas de fórmulas e resumos em LaTeX organizados por disciplina.",
     image: "assets/media/formularios/poster.webp",
     video: "assets/media/formularios/tour.webm",
+    resumo: "Folhas de fórmulas e resumos em LaTeX por disciplina.",
     i18n: {
-      en: "Collection of LaTeX formula sheets and summaries organized by course — mathematics and physics, typeset with siunitx.",
-      es: "Colección de formularios y resúmenes en LaTeX organizados por asignatura — matemáticas y física, compuestos con siunitx.",
-      fr: "Collection de formulaires et résumés en LaTeX organisés par matière — mathématiques et physique, composés avec siunitx.",
-      it: "Raccolta di formulari e riassunti in LaTeX organizzati per disciplina.",
-      zh: "按学科整理的 LaTeX 公式表和总结合集。"
+      en: {
+        brief: "Collection of formula sheets and summaries in LaTeX, organized by course.",
+        resumo: "Formula sheets and summaries in LaTeX by course."
+      },
+      es: {
+        brief: "Colección de hojas de fórmulas y resúmenes en LaTeX organizados por asignatura.",
+        resumo: "Hojas de fórmulas y resúmenes en LaTeX por asignatura."
+      },
+      fr: {
+        brief: "Collection de formulaires et de résumés en LaTeX organisés par matière.",
+        resumo: "Formulaires et résumés en LaTeX par matière."
+      },
+      it: {
+        brief: "Raccolta di formulari e riassunti in LaTeX organizzati per materia.",
+        resumo: "Formulari e riassunti in LaTeX per materia."
+      },
+      zh: { brief: "按课程整理的 LaTeX 公式表和总结合集。", resumo: "按课程整理的 LaTeX 公式表和总结。" }
     }
   },
   {
@@ -450,16 +797,29 @@ const REPOS = [
     icon: "latex",
     repo: "https://github.com/pedroiff0/modelos",
     stack: [ "LaTeX" ],
-    tags: [ "Templates" ],
-    brief: "Modelos LaTeX para uso geral.",
+    tags: [ "LaTeX", "Templates" ],
+    brief: "Coleção de modelos LaTeX de uso geral, reaproveitados como base nos trabalhos acadêmicos.",
     image: "assets/media/modelos/poster.webp",
     video: "assets/media/modelos/tour.webm",
+    resumo: "Modelos LaTeX de uso geral, reaproveitados nos trabalhos acadêmicos.",
     i18n: {
-      en: "LaTeX templates for general use: articles, reports, theses, slides, posters, booklets, problem sets, exams and ABNT-compliant references.",
-      es: "Plantillas LaTeX de uso general: artículos, informes, tesis, diapositivas, pósteres, apuntes, listas de ejercicios, exámenes y referencias según ABNT.",
-      fr: "Modèles LaTeX à usage général : articles, rapports, mémoires, diapositives, affiches, fascicules, séries d'exercices, examens et références ABNT.",
-      it: "Modelli LaTeX per uso generale.",
-      zh: "通用 LaTeX 模板。"
+      en: {
+        brief: "Collection of general-purpose LaTeX templates, reused as a base in academic papers.",
+        resumo: "General-purpose LaTeX templates, reused across academic work."
+      },
+      es: {
+        brief: "Colección de plantillas LaTeX de uso general, reutilizadas como base en los trabajos académicos.",
+        resumo: "Plantillas LaTeX de uso general, reutilizadas en los trabajos académicos."
+      },
+      fr: {
+        brief: "Collection de modèles LaTeX à usage général, réutilisés comme base dans les travaux académiques.",
+        resumo: "Modèles LaTeX à usage général, réutilisés dans les travaux académiques."
+      },
+      it: {
+        brief: "Raccolta di modelli LaTeX di uso generale, riutilizzati come base nei lavori accademici.",
+        resumo: "Modelli LaTeX di uso generale, riutilizzati nei lavori accademici."
+      },
+      zh: { brief: "通用 LaTeX 模板合集,用作学术论文的基础模板。", resumo: "通用 LaTeX 模板,在各类学术作业中复用。" }
     }
   },
   {
@@ -469,18 +829,34 @@ const REPOS = [
     icon: "globe",
     repo: "https://github.com/pedroiff0/quartz-site",
     stack: [ "Quartz", "Obsidian", "Markdown", "TypeScript", "GitHub Actions" ],
-    tags: [ "Site Oficial", "Obsidian", "Multilíngue" ],
+    tags: [ "Obsidian", "Quartz", "Multilingual" ],
     brief: "Site pessoal/acadêmico oficial, multilíngue (PT completo; EN/ES/FR parciais), em Quartz a partir do vault Obsidian. Publicado em www.phrandrade.com. É o consolidado: pesquisa, notas de disciplinas, mídia e blog. Este portfólio é a página de boas-vindas dele.",
     image: "assets/media/page/poster.webp",
     video: "assets/media/page/tour.webm",
     live: "https://www.phrandrade.com/pt-br/",
     open: "https://www.phrandrade.com/pt-br/",
+    resumo: "Site oficial: pesquisa, notas de aula, mídia e blog, em Quartz a partir do Obsidian.",
     i18n: {
-      en: "Official personal/academic site, multilingual (full PT; partial EN/ES/FR), built with Quartz from an Obsidian vault. Published at www.phrandrade.com. It is the consolidated hub: research, course notes, media and blog. This portfolio is its welcome page.",
-      es: "Sitio personal/académico oficial, multilingüe (PT completo; EN/ES/FR parciales), en Quartz a partir del vault de Obsidian. Publicado en www.phrandrade.com. Es el consolidado: investigación, apuntes de asignaturas, medios y blog. Este portafolio es su página de bienvenida.",
-      fr: "Site personnel/académique officiel, multilingue (PT complet ; EN/ES/FR partiels), en Quartz à partir du vault Obsidian. Publié sur www.phrandrade.com. C'est le hub consolidé : recherche, notes de cours, médias et blog. Ce portfolio en est la page d'accueil.",
-      it: "Sito personale/accademico ufficiale, multilingue (PT completo; EN/ES/FR parziali), in Quartz a partire dal vault Obsidian. Pubblicato su www.phrandrade.com. È il consolidato: ricerca, appunti dei corsi, media e blog. Questo portfolio è la sua pagina di benvenuto.",
-      zh: "官方个人/学术网站,多语言(PT 完整;EN/ES/FR 部分),基于 Obsidian vault 使用 Quartz 构建。发布于 www.phrandrade.com。它是汇总站点:研究、课程笔记、媒体和博客。本作品集是其欢迎页面。"
+      en: {
+        brief: "Official personal/academic website, multilingual (PT complete; EN/ES/FR partial), built with Quartz from the Obsidian vault. Published at www.phrandrade.com. It is the consolidated hub: research, course notes, media and blog. This portfolio is its welcome page.",
+        resumo: "Official website: research, class notes, media and blog, built with Quartz from Obsidian."
+      },
+      es: {
+        brief: "Sitio personal/académico oficial, multilingüe (PT completo; EN/ES/FR parciales), creado con Quartz a partir del vault de Obsidian. Publicado en www.phrandrade.com. Es el sitio consolidado: investigación, notas de asignaturas, medios y blog. Este portafolio es su página de bienvenida.",
+        resumo: "Sitio oficial: investigación, notas de clase, medios y blog, creado con Quartz a partir de Obsidian."
+      },
+      fr: {
+        brief: "Site personnel/académique officiel, multilingue (PT complet ; EN/ES/FR partiels), construit avec Quartz à partir du vault Obsidian. Publié sur www.phrandrade.com. C'est le site consolidé : recherche, notes de cours, médias et blog. Ce portfolio en est la page d'accueil.",
+        resumo: "Site officiel : recherche, notes de cours, médias et blog, construit avec Quartz à partir d'Obsidian."
+      },
+      it: {
+        brief: "Sito personale/accademico ufficiale, multilingue (PT completo; EN/ES/FR parziali), realizzato con Quartz a partire dal vault Obsidian. Pubblicato su www.phrandrade.com. È il sito consolidato: ricerca, appunti dei corsi, media e blog. Questo portfolio è la sua pagina di benvenuto.",
+        resumo: "Sito ufficiale: ricerca, appunti delle lezioni, media e blog, realizzato con Quartz a partire da Obsidian."
+      },
+      zh: {
+        brief: "官方个人/学术网站,多语言(PT 完整;EN/ES/FR 部分),基于 Obsidian vault 使用 Quartz 构建。发布于 www.phrandrade.com。它是整合后的站点:研究、课程笔记、媒体和博客。本作品集是其欢迎页。",
+        resumo: "官方网站:研究、课堂笔记、媒体和博客,基于 Obsidian 使用 Quartz 构建。"
+      }
     }
   },
   {
@@ -490,16 +866,32 @@ const REPOS = [
     icon: "function",
     repo: "",
     stack: [ "LaTeX", "Python", "Sphinx" ],
-    tags: [ "Material Didático", "Cálculo", "Algoritmos", "Autoral" ],
+    tags: [ "LaTeX", "Teaching", "Calculus" ],
     brief: "Material didático próprio de Cálculo, em elaboração, escrito em LaTeX — dos fundamentos a sistemas lineares. Cobre revisão de Python/Cálculo I, sistemas de bases numéricas (binária, octal, decimal, hexadecimal) e sistemas lineares (eliminação de Gauss e fatoração LU, com e sem pivotamento). Cada capítulo traz apêndice próprio de algoritmos em versão simplificada, além de exemplos autorais que complementam o livro-texto padrão. Layout já ajustado; revisão de formatação (padrão Sphinx) e dos quadros de algoritmos em andamento.",
     image: "assets/media/livrocalculo/poster.webp",
     video: "assets/media/livrocalculo/tour.webm",
+    resumo: "Livro-texto próprio de Cálculo em LaTeX, em elaboração.",
     i18n: {
-      en: "My own Calculus textbook, in progress, written in LaTeX — from fundamentals to linear systems. Covers a Python/Calculus I refresher, numeral base systems (binary, octal, decimal, hexadecimal) and linear systems (Gaussian elimination and LU factorization, with and without pivoting). Each chapter has its own appendix of algorithms in simplified form, plus original examples complementing the standard textbook. Layout is settled; formatting review (Sphinx-style) and algorithm boxes still under way.",
-      es: "Material didáctico propio de Cálculo, en elaboración, escrito en LaTeX — de los fundamentos a los sistemas lineales. Cubre un repaso de Python/Cálculo I, sistemas de bases numéricas (binaria, octal, decimal, hexadecimal) y sistemas lineales (eliminación de Gauss y factorización LU, con y sin pivoteo). Cada capítulo trae su propio apéndice de algoritmos en versión simplificada, además de ejemplos de autoría propia que complementan el libro de texto estándar. Maquetación ya ajustada; revisión de formato (estilo Sphinx) y de los cuadros de algoritmos en curso.",
-      fr: "Manuel de Calcul de ma propre plume, en cours de rédaction, écrit en LaTeX — des fondements aux systèmes linéaires. Couvre une révision Python/Calcul I, les systèmes de bases numériques (binaire, octal, décimal, hexadécimal) et les systèmes linéaires (élimination de Gauss et factorisation LU, avec et sans pivotage). Chaque chapitre possède son propre annexe d'algorithmes en version simplifiée, ainsi que des exemples originaux complétant le manuel de référence. Mise en page arrêtée ; révision du formatage (style Sphinx) et des encadrés d'algorithmes en cours.",
-      it: "Materiale didattico proprio di Calcolo, in fase di elaborazione, scritto in LaTeX — dai fondamenti ai sistemi lineari. Copre un ripasso di Python/Calcolo I, i sistemi di basi numeriche (binaria, ottale, decimale, esadecimale) e i sistemi lineari (eliminazione di Gauss e fattorizzazione LU, con e senza pivoting). Ogni capitolo include un'appendice propria di algoritmi in versione semplificata, oltre a esempi originali che integrano il libro di testo standard. Layout già definito; revisione della formattazione (standard Sphinx) e dei riquadri degli algoritmi in corso.",
-      zh: "自编微积分教材,编写中,使用 LaTeX 撰写——从基础知识到线性方程组。内容涵盖 Python/微积分 I 复习、数制系统(二进制、八进制、十进制、十六进制)以及线性方程组(高斯消元法和 LU 分解,含选主元与不选主元两种情形)。每章都附有简化版算法的专属附录,并配有原创示例,作为标准教材的补充。版面已调整完毕;格式审校(Sphinx 标准)和算法框的检查正在进行中。"
+      en: {
+        brief: "Original Calculus teaching material, in progress, written in LaTeX — from the fundamentals to linear systems. It covers a review of Python/Calculus I, numeral systems (binary, octal, decimal, hexadecimal) and linear systems (Gaussian elimination and LU factorization, with and without pivoting). Each chapter includes its own appendix of algorithms in simplified form, along with original examples that complement the standard textbook. Layout already adjusted; formatting review (Sphinx standard) and of the algorithm boxes in progress.",
+        resumo: "Original Calculus textbook in LaTeX, in progress."
+      },
+      es: {
+        brief: "Material didáctico propio de Cálculo, en elaboración, escrito en LaTeX — desde los fundamentos hasta los sistemas lineales. Abarca un repaso de Python/Cálculo I, sistemas de numeración (binario, octal, decimal, hexadecimal) y sistemas lineales (eliminación de Gauss y factorización LU, con y sin pivoteo). Cada capítulo incluye su propio apéndice de algoritmos en versión simplificada, además de ejemplos originales que complementan el libro de texto estándar. Diseño ya ajustado; revisión del formato (estándar Sphinx) y de los cuadros de algoritmos en curso.",
+        resumo: "Libro de texto propio de Cálculo en LaTeX, en elaboración."
+      },
+      fr: {
+        brief: "Support pédagogique original de Calcul, en cours d'élaboration, rédigé en LaTeX — des fondements aux systèmes linéaires. Il couvre une révision de Python/Calcul I, les systèmes de numération (binaire, octal, décimal, hexadécimal) et les systèmes linéaires (élimination de Gauss et factorisation LU, avec et sans pivotage). Chaque chapitre comporte sa propre annexe d'algorithmes en version simplifiée, ainsi que des exemples originaux qui complètent le manuel standard. Mise en page déjà ajustée ; révision de la mise en forme (standard Sphinx) et des encadrés d'algorithmes en cours.",
+        resumo: "Manuel de Calcul original en LaTeX, en cours d'élaboration."
+      },
+      it: {
+        brief: "Materiale didattico originale di Calcolo, in fase di elaborazione, scritto in LaTeX — dai fondamenti ai sistemi lineari. Copre un ripasso di Python/Calcolo I, i sistemi di numerazione (binario, ottale, decimale, esadecimale) e i sistemi lineari (eliminazione di Gauss e fattorizzazione LU, con e senza pivoting). Ogni capitolo include una propria appendice di algoritmi in versione semplificata, oltre a esempi originali che integrano il libro di testo standard. Layout già sistemato; revisione della formattazione (standard Sphinx) e dei riquadri degli algoritmi in corso.",
+        resumo: "Libro di testo originale di Calcolo in LaTeX, in fase di elaborazione."
+      },
+      zh: {
+        brief: "自编的微积分教学材料,编写中,使用 LaTeX 撰写——从基础到线性方程组。内容涵盖 Python/微积分 I 复习、进制系统(二进制、八进制、十进制、十六进制)以及线性方程组(高斯消元法和 LU 分解,含主元选取与不选取两种情形)。每章都附有简化版算法附录,以及补充标准教材的原创示例。版面已调整完毕;格式审校(Sphinx 标准)和算法框的审校正在进行中。",
+        resumo: "自编的 LaTeX 微积分教材,编写中。"
+      }
     }
   },
   {
@@ -509,14 +901,30 @@ const REPOS = [
     icon: "formula",
     repo: "",
     stack: [ "LaTeX" ],
-    tags: [ "Material Didático", "Engenharia de Computação", "Autoral" ],
+    tags: [ "LaTeX", "Teaching", "Engineering" ],
     brief: "Plano, em planejamento, de escrever apostilas próprias cobrindo toda a grade de Engenharia de Computação — com teoria, exercícios e experimentos comentados. Abrange Cálculos I–IV e Cálculo Numérico, Física I–IV (com espaço para Quântica e de Partículas), Álgebra Linear, Algoritmos e Estruturas de Dados, Equações Diferenciais, Mecânica dos Sólidos e Fluidos, Eletricidade e Eletrônica, Banco de Dados, Engenharia de Software, Compiladores, Programação, Redes, Arquitetura de Computadores, Sistemas Operacionais e Embarcados, Metodologia Científica e Astrofísica. Complementa as notas de disciplinas já publicadas no site oficial.",
+    resumo: "Plano de apostilas próprias para toda a grade de Engenharia de Computação.",
     i18n: {
-      en: "A planned series of my own course booklets covering the entire Computer Engineering curriculum — with theory, exercises and annotated experiments. Spans Calculus I–IV and Numerical Methods, Physics I–IV (with room for Quantum and Particle Physics), Linear Algebra, Algorithms and Data Structures, Differential Equations, Solid and Fluid Mechanics, Electricity and Electronics, Databases, Software Engineering, Compilers, Programming, Networks, Computer Architecture, Operating and Embedded Systems, Scientific Methodology and Astrophysics. Complements the course notes already published on the official site.",
-      es: "Plan, en planificación, de escribir apuntes propios que cubran toda la malla de Ingeniería Informática — con teoría, ejercicios y experimentos comentados. Abarca Cálculos I–IV y Cálculo Numérico, Física I–IV (con espacio para Cuántica y de Partículas), Álgebra Lineal, Algoritmos y Estructuras de Datos, Ecuaciones Diferenciales, Mecánica de Sólidos y Fluidos, Electricidad y Electrónica, Bases de Datos, Ingeniería de Software, Compiladores, Programación, Redes, Arquitectura de Computadores, Sistemas Operativos y Embebidos, Metodología Científica y Astrofísica. Complementa los apuntes de asignaturas ya publicados en el sitio oficial.",
-      fr: "Projet, en cours de planification, d'écrire mes propres fascicules couvrant tout le programme de génie informatique — avec théorie, exercices et expériences commentées. Couvre Calcul I–IV et Calcul Numérique, Physique I–IV (avec place pour la Quantique et les Particules), Algèbre Linéaire, Algorithmes et Structures de Données, Équations Différentielles, Mécanique des Solides et des Fluides, Électricité et Électronique, Bases de Données, Génie Logiciel, Compilateurs, Programmation, Réseaux, Architecture des Ordinateurs, Systèmes d'Exploitation et Embarqués, Méthodologie Scientifique et Astrophysique. Complète les notes de cours déjà publiées sur le site officiel.",
-      it: "Piano, in fase di pianificazione, per scrivere dispense proprie che coprano l'intero piano di studi di Ingegneria Informatica — con teoria, esercizi ed esperimenti commentati. Comprende Calcolo I–IV e Calcolo Numerico, Fisica I–IV (con spazio per Fisica Quantistica e delle Particelle), Algebra Lineare, Algoritmi e Strutture Dati, Equazioni Differenziali, Meccanica dei Solidi e dei Fluidi, Elettricità ed Elettronica, Basi di Dati, Ingegneria del Software, Compilatori, Programmazione, Reti, Architettura dei Calcolatori, Sistemi Operativi ed Embedded, Metodologia Scientifica e Astrofisica. Integra gli appunti delle discipline già pubblicati sul sito ufficiale.",
-      zh: "计划中的项目:编写自己的讲义,覆盖计算机工程专业的全部课程——包含理论、习题和带注释的实验。涵盖微积分 I–IV 和数值计算、物理 I–IV(并为量子物理和粒子物理预留空间)、线性代数、算法与数据结构、微分方程、固体与流体力学、电学与电子学、数据库、软件工程、编译器、编程、网络、计算机体系结构、操作系统与嵌入式系统、科学方法论以及天体物理学。是对官方网站上已发布的课程笔记的补充。"
+      en: {
+        brief: "Plan, currently in the planning stage, to write original course handouts covering the entire Computer Engineering curriculum — with theory, exercises and annotated experiments. It spans Calculus I–IV and Numerical Calculus, Physics I–IV (with room for Quantum and Particle Physics), Linear Algebra, Algorithms and Data Structures, Differential Equations, Mechanics of Solids and Fluids, Electricity and Electronics, Databases, Software Engineering, Compilers, Programming, Networks, Computer Architecture, Operating Systems and Embedded Systems, Scientific Methodology and Astrophysics. It complements the course notes already published on the official website.",
+        resumo: "Plan for original course handouts covering the entire Computer Engineering curriculum."
+      },
+      es: {
+        brief: "Plan, en fase de planificación, para escribir apuntes propios que cubran todo el plan de estudios de Ingeniería Informática — con teoría, ejercicios y experimentos comentados. Abarca Cálculo I–IV y Cálculo Numérico, Física I–IV (con espacio para Física Cuántica y de Partículas), Álgebra Lineal, Algoritmos y Estructuras de Datos, Ecuaciones Diferenciales, Mecánica de Sólidos y Fluidos, Electricidad y Electrónica, Bases de Datos, Ingeniería de Software, Compiladores, Programación, Redes, Arquitectura de Computadores, Sistemas Operativos y Embebidos, Metodología Científica y Astrofísica. Complementa las notas de asignaturas ya publicadas en el sitio oficial.",
+        resumo: "Plan de apuntes propios para todo el plan de estudios de Ingeniería Informática."
+      },
+      fr: {
+        brief: "Plan, en cours de planification, visant à rédiger des polycopiés originaux couvrant l'ensemble du cursus d'Ingénierie Informatique — avec théorie, exercices et expériences commentées. Il couvre Calcul I–IV et Calcul Numérique, Physique I–IV (avec une place pour la Physique Quantique et des Particules), Algèbre Linéaire, Algorithmes et Structures de Données, Équations Différentielles, Mécanique des Solides et des Fluides, Électricité et Électronique, Bases de Données, Génie Logiciel, Compilateurs, Programmation, Réseaux, Architecture des Ordinateurs, Systèmes d'Exploitation et Embarqués, Méthodologie Scientifique et Astrophysique. Il complète les notes de cours déjà publiées sur le site officiel.",
+        resumo: "Plan de polycopiés originaux couvrant l'ensemble du cursus d'Ingénierie Informatique."
+      },
+      it: {
+        brief: "Piano, in fase di pianificazione, per scrivere dispense originali che coprano l'intero piano di studi di Ingegneria Informatica — con teoria, esercizi ed esperimenti commentati. Comprende Calcoli I–IV e Calcolo Numerico, Fisica I–IV (con spazio per Fisica Quantistica e delle Particelle), Algebra Lineare, Algoritmi e Strutture Dati, Equazioni Differenziali, Meccanica dei Solidi e dei Fluidi, Elettricità ed Elettronica, Basi di Dati, Ingegneria del Software, Compilatori, Programmazione, Reti, Architettura dei Calcolatori, Sistemi Operativi ed Embedded, Metodologia Scientifica e Astrofisica. Integra gli appunti dei corsi già pubblicati sul sito ufficiale.",
+        resumo: "Piano di dispense originali per l'intero piano di studi di Ingegneria Informatica."
+      },
+      zh: {
+        brief: "计划中的项目,拟自编讲义,覆盖计算机工程专业的全部课程——包含理论、习题和带注释的实验。涵盖微积分 I–IV 与数值计算、物理 I–IV(并为量子物理和粒子物理预留空间)、线性代数、算法与数据结构、微分方程、固体与流体力学、电学与电子学、数据库、软件工程、编译器、编程、网络、计算机体系结构、操作系统与嵌入式系统、科研方法论以及天体物理。它是对官方网站上已发布课程笔记的补充。",
+        resumo: "为计算机工程专业全部课程自编讲义的计划。"
+      }
     }
   },
   {
@@ -526,14 +934,30 @@ const REPOS = [
     icon: "life",
     repo: "https://github.com/pedroiff0/hardcore-life",
     stack: [ "Obsidian", "PARA", "Markdown" ],
-    tags: [ "Produtividade", "Second Brain", "PARA" ],
+    tags: [ "Obsidian", "PARA", "Productivity" ],
     brief: "Vault Obsidian de gestão de vida pelo método PARA (projetos, áreas, recursos, arquivos), com mais de 4000 arquivos — a base de conhecimento pessoal de onde saem notas, planejamento e diário.",
+    resumo: "Vault Obsidian (PARA) que concentra projetos, áreas, notas e diário.",
     i18n: {
-      en: "Obsidian vault for life management using the PARA method (projects, areas, resources, archives), with over 4000 files — the personal knowledge base behind my notes, planning and journal.",
-      es: "Vault de Obsidian para gestión de vida con el método PARA (proyectos, áreas, recursos, archivos), con más de 4000 archivos — la base de conocimiento personal de la que salen notas, planificación y diario.",
-      fr: "Vault Obsidian de gestion de vie selon la méthode PARA (projets, domaines, ressources, archives), avec plus de 4000 fichiers — la base de connaissances personnelle d'où sortent notes, planification et journal.",
-      it: "Vault Obsidian per la gestione della vita secondo il metodo PARA (progetti, aree, risorse, archivi), con più di 4000 file — la base di conoscenza personale da cui nascono note, pianificazione e diario.",
-      zh: "采用 PARA 方法(项目、领域、资源、归档)管理生活的 Obsidian 知识库,包含 4000 多个文件——是笔记、规划和日记的个人知识库来源。"
+      en: {
+        brief: "Obsidian vault for life management using the PARA method (projects, areas, resources, archives), with over 4000 files — the personal knowledge base from which notes, planning and journal come.",
+        resumo: "Obsidian (PARA) vault that centralizes projects, areas, notes and journal."
+      },
+      es: {
+        brief: "Vault de Obsidian para la gestión de la vida mediante el método PARA (proyectos, áreas, recursos, archivos), con más de 4000 archivos — la base de conocimiento personal de la que salen notas, planificación y diario.",
+        resumo: "Vault de Obsidian (PARA) que concentra proyectos, áreas, notas y diario."
+      },
+      fr: {
+        brief: "Vault Obsidian de gestion de vie selon la méthode PARA (projets, domaines, ressources, archives), avec plus de 4000 fichiers — la base de connaissances personnelle d'où sortent notes, planification et journal.",
+        resumo: "Vault Obsidian (PARA) qui centralise projets, domaines, notes et journal."
+      },
+      it: {
+        brief: "Vault Obsidian per la gestione della vita con il metodo PARA (progetti, aree, risorse, archivi), con più di 4000 file — la base di conoscenza personale da cui nascono appunti, pianificazione e diario.",
+        resumo: "Vault Obsidian (PARA) che raccoglie progetti, aree, appunti e diario."
+      },
+      zh: {
+        brief: "采用 PARA 方法(项目、领域、资源、归档)进行生活管理的 Obsidian vault,拥有 4000 多个文件——是笔记、规划和日记的个人知识库来源。",
+        resumo: "集中管理项目、领域、笔记和日记的 Obsidian (PARA) vault。"
+      }
     }
   },
   {
@@ -543,14 +967,30 @@ const REPOS = [
     icon: "dashboard",
     repo: "",
     stack: [ "Node.js", "Express", "MongoDB", "Docker" ],
-    tags: [ "Life OS", "Modular", "Multi-módulo", "Família" ],
+    tags: [ "Life OS", "Modular" ],
     brief: "Plataforma pessoal modular, em planejamento, para reunir num só sistema o que hoje vive espalhado em planilhas e apps soltos. Um núcleo, vários módulos integrados: Controle Financeiro, Investimentos, Automotivo, Tarefas, Streamings (assinaturas) e Compartilhamento Familiar com acesso restrito por convite. Acesso pensado em duas camadas: web (aberta ou restrita conforme o módulo) e área privada.",
+    resumo: "Plataforma modular de vida (finanças, tarefas, família), em planejamento.",
     i18n: {
-      en: "A planned modular personal platform to bring into one system what today lives scattered across spreadsheets and standalone apps. One core, several integrated modules: Finances, Investments, Vehicles, Tasks, Streaming subscriptions and Family Sharing with invite-only access. Access designed in two layers: web (open or restricted depending on the module) and a private area.",
-      es: "Plataforma personal modular, en planificación, para reunir en un solo sistema lo que hoy vive disperso en hojas de cálculo y apps sueltas. Un núcleo, varios módulos integrados: Control Financiero, Inversiones, Automotriz, Tareas, Streamings (suscripciones) y Compartición Familiar con acceso restringido por invitación. Acceso pensado en dos capas: web (abierta o restringida según el módulo) y área privada.",
-      fr: "Plateforme personnelle modulaire, en cours de planification, pour réunir dans un seul système ce qui vit aujourd'hui éparpillé entre tableurs et applications isolées. Un noyau, plusieurs modules intégrés : Finances, Investissements, Automobile, Tâches, Abonnements streaming et Partage Familial sur invitation. Accès pensé en deux couches : web (ouverte ou restreinte selon le module) et espace privé.",
-      it: "Piattaforma personale modulare, in fase di pianificazione, per riunire in un unico sistema ciò che oggi è sparso tra fogli di calcolo e app isolate. Un nucleo, più moduli integrati: Controllo Finanziario, Investimenti, Automotive, Attività, Streaming (abbonamenti) e Condivisione Familiare con accesso limitato su invito. Accesso pensato su due livelli: web (aperto o riservato a seconda del modulo) e area privata.",
-      zh: "计划中的模块化个人平台,旨在把目前分散在各种电子表格和零散应用中的内容整合到一个系统里。一个核心,多个集成模块:财务管理、投资、汽车、任务、流媒体(订阅)以及仅限受邀访问的家庭共享。访问方式设计为两层:网页端(按模块开放或受限)和私人区域。"
+      en: {
+        brief: "Modular personal platform, in planning, to bring together in a single system what today lives scattered across spreadsheets and standalone apps. One core, several integrated modules: Financial Control, Investments, Automotive, Tasks, Streaming (subscriptions) and Family Sharing with invitation-only restricted access. Access designed in two layers: web (open or restricted depending on the module) and private area.",
+        resumo: "Modular life platform (finance, tasks, family), in planning."
+      },
+      es: {
+        brief: "Plataforma personal modular, en planificación, para reunir en un solo sistema lo que hoy vive disperso en hojas de cálculo y aplicaciones sueltas. Un núcleo, varios módulos integrados: Control Financiero, Inversiones, Automotriz, Tareas, Streamings (suscripciones) y Compartición Familiar con acceso restringido por invitación. Acceso pensado en dos capas: web (abierta o restringida según el módulo) y área privada.",
+        resumo: "Plataforma modular de vida (finanzas, tareas, familia), en planificación."
+      },
+      fr: {
+        brief: "Plateforme personnelle modulaire, en cours de planification, pour réunir dans un seul système ce qui est aujourd'hui dispersé entre des tableurs et des applications isolées. Un noyau, plusieurs modules intégrés : Contrôle Financier, Investissements, Automobile, Tâches, Streamings (abonnements) et Partage Familial avec accès restreint sur invitation. Accès conçu en deux couches : web (ouvert ou restreint selon le module) et espace privé.",
+        resumo: "Plateforme de vie modulaire (finances, tâches, famille), en cours de planification."
+      },
+      it: {
+        brief: "Piattaforma personale modulare, in fase di pianificazione, per riunire in un unico sistema ciò che oggi è sparso tra fogli di calcolo e app isolate. Un nucleo, più moduli integrati: Controllo Finanziario, Investimenti, Automotive, Attività, Streaming (abbonamenti) e Condivisione Familiare con accesso limitato su invito. Accesso pensato su due livelli: web (aperto o limitato a seconda del modulo) e area privata.",
+        resumo: "Piattaforma di vita modulare (finanze, attività, famiglia), in fase di pianificazione."
+      },
+      zh: {
+        brief: "计划中的模块化个人平台,旨在把目前分散在电子表格和各类独立应用中的内容整合到一个系统里。一个核心,多个集成模块:财务管理、投资、汽车、任务、流媒体(订阅)以及仅限受邀访问的家庭共享。访问方式分为两层:网页端(按模块开放或受限)和私人区域。",
+        resumo: "模块化生活平台(财务、任务、家庭),规划中。"
+      }
     }
   },
   {
@@ -560,14 +1000,30 @@ const REPOS = [
     icon: "dashboard",
     repo: "https://github.com/pedroiff0/dashboard-life",
     stack: [ "Node.js", "Express", "MongoDB", "Docker" ],
-    tags: [ "Life OS", "Hábitos", "Métricas" ],
+    tags: [ "Life OS", "Habits", "Metrics" ],
     brief: "Dashboard pessoal de hábitos e métricas de vida, derivado do vault hardcore-life e primeiro passo concreto rumo à plataforma HardCoreLife. Node + Express + MongoDB, deploy via Docker. Em desenvolvimento.",
+    resumo: "Painel de hábitos e métricas de vida, primeiro passo da plataforma HardCoreLife.",
     i18n: {
-      en: "Personal dashboard for habits and life metrics, derived from the hardcore-life vault and the first concrete step towards the HardCoreLife platform. Node + Express + MongoDB, deployed via Docker. Under development.",
-      es: "Dashboard personal de hábitos y métricas de vida, derivado del vault hardcore-life y primer paso concreto hacia la plataforma HardCoreLife. Node + Express + MongoDB, despliegue vía Docker. En desarrollo.",
-      fr: "Tableau de bord personnel d'habitudes et de métriques de vie, dérivé du vault hardcore-life et première étape concrète vers la plateforme HardCoreLife. Node + Express + MongoDB, déploiement via Docker. En développement.",
-      it: "Dashboard personale di abitudini e metriche di vita, derivata dal vault hardcore-life e primo passo concreto verso la piattaforma HardCoreLife. Node + Express + MongoDB, deploy tramite Docker. In sviluppo.",
-      zh: "个人习惯与生活指标仪表盘,源自 hardcore-life 知识库,是迈向 HardCoreLife 平台的第一步。Node + Express + MongoDB,通过 Docker 部署。开发中。"
+      en: {
+        brief: "Personal dashboard for habits and life metrics, derived from the hardcore-life vault and the first concrete step toward the HardCoreLife platform. Node + Express + MongoDB, deployed via Docker. In development.",
+        resumo: "Dashboard for habits and life metrics, first step toward the HardCoreLife platform."
+      },
+      es: {
+        brief: "Panel personal de hábitos y métricas de vida, derivado del vault hardcore-life y primer paso concreto hacia la plataforma HardCoreLife. Node + Express + MongoDB, despliegue con Docker. En desarrollo.",
+        resumo: "Panel de hábitos y métricas de vida, primer paso hacia la plataforma HardCoreLife."
+      },
+      fr: {
+        brief: "Tableau de bord personnel d'habitudes et de métriques de vie, dérivé du vault hardcore-life et premier pas concret vers la plateforme HardCoreLife. Node + Express + MongoDB, déploiement via Docker. En développement.",
+        resumo: "Tableau de bord d'habitudes et de métriques de vie, premier pas vers la plateforme HardCoreLife."
+      },
+      it: {
+        brief: "Dashboard personale di abitudini e metriche di vita, derivata dal vault hardcore-life e primo passo concreto verso la piattaforma HardCoreLife. Node + Express + MongoDB, deploy tramite Docker. In sviluppo.",
+        resumo: "Dashboard di abitudini e metriche di vita, primo passo verso la piattaforma HardCoreLife."
+      },
+      zh: {
+        brief: "个人习惯与生活指标仪表盘,源自 hardcore-life vault,是迈向 HardCoreLife 平台的第一步。Node + Express + MongoDB,通过 Docker 部署。开发中。",
+        resumo: "习惯与生活指标仪表盘,是迈向 HardCoreLife 平台的第一步。"
+      }
     }
   },
   {
@@ -577,14 +1033,30 @@ const REPOS = [
     icon: "profile",
     repo: "https://github.com/pedroiff0/tg-agent-bridge",
     stack: [ "Python 3.12", "python-telegram-bot", "httpx", "faster-whisper", "SQLite", "tmux" ],
-    tags: [ "Telegram", "Agentes de IA", "Automação", "Obsidian" ],
+    tags: [ "Telegram", "AI", "Automation" ],
     brief: "Bot do Telegram que liga o celular ao vault hardcore-life e aos agentes de IA (Claude Code e AGY): brief diário, lembretes, check-ins de rotina com botões, consultas somente leitura ao vault e aos repositórios, controle de sessões tmux, transcrição de áudio com Whisper e integração com o ReLaTeX. Regras de segurança bloqueiam arquivos sensíveis e notas protegidas.",
+    resumo: "Bot do Telegram que liga o celular ao vault e aos agentes de IA.",
     i18n: {
-      en: "Telegram bot that connects the phone to the hardcore-life vault and to AI agents (Claude Code and AGY): daily brief, reminders, routine check-ins with buttons, read-only queries to the vault and repositories, tmux session control, audio transcription with Whisper, and integration with ReLaTeX. Security rules block sensitive files and protected notes.",
-      es: "Bot de Telegram que conecta el celular con el vault hardcore-life y con los agentes de IA (Claude Code y AGY): brief diario, recordatorios, check-ins de rutina con botones, consultas de solo lectura al vault y a los repositorios, control de sesiones tmux, transcripción de audio con Whisper e integración con ReLaTeX. Las reglas de seguridad bloquean archivos sensibles y notas protegidas.",
-      fr: "Bot Telegram qui relie le téléphone au vault hardcore-life et aux agents d'IA (Claude Code et AGY) : brief quotidien, rappels, check-ins de routine avec boutons, requêtes en lecture seule sur le vault et les dépôts, contrôle des sessions tmux, transcription audio avec Whisper et intégration avec ReLaTeX. Des règles de sécurité bloquent les fichiers sensibles et les notes protégées.",
-      it: "Bot di Telegram che collega il cellulare al vault hardcore-life e agli agenti di IA (Claude Code e AGY): brief giornaliero, promemoria, check-in di routine con pulsanti, consultazioni in sola lettura al vault e ai repository, controllo delle sessioni tmux, trascrizione audio con Whisper e integrazione con ReLaTeX. Regole di sicurezza bloccano i file sensibili e le note protette.",
-      zh: "Telegram 机器人,将手机与 hardcore-life vault 以及 AI 智能体(Claude Code 和 AGY)连接起来:每日简报、提醒、带按钮的日常打卡、对 vault 和代码仓库的只读查询、tmux 会话控制、使用 Whisper 的语音转录,以及与 ReLaTeX 的集成。安全规则会拦截敏感文件和受保护的笔记。"
+      en: {
+        brief: "Telegram bot that connects the phone to the hardcore-life vault and to AI agents (Claude Code and AGY): daily brief, reminders, routine check-ins with buttons, read-only queries to the vault and repositories, tmux session control, audio transcription with Whisper and integration with ReLaTeX. Security rules block sensitive files and protected notes.",
+        resumo: "Telegram bot that connects the phone to the vault and to AI agents."
+      },
+      es: {
+        brief: "Bot de Telegram que conecta el celular con el vault hardcore-life y con los agentes de IA (Claude Code y AGY): resumen diario, recordatorios, check-ins de rutina con botones, consultas de solo lectura al vault y a los repositorios, control de sesiones tmux, transcripción de audio con Whisper e integración con ReLaTeX. Reglas de seguridad bloquean archivos sensibles y notas protegidas.",
+        resumo: "Bot de Telegram que conecta el celular con el vault y los agentes de IA."
+      },
+      fr: {
+        brief: "Bot Telegram qui relie le téléphone au vault hardcore-life et aux agents d'IA (Claude Code et AGY) : brief quotidien, rappels, check-ins de routine avec boutons, consultations en lecture seule du vault et des dépôts, contrôle de sessions tmux, transcription audio avec Whisper et intégration avec ReLaTeX. Des règles de sécurité bloquent les fichiers sensibles et les notes protégées.",
+        resumo: "Bot Telegram qui relie le téléphone au vault et aux agents d'IA."
+      },
+      it: {
+        brief: "Bot Telegram che collega il telefono al vault hardcore-life e agli agenti di IA (Claude Code e AGY): brief giornaliero, promemoria, check-in di routine con pulsanti, consultazioni in sola lettura del vault e dei repository, controllo delle sessioni tmux, trascrizione audio con Whisper e integrazione con ReLaTeX. Regole di sicurezza bloccano i file sensibili e le note protette.",
+        resumo: "Bot Telegram che collega il telefono al vault e agli agenti di IA."
+      },
+      zh: {
+        brief: "Telegram 机器人,将手机与 hardcore-life vault 以及 AI 智能体(Claude Code 和 AGY)连接起来:每日简报、提醒、带按钮的日常打卡、对 vault 和代码仓库的只读查询、tmux 会话控制、使用 Whisper 的音频转录,以及与 ReLaTeX 的集成。安全规则会拦截敏感文件和受保护的笔记。",
+        resumo: "将手机与 vault 和 AI 智能体连接起来的 Telegram 机器人。"
+      }
     }
   },
   {
@@ -594,14 +1066,30 @@ const REPOS = [
     icon: "document",
     repo: "https://github.com/pedroiff0/baton",
     stack: [ "Python 3", "Swift/AppKit", "pdf.js", "Tailscale", "PWA" ],
-    tags: [ "Apresentações", "Controle Remoto", "macOS", "Código Aberto" ],
+    tags: [ "Presentations", "macOS", "Open Source" ],
     brief: "Controle remoto de apresentações pelo iPhone, via Tailscale, no estilo do clicker Logitech Spotlight, sem instalar nada no celular. Funciona com qualquer aplicativo (PowerPoint, Keynote, leitores de PDF) ou abre o PDF no navegador com transições, notas do apresentador, passos dentro do slide e prévia do próximo slide. Laser, foco com desfoque ajustável, caneta, marca-texto, zoom, cronômetro e \"Ir para\" por número. Licença MIT.",
+    resumo: "Celular como passador de slides via Tailscale, com laser, caneta e cronômetro.",
     i18n: {
-      en: "Presentation remote control from the iPhone, over Tailscale, in the style of the Logitech Spotlight clicker, with nothing to install on the phone. Works with any application (PowerPoint, Keynote, PDF readers) or opens the PDF in the browser with transitions, speaker notes, in-slide steps and a next-slide preview. Laser, focus with adjustable blur, pen, highlighter, zoom, timer and \"Go to\" by number. MIT license.",
-      es: "Control remoto de presentaciones desde el iPhone, a través de Tailscale, al estilo del clicker Logitech Spotlight, sin instalar nada en el celular. Funciona con cualquier aplicación (PowerPoint, Keynote, lectores de PDF) o abre el PDF en el navegador con transiciones, notas del presentador, pasos dentro de la diapositiva y vista previa de la siguiente diapositiva. Láser, foco con desenfoque ajustable, lápiz, marcador, zoom, cronómetro e \"Ir a\" por número. Licencia MIT.",
-      fr: "Télécommande de présentations depuis l'iPhone, via Tailscale, dans le style du clicker Logitech Spotlight, sans rien installer sur le téléphone. Fonctionne avec n'importe quelle application (PowerPoint, Keynote, lecteurs de PDF) ou ouvre le PDF dans le navigateur avec transitions, notes du présentateur, étapes à l'intérieur de la diapositive et aperçu de la diapositive suivante. Laser, focus avec flou réglable, stylo, surligneur, zoom, chronomètre et « Aller à » par numéro. Licence MIT.",
-      it: "Telecomando per presentazioni dall'iPhone, tramite Tailscale, nello stile del clicker Logitech Spotlight, senza installare nulla sul telefono. Funziona con qualsiasi applicazione (PowerPoint, Keynote, lettori PDF) oppure apre il PDF nel browser con transizioni, note del relatore, passaggi all'interno della slide e anteprima della slide successiva. Laser, focus con sfocatura regolabile, penna, evidenziatore, zoom, timer e \"Vai a\" tramite numero. Licenza MIT.",
-      zh: "通过 iPhone 经由 Tailscale 远程控制演示文稿,风格类似 Logitech Spotlight 翻页笔,无需在手机上安装任何应用。可配合任意应用(PowerPoint、Keynote、PDF 阅读器)使用,也可在浏览器中打开 PDF,支持切换动画、演讲者备注、幻灯片内分步显示以及下一张幻灯片预览。具备激光笔、可调节模糊度的聚焦、画笔、荧光笔、缩放、计时器,以及按编号“跳转到”功能。MIT 许可证。"
+      en: {
+        brief: "Remote control for presentations from an iPhone, over Tailscale, in the style of the Logitech Spotlight clicker, with nothing to install on the phone. Works with any application (PowerPoint, Keynote, PDF readers) or opens the PDF in the browser with transitions, speaker notes, in-slide steps and a preview of the next slide. Laser, focus with adjustable blur, pen, highlighter, zoom, timer and \"Go to\" by number. MIT license.",
+        resumo: "Phone as a slide clicker over Tailscale, with laser, pen and timer."
+      },
+      es: {
+        brief: "Control remoto de presentaciones desde el iPhone, a través de Tailscale, al estilo del clicker Logitech Spotlight, sin instalar nada en el móvil. Funciona con cualquier aplicación (PowerPoint, Keynote, lectores de PDF) o abre el PDF en el navegador con transiciones, notas del presentador, pasos dentro de la diapositiva y vista previa de la siguiente diapositiva. Láser, foco con desenfoque ajustable, lápiz, resaltador, zoom, cronómetro e \"Ir a\" por número. Licencia MIT.",
+        resumo: "El móvil como pasador de diapositivas a través de Tailscale, con láser, lápiz y cronómetro."
+      },
+      fr: {
+        brief: "Télécommande de présentations depuis l'iPhone, via Tailscale, dans le style du clicker Logitech Spotlight, sans rien installer sur le téléphone. Fonctionne avec n'importe quelle application (PowerPoint, Keynote, lecteurs de PDF) ou ouvre le PDF dans le navigateur avec transitions, notes du présentateur, étapes au sein de la diapositive et aperçu de la diapositive suivante. Laser, focus avec flou réglable, stylo, surligneur, zoom, chronomètre et « Aller à » par numéro. Licence MIT.",
+        resumo: "Le téléphone comme télécommande de diapositives via Tailscale, avec laser, stylo et chronomètre."
+      },
+      it: {
+        brief: "Telecomando per presentazioni dall'iPhone, tramite Tailscale, nello stile del clicker Logitech Spotlight, senza installare nulla sul telefono. Funziona con qualsiasi applicazione (PowerPoint, Keynote, lettori PDF) oppure apre il PDF nel browser con transizioni, note del relatore, passaggi all'interno della slide e anteprima della slide successiva. Laser, messa a fuoco con sfocatura regolabile, penna, evidenziatore, zoom, cronometro e \"Vai a\" per numero. Licenza MIT.",
+        resumo: "Il telefono come telecomando per slide tramite Tailscale, con laser, penna e cronometro."
+      },
+      zh: {
+        brief: "通过 iPhone 并借助 Tailscale 远程控制演示文稿,风格类似 Logitech Spotlight 翻页笔,无需在手机上安装任何东西。适用于任何应用(PowerPoint、Keynote、PDF 阅读器),也可在浏览器中打开 PDF,支持转场、演讲者备注、幻灯片内分步动画以及下一张幻灯片预览。提供激光笔、可调模糊度的聚焦、画笔、荧光笔、缩放、计时器,以及按编号“跳转到”功能。MIT 许可证。",
+        resumo: "通过 Tailscale 把手机变成翻页器,带激光笔、画笔和计时器。"
+      }
     }
   },
   {
@@ -611,16 +1099,32 @@ const REPOS = [
     icon: "github",
     repo: "https://github.com/pedroiff0/devops-guide",
     stack: [ "Docs", "TypeScript", "GitHub Actions" ],
-    tags: [ "Boas Práticas", "Templates", "Versionamento" ],
+    tags: [ "DevOps", "Git", "Open Source" ],
     brief: "Segundo cérebro de documentações reexplicadas e hub DevOps (devops.phrandrade.com): guia próprio de Git e boas práticas de versionamento, prático e sem ser mais um manual genérico de comandos. Reúne templates, exemplos de Actions, Projects, Issues e estratégias de branching, com módulos sobre dockerização, versionamento em arquiteturas de microsserviços e padrões de documentação de repositório.",
     image: "assets/media/guiagithub/poster.webp",
     video: "assets/media/guiagithub/tour.webm",
+    resumo: "Segundo cérebro de DevOps e Git, com templates e exemplos de Actions.",
     i18n: {
-      en: "A second brain of re-explained documentation and DevOps hub (devops.phrandrade.com): a custom guide to Git and versioning best practices, practical and not just another generic command manual. It gathers templates, examples of Actions, Projects, Issues and branching strategies, with modules on dockerization, versioning in microservices architectures and repository documentation standards.",
-      es: "Segundo cerebro de documentaciones reexplicadas y hub DevOps (devops.phrandrade.com): guía propia de Git y buenas prácticas de versionado, práctica y sin ser un manual genérico de comandos más. Reúne plantillas, ejemplos de Actions, Projects, Issues y estrategias de branching, con módulos sobre dockerización, versionado en arquitecturas de microservicios y estándares de documentación de repositorios.",
-      fr: "Second cerveau de documentations réexpliquées et hub DevOps (devops.phrandrade.com) : guide personnel de Git et des bonnes pratiques de versionnement, pratique et sans être un énième manuel générique de commandes. Il réunit des modèles, des exemples d'Actions, Projects, Issues et des stratégies de branching, avec des modules sur la dockerisation, le versionnement dans les architectures de microservices et les standards de documentation de dépôt.",
-      it: "Secondo cervello di documentazioni rispiegate e hub DevOps (devops.phrandrade.com): guida personale a Git e alle buone pratiche di versionamento, pratica e non l'ennesimo manuale generico di comandi. Raccoglie template, esempi di Actions, Projects, Issues e strategie di branching, con moduli su dockerizzazione, versionamento in architetture a microservizi e standard di documentazione dei repository.",
-      zh: "重新讲解文档的“第二大脑”与 DevOps 中心(devops.phrandrade.com):自编的 Git 与版本管理最佳实践指南,注重实用,不是又一本泛泛的命令手册。汇集了模板、Actions、Projects、Issues 示例和分支策略,并包含 Docker 容器化、微服务架构中的版本管理以及仓库文档规范等模块。"
+      en: {
+        brief: "A second brain of re-explained documentation and a DevOps hub (devops.phrandrade.com): a personal Git and versioning best-practices guide, practical and not just another generic command manual. It gathers templates, examples of Actions, Projects, Issues and branching strategies, with modules on dockerization, versioning in microservices architectures and repository documentation standards.",
+        resumo: "DevOps and Git second brain, with templates and Actions examples."
+      },
+      es: {
+        brief: "Segundo cerebro de documentaciones reexplicadas y hub DevOps (devops.phrandrade.com): guía propia de Git y buenas prácticas de versionado, práctica y sin ser otro manual genérico de comandos. Reúne plantillas, ejemplos de Actions, Projects, Issues y estrategias de branching, con módulos sobre dockerización, versionado en arquitecturas de microservicios y estándares de documentación de repositorios.",
+        resumo: "Segundo cerebro de DevOps y Git, con plantillas y ejemplos de Actions."
+      },
+      fr: {
+        brief: "Second cerveau de documentations réexpliquées et hub DevOps (devops.phrandrade.com) : guide personnel de Git et des bonnes pratiques de versionnement, pratique et sans être un énième manuel générique de commandes. Il rassemble des modèles, des exemples d'Actions, de Projects, d'Issues et des stratégies de branching, avec des modules sur la dockerisation, le versionnement dans les architectures de microservices et les standards de documentation de dépôt.",
+        resumo: "Second cerveau DevOps et Git, avec modèles et exemples d'Actions."
+      },
+      it: {
+        brief: "Secondo cervello di documentazioni rispiegate e hub DevOps (devops.phrandrade.com): guida personale a Git e alle buone pratiche di versionamento, pratica e non l'ennesimo manuale generico di comandi. Raccoglie template, esempi di Actions, Projects, Issues e strategie di branching, con moduli su dockerizzazione, versionamento in architetture a microservizi e standard di documentazione dei repository.",
+        resumo: "Secondo cervello DevOps e Git, con template ed esempi di Actions."
+      },
+      zh: {
+        brief: "一个由重新讲解的文档构成的“第二大脑”和 DevOps 中心(devops.phrandrade.com):个人整理的 Git 与版本管理最佳实践指南,注重实用,而不是又一本泛泛的命令手册。汇集了模板、Actions、Projects、Issues 的示例以及分支策略,并包含关于容器化(dockerization)、微服务架构中的版本管理以及仓库文档规范的模块。",
+        resumo: "DevOps 与 Git 的“第二大脑”,含模板和 Actions 示例。"
+      }
     }
   },
   {
@@ -630,16 +1134,32 @@ const REPOS = [
     icon: "profile",
     repo: "https://github.com/pedroiff0/pedroiff0",
     stack: [ "Profile", "Markdown" ],
-    tags: [ "README" ],
+    tags: [ "GitHub", "Markdown" ],
     brief: "README de perfil do GitHub: bio, links, Tech & Tools, constelação de projetos em destaque (repositórios públicos, com os privados apenas citados) e linha do tempo de bolsas.",
     image: "assets/media/perfil/poster.webp",
     video: "assets/media/perfil/tour.webm",
+    resumo: "README do perfil do GitHub com projetos e linha do tempo de bolsas.",
     i18n: {
-      en: "GitHub profile README: bio, links, Tech & Tools, a constellation of featured projects (public repositories, with private ones only mentioned) and a scholarship timeline.",
-      es: "README de perfil de GitHub: bio, enlaces, Tech & Tools, constelación de proyectos destacados (repositorios públicos, con los privados solo mencionados) y línea de tiempo de becas.",
-      fr: "README de profil GitHub : bio, liens, Tech & Tools, constellation de projets en vedette (dépôts publics, les privés étant seulement mentionnés) et frise chronologique des bourses.",
-      it: "README del profilo GitHub: bio, link, Tech & Tools, costellazione di progetti in evidenza (repository pubblici, con quelli privati solo citati) e linea del tempo delle borse di studio.",
-      zh: "GitHub 个人主页 README:简介、链接、Tech & Tools、精选项目星座(公开仓库,私有仓库仅作提及)以及奖学金时间线。"
+      en: {
+        brief: "GitHub profile README: bio, links, Tech & Tools, a constellation of featured projects (public repositories, with private ones only mentioned) and a scholarship timeline.",
+        resumo: "GitHub profile README with projects and a scholarship timeline."
+      },
+      es: {
+        brief: "README del perfil de GitHub: bio, enlaces, Tech & Tools, constelación de proyectos destacados (repositorios públicos, con los privados solo mencionados) y línea de tiempo de becas.",
+        resumo: "README del perfil de GitHub con proyectos y línea de tiempo de becas."
+      },
+      fr: {
+        brief: "README du profil GitHub : bio, liens, Tech & Tools, constellation de projets en vedette (dépôts publics, les privés étant seulement mentionnés) et frise chronologique des bourses.",
+        resumo: "README du profil GitHub avec projets et frise chronologique des bourses."
+      },
+      it: {
+        brief: "README del profilo GitHub: bio, link, Tech & Tools, costellazione di progetti in evidenza (repository pubblici, con quelli privati solo citati) e linea del tempo delle borse di studio.",
+        resumo: "README del profilo GitHub con progetti e linea del tempo delle borse di studio."
+      },
+      zh: {
+        brief: "GitHub 个人主页 README:简介、链接、Tech & Tools、精选项目星座(公开仓库,私有仓库仅作提及)以及奖学金时间线。",
+        resumo: "GitHub 个人主页 README,含项目和奖学金时间线。"
+      }
     }
   },
   {
@@ -649,31 +1169,64 @@ const REPOS = [
     icon: "cash",
     repo: "https://github.com/pedroiff0/custos-app",
     stack: [ "Node.js", "JavaScript", "Docker" ],
-    tags: [ "Custos", "Despesas", "Gestão" ],
+    tags: [ "Costs", "Management" ],
     brief: "Aplicação de rastreio de custos operacionais e despesas categorizadas, empacotada em Docker. Parte da linha de ferramentas profissionais de gestão, ao lado de Caixas, Controle de Estoque e Planilhador.",
+    resumo: "Rastreio de custos operacionais e despesas categorizadas.",
     i18n: {
-      en: "Application for tracking operating costs and categorized expenses, packaged in Docker. Part of the line of professional management tools, alongside Caixas, Controle de Estoque and Planilhador.",
-      es: "Aplicación de seguimiento de costos operativos y gastos categorizados, empaquetada en Docker. Parte de la línea de herramientas profesionales de gestión, junto a Caixas, Controle de Estoque y Planilhador.",
-      fr: "Application de suivi des coûts opérationnels et des dépenses catégorisées, conditionnée dans Docker. Fait partie de la gamme d'outils professionnels de gestion, aux côtés de Caixas, Controle de Estoque et Planilhador.",
-      it: "Applicazione per il monitoraggio dei costi operativi e delle spese categorizzate, impacchettata in Docker. Fa parte della linea di strumenti professionali di gestione, insieme a Caixas, Controle de Estoque e Planilhador.",
-      zh: "用于跟踪运营成本和分类支出的应用,使用 Docker 打包。属于专业管理工具系列,与 Caixas、Controle de Estoque 和 Planilhador 并列。"
+      en: {
+        brief: "Application for tracking operational costs and categorized expenses, packaged in Docker. Part of the line of professional management tools, alongside Caixas, Controle de Estoque and Planilhador.",
+        resumo: "Tracking of operational costs and categorized expenses."
+      },
+      es: {
+        brief: "Aplicación de seguimiento de costos operativos y gastos categorizados, empaquetada en Docker. Parte de la línea de herramientas profesionales de gestión, junto a Caixas, Controle de Estoque y Planilhador.",
+        resumo: "Seguimiento de costos operativos y gastos categorizados."
+      },
+      fr: {
+        brief: "Application de suivi des coûts opérationnels et des dépenses catégorisées, packagée dans Docker. Elle fait partie de la gamme d'outils professionnels de gestion, aux côtés de Caixas, Controle de Estoque et Planilhador.",
+        resumo: "Suivi des coûts opérationnels et des dépenses catégorisées."
+      },
+      it: {
+        brief: "Applicazione per il monitoraggio dei costi operativi e delle spese categorizzate, impacchettata in Docker. Fa parte della linea di strumenti professionali di gestione, insieme a Caixas, Controle de Estoque e Planilhador.",
+        resumo: "Monitoraggio dei costi operativi e delle spese categorizzate."
+      },
+      zh: {
+        brief: "用于跟踪运营成本和分类支出的应用,使用 Docker 打包。属于专业管理工具系列,与 Caixas、Controle de Estoque 和 Planilhador 并列。",
+        resumo: "跟踪运营成本和分类支出。"
+      }
     }
   },
   {
-    name: "Viagem App",
+    name: "Rumo",
     cat: "software",
     visibility: "privado",
     icon: "globe",
     repo: "https://github.com/pedroiff0/viagem-app",
     stack: [ "Node.js", "Express", "MongoDB" ],
-    tags: [ "Viagens", "Planejamento", "Colaborativo" ],
-    brief: "Planejamento de viagens em grupo: roteiro compartilhado, reservas reunidas num só lugar e divisão de despesas entre os viajantes. Node.js, Express e MongoDB.",
+    tags: [ "Travel", "Collaborative", "Full-stack" ],
+    brief: "Rumo, em desenvolvimento: planejamento de viagens em grupo que resolve os dois pontos em que viagem em grupo trava, ninguém saber o roteiro combinado e ninguém saber quem pagou o quê. Roteiro compartilhado, reservas reunidas num só lugar e divisão de despesas entre os viajantes, com interface bilíngue (PT/EN). Node.js, Express e MongoDB.",
+    status: "dev",
+    resumo: "Viagens em grupo: roteiro compartilhado, reservas e divisão de despesas.",
     i18n: {
-      en: "Group trip planning: shared itinerary, bookings gathered in one place and expense splitting among travelers. Node.js, Express and MongoDB.",
-      es: "Planificación de viajes en grupo: itinerario compartido, reservas reunidas en un solo lugar y división de gastos entre los viajeros. Node.js, Express y MongoDB.",
-      fr: "Planification de voyages en groupe : itinéraire partagé, réservations rassemblées en un seul endroit et partage des dépenses entre les voyageurs. Node.js, Express et MongoDB.",
-      it: "Pianificazione di viaggi di gruppo: itinerario condiviso, prenotazioni riunite in un unico posto e divisione delle spese tra i viaggiatori. Node.js, Express e MongoDB.",
-      zh: "团体旅行规划:共享行程、集中管理预订,并在旅行者之间分摊费用。Node.js、Express 和 MongoDB。"
+      en: {
+        brief: "Rumo, in development: group trip planning that tackles the two points where group travel breaks down, nobody knowing the agreed itinerary and nobody knowing who paid for what. Shared itinerary, bookings gathered in one place and expense splitting among travelers, with a bilingual interface (PT/EN). Node.js, Express and MongoDB.",
+        resumo: "Group trips: shared itinerary, bookings and expense splitting."
+      },
+      es: {
+        brief: "Rumo, en desarrollo: planificación de viajes en grupo que resuelve los dos puntos en los que se atasca un viaje en grupo, que nadie sepa el itinerario acordado y que nadie sepa quién pagó qué. Itinerario compartido, reservas reunidas en un solo lugar y división de gastos entre los viajeros, con interfaz bilingüe (PT/EN). Node.js, Express y MongoDB.",
+        resumo: "Viajes en grupo: itinerario compartido, reservas y división de gastos."
+      },
+      fr: {
+        brief: "Rumo, en développement : planification de voyages en groupe qui résout les deux points où un voyage en groupe se bloque, personne ne connaissant l'itinéraire convenu et personne ne sachant qui a payé quoi. Itinéraire partagé, réservations réunies au même endroit et partage des dépenses entre les voyageurs, avec une interface bilingue (PT/EN). Node.js, Express et MongoDB.",
+        resumo: "Voyages en groupe : itinéraire partagé, réservations et partage des dépenses."
+      },
+      it: {
+        brief: "Rumo, in sviluppo: pianificazione di viaggi di gruppo che risolve i due punti in cui un viaggio di gruppo si blocca, nessuno che conosca l'itinerario concordato e nessuno che sappia chi ha pagato cosa. Itinerario condiviso, prenotazioni raccolte in un unico posto e divisione delle spese tra i viaggiatori, con interfaccia bilingue (PT/EN). Node.js, Express e MongoDB.",
+        resumo: "Viaggi di gruppo: itinerario condiviso, prenotazioni e divisione delle spese."
+      },
+      zh: {
+        brief: "Rumo(开发中):团体旅行规划工具,解决团体旅行最容易卡住的两个问题——没人知道约定好的行程,以及没人知道谁付了什么钱。提供共享行程、集中管理的预订以及旅行者之间的费用分摊,界面支持双语(PT/EN)。Node.js、Express 和 MongoDB。",
+        resumo: "团体旅行:共享行程、预订和费用分摊。"
+      }
     }
   },
   {
@@ -683,14 +1236,64 @@ const REPOS = [
     icon: "document",
     repo: "https://github.com/pedroiff0/manga-reader",
     stack: [ "TypeScript", "Node.js" ],
-    tags: [ "Leitor Web", "Mídia", "Privado" ],
+    tags: [ "Web App", "Media" ],
     brief: "Leitor de mangás web privado e sem anúncios, com auto-cadastro, painel administrativo para aprovação de contas, histórico de último login, progresso de leitura por usuário e busca agregada em várias fontes. Uso restrito a poucos usuários.",
+    resumo: "Leitor de mangás privado, sem anúncios, com contas aprovadas por administrador.",
     i18n: {
-      en: "Private, ad-free web manga reader with self-registration, an admin panel for account approval, last-login history, per-user reading progress and aggregated search across multiple sources. Restricted to a few users.",
-      es: "Lector de mangas web privado y sin anuncios, con autorregistro, panel administrativo para aprobar cuentas, historial de último inicio de sesión, progreso de lectura por usuario y búsqueda agregada en varias fuentes. Uso restringido a pocos usuarios.",
-      fr: "Lecteur de mangas web privé et sans publicité, avec auto-inscription, panneau d'administration pour l'approbation des comptes, historique de dernière connexion, progression de lecture par utilisateur et recherche agrégée sur plusieurs sources. Usage limité à quelques utilisateurs.",
-      it: "Lettore di manga web privato e senza pubblicità, con auto-registrazione, pannello di amministrazione per l'approvazione degli account, cronologia dell'ultimo accesso, progresso di lettura per utente e ricerca aggregata su più fonti. Uso limitato a pochi utenti.",
-      zh: "私有、无广告的网页漫画阅读器,支持自助注册、用于审批账号的管理面板、上次登录记录、按用户记录的阅读进度,以及跨多个来源的聚合搜索。仅限少数用户使用。"
+      en: {
+        brief: "Private, ad-free web manga reader, with self-registration, an admin panel for approving accounts, last-login history, per-user reading progress and aggregated search across several sources. Restricted to a few users.",
+        resumo: "Private, ad-free manga reader with admin-approved accounts."
+      },
+      es: {
+        brief: "Lector de manga web privado y sin anuncios, con autorregistro, panel administrativo para aprobar cuentas, historial de último inicio de sesión, progreso de lectura por usuario y búsqueda agregada en varias fuentes. Uso restringido a pocos usuarios.",
+        resumo: "Lector de manga privado, sin anuncios, con cuentas aprobadas por un administrador."
+      },
+      fr: {
+        brief: "Lecteur de mangas web privé et sans publicité, avec auto-inscription, panneau d'administration pour l'approbation des comptes, historique de dernière connexion, progression de lecture par utilisateur et recherche agrégée sur plusieurs sources. Usage restreint à quelques utilisateurs.",
+        resumo: "Lecteur de mangas privé, sans publicité, avec comptes approuvés par un administrateur."
+      },
+      it: {
+        brief: "Lettore di manga web privato e senza pubblicità, con auto-registrazione, pannello amministrativo per l'approvazione degli account, cronologia dell'ultimo accesso, progresso di lettura per utente e ricerca aggregata su più fonti. Uso limitato a pochi utenti.",
+        resumo: "Lettore di manga privato, senza pubblicità, con account approvati da un amministratore."
+      },
+      zh: {
+        brief: "私有、无广告的网页漫画阅读器,支持自助注册、用于审批账号的管理后台、最近登录记录、按用户记录阅读进度,以及跨多个来源的聚合搜索。仅限少数用户使用。",
+        resumo: "私有、无广告的漫画阅读器,账号需经管理员批准。"
+      }
+    }
+  },
+  {
+    name: "E-lixo",
+    cat: "academico",
+    visibility: "elaboracao",
+    icon: "document",
+    repo: "",
+    stack: [ "Eletrônica", "Ciência do Ambiente", "LaTeX" ],
+    tags: [ "E-waste", "Sustainability", "Outreach" ],
+    brief: "Pra onde vai a bateria que morreu? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.",
+    status: "camp",
+    resumo: "Campanha sobre o descarte de baterias e e-lixo em Bom Jesus do Itabapoana.",
+    i18n: {
+      en: {
+        brief: "Where does a dead battery go? Integrative project for Philosophy of Science and Technology (IFF, 2026/2), done as a group, on electronic waste with a focus on car, e-bike and phone batteries. It maps improper disposal in Bom Jesus do Itabapoana, the gap between what the law requires (PNRS) and the collection points the city offers, and proposes bringing the IFF Circuito Verde to the BJI campus. Technical axis in Analog and Digital Electronics, Environmental Science and Materials Science; report and defense in November 2026. Have an old battery or a broken phone in a drawer? It doesn't go in the regular trash: take it to a collection point and help close this loop.",
+        resumo: "Campaign on the disposal of batteries and e-waste in Bom Jesus do Itabapoana."
+      },
+      es: {
+        brief: "¿A dónde va la batería que murió? Proyecto integrador de Filosofía de la Ciencia y la Tecnología (IFF, 2026/2), en grupo, sobre residuos electrónicos con foco en baterías de coche, bicicleta eléctrica y móvil. Mapea el descarte inadecuado en Bom Jesus do Itabapoana, la distancia entre lo que manda la ley (PNRS) y los puntos de recogida que ofrece la ciudad, y propone llevar el Circuito Verde del IFF al campus BJI. Eje técnico en Electrónica Analógica y Digital, Ciencia del Ambiente y Ciencia de los Materiales; informe y defensa en noviembre de 2026. ¿Tienes una batería vieja o un móvil roto en el cajón? No va a la basura común: llévalo a un punto de recogida y ayuda a cerrar este ciclo.",
+        resumo: "Campaña sobre el descarte de baterías y residuos electrónicos en Bom Jesus do Itabapoana."
+      },
+      fr: {
+        brief: "Où va la batterie qui est morte ? Projet intégrateur de Philosophie des Sciences et des Technologies (IFF, 2026/2), en groupe, sur les déchets électroniques, avec un accent sur les batteries de voiture, de vélo électrique et de téléphone. Il cartographie l'élimination inappropriée à Bom Jesus do Itabapoana, l'écart entre ce que la loi impose (PNRS) et les points de collecte offerts par la ville, et propose d'amener le Circuito Verde de l'IFF sur le campus BJI. Axe technique en Électronique Analogique et Numérique, Science de l'Environnement et Science des Matériaux ; rapport et soutenance en novembre 2026. Vous avez une vieille batterie ou un téléphone cassé dans un tiroir ? Cela ne va pas à la poubelle ordinaire : apportez-le à un point de collecte et aidez à boucler ce cycle.",
+        resumo: "Campagne sur l'élimination des batteries et des déchets électroniques à Bom Jesus do Itabapoana."
+      },
+      it: {
+        brief: "Dove va a finire la batteria che ha smesso di funzionare? Progetto integratore di Filosofia della Scienza e della Tecnologia (IFF, 2026/2), di gruppo, sui rifiuti elettronici con focus su batterie di auto, bicicletta elettrica e telefono. Mappa lo smaltimento improprio a Bom Jesus do Itabapoana, la distanza tra ciò che prescrive la legge (PNRS) e i punti di raccolta offerti dalla città, e propone di portare il Circuito Verde dell'IFF al campus BJI. Asse tecnico in Elettronica Analogica e Digitale, Scienza dell'Ambiente e Scienza dei Materiali; relazione e discussione a novembre 2026. Hai una vecchia batteria o un telefono rotto nel cassetto? Non va nella spazzatura comune: portalo a un punto di raccolta e aiuta a chiudere questo ciclo.",
+        resumo: "Campagna sullo smaltimento di batterie e rifiuti elettronici a Bom Jesus do Itabapoana."
+      },
+      zh: {
+        brief: "报废的电池去了哪里?哲学、科学与技术综合项目(IFF,2026/2),小组完成,主题为电子垃圾,重点关注汽车、电动自行车和手机电池。项目梳理了 Bom Jesus do Itabapoana 的不当丢弃现状、法律规定(PNRS)与城市所提供回收点之间的差距,并提议将 IFF 的 Circuito Verde 引入 BJI 校区。技术方向涵盖模拟与数字电子学、环境科学和材料科学;报告与答辩定于 2026 年 11 月。抽屉里有旧电池或坏手机吗?它们不能扔进普通垃圾桶:请送到回收点,帮助完成这个闭环。",
+        resumo: "关于 Bom Jesus do Itabapoana 电池和电子垃圾处理的宣传活动。"
+      }
     }
   },
   {
@@ -700,14 +1303,30 @@ const REPOS = [
     icon: "globe",
     repo: "https://github.com/pedroiff0/portfolio-v1-scifi",
     stack: [ "JavaScript", "Three.js", "Canvas" ],
-    tags: [ "Portfólio", "Three.js", "Arquivo" ],
+    tags: [ "Three.js", "Portfolio" ],
     brief: "Primeira versão do portfólio, com visual sci-fi (HUD, Three.js e canvas), preservada antes da refatoração para a versão clean atual.",
+    resumo: "Primeira versão do portfólio, com visual sci-fi, preservada.",
     i18n: {
-      en: "First version of the portfolio, with a sci-fi look (HUD, Three.js and canvas), preserved before the refactor to the current clean version.",
-      es: "Primera versión del portafolio, con estética sci-fi (HUD, Three.js y canvas), preservada antes de la refactorización a la versión clean actual.",
-      fr: "Première version du portfolio, avec un style sci-fi (HUD, Three.js et canvas), conservée avant la refonte vers la version clean actuelle.",
-      it: "Prima versione del portfolio, con aspetto sci-fi (HUD, Three.js e canvas), conservata prima del refactoring verso l'attuale versione clean.",
-      zh: "作品集的第一个版本,采用科幻风格(HUD、Three.js 和 canvas),在重构为当前简洁版本之前予以保留。"
+      en: {
+        brief: "First version of the portfolio, with a sci-fi look (HUD, Three.js and canvas), preserved before the refactor to the current clean version.",
+        resumo: "First version of the portfolio, with a sci-fi look, preserved."
+      },
+      es: {
+        brief: "Primera versión del portafolio, con estética sci-fi (HUD, Three.js y canvas), preservada antes de la refactorización a la versión clean actual.",
+        resumo: "Primera versión del portafolio, con estética sci-fi, conservada."
+      },
+      fr: {
+        brief: "Première version du portfolio, avec un style sci-fi (HUD, Three.js et canvas), conservée avant la refonte vers la version clean actuelle.",
+        resumo: "Première version du portfolio, avec un style sci-fi, conservée."
+      },
+      it: {
+        brief: "Prima versione del portfolio, con aspetto sci-fi (HUD, Three.js e canvas), conservata prima del refactoring verso l'attuale versione clean.",
+        resumo: "Prima versione del portfolio, con un aspetto sci-fi, conservata."
+      },
+      zh: {
+        brief: "作品集的第一个版本,采用科幻风格(HUD、Three.js 和 canvas),在重构为当前简洁版本之前予以保留。",
+        resumo: "作品集的第一个版本，采用科幻风格，已保留存档。"
+      }
     }
   },
   {
@@ -717,33 +1336,48 @@ const REPOS = [
     icon: "globe",
     repo: "https://github.com/pedroiff0/portfolio",
     stack: [ "HTML", "CSS", "JavaScript", "Python", "Playwright", "GitHub Pages" ],
-    tags: [ "Portfólio", "Página Única", "Multilíngue", "Minimalista" ],
+    tags: [ "Portfolio", "Multilingual", "Static Site" ],
     brief: "Este portfólio: página única e minimalista, multilíngue (PT/EN/ES/FR), sem framework e com o visual do site oficial (tema claro e escuro, cartões com detalhes, filtro e busca de projetos). O conteúdo não vive no HTML: é escrito em português numa nota do vault Obsidian, traduzida por IA para EN/ES/FR e compilada por um script Python para JS, com verificação automática no pre-commit. Serve de página de boas-vindas para o site oficial, onde está o conteúdo completo.",
     image: "assets/media/portfolio/poster.webp",
     video: "assets/media/portfolio/tour.webm",
+    resumo: "Esta página: portfólio único e multilíngue, gerado a partir de Markdown.",
     i18n: {
-      en: "This portfolio: a single, minimalist, multilingual page (PT/EN/ES/FR), with no framework and with the look of the official site (light and dark theme, cards with details, project filter and search). The content does not live in the HTML: it is written in Portuguese in a note in the Obsidian vault, translated by AI into EN/ES/FR and compiled by a Python script into JS, with automatic verification at pre-commit. It serves as a welcome page for the official site, where the full content is.",
-      es: "Este portafolio: página única y minimalista, multilingüe (PT/EN/ES/FR), sin framework y con el aspecto del sitio oficial (tema claro y oscuro, tarjetas con detalles, filtro y búsqueda de proyectos). El contenido no vive en el HTML: se escribe en portugués en una nota del vault de Obsidian, se traduce con IA a EN/ES/FR y un script de Python lo compila a JS, con verificación automática en el pre-commit. Sirve como página de bienvenida al sitio oficial, donde está el contenido completo.",
-      fr: "Ce portfolio : page unique et minimaliste, multilingue (PT/EN/ES/FR), sans framework et avec l'apparence du site officiel (thème clair et sombre, cartes avec détails, filtre et recherche de projets). Le contenu ne vit pas dans le HTML : il est écrit en portugais dans une note du vault Obsidian, traduit par IA en EN/ES/FR et compilé en JS par un script Python, avec vérification automatique au pre-commit. Il sert de page d'accueil pour le site officiel, où se trouve le contenu complet.",
-      it: "Questo portfolio: pagina unica e minimalista, multilingue (PT/EN/ES/FR), senza framework e con l'aspetto del sito ufficiale (tema chiaro e scuro, schede con dettagli, filtro e ricerca dei progetti). Il contenuto non vive nell'HTML: è scritto in portoghese in una nota del vault Obsidian, tradotto dall'IA in EN/ES/FR e compilato in JS da uno script Python, con verifica automatica nel pre-commit. Funge da pagina di benvenuto per il sito ufficiale, dove si trova il contenuto completo.",
-      zh: "这个作品集:单页、极简、多语言(PT/EN/ES/FR),不使用框架,并采用官方网站的视觉风格(浅色与深色主题、带详情的卡片、项目筛选与搜索)。内容并不存放在 HTML 中:它以葡萄牙语写在 Obsidian vault 的一篇笔记里,由 AI 翻译成 EN/ES/FR,再由 Python 脚本编译为 JS,并在 pre-commit 时自动验证。它作为官方网站的欢迎页,完整内容都在官方网站上。"
+      en: {
+        brief: "This portfolio: a single-page, minimalist, multilingual site (PT/EN/ES/FR), with no framework and the look of the official site (light and dark theme, cards with details, project filter and search). The content does not live in the HTML: it is written in Portuguese in a note in the Obsidian vault, translated by AI into EN/ES/FR and compiled by a Python script into JS, with automatic verification in the pre-commit. It serves as a welcome page for the official site, where the full content is.",
+        resumo: "This page: a single multilingual portfolio, generated from Markdown."
+      },
+      es: {
+        brief: "Este portafolio: página única y minimalista, multilingüe (PT/EN/ES/FR), sin framework y con el aspecto del sitio oficial (tema claro y oscuro, tarjetas con detalles, filtro y búsqueda de proyectos). El contenido no vive en el HTML: se escribe en portugués en una nota del vault de Obsidian, se traduce con IA a EN/ES/FR y un script de Python lo compila a JS, con verificación automática en el pre-commit. Sirve como página de bienvenida para el sitio oficial, donde está el contenido completo.",
+        resumo: "Esta página: portafolio único y multilingüe, generado a partir de Markdown."
+      },
+      fr: {
+        brief: "Ce portfolio : page unique et minimaliste, multilingue (PT/EN/ES/FR), sans framework et avec l'apparence du site officiel (thème clair et sombre, cartes avec détails, filtre et recherche de projets). Le contenu ne vit pas dans le HTML : il est rédigé en portugais dans une note du vault Obsidian, traduit par IA vers EN/ES/FR et compilé par un script Python en JS, avec vérification automatique au pre-commit. Il sert de page d'accueil pour le site officiel, où se trouve le contenu complet.",
+        resumo: "Cette page : portfolio unique et multilingue, généré à partir de Markdown."
+      },
+      it: {
+        brief: "Questo portfolio: pagina unica e minimalista, multilingue (PT/EN/ES/FR), senza framework e con l'aspetto del sito ufficiale (tema chiaro e scuro, schede con dettagli, filtro e ricerca dei progetti). Il contenuto non vive nell'HTML: è scritto in portoghese in una nota del vault Obsidian, tradotto dall'IA in EN/ES/FR e compilato da uno script Python in JS, con verifica automatica nel pre-commit. Serve da pagina di benvenuto per il sito ufficiale, dove si trova il contenuto completo.",
+        resumo: "Questa pagina: portfolio unico e multilingue, generato a partire da Markdown."
+      },
+      zh: {
+        brief: "本作品集：单页、极简、多语言（PT/EN/ES/FR），不使用框架，并采用官方网站的视觉风格（浅色和深色主题、带详情的卡片、项目筛选与搜索）。内容不存放在 HTML 中：而是用葡萄牙语写在 Obsidian vault 的一篇笔记里，由 AI 翻译成 EN/ES/FR，再由 Python 脚本编译为 JS，并在 pre-commit 阶段进行自动校验。它作为官方网站的欢迎页，完整内容请见官方网站。",
+        resumo: "本页面：单页多语言作品集，由 Markdown 生成。"
+      }
     }
   }
 ];
 
 const FEATURED = [
-  REPOS.find(r => r.name === "Researcher Hub"),
   REPOS.find(r => r.name === "Sistema Acadêmico"),
+  REPOS.find(r => r.name === "Researcher Hub"),
+  REPOS.find(r => r.name === "Rumo"),
+  REPOS.find(r => r.name === "Zênite"),
   REPOS.find(r => r.name === "ReLaTeX"),
-  REPOS.find(r => r.name === "Sistema de Avaliações"),
-  REPOS.find(r => r.name === "SpectraViewer"),
-  REPOS.find(r => r.name === "Anomaly Detection Viewer")
+  REPOS.find(r => r.name === "E-lixo")
 ];
 
 const RESEARCH = REPOS.filter(r => r.cat === "pesquisa").map(r => ({
-  title: r.name, icon: r.icon, badge: r.visibility === "público" ? "Público" : "Privado",
-  summary: r.brief, details: r.brief + "  Repositório: " + r.repo,
-  i18n: r.i18n
+  ...r, title: r.name, badge: r.visibility === "público" ? "Público" : "Privado",
+  summary: r.brief, details: r.brief + "  Repositório: " + r.repo
 }));
 
 const BOLSAS = [
@@ -844,7 +1478,7 @@ const BOLSAS = [
     title: "Detecção de Anomalias em Estrelas da Via Láctea (Gaia + Surveys + ML)",
     icon: "star",
     kind: "IC · CNPq (PIBIC)",
-    period: "Out. 2025 — presente",
+    period: "Out. 2025 — Set. 2026",
     orient: "Dra. Ana Cecília Soja e Dra. Maria Luiza Linhares Dantas",
     desc: "Bolsa PIBIC/CNPq: aprendizado de máquina sobre Gaia DR3 + GALAH DR4 + GCNS para arqueologia galáctica e populações estelares. Co-autoria PUC Chile.",
     i18n: {
@@ -879,7 +1513,7 @@ const BOLSAS = [
     title: "Detecção de Anomalias em Estrelas da Via Láctea (Fase II)",
     icon: "star",
     kind: "IC · CNPq (PIBIC)",
-    period: "2026 — presente",
+    period: "Out. 2026 — Set. 2027",
     orient: "Dra. Ana Cecília Soja e Dra. Maria Luiza Linhares Dantas",
     desc: "Continuação do projeto PIBIC/CNPq: aprendizado de máquina sobre Gaia DR3 + GALAH DR4 + GCNS para arqueologia galáctica e populações estelares. Co-autoria PUC Chile.",
     i18n: {
@@ -1036,7 +1670,7 @@ const I18N = {
     about: [
       "Sou estudante de <strong>Engenharia de Computação</strong> no <strong>Instituto Federal Fluminense (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, e bolsista de Iniciação Científica (<strong>PIBIC/CNPq</strong>). Minha pesquisa fica na fronteira entre computação e astronomia: arqueologia galáctica, populações estelares e estrutura da Via Láctea, com aprendizado de máquina aplicado a dados do <em>Gaia</em> e de surveys complementares.",
       "Do lado de engenharia, domino <strong>Python</strong> e <strong>C</strong>, redes de computadores (certificações <strong>Cisco CCNA, CyberOps e IoT</strong>), administração de servidores Linux e desenvolvimento de software full-stack. Participo da <strong>International Astronomy and Astrophysics Competition</strong> (IAAC 2024 e 2025) e apresentei trabalhos em eventos como FEBRACE, Mostratec, CONFICT e na Feira Brasileira de Iniciação Científica.",
-      "Sou Técnico em Informática pelo IFF (2020–2022), membro do Centro de Representação Estudantil e um dos organizadores da Semana de Computação, Engenharia e Gestão do IFF."
+      "Sou Técnico em Informática pelo IFF (2020–2022) e um dos organizadores da Semana de Computação, Engenharia e Gestão do IFF."
     ],
     vis: {
       "público": "Público",
@@ -1271,7 +1905,7 @@ const I18N = {
     about: [
       "I am an undergraduate <strong>Computer Engineering</strong> student at the <strong>Fluminense Federal Institute (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, and a Scientific Initiation Scholar (<strong>PIBIC/CNPq</strong>). My research lies at the frontier of computing and astronomy: galactic archaeology, stellar populations and the structure of the Milky Way, with machine learning applied to <em>Gaia</em> and complementary survey data.",
       "On the engineering side, I master <strong>Python</strong> and <strong>C</strong>, computer networks (Cisco <strong>CCNA, CyberOps and IoT</strong> certifications), Linux server administration and full-stack software development. I take part in the <strong>International Astronomy and Astrophysics Competition</strong> (IAAC 2024 and 2025) and presented work at events such as FEBRACE, Mostratec, CONFICT and the Brazilian Science Fair.",
-      "I hold a Technical degree in Computer Science from IFF (2020–2022), am a member of the Student Representation Center and one of the organizers of the IFF Computing, Engineering and Management Week."
+      "I hold a Technician in Computing degree from IFF (2020–2022) and am one of the organizers of the IFF Week of Computing, Engineering and Management."
     ],
     vis: {
       "público": "Public",
@@ -1517,7 +2151,7 @@ const I18N = {
     about: [
       "Soy estudiante de <strong>Ingeniería Informática</strong> en el <strong>Instituto Federal Fluminense (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, y becario de Iniciación Científica (<strong>PIBIC/CNPq</strong>). Mi investigación está en la frontera entre computación y astronomía: arqueología galáctica, poblaciones estelares y estructura de la Vía Láctea, con aprendizaje automático aplicado a datos del <em>Gaia</em> y de relevamientos complementarios.",
       "Del lado de la ingeniería, domino <strong>Python</strong> y <strong>C</strong>, redes de computadoras (certificaciones <strong>Cisco CCNA, CyberOps e IoT</strong>), administración de servidores Linux y desarrollo de software full-stack. Participo de la <strong>International Astronomy and Astrophysics Competition</strong> (IAAC 2024 y 2025) y presenté trabajos en eventos como FEBRACE, Mostratec, CONFICT y la Feria Brasileña de Iniciación Científica.",
-      "Soy Técnico en Informática por el IFF (2020–2022), miembro del Centro de Representación Estudiantil y uno de los organizadores de la Semana de Computación, Ingeniería y Gestión del IFF."
+      "Soy Técnico en Informática por el IFF (2020–2022) y uno de los organizadores de la Semana de Computación, Ingeniería y Gestión del IFF."
     ],
     vis: {
       "público": "Público",
@@ -1759,7 +2393,7 @@ const I18N = {
     about: [
       "Je suis étudiant en <strong>génie informatique</strong> à l'<strong>Institut Fédéral Fluminense (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, et boursier d'Initiation Scientifique (<strong>PIBIC/CNPq</strong>). Ma recherche se situe à la frontière de l'informatique et de l'astronomie : archéologie galactique, populations stellaires et structure de la Voie lactée, avec apprentissage automatique appliqué aux données du <em>Gaia</em> et de relevés complémentaires.",
       "Côté ingénierie, je maîtrise <strong>Python</strong> et <strong>C</strong>, les réseaux informatiques (certifications <strong>Cisco CCNA, CyberOps et IoT</strong>), l'administration de serveurs Linux et le développement logiciel full-stack. Je participe à l'<strong>International Astronomy and Astrophysics Competition</strong> (IAAC 2024 et 2025) et ai présenté des travaux lors d'événements comme FEBRACE, Mostratec, CONFICT et la Foire Brésilienne d'Initiation Scientifique.",
-      "Je suis titulaire d'un diplôme technique en informatique de l'IFF (2020–2022), membre du Centre de Représentation Étudiante et l'un des organisateurs de la Semaine Informatique, Ingénierie et Gestion de l'IFF."
+      "Je suis Technicien en Informatique diplômé de l'IFF (2020–2022) et l'un des organisateurs de la Semaine de l'Informatique, de l'Ingénierie et de la Gestion de l'IFF."
     ],
     vis: {
       "público": "Public",
@@ -2000,7 +2634,7 @@ const I18N = {
     about: [
       "Sono studente di <strong>Ingegneria Informatica</strong> presso l'<strong>Instituto Federal Fluminense (IFF)</strong>, campus Bom Jesus do Itabapoana — RJ, e borsista di Iniziazione Scientifica (<strong>PIBIC/CNPq</strong>). La mia ricerca si colloca al confine tra informatica e astronomia: archeologia galattica, popolazioni stellari e struttura della Via Lattea, con il machine learning applicato ai dati di <em>Gaia</em> e di survey complementari.",
       "Dal lato ingegneristico, padroneggio <strong>Python</strong> e <strong>C</strong>, le reti di computer (certificazioni <strong>Cisco CCNA, CyberOps e IoT</strong>), l'amministrazione di server Linux e lo sviluppo software full-stack. Partecipo alla <strong>International Astronomy and Astrophysics Competition</strong> (IAAC 2024 e 2025) e ho presentato lavori in eventi come FEBRACE, Mostratec, CONFICT e alla Feira Brasileira de Iniciação Científica.",
-      "Sono Tecnico Informatico diplomato all'IFF (2020–2022), membro del Centro de Representação Estudantil e uno degli organizzatori della Semana de Computação, Engenharia e Gestão dell'IFF."
+      "Sono Tecnico Informatico diplomato presso l'IFF (2020–2022) e uno degli organizzatori della Settimana di Informatica, Ingegneria e Gestione dell'IFF."
     ],
     vis: {
       "público": "Pubblico",
@@ -2065,7 +2699,7 @@ const I18N = {
     about: [
       "我是 <strong>Instituto Federal Fluminense (IFF)</strong> 位于 Bom Jesus do Itabapoana — RJ 校区的<strong>计算机工程</strong>专业学生,也是科研启蒙计划(<strong>PIBIC/CNPq</strong>)的奖学金获得者。我的研究处于计算机与天文学的交界处:星系考古学、恒星星族和银河系结构,并将机器学习应用于 <em>Gaia</em> 及其他互补巡天项目的数据。",
       "在工程方面,我精通 <strong>Python</strong> 和 <strong>C</strong>、计算机网络(<strong>Cisco CCNA、CyberOps 和 IoT</strong> 认证)、Linux 服务器管理以及全栈软件开发。我参加了 <strong>International Astronomy and Astrophysics Competition</strong>(IAAC 2024 和 2025),并在 FEBRACE、Mostratec、CONFICT 以及 Feira Brasileira de Iniciação Científica 等活动中展示过研究成果。",
-      "我毕业于 IFF 信息技术中专专业(2020–2022),是 Centro de Representação Estudantil 的成员,也是 IFF 计算机、工程与管理周(Semana de Computação, Engenharia e Gestão)的组织者之一。"
+      "我毕业于 IFF 信息技术专业（2020–2022，技术员文凭），并且是 IFF 计算机、工程与管理周的组织者之一。"
     ],
     vis: { "público": "公开", privado: "私有", planejamento: "计划中", elaboracao: "进行中" },
     labels: { details: "详情", viewRepo: "↗ 在 GitHub 上查看仓库", noRepo: "暂无公开仓库" },
@@ -2137,6 +2771,13 @@ const EVENTS = [
     year: 2026,
     title: "XIV Mostra do Conhecimento",
     url: "https://www.phrandrade.com/pt-br/media/2026/mostra-iff",
+    photos: []
+  },
+  {
+    id: "2026-sab",
+    year: 2026,
+    title: "XLIX RASAB",
+    url: "https://www.phrandrade.com/pt-br/media/2026/sab",
     photos: []
   },
   {
