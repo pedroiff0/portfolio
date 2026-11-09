@@ -3577,4 +3577,194 @@ const LAYOUT = {
   ]
 };
 
-window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, OVERRIDES, LAYOUT };
+const EVENTS = [
+  {
+    id: "2026-sbpc",
+    year: 2026,
+    title: "78ª SBPC",
+    url: "https://www.phrandrade.com/pt-br/media/2026/sbpc",
+    photos: [
+      "assets/media/eventos/2026-sbpc/01",
+      "assets/media/eventos/2026-sbpc/02",
+      "assets/media/eventos/2026-sbpc/03",
+      "assets/media/eventos/2026-sbpc/04",
+      "assets/media/eventos/2026-sbpc/05",
+      "assets/media/eventos/2026-sbpc/06",
+      "assets/media/eventos/2026-sbpc/07",
+      "assets/media/eventos/2026-sbpc/08"
+    ]
+  },
+  {
+    id: "2026-escolainverno",
+    year: 2026,
+    title: "Escola de Inverno ON",
+    url: "https://www.phrandrade.com/pt-br/media/2026/escolainverno",
+    photos: [
+      "assets/media/eventos/2026-escolainverno/01",
+      "assets/media/eventos/2026-escolainverno/02",
+      "assets/media/eventos/2026-escolainverno/03",
+      "assets/media/eventos/2026-escolainverno/04",
+      "assets/media/eventos/2026-escolainverno/05",
+      "assets/media/eventos/2026-escolainverno/06",
+      "assets/media/eventos/2026-escolainverno/07"
+    ]
+  },
+  {
+    id: "2026-conepe",
+    year: 2026,
+    title: "XIII CONEPE",
+    url: "https://www.phrandrade.com/pt-br/media/2026/conepe",
+    photos: []
+  },
+  {
+    id: "2026-mostra-iff",
+    year: 2026,
+    title: "XIV Mostra do Conhecimento",
+    url: "https://www.phrandrade.com/pt-br/media/2026/mostra-iff",
+    photos: []
+  },
+  {
+    id: "2026-sab",
+    year: 2026,
+    title: "XLIX RASAB",
+    url: "https://www.phrandrade.com/pt-br/media/2026/sab",
+    photos: [
+      "assets/media/eventos/2026-sab/01",
+      "assets/media/eventos/2026-sab/02",
+      "assets/media/eventos/2026-sab/03",
+      "assets/media/eventos/2026-sab/04",
+      "assets/media/eventos/2026-sab/05",
+      "assets/media/eventos/2026-sab/06",
+      "assets/media/eventos/2026-sab/07"
+    ]
+  },
+  {
+    id: "2026-confict",
+    year: 2026,
+    title: "XVII CONFICT",
+    url: "https://www.phrandrade.com/pt-br/media/2026/confict",
+    photos: [ "assets/media/eventos/2026-confict/01" ]
+  },
+  {
+    id: "2025-sab",
+    year: 2025,
+    title: "XLVIII SAB",
+    url: "https://www.phrandrade.com/pt-br/media/2025/sab",
+    photos: [
+      "assets/media/eventos/2025-sab/01",
+      "assets/media/eventos/2025-sab/02",
+      "assets/media/eventos/2025-sab/03",
+      "assets/media/eventos/2025-sab/04",
+      "assets/media/eventos/2025-sab/05",
+      "assets/media/eventos/2025-sab/06",
+      "assets/media/eventos/2025-sab/07",
+      "assets/media/eventos/2025-sab/08",
+      "assets/media/eventos/2025-sab/09"
+    ]
+  },
+  {
+    id: "2025-mctia",
+    year: 2025,
+    title: "XVI MCTIA",
+    url: "https://www.phrandrade.com/pt-br/media/2025/mctia",
+    photos: [
+      "assets/media/eventos/2025-mctia/01",
+      "assets/media/eventos/2025-mctia/02",
+      "assets/media/eventos/2025-mctia/03",
+      "assets/media/eventos/2025-mctia/04",
+      "assets/media/eventos/2025-mctia/05",
+      "assets/media/eventos/2025-mctia/06",
+      "assets/media/eventos/2025-mctia/07",
+      "assets/media/eventos/2025-mctia/08",
+      "assets/media/eventos/2025-mctia/09"
+    ]
+  },
+  {
+    id: "2024-4-sceg",
+    year: 2024,
+    title: "4ª SCEG 2024",
+    url: "https://www.phrandrade.com/pt-br/media/2024/4-sceg",
+    photos: [
+      "assets/media/eventos/2024-4-sceg/01",
+      "assets/media/eventos/2024-4-sceg/02",
+      "assets/media/eventos/2024-4-sceg/03",
+      "assets/media/eventos/2024-4-sceg/04"
+    ]
+  },
+  {
+    id: "2024-febic",
+    year: 2024,
+    title: "IX FEBIC",
+    url: "https://www.phrandrade.com/pt-br/media/2024/febic",
+    photos: [
+      "assets/media/eventos/2024-febic/01",
+      "assets/media/eventos/2024-febic/02",
+      "assets/media/eventos/2024-febic/03",
+      "assets/media/eventos/2024-febic/04",
+      "assets/media/eventos/2024-febic/05",
+      "assets/media/eventos/2024-febic/06",
+      "assets/media/eventos/2024-febic/07",
+      "assets/media/eventos/2024-febic/08",
+      "assets/media/eventos/2024-febic/09"
+    ]
+  },
+  {
+    id: "2024-e-jiniff",
+    year: 2024,
+    title: "e-JINIFF",
+    url: "https://www.phrandrade.com/pt-br/media/2024/e-jiniff",
+    photos: []
+  },
+  {
+    id: "2023-febrace",
+    year: 2023,
+    title: "21ª FEBRACE",
+    url: "https://www.phrandrade.com/pt-br/media/2023/febrace",
+    photos: [
+      "assets/media/eventos/2023-febrace/01",
+      "assets/media/eventos/2023-febrace/02",
+      "assets/media/eventos/2023-febrace/03",
+      "assets/media/eventos/2023-febrace/04",
+      "assets/media/eventos/2023-febrace/05",
+      "assets/media/eventos/2023-febrace/06",
+      "assets/media/eventos/2023-febrace/07"
+    ]
+  },
+  {
+    id: "2023-mostratec",
+    year: 2023,
+    title: "37ª MOSTRATEC",
+    url: "https://www.phrandrade.com/pt-br/media/2023/mostratec",
+    photos: [
+      "assets/media/eventos/2023-mostratec/01",
+      "assets/media/eventos/2023-mostratec/02",
+      "assets/media/eventos/2023-mostratec/03",
+      "assets/media/eventos/2023-mostratec/04",
+      "assets/media/eventos/2023-mostratec/05",
+      "assets/media/eventos/2023-mostratec/06",
+      "assets/media/eventos/2023-mostratec/07",
+      "assets/media/eventos/2023-mostratec/08",
+      "assets/media/eventos/2023-mostratec/09"
+    ]
+  },
+  {
+    id: "2022-lncc",
+    year: 2022,
+    title: "Laboratório Nacional de Computação Científica",
+    url: "https://www.phrandrade.com/pt-br/media/2022/lncc",
+    photos: [
+      "assets/media/eventos/2022-lncc/01",
+      "assets/media/eventos/2022-lncc/02",
+      "assets/media/eventos/2022-lncc/03",
+      "assets/media/eventos/2022-lncc/04",
+      "assets/media/eventos/2022-lncc/05",
+      "assets/media/eventos/2022-lncc/06",
+      "assets/media/eventos/2022-lncc/07",
+      "assets/media/eventos/2022-lncc/08",
+      "assets/media/eventos/2022-lncc/09"
+    ]
+  }
+];
+const UPDATED = "2026-11-09";
+
+window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, OVERRIDES, LAYOUT, EVENTS, UPDATED };

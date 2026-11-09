@@ -3,7 +3,7 @@ publish: false
 title: Portfólio (conteúdo em pt-BR)
 type: esboco
 created: '2026-11-03T15:28:39-03:00'
-modified: 2026-11-05T15:22:30-03:00
+modified: 2026-11-05T15:40:44-03:00
 published: '2026-11-03T15:28:39-03:00'
 tags:
   - projeto
@@ -18,7 +18,8 @@ traduzir: false
 # Portfólio: conteúdo (pt-BR)
 
 > [!info] Como editar
-> Escreva só em português. Ao terminar, marque **traduzir** (propriedade acima) e salve: o watcher roda `tools/traduzir.py` no repositório `~/Repositorios/profissional/portfolio`, que traduz por IA apenas os trechos que mudaram para en/es/fr e desmarca a propriedade. Publicar (commit e push) continua manual.
+> Escreva só em português. Ao terminar, marque **traduzir** (propriedade acima) e salve: o watcher traduz por IA só os trechos que mudaram (en, es, fr, it, zh), valida a página, faz commit e push no repositório `~/Repositorios/profissional/portfolio` e desmarca a propriedade. Acompanhe em `/tmp/portfolio-traduzir.log`; se a validação falhar nada é publicado.
+> Esta nota controla: perfil, projetos, bolsas, contatos, **Página** (ordem e visibilidade das seções e do menu) e **Interface** (todos os textos fixos: menu, títulos e subtítulos de seção, botões, rótulos, banner do QR). Eventos vêm das notas de `03-midia`; layout, CSS e vídeos ficam no repositório.
 > Chaves `chave: valor` ficam no início de cada bloco; o texto vem depois, em parágrafos. Projetos são `### Nome`. Callouts como este são ignorados pelo build.
 
 ## Metadados

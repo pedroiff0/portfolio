@@ -2,8 +2,8 @@
 """
 eventos.py — gera a seção "Participação em eventos" a partir do vault hardcore-life.
 
-Lê as notas 03-midia/<ano>/<evento>.md (publish: true; ignora -en e midia-<ano>) e as fotos de
-04-recursos/03-midia/<ano>/<evento>[-<ano>]/. Escreve:
+Lê as notas 03-midia/<ano>/<evento>.md ou <ano>/<evento>/<evento>.md (publish: true; ignora -en, midia-<ano>, esboco-* e anotacoes) e as fotos de
+04-recursos/03-midia/<ano>/<pasta>/ (nome da pasta = nota, nota-ano ou photoFolder, sem distinguir hífen/maiúscula). Escreve:
   assets/media/eventos/<ano>-<evento>/NN.webp    (lado maior 1200 px, sem EXIF/GPS)
   assets/media/eventos/<ano>-<evento>/NN-t.webp  (miniatura 480 px)
   src/eventos.json                               (ano, título, link do relato, fotos)
@@ -36,10 +36,17 @@ def frontmatter(texto):
     return fm
 
 
-def pasta_fotos(ano, stem):
-    for nome in (f"{stem}-{ano}", stem):
-        d = FOTOS / ano / nome
-        if d.is_dir():
+def norm(t):
+    return re.sub(r"[^a-z0-9]", "", t.lower())
+
+
+def pasta_fotos(ano, stem, photo_folder=""):
+    base = FOTOS / ano
+    if not base.is_dir():
+        return None
+    alvos = {norm(stem + ano), norm(stem), norm(photo_folder)} - {""}
+    for d in sorted(p for p in base.iterdir() if p.is_dir()):
+        if norm(d.name) in alvos and any(f.suffix.lower() in EXT for f in d.iterdir()):
             return d
     return None
 
@@ -56,15 +63,15 @@ def main():
     if not NOTAS.is_dir():
         sys.exit(f"vault não encontrado em {VAULT}")
     eventos = []
-    for nota in sorted(NOTAS.glob("*/*.md")):
-        ano, stem = nota.parent.name, nota.stem
-        if not ano.isdigit() or stem.endswith("-en") or stem.startswith("midia-"):
+    for nota in sorted(NOTAS.rglob("*.md")):
+        ano, stem = nota.relative_to(NOTAS).parts[0], nota.stem
+        if not ano.isdigit() or stem.endswith("-en") or stem.startswith(("midia-", "esboco-")) or "anotacoes" in stem:
             continue
         fm = frontmatter(nota.read_text(encoding="utf-8"))
         if fm.get("publish") != "true":
             continue
         ev = {"id": f"{ano}-{stem}", "year": int(ano), "title": fm.get("title", stem), "url": f"{SITE}/{ano}/{stem}", "photos": []}
-        d = pasta_fotos(ano, stem)
+        d = pasta_fotos(ano, stem, fm.get("photoFolder", ""))
         if d:
             fotos = sorted(f for f in d.iterdir() if f.suffix.lower() in EXT)
             destino = OUT / ev["id"]

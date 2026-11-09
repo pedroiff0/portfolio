@@ -49,7 +49,15 @@
   "year": 2026,
   "title": "XLIX RASAB",
   "url": "https://www.phrandrade.com/pt-br/media/2026/sab",
-  "photos": []
+  "photos": [
+   "assets/media/eventos/2026-sab/01",
+   "assets/media/eventos/2026-sab/02",
+   "assets/media/eventos/2026-sab/03",
+   "assets/media/eventos/2026-sab/04",
+   "assets/media/eventos/2026-sab/05",
+   "assets/media/eventos/2026-sab/06",
+   "assets/media/eventos/2026-sab/07"
+  ]
  },
  {
   "id": "2026-confict",

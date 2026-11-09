@@ -534,10 +534,10 @@ def main():
         data = parse_source(md, i18n)
         data["events"] = []
     generated = build(data).replace(
-        "window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N };",
+        "window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, OVERRIDES, LAYOUT };",
         "const EVENTS = " + py_to_js(data.get("events", []), 0) + ";\n"
         + f"const UPDATED = {py_to_js(datetime.date.today().isoformat())};\n\n"
-        + "window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, EVENTS, UPDATED };")
+        + "window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, OVERRIDES, LAYOUT, EVENTS, UPDATED };")
     if check:
         with open(OUT, "w", encoding="utf-8") as f:
             f.write(generated)
