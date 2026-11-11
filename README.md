@@ -188,6 +188,8 @@ Dúvidas e pedidos de ajuda: veja [SUPPORT.md](SUPPORT.md).
 
 [![Commits por mês](https://img.shields.io/github/commit-activity/m/pedroiff0/portfolio?logo=github)](https://github.com/pedroiff0/portfolio/graphs/commit-activity) [![Último commit](https://img.shields.io/github/last-commit/pedroiff0/portfolio?logo=git&logoColor=white)](https://github.com/pedroiff0/portfolio/commits) [![Issues](https://img.shields.io/github/issues/pedroiff0/portfolio)](https://github.com/pedroiff0/portfolio/issues) [![Pull requests](https://img.shields.io/github/issues-pr/pedroiff0/portfolio)](https://github.com/pedroiff0/portfolio/pulls)
 
+<div align="center">
+
 ## Autor
 
 <table>
@@ -199,6 +201,8 @@ Dúvidas e pedidos de ajuda: veja [SUPPORT.md](SUPPORT.md).
 ### Contribuidores
 
 [![Contribuidores](https://contrib.rocks/image?repo=pedroiff0/portfolio)](https://github.com/pedroiff0/portfolio/graphs/contributors)
+
+</div>
 
 ## Licença
 
