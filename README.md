@@ -18,7 +18,7 @@ Portfólio de Pedro Rocha: página estática única, minimalista, com tema claro
 - [Suporte](#suporte)
 - [Segurança](#segurança)
 - [Contribuindo](#contribuindo)
-- [Autores](#autores)
+- [Autor](#autor)
 - [Licença](#licença)
 
 ## O que é
@@ -177,7 +177,7 @@ Veja [SECURITY.md](SECURITY.md).
 
 Veja [CONTRIBUTING.md](CONTRIBUTING.md) e [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
-## Autores
+## Autor
 
 <table>
   <tr>
