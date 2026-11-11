@@ -21,6 +21,7 @@ Portfólio de Pedro Rocha: página estática única, minimalista, com tema claro
 - [Suporte](#suporte)
 - [Estrelas e atividade](#estrelas-e-atividade)
 - [Autor](#autor)
+- [Contribuidores](#contribuidores)
 - [Licença](#licença)
 
 ## O que é
@@ -198,7 +199,7 @@ Dúvidas e pedidos de ajuda: veja [SUPPORT.md](SUPPORT.md).
   </tr>
 </table>
 
-### Contribuidores
+## Contribuidores
 
 [![Contribuidores](https://contrib.rocks/image?repo=pedroiff0/portfolio)](https://github.com/pedroiff0/portfolio/graphs/contributors)
 
