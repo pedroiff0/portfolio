@@ -1,114 +1,199 @@
-# Portfolio — Pedro Rocha
+# Portfolio
 
-Página de portfólio estática (GitHub Pages, `portfolio.phrandrade.com`), v2 clean:
-uma página só, minimalista, com o mesmo visual do site oficial (phrandrade.com),
-tema claro e escuro e seis idiomas (PT/EN/ES/FR/IT/ZH).
+[![CI](https://github.com/pedroiff0/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/pedroiff0/portfolio/actions/workflows/ci.yml)
+[![Licença](https://img.shields.io/github/license/pedroiff0/portfolio)](LICENSE)
+[![Estrelas](https://img.shields.io/github/stars/pedroiff0/portfolio?style=flat&logo=github)](https://github.com/pedroiff0/portfolio/stargazers)
+[![Status](https://img.shields.io/badge/status-ativo-informational)](#roadmap)
 
-A v1 sci-fi (HUD, Three.js, canvas, quests) está arquivada no repositório privado
-`pedroiff0/portfolio-v1-scifi` e na tag `v1-scifi` deste repositório.
+Portfólio de Pedro Rocha: página estática única, minimalista, com tema claro e escuro e seis idiomas (PT, EN, ES, FR, IT, ZH), publicada no GitHub Pages em [portfolio.phrandrade.com](https://portfolio.phrandrade.com).
 
-## Conteúdo
+## Sumário
 
-- **Sobre mim** — trajetória, formação (Eng. de Computação / IFF) e atuação (PIBIC/CNPq).
-- **Destaques** e **Trabalhos** (todos os repositórios, com filtro por categoria e busca); detalhes em `<details>`.
-- **Pesquisa** e **Bolsas** (linha do tempo).
-- **Participação em eventos** (fotos por evento, lightbox), gerada do vault por `tools/eventos.py`.
-- **Currículo** (6 idiomas), **Lattes** e **Contato**.
-- Topbar com busca (Ctrl/⌘+K, como no quartz-site), relógio (UTC−3), idioma (6: PT/EN/ES/FR/IT/ZH) e tema, modo leitura (`r`) e conquistas discretas (`n/8`).
-- Tours em vídeo abrem em zoom, com painel mínimo.
-- Currículo com prévia da 1ª página no idioma da página (`python3 tools/cv_previews.py` ou `make cv` quando o CV mudar).
+- [O que é](#o-que-é)
+- [Tecnologias](#tecnologias)
+- [Começando](#começando)
+- [Como usar](#como-usar)
+- [Configuração](#configuração)
+- [Implantação](#implantação)
+- [Arquitetura](#arquitetura)
+- [Trabalhando no projeto](#trabalhando-no-projeto)
+- [Roadmap](#roadmap)
+- [Suporte](#suporte)
+- [Segurança](#segurança)
+- [Contribuindo](#contribuindo)
+- [Autores](#autores)
+- [Licença](#licença)
 
-## Estrutura
+## O que é
 
-```
-index.html              # esqueleto semântico, uma <section> por área
-assets/css/style.css    # tokens do quartz-site, claro/escuro
-assets/js/projects.js   # dados (gerado por tools/build.py, não editar)
-assets/js/main.js       # render, idioma, tema, filtro/busca, nav
-tests/smoke.js          # teste Playwright (npm test)
-```
+O Portfolio apresenta trajetória, formação (Engenharia de Computação, IFF), pesquisa (PIBIC/CNPq), projetos, eventos e currículo numa página só, sem framework e sem etapa de build no navegador. Não é um blog nem um gerenciador de conteúdo: o conteúdo vem de uma nota em português e é traduzido por script.
 
-## Como editar
+### Funcionalidades
 
-**A fonte é uma nota do vault hardcore-life, em pt-BR:**
-`01-projetos/pessoal/portfolio/esboco-portfolio-conteudo.md` (caminho em `PORTFOLIO_FONTE`).
+- Seções: sobre, destaques, trabalhos (todos os repositórios, com filtro por categoria e busca), pesquisa, bolsas, eventos, currículo, Lattes e contato.
+- Topbar com busca (Ctrl/Cmd+K), relógio UTC-3, seletor de idioma e de tema, e modo leitura (`r`).
+- Tours em vídeo dos projetos, gravados com Playwright.
+- Currículo com prévia da primeira página no idioma da página.
 
-1. Edite só em português no Obsidian (perfil, frase, chips, sobre, projetos, bolsas, contatos, além do código).
-2. Marque a propriedade `traduzir` e salve. O watcher do vault (`watch-vault.py`, depois de 3 min sem mudança) roda `tools/traduzir.py`, que traduz por IA (`claude -p`) apenas os trechos que mudaram para en/es/fr, grava `src/traducoes.json`, desmarca `traduzir` e regera `assets/js/projects.js`.
-3. Revise e publique (commit e push), que continua manual.
+## Tecnologias
 
-Sem o watcher: `make traduzir` ou `make publicar-local` (traduz se marcado, gera e testa).
+## Tecnologias
 
-- `src/conteudo.md` é o espelho da nota no repositório (copiado a cada build; não edite).
-- `src/traducoes.json` guarda, por trecho, o hash do pt e as traduções. Trecho sem tradução atual aparece em pt nos outros idiomas e o build avisa.
-- Rótulos de interface (menu, títulos de seção): `src/interface.yaml`.
-- `src/portfolio-legado-v2.1.md` é o formato antigo (bandeiras por idioma), mantido só como referência.
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=githubactions&logoColor=white)
+![Make](https://img.shields.io/badge/Make-6D00CC?style=flat&logo=gnu&logoColor=white)
+![Shell](https://img.shields.io/badge/Shell-4EAA25?style=flat&logo=gnubash&logoColor=white)
 
-### Formato de um projeto (na nota do vault)
+## Começando
 
-```
-### Nome do Projeto
-repo: https://github.com/pedroiff0/foo     (opcional — sem ele, o cartão
-slug: foo                                   mostra "sem repositório público")
-stack: Node.js, Express, MongoDB
-tags: Full-stack, Web App
-cat: software | academico | pesquisa | pessoal
-visibility: público | privado | planejamento | elaboracao
-icon: cash
-image: assets/media/foo/poster.webp   (opcional)
-video: assets/media/foo/tour.webm     (opcional, botão "Ver tour")
-live: https://...                     (opcional, iframe; o site precisa permitir embed)
-open: https://...                     (opcional, link em nova aba)
+### Pré-requisitos
 
-Texto do projeto em português, em parágrafo(s).
-```
+- Node.js 20 ou superior (testes com Playwright).
+- Python 3 (ferramentas em `tools/`).
+- `make`.
 
-com a nota já existente no quartz-site (ver abaixo); sem ele, o slug é
-derivado do nome.
-
-## Gravar os tours dos projetos
+### Instalação
 
 ```bash
-node tools/record_demos.js              # todos os tours de tools/demos/tours.json
-node tools/record_demos.js financas     # só um
+git clone https://github.com/pedroiff0/portfolio.git
+cd portfolio
+npm install
 ```
 
-Grava com Playwright (screencast CDP a 1,5x, cursor visível, rolagem suave) e gera `assets/media/<slug>/tour.webm` (VP9, 1280 px) e `poster.webp`. Os passos de cada tour estão documentados no topo de `tools/record_demos.js`.
-
-Origem dos dados de cada tour (nunca dados reais):
-
-- **Apps web:** instância local com o modo demo do próprio app (Finanças `/demo`, Sistema Acadêmico `/demo`, Projeto Profissional `/demo/start`) ou cópia do repositório no scratch com banco temporário e seed fictício (Caixas, Avaliações e variantes, usuário `demo@exemplo.com`). Desligar o que foi ligado para gravar.
-- **Sites e repositórios públicos:** a página pública (Cálculo Numérico, phrandrade.com, GitHub).
-- **LaTeX:** `pdf:` renderiza páginas escolhidas de um PDF compilado.
-- **Repositórios privados sem UI web:** `readme:` renderiza o README localmente.
-
-Antes de publicar, conferir uma folha de contato dos vídeos (ex.: `ffmpeg -i tour.webm -vf "fps=1/2.5,scale=400:-2,tile=4x2" -frames:v 1 folha.png`).
-
-## Eventos
+### Primeira execução
 
 ```bash
-python3 tools/eventos.py   # relê 03-midia/ do vault e regenera src/eventos.json e assets/media/eventos/
-python3 tools/build.py
+make dev
 ```
 
-## Quartz-site
-
-`tools/gen_quartz.py` está **obsoleto** desde 05/10/2026: as páginas de projeto do
-quartz-site vêm do vault hardcore-life (`99-meta/scripts/sync-to-quartz.py` e
-`sitesync-map.yaml`). O script só roda com `--legado` e não deve ser usado.
-
-## Rodar localmente e testar
+### Conferindo que funcionou
 
 ```bash
-make dev        # http://localhost:8080
-npm test        # smoke test Playwright (SHOTS_DIR=<pasta> salva screenshots)
+npm test
+```
+
+Saída esperada: o teste de fumaça (`tests/smoke.js`) termina sem falhas.
+
+## Como usar
+
+### Tarefa 1: ver o site localmente
+
+1. Rode `make dev`.
+2. Abra `http://localhost:8080`.
+
+### Tarefa 2: gravar o tour de um projeto
+
+1. Rode `node tools/record_demos.js <slug>` (sem argumento grava todos).
+2. O vídeo (`tour.webm`) e o `poster.webp` saem em `assets/media/<slug>/`.
+
+### Comandos disponíveis
+
+| Comando | Descrição |
+| :--- | :--- |
+| `make dev` | Servidor local na porta 8080 |
+| `make test` | Teste de interface com Playwright |
+| `make lint` | Confere arquivos obrigatórios e sintaxe JS |
+| `make cv` | Regera as prévias da primeira página dos currículos |
+| `make traduzir` | Traduz os trechos pt-BR que mudaram |
+| `make publicar-local` | Sincroniza a fonte, traduz se marcado, gera `projects.js` e testa |
+
+## Configuração
+
+| Variável ou arquivo | Padrão | Para que serve |
+| :--- | :--- | :--- |
+| `PORTFOLIO_FONTE` | nota de conteúdo do vault | Caminho da fonte em português |
+| `src/interface.yaml` | rótulos em seis idiomas | Menu e títulos de seção |
+| `src/traducoes.json` | gerado | Traduções por trecho, com hash do original |
+| `CNAME` | `portfolio.phrandrade.com` | Domínio do GitHub Pages |
+
+## Implantação
+
+O site é estático: `index.html`, `assets/` e `CNAME` vão direto para o GitHub Pages a partir de `master`. Antes de publicar, rode `make publicar-local` e revise o resultado.
+
+### Atualizando
+
+```bash
+make publicar-local
+git push origin master
+```
+
+### Desfazendo uma atualização
+
+```bash
+git revert <commit>
+git push origin master
+```
+
+## Arquitetura
+
+```text
+index.html              esqueleto semântico, uma section por área
+assets/css/style.css    tokens do quartz-site, claro e escuro
+assets/js/projects.js   dados (gerado por tools/build.py, não editar)
+assets/js/main.js       render, idioma, tema, filtro, busca e navegação
+src/                    conteúdo, traduções e rótulos
+tools/                  build, tradução, eventos e gravação de tours
+tests/smoke.js          teste Playwright
+```
+
+```mermaid
+flowchart LR
+    A[Nota em pt-BR] --> B[tools/traduzir.py]
+    B --> C[src/traducoes.json]
+    C --> D[tools/build.py]
+    D --> E[assets/js/projects.js]
+    E --> F[index.html no GitHub Pages]
+```
+
+A versão 1 (HUD sci-fi) está na tag `v1-scifi`.
+
+## Trabalhando no projeto
+
+```bash
+npm install
 make lint
+npm test
 ```
 
-## Publicar no GitHub Pages
+1. Crie uma branch a partir de `master`: `git checkout -b feat/<assunto-curto>`.
+2. Commits no padrão [Conventional Commits](https://www.conventionalcommits.org/pt-br/).
+3. Edite o conteúdo só em português; as demais línguas saem do script de tradução.
+4. Registre a mudança na seção `Unreleased` de [CHANGELOG.md](CHANGELOG.md).
 
-1. Faça push deste repositório para `pedroiff0/portfolio`.
-2. Em **Settings → Pages**, escolha a branch `master` (ou `main`) e a pasta `/ (root)`.
-3. O site ficará em `https://pedroiff0.github.io/portfolio/`.
+## Roadmap
 
-Não depende de build: é HTML/CSS/JS puro, servido diretamente.
+- [x] Página única com seis idiomas e tema claro e escuro
+- [x] Tradução por trecho e tours em vídeo
+- [ ] Prévias dos currículos regeneradas automaticamente a cada mudança
+- [ ] Mais eventos na linha do tempo
+
+## Suporte
+
+Veja [SUPPORT.md](SUPPORT.md).
+
+## Segurança
+
+Veja [SECURITY.md](SECURITY.md).
+
+## Contribuindo
+
+Veja [CONTRIBUTING.md](CONTRIBUTING.md) e [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+
+## Autores
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/pedroiff0"><img src="https://github.com/pedroiff0.png?size=120" width="96" height="96" alt="Pedro Henrique Rocha de Andrade" /><br /><sub><b>Pedro Henrique Rocha de Andrade</b></sub></a><br />Autor e mantenedor</td>
+  </tr>
+</table>
+
+### Contribuidores
+
+[![Contribuidores](https://contrib.rocks/image?repo=pedroiff0/portfolio)](https://github.com/pedroiff0/portfolio/graphs/contributors)
+
+## Licença
+
+MIT. Veja [LICENSE](LICENSE).
+
+Pedro Henrique Rocha de Andrade, 2026.
