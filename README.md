@@ -1,9 +1,6 @@
 # Portfolio
 
-[![CI](https://github.com/pedroiff0/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/pedroiff0/portfolio/actions/workflows/ci.yml)
-[![Licença](https://img.shields.io/github/license/pedroiff0/portfolio)](LICENSE)
-[![Estrelas](https://img.shields.io/github/stars/pedroiff0/portfolio?style=flat&logo=github)](https://github.com/pedroiff0/portfolio/stargazers)
-[![Status](https://img.shields.io/badge/status-ativo-informational)](#roadmap)
+[![CI](https://github.com/pedroiff0/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/pedroiff0/portfolio/actions/workflows/ci.yml) [![Licença](https://img.shields.io/github/license/pedroiff0/portfolio)](LICENSE) [![Estrelas](https://img.shields.io/github/stars/pedroiff0/portfolio?style=flat&logo=github)](https://github.com/pedroiff0/portfolio/stargazers) [![Status](https://img.shields.io/badge/status-ativo-informational)](#roadmap)
 
 Portfólio de Pedro Rocha: página estática única, minimalista, com tema claro e escuro e seis idiomas (PT, EN, ES, FR, IT, ZH), publicada no GitHub Pages em [portfolio.phrandrade.com](https://portfolio.phrandrade.com).
 
