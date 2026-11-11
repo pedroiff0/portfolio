@@ -18,6 +18,7 @@ Portfólio de Pedro Rocha: página estática única, minimalista, com tema claro
 - [Suporte](#suporte)
 - [Segurança](#segurança)
 - [Contribuindo](#contribuindo)
+- [Estrelas e atividade](#estrelas-e-atividade)
 - [Autor](#autor)
 - [Licença](#licença)
 
@@ -34,13 +35,7 @@ O Portfolio apresenta trajetória, formação (Engenharia de Computação, IFF),
 
 ## Tecnologias
 
-## Tecnologias
-
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=githubactions&logoColor=white)
-![Make](https://img.shields.io/badge/Make-6D00CC?style=flat&logo=gnu&logoColor=white)
-![Shell](https://img.shields.io/badge/Shell-4EAA25?style=flat&logo=gnubash&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white) ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat&logo=playwright&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=flat&logo=githubpages&logoColor=white)
 
 ## Começando
 
@@ -176,6 +171,12 @@ Veja [SECURITY.md](SECURITY.md).
 ## Contribuindo
 
 Veja [CONTRIBUTING.md](CONTRIBUTING.md) e [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+
+## Estrelas e atividade
+
+[![Histórico de estrelas](https://api.star-history.com/svg?repos=pedroiff0/portfolio&type=Date)](https://star-history.com/#pedroiff0/portfolio&Date)
+
+[![Commits por mês](https://img.shields.io/github/commit-activity/m/pedroiff0/portfolio?logo=github)](https://github.com/pedroiff0/portfolio/graphs/commit-activity) [![Último commit](https://img.shields.io/github/last-commit/pedroiff0/portfolio?logo=git&logoColor=white)](https://github.com/pedroiff0/portfolio/commits) [![Issues](https://img.shields.io/github/issues/pedroiff0/portfolio)](https://github.com/pedroiff0/portfolio/issues) [![Pull requests](https://img.shields.io/github/issues-pr/pedroiff0/portfolio)](https://github.com/pedroiff0/portfolio/pulls)
 
 ## Autor
 
