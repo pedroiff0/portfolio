@@ -270,6 +270,17 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
 .clamp { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* Filtros */
+.more { margin-top: 1.5rem; }
+.more > summary {
+  cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.5rem 0.9rem; border: 1px solid var(--border); border-radius: 8px;
+  color: var(--accent); font-weight: 600; font-size: 0.95rem;
+}
+.more > summary::-webkit-details-marker { display: none; }
+.more > summary::before { content: "+"; font-family: var(--font-mono); }
+.more[open] > summary::before { content: "-"; }
+.more > summary:hover { background: var(--highlight); border-color: var(--accent); }
+.more[open] > summary { margin-bottom: 1.25rem; }
 .filters { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .tabs { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .tabs button {

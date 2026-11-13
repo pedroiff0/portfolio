@@ -3,9 +3,10 @@ publish: false
 title: Portfólio (conteúdo em pt-BR)
 type: esboco
 created: '2026-11-03T15:28:39-03:00'
-modified: 2026-11-05T15:40:44-03:00
+modified: 2026-11-13T10:44:29-03:00
 published: '2026-11-03T15:28:39-03:00'
 tags:
+  - esboco
   - projeto
   - portfolio
 cssclasses:
@@ -26,7 +27,8 @@ traduzir: false
 full_name: Pedro Henrique Rocha de Andrade
 orcid: 0009-0003-6724-4640
 instagram: ra.pedroh
-featured: Sistema Acadêmico, Researcher Hub, Rumo, Zênite, ReLaTeX, E-lixo
+featured: Sistema Acadêmico, Researcher Hub, Rumo, ReLaTeX
+research: Anomaly Detection Viewer
 
 ## Perfil
 eyebrow: Engenharia de Computação · Instituto Federal Fluminense
@@ -54,6 +56,32 @@ Do lado de engenharia, domino **Python** e **C**, redes de computadores (certifi
 Sou Técnico em Informática pelo IFF (2020–2022) e um dos organizadores da Semana de Computação, Engenharia e Gestão do IFF.
 
 ## Projetos
+
+### E-lixo
+status: camp
+slug: elixo
+stack: Eletrônica, Ciência do Ambiente, LaTeX
+tags: E-waste, Sustainability, Outreach
+resumo: Campanha sobre o descarte de baterias e e-lixo em Bom Jesus do Itabapoana.
+cat: academico
+visibility: elaboracao
+icon: document
+image: assets/media/elixo/poster.webp
+
+Pra onde vai a bateria que morreu? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.
+
+### Middle-Earth-Compiler
+status: dev
+slug: middle-earth-compiler
+repo: https://github.com/pedroiff0/middle-earth-compiler
+stack: Java, Maven, ANTLR 4, Arduino C++
+tags: Compilers, ANTLR, Arduino
+resumo: Compilador da linguagem Quenya 1.0 para Arduino Mega 2560, com ANTLR 4 e Java.
+cat: academico
+visibility: privado
+icon: function
+
+Compilador da linguagem Quenya 1.0 para Arduino C++ (Mega 2560), trabalho prático da disciplina de Compiladores (IFF, 6º período, 2026), construído em sete etapas cumulativas. O front-end usa ANTLR 4 para a análise léxica e sintática, seguido de AST, análise semântica com tabela de símbolos, representação para geração de código, gerador e integração. A etapa 1 (analisador léxico) está integrada e a etapa 2 (analisador sintático) está em andamento; erros léxicos e sintáticos são reportados com linha e coluna.
 
 ### Zênite
 status: dev
@@ -539,19 +567,6 @@ video: assets/media/mangareader/tour.webm
 
 Servidor pessoal de mangás baseado no Suwayomi-Server, em Docker, acessível apenas pela minha rede Tailscale (celular e iPad) e instalável como PWA. Um proxy Caddy fica na frente do servidor, com login próprio para cada amigo e biblioteca e progresso compartilhados. Não é exposto à internet.
 
-### E-lixo
-status: camp
-slug: elixo
-stack: Eletrônica, Ciência do Ambiente, LaTeX
-tags: E-waste, Sustainability, Outreach
-resumo: Campanha sobre o descarte de baterias e e-lixo em Bom Jesus do Itabapoana.
-cat: academico
-visibility: elaboracao
-icon: document
-image: assets/media/elixo/poster.webp
-
-Pra onde vai a bateria que morreu? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.
-
 ### Portfólio v1 (sci-fi)
 slug: portfolio-v1
 repo: https://github.com/pedroiff0/portfolio-v1-scifi
@@ -634,9 +649,10 @@ grade: 90 disciplinas mapeadas no Sistema Acadêmico (grade IFF Eng. de Computa�
 
 ## Página
 
-> Ordem e visibilidade das seções e do menu (ids: sobre, projetos, trabalhos, pesquisa, bolsas, eventos, curriculo, lattes, contato). Seção fora de `secoes` fica oculta; `nav` define os links do topo.
-secoes: sobre, projetos, trabalhos, pesquisa, bolsas, eventos, curriculo, lattes, contato
-nav: sobre, projetos, trabalhos, pesquisa, eventos, curriculo, lattes, contato
+> Ordem e visibilidade das seções e do menu (ids: sobre, projetos, pesquisa, bolsas, eventos, curriculo, lattes, contato). Seção fora de `secoes` fica oculta; `nav` define os links do topo. A lista completa de repositórios fica recolhida dentro de `projetos` ("Ver todos os projetos"). `eventos` lista os ids (`<ano>-<nota>`) dos eventos exibidos; sem a chave, todos aparecem. Em Metadados, `featured` define os cartões de Projetos e `research` os de Pesquisa.
+secoes: sobre, projetos, pesquisa, bolsas, eventos, curriculo, lattes, contato
+nav: sobre, projetos, pesquisa, eventos, curriculo, lattes, contato
+eventos: 2026-sbpc, 2026-escolainverno, 2026-sab, 2025-sab, 2025-mctia, 2024-febic, 2023-febrace, 2023-mostratec
 
 ## Interface
 
@@ -760,6 +776,7 @@ nav: sobre, projetos, trabalhos, pesquisa, eventos, curriculo, lattes, contato
 - i.sections.projetos.title: O que eu construo
 - i.sections.projetos.lead: Clique em qualquer cartão para revelar os detalhes técnicos.
 - i.sections.trabalhos.title: Tudo o que eu faço no GitHub
+- i.sections.trabalhos.more: Ver todos os projetos
 - i.sections.trabalhos.lead: Lista completa dos meus repositórios, públicos e privados. Cada cartão traz um resumo; abra "Detalhes" para ver o texto completo, a stack e o link.
 - i.sections.pesquisa.title: Astronomia computacional
 - i.sections.pesquisa.lead: Projetos de pesquisa em astrofísica computacional. Clique para expandir.

@@ -9,6 +9,10 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
+### Changed
+- Versão enxuta: Projetos com 4 destaques (Sistema Acadêmico, Researcher Hub, Rumo, ReLaTeX); a lista completa (inclui E-lixo e Middle-Earth-Compiler) virou o bloco recolhido "Ver todos os projetos" dentro de Projetos; Pesquisa só com o Anomaly Detection Viewer; Eventos limitados a 8 (chave `eventos` em `## Página`).
+- `tools/fonte.py` aponta para `portfolio-conteudo.md` (nome atual da nota); `tools/build.py` aceita `research:` em Metadados e `eventos:` em Página.
+
 ## [2.6.0] - 2026-11-03
 ### Changed
 - Destaques (seção 02) só com os projetos principais: Researcher Hub, Sistema Acadêmico, ReLaTeX, Sistema de Avaliações (em beta), SpectraViewer (precisa de ajustes) e Anomaly Detection Viewer. awesome-skills, meu-setup e Projeto Profissional seguem na lista completa.

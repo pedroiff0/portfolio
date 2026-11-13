@@ -17,7 +17,7 @@ CONTEUDO = os.path.join(ROOT, "src", "conteudo.md")
 TRADUCOES = os.path.join(ROOT, "src", "traducoes.json")
 VAULT_FONTE = os.environ.get(
     "PORTFOLIO_FONTE",
-    "/home/pedro/hardcore-life/01-projetos/pessoal/portfolio/esboco-portfolio-conteudo.md",
+    "/home/pedro/hardcore-life/01-projetos/pessoal/portfolio/portfolio-conteudo.md",
 )
 OUTROS = ["en", "es", "fr", "it", "zh"]
 MEDIA_KEYS = ("image", "video", "live", "open", "status")

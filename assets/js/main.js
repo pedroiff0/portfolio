@@ -5,10 +5,10 @@
   const D = window.PORTFOLIO_DATA;
   const LANGS = ["pt", "en", "es", "fr", "it", "zh"];
   const LAYOUT = D.LAYOUT || {};
-  const ALL_SECTIONS = ["sobre", "projetos", "trabalhos", "pesquisa", "bolsas", "eventos", "curriculo", "lattes", "contato"];
+  const ALL_SECTIONS = ["sobre", "projetos", "pesquisa", "bolsas", "eventos", "curriculo", "lattes", "contato"];
   // Seções (ordem e visibilidade) e menu vêm da nota (## Página); o que não estiver lá fica oculto.
   const SECTIONS = (LAYOUT.secoes || ALL_SECTIONS).filter((id) => ALL_SECTIONS.includes(id));
-  const NAV = (LAYOUT.nav || ["sobre", "projetos", "trabalhos", "pesquisa", "eventos", "curriculo", "lattes", "contato"]).filter((id) => SECTIONS.includes(id));
+  const NAV = (LAYOUT.nav || ["sobre", "projetos", "pesquisa", "eventos", "curriculo", "lattes", "contato"]).filter((id) => SECTIONS.includes(id));
   const NAV_I18N = { sobre: 0, projetos: 1, trabalhos: 2, pesquisa: 3, curriculo: 4, lattes: 5, contato: 6 }; // índice em I18N.*.nav
   const CV_BASE = "https://www.phrandrade.com/resource/areas/profissional/curriculo";
   const CV_LANGS = [["pt", "Português"], ["en", "English"], ["es", "Español"], ["fr", "Français"], ["it", "Italiano"], ["zh", "中文"]];
@@ -360,6 +360,8 @@
     $("#nav-mobile").replaceChildren(...navLinks());
     $$("[data-sec]").forEach((n) => { n.textContent = noEmoji(S[n.dataset.sec]?.title || ""); });
     $$("[data-lead]").forEach((n) => { n.textContent = noEmoji(S[n.dataset.lead]?.lead || ""); });
+    // Lista completa de repositórios: recolhida dentro de Projetos.
+    $("#more-label").textContent = `${noEmoji(S.trabalhos?.more || S.trabalhos?.title || "")} (${D.REPOS.length})`;
     const about = T().about || D.I18N.pt.about || [];
     $("#about").replaceChildren(...[].concat(about).map((p) => el("p", { html: p })));
   }
@@ -587,6 +589,7 @@
       if (d.kind === "projeto") {
         cat = "all"; query = ""; $("#search").value = "";
         renderTabs(); renderRepos();
+        $("#trabalhos").open = true;
         target = $(`#repos [data-sid="${CSS.escape(d.sid)}"]`);
       } else target = $(`[data-sid="${CSS.escape(d.sid)}"]`);
     }

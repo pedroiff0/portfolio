@@ -47,6 +47,8 @@ const VIEWS = [
         check((await page.getAttribute(".cv-prev img", "src") || "").includes("-zh-"), "prévia do CV não segue o idioma (zh)");
         await page.click('#lang button[data-lang="pt"]');
         check(await page.locator("#trophy-count").textContent() !== "0/8", "conquista de idioma não contou");
+        check(!(await page.isVisible("#repos")), "lista completa de projetos não começa recolhida");
+        await page.click("#trabalhos > summary");
         await page.click("#cat-tabs button:nth-child(2)");
         const cats = await page.evaluate(() => new Set([...document.querySelectorAll("#repos .card")].map((c) => c.dataset.cat)).size);
         check(cats === 1, "filtro de categoria não filtra");

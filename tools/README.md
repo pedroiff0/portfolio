@@ -1,6 +1,6 @@
 # Pipeline: nota do vault → site estático
 
-**Fluxo atual (v2.3):** toda a página é controlada pela nota `01-projetos/pessoal/portfolio/esboco-portfolio-conteudo.md` do vault
+**Fluxo atual (v2.3):** toda a página é controlada pela nota `01-projetos/pessoal/portfolio/portfolio-conteudo.md` do vault
 (perfil, projetos, bolsas, contatos, `## Página` com ordem/visibilidade de seções e menu, `## Interface` com todos os textos fixos).
 Marcar `traduzir: true` e salvar: o watcher roda `tools/traduzir.py`, que traduz só o que mudou (en/es/fr/it/zh), roda
 `eventos.py` + `build.py` + `make lint` e, se passar, commita e dá push. Log em `/tmp/portfolio-traduzir.log`.

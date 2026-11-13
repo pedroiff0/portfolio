@@ -440,7 +440,10 @@ def build(data):
         out.append(expr + ("," if i < len(featured) - 1 else ""))
     out.append("];")
     out.append("")
-    out.append("const RESEARCH = REPOS.filter(r => r.cat === \"pesquisa\").map(r => ({\n"
+    research_names = data.get("research", []) or []
+    sel = (f"{py_to_js(research_names)}.map(n => REPOS.find(r => r.name === n)).filter(Boolean)"
+           if research_names else "REPOS.filter(r => r.cat === \"pesquisa\")")
+    out.append("const RESEARCH = " + sel + ".map(r => ({\n"
                "  ...r, title: r.name, badge: r.visibility === \"público\" ? \"Público\" : \"Privado\",\n"
                "  summary: r.brief, details: r.brief + \"  Repositório: \" + r.repo\n"
                "}));")
@@ -510,10 +513,14 @@ def data_v22():
     extra["i18n"] = {l: {"tagline": tag[l]} for l in LANGS if l != "pt"}
     ev_json = os.path.join(ROOT, "src", "eventos.json")
     events = json.load(open(ev_json, encoding="utf-8")) if os.path.exists(ev_json) else []
+    ev_ids = F.get("pagina", {}).get("eventos")  # ## Página > eventos: ids exibidos (ausente = todos)
+    if ev_ids:
+        events = [e for e in events if e["id"] in ev_ids]
     ov = fonte.overrides(F, T)
     data = {"overrides": ov, "layout": F.get("pagina", {}), "full_name": F["meta"].get("full_name", ""), "orcid": F["meta"].get("orcid", ""),
             "instagram": F["meta"].get("instagram", ""),
             "featured": [s.strip() for s in F["meta"].get("featured", "").split(",") if s.strip()],
+            "research": [s.strip() for s in F["meta"].get("research", "").split(",") if s.strip()],
             "repos": repos, "bolsas": bolsas, "contatos": F["contatos"], "extra": extra, "i18n": i18n,
             "events": events}
     return data, pend

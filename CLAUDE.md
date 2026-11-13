@@ -11,7 +11,7 @@ is archived in the private repo `pedroiff0/portfolio-v1-scifi` (tag `v1-scifi` h
 
 ## Critical rule: the vault note is the source, JS is compiled
 
-Content lives in a pt-BR-only note in the hardcore-life vault (`01-projetos/pessoal/portfolio/esboco-portfolio-conteudo.md`,
+Content lives in a pt-BR-only note in the hardcore-life vault (`01-projetos/pessoal/portfolio/portfolio-conteudo.md`,
 overridable with `PORTFOLIO_FONTE`). `tools/build.py` copies it to `src/conteudo.md`, merges `src/traducoes.json`
 (per-block `{pt_hash, pt, en, es, fr}`, ids from `tools/fonte.py:blocos`) and writes `assets/js/projects.js`.
 **Never hand-edit `projects.js`, `src/conteudo.md` or `src/traducoes.json`.** Edit the vault note; translations are

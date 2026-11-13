@@ -341,6 +341,15 @@
   "it": "Server personale di manga basato su Suwayomi-Server, in Docker, accessibile solo tramite la mia rete Tailscale (cellulare e iPad) e installabile come PWA. Un proxy Caddy si trova davanti al server, con login separato per ogni amico e libreria e progressi condivisi. Non è esposto a Internet.",
   "zh": "基于 Suwayomi-Server 的个人漫画服务器，运行在 Docker 中，仅可通过我的 Tailscale 网络（手机和 iPad）访问，并可作为 PWA 安装。服务器前方部署了 Caddy 代理，每位朋友拥有独立登录账号，并共享书库和阅读进度。该服务器不对互联网开放。"
  },
+ "projeto:Middle-Earth-Compiler": {
+  "pt_hash": "1779e2d41b55",
+  "pt": "Compilador da linguagem Quenya 1.0 para Arduino C++ (Mega 2560), trabalho prático da disciplina de Compiladores (IFF, 6º período, 2026), construído em sete etapas cumulativas. O front-end usa ANTLR 4 para a análise léxica e sintática, seguido de AST, análise semântica com tabela de símbolos, representação para geração de código, gerador e integração. A etapa 1 (analisador léxico) está integrada e a etapa 2 (analisador sintático) está em andamento; erros léxicos e sintáticos são reportados com linha e coluna.",
+  "en": "Compiler for the Quenya 1.0 language targeting Arduino C++ (Mega 2560), a practical assignment for the Compilers course (IFF, 6th term, 2026), built in seven cumulative stages. The front end uses ANTLR 4 for lexical and syntactic analysis, followed by an AST, semantic analysis with a symbol table, an intermediate representation for code generation, the generator, and integration. Stage 1 (lexical analyzer) is integrated and stage 2 (syntactic analyzer) is in progress; lexical and syntax errors are reported with line and column.",
+  "es": "Compilador del lenguaje Quenya 1.0 para Arduino C++ (Mega 2560), trabajo práctico de la asignatura de Compiladores (IFF, 6.º período, 2026), construido en siete etapas acumulativas. El front-end usa ANTLR 4 para el análisis léxico y sintáctico, seguido de AST, análisis semántico con tabla de símbolos, representación para la generación de código, generador e integración. La etapa 1 (analizador léxico) está integrada y la etapa 2 (analizador sintáctico) está en curso; los errores léxicos y sintácticos se reportan con línea y columna.",
+  "fr": "Compilateur du langage Quenya 1.0 vers Arduino C++ (Mega 2560), travail pratique du cours de Compilateurs (IFF, 6e semestre, 2026), réalisé en sept étapes cumulatives. Le front-end utilise ANTLR 4 pour l'analyse lexicale et syntaxique, suivi d'un AST, d'une analyse sémantique avec table des symboles, d'une représentation pour la génération de code, du générateur et de l'intégration. L'étape 1 (analyseur lexical) est intégrée et l'étape 2 (analyseur syntaxique) est en cours ; les erreurs lexicales et syntaxiques sont signalées avec ligne et colonne.",
+  "it": "Compilatore del linguaggio Quenya 1.0 per Arduino C++ (Mega 2560), lavoro pratico del corso di Compilatori (IFF, 6º periodo, 2026), realizzato in sette fasi cumulative. Il front-end usa ANTLR 4 per l'analisi lessicale e sintattica, seguita da AST, analisi semantica con tabella dei simboli, rappresentazione per la generazione del codice, generatore e integrazione. La fase 1 (analizzatore lessicale) è integrata e la fase 2 (analizzatore sintattico) è in corso; gli errori lessicali e sintattici vengono segnalati con riga e colonna.",
+  "zh": "面向 Arduino C++(Mega 2560)的 Quenya 1.0 语言编译器,是编译原理课程(IFF,第 6 学期,2026)的实践作业,分七个递进阶段完成。前端使用 ANTLR 4 进行词法和语法分析,随后依次是 AST、带符号表的语义分析、用于代码生成的中间表示、代码生成器与集成。第 1 阶段(词法分析器)已集成,第 2 阶段(语法分析器)正在进行中;词法和语法错误会连同行号和列号一起报告。"
+ },
  "projeto:Modelos LaTeX": {
   "pt_hash": "5df09debe038",
   "pt": "Coleção de modelos LaTeX de uso geral, reaproveitados como base nos trabalhos acadêmicos.",
@@ -691,6 +700,15 @@
   "fr": "Serveur personnel de mangas (Suwayomi), accessible uniquement via le tailnet.",
   "it": "Server personale di manga (Suwayomi), accessibile solo tramite la tailnet.",
   "zh": "个人漫画服务器（Suwayomi），仅可通过 tailnet 访问。"
+ },
+ "resumo:Middle-Earth-Compiler": {
+  "pt_hash": "5e8cb3f3bbc1",
+  "pt": "Compilador da linguagem Quenya 1.0 para Arduino Mega 2560, com ANTLR 4 e Java.",
+  "en": "Compiler for the Quenya 1.0 language targeting Arduino Mega 2560, using ANTLR 4 and Java.",
+  "es": "Compilador del lenguaje Quenya 1.0 para Arduino Mega 2560, con ANTLR 4 y Java.",
+  "fr": "Compilateur du langage Quenya 1.0 vers Arduino Mega 2560, avec ANTLR 4 et Java.",
+  "it": "Compilatore del linguaggio Quenya 1.0 per Arduino Mega 2560, con ANTLR 4 e Java.",
+  "zh": "面向 Arduino Mega 2560 的 Quenya 1.0 语言编译器,使用 ANTLR 4 和 Java。"
  },
  "resumo:Modelos LaTeX": {
   "pt_hash": "54ebc80597ae",
@@ -1276,6 +1294,15 @@
   "fr": "Liste complète de mes dépôts, publics et privés. Chaque carte contient un résumé ; ouvrez « Détails » pour voir le texte complet, la stack et le lien.",
   "it": "Elenco completo dei miei repository, pubblici e privati. Ogni scheda riporta un riepilogo; apri \"Dettagli\" per vedere il testo completo, lo stack e il link.",
   "zh": "我的全部代码仓库列表,包括公开和私有仓库。每张卡片都附有摘要;打开“详情”即可查看完整说明、技术栈和链接。"
+ },
+ "ui:i.sections.trabalhos.more": {
+  "pt_hash": "6a1d90d722b4",
+  "pt": "Ver todos os projetos",
+  "en": "View all projects",
+  "es": "Ver todos los proyectos",
+  "fr": "Voir tous les projets",
+  "it": "Vedi tutti i progetti",
+  "zh": "查看所有项目"
  },
  "ui:i.sections.trabalhos.title": {
   "pt_hash": "0a0b0af67234",

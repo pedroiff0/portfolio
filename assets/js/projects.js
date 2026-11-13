@@ -6,6 +6,75 @@ const ORCID = "0009-0003-6724-4640";
 
 const REPOS = [
   {
+    name: "E-lixo",
+    cat: "academico",
+    visibility: "elaboracao",
+    icon: "document",
+    repo: "",
+    stack: [ "Eletrônica", "Ciência do Ambiente", "LaTeX" ],
+    tags: [ "E-waste", "Sustainability", "Outreach" ],
+    brief: "Pra onde vai a bateria que morreu? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.",
+    image: "assets/media/elixo/poster.webp",
+    status: "camp",
+    resumo: "Campanha sobre o descarte de baterias e e-lixo em Bom Jesus do Itabapoana.",
+    i18n: {
+      en: {
+        brief: "Where does a dead battery go? Integrative project for Philosophy of Science and Technology (IFF, 2026/2), done as a group, on electronic waste with a focus on car, e-bike and phone batteries. It maps improper disposal in Bom Jesus do Itabapoana, the gap between what the law requires (PNRS) and the collection points the city offers, and proposes bringing the IFF Circuito Verde to the BJI campus. Technical axis in Analog and Digital Electronics, Environmental Science and Materials Science; report and defense in November 2026. Have an old battery or a broken phone in a drawer? It doesn't go in the regular trash: take it to a collection point and help close this loop.",
+        resumo: "Campaign on the disposal of batteries and e-waste in Bom Jesus do Itabapoana."
+      },
+      es: {
+        brief: "¿A dónde va la batería que murió? Proyecto integrador de Filosofía de la Ciencia y la Tecnología (IFF, 2026/2), en grupo, sobre residuos electrónicos con foco en baterías de coche, bicicleta eléctrica y móvil. Mapea el descarte inadecuado en Bom Jesus do Itabapoana, la distancia entre lo que manda la ley (PNRS) y los puntos de recogida que ofrece la ciudad, y propone llevar el Circuito Verde del IFF al campus BJI. Eje técnico en Electrónica Analógica y Digital, Ciencia del Ambiente y Ciencia de los Materiales; informe y defensa en noviembre de 2026. ¿Tienes una batería vieja o un móvil roto en el cajón? No va a la basura común: llévalo a un punto de recogida y ayuda a cerrar este ciclo.",
+        resumo: "Campaña sobre el descarte de baterías y residuos electrónicos en Bom Jesus do Itabapoana."
+      },
+      fr: {
+        brief: "Où va la batterie qui est morte ? Projet intégrateur de Philosophie des Sciences et des Technologies (IFF, 2026/2), en groupe, sur les déchets électroniques, avec un accent sur les batteries de voiture, de vélo électrique et de téléphone. Il cartographie l'élimination inappropriée à Bom Jesus do Itabapoana, l'écart entre ce que la loi impose (PNRS) et les points de collecte offerts par la ville, et propose d'amener le Circuito Verde de l'IFF sur le campus BJI. Axe technique en Électronique Analogique et Numérique, Science de l'Environnement et Science des Matériaux ; rapport et soutenance en novembre 2026. Vous avez une vieille batterie ou un téléphone cassé dans un tiroir ? Cela ne va pas à la poubelle ordinaire : apportez-le à un point de collecte et aidez à boucler ce cycle.",
+        resumo: "Campagne sur l'élimination des batteries et des déchets électroniques à Bom Jesus do Itabapoana."
+      },
+      it: {
+        brief: "Dove va a finire la batteria che ha smesso di funzionare? Progetto integratore di Filosofia della Scienza e della Tecnologia (IFF, 2026/2), di gruppo, sui rifiuti elettronici con focus su batterie di auto, bicicletta elettrica e telefono. Mappa lo smaltimento improprio a Bom Jesus do Itabapoana, la distanza tra ciò che prescrive la legge (PNRS) e i punti di raccolta offerti dalla città, e propone di portare il Circuito Verde dell'IFF al campus BJI. Asse tecnico in Elettronica Analogica e Digitale, Scienza dell'Ambiente e Scienza dei Materiali; relazione e discussione a novembre 2026. Hai una vecchia batteria o un telefono rotto nel cassetto? Non va nella spazzatura comune: portalo a un punto di raccolta e aiuta a chiudere questo ciclo.",
+        resumo: "Campagna sullo smaltimento di batterie e rifiuti elettronici a Bom Jesus do Itabapoana."
+      },
+      zh: {
+        brief: "报废的电池去了哪里?哲学、科学与技术综合项目(IFF,2026/2),小组完成,主题为电子垃圾,重点关注汽车、电动自行车和手机电池。项目梳理了 Bom Jesus do Itabapoana 的不当丢弃现状、法律规定(PNRS)与城市所提供回收点之间的差距,并提议将 IFF 的 Circuito Verde 引入 BJI 校区。技术方向涵盖模拟与数字电子学、环境科学和材料科学;报告与答辩定于 2026 年 11 月。抽屉里有旧电池或坏手机吗?它们不能扔进普通垃圾桶:请送到回收点,帮助完成这个闭环。",
+        resumo: "关于 Bom Jesus do Itabapoana 电池和电子垃圾处理的宣传活动。"
+      }
+    }
+  },
+  {
+    name: "Middle-Earth-Compiler",
+    cat: "academico",
+    visibility: "privado",
+    icon: "function",
+    repo: "https://github.com/pedroiff0/middle-earth-compiler",
+    stack: [ "Java", "Maven", "ANTLR 4", "Arduino C++" ],
+    tags: [ "Compilers", "ANTLR", "Arduino" ],
+    brief: "Compilador da linguagem Quenya 1.0 para Arduino C++ (Mega 2560), trabalho prático da disciplina de Compiladores (IFF, 6º período, 2026), construído em sete etapas cumulativas. O front-end usa ANTLR 4 para a análise léxica e sintática, seguido de AST, análise semântica com tabela de símbolos, representação para geração de código, gerador e integração. A etapa 1 (analisador léxico) está integrada e a etapa 2 (analisador sintático) está em andamento; erros léxicos e sintáticos são reportados com linha e coluna.",
+    status: "dev",
+    resumo: "Compilador da linguagem Quenya 1.0 para Arduino Mega 2560, com ANTLR 4 e Java.",
+    i18n: {
+      en: {
+        brief: "Compiler for the Quenya 1.0 language targeting Arduino C++ (Mega 2560), a practical assignment for the Compilers course (IFF, 6th term, 2026), built in seven cumulative stages. The front end uses ANTLR 4 for lexical and syntactic analysis, followed by an AST, semantic analysis with a symbol table, an intermediate representation for code generation, the generator, and integration. Stage 1 (lexical analyzer) is integrated and stage 2 (syntactic analyzer) is in progress; lexical and syntax errors are reported with line and column.",
+        resumo: "Compiler for the Quenya 1.0 language targeting Arduino Mega 2560, using ANTLR 4 and Java."
+      },
+      es: {
+        brief: "Compilador del lenguaje Quenya 1.0 para Arduino C++ (Mega 2560), trabajo práctico de la asignatura de Compiladores (IFF, 6.º período, 2026), construido en siete etapas acumulativas. El front-end usa ANTLR 4 para el análisis léxico y sintáctico, seguido de AST, análisis semántico con tabla de símbolos, representación para la generación de código, generador e integración. La etapa 1 (analizador léxico) está integrada y la etapa 2 (analizador sintáctico) está en curso; los errores léxicos y sintácticos se reportan con línea y columna.",
+        resumo: "Compilador del lenguaje Quenya 1.0 para Arduino Mega 2560, con ANTLR 4 y Java."
+      },
+      fr: {
+        brief: "Compilateur du langage Quenya 1.0 vers Arduino C++ (Mega 2560), travail pratique du cours de Compilateurs (IFF, 6e semestre, 2026), réalisé en sept étapes cumulatives. Le front-end utilise ANTLR 4 pour l'analyse lexicale et syntaxique, suivi d'un AST, d'une analyse sémantique avec table des symboles, d'une représentation pour la génération de code, du générateur et de l'intégration. L'étape 1 (analyseur lexical) est intégrée et l'étape 2 (analyseur syntaxique) est en cours ; les erreurs lexicales et syntaxiques sont signalées avec ligne et colonne.",
+        resumo: "Compilateur du langage Quenya 1.0 vers Arduino Mega 2560, avec ANTLR 4 et Java."
+      },
+      it: {
+        brief: "Compilatore del linguaggio Quenya 1.0 per Arduino C++ (Mega 2560), lavoro pratico del corso di Compilatori (IFF, 6º periodo, 2026), realizzato in sette fasi cumulative. Il front-end usa ANTLR 4 per l'analisi lessicale e sintattica, seguita da AST, analisi semantica con tabella dei simboli, rappresentazione per la generazione del codice, generatore e integrazione. La fase 1 (analizzatore lessicale) è integrata e la fase 2 (analizzatore sintattico) è in corso; gli errori lessicali e sintattici vengono segnalati con riga e colonna.",
+        resumo: "Compilatore del linguaggio Quenya 1.0 per Arduino Mega 2560, con ANTLR 4 e Java."
+      },
+      zh: {
+        brief: "面向 Arduino C++(Mega 2560)的 Quenya 1.0 语言编译器,是编译原理课程(IFF,第 6 学期,2026)的实践作业,分七个递进阶段完成。前端使用 ANTLR 4 进行词法和语法分析,随后依次是 AST、带符号表的语义分析、用于代码生成的中间表示、代码生成器与集成。第 1 阶段(词法分析器)已集成,第 2 阶段(语法分析器)正在进行中;词法和语法错误会连同行号和列号一起报告。",
+        resumo: "面向 Arduino Mega 2560 的 Quenya 1.0 语言编译器,使用 ANTLR 4 和 Java。"
+      }
+    }
+  },
+  {
     name: "Zênite",
     cat: "software",
     visibility: "privado",
@@ -1269,41 +1338,6 @@ const REPOS = [
     }
   },
   {
-    name: "E-lixo",
-    cat: "academico",
-    visibility: "elaboracao",
-    icon: "document",
-    repo: "",
-    stack: [ "Eletrônica", "Ciência do Ambiente", "LaTeX" ],
-    tags: [ "E-waste", "Sustainability", "Outreach" ],
-    brief: "Pra onde vai a bateria que morreu? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.",
-    image: "assets/media/elixo/poster.webp",
-    status: "camp",
-    resumo: "Campanha sobre o descarte de baterias e e-lixo em Bom Jesus do Itabapoana.",
-    i18n: {
-      en: {
-        brief: "Where does a dead battery go? Integrative project for Philosophy of Science and Technology (IFF, 2026/2), done as a group, on electronic waste with a focus on car, e-bike and phone batteries. It maps improper disposal in Bom Jesus do Itabapoana, the gap between what the law requires (PNRS) and the collection points the city offers, and proposes bringing the IFF Circuito Verde to the BJI campus. Technical axis in Analog and Digital Electronics, Environmental Science and Materials Science; report and defense in November 2026. Have an old battery or a broken phone in a drawer? It doesn't go in the regular trash: take it to a collection point and help close this loop.",
-        resumo: "Campaign on the disposal of batteries and e-waste in Bom Jesus do Itabapoana."
-      },
-      es: {
-        brief: "¿A dónde va la batería que murió? Proyecto integrador de Filosofía de la Ciencia y la Tecnología (IFF, 2026/2), en grupo, sobre residuos electrónicos con foco en baterías de coche, bicicleta eléctrica y móvil. Mapea el descarte inadecuado en Bom Jesus do Itabapoana, la distancia entre lo que manda la ley (PNRS) y los puntos de recogida que ofrece la ciudad, y propone llevar el Circuito Verde del IFF al campus BJI. Eje técnico en Electrónica Analógica y Digital, Ciencia del Ambiente y Ciencia de los Materiales; informe y defensa en noviembre de 2026. ¿Tienes una batería vieja o un móvil roto en el cajón? No va a la basura común: llévalo a un punto de recogida y ayuda a cerrar este ciclo.",
-        resumo: "Campaña sobre el descarte de baterías y residuos electrónicos en Bom Jesus do Itabapoana."
-      },
-      fr: {
-        brief: "Où va la batterie qui est morte ? Projet intégrateur de Philosophie des Sciences et des Technologies (IFF, 2026/2), en groupe, sur les déchets électroniques, avec un accent sur les batteries de voiture, de vélo électrique et de téléphone. Il cartographie l'élimination inappropriée à Bom Jesus do Itabapoana, l'écart entre ce que la loi impose (PNRS) et les points de collecte offerts par la ville, et propose d'amener le Circuito Verde de l'IFF sur le campus BJI. Axe technique en Électronique Analogique et Numérique, Science de l'Environnement et Science des Matériaux ; rapport et soutenance en novembre 2026. Vous avez une vieille batterie ou un téléphone cassé dans un tiroir ? Cela ne va pas à la poubelle ordinaire : apportez-le à un point de collecte et aidez à boucler ce cycle.",
-        resumo: "Campagne sur l'élimination des batteries et des déchets électroniques à Bom Jesus do Itabapoana."
-      },
-      it: {
-        brief: "Dove va a finire la batteria che ha smesso di funzionare? Progetto integratore di Filosofia della Scienza e della Tecnologia (IFF, 2026/2), di gruppo, sui rifiuti elettronici con focus su batterie di auto, bicicletta elettrica e telefono. Mappa lo smaltimento improprio a Bom Jesus do Itabapoana, la distanza tra ciò che prescrive la legge (PNRS) e i punti di raccolta offerti dalla città, e propone di portare il Circuito Verde dell'IFF al campus BJI. Asse tecnico in Elettronica Analogica e Digitale, Scienza dell'Ambiente e Scienza dei Materiali; relazione e discussione a novembre 2026. Hai una vecchia batteria o un telefono rotto nel cassetto? Non va nella spazzatura comune: portalo a un punto di raccolta e aiuta a chiudere questo ciclo.",
-        resumo: "Campagna sullo smaltimento di batterie e rifiuti elettronici a Bom Jesus do Itabapoana."
-      },
-      zh: {
-        brief: "报废的电池去了哪里?哲学、科学与技术综合项目(IFF,2026/2),小组完成,主题为电子垃圾,重点关注汽车、电动自行车和手机电池。项目梳理了 Bom Jesus do Itabapoana 的不当丢弃现状、法律规定(PNRS)与城市所提供回收点之间的差距,并提议将 IFF 的 Circuito Verde 引入 BJI 校区。技术方向涵盖模拟与数字电子学、环境科学和材料科学;报告与答辩定于 2026 年 11 月。抽屉里有旧电池或坏手机吗?它们不能扔进普通垃圾桶:请送到回收点,帮助完成这个闭环。",
-        resumo: "关于 Bom Jesus do Itabapoana 电池和电子垃圾处理的宣传活动。"
-      }
-    }
-  },
-  {
     name: "Portfólio v1 (sci-fi)",
     cat: "pessoal",
     visibility: "privado",
@@ -1379,12 +1413,10 @@ const FEATURED = [
   REPOS.find(r => r.name === "Sistema Acadêmico"),
   REPOS.find(r => r.name === "Researcher Hub"),
   REPOS.find(r => r.name === "Rumo"),
-  REPOS.find(r => r.name === "Zênite"),
-  REPOS.find(r => r.name === "ReLaTeX"),
-  REPOS.find(r => r.name === "E-lixo")
+  REPOS.find(r => r.name === "ReLaTeX")
 ];
 
-const RESEARCH = REPOS.filter(r => r.cat === "pesquisa").map(r => ({
+const RESEARCH = [ "Anomaly Detection Viewer" ].map(n => REPOS.find(r => r.name === n)).filter(Boolean).map(r => ({
   ...r, title: r.name, badge: r.visibility === "público" ? "Público" : "Privado",
   summary: r.brief, details: r.brief + "  Repositório: " + r.repo
 }));
@@ -3269,6 +3301,7 @@ const OVERRIDES = {
       "sections.projetos.title": "O que eu construo",
       "sections.projetos.lead": "Clique em qualquer cartão para revelar os detalhes técnicos.",
       "sections.trabalhos.title": "Tudo o que eu faço no GitHub",
+      "sections.trabalhos.more": "Ver todos os projetos",
       "sections.trabalhos.lead": "Lista completa dos meus repositórios, públicos e privados. Cada cartão traz um resumo; abra \"Detalhes\" para ver o texto completo, a stack e o link.",
       "sections.pesquisa.title": "Astronomia computacional",
       "sections.pesquisa.lead": "Projetos de pesquisa em astrofísica computacional. Clique para expandir.",
@@ -3318,6 +3351,7 @@ const OVERRIDES = {
       "sections.projetos.title": "What I build",
       "sections.projetos.lead": "Click any card to reveal the technical details.",
       "sections.trabalhos.title": "Everything I do on GitHub",
+      "sections.trabalhos.more": "View all projects",
       "sections.trabalhos.lead": "A complete list of my repositories, both public and private. Each card includes a summary; open \"Details\" to see the full text, the stack and the link.",
       "sections.pesquisa.title": "Computational astronomy",
       "sections.pesquisa.lead": "Computational astrophysics research projects. Click to expand.",
@@ -3367,6 +3401,7 @@ const OVERRIDES = {
       "sections.projetos.title": "Lo que construyo",
       "sections.projetos.lead": "Haz clic en cualquier tarjeta para ver los detalles técnicos.",
       "sections.trabalhos.title": "Todo lo que hago en GitHub",
+      "sections.trabalhos.more": "Ver todos los proyectos",
       "sections.trabalhos.lead": "Lista completa de mis repositorios, públicos y privados. Cada tarjeta incluye un resumen; abre \"Detalles\" para ver el texto completo, el stack y el enlace.",
       "sections.pesquisa.title": "Astronomía computacional",
       "sections.pesquisa.lead": "Proyectos de investigación en astrofísica computacional. Haz clic para expandir.",
@@ -3416,6 +3451,7 @@ const OVERRIDES = {
       "sections.projetos.title": "Ce que je construis",
       "sections.projetos.lead": "Cliquez sur une carte pour révéler les détails techniques.",
       "sections.trabalhos.title": "Tout ce que je fais sur GitHub",
+      "sections.trabalhos.more": "Voir tous les projets",
       "sections.trabalhos.lead": "Liste complète de mes dépôts, publics et privés. Chaque carte contient un résumé ; ouvrez « Détails » pour voir le texte complet, la stack et le lien.",
       "sections.pesquisa.title": "Astronomie computationnelle",
       "sections.pesquisa.lead": "Projets de recherche en astrophysique computationnelle. Cliquez pour déployer.",
@@ -3465,6 +3501,7 @@ const OVERRIDES = {
       "sections.projetos.title": "Cosa costruisco",
       "sections.projetos.lead": "Fai clic su una scheda per vedere i dettagli tecnici.",
       "sections.trabalhos.title": "Tutto ciò che faccio su GitHub",
+      "sections.trabalhos.more": "Vedi tutti i progetti",
       "sections.trabalhos.lead": "Elenco completo dei miei repository, pubblici e privati. Ogni scheda riporta un riepilogo; apri \"Dettagli\" per vedere il testo completo, lo stack e il link.",
       "sections.pesquisa.title": "Astronomia computazionale",
       "sections.pesquisa.lead": "Progetti di ricerca in astrofisica computazionale. Fai clic per espandere.",
@@ -3514,6 +3551,7 @@ const OVERRIDES = {
       "sections.projetos.title": "我的作品",
       "sections.projetos.lead": "点击任意卡片查看技术细节。",
       "sections.trabalhos.title": "我在 GitHub 上的全部工作",
+      "sections.trabalhos.more": "查看所有项目",
       "sections.trabalhos.lead": "我的全部代码仓库列表,包括公开和私有仓库。每张卡片都附有摘要;打开“详情”即可查看完整说明、技术栈和链接。",
       "sections.pesquisa.title": "计算天文学",
       "sections.pesquisa.lead": "计算天体物理学研究项目。点击展开。",
@@ -3554,26 +3592,17 @@ const OVERRIDES = {
   }
 };
 const LAYOUT = {
-  secoes: [
-    "sobre",
-    "projetos",
-    "trabalhos",
-    "pesquisa",
-    "bolsas",
-    "eventos",
-    "curriculo",
-    "lattes",
-    "contato"
-  ],
-  nav: [
-    "sobre",
-    "projetos",
-    "trabalhos",
-    "pesquisa",
-    "eventos",
-    "curriculo",
-    "lattes",
-    "contato"
+  secoes: [ "sobre", "projetos", "pesquisa", "bolsas", "eventos", "curriculo", "lattes", "contato" ],
+  nav: [ "sobre", "projetos", "pesquisa", "eventos", "curriculo", "lattes", "contato" ],
+  eventos: [
+    "2026-sbpc",
+    "2026-escolainverno",
+    "2026-sab",
+    "2025-sab",
+    "2025-mctia",
+    "2024-febic",
+    "2023-febrace",
+    "2023-mostratec"
   ]
 };
 
@@ -3610,20 +3639,6 @@ const EVENTS = [
     ]
   },
   {
-    id: "2026-conepe",
-    year: 2026,
-    title: "XIII CONEPE",
-    url: "https://www.phrandrade.com/pt-br/media/2026/conepe",
-    photos: []
-  },
-  {
-    id: "2026-mostra-iff",
-    year: 2026,
-    title: "XIV Mostra do Conhecimento",
-    url: "https://www.phrandrade.com/pt-br/media/2026/mostra-iff",
-    photos: []
-  },
-  {
     id: "2026-sab",
     year: 2026,
     title: "XLIX RASAB",
@@ -3637,13 +3652,6 @@ const EVENTS = [
       "assets/media/eventos/2026-sab/06",
       "assets/media/eventos/2026-sab/07"
     ]
-  },
-  {
-    id: "2026-confict",
-    year: 2026,
-    title: "XVII CONFICT",
-    url: "https://www.phrandrade.com/pt-br/media/2026/confict",
-    photos: [ "assets/media/eventos/2026-confict/01" ]
   },
   {
     id: "2025-sab",
@@ -3680,18 +3688,6 @@ const EVENTS = [
     ]
   },
   {
-    id: "2024-4-sceg",
-    year: 2024,
-    title: "4ª SCEG 2024",
-    url: "https://www.phrandrade.com/pt-br/media/2024/4-sceg",
-    photos: [
-      "assets/media/eventos/2024-4-sceg/01",
-      "assets/media/eventos/2024-4-sceg/02",
-      "assets/media/eventos/2024-4-sceg/03",
-      "assets/media/eventos/2024-4-sceg/04"
-    ]
-  },
-  {
     id: "2024-febic",
     year: 2024,
     title: "IX FEBIC",
@@ -3707,13 +3703,6 @@ const EVENTS = [
       "assets/media/eventos/2024-febic/08",
       "assets/media/eventos/2024-febic/09"
     ]
-  },
-  {
-    id: "2024-e-jiniff",
-    year: 2024,
-    title: "e-JINIFF",
-    url: "https://www.phrandrade.com/pt-br/media/2024/e-jiniff",
-    photos: []
   },
   {
     id: "2023-febrace",
@@ -3746,25 +3735,8 @@ const EVENTS = [
       "assets/media/eventos/2023-mostratec/08",
       "assets/media/eventos/2023-mostratec/09"
     ]
-  },
-  {
-    id: "2022-lncc",
-    year: 2022,
-    title: "Laboratório Nacional de Computação Científica",
-    url: "https://www.phrandrade.com/pt-br/media/2022/lncc",
-    photos: [
-      "assets/media/eventos/2022-lncc/01",
-      "assets/media/eventos/2022-lncc/02",
-      "assets/media/eventos/2022-lncc/03",
-      "assets/media/eventos/2022-lncc/04",
-      "assets/media/eventos/2022-lncc/05",
-      "assets/media/eventos/2022-lncc/06",
-      "assets/media/eventos/2022-lncc/07",
-      "assets/media/eventos/2022-lncc/08",
-      "assets/media/eventos/2022-lncc/09"
-    ]
   }
 ];
-const UPDATED = "2026-11-11";
+const UPDATED = "2026-11-13";
 
 window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, OVERRIDES, LAYOUT, EVENTS, UPDATED };
