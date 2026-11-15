@@ -393,6 +393,7 @@ def norm_bolsa(b):
         "period": b.get("period", ""),
         "orient": b.get("orient", ""),
         "desc": desc.get("pt", ""),
+        **({"links": b["links"]} if b.get("links") else {}),
         **({"i18n": i18n} if i18n else {}),
     }
 
@@ -503,7 +504,7 @@ def data_v22():
     for i, b in enumerate(F["bolsas"]):
         bolsas.append({"title": tr(f"bolsa:{i}:titulo", b["titulo"]), "icon": b["icon"],
                        "kind": tr(f"bolsa:{i}:tipo", b["tipo"]), "period": b["period"], "orient": b["orient"],
-                       "desc": tr(f"bolsa:{i}:desc", b["desc"])})
+                       "desc": tr(f"bolsa:{i}:desc", b["desc"]), "links": b.get("links", [])})
     A = F["alem"]
     extra = {k: A[k] for k in ("nickname", "grade") if A.get(k)}
     extra["instagram"] = F["meta"].get("instagram", "")

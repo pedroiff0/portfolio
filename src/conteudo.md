@@ -3,7 +3,7 @@ publish: false
 title: Portfólio (conteúdo em pt-BR)
 type: esboco
 created: '2026-11-03T15:28:39-03:00'
-modified: 2026-11-13T10:44:29-03:00
+modified: 2026-11-15T14:51:35-03:00
 published: '2026-11-03T15:28:39-03:00'
 tags:
   - esboco
@@ -68,7 +68,7 @@ visibility: elaboracao
 icon: document
 image: assets/media/elixo/poster.webp
 
-Pra onde vai a bateria que morreu? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.
+Pra onde vai a bateria que chegou ao fim? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.
 
 ### Middle-Earth-Compiler
 status: dev
@@ -603,6 +603,7 @@ kind: IC Júnior · CNPq
 period: Set. 2022 — Mar. 2023
 orient: Dra. Ana Cecília Soja
 desc: Iniciação Científica Júnior sobre matéria escura e choques extragalácticos.
+links: FEBRACE 2023 | https://www.phrandrade.com/pt-br/media/2023/febrace ; MOSTRATEC 2023 | https://www.phrandrade.com/pt-br/media/2023/mostratec
 
 ### MobFog no IFFMaker
 icon: fog
@@ -617,6 +618,7 @@ kind: Voluntário · CNPq
 period: Ago. 2023 — Set. 2023
 orient: Dra. Ana Cecília Soja
 desc: Simulação do impacto de rastros de satélites em imagens astronômicas.
+links: site-mctia.vercel.app | https://site-mctia.vercel.app ; MCTIA 2025 | https://www.phrandrade.com/pt-br/media/2025/mctia
 
 ### Detecção de Anomalias em Estrelas da Via Láctea (Gaia + Surveys + ML)
 icon: star
@@ -746,19 +748,19 @@ eventos: 2026-sbpc, 2026-escolainverno, 2026-sab, 2025-sab, 2025-mctia, 2024-feb
 
 ### Banner do QR code (ui.qr*)
 
-- ui.qrKicker: SAB 2026 · Natal, RN · 25/10 a 30/10/2026
-- ui.qrTitle: Veio pelo QR code do banner? Comece por aqui.
-- ui.qrSab: SAB 2026: o evento e o que apresentei
-- ui.qrSabSub: O evento e o meu pôster
-- ui.qrPesq: Pesquisa: detecção de anomalias
-- ui.qrPesqSub: A pesquisa por trás do pôster, 2025 a 2026
-- ui.qrPainel: Painel interativo do mapa t-SNE
-- ui.qrPainelSub: Deixe seu nome na lista de quem passou pelo pôster
+- ui.qrKicker: Em construção · IFF Bom Jesus do Itabapoana · apresentação em 18/11/2026
+- ui.qrTitle: Para onde vai a bateria depois de usada?
+- ui.qrSab: E-lixo: a proposta de um ponto de entrega
+- ui.qrSabSub: O projeto em linguagem simples
+- ui.qrPesq: O que fazer com a bateria velha
+- ui.qrPesqSub: Dicas para quem tem uma em casa
+- ui.qrPainel: Relatório e slides
+- ui.qrPainelSub: Disponíveis depois da apresentação
 - ui.qrSobre: Sobre mim
 - ui.qrSobreSub: Quem sou e o que faço
 - ui.qrJardim: Jardim digital
 - ui.qrJardimSub: Notas, projetos e eventos no site completo
-- ui.qrNote: O painel interativo é temporário e será desativado após a SAB. Dúvidas: pedroiff0@gmail.com.
+- ui.qrNote: O ponto de entrega ainda não existe: por enquanto, não leve baterias ao IFF. Dúvidas: pedroiff0@gmail.com.
 
 ### i.nav
 

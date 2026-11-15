@@ -13,17 +13,17 @@ const REPOS = [
     repo: "",
     stack: [ "Eletrônica", "Ciência do Ambiente", "LaTeX" ],
     tags: [ "E-waste", "Sustainability", "Outreach" ],
-    brief: "Pra onde vai a bateria que morreu? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.",
+    brief: "Pra onde vai a bateria que chegou ao fim? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.",
     image: "assets/media/elixo/poster.webp",
     status: "camp",
     resumo: "Campanha sobre o descarte de baterias e e-lixo em Bom Jesus do Itabapoana.",
     i18n: {
       en: {
-        brief: "Where does a dead battery go? Integrative project for Philosophy of Science and Technology (IFF, 2026/2), done as a group, on electronic waste with a focus on car, e-bike and phone batteries. It maps improper disposal in Bom Jesus do Itabapoana, the gap between what the law requires (PNRS) and the collection points the city offers, and proposes bringing the IFF Circuito Verde to the BJI campus. Technical axis in Analog and Digital Electronics, Environmental Science and Materials Science; report and defense in November 2026. Have an old battery or a broken phone in a drawer? It doesn't go in the regular trash: take it to a collection point and help close this loop.",
+        brief: "Where does a spent battery go? Integrative project for Philosophy of Science and Technology (IFF, 2026/2), done as a group, on electronic waste with a focus on car, e-bike and phone batteries. It maps improper disposal in Bom Jesus do Itabapoana, the gap between what the law requires (PNRS) and the collection points the city offers, and proposes bringing the IFF Circuito Verde to the BJI campus. Technical axis in Analog and Digital Electronics, Environmental Science and Materials Science; report and defense in November 2026. Have an old battery or a broken phone in a drawer? It doesn't go in the regular trash: take it to a collection point and help close this loop.",
         resumo: "Campaign on the disposal of batteries and e-waste in Bom Jesus do Itabapoana."
       },
       es: {
-        brief: "¿A dónde va la batería que murió? Proyecto integrador de Filosofía de la Ciencia y la Tecnología (IFF, 2026/2), en grupo, sobre residuos electrónicos con foco en baterías de coche, bicicleta eléctrica y móvil. Mapea el descarte inadecuado en Bom Jesus do Itabapoana, la distancia entre lo que manda la ley (PNRS) y los puntos de recogida que ofrece la ciudad, y propone llevar el Circuito Verde del IFF al campus BJI. Eje técnico en Electrónica Analógica y Digital, Ciencia del Ambiente y Ciencia de los Materiales; informe y defensa en noviembre de 2026. ¿Tienes una batería vieja o un móvil roto en el cajón? No va a la basura común: llévalo a un punto de recogida y ayuda a cerrar este ciclo.",
+        brief: "¿A dónde va la batería que llegó al final de su vida útil? Proyecto integrador de Filosofía de la Ciencia y la Tecnología (IFF, 2026/2), en grupo, sobre residuos electrónicos con foco en baterías de coche, bicicleta eléctrica y móvil. Mapea el descarte inadecuado en Bom Jesus do Itabapoana, la distancia entre lo que manda la ley (PNRS) y los puntos de recogida que ofrece la ciudad, y propone llevar el Circuito Verde del IFF al campus BJI. Eje técnico en Electrónica Analógica y Digital, Ciencia del Ambiente y Ciencia de los Materiales; informe y defensa en noviembre de 2026. ¿Tienes una batería vieja o un móvil roto en el cajón? No va a la basura común: llévalo a un punto de recogida y ayuda a cerrar este ciclo.",
         resumo: "Campaña sobre el descarte de baterías y residuos electrónicos en Bom Jesus do Itabapoana."
       },
       fr: {
@@ -1429,6 +1429,10 @@ const BOLSAS = [
     period: "Set. 2022 — Mar. 2023",
     orient: "Dra. Ana Cecília Soja",
     desc: "Iniciação Científica Júnior sobre matéria escura e choques extragalácticos.",
+    links: [
+      { label: "FEBRACE 2023", url: "https://www.phrandrade.com/pt-br/media/2023/febrace" },
+      { label: "MOSTRATEC 2023", url: "https://www.phrandrade.com/pt-br/media/2023/mostratec" }
+    ],
     i18n: {
       en: {
         title: "Understanding Dark Matter from ExtraGalactic Shocks",
@@ -1491,6 +1495,10 @@ const BOLSAS = [
     period: "Ago. 2023 — Set. 2023",
     orient: "Dra. Ana Cecília Soja",
     desc: "Simulação do impacto de rastros de satélites em imagens astronômicas.",
+    links: [
+      { label: "site-mctia.vercel.app", url: "https://site-mctia.vercel.app" },
+      { label: "MCTIA 2025", url: "https://www.phrandrade.com/pt-br/media/2025/mctia" }
+    ],
     i18n: {
       en: {
         title: "Simulating the Impact of Satellites on Astronomical Observations",
@@ -2843,19 +2851,19 @@ const OVERRIDES = {
       "status.camp": "campanha",
       "status.beta": "em beta",
       "status.ajustes": "precisa de ajustes",
-      qrKicker: "SAB 2026 · Natal, RN · 25/10 a 30/10/2026",
-      qrTitle: "Veio pelo QR code do banner? Comece por aqui.",
-      qrSab: "SAB 2026: o evento e o que apresentei",
-      qrSabSub: "O evento e o meu pôster",
-      qrPesq: "Pesquisa: detecção de anomalias",
-      qrPesqSub: "A pesquisa por trás do pôster, 2025 a 2026",
-      qrPainel: "Painel interativo do mapa t-SNE",
-      qrPainelSub: "Deixe seu nome na lista de quem passou pelo pôster",
+      qrKicker: "Em construção · IFF Bom Jesus do Itabapoana · apresentação em 18/11/2026",
+      qrTitle: "Para onde vai a bateria depois de usada?",
+      qrSab: "E-lixo: a proposta de um ponto de entrega",
+      qrSabSub: "O projeto em linguagem simples",
+      qrPesq: "O que fazer com a bateria velha",
+      qrPesqSub: "Dicas para quem tem uma em casa",
+      qrPainel: "Relatório e slides",
+      qrPainelSub: "Disponíveis depois da apresentação",
       qrSobre: "Sobre mim",
       qrSobreSub: "Quem sou e o que faço",
       qrJardim: "Jardim digital",
       qrJardimSub: "Notas, projetos e eventos no site completo",
-      qrNote: "O painel interativo é temporário e será desativado após a SAB. Dúvidas: pedroiff0@gmail.com."
+      qrNote: "O ponto de entrega ainda não existe: por enquanto, não leve baterias ao IFF. Dúvidas: pedroiff0@gmail.com."
     },
     en: {
       cvText: "Resume maintained in LaTeX (altacv class), with synchronized versions in six languages: Portuguese, English, Spanish, French, Italian and Mandarin.",
@@ -2929,19 +2937,19 @@ const OVERRIDES = {
       "status.camp": "campaign",
       "status.beta": "beta",
       "status.ajustes": "needs adjustments",
-      qrKicker: "SAB 2026 · Natal, Brazil · Oct 25-30, 2026",
-      qrTitle: "Came from the poster QR code? Start here.",
-      qrSab: "SAB 2026: the event and my poster",
-      qrSabSub: "The event and what I presented",
-      qrPesq: "Research: anomaly detection",
-      qrPesqSub: "The research behind the poster, 2025-2026",
-      qrPainel: "Interactive t-SNE map",
-      qrPainelSub: "Leave your name on the poster visitors list",
+      qrKicker: "Under construction · IFF Bom Jesus do Itabapoana · presentation on Nov 18, 2026",
+      qrTitle: "Where does a battery go after it is used?",
+      qrSab: "E-waste: a drop-off point proposal at IFF",
+      qrSabSub: "The project in plain language",
+      qrPesq: "What to do with old batteries",
+      qrPesqSub: "Practical tips for home disposal",
+      qrPainel: "Technical report and slides",
+      qrPainelSub: "Available after the presentation",
       qrSobre: "About me",
       qrSobreSub: "Who I am and what I do",
       qrJardim: "Digital garden",
       qrJardimSub: "Notes, projects and events on the full site",
-      qrNote: "The interactive panel is temporary and will be shut down after SAB. Questions: pedroiff0@gmail.com."
+      qrNote: "The drop-off point does not exist yet: for now, do not bring batteries to IFF. Questions: pedroiff0@gmail.com."
     },
     es: {
       cvText: "Currículum mantenido en LaTeX (clase altacv), con versiones sincronizadas en seis idiomas: portugués, inglés, español, francés, italiano y mandarín.",
@@ -3015,19 +3023,19 @@ const OVERRIDES = {
       "status.camp": "campaña",
       "status.beta": "en beta",
       "status.ajustes": "necesita ajustes",
-      qrKicker: "SAB 2026 · Natal, Brasil · 25 a 30/10/2026",
-      qrTitle: "¿Llegaste por el código QR del póster? Empieza aquí.",
-      qrSab: "SAB 2026: el evento y mi póster",
-      qrSabSub: "El evento y lo que presenté",
-      qrPesq: "Investigación: detección de anomalías",
-      qrPesqSub: "La investigación detrás del póster, 2025-2026",
-      qrPainel: "Panel interactivo del mapa t-SNE",
-      qrPainelSub: "Deja tu nombre en la lista de visitantes del póster",
+      qrKicker: "En construcción · IFF Bom Jesus do Itabapoana · presentación el 18/11/2026",
+      qrTitle: "¿A dónde va la batería después de usada?",
+      qrSab: "Residuos electrónicos: propuesta de un punto de entrega en el IFF",
+      qrSabSub: "El proyecto en lenguaje sencillo",
+      qrPesq: "Qué hacer con la batería vieja",
+      qrPesqSub: "Consejos para quien tiene una en casa",
+      qrPainel: "Informe técnico y diapositivas",
+      qrPainelSub: "Disponibles después de la presentación",
       qrSobre: "Sobre mí",
       qrSobreSub: "Quién soy y qué hago",
       qrJardim: "Jardín digital",
       qrJardimSub: "Notas, proyectos y eventos en el sitio completo",
-      qrNote: "El panel interactivo es temporal y se desactivará después de la SAB. Dudas: pedroiff0@gmail.com."
+      qrNote: "El punto de entrega aún no existe: por ahora, no lleve baterías al IFF. Dudas: pedroiff0@gmail.com."
     },
     fr: {
       cvText: "CV maintenu en LaTeX (classe altacv), avec des versions synchronisées en six langues : portugais, anglais, espagnol, français, italien et mandarin.",
@@ -3101,19 +3109,19 @@ const OVERRIDES = {
       "status.camp": "campagne",
       "status.beta": "en bêta",
       "status.ajustes": "ajustements à faire",
-      qrKicker: "SAB 2026 · Natal, Brésil · 25 au 30/10/2026",
-      qrTitle: "Vous venez du QR code du poster ? Commencez ici.",
-      qrSab: "SAB 2026 : l'événement et mon poster",
-      qrSabSub: "L'événement et ce que j'ai présenté",
-      qrPesq: "Recherche : détection d'anomalies",
-      qrPesqSub: "La recherche derrière le poster, 2025-2026",
-      qrPainel: "Panneau interactif de la carte t-SNE",
-      qrPainelSub: "Laissez votre nom sur la liste des visiteurs du poster",
+      qrKicker: "En construction · IFF Bom Jesus do Itabapoana · soutenance le 18/11/2026",
+      qrTitle: "Où va la batterie après usage ?",
+      qrSab: "E-déchets : proposition d'un point d'apport à l'IFF",
+      qrSabSub: "Le projet en langage simple",
+      qrPesq: "Que faire de votre vieille batterie",
+      qrPesqSub: "Conseils pour la maison",
+      qrPainel: "Rapport technique et diapositives",
+      qrPainelSub: "Disponibles après la soutenance",
       qrSobre: "À propos de moi",
       qrSobreSub: "Qui je suis et ce que je fais",
       qrJardim: "Jardin numérique",
       qrJardimSub: "Notes, projets et événements sur le site complet",
-      qrNote: "Le panneau interactif est temporaire et sera désactivé après la SAB. Questions : pedroiff0@gmail.com."
+      qrNote: "Le point d'apport n'existe pas encore : pour l'instant, n'apportez pas de batteries à l'IFF. Questions : pedroiff0@gmail.com."
     },
     it: {
       cvText: "Curriculum mantenuto in LaTeX (classe altacv), con versioni sincronizzate in sei lingue: portoghese, inglese, spagnolo, francese, italiano e mandarino.",
@@ -3187,19 +3195,19 @@ const OVERRIDES = {
       "status.camp": "campagna",
       "status.beta": "in beta",
       "status.ajustes": "da sistemare",
-      qrKicker: "SAB 2026 · Natal, Brasile · 25-30/10/2026",
-      qrTitle: "Vieni dal QR code del poster? Parti da qui.",
-      qrSab: "SAB 2026: l'evento e il mio poster",
-      qrSabSub: "L'evento e cio che ho presentato",
-      qrPesq: "Ricerca: rilevamento di anomalie",
-      qrPesqSub: "La ricerca dietro il poster, 2025-2026",
-      qrPainel: "Pannello interattivo della mappa t-SNE",
-      qrPainelSub: "Lascia il tuo nome nella lista dei visitatori del poster",
+      qrKicker: "In costruzione · IFF Bom Jesus do Itabapoana · presentazione il 18/11/2026",
+      qrTitle: "Dove va la batteria dopo l'uso?",
+      qrSab: "E-waste: proposta di un punto di raccolta all'IFF",
+      qrSabSub: "Il progetto in linguaggio semplice",
+      qrPesq: "Cosa fare con la vecchia batteria",
+      qrPesqSub: "Consigli per chi ne ha una a casa",
+      qrPainel: "Relazione tecnica e slide",
+      qrPainelSub: "Disponibili dopo la presentazione",
       qrSobre: "Chi sono",
       qrSobreSub: "Chi sono e cosa faccio",
       qrJardim: "Giardino digitale",
       qrJardimSub: "Note, progetti ed eventi nel sito completo",
-      qrNote: "Il pannello interattivo e temporaneo e sara disattivato dopo la SAB. Domande: pedroiff0@gmail.com."
+      qrNote: "Il punto di raccolta non esiste ancora: per ora non portare batterie all'IFF. Domande: pedroiff0@gmail.com."
     },
     zh: {
       cvText: "简历使用 LaTeX（altacv 类）维护，提供六种语言的同步版本：葡萄牙语、英语、西班牙语、法语、意大利语和中文。",
@@ -3273,19 +3281,19 @@ const OVERRIDES = {
       "status.camp": "倡议",
       "status.beta": "测试版",
       "status.ajustes": "待完善",
-      qrKicker: "SAB 2026 · 巴西纳塔尔 · 2026年10月25日至30日",
-      qrTitle: "从海报二维码来的？从这里开始。",
-      qrSab: "SAB 2026：会议与我的海报",
-      qrSabSub: "会议以及我展示的内容",
-      qrPesq: "研究：异常检测",
-      qrPesqSub: "海报背后的研究，2025-2026",
-      qrPainel: "t-SNE 交互式地图",
-      qrPainelSub: "在海报访客名单上留下你的名字",
+      qrKicker: "建设中 · IFF Bom Jesus do Itabapoana · 2026年11月18日展示",
+      qrTitle: "废旧电池究竟去向何方？",
+      qrSab: "电子垃圾：IFF 收集点提案",
+      qrSabSub: "通俗易懂的项目说明",
+      qrPesq: "家中旧电池该如何处理",
+      qrPesqSub: "家庭废旧电池实用处置建议",
+      qrPainel: "技术报告与演示文稿",
+      qrPainelSub: "答辩后公开",
       qrSobre: "关于我",
       qrSobreSub: "我是谁，我做什么",
       qrJardim: "数字花园",
       qrJardimSub: "完整网站上的笔记、项目和活动",
-      qrNote: "交互式面板是临时的，SAB 之后将关闭。问题请联系：pedroiff0@gmail.com。"
+      qrNote: "收集点尚未正式建立：目前请勿将电池送往 IFF。疑问请联系：pedroiff0@gmail.com。"
     }
   },
   i: {
@@ -3737,6 +3745,6 @@ const EVENTS = [
     ]
   }
 ];
-const UPDATED = "2026-11-13";
+const UPDATED = "2026-11-15";
 
 window.PORTFOLIO_DATA = { FULL_NAME, ORCID, REPOS, FEATURED, RESEARCH, BOLSAS, CONTACTS, EXTRA, I18N, OVERRIDES, LAYOUT, EVENTS, UPDATED };

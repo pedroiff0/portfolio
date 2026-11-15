@@ -1,0 +1,7 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+  # Adicione o ecossistema do projeto (npm, pip, docker, cargo) apontando para a pasta do manifesto.

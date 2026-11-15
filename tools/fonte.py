@@ -23,7 +23,7 @@ OUTROS = ["en", "es", "fr", "it", "zh"]
 MEDIA_KEYS = ("image", "video", "live", "open", "status")
 KV = re.compile(r'^\s*([A-Za-z_][A-Za-z0-9_]*)\s*:\s*(.*)$')
 CHAVES = {"full_name", "orcid", "instagram", "featured", "eyebrow", "tagline", "location", "slug", "repo", "stack",
-          "tags", "cat", "visibility", "icon", "kind", "period", "orient", "desc", "nickname", "hobby", "grade", "resumo", *MEDIA_KEYS}
+          "tags", "cat", "visibility", "icon", "kind", "links", "period", "orient", "desc", "nickname", "hobby", "grade", "resumo", *MEDIA_KEYS}
 
 
 def h(texto):
@@ -106,7 +106,9 @@ def ler_fonte(caminho=CONTEUDO):
         kv, paras = kv_e_paragrafos(bloco)
         bolsas.append({"titulo": titulo, "icon": kv.get("icon", "star"), "tipo": kv.get("kind", ""),
                        "period": kv.get("period", ""), "orient": kv.get("orient", ""),
-                       "desc": kv.get("desc", "") or " ".join(paras)})
+                       "desc": kv.get("desc", "") or " ".join(paras),
+                       "links": [{"label": a.strip(), "url": u.strip()} for a, _, u in
+                                 (x.partition("|") for x in kv.get("links", "").split(";")) if u.strip()]})
 
     contatos = []
     for item in lista(S.get("Contatos", "")):
