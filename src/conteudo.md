@@ -3,7 +3,7 @@ publish: false
 title: Portfólio (conteúdo em pt-BR)
 type: esboco
 created: '2026-11-03T15:28:39-03:00'
-modified: 2026-11-15T14:51:35-03:00
+modified: 2026-11-15T16:00:38-03:00
 published: '2026-11-03T15:28:39-03:00'
 tags:
   - esboco
@@ -60,15 +60,18 @@ Sou Técnico em Informática pelo IFF (2020–2022) e um dos organizadores da Se
 ### E-lixo
 status: camp
 slug: elixo
-stack: Eletrônica, Ciência do Ambiente, LaTeX
-tags: E-waste, Sustainability, Outreach
-resumo: Campanha sobre o descarte de baterias e e-lixo em Bom Jesus do Itabapoana.
+repo: https://github.com/pedroiff0/guia-elixo
+live: https://elixo.phrandrade.com
+open: https://elixo.phrandrade.com
+stack: JavaScript, Leaflet.js, OpenStreetMap, HTML5/CSS3, LaTeX
+tags: E-waste, Sustainability, Reverse-Logistics
+resumo: Guia web com catálogo de 34 categorias de resíduos, mapa interativo de logística reversa e proposta de PEV no IFF Bom Jesus.
 cat: academico
-visibility: elaboracao
+visibility: público
 icon: document
 image: assets/media/elixo/poster.webp
 
-Pra onde vai a bateria que chegou ao fim? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), em grupo, sobre lixo eletrônico com foco em baterias de carro, bicicleta elétrica e celular. Mapeia o descarte inadequado em Bom Jesus do Itabapoana, a distância entre o que a lei manda (PNRS) e os pontos de coleta que a cidade oferece, e propõe trazer o Circuito Verde do IFF para o campus BJI. Eixo técnico em Eletrônica Analógica e Digital, Ciência do Ambiente e Ciência dos Materiais; relatório e defesa em novembro de 2026. Tem bateria velha ou celular quebrado na gaveta? Não vai no lixo comum: leve a um ponto de coleta e ajude a fechar esse ciclo.
+Pra onde vai a bateria que chegou ao fim? Projeto integrador de Filosofia da Ciência e Tecnologia (IFF, 2026/2), com foco em resíduos eletroeletrônicos e baterias. Inclui plataforma web interativa (elixo.phrandrade.com) com catálogo de 34 categorias de resíduos cadastrados (preparação correta, riscos de toxicidade e normas legais INEA 183/2019 e CONAMA 401/2008), mapa de rotas de logística reversa com Leaflet.js integrando o IFF Bom Jesus do Itabapoana ao Circuito Verde do IFF Guarus (corredor rodoviário de 67 km), panfleto de triagem em folha única A4 e proposta técnica de implantação de Ponto de Entrega Voluntária (PEV).
 
 ### Middle-Earth-Compiler
 status: dev
